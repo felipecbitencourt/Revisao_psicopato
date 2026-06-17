@@ -1,0 +1,7 @@
+# Outros Transtornos Induzidos por Estimulantes
+
+*Categoria: Transtornos Relacionados a Substâncias e Transtornos Aditivos*
+
+---
+
+Os seguintes transtornos induzidos por estimulantes (que incluem transtornos induzidos por anfetaminas, cocaína e outros estimulantes) são descritos em outros capítulos do Manual, juntamente aos transtornos com os quais compartilham fenomenologia (consultar transtornos mentais induzidos por substância/medicamento nestes capítulos): transtorno psicótico induzido por estimulantes (“Espectro da Esquizofrenia e Outros Transtornos Psicóticos”); transtorno bipolar induzido por estimulantes (“Transtorno Bipolar e Transtornos Relacionados”); transtorno depressivo induzido por estimulantes (“Transtornos Depressivos”); transtorno de ansiedade induzido por estimulantes (“Transtornos de Ansiedade”); transtorno obsessivo-compulsivo induzido por estimulantes (Transtorno Obsessivo-compulsivo e Transtornos Relacionados”); transtorno do sono induzido por estimulantes (“Transtornos do Sono-Vigília”); e disfunção sexual induzida por estimulantes (“Disfunções Sexuais”). Para *delirium* por intoxicação por estimulantes, ver os critérios e a abordagem de *delirium* no capítulo “Transtornos Neurocognitivos”. Esses transtornos induzidos por estimulantes são diagnosticados em lugar de intoxicação por estimulantes ou abstinência de estimulantes apenas quando os sintomas são suficientemente graves para justificar atenção clínica independente.

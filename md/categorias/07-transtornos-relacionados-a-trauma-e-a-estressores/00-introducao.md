@@ -1,0 +1,11 @@
+# Introdução — Transtornos Relacionados a Trauma e a Estressores
+
+*Categoria: Transtornos Relacionados a Trauma e a Estressores*
+
+---
+
+# Transtornos Relacionados a
+# Trauma e a Estressores
+### Os transtornos relacionados a trauma e a estressores incluem trans-
+tornos nos quais a exposição a um evento traumático ou estressante está listada explicitamente como um critério diagnóstico e reúnem o transtorno de apego reativo, o transtorno de interação social desinibida, o transtorno de estresse pós-traumático (TEPT), o transtorno de estresse agudo e os transtornos de adaptação. A disposição deste capítulo reflete a relação íntima entre esses diagnósticos e transtornos dos capítulos adjacentes: transtornos de ansiedade, transtorno obsessivo-compulsivo e transtornos relacionados e transtornos dissociativos.
+O sofrimento psicológico subsequente à exposição a um evento traumático ou estressante é bastante variável. Em alguns casos, os sintomas podem ser bem entendidos em um contexto de ansiedade ou medo. Entretanto, está claro que muitos indivíduos que foram expostos a um evento traumático ou estressante exibem um fenótipo no qual, em vez de sintomas de ansiedade ou medo, as características clínicas mais proeminentes são sintomas anedônicos e disfóricos, externalizações de raiva e agressividade ou sintomas dissociativos. Em virtude dessas expressões variáveis de sofrimento clínico depois da exposição a eventos catastróficos ou aversivos, esses transtornos foram agrupados em uma categoria distinta: *transtornos relacionados a trauma e a estressores.* Ademais, não é incomum que o quadro clínico inclua uma combinação dos sintomas mencionados (com ou sem sintomas de ansiedade ou medo). Esse quadro heterogêneo há muito já foi reconhecido também nos transtornos de adaptação. A negligência social – ou seja, a ausência de cuidados adequados durante a infância – é uma exigência diagnóstica tanto do transtorno de apego reativo quanto do transtorno de interação social desinibida. Embora esses dois transtornos compartilhem uma mesma etiologia, o primeiro é manifestado como um transtorno internalizante com sintomas depressivos e comportamento retraído, enquanto o último é marcado por desinibição e comportamento externalizante.

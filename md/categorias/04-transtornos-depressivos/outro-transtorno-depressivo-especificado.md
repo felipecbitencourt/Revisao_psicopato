@@ -1,0 +1,13 @@
+# Outro Transtorno Depressivo Especificado
+
+*Categoria: Transtornos Depressivos*
+
+---
+
+### 311 (F32.8)
+Esta categoria aplica-se a apresentações em que sintomas característicos de um transtorno depressivo que causam sofrimento clinicamente significativo ou prejuízo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo predominam, mas não satisfazem todos os critérios para qualquer transtorno na classe diagnóstica dos transtornos depressivos. A categoria outro transtorno depressivo especificado é usada nas situações em que o clínico opta por comunicar a razão específica pela qual a apresentação não satisfaz os critérios para qualquer transtorno depressivo específico. Isso é feito por meio do registro de “outro transtorno depressivo especificado”, seguido pela razão específica (p. ex., “episódio depressivo de curta duração”).
+Exemplos de apresentações que podem ser especificadas usando a designação “outro transtorno depressivo especificado” incluem:
+** 1. Depressão breve recorrente: **Presença concomitante de humor depressivo e pelo menos quatro outros sintomas de depressão por a dias pelo menos uma vez por mês (não associados ao ciclo menstrual) por pelo menos meses consecutivos em um indivíduo cuja apresentação nunca satisfez os critérios para qualquer outro transtorno depressivo ou transtorno bipolar e atualmente não satisfaz critérios ativos ou residuais de qualquer transtorno psicótico.
+
+**184** Transtornos Depressivos ** 2. Episódio depressivo de curta duração (4 a dias): **Afeto depressivo e pelo menos quatro dos outros oito sintomas de um episódio depressivo maior associados a sofrimento clinicamente significativo ou prejuízo que persiste por mais de quatro dias, porém menos de dias, em um indivíduo cuja apresentação nunca satisfez critérios para qualquer outro transtorno depressivo ou transtorno bipolar, atualmente não satisfaz critérios ativos ou residuais para qualquer transtorno psicótico e não satisfaz critérios para depressão breve recorrente.
+** 3. Episódio depressivo com sintomas insuficientes:** Afeto depressivo e pelo menos um dos outros oito sintomas de um episódio depressivo maior associados a sofrimento ou prejuízo clinicamente significativo que persiste por pelo menos duas semanas em um indivíduo cuja apresentação nunca satisfez critérios para qualquer outro transtorno depressivo ou transtorno bipolar, atualmente não satisfaz critérios ativos ou residuais para qualquer transtorno psicótico e não satisfaz critérios para transtorno de adaptação com sintomas mistos de ansiedade e depressão.

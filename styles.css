@@ -1,0 +1,137 @@
+/* ============================================================
+   Plataforma DSM · Revisa — estilos
+   Recriação fiel do protótipo (Claude Design) em CSS vanilla.
+   ============================================================ */
+
+:root{
+  --bg:#F4F7F8; --surface:#ffffff; --surface-2:#F1F5F6;
+  --ink:#102A33; --body:#2D4A50; --muted:#8AA0A6; --muted-2:#5A7077;
+  --border:#E6EDEF; --track:#E0E9EB; --teal-text:#0E4D64;
+  --accent-bg:#F0F8F7; --accent-bd:#CDE9E7; --accent-tx:#0E6A66;
+}
+:root[data-theme="dark"]{
+  --bg:#0D181D; --surface:#15252B; --surface-2:#1F343B;
+  --ink:#EAF2F3; --body:#BCCFD4; --muted:#86A0A7; --muted-2:#A7BEC4;
+  --border:#284048; --track:#243840; --teal-text:#5BC0BE;
+  --accent-bg:#15323A; --accent-bd:#2B4B53; --accent-tx:#6FD6CF;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  font-family:'Hanken Grotesk',sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit;}
+
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#cdd9dc;border-radius:8px;}
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#2f4750;}
+
+/* ---------- keyframes (do protótipo) ---------- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+@keyframes pop{from{opacity:0;transform:scale(.96);}to{opacity:1;transform:none;}}
+@keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes popIn{from{transform:scale(.95);}to{transform:scale(1);}}
+@keyframes growW{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+@keyframes pulse{0%,100%{transform:scale(1);}45%{transform:scale(1.18);}}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+@keyframes flipIn{from{opacity:0;transform:rotateX(-12deg) scale(.97);}to{opacity:1;transform:none;}}
+@keyframes shimmer{from{background-position:-180px 0;}to{background-position:220px 0;}}
+@keyframes slide{from{background-position:0 0;}to{background-position:200% 0;}}
+@keyframes ringPulse{0%{box-shadow:0 0 0 0 rgba(255,122,69,.45);}70%{box-shadow:0 0 0 7px rgba(255,122,69,0);}100%{box-shadow:0 0 0 0 rgba(255,122,69,0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* respeita usuários que pedem menos movimento */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+}
+
+/* ============================================================
+   Layout shell
+   ============================================================ */
+.app-shell{display:flex;min-height:100vh;background:var(--bg);}
+
+.sidebar{
+  width:250px;flex-shrink:0;background:var(--surface);
+  border-right:1px solid var(--border);position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;padding:22px 18px;z-index:30;
+}
+
+.main{flex:1;min-width:0;display:flex;flex-direction:column;}
+
+.topbar{
+  position:sticky;top:0;z-index:20;background:var(--bg);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
+  padding:14px 34px;display:flex;align-items:center;gap:18px;
+}
+
+.content{padding:30px 34px 60px;}
+
+/* barra de navegação inferior (apenas mobile) */
+.bottom-nav{display:none;}
+
+/* ============================================================
+   Grids nomeados (para permitir media queries — o protótipo
+   usava grid-template-columns inline, que não é sobreponível)
+   ============================================================ */
+.cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:16px;}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px;}
+.home-mid{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-bottom:26px;}
+.conq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.ficha-grid{display:grid;grid-template-columns:1fr 290px;gap:24px;align-items:start;}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;position:relative;}
+
+/* ============================================================
+   Responsividade
+   ============================================================ */
+
+/* tablets largos */
+@media (max-width:1080px){
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+  .conq-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+/* tablets / abaixo */
+@media (max-width:880px){
+  .home-mid{grid-template-columns:1fr;}
+  .ex-grid{grid-template-columns:1fr;}
+  .ficha-grid{grid-template-columns:1fr;}
+  .ficha-rail{position:static !important;}
+  .topbar{padding:12px 20px;gap:12px;}
+  .content{padding:24px 20px 96px;}
+}
+
+/* celular: esconde a sidebar, mostra bottom nav */
+@media (max-width:760px){
+  .sidebar{display:none;}
+  .topbar-search{display:none !important;}
+  .match-grid{gap:18px;}
+  .bottom-nav{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;
+    background:var(--surface);border-top:1px solid var(--border);
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+    justify-content:space-around;align-items:center;
+    box-shadow:0 -4px 18px rgba(16,42,51,.06);
+  }
+  .bottom-nav button{
+    flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+    background:transparent;border:none;cursor:pointer;padding:6px 4px;border-radius:12px;
+    font:600 11px 'Hanken Grotesk';transition:color .18s ease,background .18s ease;
+  }
+}
+
+@media (max-width:480px){
+  .stat-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .conq-grid{grid-template-columns:1fr 1fr;}
+  .match-grid{grid-template-columns:1fr;}
+  .content{padding:20px 16px 96px;}
+}

@@ -1,0 +1,13 @@
+# Introdução — Transtornos Alimentares
+
+*Categoria: Transtornos Alimentares*
+
+---
+
+# Transtornos
+# Alimentares
+### Os transtornos alimentares são caracterizados por uma perturbação persistente na ali-
+mentação ou no comportamento relacionado à alimentação que resulta no consumo ou na absorção alterada de alimentos e que compromete significativamente a saúde física ou o funcionamento psicossocial. São descritos critérios diagnósticos para pica, transtorno de ruminação, transtorno alimentar restritivo/evitativo, anorexia nervosa, bulimia nervosa e transtorno de compulsão alimentar.
+Os critérios diagnósticos para transtorno de ruminação, transtorno alimentar restritivo/evitativo, anorexia nervosa, bulimia nervosa e transtorno de compulsão alimentar resultam em um esquema de classificação que é mutuamente excludente, de maneira que, durante um único episódio, apenas um desses diagnósticos pode ser atribuído. A justificativa para tal conduta é que, apesar de uma série de aspectos psicológicos e comportamentais comuns, os transtornos diferem substancialmente em termos de curso clínico, desfecho e necessidade de tratamento. Um diagnóstico de pica, no entanto, pode ser atribuído na presença de qualquer outro transtorno alimentar.
+Alguns indivíduos com os transtornos descritos neste capítulo relatam sintomas alimentares semelhantes aos geralmente relatados por indivíduos com transtornos por uso de substâncias, como fissura e padrões de uso compulsivo. Essa semelhança pode refletir o envolvimento dos mesmos sistemas neurais, incluindo os implicados no autocontrole regulatório e de recompensa, em ambos os grupos de transtornos. Entretanto, as contribuições relativas de fatores compartilhados e distintos no desenvolvimento e na perpetuação de transtornos alimentares e por uso de substância permanecem insuficientemente compreendidos.
+Por fim, a obesidade não está inclusa no DSM-5 como um transtorno mental. A obesidade (excesso de gordura corporal) resulta do excesso prolongado de ingestão energética em relação ao gasto energético. Uma gama de fatores genéticos, fisiológicos, comportamentais e ambientais que variam entre os indivíduos contribui para o desenvolvimento da obesidade; dessa forma, ela não é considerada um transtorno mental. Entretanto, existem associações robustas entre obesidade e uma série de transtornos mentais (p. ex., transtorno de compulsão alimentar, transtornos depressivo e bipolar, esquizofrenia). Os efeitos colaterais de alguns medicamentos psicotrópicos contribuem de maneira importante para o desenvolvimento da obesidade, e esta pode ser um fator de risco para o desenvolvimento de alguns transtornos mentais (p. ex., transtornos depressivos).

@@ -1,0 +1,46 @@
+# Pica
+
+*Categoria: Transtornos Alimentares*
+
+---
+
+### Critérios Diagnósticos
+A. Ingestão persistente de substâncias não nutritivas, não alimentares, durante um período mínimo de um mês.
+B. A ingestão de substâncias não nutritivas, não alimentares, é inapropriada ao estágio de desenvolvimento do indivíduo.
+C. O comportamento alimentar não faz parte de uma prática culturalmente aceita.
+D. Se o comportamento alimentar ocorrer no contexto de outro transtorno mental (p. ex., deficiência intelectual [transtorno do desenvolvimento intelectual], transtorno do espectro autista, esquizofrenia) ou condição médica (incluindo gestação), é suficientemente grave a ponto de necessitar de atenção clínica adicional.
+**Nota para codificação:** O código da CID-9-MC para pica é **307.52** e é usado para crianças e adultos. Os códigos da CID-10-MC para pica são **(F98.3)** em crianças e **(F50.8)** em adultos.
+
+**330** Transtornos Alimentares *Especificar* se:
+**Em remissão:** Depois de terem sido preenchidos os critérios para pica, esses critérios não foram mais preenchidos por um período de tempo sustentado.
+### Características Diagnósticas
+A característica essencial da pica é a ingestão de uma ou mais substâncias não nutritivas, não alimentares, de forma persistente durante um período mínimo de um mês (Critério A), grave o suficiente para merecer atenção clínica. As substâncias típicas ingeridas tendem a variar com a idade e a disponibilidade e podem incluir papel, sabão, tecido, cabelo, fios, terra, giz, talco, tinta, cola, metal, pedras, carvão vegetal ou mineral, cinzas, detergente ou gelo. O termo *não alimentar *está incluso porque o diagnóstico de pica não se aplica à ingestão de produtos alimentares com conteúdo nutricional mínimo. Geralmente não há aversão a alimentos em geral. É preciso que a ingestão de substâncias não nutritivas, não alimentares, seja inapropriada ao estágio de desenvolvimento (Critério
+B) e não parte de uma prática culturalmente aceita (Critério C). Sugere-se uma idade mínima de anos para o diagnóstico de pica, de modo a excluir a exploração de objetos com a boca que acabam por ser ingeridos, normal no desenvolvimento das crianças pequenas. A ingestão de substâncias não nutritivas, não alimentares, pode ser um aspecto associado a outros transtornos mentais (p. ex., deficiência intelectual [transtorno do desenvolvimento intelectual], transtorno do espectro autista, esquizofrenia). Se o comportamento alimentar ocorrer exclusivamente no contexto de outro transtorno mental, então um diagnóstico distinto de pica deverá ser feito apenas se o comportamento alimentar for grave o suficiente a ponto de demandar atenção clínica adicional (Critério D).
+### Características Associadas que Apoiam o Diagnóstico
+Embora deficiências de vitaminas e minerais (p. ex., zinco, ferro) tenham sido descritas em alguns casos, frequentemente nenhuma outra anormalidade biológica é encontrada. Em algumas ocasiões, a pica chega à atenção clínica somente acompanhando complicações médicas gerais (p. ex., problemas intestinais mecânicos; obstrução intestinal, como a que resulta de um bezoar;
+perfuração intestinal; infecções como toxoplasmose e toxocaríase em decorrência da ingestão de fezes ou sujeira; intoxicação, como pela ingestão de tinta à base de chumbo).
+### Prevalência
+A prevalência de pica é pouco estudada. Entre indivíduos com deficiência intelectual, a prevalência de pica parece aumentar com a gravidade da condição.
+### Desenvolvimento e Curso
+A manifestação inicial de pica pode ocorrer na infância, na adolescência ou na idade adulta, embora a manifestação na infância seja mais comumente relatada. O transtorno pode ocorrer em crianças com desenvolvimento normal em outras áreas, enquanto, em adultos, parece mais provável no contexto de deficiência intelectual ou outros transtornos mentais. A ingestão de substâncias não nutritivas, não alimentares, também pode manifestar-se na gestação, quando fissura específica (p. ex., por giz ou gelo) pode ocorrer. O diagnóstico de pica durante esse período só é apropriado se tais fissuras levarem à ingestão de substâncias não nutritivas, não alimentares, até o ponto em que sua ingestão representa potenciais riscos médicos. O curso do transtorno pode ser prolongado e resultar em emergências médicas (p. ex., obstrução intestinal, perda aguda de peso, intoxicação). O transtorno pode ser potencialmente fatal dependendo das substâncias ingeridas.
+### Fatores de Risco e Prognóstico
+**Ambientais. **Negligência, falta de supervisão e atraso do desenvolvimento podem aumentar o risco para essa condição.
+
+### Questões Diagnósticas Relativas à Cultura
+Em algumas populações, acredita-se que a ingestão de terra ou outras substâncias aparentemente não nutritivas tenha valor espiritual, medicinal ou outro valor social; pode, ainda, ser uma prática culturalmente aceita ou socialmente normal. Tal comportamento não justifica um diagnóstico de pica (Critério C).
+### Questões Diagnósticas Relativas ao Gênero
+A pica ocorre em ambos os sexos. Ela pode ocorrer em mulheres durante a gestação; entretanto, pouco se sabe a respeito de seu curso no período pós-parto.
+### Marcadores Diagnósticos
+Radiografia abdominal simples, ultrassonografia e outros métodos de imagem podem revelar obstruções relacionadas a pica. Exames de sangue e outros testes laboratoriais podem ser usados para determinar níveis de intoxicação ou a natureza da infecção.
+### Consequências Funcionais da Pica
+A pica pode comprometer de maneira significativa o funcionamento físico, mas raramente é a única causa de prejuízo no funcionamento social. Ocorre com frequência juntamente com outros transtornos associados ao funcionamento social prejudicado.
+### Diagnóstico Diferencial
+A ingestão de substâncias não nutritivas, não alimentares, pode ocorrer durante o curso de outros transtornos mentais (p. ex., transtorno do espectro autista, esquizofrenia) e na síndrome de
+Kleine-Levin. Em qualquer um desses casos, um diagnóstico adicional de pica só deve ser feito se o comportamento alimentar for suficientemente persistente e grave para justificar atenção clínica adicional.
+**Anorexia nervosa. **A pica normalmente pode ser distinguida de outros transtornos alimentares pelo consumo de substâncias não nutritivas, não alimentares. É importante observar, no entanto, que algumas apresentações de anorexia nervosa incluem a ingestão de substâncias não nutritivas, não alimentares, como lenços de papel, na tentativa de controlar o apetite. Nesses casos, quando a ingestão de substâncias não nutritivas, não alimentares, é usada essencialmente como meio de controle do peso, anorexia nervosa deverá ser o diagnóstico primário.
+**Transtorno factício. **Alguns indivíduos com transtorno factício podem ingerir intencionalmente objetos estranhos como parte do padrão de falsificação de sintomas físicos. Nesses casos, existe um elemento fraudulento compatível com a indução deliberada de lesão ou doença.
+**Autolesão não suicida e comportamentos de autolesão suicida nos transtornos da per-** **sonalidade. **Alguns indivíduos podem deglutir itens potencialmente nocivos (p. ex., alfinetes, agulhas, facas) no contexto de padrões desadaptativos de comportamento associados a transtornos da personalidade ou autolesão não suicida.
+### Comorbidade
+Os transtornos mais comumente comórbidos com pica são transtorno do espectro autista e deficiência intelectual (transtorno do desenvolvimento intelectual) e, em um grau menor, esquizofrenia e transtorno obsessivo-compulsivo. A pica pode estar associada a tricotilomania (transtorno de arrancar o cabelo) e transtorno de escoriação (*skin-picking*). Em apresentações comórbidas, a pele ou o cabelo são geralmente ingeridos. A pica também pode estar associada ao transtorno alimentar restritivo/evitativo, em particular em indivíduos com forte componente sensorial à sua
+
+**332** Transtornos Alimentares apresentação. Quando um indivíduo sabidamente tem pica, a avaliação deverá considerar a possibilidade de complicações gastrintestinais, intoxicação, infecção e deficiência nutricional.
