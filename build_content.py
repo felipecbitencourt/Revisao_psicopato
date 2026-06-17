@@ -79,9 +79,147 @@ SECTION_MAP = [
     ("relacao com outras classificacoes", "Relação com outras classificações"),
 ]
 
+# Tabelas do DSM que foram achatadas na extração e que substituímos por
+# imagem recortada do PDF. Chave: nome do transtorno -> título da seção.
+#   keep_first: nº de parágrafos iniciais a manter (ex.: a frase introdutória)
+#   images: lista de caminhos; caption: legenda/fonte.
+#   keep_first: mantém N parágrafos iniciais e anexa a imagem ao fim
+#   drop: lista de intervalos [ini, fim) de parágrafos a remover (tabela
+#         achatada no meio da seção); o restante é mantido + imagem ao fim
+SECTION_ASSETS = {
+    "Deficiência Intelectual (Transtorno do Desenvolvimento Intelectual)": {
+        "Especificadores": {
+            "keep_first": 1,
+            "images": [
+                "assets/tabelas/deficiencia-intelectual/gravidade-1.png",
+                "assets/tabelas/deficiencia-intelectual/gravidade-2.png",
+                "assets/tabelas/deficiencia-intelectual/gravidade-3.png",
+            ],
+            "caption": "DSM-5-TR — Tabela 1: Níveis de gravidade da deficiência intelectual (domínios conceitual, social e prático).",
+        }
+    },
+    "Transtorno do Espectro Autista": {
+        "Especificadores": {
+            "drop": [[3, 10]],
+            "images": ["assets/tabelas/espectro-autista/gravidade.png"],
+            "caption": "DSM-5-TR — Tabela 2: Níveis de gravidade do transtorno do espectro autista (comunicação social; comportamentos restritos e repetitivos).",
+        }
+    },
+    "Leve Devido a Lesão Cerebral Traumática": {
+        "Desenvolvimento e curso": {
+            "drop": [[2, 7]],
+            "images": ["assets/tabelas/lesao-cerebral-traumatica/gravidade.png"],
+            "caption": "DSM-5-TR — Tabela 2: Classificações da gravidade de lesão cerebral traumática (LCT).",
+        }
+    },
+}
+
+# Tabelas de "nível-capítulo" (não pertencem a um transtorno só): adicionadas
+# como uma seção nova (só imagem) a um transtorno representativo.
+ADD_SECTIONS = {
+    "Transtorno Neurocognitivo Maior": [
+        {
+            "title": "Domínios neurocognitivos",
+            "images": [
+                "assets/tabelas/neurocognitivo/dominios-1.png",
+                "assets/tabelas/neurocognitivo/dominios-2.png",
+                "assets/tabelas/neurocognitivo/dominios-3.png",
+            ],
+            "caption": "DSM-5-TR — Tabela 1: Domínios neurocognitivos (sintomas/observações e exemplos de avaliação). Referência do capítulo.",
+        }
+    ],
+    "Transtorno por Uso de Álcool": [
+        {
+            "title": "Diagnósticos por classe de substância",
+            "images": ["assets/tabelas/substancias/diagnosticos-por-classe.png"],
+            "caption": "DSM-5-TR — Tabela 1: Diagnósticos associados a classes de substâncias (referência do capítulo de substâncias).",
+        }
+    ],
+}
+
+# Subgrupos da "Classificação do DSM-5" dentro de cada categoria.
+# índice da categoria -> lista ordenada de (nome do subgrupo, nível, nome do
+# 1º transtorno que inicia o subgrupo). nível 2 = aninhado no subgrupo anterior.
+SUBGROUPS = {
+    0: [  # Transtornos do Neurodesenvolvimento
+        ("Deficiências Intelectuais", 1, "Deficiência Intelectual (Transtorno do Desenvolvimento Intelectual)"),
+        ("Transtornos da Comunicação", 1, "Transtorno da Linguagem"),
+        ("Transtorno do Espectro Autista", 1, "Transtorno do Espectro Autista"),
+        ("Transtorno de Déficit de Atenção/Hiperatividade", 1, "Transtorno de Déficit de Atenção/Hiperatividade"),
+        ("Transtorno Específico da Aprendizagem", 1, "Transtorno Específico da Aprendizagem"),
+        ("Transtornos Motores", 1, "Transtorno do Desenvolvimento da Coordenação"),
+        ("Transtornos de Tique", 2, "Transtorno de Tourette"),
+        ("Outros Transtornos do Neurodesenvolvimento", 1, "Outro Transtorno do Neurodesenvolvimento Especificado"),
+    ],
+    11: [  # Transtornos do Sono-Vigília  (nome "" = volta ao nível superior)
+        ("Transtornos do Sono Relacionados à Respiração", 1, "Apneia e Hipopneia Obstrutivas do Sono"),
+        ("", 0, "Transtorno do Sono-Vigília do Ritmo Circadiano"),
+        ("Parassonias", 1, "Transtornos de Despertar do Sono Não REM"),
+        ("", 0, "Síndrome das Pernas Inquietas"),
+    ],
+    15: [  # Substâncias e transtornos aditivos (por classe de substância)
+        ("Transtornos Relacionados ao Álcool", 1, "Transtorno por Uso de Álcool"),
+        ("Transtornos Relacionados à Cafeína", 1, "Intoxicação por Cafeína"),
+        ("Transtornos Relacionados à Cannabis", 1, "Transtorno por Uso de Cannabis"),
+        ("Transtornos Relacionados aos Alucinógenos", 1, "Transtorno por Uso de Fenciclidina"),
+        ("Transtornos Relacionados aos Inalantes", 1, "Transtorno por Uso de Inalantes"),
+        ("Transtornos Relacionados aos Opioides", 1, "Transtorno por Uso de Opioides"),
+        ("Transtornos Relacionados aos Sedativos, Hipnóticos ou Ansiolíticos", 1, "Transtorno por Uso de Sedativos, Hipnóticos ou Ansiolíticos"),
+        ("Transtornos Relacionados aos Estimulantes", 1, "Transtorno por Uso de Estimulantes"),
+        ("Transtornos Relacionados ao Tabaco", 1, "Transtorno por Uso de Tabaco"),
+        ("Transtornos Relacionados a Outras Substâncias (ou Desconhecidas)", 1, "(ou Substância Desconhecida)"),
+        ("Transtornos Não Relacionados a Substâncias", 1, "Transtorno do Jogo"),
+    ],
+    16: [  # Transtornos neurocognitivos
+        ("Delirium", 1, "Outro Delirium Especificado"),
+        ("Transtornos Neurocognitivos Maiores e Leves", 1, "Transtorno Neurocognitivo Maior"),
+    ],
+    17: [  # Transtornos da personalidade (grupos A/B/C + outros)
+        ("Transtornos da Personalidade do Grupo A", 1, "Transtorno da Personalidade Paranoide"),
+        ("Transtornos da Personalidade do Grupo B", 1, "Transtorno da Personalidade Antissocial"),
+        ("Transtornos da Personalidade do Grupo C", 1, "Transtorno da Personalidade Evitativa"),
+        ("Outros Transtornos da Personalidade", 1, "Mudança de Personalidade Devido a Outra Condição Médica"),
+    ],
+}
+
+# itens que vazaram como "transtorno" mas são apenas cabeçalhos de subgrupo
+# (sem critérios/seções próprios) — removidos da lista de transtornos.
+DROP_ITEMS = {
+    11: ["Transtornos do Sono Relacionados à Respiração"],
+    15: ["Transtornos por Uso de Substâncias"],
+}
+
+
+def drop_fake_items(cat_index, items):
+    names = set(DROP_ITEMS.get(cat_index, []))
+    return [it for it in items if it["n"] not in names] if names else items
+
+
+def apply_subgroups(cat_index, items):
+    """Atribui item['sg'] (nome do subgrupo) e item['sgl'] (nível) conforme o
+    manifesto, percorrendo os transtornos na ordem do documento."""
+    spec = SUBGROUPS.get(cat_index)
+    if not spec:
+        return
+    starts = {s[2]: (s[0], s[1]) for s in spec}
+    found = set()
+    cur_name, cur_level = "", 0
+    for it in items:
+        if it["n"] in starts:
+            cur_name, cur_level = starts[it["n"]]
+            found.add(it["n"])
+        if cur_name:
+            it["sg"] = cur_name
+            it["sgl"] = cur_level
+    missing = set(starts) - found
+    if missing:
+        print(f"  [subgrupos] cat {cat_index}: inicios nao encontrados: {sorted(missing)}")
+
+
 CODE_HEADING = re.compile(r"^#{3,4}\s+[\d(]")              # "### 300.02 (F41.1)" ou "#### ..."
 CODE_PAIR = re.compile(r"(\d{3}(?:\.\d+)?)\s*\(([A-Z]\d{2}(?:\.\d+)?)\)[ \t]*([^\n*(:]{0,48})")
-LETTER_RE = re.compile(r"^([A-H])\.\s+(.*)$")
+LETTER_RE = re.compile(r"^([A-H])\.(?=\s|[A-ZÀ-Ú])\s*(.*)$")  # tolera "C.A duração" (sem espaço)
+SUBITEM_RE = re.compile(r"^\s*(?:[a-z]|\d{1,2})[.)]\s")   # "a. ", "1. ", "2) " ...
 PAGE_FOOTER = re.compile(r"^\*\*\d+\*\*")
 HEADING_ANY = re.compile(r"^#{1,6}\s+(.*)$")
 
@@ -96,7 +234,29 @@ def normalize(s):
 def clean(text):
     text = text.replace("**", "").replace("*", "")
     text = text.replace("“", '"').replace("”", '"').replace("’", "'")
+    # remove referências dangling a tabelas/figuras/quadros que não levam a nada
+    text = re.sub(r"\s*\(ver (?:a |as |o |os )?(?:Tabela|Figura|Quadro)[^)]*\)", "", text)
     return re.sub(r"[ \t]+", " ", text).strip()
+
+
+# Run-in heading do DSM: "**Rótulo. **texto..." (sub-rótulo em negrito no
+# início do parágrafo). Preservar como hierarquia em vez de achatar.
+RUNIN_RE = re.compile(r"^\*\*\s*([A-ZÀ-Ú][^*]{2,70}?[.:])\s*\*\*\s*(.*)$")
+
+
+def make_body_entry(t):
+    """Devolve {'lead','text'} se a linha for um run-in heading; senão string."""
+    m = RUNIN_RE.match(t)
+    if m:
+        return {"lead": clean(m.group(1)), "text": clean(m.group(2))}
+    return clean(t)
+
+
+def body_text(entry):
+    """Texto plano de uma entrada de corpo (string ou {'lead','text'})."""
+    if isinstance(entry, dict):
+        return (entry.get("lead", "") + " " + entry.get("text", "")).strip()
+    return entry
 
 
 def is_section_heading(line):
@@ -115,7 +275,14 @@ def is_section_heading(line):
 
 
 def strip_footer(line):
-    return re.sub(r"\*\*\d+\*\*\s+[A-ZÀ-Ú][^.]*?(?=[A-ZÀ-Ú][a-z])", "", line).strip()
+    # cabeçalho de página colado ANTES de uma letra de critério ou de um
+    # "Especificar/Determinar": "**172** Transtornos Depressivos B. Um..." ->
+    # "B. Um..."; "**430** Disfunções Sexuais *Determinar*..." -> "*Determinar*..."
+    line = re.sub(
+        r"^\*\*\d+\*\*\s+[A-ZÀ-Ú][^.]*?\s+(?=(?:[A-H]\.\s|\*{0,2}(?:Especificar|Determinar)\b))",
+        "", line)
+    line = re.sub(r"\*\*\d+\*\*\s+[A-ZÀ-Ú][^.]*?(?=[A-ZÀ-Ú][a-z])", "", line)
+    return line.strip()
 
 
 def extract_codes(head_text):
@@ -136,10 +303,11 @@ def extract_codes(head_text):
 
 
 def parse_criteria(head_lines):
-    """Extrai (criteriaIntro, criteria[], specifier) da região de critérios,
-    de forma independente de existir o cabeçalho 'Critérios Diagnósticos'."""
-    intro, criteria, spec = [], [], []
-    mode = "intro"           # intro -> crit -> spec
+    """Extrai (criteriaIntro, criteria[], specifier, note) da região de
+    critérios. 'Nota:' e 'Especificar' NÃO entram no texto do critério:
+    a nota vira um bloco à parte e o especificar vai para o specifier."""
+    intro, criteria, spec, notes = [], [], [], []
+    mode = "intro"           # intro -> crit -> note -> spec
     cur = None
     for raw in head_lines:
         s = raw.strip()
@@ -154,20 +322,39 @@ def parse_criteria(head_lines):
             if not s:
                 continue
 
-        low = normalize(s)
-        if low.startswith("especificar"):
-            mode = "spec"
-            spec.append(clean(s))
-            continue
-        if mode == "spec":
-            spec.append(clean(s))
-            continue
+        # detecção sobre o texto JÁ limpo (sem ** / * do markdown)
+        low = normalize(clean(s))
 
+        # uma letra de critério (A., B., ...) SEMPRE reabre o modo critério —
+        # mesmo após um "Especificar"/"Nota" inline (ex.: gravidade entre A e B)
         m = LETTER_RE.match(s)
         if m:
             mode = "crit"
             cur = {"letter": m.group(1), "text": clean(m.group(2))}
             criteria.append(cur)
+            continue
+        if low.startswith("especificar") or low.startswith("determinar"):
+            mode = "spec"          # "Especificar..." / "Determinar o subtipo:"
+            spec.append(clean(s))
+            continue
+        if re.match(r"nota\b", low):        # "Nota:" sai do critério -> bloco à parte
+            mode = "note"
+            c = clean(s)
+            if c not in notes:              # evita notas duplicadas
+                notes.append(c)
+            continue
+
+        # um sub-item (a., b., 1., 2.) encerra uma nota inline e RETOMA o
+        # critério atual — senão a lista de sintomas iria toda para a nota
+        if mode == "note" and cur is not None and SUBITEM_RE.match(s):
+            mode = "crit"
+
+        if mode == "spec":
+            spec.append(clean(s))
+        elif mode == "note":
+            c = clean(s)
+            if c not in notes:
+                notes.append(c)
         elif mode == "crit" and cur is not None:
             extra = clean(s)
             if extra:
@@ -175,7 +362,9 @@ def parse_criteria(head_lines):
         elif mode == "intro":
             intro.append(clean(s))
 
-    return " ".join(intro).strip(), criteria, " ".join(spec).strip()
+    note = " ".join(notes).strip()
+    note = re.sub(r"^Nota[:.]?\s*", "", note, flags=re.IGNORECASE)
+    return " ".join(intro).strip(), criteria, " ".join(spec).strip(), note
 
 
 def parse_sections(lines):
@@ -207,7 +396,7 @@ def parse_sections(lines):
             t = strip_footer(t)
             if not t:
                 continue
-        cur["body"].append(clean(t))
+        cur["body"].append(make_body_entry(t))
     # remove seções vazias
     return [sec for sec in sections if sec["body"]]
 
@@ -229,11 +418,11 @@ def parse_transtorno(path, display_name):
         raw = f.read()
     lines = raw.split("\n")
 
-    # título
-    title = display_name
+    # título (remove marcadores de itálico * que vazaram do markdown)
+    title = display_name.replace("*", "")
     for ln in lines:
         if ln.startswith("# "):
-            title = ln[2:].strip()
+            title = ln[2:].strip().replace("*", "")
             break
 
     # região de cabeçalho = do início até a 1ª seção narrativa reconhecida
@@ -246,14 +435,39 @@ def parse_transtorno(path, display_name):
     head_text = "\n".join(head_lines)
 
     codes = extract_codes(head_text)
-    criteria_intro, criteria, specifier = parse_criteria(head_lines)
+    criteria_intro, criteria, specifier, criteria_note = parse_criteria(head_lines)
     sections = parse_sections(lines)
+
+    # substitui/anexa tabelas (imagem recortada do PDF) em seções existentes
+    assets = SECTION_ASSETS.get(title)
+    if assets:
+        for sec in sections:
+            a = assets.get(sec["title"])
+            if not a:
+                continue
+            body = sec["body"]
+            if "drop" in a:
+                for s, e in sorted(a["drop"], reverse=True):
+                    body = body[:s] + body[e:]
+                sec["body"] = body
+            else:
+                sec["body"] = body[: a.get("keep_first", 0)]
+            sec["images"] = a["images"]
+            if a.get("caption"):
+                sec["caption"] = a["caption"]
+
+    # adiciona seções novas só com imagem (tabelas de nível-capítulo)
+    for e in ADD_SECTIONS.get(title, []):
+        sec = {"title": e["title"], "body": [], "images": e["images"]}
+        if e.get("caption"):
+            sec["caption"] = e["caption"]
+        sections.append(sec)
 
     # resumo: 1ª seção "Características diagnósticas" -> senão intro -> senão 1º critério
     summary = ""
     for sec in sections:
         if sec["title"] == "Características diagnósticas":
-            summary = sec["body"][0]
+            summary = body_text(sec["body"][0])
             break
     if not summary:
         summary = first_paragraph(criteria_intro)
@@ -270,6 +484,7 @@ def parse_transtorno(path, display_name):
         "code": primary["cid"] or primary["dsm"],
         "criteriaIntro": criteria_intro,
         "criteria": criteria,
+        "criteriaNote": criteria_note,
         "specifier": specifier,
         "sections": sections,
         "summary": summary,
@@ -312,6 +527,8 @@ def main():
             if os.path.exists(full):
                 items.append(parse_transtorno(full, disp_name))
 
+        items = drop_fake_items(idx, items)
+        apply_subgroups(idx, items)
         categories.append({"name": name, "color": color, "prog": prog, "items": items})
 
         picked = 0

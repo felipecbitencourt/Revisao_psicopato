@@ -8,12 +8,16 @@
   --ink:#102A33; --body:#2D4A50; --muted:#8AA0A6; --muted-2:#5A7077;
   --border:#E6EDEF; --track:#E0E9EB; --teal-text:#0E4D64;
   --accent-bg:#F0F8F7; --accent-bd:#CDE9E7; --accent-tx:#0E6A66;
+  --warm-bg:#FFF4EE; --warm-bd:#FFD9C2; --warm-tx:#C2410C; --warm-tx2:#E08A5C; --warm-hover:#FFEDE3;
+  --ok-bg:#E6F6EE; --ok-bd:#A7E3C4; --ok-tx:#06915A;
 }
 :root[data-theme="dark"]{
   --bg:#0D181D; --surface:#15252B; --surface-2:#1F343B;
   --ink:#EAF2F3; --body:#BCCFD4; --muted:#86A0A7; --muted-2:#A7BEC4;
   --border:#284048; --track:#243840; --teal-text:#5BC0BE;
   --accent-bg:#15323A; --accent-bd:#2B4B53; --accent-tx:#6FD6CF;
+  --warm-bg:#2A1E18; --warm-bd:#4A3526; --warm-tx:#F0A878; --warm-tx2:#C98A63; --warm-hover:#33251C;
+  --ok-bg:#10271D; --ok-bd:#27513B; --ok-tx:#5FD39E;
 }
 
 *{box-sizing:border-box;}
@@ -75,6 +79,12 @@ button{font-family:inherit;}
 
 .content{padding:30px 34px 60px;}
 
+/* re-render disparado por interação (mesma tela): não repetir a animação de
+   entrada do <section> nem do conector da timeline — evita o "flash de reload".
+   As animações internas (acordeão, flip, feedback) continuam tocando. */
+.content.static-update > section{animation:none !important;}
+.content.static-update .crit-item::before{animation:none !important;}
+
 /* barra de navegação inferior (apenas mobile) */
 .bottom-nav{display:none;}
 
@@ -135,3 +145,139 @@ button{font-family:inherit;}
   .match-grid{grid-template-columns:1fr;}
   .content{padding:20px 16px 96px;}
 }
+
+/* ============================================================
+   FICHA — componentes do redesenho (usa --cat/--cat-soft
+   injetados inline no .ficha-screen por categoria)
+   ============================================================ */
+@keyframes growV{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+
+/* botões da ficha são estilizados por classe (não inline); resetar a
+   aparência nativa evita inconsistências de estilo entre navegadores/SO */
+.ficha-screen button{-webkit-appearance:none;appearance:none;}
+
+/* header */
+.ficha-tag{display:inline-flex;align-items:center;background:var(--cat-soft);color:var(--cat);font-size:12.5px;font-weight:700;border-radius:8px;padding:5px 11px;}
+.ficha-title{font:800 30px 'Bricolage Grotesque';letter-spacing:-.6px;margin:10px 0 14px;text-wrap:balance;display:flex;align-items:flex-start;gap:12px;}
+.ficha-title::before{content:"";flex-shrink:0;width:5px;align-self:stretch;min-height:30px;background:var(--cat);border-radius:3px;}
+.ficha-code-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;}
+.code-chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:5px 10px;font:700 12.5px 'Hanken Grotesk';color:var(--muted-2);}
+.code-chip .lbl{color:var(--muted);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.4px;}
+.code-chip b{color:var(--teal-text);font-weight:800;}
+
+/* heading com barra na cor da categoria */
+.ficha-h3{font:700 17px 'Bricolage Grotesque';margin:0 0 14px;display:flex;align-items:center;gap:9px;}
+.ficha-h3.mt{margin-top:30px;}
+.ficha-h3 .bar{width:5px;height:18px;background:var(--cat);border-radius:3px;display:inline-block;flex-shrink:0;}
+
+/* timeline de critérios */
+.crit-timeline{display:flex;flex-direction:column;gap:14px;}
+.crit-item{position:relative;display:flex;gap:14px;align-items:flex-start;}
+.crit-item::before{content:"";position:absolute;left:14px;top:30px;width:2px;height:calc(100% + 14px);background:var(--cat-soft);z-index:0;transform-origin:top;animation:growV .4s ease both;}
+.crit-item:last-child::before{display:none;}
+.crit-badge{position:relative;z-index:1;width:30px;height:30px;border-radius:9px;background:var(--cat);color:#fff;font:800 14px 'Bricolage Grotesque';display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 4px var(--cat-soft);}
+.crit-card{flex:1;min-width:0;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--cat);border-radius:12px;padding:14px 16px;font-size:14.5px;line-height:1.55;color:var(--body);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;}
+.crit-card .rich-p{margin:0 0 8px;}
+.crit-card .rich-grp{font-weight:700;color:var(--ink);margin-top:10px;}
+.crit-card > :last-child{margin-bottom:0;}
+
+/* sub-listas numeradas/alfabéticas (critérios e seções) */
+.crit-sublist{list-style:none;margin:8px 0;padding:0;display:flex;flex-direction:column;gap:7px;}
+.crit-sublist li{display:flex;gap:10px;align-items:flex-start;}
+.csl-num{flex-shrink:0;min-width:22px;height:22px;padding:0 6px;border-radius:7px;background:var(--cat-soft,var(--surface-2));color:var(--cat,var(--teal-text));font:800 12px 'Hanken Grotesk';display:flex;align-items:center;justify-content:center;}
+.csl-tx{flex:1;min-width:0;padding-top:1px;}
+.sec-acc-body .crit-sublist{margin:6px 0 12px;}
+.crit-empty{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px dashed var(--border);border-radius:14px;padding:20px;color:var(--muted);font-size:14px;line-height:1.55;}
+.crit-empty svg{flex-shrink:0;color:var(--cat);}
+
+/* callout especificar */
+.spec-callout{margin-top:16px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-left:3px solid var(--cat);border-radius:12px;padding:13px 16px;}
+.spec-callout .lbl{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--accent-tx);margin-bottom:4px;}
+
+/* nota dos critérios (terminologia/esclarecimentos) */
+.crit-note{margin-top:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 15px;display:flex;gap:11px;align-items:flex-start;}
+.crit-note-lbl{flex-shrink:0;font:800 10.5px 'Hanken Grotesk';text-transform:uppercase;letter-spacing:.5px;color:var(--muted-2);background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3px 8px;}
+.crit-note p{margin:0;font-size:13.5px;line-height:1.55;color:var(--body);}
+
+/* seções: controles + acordeão */
+.sec-controls{display:flex;gap:8px;margin-bottom:12px;}
+.sec-ctl-btn{background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:6px 12px;font:700 12px 'Hanken Grotesk';color:var(--muted-2);cursor:pointer;transition:all .15s ease;}
+.sec-acc-head{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:13px 16px;cursor:pointer;transition:background .15s ease;}
+.sec-acc-head.open{border-radius:14px 14px 0 0;}
+.sec-icon{flex-shrink:0;width:30px;height:30px;border-radius:9px;background:var(--cat-soft);color:var(--cat);display:flex;align-items:center;justify-content:center;}
+.sec-icon svg{width:17px;height:17px;}
+.sec-title{flex:1;min-width:0;font:700 14.5px 'Bricolage Grotesque';color:var(--ink);}
+.sec-chev{flex-shrink:0;color:var(--muted-2);transition:transform .25s ease;}
+.sec-chev.open{transform:rotate(180deg);}
+.sec-acc-body{border:1px solid var(--border);border-top:none;border-radius:0 0 14px 14px;padding:16px 18px 8px;background:var(--surface);animation:fadeUp .25s ease both;}
+.sec-acc-body p{margin:0 0 10px;font-size:14px;line-height:1.6;color:var(--body);}
+.sec-acc-body p.has-lead{padding-left:11px;border-left:2px solid var(--cat-soft);}
+.sec-acc-body .sub-lead{color:var(--ink);font-weight:800;}
+.sec-acc-body .sub-head{font:800 13px 'Bricolage Grotesque';color:var(--ink);text-transform:none;letter-spacing:.2px;margin:16px 0 6px;padding-bottom:5px;border-bottom:1px solid var(--border);}
+.sec-acc-body .sec-img{display:block;width:100%;height:auto;border:1px solid var(--border);border-radius:10px;background:#fff;margin:10px 0 4px;}
+.sec-acc-body .sec-caption{font-size:12px;color:var(--muted);margin:0 0 10px;line-height:1.4;}
+
+/* rail: índice, códigos, selo */
+.rail-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;}
+.rail-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:12px;}
+.ficha-index{display:flex;flex-direction:column;gap:2px;}
+.ficha-index-item{display:flex;align-items:center;gap:9px;width:100%;text-align:left;background:none;border:none;border-radius:9px;padding:8px 9px;cursor:pointer;font:600 12.5px 'Hanken Grotesk';color:var(--muted-2);transition:background .15s ease,color .15s ease;}
+.ficha-index-item svg{width:15px;height:15px;flex-shrink:0;color:var(--cat);}
+.codes-table{display:flex;flex-direction:column;}
+.codes-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);}
+.codes-row:first-child{padding-top:0;}
+.codes-row:last-child{border-bottom:none;padding-bottom:0;}
+.codes-row .ct-label{font-size:12.5px;color:var(--muted-2);font-weight:700;}
+.codes-row .ct-val{display:flex;align-items:center;gap:8px;}
+.codes-row .ct-code{font:800 15px 'Bricolage Grotesque';color:var(--teal-text);}
+.codes-var-label{font-size:12px;font-weight:700;color:var(--ink);margin:10px 0 4px;}
+.code-copy{background:var(--surface-2);border:1px solid var(--border);border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);flex-shrink:0;font:700 11px 'Hanken Grotesk';transition:all .15s ease;}
+.code-copy.copied{color:var(--ok-tx);border-color:var(--ok-bd);background:var(--ok-bg);}
+.revised-badge{display:flex;align-items:center;gap:9px;background:var(--ok-bg);border:1px solid var(--ok-bd);border-radius:14px;padding:12px 14px;}
+.revised-badge .rb-icon{color:var(--ok-tx);display:flex;}
+.revised-badge .rb-text{font:700 13px 'Hanken Grotesk';color:var(--ok-tx);flex:1;line-height:1.3;}
+.revised-badge .rb-toggle{background:none;border:none;color:var(--ok-tx);font:700 11.5px 'Hanken Grotesk';cursor:pointer;padding:2px 4px;text-decoration:underline;opacity:.85;}
+.revise-cta{display:flex;align-items:center;gap:9px;width:100%;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;cursor:pointer;font:700 13px 'Hanken Grotesk';color:var(--muted-2);transition:all .18s ease;}
+
+/* flashcards card (tema corrigido) */
+.fc-card{background:var(--warm-bg);border:1px solid var(--warm-bd);border-radius:16px;padding:16px 18px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:12px;width:100%;transition:background .18s ease;}
+.fc-card .fc-t1{font-weight:700;font-size:13.5px;color:var(--warm-tx);}
+.fc-card .fc-t2{font-size:12px;color:var(--warm-tx2);font-weight:500;}
+
+/* navegação anterior/próximo */
+.ficha-nav{display:flex;justify-content:space-between;gap:12px;margin-top:28px;}
+.nav-prev{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 16px;font-weight:700;font-size:13.5px;color:var(--muted-2);cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .18s ease;}
+.nav-next{background:var(--cat);border:none;border-radius:12px;padding:10px 16px;color:#fff;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .18s ease;min-width:0;max-width:60%;}
+.nav-next .nn-lbl{font-size:11px;font-weight:700;opacity:.85;text-transform:uppercase;letter-spacing:.4px;}
+.nav-next .nn-name{font:700 13.5px 'Hanken Grotesk';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+@media (max-width:480px){
+  .ficha-title{font-size:25px;}
+  .crit-card{padding:12px 14px;}
+  .rail-card{padding:16px;}
+  .nav-next{max-width:55%;}
+}
+
+/* ============================================================
+   REFERÊNCIAS — índice completo de transtornos
+   ============================================================ */
+.ref-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:24px 26px;align-items:start;}
+.ref-cat-head{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+.ref-cat-num{width:30px;height:30px;border-radius:9px;font:800 14px 'Bricolage Grotesque';display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ref-cat-name{flex:1;min-width:0;font:700 15px 'Bricolage Grotesque';color:var(--ink);line-height:1.2;}
+.ref-cat-count{flex-shrink:0;font-size:11.5px;font-weight:700;color:var(--muted);background:var(--surface-2);border-radius:7px;padding:3px 9px;}
+.ref-list{display:flex;flex-direction:column;gap:6px;}
+.ref-item{-webkit-appearance:none;appearance:none;display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:10px 13px;cursor:pointer;transition:background .15s ease,border-color .15s ease;}
+.ref-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.ref-name{flex:1;min-width:0;font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.25;}
+.ref-code{flex-shrink:0;font:700 11.5px 'Hanken Grotesk';color:var(--muted-2);background:var(--surface-2);border-radius:6px;padding:3px 8px;letter-spacing:.2px;}
+
+@media (max-width:480px){
+  .ref-cats{grid-template-columns:1fr;gap:20px;}
+}
+
+/* subgrupos da Classificação do DSM dentro da categoria */
+.cat-subgroup{display:flex;align-items:center;gap:8px;margin-top:8px;font:800 12px 'Hanken Grotesk';text-transform:uppercase;letter-spacing:.6px;color:var(--muted-2);}
+.cat-subgroup::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cat,#5BC0BE);flex-shrink:0;}
+.cat-subgroup.lvl2{margin-left:22px;font-size:11px;color:var(--muted);}
+.cat-disorder.lvl2{margin-left:22px;}
