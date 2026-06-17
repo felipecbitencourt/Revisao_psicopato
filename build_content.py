@@ -220,6 +220,10 @@ CODE_HEADING = re.compile(r"^#{3,4}\s+[\d(]")              # "### 300.02 (F41.1)
 CODE_PAIR = re.compile(r"(\d{3}(?:\.\d+)?)\s*\(([A-Z]\d{2}(?:\.\d+)?)\)[ \t]*([^\n*(:]{0,48})")
 LETTER_RE = re.compile(r"^([A-H])\.(?=\s|[A-ZÀ-Ú])\s*(.*)$")  # tolera "C.A duração" (sem espaço)
 SUBITEM_RE = re.compile(r"^\s*(?:[a-z]|\d{1,2})[.)]\s")   # "a. ", "1. ", "2) " ...
+# cabeçalho de bloco de especificador: "Especificar se:", "Determinar o subtipo:" ...
+SPEC_HEAD_RE = re.compile(r"^\*?\s*(?:Especificar|Determinar)\b[^:]*:", re.IGNORECASE)
+# linha de opção: "**Rótulo:** descrição" (rótulo pode ter código/prefixo)
+SPEC_ITEM_RE = re.compile(r"^\*\*\s*(.+?)\s*\*\*\s*:?\s*(.*)$")
 PAGE_FOOTER = re.compile(r"^\*\*\d+\*\*")
 HEADING_ANY = re.compile(r"^#{1,6}\s+(.*)$")
 
@@ -257,6 +261,26 @@ def body_text(entry):
     if isinstance(entry, dict):
         return (entry.get("lead", "") + " " + entry.get("text", "")).strip()
     return entry
+
+
+def spec_add(block, raw):
+    """Adiciona uma linha-opção a um bloco de especificador: {label, desc}.
+    Linha sem rótulo (continuação) é anexada à descrição da opção anterior."""
+    raw = re.sub(r"^\*\s+", "", raw.strip())   # remove "* " de fechamento de itálico
+    m = SPEC_ITEM_RE.match(raw)
+    if m:
+        label = clean(m.group(1)).rstrip(": ")
+        desc = clean(m.group(2))
+        block["items"].append({"label": label, "desc": desc})
+        return
+    txt = clean(raw)
+    if not txt:
+        return
+    if block["items"]:                          # continuação -> última opção
+        prev = block["items"][-1]
+        prev["desc"] = (prev["desc"] + " " + txt).strip()
+    else:
+        block["items"].append({"label": "", "desc": txt})
 
 
 def is_section_heading(line):
@@ -306,14 +330,21 @@ def parse_criteria(head_lines):
     """Extrai (criteriaIntro, criteria[], specifier, note) da região de
     critérios. 'Nota:' e 'Especificar' NÃO entram no texto do critério:
     a nota vira um bloco à parte e o especificar vai para o specifier."""
-    intro, criteria, spec, notes = [], [], [], []
+    intro, criteria, spec_blocks, notes = [], [], [], []
     mode = "intro"           # intro -> crit -> note -> spec
     cur = None
+    cur_group = None         # grupo ativo (ex.: "Episódio Maníaco")
+    pending_group = None     # H4 visto, só vira grupo se um critério "A" seguir
     for raw in head_lines:
         s = raw.strip()
         if not s:
             continue
         if s.startswith("#"):
+            # H4 com texto (não código) = possível grupo de critérios (bipolar)
+            if s.startswith("####"):
+                htext = s[4:].strip()
+                if htext and re.match(r"[A-Za-zÀ-ÿ]", htext) and not CODE_HEADING.match(s):
+                    pending_group = clean(htext)
             continue                      # títulos/cabeçalhos/códigos
         if s in ("---",) or s.startswith("*Categoria:"):
             continue
@@ -330,12 +361,24 @@ def parse_criteria(head_lines):
         m = LETTER_RE.match(s)
         if m:
             mode = "crit"
-            cur = {"letter": m.group(1), "text": clean(m.group(2))}
+            letter = m.group(1)
+            if letter == "A" and pending_group:   # novo conjunto de critérios
+                cur_group = pending_group
+            pending_group = None                  # H4 não seguido de "A" é descartado
+            cur = {"letter": letter, "text": clean(m.group(2))}
+            if cur_group:
+                cur["group"] = cur_group
             criteria.append(cur)
             continue
         if low.startswith("especificar") or low.startswith("determinar"):
-            mode = "spec"          # "Especificar..." / "Determinar o subtipo:"
-            spec.append(clean(s))
+            mode = "spec"          # novo bloco de especificador
+            hm = SPEC_HEAD_RE.match(s)
+            head = clean(hm.group(0) if hm else s).rstrip(": ")
+            blk = {"head": head, "items": []}
+            spec_blocks.append(blk)
+            rest = s[hm.end():] if hm else ""   # 1ª opção inline (ex.: Bipolar)
+            if rest.strip().strip("*").strip():
+                spec_add(blk, rest)
             continue
         if re.match(r"nota\b", low):        # "Nota:" sai do critério -> bloco à parte
             mode = "note"
@@ -350,7 +393,9 @@ def parse_criteria(head_lines):
             mode = "crit"
 
         if mode == "spec":
-            spec.append(clean(s))
+            if not spec_blocks:
+                spec_blocks.append({"head": "", "items": []})
+            spec_add(spec_blocks[-1], s)
         elif mode == "note":
             c = clean(s)
             if c not in notes:
@@ -364,7 +409,9 @@ def parse_criteria(head_lines):
 
     note = " ".join(notes).strip()
     note = re.sub(r"^Nota[:.]?\s*", "", note, flags=re.IGNORECASE)
-    return " ".join(intro).strip(), criteria, " ".join(spec).strip(), note
+    # remove blocos de especificador vazios
+    spec_blocks = [b for b in spec_blocks if b["items"]]
+    return " ".join(intro).strip(), criteria, spec_blocks, note
 
 
 def parse_sections(lines):

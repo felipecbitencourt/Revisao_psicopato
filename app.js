@@ -150,7 +150,11 @@
     statBook:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E8A86" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M4 9h16"/></svg>',
     statCheck:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4361EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3 8-8"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
     statShield:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06915A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8 8 10 4.6-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg>',
-    list:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>'
+    list:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>',
+    trophy:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
+    bookOpen:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+    message:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+    about:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'
   };
 
   // ícones dos modos de exercício
@@ -204,7 +208,7 @@
     progress:{}, stats:null, pendingScroll:null,
   };
 
-  var REV_SCREENS = ['categorias','categoria','ficha'];
+  var REV_SCREENS = ['categorias','indice','categoria','ficha'];
   var EX_SCREENS  = ['exercicios','flashcards','quiz','ligar','caso'];
 
   /* registro de ações (delegação de cliques) */
@@ -212,7 +216,11 @@
     goHome:        function(){ go('home'); },
     goCategorias:  function(){ go('categorias'); },
     goExercicios:  function(){ go('exercicios'); },
-    goReferencias: function(){ go('referencias'); },
+    goIndice:      function(){ go('indice'); },
+    goRanking:     function(){ go('ranking'); },
+    goDsm:         function(){ go('dsm'); },
+    goFeedback:    function(){ go('feedback'); },
+    goSobre:       function(){ go('sobre'); },
     openRef:       function(arg){ var p=String(arg).split(':'); var ci=+p[0], di=+p[1]; setState({screen:'ficha', activeCat:ci, activeDisorder:di, fichaOpen:initOpen(ci,di)}); recordRevised(); scrollTop(); },
     goFlashcards:  function(){ go('flashcards'); },
     toggleTheme:   function(){ toggleTheme(); },
@@ -426,15 +434,21 @@
   function navItems(){
     var s=state;
     return [
-      {label:'Início',    icon:ICON.home, action:'goHome',       active:s.screen==='home'},
-      {label:'Revisão',   icon:ICON.book, action:'goCategorias', active:REV_SCREENS.indexOf(s.screen)>=0},
-      {label:'Exercícios',icon:ICON.check,action:'goExercicios', active:EX_SCREENS.indexOf(s.screen)>=0},
-      {label:'Referências',icon:ICON.list,action:'goReferencias', active:s.screen==='referencias'},
+      {label:'Início',    icon:ICON.home, action:'goHome',       active:s.screen==='home', primary:true},
+      {label:'Revisão',   icon:ICON.book, action:'goCategorias', active:REV_SCREENS.indexOf(s.screen)>=0, primary:true},
+      {label:'Exercícios',icon:ICON.check,action:'goExercicios', active:EX_SCREENS.indexOf(s.screen)>=0, primary:true},
+      {label:'Ranking',   icon:ICON.trophy,  action:'goRanking',  active:s.screen==='ranking'},
+      {label:'DSM-5-TR',  icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm'},
+      {label:'Feedback',  icon:ICON.message, action:'goFeedback', active:s.screen==='feedback'},
+      {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre'},
     ];
   }
 
   function sidebar(){
-    var nav = navItems().map(navBtn).join('');
+    var its = navItems();
+    var navPrim = its.filter(function(i){ return i.primary; }).map(navBtn).join('');
+    var navSec  = its.filter(function(i){ return !i.primary; }).map(navBtn).join('');
+    var nav = navPrim + '<div style="height:1px;background:var(--border);margin:9px 8px;"></div>' + navSec;
     var ovTotal = tracking() ? totalDisorders() : 90;
     var ovRev   = tracking() ? totalRevised()   : 38;
     var ovPct   = ovTotal ? Math.round(ovRev/ovTotal*100) : 0;
@@ -487,7 +501,7 @@
      BARRA DE NAVEGAÇÃO INFERIOR (mobile)
      ========================================================= */
   function bottomNav(){
-    return '<nav class="bottom-nav">'+ navItems().map(function(item){
+    return '<nav class="bottom-nav">'+ navItems().filter(function(i){ return i.primary; }).map(function(item){
       var col = item.active ? 'var(--teal-text)' : 'var(--muted)';
       var bgw = item.active ? 'background:var(--accent-bg);' : '';
       return '<button data-action="'+item.action+'" style="color:'+col+';'+bgw+'">'+item.icon+'<span>'+item.label+'</span></button>';
@@ -562,8 +576,15 @@
   }
 
   /* =========================================================
-     TELA: CATEGORIAS (grade)
+     TELA: CATEGORIAS (grade) + alternância de visualização
      ========================================================= */
+  function revViewToggle(active){
+    function tab(label, screen){
+      return '<button data-action="goScreen" data-arg="'+screen+'" class="rev-tab'+(active===screen?' on':'')+'">'+label+'</button>';
+    }
+    return '<div class="rev-toggle">'+tab('Categorias','categorias')+tab('Índice','indice')+'</div>';
+  }
+
   function screenCategorias(){
     var cards = CATS.map(function(c,i){
       var pct = Math.round(catProgress(i)*100);
@@ -586,8 +607,9 @@
 
     return ''+
     '<section style="animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
-      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Revisão</div>'+
-      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">As 20 categorias do DSM-5-TR</h1>'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px;">Revisão</div>'+
+      revViewToggle('categorias')+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:18px 0 6px;">As 20 categorias do DSM-5-TR</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:620px;">Escolha um capítulo para ver os transtornos e suas fichas-resumo.</p>'+
       '<div class="cats-grid">'+cards+'</div>'+
     '</section>';
@@ -646,6 +668,23 @@
   /* =========================================================
      TELA: FICHA
      ========================================================= */
+  // siglas para transtornos com acrônimo consagrado (usadas em espaços curtos,
+  // como o botão "Próximo"); o resto trunca com reticências via CSS.
+  var SIGLAS = {
+    'transtorno de déficit de atenção/hiperatividade':'TDAH',
+    'transtorno de estresse pós-traumático':'TEPT',
+    'transtorno de estresse pós-traumático em crianças de 6 anos ou menos':'TEPT (crianças)',
+    'transtorno obsessivo-compulsivo':'TOC',
+    'transtorno do espectro autista':'TEA',
+    'transtorno de ansiedade generalizada':'TAG',
+    'transtorno de ansiedade social (fobia social)':'TAS (fobia social)',
+    'transtorno de ansiedade de separação':'TAS',
+    'transtorno depressivo maior':'TDM',
+    'transtorno disfórico pré-menstrual':'TDPM',
+    'deficiência intelectual (transtorno do desenvolvimento intelectual)':'Deficiência Intelectual'
+  };
+  function shortName(n){ return SIGLAS[String(n).toLowerCase()] || n; }
+
   // --- sub-listas numeradas/alfabéticas dentro de critérios e seções ---
   var SUBLIST_RE = /^\s*(\d{1,2}|[a-z])[.)]\s+(.+)$/;
   function isSubItem(s){
@@ -707,9 +746,16 @@
     var critIntro = disorder.criteriaIntro
       ? '<p style="margin:0 0 14px;font-size:14px;line-height:1.55;color:var(--muted-2);">'+esc(disorder.criteriaIntro)+'</p>' : '';
 
-    // callout de especificador
-    var specBlock = disorder.specifier
-      ? '<div class="spec-callout"><div class="lbl">Especificar</div><p style="margin:0;font-size:13.5px;line-height:1.5;color:var(--body);">'+escMl(disorder.specifier)+'</p></div>' : '';
+    // bloco(s) de especificador / subtipos — estruturado em blocos com opções
+    var spec = disorder.specifier || [];
+    var specBlock = spec.length
+      ? '<div class="spec-wrap">'+ spec.map(function(blk){
+          var opts = (blk.items||[]).map(function(o){
+            return '<li>'+(o.label?'<span class="spec-opt-label">'+esc(o.label)+'</span> ':'')+(o.desc?esc(o.desc):'')+'</li>';
+          }).join('');
+          var head = blk.head ? '<div class="spec-head">'+esc(blk.head)+'</div>' : '';
+          return '<div class="spec-block">'+head+'<ul class="spec-list">'+opts+'</ul></div>';
+        }).join('') +'</div>' : '';
 
     // nota dos critérios (terminologia/esclarecimentos — fora do critério)
     var noteBlock = disorder.criteriaNote
@@ -804,7 +850,7 @@
     var nextItem = cat.items[state.activeDisorder+1];
     var nav = '<div class="ficha-nav">'+
       (prevItem ? '<button data-action="prevDisorder" class="nav-prev" data-hover="border-color:var(--cat);color:var(--cat);" data-active="transform:scale(.96);">'+ICON.chevLsm+'Anterior</button>' : '<span></span>')+
-      (nextItem ? '<button data-action="nextDisorder" class="nav-next" data-hover="filter:brightness(.92);transform:translateX(2px);" data-active="transform:scale(.97);"><span style="display:flex;flex-direction:column;align-items:flex-start;min-width:0;"><span class="nn-lbl">Próximo</span><span class="nn-name">'+esc(nextItem.n)+'</span></span>'+ICON.chevRsm+'</button>' : '')+
+      (nextItem ? '<button data-action="nextDisorder" class="nav-next" data-hover="filter:brightness(.92);transform:translateX(2px);" data-active="transform:scale(.97);" title="'+esc(nextItem.n)+'"><span class="nn-col"><span class="nn-lbl">Próximo</span><span class="nn-name">'+esc(shortName(nextItem.n))+'</span></span>'+ICON.chevRsm+'</button>' : '')+
     '</div>';
 
     return ''+
@@ -1230,7 +1276,7 @@
   /* =========================================================
      TELA: REFERÊNCIAS (índice completo de transtornos)
      ========================================================= */
-  function screenReferencias(){
+  function screenIndice(){
     var total = CATS.reduce(function(s,c){ return s + c.items.length; }, 0);
     var blocks = CATS.map(function(c, ci){
       var items = c.items.map(function(d, di){
@@ -1253,10 +1299,71 @@
 
     return ''+
     '<section style="max-width:1040px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
-      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Referências</div>'+
-      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Índice de transtornos</h1>'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px;">Revisão</div>'+
+      revViewToggle('indice')+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:18px 0 6px;">Índice de transtornos</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:640px;">Todos os '+total+' transtornos do DSM-5-TR, organizados pelas 20 categorias. Toque em um item para abrir a ficha.</p>'+
       '<div class="ref-cats">'+blocks+'</div>'+
+    '</section>';
+  }
+
+  /* =========================================================
+     TELAS: Ranking, DSM-5-TR, Feedback (placeholders / iframe)
+     ========================================================= */
+  function placeholderScreen(kicker, title, icon, badge, bodyHtml){
+    return ''+
+    '<section style="max-width:760px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">'+esc(kicker)+'</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 24px;">'+esc(title)+'</h1>'+
+      '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:42px 32px;text-align:center;">'+
+        '<div style="width:60px;height:60px;border-radius:17px;background:var(--accent-bg);color:var(--accent-tx);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><span style="transform:scale(1.55);display:flex;">'+icon+'</span></div>'+
+        '<div style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--accent-tx);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:99px;padding:5px 13px;margin-bottom:14px;">'+esc(badge)+'</div>'+
+        '<p style="margin:0 auto;max-width:460px;font-size:14.5px;line-height:1.6;color:var(--muted-2);">'+bodyHtml+'</p>'+
+      '</div>'+
+    '</section>';
+  }
+  function screenRanking(){
+    return placeholderScreen('Ranking', 'Ranking', ICON.trophy, 'Em breve',
+      'Acompanhe sua posição entre outros estudantes — pontos por transtornos revisados, exercícios feitos e dias de streak. Funcionalidade em desenvolvimento.');
+  }
+  function screenFeedback(){
+    var mail = 'mailto:felipe.cb2511@gmail.com?subject='+encodeURIComponent('DSM·Revisa — Feedback');
+    return placeholderScreen('Feedback', 'Feedback', ICON.message, 'Em breve',
+      'Envie erros encontrados nas fichas, sugestões de melhoria e outras observações. Funcionalidade em desenvolvimento — por enquanto, escreva para <a href="'+mail+'" style="color:var(--teal-text);font-weight:700;text-decoration:none;">felipe.cb2511@gmail.com</a>.');
+  }
+  function screenDsm(){
+    return ''+
+    '<section style="animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">'+
+        '<div>'+
+          '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">DSM-5-TR</div>'+
+          '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Manual na íntegra</h1>'+
+        '</div>'+
+        '<a href="DSM-V.pdf" target="_blank" rel="noopener" data-hover="border-color:#5BC0BE;" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:9px 14px;font:700 13px \'Hanken Grotesk\';color:var(--teal-text);transition:border-color .18s ease;">Abrir em nova aba ↗</a>'+
+      '</div>'+
+      '<iframe class="dsm-frame" src="DSM-V.pdf" title="DSM-5-TR — manual completo"></iframe>'+
+    '</section>';
+  }
+  function screenSobre(){
+    var total = CATS.reduce(function(s,c){ return s + c.items.length; }, 0);
+    function card(icon, title, body){
+      return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;gap:14px;align-items:flex-start;">'+
+        '<div style="width:42px;height:42px;border-radius:12px;background:var(--accent-bg);color:var(--accent-tx);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="transform:scale(1.15);display:flex;">'+icon+'</span></div>'+
+        '<div><div style="font:700 15px \'Bricolage Grotesque\';color:var(--ink);margin-bottom:4px;">'+esc(title)+'</div>'+
+        '<p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted-2);">'+body+'</p></div>'+
+      '</div>';
+    }
+    return ''+
+    '<section style="max-width:780px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Sobre</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 8px;">DSM<span style="color:#5BC0BE;">·</span>Revisa</h1>'+
+      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;line-height:1.6;max-width:620px;">Plataforma de estudos e revisão dos transtornos do DSM-5-TR — fichas-resumo com critérios diagnósticos, especificadores, seções narrativas e exercícios.</p>'+
+      '<div style="display:flex;flex-direction:column;gap:12px;">'+
+        card(ICON.book2, 'Conteúdo', 'Os '+total+' transtornos das 20 categorias da Seção II do DSM-5-TR, com critérios, subtipos, especificadores e seções, além de tabelas recortadas do manual.')+
+        card(ICON.info, 'Fonte', 'Conteúdo extraído do DSM-5-TR (Manual Diagnóstico e Estatístico de Transtornos Mentais, American Psychiatric Association; ed. brasileira Artmed). Veja o manual completo na aba DSM-5-TR.')+
+        card(ICON.statShield, 'Aviso importante', 'Ferramenta de <b>estudo</b>, não de diagnóstico. O texto pode conter imprecisões da extração automática — sempre confirme no manual oficial. Não substitui avaliação clínica profissional.')+
+        card(ICON.message, 'Encontrou um erro?', 'Use a aba <b>Feedback</b> para relatar erros nas fichas e enviar sugestões.')+
+      '</div>'+
     '</section>';
   }
 
@@ -1274,7 +1381,11 @@
       case 'quiz':        return screenQuiz();
       case 'ligar':       return screenLigar();
       case 'caso':        return screenCaso();
-      case 'referencias': return screenReferencias();
+      case 'indice':      return screenIndice();
+      case 'ranking':     return screenRanking();
+      case 'dsm':         return screenDsm();
+      case 'feedback':    return screenFeedback();
+      case 'sobre':       return screenSobre();
       default:            return screenHome();
     }
   }
@@ -1406,7 +1517,9 @@
       if(k==='Escape') return run(actions.goExercicios);
     } else if(s==='ligar'){
       if(k==='Escape') return run(actions.goExercicios);
-    } else if(s==='categorias' || s==='exercicios' || s==='referencias'){
+    } else if(s==='indice'){
+      if(k==='Escape') return run(actions.goCategorias);
+    } else if(s==='categorias' || s==='exercicios' || s==='ranking' || s==='dsm' || s==='feedback' || s==='sobre'){
       if(k==='Escape') return run(actions.goHome);
     }
   }
