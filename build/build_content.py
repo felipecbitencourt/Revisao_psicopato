@@ -29,7 +29,7 @@ import os
 import re
 import unicodedata
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # build/ -> raiz do repo
 CAT_DIR = os.path.join(ROOT, "md", "categorias")
 OUT = os.path.join(ROOT, "content.js")
 
@@ -137,6 +137,79 @@ ADD_SECTIONS = {
     ],
 }
 
+# Códigos fixos que o parser não captura (o código vem num heading ACIMA do
+# título, é compartilhado entre subtipos, ou o transtorno aparece como
+# referência cruzada noutro capítulo sem o próprio heading de código).
+# Todos conferidos contra o DSM-5-TR / fonte. Chave = nome do transtorno.
+#   {"dsm","cid"} preenche o código primário; "codes" (opcional) define a
+#   lista completa de variantes (CID por subtipo).
+CODE_OVERRIDES = {
+    "Transtorno (da Personalidade) Esquizotípica": {"dsm": "301.22", "cid": "F21"},
+    "Transtorno de estresse pós-traumático": {"dsm": "309.81", "cid": "F43.10"},
+    "Transtorno de estresse pós-traumático em crianças de 6 anos ou menos": {"dsm": "309.81", "cid": "F43.10"},
+    "Transtorno da Personalidade Antissocial": {"dsm": "301.7", "cid": "F60.2"},
+    "Transtorno do Tipo Sono-Vigília Não de 24 Horas": {"dsm": "307.45", "cid": "G47.24"},
+    # DSM 293.83 é fixo (independe do especificador); a CID-10 varia por especificador.
+    "Transtorno Bipolar e Transtorno Relacionado Devido a Outra Condição Médica": {"dsm": "293.83", "cid": ""},
+    "Pica": {"dsm": "307.52", "cid": "F98.3", "codes": [
+        {"dsm": "307.52", "cid": "F98.3", "label": "Em crianças"},
+        {"dsm": "307.52", "cid": "F50.8", "label": "Em adultos"},
+    ]},
+    "Anorexia Nervosa": {"dsm": "307.1", "cid": "F50.01", "codes": [
+        {"dsm": "307.1", "cid": "F50.01", "label": "Tipo restritivo"},
+        {"dsm": "307.1", "cid": "F50.02", "label": "Tipo compulsão alimentar purgativa"},
+    ]},
+}
+
+# Correções de TEXTO de erros presentes na própria camada de texto do PDF
+# (não recuperáveis por reprocessamento). Substituição exata, aplicada aos
+# critérios. Chave = trecho errado -> trecho correto.
+TEXT_FIXES = {
+    # Esquizofrenia, Critério E: negação invertida (critério de EXCLUSÃO).
+    "A perturbação pode ser atribuída aos efeitos fisiológicos de uma substância (p. ex., droga de abuso, medicamento) ou a outra condição médica.":
+        "A perturbação não é atribuível aos efeitos fisiológicos de uma substância (p. ex., droga de abuso, medicamento) ou a outra condição médica.",
+}
+
+
+def apply_text_fixes(text):
+    for wrong, right in TEXT_FIXES.items():
+        if wrong in text:
+            text = text.replace(wrong, right)
+    return text
+
+
+# Especificadores reconstruídos para casos em que o PDF achatou uma TABELA
+# (subtipo/gravidade x código) num único campo, perdendo ou embaralhando
+# itens. Chave = nome do transtorno -> lista de blocos {head, items:[{label,desc}]}.
+# Conteúdo conferido contra a fonte (md/categorias/...).
+SPECIFIER_OVERRIDES = {
+    "Transtorno Específico da Aprendizagem": [
+        {"head": "Especificar se", "items": [
+            {"label": "315.00 (F81.0) Com prejuízo na leitura", "desc": "Precisão na leitura de palavras; velocidade ou fluência da leitura; compreensão da leitura (dislexia é um termo alternativo)."},
+            {"label": "315.2 (F81.81) Com prejuízo na expressão escrita", "desc": "Precisão na ortografia; precisão na gramática e na pontuação; clareza ou organização da expressão escrita."},
+            {"label": "315.1 (F81.2) Com prejuízo na matemática", "desc": "Senso numérico; memorização de fatos aritméticos; precisão ou fluência de cálculo; precisão no raciocínio matemático (discalculia é um termo alternativo)."},
+        ]},
+        {"head": "Especificar a gravidade atual", "items": [
+            {"label": "Leve", "desc": "Alguma dificuldade em um ou dois domínios acadêmicos, leve o bastante para o indivíduo compensar com adaptações ou apoio adequados, especialmente durante os anos escolares."},
+            {"label": "Moderada", "desc": "Dificuldades acentuadas em um ou mais domínios; improvável tornar-se proficiente sem períodos de ensino intensivo e especializado durante os anos escolares."},
+            {"label": "Grave", "desc": "Dificuldades graves afetando vários domínios; improvável aprender sem ensino individualizado e especializado continuado; mesmo com apoio, pode não completar as atividades com eficiência."},
+        ]},
+    ],
+    "Transtorno por Uso de Estimulantes": [
+        {"head": "Especificar se", "items": [
+            {"label": "Em remissão inicial", "desc": "Após todos os critérios terem sido preenchidos antes, nenhum deles foi preenchido por um período mínimo de 3 meses, porém inferior a 12 meses (exceto o Critério A4, fissura, que pode ocorrer)."},
+            {"label": "Em remissão sustentada", "desc": "Após todos os critérios terem sido preenchidos antes, nenhum deles foi preenchido em momento algum durante um período igual ou superior a 12 meses (exceto o Critério A4, fissura)."},
+            {"label": "Em ambiente protegido", "desc": "Especificador adicional usado quando o indivíduo está em um ambiente no qual o acesso a estimulantes é restrito (ex.: prisões vigiadas, comunidades terapêuticas, unidades hospitalares fechadas)."},
+        ]},
+        {"head": "Especificar a gravidade atual", "items": [
+            {"label": "Leve", "desc": "Presença de 2 ou 3 sintomas. CID-10: F15.10 (anfetamina/outro estimulante), F14.10 (cocaína)."},
+            {"label": "Moderada", "desc": "Presença de 4 ou 5 sintomas. CID-10: F15.20 (anfetamina/outro estimulante), F14.20 (cocaína)."},
+            {"label": "Grave", "desc": "Presença de 6 ou mais sintomas. CID-10: F15.20 (anfetamina/outro estimulante), F14.20 (cocaína)."},
+        ]},
+    ],
+}
+
+
 # Subgrupos da "Classificação do DSM-5" dentro de cada categoria.
 # índice da categoria -> lista ordenada de (nome do subgrupo, nível, nome do
 # 1º transtorno que inicia o subgrupo). nível 2 = aninhado no subgrupo anterior.
@@ -226,6 +299,8 @@ SPEC_HEAD_RE = re.compile(r"^\*?\s*(?:Especificar|Determinar)\b[^:]*:", re.IGNOR
 SPEC_ITEM_RE = re.compile(r"^\*\*\s*(.+?)\s*\*\*\s*:?\s*(.*)$")
 PAGE_FOOTER = re.compile(r"^\*\*\d+\*\*")
 HEADING_ANY = re.compile(r"^#{1,6}\s+(.*)$")
+# opção de especificador CODIFICADA: "**300.29 (F40.248) Situacional**..."
+CODED_SPEC_ITEM = re.compile(r"^\*\*\s*\d{2,3}(?:\.\d+)?\s*\([A-Z]\d")
 
 
 def normalize(s):
@@ -392,6 +467,11 @@ def parse_criteria(head_lines):
         if mode == "note" and cur is not None and SUBITEM_RE.match(s):
             mode = "crit"
 
+        # uma opção CODIFICADA de especificador após uma "Nota" (ex.: tipos de
+        # fobia separados por uma "Nota para codificação") retoma o especificador
+        if mode == "note" and spec_blocks and CODED_SPEC_ITEM.match(s):
+            mode = "spec"
+
         if mode == "spec":
             if not spec_blocks:
                 spec_blocks.append({"head": "", "items": []})
@@ -482,7 +562,16 @@ def parse_transtorno(path, display_name):
     head_text = "\n".join(head_lines)
 
     codes = extract_codes(head_text)
+    ov = CODE_OVERRIDES.get(title)
+    if ov:
+        codes = ov["codes"] if "codes" in ov else [{"dsm": ov.get("dsm", ""), "cid": ov.get("cid", ""), "label": ""}]
     criteria_intro, criteria, specifier, criteria_note = parse_criteria(head_lines)
+    # especificador reconstruído (tabela achatada pelo PDF)
+    if title in SPECIFIER_OVERRIDES:
+        specifier = SPECIFIER_OVERRIDES[title]
+    # correções pontuais de texto (erros da camada de texto do PDF)
+    for cr in criteria:
+        cr["text"] = apply_text_fixes(cr["text"])
     sections = parse_sections(lines)
 
     # substitui/anexa tabelas (imagem recortada do PDF) em seções existentes
@@ -589,8 +678,8 @@ def main():
     data = {"categories": categories, "flashcards": flashcards}
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
     header = (
-        "/* GERADO por build_content.py — não edite à mão.\n"
-        "   Reconstrua com: python build_content.py */\n"
+        "/* GERADO por build/build_content.py — não edite à mão.\n"
+        "   Reconstrua com: python build/build_content.py */\n"
         "window.DSM_CONTENT = "
     )
     with open(OUT, "w", encoding="utf-8") as f:

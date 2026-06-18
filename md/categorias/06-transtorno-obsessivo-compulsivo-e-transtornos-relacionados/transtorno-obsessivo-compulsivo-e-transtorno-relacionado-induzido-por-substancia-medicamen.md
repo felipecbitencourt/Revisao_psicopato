@@ -21,7 +21,7 @@ cocaína”). Se um transtorno por uso de substância for moderado ou grave, o c
 Anfetamina (ou outro estimulante)
 Cocaína Outra substância (ou substância desconhecida)
 292.89 292.89 292.89 F15.188 F14.188 F19.188 F15.288 F14.288 F19.288 F15.988 F14.988
-F19.988 *Especificar *se (ver a Tabela no capítulo “Transtornos Relacionados a Substâncias e Transtornos
+F19.988 *Especificar *se (ver a Tabela 1 no capítulo “Transtornos Relacionados a Substâncias e Transtornos
 Aditivos” para diagnósticos associados à classe da substância):
 **Com início durante a intoxicação: **Se os critérios para intoxicação pela substância são satisfeitos, e os sintomas se desenvolvem durante a intoxicação.
 **Com início durante a abstinência:** Se os critérios para abstinência da substância são satisfeitos, e os sintomas se desenvolvem durante ou logo após a abstinência.

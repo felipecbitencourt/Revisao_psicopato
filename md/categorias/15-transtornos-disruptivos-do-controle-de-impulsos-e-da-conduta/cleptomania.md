@@ -17,7 +17,7 @@ A característica essencial da cleptomania é a falha recorrente em resistir aos
 ### Características Associadas que Apoiam o Diagnóstico
 Indivíduos com cleptomania geralmente tentam resistir ao impulso de roubar e têm consciência de que estão fazendo algo errado e sem sentido. Frequentemente temem serem apanhados e sentem-se deprimidos ou culpados pelos furtos. Rotas neurotransmissoras associadas a adições comportamentais, incluindo aquelas associadas aos sistemas serotonérgico, dopaminérgico e opioide, também parecem desempenhar um papel na cleptomania.
 ### Prevalência
-A cleptomania ocorre em aproximadamente a 24% dos indivíduos presos por furtos em lojas.
+A cleptomania ocorre em aproximadamente 4 a 24% dos indivíduos presos por furtos em lojas.
 Sua prevalência na população em geral é muito rara, ficando em torno de 0,3 a 0,6%. Indivíduos do sexo feminino superam os do masculino em uma proporção de 3:1.
 ### Desenvolvimento e Curso
 A idade de início da cleptomania é variável, porém, com frequência, o transtorno inicia na adolescência. Entretanto, pode iniciar na infância, na adolescência ou na vida adulta e, em raros casos, na fase final da idade adulta. Existem poucas informações sistemáticas sobre o curso da cleptomania, embora três cursos típicos tenham sido descritos: esporádico com breves episódios e longos períodos de remissão; episódico com períodos prolongados de furto e períodos de remissão; e crônico com algum grau de flutuação. O transtorno pode continuar por vários anos, a despeito de múltiplas condenações por furtos em lojas.

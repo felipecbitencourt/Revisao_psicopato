@@ -7,7 +7,7 @@
 ### Critérios Diagnósticos
 ### 327.42 (G47.52)
 A. Episódios repetidos de despertar durante o sono associados a vocalização e/ou a comportamentos complexos.
-B. Esses comportamentos surgem durante o sono com movimentos rápidos dos olhos (REM), portanto, em geral, mais de minutos depois do início do sono, são mais frequentes durante as porções finais do período de sono e ocorrem raramente durante os cochilos diurnos.
+B. Esses comportamentos surgem durante o sono com movimentos rápidos dos olhos (REM), portanto, em geral, mais de 90 minutos depois do início do sono, são mais frequentes durante as porções finais do período de sono e ocorrem raramente durante os cochilos diurnos.
 C. Ao acordar desses episódios, o indivíduo está completamente desperto, alerta e não permanece confuso nem desorientado.
 D. Qualquer uma das seguintes situações:
 1. Sono REM sem atonia nos registros polissonográficos.
@@ -26,7 +26,7 @@ A prevalência do transtorno comportamental do sono REM é de 0,38 a 0,5% na pop
 A prevalência em pacientes com transtornos psiquiátricos pode ser maior, possivelmente relacionada aos medicamentos prescritos para o transtorno.
 ### Desenvolvimento e Curso
 O início do transtorno comportamental do sono REM pode ser gradual ou rápido, e, em geral, o curso é progressivo. O transtorno comportamental do sono REM associado a transtornos neurodegenerativos pode melhorar de acordo com o progresso do transtorno neurodegenerativo subjacente. Em virtude da forte associação com o surgimento de um transtorno neurodegenerativo subjacente, notadamente uma das sinucleinopatias (doença de Parkinson, atrofia sistêmica múltipla ou transtorno neurocognitivo maior ou leve com corpos de Lewy), é imprescindível monitorar rigorosamente o estado neurológico de indivíduos com transtorno comportamental do sono REM.
-O transtorno comportamental do sono REM afeta substancialmente indivíduos do sexo masculino com idade acima de anos, embora esteja aumentando cada vez mais a identificação desse transtorno em pessoas do sexo feminino e em indivíduos mais jovens. Os sintomas em indivíduos jovens, particularmente do sexo feminino, devem aumentar a possibilidade de narcolepsia ou do transtorno comportamental do sono REM induzido por medicamento.
+O transtorno comportamental do sono REM afeta substancialmente indivíduos do sexo masculino com idade acima de 50 anos, embora esteja aumentando cada vez mais a identificação desse transtorno em pessoas do sexo feminino e em indivíduos mais jovens. Os sintomas em indivíduos jovens, particularmente do sexo feminino, devem aumentar a possibilidade de narcolepsia ou do transtorno comportamental do sono REM induzido por medicamento.
 ### Fatores de Risco e Prognóstico
 **Genéticos e fisiológicos. **Muitos medicamentos amplamente prescritos, incluindo antidepressivos tricíclicos, inibidores seletivos da recaptação da serotonina, inibidores da recaptação da serotonina/noradrenalina e betabloqueadores, podem resultar em evidências polissonográficas de sono REM sem atonia e em franco transtorno comportamental do sono REM. Não se sabe ao certo se os medicamentos propriamente ditos causam o transtorno comportamental do sono REM ou se revelam a presença de uma predisposição subjacente.
 ### Marcadores Diagnósticos

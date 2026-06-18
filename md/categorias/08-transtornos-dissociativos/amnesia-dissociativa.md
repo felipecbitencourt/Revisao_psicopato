@@ -25,7 +25,7 @@ Indivíduos com amnésia dissociativa com frequência não percebem (ou percebem
 ### Características Associadas que Apoiam o Diagnóstico
 Muitos indivíduos com amnésia dissociativa apresentam prejuízo crônico em sua capacidade de formar e manter relacionamentos satisfatórios. Histórias de trauma, abuso infantil e vitimização são comuns. Alguns indivíduos com amnésia dissociativa relatam *flashbacks* dissociativos (i.e., revivência comportamental de eventos traumáticos). Muitos têm história de automutilação, tentativas de suicídio e outros comportamentos de alto risco. Sintomas depressivos e de sintomatologia neurológica funcional são comuns, assim como despersonalização, sintomas auto-hipnóticos e suscetibilidade à hipnose. Disfunções sexuais são comuns. Uma lesão cerebral traumática leve pode preceder a amnésia dissociativa.
 ### Prevalência
-A prevalência em meses da amnésia dissociativa entre adultos de um estudo de uma pequena comunidade nos Estados Unidos foi de 1,8% (1,0% para homens; 2,6% para mulheres).
+A prevalência em 12 meses da amnésia dissociativa entre adultos de um estudo de uma pequena comunidade nos Estados Unidos foi de 1,8% (1,0% para homens; 2,6% para mulheres).
 ### Desenvolvimento e Curso
 O início da amnésia dissociativa costuma ser súbito. Pouco se sabe a respeito do início das amnésias localizada e seletiva porque elas raramente são evidentes, mesmo para a pessoa afetada.
 Embora eventos opressivos ou intoleráveis comumente precedam a amnésia localizada, seu início pode demorar horas, dias ou ainda mais tempo.

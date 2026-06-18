@@ -9,7 +9,7 @@ A. Uso recente de fenciclidina (ou substância farmacologicamente semelhante).
 B. Alterações comportamentais clinicamente significativas e problemáticas (p. ex., beligerância, agressividade, impulsividade, imprevisibilidade, agitação psicomotora, julgamento prejudicado)
 desenvolvidas durante ou logo após o uso de fenciclidina.
 
-**528** Transtornos Relacionados a Substâncias e Transtornos Aditivos C. No prazo de hora, dois (ou mais) dos seguintes sinais ou sintomas:
+**528** Transtornos Relacionados a Substâncias e Transtornos Aditivos C. No prazo de 1 hora, dois (ou mais) dos seguintes sinais ou sintomas:
 **Nota**: Quando a droga for fumada, cheirada ou usada na forma intravenosa, o início pode ser bem mais rápido.
 1. Nistagmo vertical ou horizontal.
 2. Hipertensão ou taquicardia.
@@ -25,7 +25,7 @@ D. Os sinais ou sintomas não são atribuíveis a outra condição médica nem s
 ### Características Diagnósticas
 A intoxicação por fenciclidina reflete as alterações comportamentais clinicamente significativas que ocorrem logo após a ingestão dessa substância (ou de uma substância farmacologicamente semelhante). As apresentações clínicas mais comuns de intoxicação por fenciclidina incluem desorientação, confusão sem alucinações, alucinações ou delírios, uma síndrome semelhante a catatonia e coma de gravidade variável. A intoxicação costuma durar várias horas, mas, dependendo do tipo de apresentação clínica, e se outras drogas além de fenciclidina foram consumidas, pode durar vários dias ou mais.
 ### Prevalência
-O uso de fenciclidina ou de substâncias relacionadas pode ser tomado como uma estimativa da prevalência de intoxicação. Aproximadamente 2,5% da população relata ter usado fenciclidina alguma vez. Entre alunos do ensino médio, 2,3% dos estudantes do último ano relatam já ter usado a substância, sendo que 57% destes utilizaram-na nos últimos meses, o que representa um aumento com relação ao período até 2011. O uso no ano anterior de quetamina, que é avaliada separadamente de outras substâncias, permaneceu estável ao longo do tempo, com relato de uso por 1,7% dos estudantes do último ano do ensino médio.
+O uso de fenciclidina ou de substâncias relacionadas pode ser tomado como uma estimativa da prevalência de intoxicação. Aproximadamente 2,5% da população relata ter usado fenciclidina alguma vez. Entre alunos do ensino médio, 2,3% dos estudantes do último ano relatam já ter usado a substância, sendo que 57% destes utilizaram-na nos últimos 12 meses, o que representa um aumento com relação ao período até 2011. O uso no ano anterior de quetamina, que é avaliada separadamente de outras substâncias, permaneceu estável ao longo do tempo, com relato de uso por 1,7% dos estudantes do último ano do ensino médio.
 ### Marcadores Diagnósticos
 Exames laboratoriais podem ser úteis, uma vez que a fenciclidina é detectada na urina até oito dias após o uso, embora os níveis estejam pouco associados à apresentação clínica do indivíduo e, portanto, possam não ser úteis para o manejo do caso. Os níveis de creatina fosfoquinase e aspartato aminotransferase podem estar elevados.
 ### Consequências Funcionais de Intoxicação por Fenciclidina

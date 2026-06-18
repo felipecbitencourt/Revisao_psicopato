@@ -1,4 +1,4 @@
-# (ou Substância Desconhecida)
+# Intoxicação por Outra Substância (ou Substância Desconhecida)
 
 *Categoria: Transtornos Relacionados a Substâncias e Transtornos Aditivos*
 

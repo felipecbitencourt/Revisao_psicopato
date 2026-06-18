@@ -16,12 +16,12 @@ CID-10-MC, o código baseia-se no subtipo.
 *Especificar* se:
 **Familiar: **Presença de história familiar de fase do sono atrasada.
 *Especificar* se:
-**Sobrepondo-se com o tipo sono-vigília não de horas: **O tipofase do sono atrasada pode se sobrepor a outro transtorno do sono-vigília do ritmo circadiano, tipo sono-vigília não de horas.
+**Sobrepondo-se com o tipo sono-vigília não de 24 horas: **O tipofase do sono atrasada pode se sobrepor a outro transtorno do sono-vigília do ritmo circadiano, tipo sono-vigília não de 24 horas.
 **307.45 (G47.22) Tipo fase do sono avançada: **Padrão de adiantamento nos horários de início do sono e de vigília, com incapacidade de permanecer acordado ou adormecido até os horários desejados ou convencionalmente aceitos para dormir ou acordar.
 *Especificar* se:
 **Familiar: **Presença de história familiar de fase avançada do sono.
-**307.45 (G47.23) Tipo sono-vigília irregular: **Padrão de sono-vigília desorganizado temporariamente, de forma que o horário dos períodos de dormir e de acordar sejam variáveis ao longo de um período de horas.
-**307.45 (G47.24) Tipo sono-vigília não de horas: **Padrão de ciclos de sono-vigília que não são sincronizados ao ambiente de horas, com um desvio consistente (em geral em horários cada vez mais tarde) nos horários de início do sono e de acordar.
+**307.45 (G47.23) Tipo sono-vigília irregular: **Padrão de sono-vigília desorganizado temporariamente, de forma que o horário dos períodos de dormir e de acordar sejam variáveis ao longo de um período de 24 horas.
+**307.45 (G47.24) Tipo sono-vigília não de 24 horas: **Padrão de ciclos de sono-vigília que não são sincronizados ao ambiente de 24 horas, com um desvio consistente (em geral em horários cada vez mais tarde) nos horários de início do sono e de acordar.
 **307.45 (G47.26) Tipo trabalho em turnos:** Insônia durante o período principal de sono e/ou sonolência excessiva (incluindo sono inadvertido) durante o período principal de sono associada a um regime de trabalho em turnos (i.e., que exige horas de trabalho não convencionais).
 **307.45 (G47.20) Tipo não especificado** *Especificar* se:
 **Episódico: **Os sintomas duram pelo menos um mês, porém menos de três meses.

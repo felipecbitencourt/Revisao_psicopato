@@ -1,4 +1,4 @@
-# (ou Substância Desconhecida)
+# Abstinência de Outra Substância (ou Substância Desconhecida)
 
 *Categoria: Transtornos Relacionados a Substâncias e Transtornos Aditivos*
 

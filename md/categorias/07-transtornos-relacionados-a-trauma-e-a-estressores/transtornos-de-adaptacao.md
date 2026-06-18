@@ -26,7 +26,7 @@ Os transtornos de adaptação estão associados a um risco maior de tentativas e
 
 **288** Transtornos Relacionados a Trauma e a Estressores
 ### Prevalência
-Os transtornos de adaptação são comuns, embora a prevalência varie bastante em função da população estudada e dos métodos de avaliação usados. A porcentagem de indivíduos em tratamento ambulatorial de saúde mental com um diagnóstico principal de transtorno de adaptação vai de aproximadamente a 20%. Em serviços de consultoria psiquiátrica hospitalar, com frequência é o diagnóstico mais comum, chegando muitas vezes a 50%.
+Os transtornos de adaptação são comuns, embora a prevalência varie bastante em função da população estudada e dos métodos de avaliação usados. A porcentagem de indivíduos em tratamento ambulatorial de saúde mental com um diagnóstico principal de transtorno de adaptação vai de aproximadamente 5 a 20%. Em serviços de consultoria psiquiátrica hospitalar, com frequência é o diagnóstico mais comum, chegando muitas vezes a 50%.
 ### Desenvolvimento e Curso
 Por definição, a perturbação nos transtornos de adaptação começa dentro de três meses do início de um estressor e não dura mais do que seis meses depois que o estressor e suas consequências cederam. Se o estressor for um evento agudo (p. ex., demissão do emprego), o início da perturbação geralmente é imediato (i.e., dentro de poucos dias) e a duração é relativamente breve (i.e., não mais do que poucos meses). Se o estressor e suas consequências persistirem, o transtorno de adaptação pode manter-se presente e evoluir para a forma persistente.
 ### Fatores de Risco e Prognóstico

@@ -24,7 +24,7 @@ ex., evitando o desjejum porque pode ser seguido por regurgitação).
 ### Prevalência
 Dados de prevalência do transtorno de ruminação são inconclusivos, mas o transtorno é comumente mais relatado em certos grupos, como indivíduos com deficiência intelectual.
 ### Desenvolvimento e Curso
-A manifestação inicial do transtorno de ruminação pode ocorrer em lactentes, na infância, na adolescência ou na idade adulta. A idade da manifestação inicial geralmente fica entre e meses.
+A manifestação inicial do transtorno de ruminação pode ocorrer em lactentes, na infância, na adolescência ou na idade adulta. A idade da manifestação inicial geralmente fica entre 3 e 12 meses.
 Nos lactentes, o transtorno cede com frequência de forma espontânea, mas seu curso pode ser prolongado e resultar em emergências médicas (p. ex., desnutrição grave). O transtorno pode ser potencialmente fatal, sobretudo em lactentes. Pode ter um curso episódico ou ocorrer continuamente até ser tratado. Nos lactentes, bem como em indivíduos mais velhos com deficiência intelectual (transtorno do desenvolvimento intelectual) ou outros transtornos do neurodesenvolvimento, o comportamento de regurgitação e ruminação parece ter uma função calmante e estimulante semelhante à de outros comportamentos motores repetitivos, como balançar a cabeça ritmicamente.
 ### Fatores de Risco e Prognóstico
 **Ambientais. **Problemas psicossociais como falta de estimulação, negligência, situações de vida estressantes e problemas na relação entre pais e filhos podem ser fatores predisponentes em lactentes e crianças pequenas.

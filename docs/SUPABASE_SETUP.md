@@ -14,11 +14,28 @@ Leva ~10 minutos. Enquanto não terminar, o site segue funcionando em
 ## 2. Criar as tabelas
 
 1. No menu lateral: **SQL Editor** → **New query**.
-2. Abra o arquivo [`schema.sql`](schema.sql) deste projeto, copie tudo e cole.
+2. Abra o arquivo [`schema.sql`](../sql/schema.sql) deste projeto, copie tudo e cole.
 3. Clique em **Run**. Deve aparecer "Success".
 
 Isso cria as tabelas `profiles`, `progress`, `events`, ativa a segurança
 (RLS) e o gatilho que cria o perfil automaticamente no registro.
+
+### 2b. Gamificação (XP, níveis e ranking)
+
+Para ligar a página de **Ranking**, rode também o arquivo
+[`gamification.sql`](../sql/gamification.sql): **SQL Editor** → **New query** → cole
+tudo → **Run**. Ele cria a função `leaderboard(period, lim)` que calcula o XP
+de cada usuário (a partir de `progress` e `events`, sem armazenar nada) e
+devolve o ranking por período (diário/semanal/mensal/anual). Também é
+idempotente — pode rodar quantas vezes quiser.
+
+### 2c. Feedback
+
+Para ligar a aba **Feedback** (usuários relatam erros nas fichas e sugestões),
+rode o arquivo [`feedback.sql`](../sql/feedback.sql) do mesmo jeito (SQL Editor → cole →
+Run). Ele cria a tabela `feedback` com RLS: logados gravam o próprio feedback e
+visitantes gravam de forma anônima. Você lê tudo em **Table Editor → feedback**
+(ou `select * from public.feedback order by criado_em desc;`).
 
 ## 3. Pegar as chaves
 
@@ -26,7 +43,7 @@ Isso cria as tabelas `profiles`, `progress`, `events`, ativa a segurança
 2. Copie dois valores:
    - **Project URL** → ex.: `https://abcdxyz.supabase.co`
    - Chave **anon public**
-3. Cole em [`supabase-config.js`](supabase-config.js):
+3. Cole em [`supabase-config.js`](../supabase-config.js):
 
    ```js
    window.SUPABASE_CONFIG = {

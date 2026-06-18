@@ -6,7 +6,7 @@
 
 ### Critérios Diagnósticos
 ### 302.74 (F52.32)
-A. Qualquer um dos seguintes sintomas deve ser vivenciado em quase todas ou em todas as ocasiões (aproximadamente a 100%) da atividade sexual com parceira (em contextos situacionais identificados ou, se generalizada, em todos os contextos), sem que o indivíduo deseje o retardo:
+A. Qualquer um dos seguintes sintomas deve ser vivenciado em quase todas ou em todas as ocasiões (aproximadamente 75 a 100%) da atividade sexual com parceira (em contextos situacionais identificados ou, se generalizada, em todos os contextos), sem que o indivíduo deseje o retardo:
 1. Retardo acentuado na ejaculação.
 2. Baixa frequência marcante ou ausência de ejaculação.
 B. Os sintomas do Critério A persistem por um período mínimo de aproximadamente seis meses.
@@ -31,9 +31,9 @@ Além dos subtipos “ao longo da vida/adquirido” e “generalizado/situaciona
 ### Prevalência
 A prevalência não é clara em virtude da falta de uma definição precisa dessa síndrome. Trata-se da queixa sexual menos comum entre os homens. Somente 75% deles afirmam que sempre ejaculam durante a atividade sexual, e menos de 1% se queixa de problemas para conseguir a ejaculação que tenham mais de seis meses de duração.
 ### Desenvolvimento e Curso
-A ejaculação retardada do subtipo ao longo da vida inicia com as primeiras experiências sexuais e continua durante a vida toda. Por definição, a ejaculação retardada do subtipo adquirida inicia depois de um período de função sexual normal. Há poucas evidências a respeito do curso desse subtipo de ejaculação retardada. De forma aparente, a prevalência da disfunção permanece relativamente constante até os anos de idade, quando a incidência começa a aumentar de forma significativa. Homens na faixa dos anos relatam duas vezes mais a dificuldade para ejacular em comparação àqueles com menos de anos.
+A ejaculação retardada do subtipo ao longo da vida inicia com as primeiras experiências sexuais e continua durante a vida toda. Por definição, a ejaculação retardada do subtipo adquirida inicia depois de um período de função sexual normal. Há poucas evidências a respeito do curso desse subtipo de ejaculação retardada. De forma aparente, a prevalência da disfunção permanece relativamente constante até os 50 anos de idade, quando a incidência começa a aumentar de forma significativa. Homens na faixa dos 80 anos relatam duas vezes mais a dificuldade para ejacular em comparação àqueles com menos de 59 anos.
 ### Fatores de Risco e Prognóstico
-**Genéticos e fisiológicos.**A perda de nervos sensoriais periféricos de condução rápida e a redução na secreção de esteroides sexuais, ambas relacionadas à idade, podem estar associadas ao aumento da ejaculação retardada em homens com mais de anos.
+**Genéticos e fisiológicos.**A perda de nervos sensoriais periféricos de condução rápida e a redução na secreção de esteroides sexuais, ambas relacionadas à idade, podem estar associadas ao aumento da ejaculação retardada em homens com mais de 50 anos.
 ### Questões Diagnósticas Relativas à Cultura
 As queixas de retardo ejaculatório variam de acordo com o país e a cultura. Elas são mais comuns entre homens nas populações asiáticas do que nos que vivem na Europa, na Austrália ou nos Estados Unidos. Essa variação pode ser atribuível às diferenças culturais ou genéticas entre as culturas.
 ### Consequências Funcionais da Ejaculação Retardada

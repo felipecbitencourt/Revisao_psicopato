@@ -10,7 +10,7 @@ Cada categoria possui uma subpasta com um arquivo `.md` por transtorno.
 | 02 | Espectro da Esquizofrenia e Outros Transtornos Psicóticos | [espectro-da-esquizofrenia-e-outros-transtornos-psicoticos/](02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos/README.md) | 13 |
 | 03 | Transtorno Bipolar e Transtornos Relacionados | [transtorno-bipolar-e-transtornos-relacionados/](03-transtorno-bipolar-e-transtornos-relacionados/README.md) | 7 |
 | 04 | Transtornos Depressivos | [transtornos-depressivos/](04-transtornos-depressivos/README.md) | 8 |
-| 05 | Transtornos de Ansiedade | [transtornos-de-ansiedade/](05-transtornos-de-ansiedade/README.md) | 11 |
+| 05 | Transtornos de Ansiedade | [transtornos-de-ansiedade/](05-transtornos-de-ansiedade/README.md) | 12 |
 | 06 | Transtorno Obsessivo-compulsivo e Transtornos Relacionados | [transtorno-obsessivo-compulsivo-e-transtornos-relacionados/](06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados/README.md) | 9 |
 | 07 | Transtornos Relacionados a Trauma e a Estressores | [transtornos-relacionados-a-trauma-e-a-estressores/](07-transtornos-relacionados-a-trauma-e-a-estressores/README.md) | 8 |
 | 08 | Transtornos Dissociativos | [transtornos-dissociativos/](08-transtornos-dissociativos/README.md) | 5 |
@@ -21,7 +21,7 @@ Cada categoria possui uma subpasta com um arquivo `.md` por transtorno.
 | 13 | Disfunções Sexuais | [disfuncoes-sexuais/](13-disfuncoes-sexuais/README.md) | 10 |
 | 14 | Disforia de Gênero | [disforia-de-genero/](14-disforia-de-genero/README.md) | 3 |
 | 15 | Transtornos Disruptivos, do Controle de Impulsos e da Conduta | [transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta/](15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta/README.md) | 8 |
-| 16 | Transtornos Relacionados a Substâncias e Transtornos Aditivos | [transtornos-relacionados-a-substancias-e-transtornos-aditivos/](16-transtornos-relacionados-a-substancias-e-transtornos-aditivos/README.md) | 42 |
+| 16 | Transtornos Relacionados a Substâncias e Transtornos Aditivos | [transtornos-relacionados-a-substancias-e-transtornos-aditivos/](16-transtornos-relacionados-a-substancias-e-transtornos-aditivos/README.md) | 43 |
 | 17 | Transtornos Neurocognitivos | [transtornos-neurocognitivos/](17-transtornos-neurocognitivos/README.md) | 18 |
 | 18 | Transtornos da Personalidade | [transtornos-da-personalidade/](18-transtornos-da-personalidade/README.md) | 13 |
 | 19 | Transtornos Parafílicos | [transtornos-parafilicos/](19-transtornos-parafilicos/README.md) | 10 |

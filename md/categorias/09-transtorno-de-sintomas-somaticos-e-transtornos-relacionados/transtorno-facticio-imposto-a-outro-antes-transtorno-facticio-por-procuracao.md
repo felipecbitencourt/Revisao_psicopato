@@ -1,4 +1,4 @@
-# (Antes Transtorno Factício por Procuração)
+# Transtorno Factício Imposto a Outro (Antes Transtorno Factício por Procuração)
 
 *Categoria: Transtorno de Sintomas Somáticos e Transtornos Relacionados*
 

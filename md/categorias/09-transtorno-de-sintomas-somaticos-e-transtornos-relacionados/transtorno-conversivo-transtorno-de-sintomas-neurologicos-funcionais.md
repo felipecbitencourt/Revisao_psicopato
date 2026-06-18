@@ -1,4 +1,4 @@
-# (Transtorno de Sintomas Neurológicos Funcionais)
+# Transtorno Conversivo (Transtorno de Sintomas Neurológicos Funcionais)
 
 *Categoria: Transtorno de Sintomas Somáticos e Transtornos Relacionados*
 
@@ -40,7 +40,7 @@ Diferencial” para esse transtorno).
 ### Prevalência
 Sintomas conversivos transitórios são comuns, mas a prevalência exata do transtorno é desconhecida. Isso ocorre em parte porque o diagnóstico geralmente requer avaliação em serviços de saúde de nível secundário, onde o transtorno é encontrado em cerca de 5% dos encaminhamen-
 
-tos a ambulatórios de neurologia. A incidência de sintomas conversivos persistentes individuais é estimada em a 5/100.000 por ano.
+tos a ambulatórios de neurologia. A incidência de sintomas conversivos persistentes individuais é estimada em 2 a 5/100.000 por ano.
 ### Desenvolvimento e Curso
 O transtorno pode se manifestar em qualquer momento da vida. O surgimento de ataques não epiléticos atinge seu pico na terceira década de vida, e sintomas motores têm seu pico de início na quarta década. Os sintomas podem ser transitórios ou persistentes. O prognóstico pode ser melhor em crianças pequenas do que em adolescentes e adultos.
 ### Fatores de Risco e Prognóstico
@@ -51,7 +51,7 @@ O transtorno pode se manifestar em qualquer momento da vida. O surgimento de ata
 ### Questões Diagnósticas Relativas à Cultura
 Mudanças que se assemelham a sintomas conversivos (e dissociativos) são comuns em determinados rituais culturalmente aprovados. Se os sintomas puderem ser plenamente explicados dentro do contexto cultural particular e não resultarem em sofrimento ou incapacidade clinicamente significativos, então o diagnóstico de transtorno conversivo não é feito.
 ### Questões Diagnósticas Relativas ao Gênero
-O transtorno conversivo é a vezes mais comum em pessoas do sexo feminino.
+O transtorno conversivo é 2 a 3 vezes mais comum em pessoas do sexo feminino.
 ### Consequências Funcionais do Transtorno Conversivo
 Indivíduos com sintomas conversivos podem apresentar grande incapacidade. A gravidade da incapacidade pode ser semelhante à vivenciada por pessoas com doenças médicas comparáveis.
 ### Diagnóstico Diferencial

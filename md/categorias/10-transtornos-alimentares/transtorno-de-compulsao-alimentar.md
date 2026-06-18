@@ -23,10 +23,10 @@ E. A compulsão alimentar não está associada ao uso recorrente de comportament
 **Em remissão completa:** Depois de terem sido previamente satisfeitos os critérios plenos do transtorno de compulsão alimentar, nenhum dos critérios é mais satisfeito por um período de tempo sustentado.
 *Especificar* a gravidade atual:
 O nível mínimo de gravidade baseia-se na frequência de episódios de compulsão alimentar (ver a seguir). O nível de gravidade pode ser ampliado de maneira a refletir outros sintomas e o grau de incapacidade funcional.
-**Leve:** a episódios de compulsão alimentar por semana.
-**Moderada:** a episódios de compulsão alimentar por semana.
-**Grave:** a episódios de compulsão alimentar por semana.
-**Extrema:** ou mais episódios de compulsão alimentar por semana.
+**Leve:** 1 a 3 episódios de compulsão alimentar por semana.
+**Moderada:** 4 a 7 episódios de compulsão alimentar por semana.
+**Grave:** 8 a 13 episódios de compulsão alimentar por semana.
+**Extrema:** 14 ou mais episódios de compulsão alimentar por semana.
 
 ### Características Diagnósticas
 A característica essencial do transtorno de compulsão alimentar são episódios recorrentes de compulsão alimentar que devem ocorrer, em média, ao menos uma vez por semana durante três meses (Critério D). Um “episódio de compulsão alimentar” é definido como a ingestão, em um período determinado, de uma quantidade de alimento definitivamente maior do que a maioria das pessoas consumiria em um mesmo período sob circunstâncias semelhantes (Critério A1). O contexto em que a ingestão ocorre pode afetar a estimativa do clínico quanto à ingestão ser ou não excessiva. Por exemplo, uma quantidade de alimento que seria considerada excessiva para uma refeição típica seria considerada normal durante uma refeição comemorativa ou nas festas de fim de ano. Um “período de tempo determinado” refere-se a um período delimitado, geralmente inferior a duas horas. Não é necessário que um episódio de compulsão alimentar limite-se a um único contexto. Por exemplo, um indivíduo pode começar a comer compulsivamente em um restaurante e depois continuar a comer quando volta para casa. Lanches contínuos em pequenas quantidades de alimento ao longo do dia não seriam considerados compulsão alimentar.
@@ -40,7 +40,7 @@ O transtorno de compulsão alimentar ocorre em indivíduos de peso normal ou com
 
 **352** Transtornos Alimentares
 ### Prevalência
-A prevalência de meses do transtorno de compulsão alimentar entre mulheres e homens adultos norte-americanos (com idade igual ou superior a anos) é de 1,6 e 0,8%, respectivamente.
+A prevalência de 12 meses do transtorno de compulsão alimentar entre mulheres e homens adultos norte-americanos (com idade igual ou superior a 18 anos) é de 1,6 e 0,8%, respectivamente.
 A taxa de gênero é bem menos assimétrica no transtorno de compulsão alimentar do que na bulimia nervosa. Esse transtorno é tão prevalente entre mulheres de minorias raciais e étnicas quanto em mulheres brancas e é mais prevalente entre indivíduos que buscam tratamento para emagrecer do que na população em geral.
 ### Desenvolvimento e Curso
 Pouco se sabe a respeito do desenvolvimento do transtorno de compulsão alimentar. Tanto a compulsão alimentar quanto a perda de controle da ingestão sem consumo objetivamente excessivo ocorrem em crianças e estão associadas a maior gordura corporal, ganho de peso e mais sintomas psicológicos. A compulsão alimentar é comum em amostras de adolescentes e de universitários. A ingestão fora de controle ou a compulsão alimentar episódica podem representar uma fase prodrômica dos transtornos alimentares para alguns indivíduos.

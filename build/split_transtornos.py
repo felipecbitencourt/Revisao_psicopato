@@ -8,7 +8,7 @@ import sys
 import unicodedata
 from pathlib import Path
 
-CATEGORIAS_DIR = Path(__file__).parent / "md" / "categorias"
+CATEGORIAS_DIR = Path(__file__).resolve().parent.parent / "md" / "categorias"  # build/ -> raiz
 
 ICD_LINE = re.compile(
     r"^#{3,4}\s+(?:\*\*)?(?:\d{3}(?:\.\d+)?|___.__)\s*\([A-Z]\d",
@@ -124,7 +124,6 @@ CONTINUATION_STARTS = (
     "induzido",
     "induzida",
     "devido",
-    "especificador",
     "pragmatica",
     "gagueira",
     "neurodesenvolvimento",
@@ -139,6 +138,11 @@ CONTINUATION_STARTS = (
 
 def should_merge_heading(current: str, nxt: str | None = None) -> bool:
     if nxt:
+        # heading-continuação entre parênteses: "Título" seguido de
+        # "(nome alternativo)" ou "(ou Substância Desconhecida)" — o PDF quebrou
+        # o título em duas linhas; nunca é um transtorno próprio.
+        if nxt.strip().startswith("("):
+            return True
         first = normalize(nxt).split()[0] if nxt.split() else ""
         if nxt[0].islower() or first in CONTINUATION_STARTS:
             return True
@@ -244,6 +248,12 @@ def split_h4_disorders(title: str, body_lines: list[str]) -> list[tuple[str, lis
     for line in body_lines:
         if line.startswith("#### "):
             heading = line[5:].strip()
+            # continuação entre parênteses do título anterior (ex.: "Transtorno
+            # Factício Imposto a Outro" + "(Antes Transtorno Factício por
+            # Procuração)") — funde no título, não cria um item novo.
+            if heading.startswith("(") and current_title is not None:
+                current_title = f"{current_title} {heading}"
+                continue
             if EPISODE_H4.match(heading):
                 if current_title is not None:
                     current_lines.append(line)

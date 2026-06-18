@@ -9,7 +9,8 @@ Transtornos extraídos de `05-transtornos-de-ansiedade.md`.
 | Mutismo Seletivo | [mutismo-seletivo.md](mutismo-seletivo.md) | 36 |
 | Fobia Específica | [fobia-especifica.md](fobia-especifica.md) | 71 |
 | Transtorno de Ansiedade Social (Fobia Social) | [transtorno-de-ansiedade-social-fobia-social.md](transtorno-de-ansiedade-social-fobia-social.md) | 74 |
-| Transtorno de Pânico Especificador de Ataque de Pânico | [transtorno-de-panico-especificador-de-ataque-de-panico.md](transtorno-de-panico-especificador-de-ataque-de-panico.md) | 136 |
+| Transtorno de Pânico | [transtorno-de-panico.md](transtorno-de-panico.md) | 79 |
+| Especificador de Ataque de Pânico | [especificador-de-ataque-de-panico.md](especificador-de-ataque-de-panico.md) | 57 |
 | Agorafobia | [agorafobia.md](agorafobia.md) | 64 |
 | Transtorno de Ansiedade Generalizada | [transtorno-de-ansiedade-generalizada.md](transtorno-de-ansiedade-generalizada.md) | 59 |
 | Transtorno de Ansiedade Induzido por Substância/Medicamento | [transtorno-de-ansiedade-induzido-por-substancia-medicamento.md](transtorno-de-ansiedade-induzido-por-substancia-medicamento.md) | 52 |

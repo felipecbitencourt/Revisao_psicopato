@@ -9,8 +9,9 @@ from pathlib import Path
 
 import fitz
 
-PDF_PATH = Path(__file__).parent / "DSM-V.pdf"
-OUT_DIR = Path(__file__).parent / "md"
+ROOT = Path(__file__).resolve().parent.parent   # build/ -> raiz do repo
+PDF_PATH = ROOT / "DSM-V.pdf"
+OUT_DIR = ROOT / "md"
 OUT_FILE = OUT_DIR / "DSM-V.md"
 
 # Tamanhos de fonte observados no PDF (Nexus / Palatino)
@@ -74,7 +75,10 @@ def strip_page_header_fragments(text: str) -> str:
         " ",
         text,
     )
-    text = re.sub(r"\s+\*{0,2}\d{1,4}\*{0,2}\s+", " ", text)
+    # NÃO remover números isolados do corpo: a regra anterior apagava limiares
+    # clínicos (idades, durações, contagens — ex.: "no mínimo 18 anos").
+    # Números de página/cabeçalho já são removidos por is_page_header() no nível
+    # da linha, então um stripping cego aqui causava perda de informação.
     return re.sub(r"  +", " ", text).strip()
 
 

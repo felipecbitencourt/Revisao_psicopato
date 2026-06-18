@@ -30,8 +30,8 @@ Os especificadores de curso a seguir devem ser usados somente após um ano de du
 **Primeiro episódio, atualmente em remissão completa:*** Remissão completa* é um período de tempo após episódio prévio durante o qual não estão presentes sintomas específicos do transtorno.
 **Episódios múltiplos, atualmente em episódio agudo** **Episódios múltiplos, atualmente em remissão parcial** **Episódios múltiplos, atualmente em remissão completa** **Contínuo:** Os sintomas que satisfazem os critérios para o diagnóstico do transtorno persistem durante a maior parte do curso da doença, com períodos de sintomas abaixo do limiar muito breves em relação ao curso geral.
 **Não especificado** *Especificar* a gravidade atual:
-A gravidade é classificada por uma avaliação quantitativa dos sintomas primários de psicose, o que inclui delírios, alucinações, discurso desorganizado, comportamento psicomotor anormal e sintomas negativos. Cada um desses sintomas pode ser classificado quanto à gravidade atual (mais graves nos últimos sete dias) em uma escala com pontos, variando de (não presente)
-a (presente e grave). (Ver Gravidade das Dimensões de Sintomas de Psicose Avaliada pelo
+A gravidade é classificada por uma avaliação quantitativa dos sintomas primários de psicose, o que inclui delírios, alucinações, discurso desorganizado, comportamento psicomotor anormal e sintomas negativos. Cada um desses sintomas pode ser classificado quanto à gravidade atual (mais graves nos últimos sete dias) em uma escala com 5 pontos, variando de 0 (não presente)
+a 4 (presente e grave). (Ver Gravidade das Dimensões de Sintomas de Psicose Avaliada pelo
 Clínico no capítulo “Instrumentos de Avaliação”.)
 **Nota:** O diagnóstico de transtorno delirante pode ser feito sem a utilização desse especificador de gravidade.
 ### Subtipos

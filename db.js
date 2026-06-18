@@ -41,6 +41,22 @@
     return streak;
   }
 
+  // total de dias distintos com qualquer atividade (base do XP de "dias ativos")
+  function activeDaysFrom(isoDates){
+    var days = {};
+    isoDates.forEach(function (d) { if (d) days[String(d).slice(0, 10)] = true; });
+    return Object.keys(days).length;
+  }
+
+  // Pesos de XP — DEVEM espelhar gamification.sql (função leaderboard).
+  var XP = { ficha: 25, exercicio: 10, acerto: 5, diaAtivo: 15 };
+  function xpFromCounts(c){
+    return (c.revisados || 0) * XP.ficha +
+           (c.exercicios || 0) * XP.exercicio +
+           (c.acertos || 0) * XP.acerto +
+           (c.ativos || 0) * XP.diaAtivo;
+  }
+
   function uid() {
     if (!sb) return Promise.resolve(null);
     return sb.auth.getUser().then(function (r) {
@@ -164,11 +180,13 @@
         return Promise.resolve({
           revisados: Object.keys(p).length,
           exercicios: ev.length,
+          acertos: ev.filter(function (e) { return e.acerto === true; }).length,
+          ativos: activeDaysFrom(datas),
           taxa: ca.length ? Math.round(ac / ca.length * 100) : 0,
           streak: streakFrom(datas)
         });
       }
-      if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, taxa: 0, streak: 0 });
+      if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, acertos: 0, ativos: 0, taxa: 0, streak: 0 });
       return Promise.all([
         sb.from('progress').select('revisado_em'),
         sb.from('events').select('acerto,criado_em')
@@ -182,9 +200,41 @@
         return {
           revisados: prog.length,
           exercicios: ev.length,
+          acertos: acertos,
+          ativos: activeDaysFrom(datas),
           taxa: comAcerto.length ? Math.round(acertos / comAcerto.length * 100) : 0,
           streak: streakFrom(datas)
         };
+      });
+    },
+
+    /* ---- gamificação ---- */
+    // pesos de XP e helper de cálculo (espelham gamification.sql)
+    XP: XP,
+    xpFromCounts: xpFromCounts,
+
+    // ranking entre usuários — só faz sentido logado (precisa da RPC do banco).
+    // period: 'day' | 'week' | 'month' | 'year' | 'all'
+    getLeaderboard: function (period, lim) {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('leaderboard', { period: period || 'all', lim: lim || 100 })
+        .then(function (r) { return r.error ? null : (r.data || []); })
+        .catch(function () { return null; });
+    },
+
+    /* ---- feedback ---- */
+    // Envia um feedback. Logado -> user_id próprio; visitante -> user_id nulo
+    // (anônimo). Requer o feedback.sql aplicado no Supabase.
+    sendFeedback: function (fb) {
+      if (!sb) return Promise.resolve({ error: 'offline' });
+      return uid().then(function (id) {
+        return sb.from('feedback').insert({
+          user_id: id,
+          tipo: (fb && fb.tipo) || 'erro',
+          transtorno_id: (fb && fb.transtorno_id) || null,
+          mensagem: (fb && fb.mensagem) || '',
+          contexto: (fb && fb.contexto) || null
+        });
       });
     }
   };

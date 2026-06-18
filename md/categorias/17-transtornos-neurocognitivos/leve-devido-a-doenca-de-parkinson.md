@@ -9,7 +9,7 @@ A. São atendidos os critérios para transtorno neurocognitivo maior ou leve.
 B. A perturbação ocorre no cenário da doença de Parkinson estabelecida.
 C. Há surgimento insidioso e progressão gradual do prejuízo.
 D. O transtorno neurocognitivo não é atribuível a outra condição médica, não sendo mais bem explicado por outro transtorno mental.
-**Transtorno neurocognitivo maior ou leve provavelmente devido à doença de Parkinson** deve ser diagnosticado se tanto quanto forem atendidos. **Transtorno neurocognitivo maior ou leve ** **possivelmente devido à doença de Parkinson** deve ser diagnosticado se ou é encontrado:
+**Transtorno neurocognitivo maior ou leve provavelmente devido à doença de Parkinson** deve ser diagnosticado se tanto 1 quanto 2 forem atendidos. **Transtorno neurocognitivo maior ou leve ** **possivelmente devido à doença de Parkinson** deve ser diagnosticado se 1 ou 2 é encontrado:
 1. Não há evidências de etiologia mista (i.e., ausência de outra doença neurodegenerativa ou cerebrovascular ou de outra doença ou condição neurológica, mental ou sistêmica possivelmente contribuindo para o declínio cognitivo).
 2. A doença de Parkinson claramente antecede o aparecimento do transtorno neurocognitivo.
 **Nota para codificação:** Para transtorno neurocognitivo maior provavelmente devido à doença de
@@ -25,10 +25,10 @@ TNC é considerado* possivelmente* devido à doença de Parkinson *tanto* se nã
 ### Características Associadas que Apoiam o Diagnóstico
 Características frequentemente presentes incluem apatia, humor deprimido, humor ansioso, alucinações, delírios, mudanças da personalidade, transtorno comportamental do sono com movimento rápido dos olhos e sonolência excessiva durante o dia.
 ### Prevalência
-A prevalência da doença de Parkinson nos Estados Unidos aumenta consistentemente com o envelhecimento, de cerca de 0,5% entre e anos até 3% aos anos ou mais. A doença de
+A prevalência da doença de Parkinson nos Estados Unidos aumenta consistentemente com o envelhecimento, de cerca de 0,5% entre 65 e 69 anos até 3% aos 85 anos ou mais. A doença de
 Parkinson é mais comum em indivíduos do sexo masculino do que nos do feminino. Entre as pessoas que apresentam a doença, até 75% desenvolvem um TNC maior em algum momento durante o curso. A prevalência de TNC leve na doença de Parkinson tem sido estimada em 27%.
 ### Desenvolvimento e Curso
-O aparecimento da doença de Parkinson costuma ocorrer entre a sexta e a nona década de vida, com expressão maior no começo da década dos anos. O TNC leve costuma desenvolver-se relativamente cedo no curso da doença de Parkinson, ao passo que prejuízos maiores normalmente ocorrem apenas mais tarde.
+O aparecimento da doença de Parkinson costuma ocorrer entre a sexta e a nona década de vida, com expressão maior no começo da década dos 60 anos. O TNC leve costuma desenvolver-se relativamente cedo no curso da doença de Parkinson, ao passo que prejuízos maiores normalmente ocorrem apenas mais tarde.
 ### Fatores de Risco e Prognóstico
 **Ambientais. **Os fatores de risco para a doença de Parkinson incluem exposição a herbicidas e pesticidas.
 **Genéticos e fisiológicos. **Fatores de risco potenciais para TNC entre pessoas com a doença de

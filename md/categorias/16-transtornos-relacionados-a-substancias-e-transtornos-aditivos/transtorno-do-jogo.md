@@ -7,7 +7,7 @@
 ### Critérios Diagnósticos
 ### 312.31 (F63.0)
 A. Comportamento de jogo problemático persistente e recorrente levando a sofrimento ou comprometimento clinicamente significativo, conforme indicado pela apresentação de quatro (ou mais)
-dos seguintes em um período de meses:
+dos seguintes em um período de 12 meses:
 
 **586** Transtornos Relacionados a Substâncias e Transtornos Aditivos 1. Necessidade de apostar quantias de dinheiro cada vez maiores a fim de atingir a excitação desejada.
 2. Inquietude ou irritabilidade quando tenta reduzir ou interromper o hábito de jogar.
@@ -23,19 +23,19 @@ B. O comportamento de jogo não é mais bem explicado por um episódio maníaco.
 **Episódico**: Satisfaz os critérios diagnósticos mais de uma única vez, sendo que os sintomas cedem entre períodos de transtorno do jogo durante um período mínimo de vários meses.
 **Persistente**: Experiencia sintomas contínuos, satisfazendo os critérios diagnósticos por vários anos.
 *Especificar* se:
-**Em remissão inicial:** Após todos os critérios para transtorno do jogo terem sido preenchidos anteriormente, nenhum dos critérios para transtorno do jogo foi preenchido durante um período mínimo de três meses, porém inferior a meses.
-**Em remissão sustentada:** Após todos os critérios para transtorno do jogo terem sido preenchidos anteriormente, nenhum dos critérios para transtorno do jogo foi preenchido em nenhum momento durante um período igual ou superior a meses.
+**Em remissão inicial:** Após todos os critérios para transtorno do jogo terem sido preenchidos anteriormente, nenhum dos critérios para transtorno do jogo foi preenchido durante um período mínimo de três meses, porém inferior a 12 meses.
+**Em remissão sustentada:** Após todos os critérios para transtorno do jogo terem sido preenchidos anteriormente, nenhum dos critérios para transtorno do jogo foi preenchido em nenhum momento durante um período igual ou superior a 12 meses.
 *Especificar* a gravidade atual:
-**Leve:** Preenche ou critérios.
-**Moderada:** Preenche ou critérios.
-**Grave:** Preenche ou critérios.
+**Leve:** Preenche 4 ou 5 critérios.
+**Moderada:** Preenche 6 ou 7 critérios.
+**Grave:** Preenche 8 ou 9 critérios.
 **Nota**: Embora algumas condições comportamentais que não envolvem a ingestão de substâncias apresentem semelhanças com transtornos relacionados a substâncias, apenas um transtorno – transtorno do jogo – conta com dados suficientes para ser incluído nesta seção.
 ### Especificadores
-A gravidade baseia-se na quantidade de critérios preenchidos. Indivíduos com transtorno do jogo leve podem exibir apenas ou critérios, sendo que os critérios preenchidos com maior frequência normalmente estão relacionados à preocupação com o jogo e a “recuperar” as perdas. Indivíduos com transtorno do jogo moderadamente grave exibem mais critérios (i.e., ou 7); os com a forma mais grave irão exibir todos ou a maioria dos nove critérios (i.e., ou 9). Colocar em risco relacionamentos ou oportunidades profissionais devido ao jogo e depender de outras pessoas para obter fundos a fim de cobrir as perdas no jogo costumam ser os critérios menos frequentes e ocorrem mais entre pessoas com a forma do transtorno mais grave. Além disso, indivíduos que se apresentam para tratamento do transtorno do jogo geralmente mostram formas de moderadas a graves.
+A gravidade baseia-se na quantidade de critérios preenchidos. Indivíduos com transtorno do jogo leve podem exibir apenas 4 ou 5 critérios, sendo que os critérios preenchidos com maior frequência normalmente estão relacionados à preocupação com o jogo e a “recuperar” as perdas. Indivíduos com transtorno do jogo moderadamente grave exibem mais critérios (i.e., 6 ou 7); os com a forma mais grave irão exibir todos ou a maioria dos nove critérios (i.e., 8 ou 9). Colocar em risco relacionamentos ou oportunidades profissionais devido ao jogo e depender de outras pessoas para obter fundos a fim de cobrir as perdas no jogo costumam ser os critérios menos frequentes e ocorrem mais entre pessoas com a forma do transtorno mais grave. Além disso, indivíduos que se apresentam para tratamento do transtorno do jogo geralmente mostram formas de moderadas a graves.
 ### Características Diagnósticas
 Jogar envolve arriscar algo valioso na esperança de obter algo ainda mais valioso. Em diversas culturas, indivíduos apostam em jogos e eventos, e a maioria o faz sem experimentar problemas.
 
-Contudo, algumas pessoas desenvolvem um comprometimento considerável com relação ao seu comportamento de jogo. A característica essencial do transtorno do jogo é o comportamento de jogo desadaptativo persistente e recorrente que perturba os objetivos pessoais, familiares e/ou profissionais (Critério A). O transtorno do jogo é definido como um grupo de quatro ou mais sintomas listados no Critério A, com ocorrência no mesmo período de meses.
+Contudo, algumas pessoas desenvolvem um comprometimento considerável com relação ao seu comportamento de jogo. A característica essencial do transtorno do jogo é o comportamento de jogo desadaptativo persistente e recorrente que perturba os objetivos pessoais, familiares e/ou profissionais (Critério A). O transtorno do jogo é definido como um grupo de quatro ou mais sintomas listados no Critério A, com ocorrência no mesmo período de 12 meses.
 Um padrão de “recuperar as perdas” pode se desenvolver, acompanhado de uma necessidade urgente de continuar jogando (frequentemente com apostas ou riscos maiores) a fim de desfazer uma perda ou uma série de perdas. O indivíduo pode abandonar sua estratégia de jogo e tentar recuperar todas as perdas ao mesmo tempo. Embora muitos jogadores possam apresentar essa característica durante períodos breves, essa atitude frequente e em geral prolongada é típica do transtorno do jogo (Critério A6). As pessoas podem mentir para familiares, terapeutas, ou outras pessoas para esconder a extensão de seu envolvimento com o jogo e ocultar, entre outros, comportamentos ilícitos como falsificação, fraude, roubo ou estelionato para a obtenção de dinheiro para o jogo (Critério A7). Também podem apelar para comportamento de “resgate financeiro”, voltando-se para a família ou outras pessoas ao solicitar ajuda com uma situação financeira desesperadora causada pelo jogo (Critério A9).
 ### Características Associadas que Apoiam o Diagnóstico
 Distorções do pensamento (p. ex., negação, superstições, sentimentos de poder e controle sobre o resultado de eventos regulados pelo acaso, excesso de confiança) podem estar presentes em indivíduos com transtorno do jogo. Muitos com o transtorno acreditam que o dinheiro é tanto a causa quanto a solução para seus problemas. Algumas pessoas com esse transtorno são impulsivas, competitivas, cheias de energia, inquietas e entediam-se facilmente; podem mostrar-se demasiadamente preocupadas com a aprovação dos outros e ser generosas a ponto da extravagância quando ganham. Outros indivíduos com o transtorno são deprimidos e solitários e podem jogar quando se sentem impotentes, culpados ou deprimidos. Até metade dos indivíduos sob tratamento para transtorno do jogo tem ideação suicida, e cerca de 17% tentaram suicídio.

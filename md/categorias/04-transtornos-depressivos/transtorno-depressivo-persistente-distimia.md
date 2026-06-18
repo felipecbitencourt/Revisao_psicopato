@@ -36,8 +36,8 @@ H. Os sintomas causam sofrimento clinicamente significativo ou prejuízo no func
 **Em remissão parcial****:**(p. 188)
 **Em remissão completa**:(p. 188)
 *Especificar *se:
-**Início precoce:** Se o início ocorre antes dos anos de idade.
-**Início tardio:** Se o início ocorre aos anos ou mais.
+**Início precoce:** Se o início ocorre antes dos 21 anos de idade.
+**Início tardio:** Se o início ocorre aos 21 anos ou mais.
 *Especificar *se (para os dois anos mais recentes de transtorno depressivo persistente):
 **Com síndrome distímica pura:** Não foram satisfeitos todos os critérios para um episódio depressivo maior pelo menos nos dois anos precedentes.
 **Com episódio depressivo maior persistente:** Foram satisfeitos todos os critérios para um episódio depressivo maior durante o período precedente de dois anos.
@@ -53,9 +53,9 @@ Os indivíduos com transtorno depressivo persistente descrevem seu humor como tr
 
 **170** Transtornos Depressivos tério B estão presentes. Como esses sintomas tornaram-se uma parte tão presente na experiência cotidiana do indivíduo, em particular no caso de início precoce (p. ex., “Sempre fui desse jeito”), eles podem não ser relatados, a menos que diretamente investigados pelo entrevistador. Durante o período de dois anos (um ano para crianças ou adolescentes), qualquer intervalo livre de sintomas dura não mais do que dois meses (Critério C).
 ### Prevalência
-O transtorno depressivo persistente é efetivamente um amálgama do transtorno distímico e do episódio depressivo maior crônico do DSM-IV. A prevalência de meses nos Estados Unidos é de aproximadamente 0,5% para transtorno depressivo persistente e de 1,5% para transtorno depressivo maior crônico.
+O transtorno depressivo persistente é efetivamente um amálgama do transtorno distímico e do episódio depressivo maior crônico do DSM-IV. A prevalência de 12 meses nos Estados Unidos é de aproximadamente 0,5% para transtorno depressivo persistente e de 1,5% para transtorno depressivo maior crônico.
 ### Desenvolvimento e Curso
-O transtorno depressivo persistente com frequência apresenta um início precoce e insidioso (i.e., na infância, na adolescência ou no início da idade adulta) e, por definição, um curso crônico. Entre os indivíduos com transtorno depressivo persistente e transtorno da personalidade *borderline*, a covariância das características correspondentes ao longo do tempo sugere a operação de um mecanismo comum. O início precoce (i.e., antes dos anos) está associado a uma probabilidade maior de transtornos da personalidade e de transtornos por uso de substâncias comórbidos.
+O transtorno depressivo persistente com frequência apresenta um início precoce e insidioso (i.e., na infância, na adolescência ou no início da idade adulta) e, por definição, um curso crônico. Entre os indivíduos com transtorno depressivo persistente e transtorno da personalidade *borderline*, a covariância das características correspondentes ao longo do tempo sugere a operação de um mecanismo comum. O início precoce (i.e., antes dos 21 anos) está associado a uma probabilidade maior de transtornos da personalidade e de transtornos por uso de substâncias comórbidos.
 Quando os sintomas aumentam até o nível de um episódio depressivo maior, eles provavelmente retornarão um nível inferior. Entretanto, os sintomas depressivos têm muito menos probabilidade de desaparecer em determinado período de tempo no contexto do transtorno depressivo persistente do que em um episódio depressivo maior.
 ### Fatores de Risco e Prognóstico
 **Temperamentais. **Os fatores preditivos de pior evolução no longo prazo incluem níveis mais elevados de afetividade negativa (neuroticismo), maior gravidade dos sintomas, pior funcionamento global e presença de transtornos de ansiedade ou transtorno da conduta.

@@ -7,8 +7,9 @@ import re
 import sys
 from pathlib import Path
 
-SOURCE = Path(__file__).parent / "md" / "DSM-V.md"
-OUT_DIR = Path(__file__).parent / "md" / "categorias"
+ROOT = Path(__file__).resolve().parent.parent   # build/ -> raiz do repo
+SOURCE = ROOT / "md" / "DSM-V.md"
+OUT_DIR = ROOT / "md" / "categorias"
 
 CATEGORIAS: list[tuple[int, str, str]] = [
     (1, "transtornos-do-neurodesenvolvimento", "Transtornos do Neurodesenvolvimento"),

@@ -55,13 +55,6 @@
       {n:'Outro transtorno mental especificado', code:'F99'},{n:'Transtorno mental não especificado', code:'F99'}]},
   ];
 
-  var ACHIEVEMENTS = [
-    {emoji:'🔥', title:'Streak de 12 dias', sub:'Continue assim!', bg:'#FFEDE3'},
-    {emoji:'🎯', title:'Ansiedade dominada', sub:'Categoria 85%', bg:'#E6F6EE'},
-    {emoji:'⚡', title:'50 flashcards', sub:'Em um só dia', bg:'#E8ECFB'},
-    {emoji:'🧠', title:'100 questões', sub:'Marco atingido', bg:'#F3E8FB'},
-  ];
-
   var FLASHCARDS = [
     {front:'Transtorno de Ansiedade Generalizada', back:'Ansiedade e preocupação excessivas, na maioria dos dias, por ≥ 6 meses, difíceis de controlar.'},
     {front:'Transtorno de Pânico', back:'Ataques de pânico recorrentes e inesperados, seguidos de preocupação persistente com novos ataques.'},
@@ -131,6 +124,8 @@
     sun:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>',
     moon:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>',
     bell:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>',
+    soundOn:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>',
+    soundOff:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>',
     arrowR:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
     back:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>',
     chevR:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2D0D4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
@@ -188,9 +183,9 @@
   function sectionIcon(title){ return SECTION_ICON[title] || ICON.book; }
 
   var EX_MODES = [
-    {key:'flashcards', title:'Flashcards', desc:'Memorize critérios e definições virando os cartões.', chipText:'120 cartões', screen:'flashcards', color:'#FF7A45', bg:'#FFEDE3'},
-    {key:'quiz', title:'Questionário', desc:'Múltipla escolha com correção e explicação imediata.', chipText:'12 questões', screen:'quiz', color:'#4361EE', bg:'#E8ECFB'},
-    {key:'ligar', title:'Ligar transtorno → categoria', desc:'Associe cada transtorno ao seu capítulo do DSM.', chipText:'5 pares', screen:'ligar', color:'#06915A', bg:'#E6F6EE'},
+    {key:'flashcards', title:'Flashcards', desc:'Memorize critérios e definições virando os cartões.', chipText:'20 decks', screen:'flashMode', color:'#FF7A45', bg:'#FFEDE3'},
+    {key:'quiz', title:'Questionário', desc:'Múltipla escolha com correção imediata.', chipText:'por categoria', screen:'quizMode', color:'#4361EE', bg:'#E8ECFB'},
+    {key:'ligar', title:'Classificar transtornos', desc:'Arraste cada transtorno para a categoria certa.', chipText:'5 fases', screen:'ligar', action:'goClassify', color:'#06915A', bg:'#E6F6EE'},
     {key:'caso', title:'Estudo de caso', desc:'Leia a vinheta clínica e escolha o diagnóstico.', chipText:'12 casos', screen:'caso', color:'#8338EC', bg:'#F3E8FB'},
   ];
 
@@ -199,31 +194,64 @@
      --------------------------------------------------------- */
   var state = {
     screen:'home', activeCat:4, activeDisorder:0, fichaOpen:{},
-    fcIndex:0, fcFlipped:false,
+    deckCat:4, deckAll:null, fcIndex:0, fcFlipped:false,
+    quizCat:4, quizSet:null, quizScore:0, quizDone:false,
     quizIndex:0, quizSelected:null, quizAnswered:false,
+    classifyPhase:0, classifyBoard:null, classifyPlaced:{}, classifyLocked:{}, classifySel:null,
+    classifyChecked:false, classifyPhaseComplete:false, classifyScore:0, classifyTotal:0, classifyDone:false,
     matchLeftSel:null, matches:{},
     casoSelected:null, casoAnswered:false,
     dark:false,
     auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false},
     progress:{}, stats:null, pendingScroll:null,
+    rankPeriod:'week', leaderboard:null, rankLoading:false, rankError:false,
+    feedback:{tipo:'erro', transtornoId:'', transtornoNome:'', draft:'', sending:false, sent:false, error:''},
   };
 
   var REV_SCREENS = ['categorias','indice','categoria','ficha'];
-  var EX_SCREENS  = ['exercicios','flashcards','quiz','ligar','caso'];
+  var EX_SCREENS  = ['exercicios','flashMode','decks','flashcards','quizMode','quizDecks','quiz','ligar','caso'];
 
   /* registro de ações (delegação de cliques) */
   var actions = {
     goHome:        function(){ go('home'); },
     goCategorias:  function(){ go('categorias'); },
     goExercicios:  function(){ go('exercicios'); },
+    goFlashMode:   function(){ go('flashMode'); },
+    goDecks:       function(){ go('decks'); },
+    openDeck:      function(ci){ state.deckCat=ci; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
+    flashRandom:   function(){ state.deckAll=shuffle(allCards()); state.deckCat=-1; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
+    goQuizMode:    function(){ go('quizMode'); },
+    goQuizDecks:   function(){ go('quizDecks'); },
+    openQuizDeck:  function(ci){ state.quizCat=ci; startQuiz(buildQuiz(deckCards(ci))); },
+    quizRandom:    function(){ state.quizCat=-1; startQuiz(buildQuiz(allCards())); },
+    quizRestart:   function(){ startQuiz(buildQuiz(state.quizCat===-1 ? allCards() : deckCards(state.quizCat))); },
     goIndice:      function(){ go('indice'); },
-    goRanking:     function(){ go('ranking'); },
+    goRanking:     function(){ go('ranking'); loadLeaderboard(); },
+    setRankPeriod: function(p){ if(state.rankPeriod===p) return; state.rankPeriod=p; setState({}); loadLeaderboard(); },
     goDsm:         function(){ go('dsm'); },
-    goFeedback:    function(){ go('feedback'); },
+    goFeedback:    function(){ var f=state.feedback; f.sent=false; f.error=''; f.transtornoId=''; f.transtornoNome=''; go('feedback'); },
+    setFeedbackTipo:function(t){ state.feedback.draft=rawVal('fb-msg'); state.feedback.tipo=t; state.feedback.error=''; render(); },
+    clearFeedbackFicha:function(){ state.feedback.draft=rawVal('fb-msg'); state.feedback.transtornoId=''; state.feedback.transtornoNome=''; render(); },
+    reportFicha:   function(){ var d=currentDisorder(); var f=state.feedback; f.tipo='erro'; f.transtornoId=d?disorderId(state.activeCat,d):''; f.transtornoNome=d?d.n:''; f.sent=false; f.error=''; f.draft=''; setState({screen:'feedback'}); scrollTop(); },
+    submitFeedback:function(){
+      var f=state.feedback; var msg=rawVal('fb-msg').trim(); f.draft=msg;
+      if(!msg){ f.error='Escreva sua mensagem antes de enviar.'; render(); return; }
+      if(!DB.ready){ f.error='Disponível só com o Supabase configurado.'; render(); return; }
+      f.sending=true; f.error=''; render();
+      DB.sendFeedback({
+        tipo:f.tipo, transtorno_id:f.transtornoId||null, mensagem:msg,
+        contexto:{ ficha:f.transtornoNome||null, guest:!!state.auth.guest }
+      }).then(function(res){
+        f.sending=false;
+        if(res && res.error){ f.error='Não foi possível enviar. Tente de novo.'; render(); return; }
+        f.sent=true; f.draft=''; f.transtornoId=''; f.transtornoNome=''; render();
+      }).catch(function(){ f.sending=false; f.error='Erro de conexão. Tente de novo.'; render(); });
+    },
     goSobre:       function(){ go('sobre'); },
     openRef:       function(arg){ var p=String(arg).split(':'); var ci=+p[0], di=+p[1]; setState({screen:'ficha', activeCat:ci, activeDisorder:di, fichaOpen:initOpen(ci,di)}); recordRevised(); scrollTop(); },
-    goFlashcards:  function(){ go('flashcards'); },
+    goFlashcards:  function(){ state.deckCat=state.activeCat; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     toggleTheme:   function(){ toggleTheme(); },
+    toggleSound:   function(){ Sound.toggle(); render(); },
     openCat:       function(i){ setState({screen:'categoria', activeCat:i}); scrollTop(); },
     openDisorder:  function(i){ setState({screen:'ficha', activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
     backToCategoria:function(){ setState({screen:'categoria'}); scrollTop(); },
@@ -232,16 +260,33 @@
     toggleSec:     function(i){ var o=Object.assign({}, state.fichaOpen); o[i]=!o[i]; setState({fichaOpen:o}); },
     // flashcards
     flip:    function(){ setState({fcFlipped:!state.fcFlipped}); },
-    fcPrev:  function(){ var n=(state.fcIndex-1+FLASHCARDS.length)%FLASHCARDS.length; setState({fcIndex:n, fcFlipped:false}); },
-    fcAgain: function(){ logExercise('flashcard', false); var n=(state.fcIndex+1)%FLASHCARDS.length; setState({fcIndex:n, fcFlipped:false}); },
-    fcKnow:  function(){ logExercise('flashcard', true); var n=(state.fcIndex+1)%FLASHCARDS.length; setState({fcIndex:n, fcFlipped:false}); },
+    fcPrev:  function(){ var n=currentDeck().length; if(!n) return; setState({fcIndex:(state.fcIndex-1+n)%n, fcFlipped:false}); },
+    fcAgain: function(){ var n=currentDeck().length; if(!n) return; logExercise('flashcard', false); setState({fcIndex:(state.fcIndex+1)%n, fcFlipped:false}); },
+    fcKnow:  function(){ var n=currentDeck().length; if(!n) return; logExercise('flashcard', true); setState({fcIndex:(state.fcIndex+1)%n, fcFlipped:false}); },
     // quiz
-    quizSelect: function(i){ if(state.quizAnswered) return; var ok=(i===QUIZ[state.quizIndex].correct); setState({quizSelected:i, quizAnswered:true}); logExercise('quiz', ok); },
-    quizNext:   function(){ if(state.quizIndex<QUIZ.length-1) setState({quizIndex:state.quizIndex+1, quizSelected:null, quizAnswered:false}); else setState({quizIndex:0, quizSelected:null, quizAnswered:false}); },
-    // matching
-    matchLeft:  function(i){ setState({matchLeftSel:i}); },
-    matchRight: function(j){ if(state.matchLeftSel===null) return; var m=Object.assign({}, state.matches); m[state.matchLeftSel]=j; var full=Object.keys(m).length===ML.length; var allCorrect=full && ML.every(function(l,i){ return MR[m[i]]===l.cat; }); setState({matches:m, matchLeftSel:null}); if(full) logExercise('ligar', allCorrect); },
-    matchReset: function(){ setState({matches:{}, matchLeftSel:null}); },
+    quizSelect: function(i){ if(state.quizAnswered || !state.quizSet) return; var ok=(i===state.quizSet[state.quizIndex].correct); if(ok) state.quizScore++; setState({quizSelected:i, quizAnswered:true}); logExercise('quiz', ok); },
+    quizNext:   function(){ if(!state.quizSet) return; if(state.quizIndex<state.quizSet.length-1) setState({quizIndex:state.quizIndex+1, quizSelected:null, quizAnswered:false}); else { state.quizDone=true; setState({}); } },
+    // classificar (arrastar/tocar transtorno -> categoria)
+    goClassify:     function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
+    classifyPick:   function(id){ if(classifyJustDropped) return; id=Number(id); if(state.classifyLocked[id]) return; state.classifySel = (state.classifySel===id ? null : id); setState({}); },
+    classifyDrop:   function(binIdx){ if(classifyJustDropped) return; if(state.classifySel==null) return; classifyPlaceImpl(state.classifySel, binIdx); },
+    classifyToPool: function(){ if(classifyJustDropped) return; if(state.classifySel==null) return; classifyPlaceImpl(state.classifySel, 'pool'); },
+    classifyCheck:  function(){
+      var b=state.classifyBoard; if(!b) return;
+      var first=!state.classifyChecked, correctNow=0;
+      for(var id=0; id<b.pool.length; id++){
+        if(state.classifyLocked[id]) continue;
+        var bi=state.classifyPlaced[id]; if(bi==null) continue;
+        if(b.bins[bi].ci===b.pool[id].ci){ state.classifyLocked[id]=true; correctNow++; }
+        else { delete state.classifyPlaced[id]; }
+      }
+      if(first){ state.classifyScore += correctNow; logExercise('ligar', correctNow===b.pool.length); }
+      state.classifyChecked=true;
+      if(Object.keys(state.classifyLocked).length===b.pool.length) state.classifyPhaseComplete=true;
+      setState({});
+    },
+    classifyNext:   function(){ if(state.classifyPhase>=CLASSIFY_PHASES.length-1){ state.classifyDone=true; setState({}); } else { startPhase(state.classifyPhase+1); } },
+    classifyRestart:function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
     // caso
     casoSelect: function(i){ if(state.casoAnswered) return; var ok=(i===CASO.correct); setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok); },
   };
@@ -323,6 +368,51 @@
   function initOpen(catIdx, disIdx){
     return {};   // fichas iniciam com todas as seções colapsadas
   }
+
+  /* ---------------------------------------------------------
+     Efeitos sonoros (sintetizados via Web Audio — sem arquivos).
+     Tons curtos e suaves; mudo persistido em localStorage.
+     --------------------------------------------------------- */
+  var Sound = (function(){
+    var ctx = null, enabled = true;
+    try { enabled = localStorage.getItem('dsm-sound') !== 'off'; } catch(e){}
+    function ac(){
+      if(ctx) return ctx;
+      try { var AC = window.AudioContext || window.webkitAudioContext; ctx = AC ? new AC() : null; }
+      catch(e){ ctx = null; }
+      return ctx;
+    }
+    function tone(c, freq, start, dur, type, gain){
+      var t0 = c.currentTime + start;
+      var osc = c.createOscillator(), g = c.createGain();
+      osc.type = type || 'sine';
+      osc.frequency.setValueAtTime(freq, t0);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(gain || 0.12, t0 + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      osc.connect(g); g.connect(c.destination);
+      osc.start(t0); osc.stop(t0 + dur + 0.03);
+    }
+    function play(notes){
+      if(!enabled) return;
+      var c = ac(); if(!c) return;
+      if(c.state === 'suspended'){ try{ c.resume(); }catch(e){} }
+      notes.forEach(function(n){ tone(c, n.f, n.t||0, n.d||0.15, n.type, n.g); });
+    }
+    return {
+      isOn:    function(){ return enabled; },
+      toggle:  function(){ enabled = !enabled; try{ localStorage.setItem('dsm-sound', enabled?'on':'off'); }catch(e){} if(enabled) this.xp(); return enabled; },
+      // "+XP" / revisão: blip curtinho ascendente
+      xp:      function(){ play([{f:880,t:0,d:.12,type:'triangle',g:.09},{f:1318.5,t:.07,d:.16,type:'triangle',g:.09}]); },
+      revise:  function(){ play([{f:587.3,t:0,d:.10,type:'sine',g:.10},{f:880,t:.06,d:.16,type:'sine',g:.10}]); },
+      // acerto: terça maior ascendente; erro: queda grave suave
+      correct: function(){ play([{f:659.3,t:0,d:.12,type:'sine',g:.12},{f:987.8,t:.09,d:.20,type:'sine',g:.12}]); },
+      wrong:   function(){ play([{f:233.1,t:0,d:.16,type:'sine',g:.10},{f:185,t:.11,d:.24,type:'sine',g:.10}]); },
+      // level up: arpejo C–E–G–C
+      levelUp: function(){ play([{f:523.3,t:0,d:.14,type:'triangle',g:.11},{f:659.3,t:.10,d:.14,type:'triangle',g:.11},{f:784,t:.20,d:.14,type:'triangle',g:.11},{f:1046.5,t:.30,d:.34,type:'triangle',g:.12}]); }
+    };
+  })();
+
   function showToast(msg){
     try{
       var t=document.createElement('div');
@@ -380,16 +470,49 @@
     var id = disorderId(state.activeCat, d);
     if(state.progress[id]) return;          // já revisado
     state.progress[id] = true;
+    Sound.revise();
     render();                               // reflete já na sidebar/listas
     DB.markRevised(id).then(refreshStats).catch(function(){});
   }
   function logExercise(tipo, acerto){
+    // som de feedback (também em modo demo); flashcard "Não sei" fica sem som
+    if(tipo==='flashcard'){ if(acerto) Sound.correct(); }
+    else { acerto ? Sound.correct() : Sound.wrong(); }
     if(!tracking()) return;
     DB.logEvent(tipo, acerto).then(refreshStats).catch(function(){});
   }
   function refreshStats(){
     if(!tracking()) return Promise.resolve();
-    return DB.getStats().then(function(s){ state.stats = s; render(); }).catch(function(){});
+    var prevXP = userXP();                 // XP antes da ação (state.stats atual)
+    var prevLevel = levelForXP(prevXP);
+    return DB.getStats().then(function(s){
+      state.stats = s;
+      var newXP = userXP();
+      var delta = newXP - prevXP;           // ganho real (ficha/exercício/acerto/dia ativo)
+      render();
+      if(delta > 0) showXpGain(delta);
+      if(levelForXP(newXP) > prevLevel) Sound.levelUp();   // subiu de nível
+    }).catch(function(){});
+  }
+  // "+X XP" flutuante perto do contador de XP da topbar
+  function showXpGain(amount){
+    try{
+      var el = document.createElement('div');
+      el.className = 'xp-pop';
+      el.textContent = '+'+amount+' XP';
+      var pill = document.getElementById('xp-pill');
+      if(pill){
+        var r = pill.getBoundingClientRect();
+        el.style.left = (r.left + r.width/2) + 'px';
+        el.style.top  = (r.bottom + 7) + 'px';
+        pill.classList.add('xp-bump');
+        setTimeout(function(){ try{ pill.classList.remove('xp-bump'); }catch(e){} }, 600);
+      } else {
+        el.style.right = '40px'; el.style.top = '66px';
+      }
+      document.body.appendChild(el);
+      setTimeout(function(){ try{ document.body.removeChild(el); }catch(e){} }, 1500);
+    }catch(e){}
   }
   function loadUserData(){
     if(!tracking()){ return Promise.resolve(); }
@@ -398,6 +521,88 @@
       state.progress = prog;
       state.stats = res[1] || {revisados:0, exercicios:0, taxa:0, streak:0};
     }).catch(function(){ state.progress = {}; state.stats = {revisados:0, exercicios:0, taxa:0, streak:0}; });
+  }
+
+  /* ---------------------------------------------------------
+     XP, NÍVEIS e MEDALHAS (gamificação)
+     XP é derivado das stats (mesmos pesos do gamification.sql).
+     Curva de nível progressiva: para chegar ao nível N são
+     necessários 100·(N-1)² de XP acumulado.
+     --------------------------------------------------------- */
+  // stats normalizadas p/ cálculo de XP (preenche acertos/ativos no modo demo)
+  function statsForXP(){
+    var st = tracking() ? (state.stats || {}) : {revisados:38, exercicios:154, taxa:87, streak:12};
+    var acertos = (st.acertos != null) ? st.acertos : Math.round((st.exercicios||0)*(st.taxa||0)/100);
+    var ativos  = (st.ativos  != null) ? st.ativos  : (st.streak||0);
+    return {
+      revisados:st.revisados||0, exercicios:st.exercicios||0,
+      acertos:acertos, ativos:ativos, streak:st.streak||0, taxa:st.taxa||0
+    };
+  }
+  function userXP(){ return DB.xpFromCounts ? DB.xpFromCounts(statsForXP()) : 0; }
+  function levelForXP(xp){ return Math.floor(Math.sqrt((xp||0)/100)) + 1; }
+  function xpForLevel(L){ return 100 * (L-1) * (L-1); }
+  function levelInfo(xp){
+    xp = xp || 0;
+    var L = levelForXP(xp);
+    var base = xpForLevel(L), next = xpForLevel(L+1), span = next - base, into = xp - base;
+    return { level:L, xp:xp, base:base, next:next, span:span, into:into,
+             toNext: Math.max(0, next - xp), pct: span ? Math.min(100, Math.round(into/span*100)) : 0 };
+  }
+  // título por faixa de nível (só decorativo)
+  function levelTitle(L){
+    if(L >= 20) return 'Mestre do DSM';
+    if(L >= 12) return 'Especialista';
+    if(L >= 8)  return 'Clínico';
+    if(L >= 5)  return 'Residente';
+    if(L >= 3)  return 'Estagiário';
+    return 'Calouro';
+  }
+
+  // Catálogo de medalhas. `stat` é a métrica e `goal` o limiar p/ desbloquear.
+  var MEDALS = [
+    {id:'ficha-1',   emoji:'📖', title:'Primeiros passos',  desc:'Revise sua primeira ficha', stat:'revisados',  goal:1,   bg:'#E3F3F2'},
+    {id:'ficha-10',  emoji:'📚', title:'Estudante dedicado',desc:'Revise 10 fichas',          stat:'revisados',  goal:10,  bg:'#E3F3F2'},
+    {id:'ficha-50',  emoji:'🎓', title:'Erudito',           desc:'Revise 50 fichas',          stat:'revisados',  goal:50,  bg:'#E6F6EE'},
+    {id:'ex-10',     emoji:'✏️', title:'Aquecendo',         desc:'Faça 10 exercícios',        stat:'exercicios', goal:10,  bg:'#FFEDE3'},
+    {id:'ex-100',    emoji:'🧠', title:'Mente afiada',      desc:'Faça 100 exercícios',       stat:'exercicios', goal:100, bg:'#F3E8FB'},
+    {id:'acerto-50', emoji:'🎯', title:'Pontaria',          desc:'Acerte 50 exercícios',      stat:'acertos',    goal:50,  bg:'#E6F6EE'},
+    {id:'streak-3',  emoji:'🌱', title:'Criando hábito',    desc:'3 dias de streak',          stat:'streak',     goal:3,   bg:'#E6F6EE'},
+    {id:'streak-7',  emoji:'🔥', title:'Em chamas',         desc:'7 dias de streak',          stat:'streak',     goal:7,   bg:'#FFEDE3'},
+    {id:'streak-30', emoji:'⚡', title:'Imparável',         desc:'30 dias de streak',         stat:'streak',     goal:30,  bg:'#E8ECFB'},
+    {id:'ativo-30',  emoji:'📅', title:'Presença',          desc:'30 dias ativos',            stat:'ativos',     goal:30,  bg:'#E8ECFB'},
+  ];
+  function computeMedals(){
+    var st = statsForXP();
+    var all = MEDALS.map(function(m){
+      var cur = st[m.stat] || 0;
+      var pct = Math.min(100, Math.round(cur / m.goal * 100));
+      return Object.assign({}, m, { cur:cur, done: cur >= m.goal, pct:pct });
+    });
+    var earned = all.filter(function(m){ return m.done; });
+    var locked = all.filter(function(m){ return !m.done; })
+                    .sort(function(a,b){ return b.pct - a.pct; });
+    return { all:all, earned:earned, locked:locked };
+  }
+
+  /* ---------------------------------------------------------
+     Ranking (leaderboard) — carrega via RPC do Supabase
+     --------------------------------------------------------- */
+  function canRank(){ return DB.ready && state.auth.user && !state.auth.guest; }
+  function loadLeaderboard(){
+    if(!canRank()){ return; }
+    var period = state.rankPeriod;
+    state.rankLoading = true; state.rankError = false; render();
+    DB.getLeaderboard(period).then(function(rows){
+      if(state.rankPeriod !== period) return;   // troca de aba durante o fetch
+      state.rankLoading = false;
+      if(rows === null){ state.rankError = true; state.leaderboard = null; }
+      else { state.leaderboard = rows; }
+      render();
+    }).catch(function(){
+      if(state.rankPeriod !== period) return;
+      state.rankLoading = false; state.rankError = true; render();
+    });
   }
 
   /* ---------------------------------------------------------
@@ -418,6 +623,14 @@
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   // preserva quebras de linha (critérios com sub-itens) como <br>
   function escMl(s){ return esc(s).replace(/\n/g,'<br>'); }
+  // separa um rótulo de especificador em {código, nome}: ex.:
+  // "315.00 (F81.0) Com prejuízo na leitura" -> {code:"315.00 (F81.0)", name:"Com prejuízo na leitura"}
+  function splitSpecLabel(label){
+    var s = String(label||'').trim();
+    var m = s.match(/^((?:\d{3}(?:\.\d+)?\s*)?\([A-Z]\d[\w.]*\)|[A-Z]\d{2}(?:\.[A-Za-z0-9]+)?)\s+(.+)$/);
+    if(m){ return {code:m[1].replace(/\s+/g,' ').trim(), name:m[2].trim()}; }
+    return {code:'', name:s};
+  }
   // pequeno helper de letra A, B, C...
   function letter(i){ return String.fromCharCode(65+i); }
 
@@ -452,6 +665,23 @@
     var ovTotal = tracking() ? totalDisorders() : 90;
     var ovRev   = tracking() ? totalRevised()   : 38;
     var ovPct   = ovTotal ? Math.round(ovRev/ovTotal*100) : 0;
+    var lv      = levelInfo(userXP());
+    var levelCard = '<div style="margin-top:auto;background:linear-gradient(135deg,#0E4D64,#15677F);border-radius:16px;padding:14px 15px;color:#fff;">'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:11px;">'+
+        '<div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">'+
+          '<span style="font-size:7.5px;font-weight:800;letter-spacing:.4px;opacity:.85;">NÍVEL</span>'+
+          '<span style="font:800 15px \'Bricolage Grotesque\';line-height:1;">'+lv.level+'</span>'+
+        '</div>'+
+        '<div style="line-height:1.25;min-width:0;">'+
+          '<div style="font:800 13px \'Bricolage Grotesque\';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(levelTitle(lv.level))+'</div>'+
+          '<div style="font-size:11px;color:#B7D7DD;font-weight:700;">'+lv.xp+' XP</div>'+
+        '</div>'+
+      '</div>'+
+      '<div style="height:7px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden;">'+
+        '<div style="width:'+lv.pct+'%;height:100%;background:#5BC0BE;border-radius:99px;transition:width .5s ease;"></div>'+
+      '</div>'+
+      '<div style="font-size:10.5px;color:#B7D7DD;margin-top:6px;font-weight:600;">faltam '+lv.toNext+' XP p/ nível '+(lv.level+1)+'</div>'+
+    '</div>';
     return ''+
     '<aside class="sidebar">'+
       '<div style="display:flex;align-items:center;gap:11px;padding:4px 6px 22px;">'+
@@ -462,7 +692,8 @@
         '</div>'+
       '</div>'+
       '<nav style="display:flex;flex-direction:column;gap:4px;">'+nav+'</nav>'+
-      '<div style="margin-top:auto;background:var(--bg);border-radius:16px;padding:16px;">'+
+      levelCard+
+      '<div style="margin-top:12px;background:var(--bg);border-radius:16px;padding:16px;">'+
         '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">'+
           '<span style="font-size:12px;font-weight:700;color:var(--muted-2);">Progresso geral</span>'+
           '<span style="font:800 14px \'Bricolage Grotesque\';color:var(--teal-text);">'+ovPct+'%</span>'+
@@ -477,21 +708,166 @@
   }
 
   /* =========================================================
+     BUSCA GLOBAL (header)
+     Procura transtornos (por nome ou código), categorias e
+     navega para a ficha/categoria. O índice é montado uma vez
+     a partir de CATS. O dropdown é manipulado direto no DOM
+     (sem re-render) para não perder o foco enquanto digita.
+     ========================================================= */
+  function searchNormalize(s){
+    return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  }
+  var SEARCH_INDEX = null;
+  function searchIndex(){
+    if(SEARCH_INDEX) return SEARCH_INDEX;
+    var idx = [];
+    CATS.forEach(function(c, ci){
+      idx.push({type:'cat', ci:ci, di:-1, label:c.name, code:'', color:c.color, norm:searchNormalize(c.name)});
+      (c.items||[]).forEach(function(d, di){
+        var code = d.code || d.cid || d.dsm || '';
+        idx.push({type:'dis', ci:ci, di:di, label:d.n, code:code, cat:c.name, color:c.color,
+                  norm:searchNormalize(d.n + ' ' + code + ' ' + c.name)});
+      });
+    });
+    SEARCH_INDEX = idx;
+    return idx;
+  }
+  function searchQuery(q){
+    var nq = searchNormalize(q).trim();
+    if(!nq) return [];
+    var terms = nq.split(/\s+/);
+    var res = searchIndex().filter(function(e){
+      return terms.every(function(t){ return e.norm.indexOf(t) >= 0; });
+    });
+    // transtornos antes de categorias; cujo início do nome casa primeiro
+    var first = terms[0];
+    res.sort(function(a, b){
+      var aStart = searchNormalize(a.label).indexOf(first) === 0 ? 0 : 1;
+      var bStart = searchNormalize(b.label).indexOf(first) === 0 ? 0 : 1;
+      if(aStart !== bStart) return aStart - bStart;
+      if(a.type !== b.type) return a.type === 'dis' ? -1 : 1;
+      return a.label.localeCompare(b.label);
+    });
+    return res.slice(0, 12);
+  }
+  function searchResultsHtml(q){
+    if(!q.trim()) return '';
+    var res = searchQuery(q);
+    if(!res.length){
+      return '<div class="search-empty">Nada encontrado para “'+esc(q.trim())+'”.</div>';
+    }
+    return res.map(function(e){
+      if(e.type === 'cat'){
+        return '<button class="search-item" data-action="openCat" data-arg="'+e.ci+'">'+
+          '<span class="search-dot" style="background:'+e.color+';"></span>'+
+          '<span class="search-name">'+esc(e.label)+'</span>'+
+          '<span class="search-tag">categoria</span>'+
+        '</button>';
+      }
+      return '<button class="search-item" data-action="openRef" data-arg="'+e.ci+':'+e.di+'">'+
+        '<span class="search-dot" style="background:'+e.color+';"></span>'+
+        '<span class="search-name">'+esc(e.label)+'</span>'+
+        (e.code ? '<span class="search-code">'+esc(e.code)+'</span>' : '')+
+      '</button>';
+    }).join('');
+  }
+  // (re)liga os eventos do campo de busca após cada render
+  // arrasto (pointer-events) dos chips no modo Classificar; toque/clique
+  // continua via delegação (classifyPick/Drop). Arrastar sem mover = toque.
+  function bindClassify(scope){
+    if(state.screen!=='ligar') return;
+    var chips = scope.querySelectorAll('[data-chip]');
+    if(!chips.length) return;
+    var dragId=null, sx=0, sy=0, moved=false, clone=null;
+    function binAt(p){ var el=document.elementFromPoint(p.x,p.y); return (el && el.closest) ? el.closest('[data-bin]') : null; }
+    function clearHi(){ Array.prototype.forEach.call(scope.querySelectorAll('.over'), function(b){ b.classList.remove('over'); }); }
+    function onMove(e){
+      if(dragId===null) return;
+      var p={x:e.clientX, y:e.clientY};
+      if(!moved && (Math.abs(p.x-sx)+Math.abs(p.y-sy) > 8)){
+        moved=true;
+        var src = scope.querySelector('[data-chip="'+dragId+'"]');
+        if(src){
+          clone = src.cloneNode(true); clone.className='cl-chip cl-drag';
+          clone.style.cssText='position:fixed;left:0;top:0;z-index:9999;pointer-events:none;margin:0;';
+          document.body.appendChild(clone); src.style.opacity='0.35';
+        }
+      }
+      if(moved && clone){
+        e.preventDefault();
+        clone.style.transform='translate('+(p.x-clone.offsetWidth/2)+'px,'+(p.y-22)+'px) rotate(-3deg)';
+        clearHi(); var b=binAt(p); if(b) b.classList.add('over');
+      }
+    }
+    function onUp(e){
+      if(dragId===null) return;
+      var id=dragId; dragId=null;
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      if(moved){
+        var b=binAt({x:e.clientX, y:e.clientY});
+        if(clone){ try{ document.body.removeChild(clone); }catch(_){} clone=null; }
+        clearHi();
+        classifyJustDropped = true; setTimeout(function(){ classifyJustDropped=false; }, 350);
+        var t = b ? b.getAttribute('data-bin') : null;
+        classifyPlaceImpl(id, (t==null||t==='pool') ? 'pool' : t);
+      }
+    }
+    Array.prototype.forEach.call(chips, function(el){
+      el.addEventListener('pointerdown', function(e){
+        if(e.button && e.button!==0) return;
+        dragId = el.getAttribute('data-chip'); sx=e.clientX; sy=e.clientY; moved=false;
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointerup', onUp);
+      });
+    });
+  }
+
+  function bindSearch(scope){
+    var input = scope.querySelector('#global-search');
+    var box = scope.querySelector('#search-results');
+    if(!input || !box) return;
+    function update(){
+      var html = searchResultsHtml(input.value);
+      box.innerHTML = html;
+      box.style.display = html ? 'block' : 'none';
+    }
+    input.addEventListener('input', update);
+    input.addEventListener('focus', update);
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){ input.value=''; box.innerHTML=''; box.style.display='none'; input.blur(); }
+    });
+  }
+
+  /* =========================================================
      TOPBAR
      ========================================================= */
   function topbar(){
     var themeIcon = state.dark ? ICON.sun : ICON.moon;
-    return ''+
-    '<header class="topbar">'+
-      '<div class="topbar-search" style="flex:1;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:9px 14px;max-width:420px;">'+
-        ICON.search+
-        '<span style="color:var(--muted);font-size:14px;font-weight:500;">Buscar transtorno, categoria ou código…</span>'+
-      '</div>'+
+    var streak = tracking() ? ((state.stats && state.stats.streak) || 0) : 12;
+    var lv = levelInfo(userXP());
+    var levelPill = '<button id="xp-pill" data-action="goRanking" title="Ver ranking" data-hover="border-color:#5BC0BE;" style="display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:6px 13px 6px 7px;cursor:pointer;transition:border-color .18s ease;">'+
+        '<span style="width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#5BC0BE,#0E4D64);color:#fff;display:flex;align-items:center;justify-content:center;font:800 12px \'Bricolage Grotesque\';flex-shrink:0;">'+lv.level+'</span>'+
+        '<span style="font:800 13px \'Bricolage Grotesque\';color:var(--teal-text);">'+lv.xp+'</span>'+
+        '<span style="font-size:12px;font-weight:600;color:var(--muted);">XP</span>'+
+      '</button>';
+    var streakChip = (tracking() && streak===0) ? '' :
       '<div style="display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid #FFD9C2;border-radius:99px;padding:7px 14px 7px 11px;">'+
         ICON.flame+
-        '<span style="font:800 14px \'Bricolage Grotesque\';color:#E8590C;">12</span>'+
+        '<span style="font:800 14px \'Bricolage Grotesque\';color:#E8590C;">'+streak+'</span>'+
         '<span style="font-size:12.5px;font-weight:600;color:#C2410C;">dias</span>'+
+      '</div>';
+    return ''+
+    '<header class="topbar">'+
+      '<div class="topbar-search" style="position:relative;flex:1;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:9px 14px;max-width:420px;">'+
+        ICON.search+
+        '<input id="global-search" type="text" autocomplete="off" spellcheck="false" placeholder="Buscar transtorno, categoria ou código…" style="flex:1;min-width:0;border:none;background:transparent;outline:none;font:500 14px \'Hanken Grotesk\';color:var(--ink);">'+
+        '<kbd class="search-hint" aria-hidden="true">/</kbd>'+
+        '<div id="search-results" class="search-results" role="listbox" style="display:none;"></div>'+
       '</div>'+
+      levelPill+
+      streakChip+
+      '<button data-action="toggleSound" title="'+(Sound.isOn()?'Som ligado':'Som desligado')+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:'+(Sound.isOn()?'var(--teal-text)':'var(--muted)')+';transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+(Sound.isOn()?ICON.soundOn:ICON.soundOff)+'</button>'+
       '<button data-action="toggleTheme" title="Alternar tema" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9) rotate(-15deg);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+themeIcon+'</button>'+
       '<button data-hover="background:var(--surface-2);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:background .18s ease;">'+ICON.bell+'</button>'+
     '</header>';
@@ -519,24 +895,59 @@
     '</div>';
   }
 
+  // cartão de medalha (conquistada → colorida; bloqueada → esmaecida c/ progresso)
+  function medalCard(m){
+    if(m.done){
+      return '<div data-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(16,42,51,.08);border-color:#9DD9D2;" style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;cursor:default;">'+
+        '<div style="width:42px;height:42px;border-radius:12px;background:'+m.bg+';display:flex;align-items:center;justify-content:center;font-size:21px;">'+m.emoji+'</div>'+
+        '<div style="font-weight:700;font-size:14px;margin-top:10px;color:var(--ink);">'+esc(m.title)+'</div>'+
+        '<div style="font-size:12px;color:var(--muted);font-weight:500;">'+esc(m.desc)+'</div>'+
+      '</div>';
+    }
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;cursor:default;">'+
+      '<div style="width:42px;height:42px;border-radius:12px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:21px;filter:grayscale(1);opacity:.55;">'+m.emoji+'</div>'+
+      '<div style="font-weight:700;font-size:14px;margin-top:10px;color:var(--muted-2);">'+esc(m.title)+'</div>'+
+      '<div style="height:6px;background:var(--track);border-radius:99px;overflow:hidden;margin-top:8px;"><div style="width:'+m.pct+'%;height:100%;background:#9DD9D2;border-radius:99px;"></div></div>'+
+      '<div style="font-size:11px;color:var(--muted);font-weight:600;margin-top:6px;">'+m.cur+' / '+m.goal+'</div>'+
+    '</div>';
+  }
+
+  // faixa de nível + barra de XP (home)
+  function levelHeroCard(lv){
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;margin-bottom:18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">'+
+      '<div style="width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#5BC0BE,#0E4D64);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 18px rgba(14,77,100,.25);">'+
+        '<span style="font-size:9px;font-weight:800;letter-spacing:.6px;opacity:.85;">NÍVEL</span>'+
+        '<span style="font:800 23px \'Bricolage Grotesque\';line-height:1;">'+lv.level+'</span>'+
+      '</div>'+
+      '<div style="flex:1;min-width:210px;">'+
+        '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px;">'+
+          '<span style="font:800 15px \'Bricolage Grotesque\';color:var(--ink);">'+esc(levelTitle(lv.level))+'</span>'+
+          '<span style="font-size:12.5px;font-weight:800;color:var(--teal-text);">'+lv.xp+' XP</span>'+
+        '</div>'+
+        '<div style="height:9px;background:var(--track);border-radius:99px;overflow:hidden;">'+
+          '<div style="width:'+lv.pct+'%;height:100%;background:linear-gradient(90deg,#0E4D64,#5BC0BE);border-radius:99px;transition:width .5s ease;"></div>'+
+        '</div>'+
+        '<div style="font-size:11.5px;color:var(--muted);font-weight:600;margin-top:7px;">Faltam <b style="color:var(--muted-2);">'+lv.toNext+' XP</b> para o nível '+(lv.level+1)+'</div>'+
+      '</div>'+
+    '</div>';
+  }
+
   function screenHome(){
     var st = tracking() ? (state.stats || {streak:0, revisados:0, exercicios:0, taxa:0})
                         : {streak:12, revisados:38, exercicios:154, taxa:87};
     var gname = greetName();
     var greeting = gname ? ('Bom te ver de novo, '+esc(gname)+'.') : 'Bom te ver de novo!';
     var dataHoje = tracking() ? todayLabel() : 'Quarta-feira, 10 de junho';
-    var conq = ACHIEVEMENTS.map(function(a){
-      return '<div data-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(16,42,51,.08);border-color:#9DD9D2;" style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;cursor:default;">'+
-        '<div style="width:42px;height:42px;border-radius:12px;background:'+a.bg+';display:flex;align-items:center;justify-content:center;font-size:21px;">'+a.emoji+'</div>'+
-        '<div style="font-weight:700;font-size:14px;margin-top:10px;color:var(--ink);">'+esc(a.title)+'</div>'+
-        '<div style="font-size:12px;color:var(--muted);font-weight:500;">'+esc(a.sub)+'</div>'+
-      '</div>';
-    }).join('');
+    var md = computeMedals();
+    var conq = md.earned.concat(md.locked).slice(0, 8).map(medalCard).join('');
+    var lv = levelInfo(userXP());
 
     return ''+
     '<section style="max-width:1080px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:14px;font-weight:600;color:var(--muted);margin-bottom:2px;">'+esc(dataHoje)+'</div>'+
-      '<h1 style="font:800 30px \'Bricolage Grotesque\';letter-spacing:-.6px;margin:0 0 24px;color:var(--ink);">'+greeting+'</h1>'+
+      '<h1 style="font:800 30px \'Bricolage Grotesque\';letter-spacing:-.6px;margin:0 0 18px;color:var(--ink);">'+greeting+'</h1>'+
+
+      levelHeroCard(lv)+
 
       '<div class="stat-grid">'+
         statCard('animation:ringPulse 2.6s ease-out infinite;', '#FFEDE3', ICON.flameOrange, String(st.streak), 'dias de streak')+
@@ -568,8 +979,9 @@
         '</div>'+
       '</div>'+
 
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">'+
-        '<h3 style="font:700 18px \'Bricolage Grotesque\';margin:0;">Conquistas recentes</h3>'+
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;">'+
+        '<h3 style="font:700 18px \'Bricolage Grotesque\';margin:0;">Conquistas</h3>'+
+        '<span style="font-size:12.5px;font-weight:700;color:var(--muted);">'+md.earned.length+' de '+md.all.length+' medalhas</span>'+
       '</div>'+
       '<div class="conq-grid">'+conq+'</div>'+
     '</section>';
@@ -751,7 +1163,14 @@
     var specBlock = spec.length
       ? '<div class="spec-wrap">'+ spec.map(function(blk){
           var opts = (blk.items||[]).map(function(o){
-            return '<li>'+(o.label?'<span class="spec-opt-label">'+esc(o.label)+'</span> ':'')+(o.desc?esc(o.desc):'')+'</li>';
+            var desc = o.desc || '';
+            if(!o.label && /:\s*$/.test(desc)){            // linha-cabeçalho ("Código baseado em…:")
+              return '<li class="spec-subhead">'+esc(desc)+'</li>';
+            }
+            var sp = splitSpecLabel(o.label || '');
+            var name = sp.name ? '<b class="spec-opt-label">'+esc(sp.name)+'</b>' : '';
+            var dtxt = desc ? (name ? ' ' : '')+esc(desc) : '';
+            return '<li>'+(sp.code ? '<span class="spec-code">'+esc(sp.code)+'</span>' : '')+'<span>'+name+dtxt+'</span></li>';
           }).join('');
           var head = blk.head ? '<div class="spec-head">'+esc(blk.head)+'</div>' : '';
           return '<div class="spec-block">'+head+'<ul class="spec-list">'+opts+'</ul></div>';
@@ -792,7 +1211,7 @@
         var cap = sec.caption ? '<div class="sec-caption">'+esc(sec.caption)+'</div>' : '';
         body = '<div class="sec-acc-body">'+paras+imgs+cap+'</div>';
       }
-      return '<div id="'+secId(i)+'">'+head+body+'</div>';
+      return '<div id="'+secId(i)+'"'+(open?' class="sec-open"':'')+'>'+head+body+'</div>';
     }).join('');
     var secControls = sections.length>1
       ? '<div class="sec-controls"><button data-action="expandAll" class="sec-ctl-btn" data-hover="border-color:var(--cat);color:var(--cat);">Expandir tudo</button><button data-action="collapseAll" class="sec-ctl-btn" data-hover="border-color:var(--cat);color:var(--cat);">Recolher tudo</button></div>'
@@ -844,6 +1263,9 @@
         ? '<div class="revised-badge"><span class="rb-icon">'+ICON.knowCheck+'</span><span class="rb-text">Revisado</span><button data-action="toggleRevised" class="rb-toggle">desmarcar</button></div>'
         : '<button data-action="toggleRevised" class="revise-cta" data-hover="border-color:var(--cat);color:var(--cat);">'+ICON.knowCheck+'Marcar como revisado</button>';
     }
+    var reportBtn = tracking()
+      ? '<button data-action="reportFicha" class="report-cta" data-hover="border-color:var(--cat);color:var(--cat);">'+ICON.message+'Reportar erro nesta ficha</button>'
+      : '';
 
     // ---- navegação anterior/próximo (próximo nomeado) ----
     var prevItem = cat.items[state.activeDisorder-1];
@@ -863,10 +1285,7 @@
           '<h1 class="ficha-title">'+esc(disorder.n)+'</h1>'+
           chips+
 
-          '<div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:16px;padding:18px 20px;margin-bottom:24px;display:flex;gap:14px;">'+
-            ICON.info+
-            '<div><div style="font-weight:700;font-size:13.5px;color:var(--accent-tx);margin-bottom:4px;">Resumo rápido</div><p style="margin:0;font-size:14.5px;line-height:1.55;color:var(--body);">'+esc(summaryText)+'</p></div>'+
-          '</div>'+
+          '<div class="ficha-summary"><span class="fs-icon">'+ICON.info+'</span><div><div class="fs-label">Resumo rápido</div><p>'+esc(summaryText)+'</p></div></div>'+
 
           '<h3 class="ficha-h3"><span class="bar"></span>Critérios diagnósticos</h3>'+
           critIntro+
@@ -887,6 +1306,7 @@
             '<div><div class="fc-t1">Revisar com flashcards</div><div class="fc-t2">memorize os critérios</div></div>'+
           '</button>'+
           revisedCard+
+          reportBtn+
         '</aside>'+
       '</div>'+
     '</section>';
@@ -895,20 +1315,143 @@
   /* =========================================================
      TELA: EXERCÍCIOS (hub)
      ========================================================= */
-  function screenExercicios(){
-    var cards = EX_MODES.map(function(m){
-      var iconWrap = "width:52px;height:52px;border-radius:14px;background:"+m.bg+";display:flex;align-items:center;justify-content:center;";
-      var chip = "font-size:11.5px;font-weight:700;color:"+m.color+";background:"+m.bg+";border-radius:8px;padding:5px 11px;white-space:nowrap;";
-      return '<button data-action="goScreen" data-arg="'+m.screen+'" data-hover="border-color:#5BC0BE;transform:translateY(-3px);box-shadow:0 12px 28px rgba(16,42,51,.09);" data-active="transform:translateY(-1px) scale(.99);" style="text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;cursor:pointer;display:flex;flex-direction:column;gap:0;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;">'+
-        '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:16px;">'+
-          '<div style="'+iconWrap+'">'+EX_ICON[m.key]+'</div>'+
-          '<span style="'+chip+'">'+m.chipText+'</span>'+
+  /* ---------------------------------------------------------
+     Decks de flashcards (um por categoria, gerados das fichas)
+     --------------------------------------------------------- */
+  var DECK_ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>';
+  function deckCards(ci){
+    var c = CATS[ci]; if(!c) return [];
+    return (c.items||[]).map(function(d){
+      var sum = (d.summary||'').trim();
+      if(!sum || /não disponível/i.test(sum)) return null;
+      return { front:d.n, back:sum, code:(d.code||d.cid||d.dsm||''), cat:c.name, color:c.color };
+    }).filter(Boolean);
+  }
+  function allCards(){ var out=[]; CATS.forEach(function(_,ci){ out=out.concat(deckCards(ci)); }); return out; }
+  function shuffle(arr){
+    var a=arr.slice();
+    for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+    return a;
+  }
+  function currentDeck(){ return state.deckCat===-1 ? (state.deckAll||[]) : deckCards(state.deckCat); }
+
+  /* questionário gerado das fichas: resumo -> nome, distratores da mesma categoria */
+  var QUIZ_LEN = 10;
+  function buildQuiz(items){
+    var pool = allCards().map(function(x){ return x.front; });
+    var names = items.map(function(x){ return x.front; });
+    return shuffle(items).slice(0, QUIZ_LEN).map(function(card){
+      var distr = shuffle(names.filter(function(n){ return n!==card.front; })).slice(0,3);
+      if(distr.length<3){
+        var extra = shuffle(pool.filter(function(n){ return n!==card.front && distr.indexOf(n)<0; })).slice(0, 3-distr.length);
+        distr = distr.concat(extra);
+      }
+      var opts = shuffle([card.front].concat(distr));
+      return { q: card.back, opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color };
+    });
+  }
+
+  // grade dos 20 decks (reutilizada por flashcards e quiz); unit = 'cartões' | 'questões'
+  function deckGrid(action, unit){
+    return CATS.map(function(c, ci){
+      var count = deckCards(ci).length, total = c.items.length;
+      var rev = tracking() ? catRevisedCount(ci) : Math.round(total*(c.prog||0));
+      var pct = total ? Math.round(rev/total*100) : 0;
+      var n = unit==='questões' ? Math.min(QUIZ_LEN, count) : count;
+      return '<button data-action="'+action+'" data-arg="'+ci+'" class="deck-card" data-hover="border-color:'+c.color+';transform:translateY(-4px);box-shadow:0 14px 30px rgba(16,42,51,.10);" data-active="transform:translateY(-1px) scale(.99);">'+
+        '<div class="deck-top">'+
+          '<span class="deck-icon" style="background:'+c.color+'18;color:'+c.color+';">'+DECK_ICON+'</span>'+
+          '<span class="deck-num" style="color:'+c.color+';background:'+c.color+'14;">'+(ci+1<10?'0':'')+(ci+1)+'</span>'+
         '</div>'+
-        '<div style="font:700 18px \'Bricolage Grotesque\';color:var(--ink);">'+esc(m.title)+'</div>'+
-        '<p style="margin:6px 0 0;font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.45;">'+esc(m.desc)+'</p>'+
+        '<div class="deck-name">'+esc(c.name)+'</div>'+
+        '<div class="deck-count-row"><b style="color:'+c.color+';">'+n+'</b> '+unit+' · '+total+' transtornos</div>'+
+        (tracking() ? '<div class="deck-prog"><span style="width:'+pct+'%;background:'+c.color+';"></span></div><div class="deck-prog-lbl">'+rev+' / '+total+' revisados</div>' : '')+
       '</button>';
     }).join('');
+  }
 
+  function startQuiz(set){
+    state.quizSet = set; state.quizScore = 0; state.quizDone = false;
+    setState({screen:'quiz', quizIndex:0, quizSelected:null, quizAnswered:false});
+    scrollTop();
+  }
+
+  /* ---------------------------------------------------------
+     CLASSIFICAR: arrastar transtornos para a categoria (5 fases)
+     --------------------------------------------------------- */
+  // clusters de categorias confundíveis (índices ci) p/ as fases difíceis
+  var CONFUSABLE = [
+    [4,5,6,7,8],   // ansiedade · TOC · trauma · dissociativos · somáticos
+    [2,3],         // bipolar · depressivos
+    [15,16],       // substâncias · neurocognitivos
+    [14,17],       // disruptivos · personalidade
+  ];
+  var CLASSIFY_PHASES = [
+    {bins:3, chips:6, hard:false},
+    {bins:3, chips:7, hard:false},
+    {bins:4, chips:8, hard:false},
+    {bins:4, chips:8, hard:true},
+    {bins:5, chips:9, hard:true},
+  ];
+  function pickCats(k, hard){
+    var pool;
+    if(hard){
+      pool = CONFUSABLE[Math.floor(Math.random()*CONFUSABLE.length)].slice();
+      while(pool.length < k){ var r=Math.floor(Math.random()*CATS.length); if(pool.indexOf(r)<0) pool.push(r); }
+      return shuffle(pool).slice(0,k);
+    }
+    return shuffle(CATS.map(function(_,i){return i;})).slice(0,k);
+  }
+  function buildPhase(pi){
+    var cfg = CLASSIFY_PHASES[pi] || CLASSIFY_PHASES[CLASSIFY_PHASES.length-1];
+    var cats = pickCats(cfg.bins, cfg.hard).filter(function(ci){ return deckCards(ci).length>0; });
+    var bins = cats.map(function(ci){ return { ci:ci, name:CATS[ci].name, color:CATS[ci].color }; });
+    var perCat = {};
+    cats.forEach(function(ci){ perCat[ci] = shuffle(deckCards(ci)); });
+    var chips = [];
+    cats.forEach(function(ci){ if(perCat[ci].length){ chips.push({ name:perCat[ci].shift().front, ci:ci, color:CATS[ci].color }); } });
+    var guard=0;
+    while(chips.length < cfg.chips && guard++<200){
+      var ci = cats[Math.floor(Math.random()*cats.length)];
+      if(perCat[ci].length){ chips.push({ name:perCat[ci].shift().front, ci:ci, color:CATS[ci].color }); }
+    }
+    return { bins:bins, pool: shuffle(chips) };
+  }
+  function startPhase(pi){
+    var board = buildPhase(pi);
+    state.classifyPhase = pi; state.classifyBoard = board;
+    state.classifyPlaced = {}; state.classifyLocked = {}; state.classifySel = null;
+    state.classifyChecked = false; state.classifyPhaseComplete = false;
+    state.classifyTotal += board.pool.length;
+    setState({screen:'ligar'}); scrollTop();
+  }
+  function classifyPlaceImpl(id, target){
+    id = Number(id);
+    if(state.classifyLocked[id]) return;
+    if(target==='pool' || target==null){ delete state.classifyPlaced[id]; }
+    else { state.classifyPlaced[id] = Number(target); }
+    state.classifySel = null;
+    setState({});
+  }
+  var classifyJustDropped = false;   // suprime o "click" logo após um arrasto
+
+  function exModeCard(m){
+    var iconWrap = "width:52px;height:52px;border-radius:14px;background:"+m.bg+";display:flex;align-items:center;justify-content:center;";
+    var chip = "font-size:11.5px;font-weight:700;color:"+m.color+";background:"+m.bg+";border-radius:8px;padding:5px 11px;white-space:nowrap;";
+    var act = m.action ? ('data-action="'+m.action+'"') : ('data-action="goScreen" data-arg="'+m.screen+'"');
+    return '<button '+act+' data-hover="border-color:#5BC0BE;transform:translateY(-3px);box-shadow:0 12px 28px rgba(16,42,51,.09);" data-active="transform:translateY(-1px) scale(.99);" style="text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;cursor:pointer;display:flex;flex-direction:column;gap:0;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;">'+
+      '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:16px;">'+
+        '<div style="'+iconWrap+'">'+EX_ICON[m.key]+'</div>'+
+        '<span style="'+chip+'">'+m.chipText+'</span>'+
+      '</div>'+
+      '<div style="font:700 18px \'Bricolage Grotesque\';color:var(--ink);">'+esc(m.title)+'</div>'+
+      '<p style="margin:6px 0 0;font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.45;">'+esc(m.desc)+'</p>'+
+    '</button>';
+  }
+
+  // hub: os 4 modos de atividade
+  function screenExercicios(){
+    var cards = EX_MODES.map(exModeCard).join('');
     return ''+
     '<section style="max-width:1000px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Exercícios</div>'+
@@ -918,16 +1461,86 @@
     '</section>';
   }
 
-  function backToEx(label){
-    return '<button data-action="goExercicios" data-hover="color:var(--teal-text);" style="background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0;margin-bottom:20px;">'+ICON.back+(label||'Exercícios')+'</button>';
+  // seletor: flashcards por categoria ou geral (aleatório)
+  function modeOption(action, ico, icoColor, icoBg, title, desc){
+    return '<button data-action="'+action+'" data-hover="border-color:#5BC0BE;transform:translateY(-3px);box-shadow:0 12px 28px rgba(16,42,51,.09);" data-active="transform:translateY(-1px) scale(.99);" style="text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;cursor:pointer;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;">'+
+      '<div style="width:52px;height:52px;border-radius:14px;background:'+icoBg+';color:'+icoColor+';display:flex;align-items:center;justify-content:center;margin-bottom:16px;">'+ico+'</div>'+
+      '<div style="font:700 18px \'Bricolage Grotesque\';color:var(--ink);">'+esc(title)+'</div>'+
+      '<p style="margin:6px 0 0;font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.45;">'+esc(desc)+'</p>'+
+    '</button>';
   }
+  function screenFlashMode(){
+    var icoCat = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>';
+    var icoRnd = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>';
+    return ''+
+    '<section style="max-width:760px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      backBtn('goExercicios','Exercícios')+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Flashcards</h1>'+
+      '<p style="margin:0 0 26px;color:var(--muted-2);font-size:15px;max-width:560px;">Como você quer revisar?</p>'+
+      '<div class="ex-grid">'+
+        modeOption('goDecks',   icoCat, '#FF7A45', '#FFEDE3', 'Por categoria', 'Escolha um dos 20 decks — um capítulo do DSM-5-TR por vez.')+
+        modeOption('flashRandom', icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', 'Todos os '+allCards().length+' cartões embaralhados, de todas as categorias.')+
+      '</div>'+
+    '</section>';
+  }
+
+  // grade dos 20 decks (flashcards)
+  function screenDecks(){
+    return ''+
+    '<section style="max-width:1080px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      backBtn('goFlashMode','Flashcards')+
+      '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Decks por categoria</h1>'+
+      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:14.5px;max-width:600px;">20 capítulos do DSM-5-TR — escolha um deck para revisar com flashcards.</p>'+
+      '<div class="deck-grid">'+deckGrid('openDeck','cartões')+'</div>'+
+    '</section>';
+  }
+
+  // seletor de modo do questionário (por categoria / geral)
+  function screenQuizMode(){
+    var icoCat = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>';
+    var icoRnd = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>';
+    return ''+
+    '<section style="max-width:760px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      backBtn('goExercicios','Exercícios')+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário</h1>'+
+      '<p style="margin:0 0 26px;color:var(--muted-2);font-size:15px;max-width:560px;">Leia a descrição e escolha o transtorno. Como você quer praticar?</p>'+
+      '<div class="ex-grid">'+
+        modeOption('goQuizDecks', icoCat, '#4361EE', '#E8ECFB', 'Por categoria', 'Questões de um capítulo do DSM-5-TR por vez (até '+QUIZ_LEN+' por rodada).')+
+        modeOption('quizRandom',  icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', QUIZ_LEN+' questões sorteadas de todas as categorias.')+
+      '</div>'+
+    '</section>';
+  }
+  // grade dos 20 decks (questionário)
+  function screenQuizDecks(){
+    return ''+
+    '<section style="max-width:1080px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      backBtn('goQuizMode','Questionário')+
+      '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário por categoria</h1>'+
+      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:14.5px;max-width:600px;">Escolha um capítulo do DSM-5-TR para responder.</p>'+
+      '<div class="deck-grid">'+deckGrid('openQuizDeck','questões')+'</div>'+
+    '</section>';
+  }
+
+  function backBtn(action, label){
+    return '<button data-action="'+action+'" data-hover="color:var(--teal-text);" style="background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0;margin-bottom:20px;">'+ICON.back+(label||'Voltar')+'</button>';
+  }
+  function backToEx(label){ return backBtn('goExercicios', label||'Exercícios'); }
 
   /* =========================================================
      TELA: FLASHCARDS
      ========================================================= */
   function screenFlashcards(){
-    var fc = FLASHCARDS[state.fcIndex];
-    var pct = Math.round((state.fcIndex+1)/FLASHCARDS.length*100);
+    var deck = currentDeck();
+    var geral = state.deckCat === -1;
+    if(!deck.length){
+      return '<section style="max-width:640px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+backBtn('goDecks','Decks')+
+        '<p style="color:var(--muted);font-size:14.5px;">Este deck ainda não tem cartões.</p></section>';
+    }
+    if(state.fcIndex >= deck.length) state.fcIndex = 0;
+    var fc = deck[state.fcIndex];
+    var ccolor = fc.color || '#0E4D64';     // cor da categoria deste cartão
+    var clabel = geral ? (fc.cat || 'Aleatório') : (fc.cat || '');
+    var pct = Math.round((state.fcIndex+1)/deck.length*100);
     var bar = '<div style="width:'+pct+'%;height:100%;background:linear-gradient(90deg,#FF7A45,#FFA06B);border-radius:99px;transition:width .5s cubic-bezier(.2,.7,.3,1);"></div>';
 
     var face;
@@ -938,15 +1551,17 @@
     } else {
       face = '<div style="position:absolute;inset:0;background:var(--surface);border:1.5px solid var(--border);border-radius:24px;"></div>'+
         '<span style="position:absolute;top:18px;left:20px;font-size:10.5px;font-weight:800;letter-spacing:.8px;color:var(--muted);z-index:1;">TERMO</span>'+
-        '<div style="position:relative;z-index:1;font:700 24px \'Bricolage Grotesque\';text-align:center;line-height:1.3;color:var(--ink);text-wrap:balance;animation:popIn .32s cubic-bezier(.2,.7,.3,1) both;">'+esc(fc.front)+'</div>';
+        '<div style="position:relative;z-index:1;font:700 24px \'Bricolage Grotesque\';text-align:center;line-height:1.3;color:var(--ink);text-wrap:balance;animation:popIn .32s cubic-bezier(.2,.7,.3,1) both;">'+esc(fc.front)+
+          (fc.code ? '<div style="margin-top:14px;"><span style="font:800 12px \'Bricolage Grotesque\';color:'+ccolor+';background:'+ccolor+'14;border:1px solid '+ccolor+'33;border-radius:8px;padding:4px 10px;display:inline-block;">'+esc(fc.code)+'</span></div>' : '')+
+        '</div>';
     }
 
     return ''+
     '<section style="max-width:640px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
-      backToEx()+
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">'+
-        '<h1 style="font:800 22px \'Bricolage Grotesque\';margin:0;">Flashcards</h1>'+
-        '<span style="font-weight:700;font-size:14px;color:var(--muted);">'+(state.fcIndex+1)+' / '+FLASHCARDS.length+'</span>'+
+      backBtn(geral?'goFlashMode':'goDecks', geral?'Flashcards':'Decks')+
+      '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px;">'+
+        '<div><div style="font-size:12.5px;font-weight:700;color:'+ccolor+';margin-bottom:2px;transition:color .3s ease;">'+esc(clabel)+(geral?' · aleatório':'')+'</div><h1 style="font:800 22px \'Bricolage Grotesque\';margin:0;">Flashcards</h1></div>'+
+        '<span style="font-weight:700;font-size:14px;color:var(--muted);white-space:nowrap;">'+(state.fcIndex+1)+' / '+deck.length+'</span>'+
       '</div>'+
       '<div style="height:6px;background:var(--track);border-radius:99px;overflow:hidden;margin-bottom:24px;">'+bar+'</div>'+
 
@@ -998,33 +1613,61 @@
      TELA: QUESTIONÁRIO
      ========================================================= */
   function screenQuiz(){
-    var qz = QUIZ[state.quizIndex];
-    var pct = Math.round((state.quizIndex+1)/QUIZ.length*100);
+    var set = state.quizSet;
+    var geral = state.quizCat === -1;
+    var backAction = geral ? 'goQuizMode' : 'goQuizDecks';
+    if(!set || !set.length){
+      return '<section style="max-width:680px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+        backBtn(backAction,'Questionário')+'<p style="color:var(--muted);font-size:14.5px;">Nenhum questionário ativo — escolha um modo.</p></section>';
+    }
+
+    // ---- resultado ----
+    if(state.quizDone){
+      var sc = state.quizScore, tot = set.length, p = tot?Math.round(sc/tot*100):0;
+      var msg = p>=80 ? 'Excelente!' : (p>=50 ? 'Bom trabalho!' : 'Continue praticando');
+      return ''+
+      '<section style="max-width:560px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+        backBtn(backAction,'Questionário')+
+        '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 30px;text-align:center;">'+
+          '<div style="width:88px;height:88px;border-radius:50%;background:var(--accent-bg);border:1px solid var(--accent-bd);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><span style="font:800 27px \'Bricolage Grotesque\';color:var(--teal-text);">'+p+'%</span></div>'+
+          '<h2 style="font:800 22px \'Bricolage Grotesque\';margin:0 0 6px;color:var(--ink);">'+msg+'</h2>'+
+          '<p style="margin:0 0 22px;font-size:15px;color:var(--muted-2);">Você acertou <b style="color:var(--ink);">'+sc+'</b> de <b style="color:var(--ink);">'+tot+'</b> questões.</p>'+
+          '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">'+
+            '<button data-action="quizRestart" data-hover="background:#13647F;transform:translateY(-2px);" style="background:#0E4D64;border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .18s ease;">'+ICON.redo+'Refazer</button>'+
+            '<button data-action="'+backAction+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .18s ease;">Voltar</button>'+
+          '</div>'+
+        '</div>'+
+      '</section>';
+    }
+
+    var qz = set[state.quizIndex];
+    var ccolor = qz.color || '#0E4D64';
+    var clabel = geral ? (qz.cat||'Aleatório') : (qz.cat||'');
+    var pct = Math.round((state.quizIndex+1)/set.length*100);
     var bar = '<div style="width:'+pct+'%;height:100%;background:linear-gradient(90deg,#0E4D64,#5BC0BE);border-radius:99px;transition:width .5s cubic-bezier(.2,.7,.3,1);"></div>';
     var opts = qz.opts.map(function(o,i){ return mcOption(o, i, state.quizAnswered, state.quizSelected, qz.correct, 'quizSelect'); }).join('');
 
-    var feedback = '';
-    var nextBtn = '';
+    var feedback = '', nextBtn = '';
     if(state.quizAnswered){
       var correct = state.quizSelected===qz.correct;
       feedback = '<div style="margin-top:18px;padding:14px 16px;border-radius:13px;background:'+(correct?'#E6F6EE':'#FDECEC')+';color:'+(correct?'#06694A':'#B4282C')+';animation:fadeUp .3s ease both;">'+
-        '<div style="font-weight:700;font-size:14px;margin-bottom:3px;">'+(correct?'Correto!':'Quase lá')+'</div>'+
-        '<p style="margin:0;font-size:13.5px;line-height:1.5;opacity:.9;">Conteúdo ilustrativo — aqui entra a explicação da resposta correta com a referência ao critério do DSM.</p>'+
+        '<div style="font-weight:700;font-size:14px;">'+(correct?'Correto!':'Resposta: '+esc(qz.opts[qz.correct]))+'</div>'+
       '</div>';
-      var nextLabel = state.quizIndex<QUIZ.length-1 ? 'Próxima questão' : 'Recomeçar';
+      var nextLabel = state.quizIndex<set.length-1 ? 'Próxima questão' : 'Ver resultado';
       nextBtn = '<button data-action="quizNext" data-hover="background:#13647F;" style="display:inline-flex;align-items:center;gap:8px;background:#0E4D64;border:none;border-radius:12px;padding:12px 20px;font-weight:700;font-size:14px;color:#fff;cursor:pointer;animation:fadeUp .3s ease both;">'+nextLabel+ICON.arrowR+'</button>';
     }
 
     return ''+
     '<section style="max-width:680px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
-      backToEx()+
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">'+
-        '<h1 style="font:800 22px \'Bricolage Grotesque\';margin:0;">Questionário</h1>'+
-        '<span style="font-weight:700;font-size:14px;color:var(--muted);">Questão '+(state.quizIndex+1)+' / '+QUIZ.length+'</span>'+
+      backBtn(backAction,'Questionário')+
+      '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px;">'+
+        '<div><div style="font-size:12.5px;font-weight:700;color:'+ccolor+';margin-bottom:2px;transition:color .3s ease;">'+esc(clabel)+(geral?' · aleatório':'')+'</div><h1 style="font:800 22px \'Bricolage Grotesque\';margin:0;">Questionário</h1></div>'+
+        '<span style="font-weight:700;font-size:14px;color:var(--muted);white-space:nowrap;">'+(state.quizIndex+1)+' / '+set.length+'</span>'+
       '</div>'+
       '<div style="height:6px;background:var(--track);border-radius:99px;overflow:hidden;margin-bottom:24px;">'+bar+'</div>'+
       '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;">'+
-        '<div style="font:700 20px \'Bricolage Grotesque\';line-height:1.35;margin-bottom:22px;text-wrap:pretty;">'+esc(qz.q)+'</div>'+
+        '<div style="font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Qual transtorno corresponde a esta descrição?</div>'+
+        '<div style="font:600 18px \'Bricolage Grotesque\';line-height:1.45;margin-bottom:22px;text-wrap:pretty;color:var(--body);">'+esc(qz.q)+'</div>'+
         '<div style="display:flex;flex-direction:column;gap:11px;">'+opts+'</div>'+
         feedback+
       '</div>'+
@@ -1035,64 +1678,76 @@
   /* =========================================================
      TELA: LIGAR transtorno → categoria
      ========================================================= */
-  function screenLigar(){
-    var s = state;
-    var left = ML.map(function(l,i){
-      var matchedRight = s.matches[i];
-      var isSel = s.matchLeftSel===i;
-      var done = matchedRight!==undefined;
-      var correct = done && MR[matchedRight]===l.cat;
-      var bg='var(--surface)', border='var(--border)';
-      if(isSel){ border='var(--teal-text)'; bg='var(--accent-bg)'; }
-      if(done){ bg = correct?'#E6F6EE':'#FDECEC'; border = correct?'#06D6A0':'#E5484D'; }
-      var style = "display:flex;align-items:center;gap:10px;width:100%;padding:14px 16px;border-radius:14px;cursor:pointer;text-align:left;background:"+bg+";border:1.5px solid "+border+";transition:all .15s;";
-      var badge='';
-      if(done){
-        badge = '<span style="width:24px;height:24px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;background:'+(correct?'#06915A':'#E5484D')+';">'+(correct?'✓':'✕')+'</span>';
-      }
-      return '<button data-action="matchLeft" data-arg="'+i+'" style="'+style+'">'+
-        '<span style="flex:1;text-align:left;font-size:14px;font-weight:600;line-height:1.3;">'+esc(l.n)+'</span>'+badge+
-      '</button>';
+  function screenLigar(){   // "Classificar" — arrastar/tocar transtorno -> categoria
+    var board = state.classifyBoard;
+    if(!board){ return '<section style="max-width:880px;margin:0 auto;">'+backToEx()+'</section>'; }
+    var pool = board.pool, bins = board.bins;
+    var phase = state.classifyPhase, nP = CLASSIFY_PHASES.length;
+
+    // ---- resultado final ----
+    if(state.classifyDone){
+      var p = state.classifyTotal ? Math.round(state.classifyScore/state.classifyTotal*100) : 0;
+      var msg = p>=80?'Excelente!':(p>=50?'Bom trabalho!':'Continue praticando');
+      return ''+
+      '<section style="max-width:560px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+        backToEx()+
+        '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 30px;text-align:center;">'+
+          '<div style="width:88px;height:88px;border-radius:50%;background:var(--accent-bg);border:1px solid var(--accent-bd);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><span style="font:800 27px \'Bricolage Grotesque\';color:var(--teal-text);">'+p+'%</span></div>'+
+          '<h2 style="font:800 22px \'Bricolage Grotesque\';margin:0 0 6px;color:var(--ink);">'+msg+'</h2>'+
+          '<p style="margin:0 0 22px;font-size:15px;color:var(--muted-2);">Você acertou de primeira <b style="color:var(--ink);">'+state.classifyScore+'</b> de <b style="color:var(--ink);">'+state.classifyTotal+'</b> em '+nP+' fases.</p>'+
+          '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">'+
+            '<button data-action="classifyRestart" data-hover="background:#13647F;transform:translateY(-2px);" style="background:#0E4D64;border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .18s ease;">'+ICON.redo+'Jogar de novo</button>'+
+            '<button data-action="goExercicios" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .18s ease;">Voltar</button>'+
+          '</div>'+
+        '</div>'+
+      '</section>';
+    }
+
+    function chipHtml(id){
+      var chip = pool[id], locked = !!state.classifyLocked[id], sel = state.classifySel===id;
+      var attrs = locked ? '' : (' data-chip="'+id+'" data-action="classifyPick" data-arg="'+id+'"');
+      return '<button class="cl-chip'+(sel?' sel':'')+(locked?' locked':'')+'"'+attrs+'><span class="cl-name">'+esc(chip.name)+'</span>'+(locked?'<span class="cl-check">'+ICON.knowCheck+'</span>':'')+'</button>';
+    }
+    var placedCount = Object.keys(state.classifyPlaced).length;
+    var poolFull = placedCount === pool.length;
+    var poolChips = pool.map(function(_,id){ return state.classifyPlaced[id]==null ? chipHtml(id) : ''; }).join('');
+    var hasSel = state.classifySel!=null;
+
+    var binsHtml = bins.map(function(bin, bi){
+      var inside = pool.map(function(_,id){ return state.classifyPlaced[id]===bi ? chipHtml(id) : ''; }).join('');
+      return '<div class="cl-bin'+(hasSel?' target':'')+'" data-bin="'+bi+'" data-action="classifyDrop" data-arg="'+bi+'">'+
+        '<div class="cl-bin-h" style="background:'+bin.color+'14;color:'+bin.color+';border-bottom:1px solid '+bin.color+'22;">'+esc(bin.name)+'</div>'+
+        '<div class="cl-bin-b">'+inside+'</div>'+
+      '</div>';
     }).join('');
 
-    var usedRights = {};
-    Object.keys(s.matches).forEach(function(k){ usedRights[s.matches[k]]=true; });
-    var right = MR.map(function(catIdx,j){
-      var c = CATS[catIdx];
-      var used = !!usedRights[j];
-      var style = "display:flex;align-items:center;gap:10px;width:100%;padding:14px 16px;border-radius:14px;cursor:pointer;text-align:left;background:"+(used?'var(--bg)':'var(--surface)')+";border:1.5px solid var(--border);"+(used?'opacity:.55;':'')+"transition:all .15s;";
-      var dot = "width:12px;height:12px;border-radius:50%;flex-shrink:0;background:"+c.color+";";
-      return '<button data-action="matchRight" data-arg="'+j+'" style="'+style+'">'+
-        '<span style="'+dot+'"></span>'+
-        '<span style="flex:1;text-align:left;font-size:14px;font-weight:600;line-height:1.3;">'+esc(c.name)+'</span>'+
-      '</button>';
-    }).join('');
-
-    var matchedCount = Object.keys(s.matches).length;
-    var allCorrect = matchedCount===ML.length && ML.every(function(l,i){ return MR[s.matches[i]]===l.cat; });
-    var status, color;
-    if(matchedCount===0){ status='Selecione um transtorno para começar'; color='var(--muted)'; }
-    else if(matchedCount<ML.length){ status=matchedCount+' de '+ML.length+' ligados'; color='var(--muted-2)'; }
-    else if(allCorrect){ status='Tudo certo! 5 de 5 corretos 🎉'; color='#06915A'; }
-    else { status='Algumas ligações estão incorretas'; color='#E5484D'; }
+    var footer;
+    if(state.classifyPhaseComplete){
+      var last = phase>=nP-1;
+      footer = '<button data-action="classifyNext" data-hover="background:#13647F;transform:translateY(-2px);" style="background:#0E4D64;border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .18s ease;">'+(last?'Ver resultado':'Próxima fase')+ICON.arrowR+'</button>';
+    } else {
+      footer = '<button data-action="classifyCheck"'+(poolFull?'':' disabled')+' style="background:'+(poolFull?'#0E4D64':'var(--surface-2)')+';border:'+(poolFull?'none':'1px solid var(--border)')+';border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:'+(poolFull?'#fff':'var(--muted)')+';cursor:'+(poolFull?'pointer':'default')+';transition:all .18s ease;">Conferir</button>';
+    }
+    var statusTxt = state.classifyPhaseComplete ? 'Fase concluída!'
+      : (hasSel ? 'Toque numa categoria para colocar'
+      : (poolFull ? 'Confira suas classificações' : placedCount+' de '+pool.length+' classificados'));
 
     return ''+
-    '<section style="max-width:860px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+    '<section style="max-width:880px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       backToEx()+
-      '<h1 style="font:800 22px \'Bricolage Grotesque\';margin:0 0 6px;">Ligar transtorno → categoria</h1>'+
-      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:14.5px;">Toque em um transtorno e depois na categoria correspondente.</p>'+
-      '<div class="match-grid">'+
-        '<div style="display:flex;flex-direction:column;gap:12px;">'+
-          '<div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:2px;">Transtornos</div>'+left+
-        '</div>'+
-        '<div style="display:flex;flex-direction:column;gap:12px;">'+
-          '<div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:2px;">Categorias</div>'+right+
-        '</div>'+
+      '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px;">'+
+        '<div><div style="font-size:12.5px;font-weight:700;color:#06915A;margin-bottom:2px;">Fase '+(phase+1)+' de '+nP+'</div><h1 style="font:800 22px \'Bricolage Grotesque\';margin:0;">Classificar</h1></div>'+
+        '<span style="font-weight:700;font-size:13.5px;color:var(--muted);white-space:nowrap;">'+statusTxt+'</span>'+
       '</div>'+
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:26px;gap:12px;">'+
-        '<span style="font-size:14px;font-weight:700;color:'+color+';">'+status+'</span>'+
-        '<button data-action="matchReset" data-hover="border-color:#5BC0BE;" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 16px;font-weight:700;font-size:13.5px;color:var(--muted-2);cursor:pointer;display:flex;align-items:center;gap:8px;flex-shrink:0;">'+ICON.redoSm+'Reiniciar</button>'+
+      '<div style="height:6px;background:var(--track);border-radius:99px;overflow:hidden;margin-bottom:18px;"><div style="width:'+(state.classifyPhaseComplete?100:(pool.length?Math.round(placedCount/pool.length*100):0))+'%;height:100%;background:linear-gradient(90deg,#06915A,#5BC0BE);border-radius:99px;transition:width .4s ease;"></div></div>'+
+
+      '<div class="cl-pool'+(hasSel?' target':'')+'" data-bin="pool" data-action="classifyToPool">'+
+        (poolChips.replace(/\s/g,'') ? poolChips : '<span class="cl-pool-empty">tudo no lugar — toque em Conferir</span>')+
       '</div>'+
+
+      '<div class="cl-bins">'+binsHtml+'</div>'+
+
+      '<div style="display:flex;justify-content:flex-end;margin-top:22px;">'+footer+'</div>'+
     '</section>';
   }
 
@@ -1322,14 +1977,169 @@
       '</div>'+
     '</section>';
   }
-  function screenRanking(){
-    return placeholderScreen('Ranking', 'Ranking', ICON.trophy, 'Em breve',
-      'Acompanhe sua posição entre outros estudantes — pontos por transtornos revisados, exercícios feitos e dias de streak. Funcionalidade em desenvolvimento.');
+  var RANK_TABS = [['day','Diário'],['week','Semanal'],['month','Mensal'],['year','Anual']];
+  var RANK_PERIOD_LABEL = {day:'Hoje', week:'Esta semana', month:'Este mês', year:'Este ano'};
+
+  function rankTabs(){
+    return '<div style="display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:4px;gap:2px;flex-wrap:wrap;">'+
+      RANK_TABS.map(function(t){
+        var on = state.rankPeriod === t[0];
+        var sty = on ? 'background:var(--surface);color:var(--teal-text);box-shadow:0 1px 3px rgba(0,0,0,.08);'
+                     : 'background:transparent;color:var(--muted);';
+        return '<button data-action="setRankPeriod" data-arg="'+t[0]+'" '+(on?'':'data-hover="color:var(--ink);"')+' style="border:none;border-radius:9px;padding:8px 15px;font:700 13px \'Hanken Grotesk\';cursor:pointer;transition:color .15s ease;'+sty+'">'+t[1]+'</button>';
+      }).join('')+
+    '</div>';
   }
+
+  function rankBadge(rnk){
+    var medal = rnk===1 ? '#F2B705' : (rnk===2 ? '#9AA7B0' : (rnk===3 ? '#CD7F32' : null));
+    if(medal){
+      return '<div style="width:34px;height:34px;border-radius:50%;background:'+medal+';color:#fff;display:flex;align-items:center;justify-content:center;font:800 14px \'Bricolage Grotesque\';flex-shrink:0;box-shadow:0 3px 8px rgba(0,0,0,.15);">'+rnk+'</div>';
+    }
+    return '<div style="width:34px;height:34px;border-radius:50%;background:var(--surface-2);color:var(--muted-2);display:flex;align-items:center;justify-content:center;font:800 13px \'Bricolage Grotesque\';flex-shrink:0;">'+rnk+'</div>';
+  }
+
+  function rankRow(row, isMe){
+    var L = levelForXP(row.xp);
+    var initials = String(row.nome||'?').trim().split(/\s+/).slice(0,2).map(function(w){return w.charAt(0).toUpperCase();}).join('');
+    var hl = isMe ? 'background:var(--accent-bg);border-color:var(--accent-bd);' : 'background:var(--surface);border-color:var(--border);';
+    return '<div style="display:flex;align-items:center;gap:13px;border:1px solid;border-radius:14px;padding:11px 14px;'+hl+'">'+
+      rankBadge(Number(row.rnk))+
+      '<div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5BC0BE,#0E4D64);color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px \'Hanken Grotesk\';flex-shrink:0;">'+esc(initials||'·')+'</div>'+
+      '<div style="flex:1;min-width:0;">'+
+        '<div style="font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(row.nome||'Estudante')+(isMe?' <span style="font-size:11px;color:var(--teal-text);font-weight:800;">· você</span>':'')+'</div>'+
+        '<div style="font-size:11.5px;color:var(--muted);font-weight:600;">Nível '+L+' · '+esc(levelTitle(L))+'</div>'+
+      '</div>'+
+      '<div style="font:800 15px \'Bricolage Grotesque\';color:var(--teal-text);flex-shrink:0;">'+row.xp+'<span style="font-size:11px;font-weight:700;color:var(--muted);"> XP</span></div>'+
+    '</div>';
+  }
+
+  function rankSkeleton(){
+    var row = '<div style="display:flex;align-items:center;gap:13px;border:1px solid var(--border);border-radius:14px;padding:11px 14px;background:var(--surface);">'+
+      '<div style="width:34px;height:34px;border-radius:50%;background:var(--surface-2);"></div>'+
+      '<div style="width:34px;height:34px;border-radius:50%;background:var(--surface-2);"></div>'+
+      '<div style="flex:1;"><div style="height:11px;width:46%;background:var(--surface-2);border-radius:99px;margin-bottom:7px;"></div><div style="height:9px;width:30%;background:var(--surface-2);border-radius:99px;"></div></div>'+
+      '<div style="width:48px;height:14px;background:var(--surface-2);border-radius:99px;"></div>'+
+    '</div>';
+    return '<div style="display:flex;flex-direction:column;gap:9px;opacity:.7;animation:pulse 1.4s ease-in-out infinite;">'+row+row+row+row+row+'</div>';
+  }
+
+  function rankMessage(emoji, title, sub){
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:40px 28px;text-align:center;">'+
+      '<div style="font-size:38px;line-height:1;margin-bottom:12px;">'+emoji+'</div>'+
+      '<div style="font:800 17px \'Bricolage Grotesque\';color:var(--ink);margin-bottom:6px;">'+esc(title)+'</div>'+
+      '<p style="margin:0 auto;max-width:380px;font-size:13.5px;line-height:1.6;color:var(--muted-2);">'+esc(sub)+'</p>'+
+    '</div>';
+  }
+
+  function rankInvite(){
+    var btn = DB.ready
+      ? '<button data-action="guestToRegister" data-hover="background:#0c6a66;transform:translateY(-2px);" data-active="transform:scale(.98);" style="margin-top:18px;background:var(--accent-tx);border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:background .18s ease,transform .18s ease;">Criar conta grátis</button>'
+      : '<p style="margin:16px 0 0;font-size:13px;color:var(--muted);">Configure o Supabase para ativar contas e o ranking entre usuários.</p>';
+    return ''+
+    '<section style="max-width:620px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Ranking</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 22px;">Ranking de XP</h1>'+
+      '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:42px 32px;text-align:center;">'+
+        '<div style="width:64px;height:64px;border-radius:18px;background:var(--accent-bg);color:var(--accent-tx);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><span style="transform:scale(1.6);display:flex;">'+ICON.trophy+'</span></div>'+
+        '<h2 style="font:800 20px \'Bricolage Grotesque\';margin:0 0 8px;color:var(--ink);">Entre na competição</h2>'+
+        '<p style="margin:0 auto;max-width:420px;font-size:14.5px;line-height:1.6;color:var(--muted-2);">Crie uma conta para acumular XP, subir de nível e disputar o ranking <b>diário</b>, <b>semanal</b>, <b>mensal</b> e <b>anual</b> com outros estudantes.</p>'+
+        btn+
+      '</div>'+
+    '</section>';
+  }
+
+  function screenRanking(){
+    if(!canRank()) return rankInvite();
+
+    var lv = levelInfo(userXP());
+    var rows = state.leaderboard;
+    var meId = state.auth.user ? state.auth.user.id : null;
+    var periodLabel = RANK_PERIOD_LABEL[state.rankPeriod] || '';
+
+    var body;
+    if(state.rankLoading && !rows){
+      body = rankSkeleton();
+    } else if(state.rankError){
+      body = rankMessage('⚠️', 'Não foi possível carregar o ranking', 'Verifique sua conexão. Se persistir, confirme que o gamification.sql foi executado no Supabase.');
+    } else if(!rows || !rows.length){
+      body = rankMessage('🏁', 'Ninguém pontuou ainda', 'Seja o primeiro a marcar presença neste período — revise fichas e faça exercícios para somar XP.');
+    } else {
+      body = '<div style="display:flex;flex-direction:column;gap:9px;'+(state.rankLoading?'opacity:.5;transition:opacity .2s;':'')+'">'+
+        rows.map(function(r){ return rankRow(r, !!(meId && r.user_id === meId)); }).join('')+
+      '</div>';
+    }
+
+    return ''+
+    '<section style="max-width:760px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Ranking</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Ranking de XP</h1>'+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:14.5px;max-width:560px;">Sua posição entre os estudantes — XP por fichas revisadas, exercícios e dias ativos.</p>'+
+      levelHeroCard(lv)+
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;">'+
+        rankTabs()+
+        '<span style="font-size:12.5px;font-weight:700;color:var(--muted);">'+esc(periodLabel)+'</span>'+
+      '</div>'+
+      body+
+    '</section>';
+  }
+  var FB_TIPOS = [['erro','Erro na ficha'],['sugestao','Sugestão'],['duvida','Dúvida'],['outro','Outro']];
   function screenFeedback(){
-    var mail = 'mailto:felipe.cb2511@gmail.com?subject='+encodeURIComponent('DSM·Revisa — Feedback');
-    return placeholderScreen('Feedback', 'Feedback', ICON.message, 'Em breve',
-      'Envie erros encontrados nas fichas, sugestões de melhoria e outras observações. Funcionalidade em desenvolvimento — por enquanto, escreva para <a href="'+mail+'" style="color:var(--teal-text);font-weight:700;text-decoration:none;">felipe.cb2511@gmail.com</a>.');
+    var f = state.feedback;
+
+    // modo demonstração (sem Supabase): mantém o fallback por e-mail
+    if(!DB.ready){
+      var mail='mailto:felipe.cb2511@gmail.com?subject='+encodeURIComponent('DSM·Revisa — Feedback');
+      return placeholderScreen('Feedback','Feedback',ICON.message,'Por e-mail',
+        'Envie erros nas fichas e sugestões para <a href="'+mail+'" style="color:var(--teal-text);font-weight:700;text-decoration:none;">felipe.cb2511@gmail.com</a>.');
+    }
+
+    // estado de sucesso
+    if(f.sent){
+      return ''+
+      '<section style="max-width:620px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+        '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Feedback</div>'+
+        '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 22px;">Feedback</h1>'+
+        '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px 30px;text-align:center;">'+
+          '<div style="width:56px;height:56px;border-radius:16px;background:var(--ok-bg);color:var(--ok-tx);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><span style="transform:scale(1.5);display:flex;">'+ICON.knowCheck+'</span></div>'+
+          '<h2 style="font:800 19px \'Bricolage Grotesque\';margin:0 0 7px;color:var(--ink);">Feedback enviado!</h2>'+
+          '<p style="margin:0 auto 20px;max-width:380px;font-size:14.5px;line-height:1.6;color:var(--muted-2);">Obrigado por ajudar a melhorar o conteúdo. Cada relato é revisado.</p>'+
+          '<button data-action="goFeedback" data-hover="background:#0c6a66;transform:translateY(-2px);" style="background:var(--accent-tx);border:none;border-radius:12px;padding:11px 20px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:background .18s,transform .18s;">Enviar outro</button>'+
+        '</div>'+
+      '</section>';
+    }
+
+    var tabs = '<div class="fb-tabs">'+ FB_TIPOS.map(function(t){
+      var on = f.tipo===t[0];
+      return '<button data-action="setFeedbackTipo" data-arg="'+t[0]+'" class="fb-tab'+(on?' on':'')+'">'+t[1]+'</button>';
+    }).join('') +'</div>';
+
+    var fichaChip = f.transtornoNome
+      ? '<div class="fb-ficha"><span class="fb-ficha-lbl">Sobre a ficha</span><span class="fb-ficha-nome">'+esc(f.transtornoNome)+'</span><button data-action="clearFeedbackFicha" class="fb-ficha-x" title="Remover" aria-label="Remover ficha">×</button></div>'
+      : '';
+
+    var guestNote = state.auth.guest
+      ? '<div class="fb-note">'+ICON.info+'<span>Você está como visitante — seu feedback será enviado de forma anônima.</span></div>'
+      : '';
+
+    var errBox = f.error ? '<div class="fb-error">'+esc(f.error)+'</div>' : '';
+
+    return ''+
+    '<section style="max-width:620px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Feedback</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Feedback</h1>'+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:14.5px;max-width:540px;">Relate erros nas fichas, mande sugestões ou tire dúvidas. Vai direto para a revisão do conteúdo.</p>'+
+      '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;">'+
+        '<div class="fb-label">Tipo</div>'+
+        tabs+
+        fichaChip+
+        '<div class="fb-label" style="margin-top:16px;">Mensagem</div>'+
+        '<textarea id="fb-msg" class="fb-textarea" rows="5" placeholder="Descreva o erro ou a sugestão. Se for um erro de ficha, diga em qual critério/seção.">'+esc(f.draft||'')+'</textarea>'+
+        errBox+
+        guestNote+
+        '<button data-action="submitFeedback"'+(f.sending?' disabled':'')+' class="fb-submit"'+(f.sending?'':' data-hover="background:#0c6a66;transform:translateY(-2px);"')+'>'+(f.sending?'Enviando…':'Enviar feedback')+'</button>'+
+      '</div>'+
+    '</section>';
   }
   function screenDsm(){
     return ''+
@@ -1377,7 +2187,11 @@
       case 'categoria':   return screenCategoria();
       case 'ficha':       return screenFicha();
       case 'exercicios':  return screenExercicios();
+      case 'flashMode':   return screenFlashMode();
+      case 'decks':       return screenDecks();
       case 'flashcards':  return screenFlashcards();
+      case 'quizMode':    return screenQuizMode();
+      case 'quizDecks':   return screenQuizDecks();
       case 'quiz':        return screenQuiz();
       case 'ligar':       return screenLigar();
       case 'caso':        return screenCaso();
@@ -1421,6 +2235,8 @@
       '</div>'+
       bottomNav();
     bindFx(root);
+    bindSearch(root);
+    bindClassify(root);
     if(state.pendingScroll){
       var target = state.pendingScroll; state.pendingScroll = null;
       requestAnimationFrame(function(){
@@ -1502,16 +2318,26 @@
       if(k==='Escape')     return run(actions.backToCategoria);
     } else if(s==='categoria'){
       if(k==='Escape')     return run(actions.goCategorias);
+    } else if(s==='flashMode'){
+      if(k==='Escape') return run(actions.goExercicios);
+    } else if(s==='decks'){
+      if(k==='Escape') return run(actions.goFlashMode);
     } else if(s==='flashcards'){
       if(k===' ' || k==='Enter') return run(actions.flip);
       if(k==='ArrowRight') return run(actions.fcKnow);
       if(k==='ArrowLeft')  return run(actions.fcPrev);
-      if(k==='Escape')     return run(actions.goExercicios);
-    } else if(s==='quiz'){
-      var q = QUIZ[state.quizIndex];
-      if(q && k>='1' && k<='9'){ var qi=+k-1; if(qi<q.opts.length) return run(actions.quizSelect, qi); }
-      if(k==='Enter' && state.quizAnswered) return run(actions.quizNext);
+      if(k==='Escape')     return run(state.deckCat===-1 ? actions.goFlashMode : actions.goDecks);
+    } else if(s==='quizMode'){
       if(k==='Escape') return run(actions.goExercicios);
+    } else if(s==='quizDecks'){
+      if(k==='Escape') return run(actions.goQuizMode);
+    } else if(s==='quiz'){
+      var qbackEsc = state.quizCat===-1 ? actions.goQuizMode : actions.goQuizDecks;
+      if(k==='Escape') return run(qbackEsc);
+      if(state.quizDone){ if(k==='Enter') return run(actions.quizRestart); return; }
+      var q = state.quizSet && state.quizSet[state.quizIndex];
+      if(q && !state.quizAnswered && k>='1' && k<='9'){ var qi=+k-1; if(qi<q.opts.length) return run(actions.quizSelect, qi); }
+      if(k==='Enter' && state.quizAnswered) return run(actions.quizNext);
     } else if(s==='caso'){
       if(k>='1' && k<='9'){ var ci=+k-1; if(ci<CASO.opts.length) return run(actions.casoSelect, ci); }
       if(k==='Escape') return run(actions.goExercicios);
@@ -1543,6 +2369,21 @@
       }
     });
     document.addEventListener('keydown', handleKeyNav);
+    // fecha o dropdown de busca ao clicar fora dele
+    document.addEventListener('click', function(e){
+      var box = document.getElementById('search-results');
+      if(!box || box.style.display === 'none') return;
+      var inside = e.target && e.target.closest && e.target.closest('.topbar-search');
+      if(!inside){ box.style.display = 'none'; }
+    });
+    // atalho "/" foca o campo de busca
+    document.addEventListener('keydown', function(e){
+      if(e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+      var tag = (e.target && e.target.tagName) || '';
+      if(tag === 'INPUT' || tag === 'TEXTAREA') return;
+      var input = document.getElementById('global-search');
+      if(input){ e.preventDefault(); input.focus(); }
+    });
 
     if(DB.ready){
       DB.onAuth(applySession);

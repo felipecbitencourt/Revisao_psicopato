@@ -35,11 +35,11 @@ A vulnerabilidade na autoestima torna os indivíduos com transtorno da personali
 Por sua vez, períodos sustentados de grandiosidade podem estar associados a humor hipomaníaco.
 O transtorno da personalidade narcisista está ainda associado a anorexia nervosa e transtornos por uso de substância (especialmente relacionados a cocaína). Transtornos da personalidade histriônica, *borderline*, antissocial e paranoide podem estar associados ao transtorno da personalidade narcisista.
 ### Prevalência
-As estimativas de prevalência do transtorno da personalidade narcisista, com base nas definições do DSM-IV, variam de a 6,2% em amostras de comunidades.
+As estimativas de prevalência do transtorno da personalidade narcisista, com base nas definições do DSM-IV, variam de 0 a 6,2% em amostras de comunidades.
 ### Desenvolvimento e Curso
 Traços narcisistas podem ser particularmente comuns em adolescentes e não necessariamente indicam que a pessoa vai desenvolver o transtorno da personalidade narcisista. Indivíduos com esse transtorno podem ter dificuldades especiais de adaptação ao surgimento de limitações físicas e profissionais inerentes ao processo de envelhecimento.
 ### Questões Diagnósticas Relativas ao Gênero
-Entre aqueles diagnosticados com transtorno da personalidade narcisista, a 75% são do sexo masculino.
+Entre aqueles diagnosticados com transtorno da personalidade narcisista, 50 a 75% são do sexo masculino.
 
 **672** Transtornos da Personalidade
 ### Diagnóstico Diferencial

@@ -7,7 +7,7 @@
 # Transtornos da
 # Personalidade
 ### Este capítulo inicia-se com uma definição geral de transtorno da personalidade que se
-aplica a cada um dos transtornos da personalidade específicos. Um* transtorno da personalidade* é um padrão persistente de experiência interna e comportamento que se desvia acentuadamente das expectativas da cultura do indivíduo, é difuso e inflexível, começa na adolescência ou no início da fase adulta, é estável ao longo do tempo e leva a sofrimento ou prejuízo.
+aplica a cada um dos 10 transtornos da personalidade específicos. Um* transtorno da personalidade* é um padrão persistente de experiência interna e comportamento que se desvia acentuadamente das expectativas da cultura do indivíduo, é difuso e inflexível, começa na adolescência ou no início da fase adulta, é estável ao longo do tempo e leva a sofrimento ou prejuízo.
 Em qualquer processo de revisão em curso, especialmente em um processo de tal complexidade, surgem diferentes pontos de vista, e fez-se um esforço para combinar todos. Assim, transtornos da personalidade são inclusos tanto na Seção II quanto na Seção III deste Manual. O material na
 Seção II representa uma atualização do texto associado aos mesmos critérios encontrados no DSM-IV-TR, ao passo que a Seção III inclui o modelo de pesquisa proposto para o diagnóstico e a conceitualização de transtorno da personalidade desenvolvido pelo Grupo de Trabalho da Personalidade e Transtornos da Personalidade do DSM-5. Visto que se trata de um campo que evolui, espera-se que as duas versões sirvam à prática clínica e às iniciativas de pesquisa, respectivamente.
 Os seguintes transtornos da personalidade estão inclusos neste capítulo:

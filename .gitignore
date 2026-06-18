@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Auditoria / arquivos de trabalho temporários
+audit_tmp/
+# saídas geradas pelo tools/scan_fichas.cjs
+tools/findings.json
+tools/inventory.json
+tools/dumps.jsonl
+tools/cats/
+
+# Memória local do assistente
+memory/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

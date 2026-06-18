@@ -42,8 +42,9 @@ Transtornos extraídos de `16-transtornos-relacionados-a-substancias-e-transtorn
 | Transtorno por Uso de Tabaco | [transtorno-por-uso-de-tabaco.md](transtorno-por-uso-de-tabaco.md) | 65 |
 | Abstinência de Tabaco | [abstinencia-de-tabaco.md](abstinencia-de-tabaco.md) | 36 |
 | Outros Transtornos Induzidos por Tabaco | [outros-transtornos-induzidos-por-tabaco.md](outros-transtornos-induzidos-por-tabaco.md) | 2 |
-| (ou Substância Desconhecida) | [ou-substancia-desconhecida.md](ou-substancia-desconhecida.md) | 66 |
-| (ou Substância Desconhecida) | [ou-substancia-desconhecida-2.md](ou-substancia-desconhecida-2.md) | 32 |
-| (ou Substância Desconhecida) | [ou-substancia-desconhecida-3.md](ou-substancia-desconhecida-3.md) | 32 |
+| Transtorno por Uso de Outra Substância (ou Substância Desconhecida) | [transtorno-por-uso-de-outra-substancia-ou-substancia-desconhecida.md](transtorno-por-uso-de-outra-substancia-ou-substancia-desconhecida.md) | 66 |
+| Intoxicação por Outra Substância (ou Substância Desconhecida) | [intoxicacao-por-outra-substancia-ou-substancia-desconhecida.md](intoxicacao-por-outra-substancia-ou-substancia-desconhecida.md) | 32 |
+| Abstinência de Outra Substância (ou Substância Desconhecida) | [abstinencia-de-outra-substancia-ou-substancia-desconhecida.md](abstinencia-de-outra-substancia-ou-substancia-desconhecida.md) | 32 |
+| Transtornos Induzidos por Outra Substância (ou Substância Desconhecida) | [transtornos-induzidos-por-outra-substancia-ou-substancia-desconhecida.md](transtornos-induzidos-por-outra-substancia-ou-substancia-desconhecida.md) | 2 |
 | Transtorno Relacionado a Outra Substância (ou Substância Desconhecida) Não Especificado | [transtorno-relacionado-a-outra-substancia-ou-substancia-desconhecida-nao-especificado.md](transtorno-relacionado-a-outra-substancia-ou-substancia-desconhecida-nao-especificado.md) | 4 |
 | Transtorno do Jogo | [transtorno-do-jogo.md](transtorno-do-jogo.md) | 78 |

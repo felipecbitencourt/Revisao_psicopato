@@ -4,8 +4,8 @@
 
 ---
 
-**Nota:** Os critérios a seguir aplicam-se a adultos, adolescentes e crianças acima de anos de idade.
-Para crianças com menos de anos, consulte os critérios correspondentes a seguir.
+**Nota:** Os critérios a seguir aplicam-se a adultos, adolescentes e crianças acima de 6 anos de idade.
+Para crianças com menos de 6 anos, consulte os critérios correspondentes a seguir.
 A. Exposição a episódio concreto ou ameaça de morte, lesão grave ou violência sexual em uma (ou mais) das seguintes formas:
 1. Vivenciar diretamente o evento traumático.
 2. Testemunhar pessoalmente o evento traumático ocorrido com outras pessoas.
@@ -14,7 +14,7 @@ A. Exposição a episódio concreto ou ameaça de morte, lesão grave ou violên
 **Nota:** O Critério A4 não se aplica à exposição por meio de mídia eletrônica, televisão, filmes ou fotografias, a menos que tal exposição esteja relacionada ao trabalho.
 B. Presença de um (ou mais) dos seguintes sintomas intrusivos associados ao evento traumático, começando depois de sua ocorrência:
 1. Lembranças intrusivas angustiantes, recorrentes e involuntárias do evento traumático.
-**Nota:** Em crianças acima de anos de idade, pode ocorrer brincadeira repetitiva na qual temas ou aspectos do evento traumático são expressos.
+**Nota:** Em crianças acima de 6 anos de idade, pode ocorrer brincadeira repetitiva na qual temas ou aspectos do evento traumático são expressos.
 2.Sonhos angustiantes recorrentes nos quais o conteúdo e/ou o sentimento do sonho estão relacionados ao evento traumático.
 **Nota:** Em crianças, pode haver pesadelos sem conteúdo identificável.
 3. Reações dissociativas (p. ex., *flashbacks*) nas quais o indivíduo sente ou age como se o evento traumático estivesse ocorrendo novamente. (Essas reações podem ocorrer em um *continuum*, com a expressão mais extrema na forma de uma perda completa de percepção do ambiente ao redor.)
