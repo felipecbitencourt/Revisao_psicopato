@@ -241,7 +241,24 @@
     progress:{}, mastered:{}, stats:null, pendingScroll:null,
     rankPeriod:'week', leaderboard:null, rankLoading:false, rankError:false,
     feedback:{tipo:'erro', transtornoId:'', transtornoNome:'', draft:'', sending:false, sent:false, error:''},
+    profileDraft:{}, profileMsg:null, profileSaving:false, profileUploading:false,
   };
+
+  // avatares predefinidos (emoji + fundo). Guardado no perfil como "preset:N".
+  var PRESET_AVATARS = [
+    {e:'🦆', bg:'linear-gradient(135deg,#5BC0BE,#0E4D64)'},
+    {e:'🧠', bg:'linear-gradient(135deg,#8338EC,#5B6CF0)'},
+    {e:'🦊', bg:'linear-gradient(135deg,#FF8C42,#E8590C)'},
+    {e:'🦉', bg:'linear-gradient(135deg,#10B981,#047857)'},
+    {e:'🐱', bg:'linear-gradient(135deg,#F59E0B,#D97706)'},
+    {e:'🐶', bg:'linear-gradient(135deg,#60A5FA,#2563EB)'},
+    {e:'🐢', bg:'linear-gradient(135deg,#34D399,#059669)'},
+    {e:'🦋', bg:'linear-gradient(135deg,#A78BFA,#7C3AED)'},
+    {e:'🌟', bg:'linear-gradient(135deg,#FBBF24,#F59E0B)'},
+    {e:'🌸', bg:'linear-gradient(135deg,#F472B6,#DB2777)'},
+    {e:'📚', bg:'linear-gradient(135deg,#38BDF8,#0EA5E9)'},
+    {e:'🩺', bg:'linear-gradient(135deg,#2DD4BF,#0D9488)'}
+  ];
 
   var REV_SCREENS = ['categorias','indice','categoria','ficha'];
   var EX_SCREENS  = ['exercicios','flashMode','decks','flashcards','quizMode','quizDecks','quiz','ligar','caso'];
@@ -391,6 +408,44 @@
       try{ window.history.replaceState(null,'',window.location.pathname+window.location.search); }catch(e){}
       applySession(state.auth.user);
     }).catch(function(){ state.auth.busy=false; state.auth.error='Não foi possível salvar a senha. Tente novamente.'; render(); });
+  };
+  /* ---- perfil (apelido + avatar) ---- */
+  actions.goPerfil = function(){
+    var p = state.auth.profile || {};
+    state.profileDraft = { apelido:p.apelido||'', nome:p.nome||'', curso:p.curso||'', semestre:p.semestre||'', avatar:p.avatar||'' };
+    state.profileMsg=null; state.profileSaving=false; state.profileUploading=false;
+    setState({screen:'perfil'}); scrollTop();
+  };
+  actions.pickPreset = function(i){ state.profileDraft.avatar='preset:'+i; state.profileMsg=null; render(); };
+  actions.useGooglePhoto = function(){ var g=googlePhoto(); if(g){ state.profileDraft.avatar=g; state.profileMsg=null; render(); } };
+  actions.removeAvatar = function(){ state.profileDraft.avatar=''; render(); };
+  actions.triggerAvatarUpload = function(){ var el=document.getElementById('avatar-file'); if(el) el.click(); };
+  actions.avatarFileChosen = function(file){
+    if(!file) return;
+    if(!/^image\//.test(file.type||'')){ state.profileMsg={type:'err',text:'Selecione um arquivo de imagem.'}; render(); return; }
+    if(file.size > 3*1024*1024){ state.profileMsg={type:'err',text:'Imagem muito grande (máx. 3 MB).'}; render(); return; }
+    if(!DB.uploadAvatar){ state.profileMsg={type:'err',text:'Upload indisponível (faça login).'}; render(); return; }
+    state.profileUploading=true; state.profileMsg=null; render();
+    DB.uploadAvatar(file).then(function(res){
+      state.profileUploading=false;
+      if(res && res.url){ state.profileDraft.avatar=res.url; state.profileMsg={type:'ok',text:'Foto enviada. Clique em “Salvar alterações” para confirmar.'}; }
+      else { state.profileMsg={type:'err',text:'Falha no upload. Verifique se o bucket “avatars” foi criado no Supabase.'}; }
+      render();
+    }).catch(function(){ state.profileUploading=false; state.profileMsg={type:'err',text:'Falha no upload da imagem.'}; render(); });
+  };
+  actions.saveProfile = function(){
+    var d = state.profileDraft || {};
+    d.apelido=rawVal('pf-apelido').trim(); d.nome=rawVal('pf-nome').trim();
+    d.curso=rawVal('pf-curso').trim(); d.semestre=rawVal('pf-sem').trim();
+    if(!DB.updateProfile){ state.profileMsg={type:'err',text:'Salvar indisponível (faça login).'}; render(); return; }
+    state.profileSaving=true; state.profileMsg=null; render();
+    DB.updateProfile({apelido:d.apelido, nome:d.nome, curso:d.curso, semestre:d.semestre, avatar:d.avatar}).then(function(res){
+      state.profileSaving=false;
+      if(res && res.error){ state.profileMsg={type:'err',text:'Não foi possível salvar. Tente novamente.'}; render(); return; }
+      state.auth.profile = Object.assign({}, state.auth.profile, (res&&res.data) || {apelido:d.apelido,nome:d.nome,curso:d.curso,semestre:d.semestre,avatar:d.avatar});
+      state.profileMsg={type:'ok',text:'Perfil atualizado!'};
+      render();
+    }).catch(function(){ state.profileSaving=false; state.profileMsg={type:'err',text:'Erro ao salvar o perfil.'}; render(); });
   };
   actions.goRegister = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'register'}); };
   actions.logout     = function(){ if(DB.ready) DB.logout(); };
@@ -554,8 +609,46 @@
   function greetName(){
     if(!tracking()) return 'Ana';
     if(state.auth.guest) return '';
-    var nome = (state.auth.profile && state.auth.profile.nome) || '';
+    var p = state.auth.profile || {};
+    var nome = p.apelido || p.nome || '';   // apelido tem prioridade
     return nome.split(/\s+/)[0] || '';
+  }
+  // nome de exibição (apelido > nome). Fallback demo p/ modo não logado.
+  function displayName(){
+    if(!tracking()) return 'Ana Souza';
+    var p = state.auth.profile || {};
+    return p.apelido || p.nome || '';
+  }
+  // foto vinda do provedor social (Google), se houver.
+  function googlePhoto(){
+    var m = (state.auth.user && state.auth.user.user_metadata) || {};
+    return m.avatar_url || m.picture || '';
+  }
+  function initialsOf(name){
+    return (name||'').split(/\s+/).filter(Boolean).slice(0,2).map(function(w){return w.charAt(0).toUpperCase();}).join('') || '·';
+  }
+  // monta o HTML de um avatar circular a partir de um valor de avatar
+  // ("http..." = imagem | "preset:N" = predefinido | vazio = Google/iniciais).
+  function avatarHtml(av, name, size, fallbackPhoto){
+    av = av || '';
+    var box = 'width:'+size+'px;height:'+size+'px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;';
+    if(/^https?:/.test(av)){
+      return '<div style="'+box+'background:var(--surface-2);"><img src="'+esc(av)+'" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div>';
+    }
+    var m = /^preset:(\d+)$/.exec(av);
+    if(m){
+      var pa = PRESET_AVATARS[+m[1]] || PRESET_AVATARS[0];
+      return '<div style="'+box+'background:'+pa.bg+';font-size:'+Math.round(size*0.52)+'px;line-height:1;">'+pa.e+'</div>';
+    }
+    if(fallbackPhoto){
+      return '<div style="'+box+'background:var(--surface-2);"><img src="'+esc(fallbackPhoto)+'" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div>';
+    }
+    return '<div style="'+box+'background:linear-gradient(135deg,#5BC0BE,#0E4D64);color:#fff;font:700 '+Math.round(size*0.4)+'px \'Hanken Grotesk\';">'+esc(initialsOf(name))+'</div>';
+  }
+  // avatar do usuário atual (perfil salvo); cai na foto do Google e depois nas iniciais.
+  function userAvatar(size){
+    var p = state.auth.profile || {};
+    return avatarHtml(p.avatar, displayName(), size, googlePhoto());
   }
   function todayLabel(){
     try{
@@ -1346,6 +1439,26 @@
       return '<li><span class="csl-num">'+esc(it.m)+'</span><span class="csl-tx">'+esc(it.t)+'</span></li>';
     }).join('')+'</ol>';
   }
+  // tabela do DSM reconstruída como HTML estilizado (no lugar da imagem).
+  // célula = string OU lista de parágrafos; 1ª coluna = cabeçalho da linha.
+  function renderSecTable(t){
+    if(!t || !t.cols) return '';
+    function cellHtml(cell){
+      if(Array.isArray(cell)) return cell.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
+      return '<p>'+esc(cell)+'</p>';
+    }
+    var head = '<thead><tr>'+t.cols.map(function(c,i){
+      return '<th'+(i===0?' class="st-corner"':'')+'>'+esc(c)+'</th>';
+    }).join('')+'</tr></thead>';
+    var rows = (t.rows||[]).map(function(r){
+      return '<tr>'+r.map(function(cell,ci){
+        return ci===0
+          ? '<th class="st-rowhead">'+esc(cell)+'</th>'
+          : '<td>'+cellHtml(cell)+'</td>';
+      }).join('')+'</tr>';
+    }).join('');
+    return '<div class="sec-table-wrap"><table class="sec-table">'+head+'<tbody>'+rows+'</tbody></table></div>';
+  }
   // renderiza um array de linhas (prosa + listas) — usado nos critérios
   function renderRich(lines){
     var out='', buf=[];
@@ -1456,8 +1569,9 @@
         var imgs = (sec.images||[]).map(function(src){
           return '<img class="sec-img" src="'+esc(src)+'" alt="'+esc(sec.title)+' — DSM-5-TR" loading="lazy">';
         }).join('');
+        var tbl = sec.table ? renderSecTable(sec.table) : '';
         var cap = sec.caption ? '<div class="sec-caption">'+esc(sec.caption)+'</div>' : '';
-        body = '<div class="sec-acc-body">'+paras+imgs+cap+'</div>';
+        body = '<div class="sec-acc-body">'+paras+tbl+imgs+cap+'</div>';
       }
       return '<div id="'+secId(i)+'"'+(open?' class="sec-open"':'')+'>'+head+body+'</div>';
     }).join('');
@@ -2260,19 +2374,81 @@
       '</div>';
     }
     var p = (DB.ready && state.auth.profile) ? state.auth.profile : null;
-    var nome = (p && p.nome) ? p.nome : 'Ana Souza';
+    var nome = displayName() || 'Estudante';
     var sub  = (p && (p.curso||p.semestre)) ? [p.curso,p.semestre].filter(Boolean).join(' · ') : 'Psicologia · 6º sem';
-    var initials = nome.split(/\s+/).slice(0,2).map(function(w){return w.charAt(0).toUpperCase();}).join('');
     var logout = (DB.ready && state.auth.user)
       ? '<button data-action="logout" class="side-profile-logout" data-hover="color:#E5484D;" title="Sair da conta" style="margin-left:auto;background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px;font-weight:700;padding:4px 2px;">Sair</button>'
       : '';
     return '<div class="side-profile" style="display:flex;align-items:center;gap:11px;padding:14px 6px 2px;margin-top:12px;border-top:1px solid var(--border);">'+
-      '<div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5BC0BE,#0E4D64);display:flex;align-items:center;justify-content:center;color:#fff;font:700 13px \'Hanken Grotesk\';flex-shrink:0;">'+esc(initials||'·')+'</div>'+
-      '<div class="side-profile-text" style="line-height:1.2;min-width:0;">'+
-        '<div style="font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(nome)+'</div>'+
-        '<div style="font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(sub)+'</div>'+
-      '</div>'+ logout +
+      '<button data-action="goPerfil" class="side-profile-main" title="Editar perfil" data-hover="opacity:.8;" style="flex:1;min-width:0;display:flex;align-items:center;gap:11px;background:none;border:none;padding:0;cursor:pointer;text-align:left;transition:opacity .15s ease;">'+
+        userAvatar(34)+
+        '<div class="side-profile-text" style="line-height:1.2;min-width:0;">'+
+          '<div style="font-size:13.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(nome)+'</div>'+
+          '<div style="font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(sub)+'</div>'+
+        '</div>'+
+      '</button>'+ logout +
     '</div>';
+  }
+
+  /* =========================================================
+     TELA: MEU PERFIL (apelido + avatar)
+     ========================================================= */
+  function profileMsgHtml(){
+    var m = state.profileMsg; if(!m) return '';
+    var ok = m.type==='ok';
+    return '<div style="margin:0 0 16px;padding:11px 14px;border-radius:12px;background:'+(ok?'var(--ok-bg)':'#FDECEC')+';color:'+(ok?'var(--ok-tx)':'#B4282C')+';font-size:13px;font-weight:600;animation:fadeUp .25s ease both;">'+esc(m.text)+'</div>';
+  }
+  function profileField(id,label,value,ph){
+    return '<label style="display:block;margin-bottom:14px;">'+
+      '<span style="display:block;font-size:12.5px;font-weight:700;color:var(--muted-2);margin-bottom:6px;">'+esc(label)+'</span>'+
+      '<input id="'+id+'" class="pf-input" type="text" value="'+esc(value)+'" placeholder="'+esc(ph)+'" style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';outline:none;">'+
+    '</label>';
+  }
+  function screenPerfil(){
+    var d = state.profileDraft || {};
+    var gphoto = googlePhoto();
+    var presets = PRESET_AVATARS.map(function(pa,i){
+      var on = d.avatar==='preset:'+i;
+      return '<button data-action="pickPreset" data-arg="'+i+'" class="av-preset'+(on?' on':'')+'" title="Avatar" style="background:'+pa.bg+';">'+pa.e+'</button>';
+    }).join('');
+    function btn(action,label,extra){
+      return '<button data-action="'+action+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 14px;font:700 13px \'Hanken Grotesk\';color:'+(extra||'var(--muted-2)')+';cursor:pointer;transition:all .15s ease;">'+label+'</button>';
+    }
+    return ''+
+    '<section style="max-width:680px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Conta</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 22px;color:var(--ink);">Meu perfil</h1>'+
+      profileMsgHtml()+
+      '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px;">'+
+        '<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:18px;">'+
+          '<div style="position:relative;">'+ avatarHtml(d.avatar, displayName(), 84, gphoto) +
+            (state.profileUploading?'<div style="position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;">enviando…</div>':'')+
+          '</div>'+
+          '<div style="display:flex;flex-direction:column;gap:9px;min-width:200px;">'+
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">'+
+              btn('triggerAvatarUpload','Enviar foto')+
+              (gphoto?btn('useGooglePhoto','Usar foto do Google'):'')+
+              (d.avatar?btn('removeAvatar','Remover','var(--muted)'):'')+
+            '</div>'+
+            '<div style="font-size:11.5px;color:var(--muted);">PNG ou JPG até 3 MB. Ou escolha um avatar abaixo.</div>'+
+          '</div>'+
+          '<input type="file" id="avatar-file" accept="image/*" style="display:none;">'+
+        '</div>'+
+        '<div class="av-gallery">'+presets+'</div>'+
+        '<div style="height:1px;background:var(--border);margin:22px 0;"></div>'+
+        profileField('pf-apelido','Apelido', d.apelido||'', 'Como quer ser chamado(a)')+
+        '<div style="font-size:11.5px;color:var(--muted);margin:-8px 0 16px;">É assim que você aparece na saudação da home e no ranking.</div>'+
+        profileField('pf-nome','Nome completo', d.nome||'', 'Seu nome')+
+        '<div style="display:flex;gap:12px;flex-wrap:wrap;">'+
+          '<div style="flex:1;min-width:140px;">'+profileField('pf-curso','Curso', d.curso||'', 'Psicologia')+'</div>'+
+          '<div style="flex:1;min-width:140px;">'+profileField('pf-sem','Semestre', d.semestre||'', '6º sem')+'</div>'+
+        '</div>'+
+        '<div style="display:flex;gap:10px;margin-top:8px;">'+
+          '<button data-action="saveProfile" '+(state.profileSaving?'':'data-hover="background:#13647F;" data-active="transform:scale(.98);"')+' style="background:'+(state.profileSaving?'#3A6B7C':'#0E4D64')+';border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:'+(state.profileSaving?'default':'pointer')+';transition:all .18s ease;">'+(state.profileSaving?'Salvando…':'Salvar alterações')+'</button>'+
+          '<button data-action="goHome" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">Voltar</button>'+
+        '</div>'+
+      '</div>'+
+    '</section>';
   }
 
   /* =========================================================
@@ -2557,6 +2733,7 @@
       case 'dsm':         return screenDsm();
       case 'feedback':    return screenFeedback();
       case 'sobre':       return screenSobre();
+      case 'perfil':      return screenPerfil();
       default:            return screenHome();
     }
   }
@@ -2749,6 +2926,13 @@
       var t = e.target;
       if(t && t.closest && t.closest('.notif-wrap')) return;   // dentro do sino/painel
       closeNotifPanel(); render();
+    });
+    // upload de avatar: dispara quando o usuário escolhe um arquivo
+    document.addEventListener('change', function(e){
+      if(e.target && e.target.id==='avatar-file'){
+        var f = e.target.files && e.target.files[0];
+        if(actions.avatarFileChosen) actions.avatarFileChosen(f);
+      }
     });
     // primeiro acesso: abre o mural com a mensagem de boas-vindas
     if(notifUnreadCount()>0){ state.notifOpen=true; state.notifNew=notifUnreadIds(); }

@@ -14,6 +14,11 @@ create table if not exists public.profiles (
   criado_em timestamptz not null default now()
 );
 
+-- Personalização (apelido = forma de referência ao usuário; avatar = URL do
+-- Storage/Google OU token de avatar predefinido, ex.: "preset:3"). Idempotente.
+alter table public.profiles add column if not exists apelido text;
+alter table public.profiles add column if not exists avatar  text;
+
 -- 2) PROGRESSO --------------------------------------------------------
 --    1 linha por transtorno revisado pelo usuário.
 create table if not exists public.progress (

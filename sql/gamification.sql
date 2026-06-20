@@ -75,7 +75,7 @@ begin
     group by u.uid
   )
   select t.uid,
-         coalesce(nullif(trim(pr.nome), ''), 'Estudante') as nome,
+         coalesce(nullif(trim(pr.apelido), ''), nullif(trim(pr.nome), ''), 'Estudante') as nome,
          t.xp,
          rank() over (order by t.xp desc) as rnk
   from totals t

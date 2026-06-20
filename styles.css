@@ -574,3 +574,26 @@ button{font-family:inherit;}
   .sobre-ensaio{padding:22px 20px;}
   .se-title{font-size:21px;}
 }
+
+/* ============================================================
+   PERFIL — apelido + avatar
+   ============================================================ */
+.av-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:10px;}
+.av-preset{aspect-ratio:1/1;border-radius:50%;border:2px solid transparent;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;-webkit-appearance:none;appearance:none;}
+.av-preset:hover{transform:translateY(-2px);}
+.av-preset.on{border-color:#fff;box-shadow:0 0 0 2px var(--teal-text);}
+.pf-input:focus{border-color:#5BC0BE;}
+.side-profile-main:hover{opacity:.82;}
+.sidebar.collapsed .side-profile-main{flex:0 0 auto;justify-content:center;width:100%;}
+
+/* ============================================================
+   TABELAS reconstruídas (no lugar das imagens recortadas)
+   ============================================================ */
+.sec-table-wrap{overflow-x:auto;margin:6px 0 2px;border:1px solid var(--border);border-radius:14px;-webkit-overflow-scrolling:touch;}
+.sec-table{border-collapse:collapse;width:100%;min-width:660px;}
+.sec-table th,.sec-table td{border:1px solid var(--border);padding:12px 14px;text-align:left;vertical-align:top;}
+.sec-table thead th{background:var(--cat-soft,var(--accent-bg));color:var(--cat,var(--teal-text));font:800 12.5px 'Hanken Grotesk';letter-spacing:.2px;}
+.sec-table .st-rowhead{background:var(--surface-2);color:var(--ink);font:800 14px 'Bricolage Grotesque';white-space:nowrap;width:1%;}
+.sec-table td p{margin:0 0 9px;font-size:13px;line-height:1.58;color:var(--body);}
+.sec-table td p:last-child{margin-bottom:0;}
+@media (max-width:560px){ .sec-table th,.sec-table td{padding:10px 11px;} }

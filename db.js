@@ -133,6 +133,31 @@
           .then(function (r) { return r.data; });
       });
     },
+    // salva campos do perfil (apelido, avatar, nome, curso, semestre).
+    updateProfile: function (fields) {
+      return uid().then(function (id) {
+        if (!id) return { error: 'sem usuário' };
+        var row = Object.assign({ id: id }, fields || {});
+        return sb.from('profiles').upsert(row, { onConflict: 'id' })
+          .select().single()
+          .then(function (r) { return r.error ? { error: r.error } : { data: r.data }; });
+      });
+    },
+    // envia a imagem para o Storage ("avatars/<uid>/avatar.ext") e devolve a URL pública.
+    uploadAvatar: function (file) {
+      return uid().then(function (id) {
+        if (!id) return { error: 'sem usuário' };
+        var ext = ((file && file.name && file.name.split('.').pop()) || 'png').toLowerCase().replace(/[^a-z0-9]/g, '');
+        var path = id + '/avatar.' + (ext || 'png');
+        return sb.storage.from('avatars').upload(path, file, { upsert: true, cacheControl: '3600', contentType: file.type || undefined })
+          .then(function (res) {
+            if (res.error) return { error: res.error };
+            var pub = sb.storage.from('avatars').getPublicUrl(path);
+            var url = pub && pub.data && pub.data.publicUrl;
+            return { url: url + '?t=' + Date.now() };   // cache-bust (mesma URL, nova imagem)
+          });
+      });
+    },
 
     /* ---- progresso ---- */
     markRevised: function (transtornoId) {

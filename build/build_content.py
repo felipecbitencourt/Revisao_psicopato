@@ -79,6 +79,39 @@ SECTION_MAP = [
     ("relacao com outras classificacoes", "Relação com outras classificações"),
 ]
 
+# Tabelas reconstruídas como dados estruturados (no lugar da imagem recortada).
+#   cols: cabeçalhos; rows: cada linha = [rótulo, célula, célula, ...] onde a
+#   célula é uma string OU uma lista de parágrafos. Texto conferido na fonte.
+TABLES = {
+    "deficiencia-gravidade": {
+        "cols": ["Nível", "Domínio conceitual", "Domínio social", "Domínio prático"],
+        "rows": [
+            ["Leve",
+             ["Em crianças pré-escolares, pode não haver diferenças conceituais óbvias. Para crianças em idade escolar e adultos, existem dificuldades em aprender habilidades acadêmicas que envolvam leitura, escrita, matemática, tempo ou dinheiro, sendo necessário apoio em uma ou mais áreas para o alcance das expectativas associadas à idade. Nos adultos, pensamento abstrato, função executiva (i.e., planejamento, estabelecimento de estratégias, fixação de prioridades e flexibilidade cognitiva) e memória de curto prazo, bem como uso funcional de habilidades acadêmicas (p. ex., leitura, controle do dinheiro), estão prejudicados. Há uma abordagem um tanto concreta a problemas e soluções em comparação com indivíduos na mesma faixa etária."],
+             ["Comparado aos indivíduos na mesma faixa etária com desenvolvimento típico, o indivíduo mostra-se imaturo nas relações sociais. Por exemplo, pode haver dificuldade em perceber, com precisão, pistas sociais dos pares. Comunicação, conversação e linguagem são mais concretas e imaturas do que o esperado para a idade.",
+              "Podem existir dificuldades de regulação da emoção e do comportamento de uma forma adequada à idade; tais dificuldades são percebidas pelos pares em situações sociais. Há compreensão limitada do risco em situações sociais; o julgamento social é imaturo para a idade, e a pessoa corre o risco de ser manipulada pelos outros (credulidade)."],
+             ["O indivíduo pode funcionar de acordo com a idade nos cuidados pessoais. Precisa de algum apoio nas tarefas complexas da vida diária na comparação com os pares. Na vida adulta, os apoios costumam envolver compras de itens para a casa, transporte, organização do lar e dos cuidados com os filhos, preparo de alimentos nutritivos, atividades bancárias e controle do dinheiro.",
+              "As habilidades recreativas assemelham-se às dos companheiros de faixa etária, embora o juízo relativo ao bem-estar e à organização da recreação precise de apoio. Na vida adulta, pode conseguir emprego em funções que não enfatizem habilidades conceituais. Os indivíduos em geral necessitam de apoio para tomar decisões de cuidados de saúde e decisões legais, bem como para aprender a desempenhar uma profissão de forma competente. Apoio costuma ser necessário para criar uma família."]],
+            ["Moderada",
+             ["Durante todo o desenvolvimento, as habilidades conceituais individuais ficam bastante atrás das dos companheiros.",
+              "Nos pré-escolares, a linguagem e as habilidades pré-acadêmicas desenvolvem-se lentamente. Nas crianças em idade escolar, ocorre lento progresso na leitura, na escrita, na matemática e na compreensão do tempo e do dinheiro ao longo dos anos escolares, com limitações marcadas na comparação com os colegas. Nos adultos, o desenvolvimento de habilidades acadêmicas costuma mostrar-se em um nível elementar, havendo necessidade de apoio para todo emprego de habilidades acadêmicas no trabalho e na vida pessoal.",
+              "Assistência contínua diária é necessária para a realização de tarefas conceituais cotidianas, sendo que outras pessoas podem assumir integralmente essas responsabilidades pelo indivíduo."],
+             ["O indivíduo mostra diferenças marcadas em relação aos pares no comportamento social e na comunicação durante o desenvolvimento. A linguagem falada costuma ser um recurso primário para a comunicação social, embora com muito menos complexidade que a dos companheiros. A capacidade de relacionamento é evidente nos laços com família e amigos, e o indivíduo pode manter amizades bem-sucedidas na vida e, por vezes, relacionamentos românticos na vida adulta. Pode, entretanto, não perceber ou interpretar com exatidão as pistas sociais. O julgamento social e a capacidade de tomar decisões são limitados, com cuidadores tendo que auxiliar a pessoa nas decisões. Amizades com companheiros com desenvolvimento normal costumam ficar afetadas pelas limitações de comunicação e sociais. Há necessidade de apoio social e de comunicação significativo para o sucesso nos locais de trabalho."],
+             ["O indivíduo é capaz de dar conta das necessidades pessoais envolvendo alimentar-se, vestir-se, eliminações e higiene como adulto, ainda que haja necessidade de período prolongado de ensino e de tempo para que se torne independente nessas áreas, talvez com necessidade de lembretes. Da mesma forma, participação em todas as tarefas domésticas pode ser alcançada na vida adulta, ainda que seja necessário longo período de aprendizagem, que um apoio continuado tenha que ocorrer para um desempenho adulto. Emprego independente em tarefas que necessitem de habilidades conceituais e comunicacionais limitadas pode ser conseguido, embora com necessidade de apoio considerável de colegas, supervisores e outras pessoas para o manejo das expectativas sociais, complexidades de trabalho e responsabilidades auxiliares, como horário, transportes, benefícios de saúde e controle do dinheiro. Uma variedade de habilidades recreacionais pode ser desenvolvida. Estas costumam demandar apoio e oportunidades de aprendizagem por um longo período de tempo. Comportamento mal-adaptativo está presente em uma minoria significativa, causando problemas sociais."]],
+            ["Grave",
+             ["Alcance limitado de habilidades conceituais. Geralmente, o indivíduo tem pouca compreensão da linguagem escrita ou de conceitos que envolvam números, quantidade, tempo e dinheiro. Os cuidadores proporcionam grande apoio para a solução de problemas ao longo da vida."],
+             ["A linguagem falada é bastante limitada em termos de vocabulário e gramática. A fala pode ser composta de palavras ou expressões isoladas, com possível suplementação por meios alternativos. A fala e a comunicação têm foco no aqui e agora dos eventos diários. A linguagem é usada para comunicação social mais do que para explicações. Os indivíduos entendem discursos e comunicação gestual simples. As relações com familiares e pessoas conhecidas constituem fonte de prazer e ajuda."],
+             ["O indivíduo necessita de apoio para todas as atividades cotidianas, inclusive refeições, vestir-se, banhar-se e eliminação. Precisa de supervisão em todos os momentos. Não é capaz de tomar decisões responsáveis quanto a seu bem-estar e dos demais. Na vida adulta, há necessidade de apoio e assistência contínuos nas tarefas domésticas, recreativas e profissionais. A aquisição de habilidades em todos os domínios envolve ensino prolongado e apoio contínuo. Comportamento mal-adaptativo, inclusive autolesão, está presente em uma minoria significativa."]],
+            ["Profunda",
+             ["As habilidades conceituais costumam envolver mais o mundo físico do que os processos simbólicos. A pessoa pode usar objetos de maneira direcionada a metas para o autocuidado, o trabalho e a recreação. Algumas habilidades visuoespaciais, como combinar e classificar, baseadas em características físicas, podem ser adquiridas. A ocorrência concomitante de prejuízos motores e sensoriais, porém, pode impedir o uso funcional dos objetos."],
+             ["O indivíduo apresenta compreensão muito limitada da comunicação simbólica na fala ou nos gestos. Pode entender algumas instruções ou gestos simples. Há ampla expressão dos próprios desejos e emoções pela comunicação não verbal e não simbólica. A pessoa aprecia os relacionamentos com membros bem conhecidos da família, cuidadores e outras pessoas conhecidas, além de iniciar interações sociais e reagir a elas por meio de pistas gestuais e emocionais. A ocorrência concomitante de prejuízos sensoriais e físicos pode impedir muitas atividades sociais."],
+             ["O indivíduo depende de outros para todos os aspectos do cuidado físico diário, saúde e segurança, ainda que possa conseguir participar também de algumas dessas atividades. Aqueles sem prejuízos físicos graves podem ajudar em algumas tarefas diárias de casa, como levar os pratos para a mesa.",
+              "Ações simples com objetos podem constituir a base para a participação em algumas atividades profissionais com níveis elevados de apoio continuado. Atividades recreativas podem envolver, por exemplo, apreciar ouvir música, assistir a filmes, sair para passear ou participar de atividades aquáticas, tudo isso com apoio de outras pessoas.",
+              "A ocorrência concomitante de prejuízos físicos e sensoriais é barreira frequente à participação (além da observação) em atividades domésticas, recreativas e profissionais. Comportamento mal-adaptativo está presente em uma minoria significativa."]],
+        ],
+    },
+}
+
 # Tabelas do DSM que foram achatadas na extração e que substituímos por
 # imagem recortada do PDF. Chave: nome do transtorno -> título da seção.
 #   keep_first: nº de parágrafos iniciais a manter (ex.: a frase introdutória)
@@ -90,11 +123,7 @@ SECTION_ASSETS = {
     "Deficiência Intelectual (Transtorno do Desenvolvimento Intelectual)": {
         "Especificadores": {
             "keep_first": 1,
-            "images": [
-                "assets/tabelas/deficiencia-intelectual/gravidade-1.png",
-                "assets/tabelas/deficiencia-intelectual/gravidade-2.png",
-                "assets/tabelas/deficiencia-intelectual/gravidade-3.png",
-            ],
+            "table": "deficiencia-gravidade",
             "caption": "DSM-5-TR — Tabela 1: Níveis de gravidade da deficiência intelectual (domínios conceitual, social e prático).",
         }
     },
@@ -159,6 +188,16 @@ CODE_OVERRIDES = {
         {"dsm": "307.1", "cid": "F50.01", "label": "Tipo restritivo"},
         {"dsm": "307.1", "cid": "F50.02", "label": "Tipo compulsão alimentar purgativa"},
     ]},
+    # DSM 300.11 é fixo (independe do sintoma); a CID-10 varia por tipo de sintoma.
+    "Transtorno Conversivo (Transtorno de Sintomas Neurológicos Funcionais)": {"dsm": "300.11", "cid": "F44.4", "codes": [
+        {"dsm": "300.11", "cid": "F44.4", "label": "Com fraqueza/paralisia, movimento anormal, sintomas de deglutição ou de fala"},
+        {"dsm": "300.11", "cid": "F44.5", "label": "Com ataques ou convulsões"},
+        {"dsm": "300.11", "cid": "F44.6", "label": "Com anestesia/perda sensorial ou sintoma sensorial especial"},
+        {"dsm": "300.11", "cid": "F44.7", "label": "Com sintomas mistos"},
+    ]},
+    "Transtorno Factício Autoimposto": {"dsm": "300.19", "cid": "F68.10"},
+    # DSM-5-TR: "imposto a outro" passou a usar a CID-10-MC F68.A (vigente desde out/2022).
+    "Transtorno Factício Imposto a Outro (Antes Transtorno Factício por Procuração)": {"dsm": "300.19", "cid": "F68.A"},
 }
 
 # Correções de TEXTO de erros presentes na própria camada de texto do PDF
@@ -596,13 +635,20 @@ def parse_transtorno(path, display_name):
                 sec["body"] = body
             else:
                 sec["body"] = body[: a.get("keep_first", 0)]
-            sec["images"] = a["images"]
+            if "table" in a:
+                sec["table"] = TABLES[a["table"]]
+            else:
+                sec["images"] = a["images"]
             if a.get("caption"):
                 sec["caption"] = a["caption"]
 
     # adiciona seções novas só com imagem (tabelas de nível-capítulo)
     for e in ADD_SECTIONS.get(title, []):
-        sec = {"title": e["title"], "body": [], "images": e["images"]}
+        sec = {"title": e["title"], "body": []}
+        if "table" in e:
+            sec["table"] = TABLES[e["table"]]
+        else:
+            sec["images"] = e["images"]
         if e.get("caption"):
             sec["caption"] = e["caption"]
         sections.append(sec)
