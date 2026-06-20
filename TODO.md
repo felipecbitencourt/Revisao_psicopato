@@ -48,9 +48,11 @@ _(* #10 com templates prontos, aguardando SMTP; #4 com código pronto, aguardand
 
 **Próximos da fila:** 🎉🎉 **TODOS os 21 itens numerados concluídos** (incluindo o #3, acessibilidade).
 
-_Pendências de painel (você):_ rodar `sql/schema.sql` + `sql/storage-avatars.sql` + `sql/gamification.sql` (#4); colar templates de e-mail / configurar SMTP (#10). _Para revisar:_ conferir a matriz de substâncias e validar clinicamente as 8 vinhetas de caso (#20).
+_Pendências de painel (você):_ **rodar `sql/schema.sql` de novo** — agora tem a coluna `instituicao` (universidade afiliada) além de apelido/avatar; depois `sql/gamification.sql` (ranking por apelido). _(storage-avatars já aplicado; smoke test confirmou bucket OK.)_ Colar templates de e-mail / configurar SMTP (#10). _Para revisar:_ conferir a matriz de substâncias e validar clinicamente as 8 vinhetas de caso (#20).
 
-**Extras (fora da numeração):** ensaio "Psicodiagnóstico" no Sobre · card "Fonte e finalidade educativa" (atribuição DSM) · **4 de 5 tabelas-imagem convertidas em tabelas HTML** (Def. Intelectual, Autismo, LCT, matriz de substâncias — esta a conferir; neurocognitiva segue como imagem) · cache-bust de app.js/db.js/content.js · remoção de secret do histórico git.
+_Extra:_ campo **Instituição / Universidade** no cadastro e no perfil (coluna `instituicao` + trigger atualizados no schema.sql).
+
+**Extras (fora da numeração):** ensaio "Psicodiagnóstico" no Sobre · card "Fonte e finalidade educativa" (atribuição DSM) · **4 de 5 tabelas-imagem convertidas em tabelas HTML** (Def. Intelectual, Autismo, LCT, matriz de substâncias — esta a conferir; neurocognitiva segue como imagem) · cache-bust de app.js/db.js/content.js · remoção de secret do histórico git · **tela de boas-vindas/landing** (`screenWelcome`) antes do login, explicando a plataforma com CTAs Criar conta / Continuar como visitante / Entrar (logo das telas de auth volta para ela; logout cai nela).
 
 ### Config do #4 no Supabase (você) — rodar no SQL Editor
 1. **`sql/schema.sql`** (de novo) → adiciona as colunas `apelido` e `avatar` em `profiles` (idempotente; já com o trigger que pega o nome do Google).

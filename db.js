@@ -20,7 +20,17 @@
     console.warn('[DB] SDK do Supabase não carregou (sem internet?). Modo demonstração.');
   }
 
-  var sb = ready ? window.supabase.createClient(cfg.url, cfg.anonKey) : null;
+  // Login automático: a sessão é guardada no localStorage e o token é renovado
+  // sozinho, então o usuário continua logado entre reloads/sessões.
+  var sb = ready ? window.supabase.createClient(cfg.url, cfg.anonKey, {
+    auth: {
+      persistSession: true,       // mantém a sessão no localStorage
+      autoRefreshToken: true,     // renova o token antes de expirar
+      detectSessionInUrl: true,   // processa o retorno do OAuth/recuperação de senha
+      // storageKey: mantém o padrão do Supabase (já namespaced pelo ref do projeto),
+      // para não deslogar quem já tem sessão ativa.
+    }
+  }) : null;
 
   /* ---- modo visitante (persistência em localStorage) ---- */
   var LS_PROG = 'dsm-guest-progress', LS_EV = 'dsm-guest-events', LS_GUEST = 'dsm-guest-mode';
@@ -85,6 +95,14 @@
       return sb.auth.getUser().then(function (r) {
         return (r.data && r.data.user) || null;
       });
+    },
+    // login automático: lê a sessão do localStorage (sem rede) e a renova se
+    // preciso; devolve o usuário na hora, ou null se não houver sessão salva.
+    currentSession: function () {
+      if (!sb) return Promise.resolve(null);
+      return sb.auth.getSession().then(function (r) {
+        return (r.data && r.data.session && r.data.session.user) || null;
+      }).catch(function () { return null; });
     },
     register: function (email, password, profile) {
       return sb.auth.signUp({

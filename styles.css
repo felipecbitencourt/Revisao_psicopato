@@ -654,3 +654,6 @@ button{font-family:inherit;}
   .ms-danger,.ms-danger svg{color:#E5484D;}
   .ms-sep{height:1px;background:var(--border);margin:8px 4px;}
 }
+
+/* botão "Instalar app" (PWA): no mobile mostra só o ícone */
+@media (max-width:560px){ .pwa-pill .pwa-lbl{display:none;} .pwa-pill{padding:0 11px;} }

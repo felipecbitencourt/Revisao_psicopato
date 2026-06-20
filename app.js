@@ -241,7 +241,8 @@
     google:'<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.09a6.6 6.6 0 0 1 0-4.18V7.07H2.18a11 11 0 0 0 0 9.86l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>',
     more:'<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>',
     logout:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>',
-    a11y:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.3" r="1.25" fill="currentColor" stroke="none"/><path d="M7 10.2c1.6.8 3.2 1.1 5 1.1s3.4-.3 5-1.1"/><path d="M12 11.3V15l-2 4M12 15l2 4"/></svg>'
+    a11y:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.3" r="1.25" fill="currentColor" stroke="none"/><path d="M7 10.2c1.6.8 3.2 1.1 5 1.1s3.4-.3 5-1.1"/><path d="M12 11.3V15l-2 4M12 15l2 4"/></svg>',
+    download:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>'
   };
 
   // ícones dos modos de exercício
@@ -383,6 +384,7 @@
     goFlashcards:  function(){ state.deckCat=state.activeCat; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     toggleTheme:   function(){ toggleTheme(); },
     openA11y:      function(){ if(window.A11Y && window.A11Y.open) window.A11Y.open(); },
+    installPwa:    function(){ var p=window.__pwaPrompt; if(!p) return; p.prompt(); if(p.userChoice){ p.userChoice.then(function(){ window.__pwaPrompt=null; render(); }); } },
     toggleSound:   function(){ Sound.toggle(); render(); },
     openCat:       function(i){ setState({screen:'categoria', activeCat:i}); scrollTop(); },
     openDisorder:  function(i){ setState({screen:'ficha', activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
@@ -461,6 +463,7 @@
       if(res && res.error){ state.auth.busy=false; state.auth.error=traduzErro(res.error); render(); }
     }).catch(function(){ state.auth.busy=false; state.auth.error='Não foi possível iniciar o login com Google.'; render(); });
   };
+  actions.goWelcome  = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'welcome'}); };
   actions.goLogin    = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'login'}); };
   actions.goForgot   = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'forgot'}); };
   actions.submitForgot = function(){
@@ -494,7 +497,7 @@
   /* ---- perfil (apelido + avatar) ---- */
   actions.goPerfil = function(){
     var p = state.auth.profile || {};
-    state.profileDraft = { apelido:p.apelido||'', nome:p.nome||'', curso:p.curso||'', semestre:p.semestre||'', avatar:p.avatar||'' };
+    state.profileDraft = { apelido:p.apelido||'', nome:p.nome||'', curso:p.curso||'', semestre:p.semestre||'', instituicao:p.instituicao||'', avatar:p.avatar||'' };
     state.profileMsg=null; state.profileSaving=false; state.profileUploading=false;
     setState({screen:'perfil'}); scrollTop();
   };
@@ -518,13 +521,13 @@
   actions.saveProfile = function(){
     var d = state.profileDraft || {};
     d.apelido=rawVal('pf-apelido').trim(); d.nome=rawVal('pf-nome').trim();
-    d.curso=rawVal('pf-curso').trim(); d.semestre=rawVal('pf-sem').trim();
+    d.curso=rawVal('pf-curso').trim(); d.semestre=rawVal('pf-sem').trim(); d.instituicao=rawVal('pf-inst').trim();
     if(!DB.updateProfile){ state.profileMsg={type:'err',text:'Salvar indisponível (faça login).'}; render(); return; }
     state.profileSaving=true; state.profileMsg=null; render();
-    DB.updateProfile({apelido:d.apelido, nome:d.nome, curso:d.curso, semestre:d.semestre, avatar:d.avatar}).then(function(res){
+    DB.updateProfile({apelido:d.apelido, nome:d.nome, curso:d.curso, semestre:d.semestre, instituicao:d.instituicao, avatar:d.avatar}).then(function(res){
       state.profileSaving=false;
       if(res && res.error){ state.profileMsg={type:'err',text:'Não foi possível salvar. Tente novamente.'}; render(); return; }
-      state.auth.profile = Object.assign({}, state.auth.profile, (res&&res.data) || {apelido:d.apelido,nome:d.nome,curso:d.curso,semestre:d.semestre,avatar:d.avatar});
+      state.auth.profile = Object.assign({}, state.auth.profile, (res&&res.data) || {apelido:d.apelido,nome:d.nome,curso:d.curso,semestre:d.semestre,instituicao:d.instituicao,avatar:d.avatar});
       state.profileMsg={type:'ok',text:'Perfil atualizado!'};
       render();
     }).catch(function(){ state.profileSaving=false; state.profileMsg={type:'err',text:'Erro ao salvar o perfil.'}; render(); });
@@ -543,15 +546,15 @@
     }).catch(function(){ state.auth.busy=false; state.auth.error='Erro de conexão. Tente de novo.'; render(); });
   };
   actions.submitRegister = function(){
-    var nome=val('reg-nome'), curso=val('reg-curso'), sem=val('reg-sem');
+    var nome=val('reg-nome'), curso=val('reg-curso'), sem=val('reg-sem'), inst=val('reg-inst');
     var email=val('reg-email'), pass=rawVal('reg-pass');
     var f=state.auth.form;
-    f['reg-nome']=nome; f['reg-curso']=curso; f['reg-sem']=sem; f['reg-email']=email; f['reg-pass']=pass;
+    f['reg-nome']=nome; f['reg-curso']=curso; f['reg-sem']=sem; f['reg-inst']=inst; f['reg-email']=email; f['reg-pass']=pass;
     state.auth.error=''; state.auth.info='';
     if(!nome||!email||!pass){ state.auth.error='Preencha nome, e-mail e senha.'; render(); return; }
     if(pass.length<6){ state.auth.error='A senha precisa de ao menos 6 caracteres.'; render(); return; }
     state.auth.busy=true; state.auth.loadingMsg='Criando sua conta…'; render();
-    DB.register(email,pass,{nome:nome,curso:curso,semestre:sem}).then(function(res){
+    DB.register(email,pass,{nome:nome,curso:curso,semestre:sem,instituicao:inst}).then(function(res){
       if(res && res.error){ state.auth.busy=false; state.auth.error=traduzErro(res.error); render(); return; }
       if(res && res.data && res.data.session){ /* já logado: mantém o loader; onAuth -> applySession */ }
       else { state.auth.busy=false; state.auth.info='Conta criada! Confirme pelo link no seu e-mail e depois entre.'; setState({screen:'login'}); }
@@ -942,7 +945,7 @@
      --------------------------------------------------------- */
   // chaves que definem "em que página/contexto estou" (p/ restaurar no voltar)
   var NAV_KEYS = ['screen','activeCat','activeDisorder','deckCat','quizCat'];
-  var AUTH_SCREENS = ['login','register'];
+  var AUTH_SCREENS = ['welcome','login','register','forgot'];
   var navStack = [];          // pilha de snapshots das telas anteriores
   var navRestoring = false;   // true durante a restauração (evita re-empilhar)
   function navSnapshot(){ var s={}; for(var i=0;i<NAV_KEYS.length;i++){ s[NAV_KEYS[i]]=state[NAV_KEYS[i]]; } return s; }
@@ -1234,6 +1237,14 @@
   /* =========================================================
      TOPBAR
      ========================================================= */
+  // botão "instalar app" (PWA) — só aparece quando o navegador permite instalar
+  function pwaInstallBtn(variant){
+    if(!window.__pwaPrompt) return '';
+    if(variant==='welcome'){
+      return '<button data-action="installPwa" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.98);" style="width:100%;display:flex;align-items:center;justify-content:center;gap:9px;background:transparent;border:1px dashed var(--border);border-radius:12px;padding:11px;font:700 13.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;margin-top:14px;">'+ICON.download+'<span>Instalar como app</span></button>';
+    }
+    return '<button data-action="installPwa" title="Instalar app" aria-label="Instalar app" class="pwa-pill" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.94);" style="display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 13px;border-radius:12px;background:var(--surface);border:1px solid var(--border);cursor:pointer;color:var(--muted-2);font:700 13px \'Hanken Grotesk\';transition:all .18s ease;">'+ICON.download+'<span class="pwa-lbl">Instalar</span></button>';
+  }
   function topbar(){
     var themeIcon = state.dark ? ICON.sun : ICON.moon;
     var streak = tracking() ? ((state.stats && state.stats.streak) || 0) : 12;
@@ -1262,6 +1273,7 @@
       levelPill+
       streakChip+
       '<button data-action="toggleSound" title="'+(Sound.isOn()?'Som ligado':'Som desligado')+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:'+(Sound.isOn()?'var(--teal-text)':'var(--muted)')+';transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+(Sound.isOn()?ICON.soundOn:ICON.soundOff)+'</button>'+
+      pwaInstallBtn()+
       '<button data-action="openA11y" title="Acessibilidade" aria-label="Abrir painel de acessibilidade" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+ICON.a11y+'</button>'+
       '<button data-action="toggleTheme" title="Alternar tema" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9) rotate(-15deg);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+themeIcon+'</button>'+
       notifBell()+
@@ -2368,7 +2380,7 @@
     if(!user){
       state.auth.user=null; state.auth.profile=null; state.auth.checking=false;
       state.auth.busy=false; state.auth.loadingMsg='';
-      setState({screen:'login'});
+      setState({screen:'welcome'});
       return;
     }
     state.auth.user=user; state.auth.checking=false;
@@ -2396,10 +2408,10 @@
   }
 
   function authLogo(){
-    return '<div style="display:flex;align-items:center;gap:11px;justify-content:center;margin-bottom:20px;">'+
+    return '<button data-action="goWelcome" title="Voltar ao início" data-hover="opacity:.75;" style="display:flex;align-items:center;gap:11px;justify-content:center;margin:0 auto 20px;background:none;border:none;cursor:pointer;transition:opacity .15s ease;">'+
       '<img src="logo-128.png" alt="Psico·Pato" width="42" height="42" style="width:42px;height:42px;border-radius:12px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);">'+
       '<div style="font:800 20px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">Psico<span style="color:#5BC0BE;">·</span>Pato</div>'+
-    '</div>';
+    '</button>';
   }
   function authFeedback(){
     var a=state.auth;
@@ -2467,6 +2479,7 @@
           '<p style="margin:0 0 20px;font-size:13.5px;color:var(--muted);">Comece a acompanhar sua revisão do DSM-5-TR.</p>'+
           authFeedback()+
           authInput('reg-nome','text','Seu nome','Nome')+
+          authInput('reg-inst','text','Ex.: Universidade Federal…','Instituição / Universidade (opcional)')+
           '<div style="display:flex;gap:12px;">'+
             '<div style="flex:1;">'+authInput('reg-curso','text','Psicologia','Curso (opcional)')+'</div>'+
             '<div style="flex:1;">'+authInput('reg-sem','text','6º sem','Semestre (opcional)')+'</div>'+
@@ -2517,10 +2530,43 @@
       '</section>'+
     '</div>';
   }
+  function screenWelcome(){
+    function feat(icon, title, desc){
+      return '<div style="display:flex;gap:13px;align-items:flex-start;text-align:left;">'+
+        '<div style="width:40px;height:40px;border-radius:11px;background:var(--accent-bg);color:var(--accent-tx);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="display:flex;transform:scale(.9);">'+icon+'</span></div>'+
+        '<div><div style="font:700 14.5px \'Bricolage Grotesque\';color:var(--ink);">'+esc(title)+'</div>'+
+        '<div style="font-size:13px;color:var(--muted-2);line-height:1.5;margin-top:2px;">'+esc(desc)+'</div></div>'+
+      '</div>';
+    }
+    return ''+
+    '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">'+
+      '<section style="width:100%;max-width:480px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+        '<div style="text-align:center;margin-bottom:24px;">'+
+          '<img src="logo-128.png" alt="Psico·Pato" width="62" height="62" style="width:62px;height:62px;border-radius:17px;object-fit:cover;display:inline-block;background:#fff;border:1px solid var(--border);">'+
+          '<h1 style="font:800 30px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.4px;margin:14px 0 8px;">Psico<span style="color:#5BC0BE;">·</span>Pato</h1>'+
+          '<p style="margin:0 auto;font-size:15px;color:var(--muted-2);line-height:1.55;max-width:400px;">Sua plataforma de <b>estudo e revisão do DSM-5-TR</b>: fichas-resumo, exercícios e estudos de caso, com progresso gamificado.</p>'+
+        '</div>'+
+        '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(16,42,51,.06);">'+
+          '<div style="display:flex;flex-direction:column;gap:16px;margin-bottom:22px;">'+
+            feat(ICON.book2, 'Fichas do DSM-5-TR', 'Os transtornos das 20 categorias com critérios, especificadores e seções — em fichas-resumo.')+
+            feat(ICON.pencil, 'Exercícios e casos', 'Flashcards, questionários, classificação de transtornos e estudos de caso clínicos.')+
+            feat(ICON.trophy, 'Acompanhe seu progresso', 'Crie uma conta para salvar revisões, XP, medalhas e ranking em qualquer dispositivo.')+
+          '</div>'+
+          '<button data-action="goRegister" data-hover="background:#13647F;" data-active="transform:scale(.98);" style="width:100%;background:#0E4D64;border:none;border-radius:12px;padding:14px;font:700 15px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:all .18s ease;margin-bottom:10px;">Criar conta grátis</button>'+
+          '<button data-action="enterGuest" data-hover="background:var(--surface-2);border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.98);" style="width:100%;background:transparent;border:1px solid var(--border);border-radius:12px;padding:13px;font:700 14px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .18s ease;">Continuar como visitante</button>'+
+          '<p style="margin:14px 0 0;font-size:13px;color:var(--muted);text-align:center;">Já tem conta? '+
+            '<button data-action="goLogin" style="background:none;border:none;color:var(--teal-text);font-weight:700;font-size:13px;cursor:pointer;padding:0;">Entrar</button></p>'+
+        '</div>'+
+        pwaInstallBtn('welcome')+
+        '<p style="margin:14px auto 0;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.5;max-width:380px;">No modo visitante, seu histórico fica salvo só neste navegador. Crie uma conta a qualquer momento para não perdê-lo.</p>'+
+      '</section>'+
+    '</div>';
+  }
   function authScreen(){
     if(state.screen==='register') return screenRegister();
     if(state.screen==='forgot')   return screenForgot();
-    return screenLogin();
+    if(state.screen==='login')    return screenLogin();
+    return screenWelcome();   // padrão para não autenticados
   }
   // loader de marca (emoji de cérebro pulsante) — usado em auth e onde houver espera
   function brandLoader(msg, full){
@@ -2556,7 +2602,7 @@
     }
     var p = (DB.ready && state.auth.profile) ? state.auth.profile : null;
     var nome = displayName() || 'Estudante';
-    var sub  = (p && (p.curso||p.semestre)) ? [p.curso,p.semestre].filter(Boolean).join(' · ') : 'Psicologia · 6º sem';
+    var sub  = (p && (p.curso||p.semestre||p.instituicao)) ? [p.curso,p.semestre,p.instituicao].filter(Boolean).join(' · ') : 'Psicologia · 6º sem';
     var logout = (DB.ready && state.auth.user)
       ? '<button data-action="logout" class="side-profile-logout" data-hover="color:#E5484D;" title="Sair da conta" style="margin-left:auto;background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px;font-weight:700;padding:4px 2px;">Sair</button>'
       : '';
@@ -2620,6 +2666,7 @@
         profileField('pf-apelido','Apelido', d.apelido||'', 'Como quer ser chamado(a)')+
         '<div style="font-size:11.5px;color:var(--muted);margin:-8px 0 16px;">É assim que você aparece na saudação da home e no ranking.</div>'+
         profileField('pf-nome','Nome completo', d.nome||'', 'Seu nome')+
+        profileField('pf-inst','Instituição / Universidade', d.instituicao||'', 'Ex.: Universidade Federal…')+
         '<div style="display:flex;gap:12px;flex-wrap:wrap;">'+
           '<div style="flex:1;min-width:140px;">'+profileField('pf-curso','Curso', d.curso||'', 'Psicologia')+'</div>'+
           '<div style="flex:1;min-width:140px;">'+profileField('pf-sem','Semestre', d.semestre||'', '6º sem')+'</div>'+
@@ -3136,6 +3183,8 @@
       if(input){ e.preventDefault(); input.focus(); }
     });
 
+    // PWA: re-renderiza para mostrar/ocultar o botão "Instalar app"
+    window.__onPwaPrompt = function(){ try{ render(); }catch(e){} };
     // link de recuperação de senha: a URL volta com #...type=recovery...
     // marca já aqui para não cair na home antes do evento PASSWORD_RECOVERY.
     try { if(/type=recovery/.test(window.location.hash||'')) state.auth.recovery = true; } catch(e){}
@@ -3144,14 +3193,14 @@
       DB.onAuth(applySession);
       state.auth.checking = true;
       render();
-      DB.currentUser().then(function(u){
+      DB.currentSession().then(function(u){   // login automático via localStorage
         if(u){ DB.setGuest(false); state.auth.guest=false; applySession(u); }
         else if(DB.guest){ state.auth.guest=true; state.auth.checking=false; state.screen='home'; loadUserData().then(render); }
-        else { state.auth.checking=false; setState({screen:'login'}); }
+        else { state.auth.checking=false; setState({screen:'welcome'}); }
       }).catch(function(){
         state.auth.checking=false;
         if(DB.guest){ state.auth.guest=true; state.screen='home'; loadUserData().then(render); }
-        else setState({screen:'login'});
+        else setState({screen:'welcome'});
       });
     } else {
       state.auth.checking = false;

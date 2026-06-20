@@ -16,8 +16,9 @@ create table if not exists public.profiles (
 
 -- Personalização (apelido = forma de referência ao usuário; avatar = URL do
 -- Storage/Google OU token de avatar predefinido, ex.: "preset:3"). Idempotente.
-alter table public.profiles add column if not exists apelido text;
-alter table public.profiles add column if not exists avatar  text;
+alter table public.profiles add column if not exists apelido     text;
+alter table public.profiles add column if not exists avatar      text;
+alter table public.profiles add column if not exists instituicao text;  -- universidade/instituição afiliada
 
 -- 2) PROGRESSO --------------------------------------------------------
 --    1 linha por transtorno revisado pelo usuário.
@@ -68,7 +69,7 @@ language plpgsql
 security definer set search_path = ''
 as $$
 begin
-  insert into public.profiles (id, nome, curso, semestre)
+  insert into public.profiles (id, nome, curso, semestre, instituicao)
   values (
     new.id,
     -- e-mail/senha envia 'nome'; login social (Google) envia 'full_name'/'name'
@@ -78,7 +79,8 @@ begin
       new.raw_user_meta_data ->> 'name'
     ),
     new.raw_user_meta_data ->> 'curso',
-    new.raw_user_meta_data ->> 'semestre'
+    new.raw_user_meta_data ->> 'semestre',
+    new.raw_user_meta_data ->> 'instituicao'
   );
   return new;
 end;
