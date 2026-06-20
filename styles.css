@@ -1,5 +1,5 @@
 /* ============================================================
-   Plataforma DSM · Revisa — estilos
+   Plataforma Psico · Pato — estilos
    Recriação fiel do protótipo (Claude Design) em CSS vanilla.
    ============================================================ */
 
@@ -95,6 +95,11 @@ button{font-family:inherit;}
 .rev-toggle{display:inline-flex;gap:3px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:3px;}
 .rev-tab{-webkit-appearance:none;appearance:none;background:none;border:none;border-radius:9px;padding:8px 16px;font:700 13.5px 'Hanken Grotesk';color:var(--muted-2);cursor:pointer;transition:background .15s ease,color .15s ease;}
 .rev-tab.on{background:var(--surface);color:var(--teal-text);box-shadow:0 1px 3px rgba(16,42,51,.08);}
+
+/* carrossel de métricas na sidebar */
+.sm-dots{display:flex;gap:4px;justify-content:center;margin-top:11px;}
+.sm-dot{width:5px;height:5px;border-radius:50%;background:var(--track);transition:background .3s ease,width .3s ease;}
+.sm-dot.on{background:var(--teal-text);width:13px;border-radius:3px;}
 
 /* ============================================================
    ESTUDO DE CASO — gamificado

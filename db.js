@@ -1,5 +1,5 @@
 /* ============================================================
-   db.js — camada de dados (DSM · Revisa)
+   db.js — camada de dados (Psico · Pato)
    Encapsula o cliente Supabase. Expõe window.DB com métodos de
    autenticação e acesso aos dados. Se as chaves não estiverem
    configuradas (ou o SDK não carregar), DB.ready = false e o app
@@ -183,13 +183,14 @@
           acertos: ev.filter(function (e) { return e.acerto === true; }).length,
           ativos: activeDaysFrom(datas),
           taxa: ca.length ? Math.round(ac / ca.length * 100) : 0,
-          streak: streakFrom(datas)
+          streak: streakFrom(datas),
+          byType: ev.reduce(function (o, e) { o[e.tipo] = (o[e.tipo] || 0) + 1; return o; }, {})
         });
       }
-      if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, acertos: 0, ativos: 0, taxa: 0, streak: 0 });
+      if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, acertos: 0, ativos: 0, taxa: 0, streak: 0, byType: {} });
       return Promise.all([
         sb.from('progress').select('revisado_em'),
-        sb.from('events').select('acerto,criado_em')
+        sb.from('events').select('acerto,criado_em,tipo')
       ]).then(function (res) {
         var prog = res[0].data || [];
         var ev = res[1].data || [];
@@ -203,7 +204,8 @@
           acertos: acertos,
           ativos: activeDaysFrom(datas),
           taxa: comAcerto.length ? Math.round(acertos / comAcerto.length * 100) : 0,
-          streak: streakFrom(datas)
+          streak: streakFrom(datas),
+          byType: ev.reduce(function (o, e) { o[e.tipo] = (o[e.tipo] || 0) + 1; return o; }, {})
         };
       });
     },

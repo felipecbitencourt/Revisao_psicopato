@@ -1,6 +1,6 @@
 /* ============================================================
-   Plataforma DSM · Revisa
-   Recriação fiel do protótipo do Claude Design em JS vanilla.
+   Plataforma Psico · Pato (guia de estudos do DSM-5-TR)
+   JS vanilla, sem dependências, sem build — abra o index.html.
    Sem dependências, sem build — abra o index.html no navegador.
 
    Conteúdo é ilustrativo/placeholder (igual ao protótipo): a
@@ -666,6 +666,52 @@
     ];
   }
 
+  // --- carrossel de métricas na sidebar (troca a cada 15s) ---
+  var sideMetricIdx = 0;
+  function sideMetrics(){
+    var t = tracking();
+    var st = (t && state.stats) ? state.stats : null;
+    var total = t ? totalDisorders() : 90;
+    var rev = t ? totalRevised() : 38;
+    var pct = total ? Math.round(rev/total*100) : 0;
+    var bt = (st && st.byType) || {};
+    var exe = st ? st.exercicios : 154;
+    var fc  = t ? (bt.flashcard||0) : 50;
+    var cs  = t ? (bt.caso||0) : 8;
+    var taxa = st ? st.taxa : 87;
+    var streak = st ? st.streak : 12;
+    return [
+      {label:'Progresso geral', value:pct+'%', bar:pct, sub:rev+' de '+total+' transtornos revisados'},
+      {label:'Flashcards',      value:String(fc),  sub:'cartões revisados'},
+      {label:'Exercícios',      value:String(exe), sub:'exercícios feitos'},
+      {label:'Estudos de caso', value:String(cs),  sub:'casos resolvidos'},
+      {label:'Ranking',         value:'#—',        sub:'em breve'},
+      {label:'Visão geral',     value:taxa+'%', bar:taxa, sub:streak+' dias de streak · '+taxa+'% de acerto'}
+    ];
+  }
+  function sideMetricCard(){
+    var M = sideMetrics(), n = M.length, i = sideMetricIdx % n, m = M[i];
+    var dots = '';
+    for(var d=0; d<n; d++){ dots += '<span class="sm-dot'+(d===i?' on':'')+'"></span>'; }
+    return '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">'+
+        '<span style="font-size:12px;font-weight:700;color:var(--muted-2);">'+esc(m.label)+'</span>'+
+        '<span style="font:800 16px \'Bricolage Grotesque\';color:var(--teal-text);">'+esc(m.value)+'</span>'+
+      '</div>'+
+      (m.bar!=null
+        ? '<div style="height:8px;background:var(--track);border-radius:99px;overflow:hidden;"><div style="width:'+m.bar+'%;height:100%;background:linear-gradient(90deg,#0E4D64,#3F95A3,#5BC0BE,#3F95A3,#0E4D64);background-size:200% 100%;border-radius:99px;animation:slide 4s linear infinite;"></div></div>'
+        : '<div style="height:8px;"></div>')+
+      '<div style="font-size:11.5px;color:var(--muted);margin-top:9px;font-weight:600;line-height:1.35;min-height:30px;">'+esc(m.sub)+'</div>'+
+      '<div class="sm-dots">'+dots+'</div>';
+  }
+  function tickSideMetric(){
+    sideMetricIdx = (sideMetricIdx + 1) % sideMetrics().length;
+    var el = document.querySelector('.side-metric');
+    if(el){
+      el.innerHTML = sideMetricCard();
+      el.style.animation='none'; void el.offsetWidth; el.style.animation='fadeIn .45s ease';
+    }
+  }
+
   function sidebar(){
     var its = navItems();
     var navPrim = its.filter(function(i){ return i.primary; }).map(navBtn).join('');
@@ -694,24 +740,15 @@
     return ''+
     '<aside class="sidebar">'+
       '<div style="display:flex;align-items:center;gap:11px;padding:4px 6px 22px;">'+
-        '<img src="logo-128.png" alt="DSM·Revisa" width="38" height="38" style="width:38px;height:38px;border-radius:11px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);">'+
+        '<img src="logo-128.png" alt="Psico·Pato" width="38" height="38" style="width:38px;height:38px;border-radius:11px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);">'+
         '<div>'+
-          '<div style="font:800 17px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">DSM<span style="color:#5BC0BE;">·</span>Revisa</div>'+
+          '<div style="font:800 17px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">Psico<span style="color:#5BC0BE;">·</span>Pato</div>'+
           '<div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.3px;">guia de estudos</div>'+
         '</div>'+
       '</div>'+
       '<nav style="display:flex;flex-direction:column;gap:4px;">'+nav+'</nav>'+
       levelCard+
-      '<div style="margin-top:12px;background:var(--bg);border-radius:16px;padding:16px;">'+
-        '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">'+
-          '<span style="font-size:12px;font-weight:700;color:var(--muted-2);">Progresso geral</span>'+
-          '<span style="font:800 14px \'Bricolage Grotesque\';color:var(--teal-text);">'+ovPct+'%</span>'+
-        '</div>'+
-        '<div style="height:8px;background:var(--track);border-radius:99px;overflow:hidden;">'+
-          '<div style="width:'+ovPct+'%;height:100%;background:linear-gradient(90deg,#0E4D64,#3F95A3,#5BC0BE,#3F95A3,#0E4D64);background-size:200% 100%;border-radius:99px;animation:slide 4s linear infinite;"></div>'+
-        '</div>'+
-        '<div style="font-size:11.5px;color:var(--muted);margin-top:9px;font-weight:600;">'+ovRev+' de '+ovTotal+' transtornos revisados</div>'+
-      '</div>'+
+      '<div class="side-metric" style="margin-top:12px;background:var(--bg);border-radius:16px;padding:16px;">'+ sideMetricCard() +'</div>'+
       profileBlock()+
     '</aside>';
   }
@@ -1857,8 +1894,8 @@
 
   function authLogo(){
     return '<div style="display:flex;align-items:center;gap:11px;justify-content:center;margin-bottom:20px;">'+
-      '<img src="logo-128.png" alt="DSM·Revisa" width="42" height="42" style="width:42px;height:42px;border-radius:12px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);">'+
-      '<div style="font:800 20px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">DSM<span style="color:#5BC0BE;">·</span>Revisa</div>'+
+      '<img src="logo-128.png" alt="Psico·Pato" width="42" height="42" style="width:42px;height:42px;border-radius:12px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);">'+
+      '<div style="font:800 20px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">Psico<span style="color:#5BC0BE;">·</span>Pato</div>'+
     '</div>';
   }
   function authFeedback(){
@@ -2129,7 +2166,7 @@
 
     // modo demonstração (sem Supabase): mantém o fallback por e-mail
     if(!DB.ready){
-      var mail='mailto:felipe.cb2511@gmail.com?subject='+encodeURIComponent('DSM·Revisa — Feedback');
+      var mail='mailto:felipe.cb2511@gmail.com?subject='+encodeURIComponent('Psico·Pato — Feedback');
       return placeholderScreen('Feedback','Feedback',ICON.message,'Por e-mail',
         'Envie erros nas fichas e sugestões para <a href="'+mail+'" style="color:var(--teal-text);font-weight:700;text-decoration:none;">felipe.cb2511@gmail.com</a>.');
     }
@@ -2206,7 +2243,7 @@
     return ''+
     '<section style="max-width:780px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Sobre</div>'+
-      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 8px;">DSM<span style="color:#5BC0BE;">·</span>Revisa</h1>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 8px;">Psico<span style="color:#5BC0BE;">·</span>Pato</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;line-height:1.6;max-width:620px;">Plataforma de estudos e revisão dos transtornos do DSM-5-TR — fichas-resumo com critérios diagnósticos, especificadores, seções narrativas e exercícios.</p>'+
       '<div style="display:flex;flex-direction:column;gap:12px;">'+
         card(ICON.book2, 'Conteúdo', 'Os '+total+' transtornos das 20 categorias da Seção II do DSM-5-TR, com critérios, subtipos, especificadores e seções, além de tabelas recortadas do manual.')+
@@ -2410,6 +2447,7 @@
       }
     });
     document.addEventListener('keydown', handleKeyNav);
+    setInterval(tickSideMetric, 15000);   // carrossel de métricas na sidebar
     // fecha o dropdown de busca ao clicar fora dele
     document.addEventListener('click', function(e){
       var box = document.getElementById('search-results');
