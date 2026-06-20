@@ -78,15 +78,91 @@
   ];
   var MR = [4,9,1,17,6]; // índices de categoria, embaralhados
 
-  var CASO = {
-    patient:{name:'Marina', age:27, sex:'Feminino', ref:'Encaminhada pela atenção primária', initials:'M'},
-    chips:['Ataques súbitos de medo', 'Palpitações e falta de ar', '≈ 4 meses', 'Evita sair sozinha'],
-    vinheta:'Conteúdo ilustrativo. Marina relata episódios súbitos e recorrentes de medo intenso, com palpitações, sudorese, falta de ar e sensação de morte iminente, que atingem o pico em poucos minutos. Desde então, vive preocupada com a possibilidade de novos episódios e passou a evitar sair de casa sozinha. Nega uso de substâncias e condição médica que justifique o quadro.',
-    pergunta:'Qual a hipótese diagnóstica mais provável?',
-    opts:['Transtorno depressivo maior','Transtorno de ansiedade generalizada','Transtorno de pânico','Transtorno bipolar tipo II'],
-    correct:2,
-    explicacao:'Conteúdo ilustrativo — ataques de pânico recorrentes e inesperados, seguidos de preocupação persistente com novos ataques e mudança de comportamento (esquiva), apontam para Transtorno de Pânico (DSM-5-TR). Aqui entraria a referência ao critério diagnóstico.'
-  };
+  // Banco de casos (vinhetas ILUSTRATIVAS para estudo — requerem validação clínica).
+  // A resposta correta usa o nome de um transtorno do conteúdo (p/ o botão "Ver ficha").
+  var CASOS = [
+    {
+      id:'panico',
+      patient:{name:'Marina', age:27, sex:'Feminino', ref:'Encaminhada pela atenção primária', initials:'M'},
+      chips:['Ataques súbitos de medo', 'Palpitações e falta de ar', '≈ 4 meses', 'Evita sair sozinha'],
+      vinheta:'Conteúdo ilustrativo. Marina relata episódios súbitos e recorrentes de medo intenso, com palpitações, sudorese, falta de ar e sensação de morte iminente, que atingem o pico em poucos minutos. Desde então, vive preocupada com a possibilidade de novos episódios e passou a evitar sair de casa sozinha. Nega uso de substâncias e condição médica que justifique o quadro.',
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Depressivo Maior','Transtorno de Ansiedade Generalizada','Transtorno de Pânico','Transtorno Bipolar Tipo II'],
+      correct:2,
+      explicacao:'Conteúdo ilustrativo — ataques de pânico recorrentes e inesperados, seguidos de preocupação persistente com novos ataques e mudança de comportamento (esquiva), apontam para Transtorno de Pânico (DSM-5-TR).'
+    },
+    {
+      id:'depressao',
+      patient:{name:'Rafael', age:34, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'R'},
+      chips:['Humor deprimido', 'Anedonia ≈ 2 meses', 'Insônia e fadiga', 'Culpa e baixa concentração'],
+      vinheta:'Conteúdo ilustrativo. Há cerca de dois meses, Rafael refere tristeza na maior parte do dia, quase todos os dias, com perda acentuada de interesse e prazer em atividades que antes apreciava. Relata insônia, fadiga, dificuldade de concentração, sentimentos de inutilidade e culpa excessiva, além de redução de apetite e peso. Nega episódios de humor elevado, uso de substâncias ou condição médica relevante.',
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Ansiedade Generalizada','Transtorno Depressivo Maior','Transtorno Bipolar Tipo I','Transtorno Depressivo Persistente (Distimia)'],
+      correct:1,
+      explicacao:'Conteúdo ilustrativo — humor deprimido e/ou anedonia por ≥ 2 semanas, somados a sintomas neurovegetativos e cognitivos (sono, apetite/peso, fadiga, culpa, concentração), sem história de episódio maníaco/hipomaníaco, apontam para Transtorno Depressivo Maior (DSM-5-TR).'
+    },
+    {
+      id:'toc',
+      patient:{name:'Beatriz', age:22, sex:'Feminino', ref:'Trazida pela família', initials:'B'},
+      chips:['Pensamentos de contaminação', 'Rituais de lavagem', '> 3 h/dia', 'Reconhece o excesso'],
+      vinheta:'Conteúdo ilustrativo. Beatriz descreve pensamentos intrusivos e recorrentes de contaminação que lhe causam grande ansiedade. Para aliviá-los, lava as mãos de forma repetitiva e segue rituais rígidos de limpeza, chegando a gastar mais de três horas por dia. Reconhece que os comportamentos são excessivos, mas sente-se incapaz de resistir. O quadro prejudica seus estudos e relações.',
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Ansiedade Generalizada','Transtorno de Pânico','Transtorno Obsessivo-Compulsivo','Fobia Específica'],
+      correct:2,
+      explicacao:'Conteúdo ilustrativo — obsessões (pensamentos intrusivos de contaminação) e compulsões (rituais de lavagem) que consomem tempo significativo (> 1 h/dia) e geram sofrimento/prejuízo caracterizam o Transtorno Obsessivo-Compulsivo (DSM-5-TR).'
+    },
+    {
+      id:'tept',
+      patient:{name:'Carlos', age:41, sex:'Masculino', ref:'Encaminhado após acidente', initials:'C'},
+      chips:['Acidente grave há 5 meses', 'Revivências e pesadelos', 'Evitação', 'Hipervigilância'],
+      vinheta:'Conteúdo ilustrativo. Cinco meses após sofrer um acidente automobilístico grave, Carlos apresenta revivências intrusivas do evento, pesadelos recorrentes e intenso sofrimento ao ser exposto a estímulos que o lembram. Evita ativamente dirigir e falar sobre o ocorrido, relata embotamento afetivo, hipervigilância e sobressaltos exagerados. Os sintomas persistem e comprometem seu trabalho.',
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Estresse Agudo','Transtorno de Estresse Pós-Traumático','Transtorno de Pânico','Transtorno de Ajustamento'],
+      correct:1,
+      explicacao:'Conteúdo ilustrativo — exposição a evento traumático seguida de sintomas intrusivos, evitação, alterações de cognição/humor e hiperexcitabilidade por mais de um mês caracteriza o Transtorno de Estresse Pós-Traumático (no Estresse Agudo, a duração é de 3 dias a 1 mês).'
+    },
+    {
+      id:'social',
+      patient:{name:'Júlia', age:19, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'J'},
+      chips:['Medo de ser avaliada', 'Evita falar em público', 'Rubor e tremor', 'Desde a adolescência'],
+      vinheta:'Conteúdo ilustrativo. Desde a adolescência, Júlia sente medo intenso e persistente de situações sociais em que possa ser avaliada — apresentar trabalhos, falar com desconhecidos ou comer em público. Teme agir de forma humilhante, apresenta rubor, tremor e taquicardia, e evita essas situações ou as suporta com grande sofrimento. O medo é desproporcional e prejudica a vida acadêmica.',
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Pânico','Transtorno de Ansiedade Social (Fobia Social)','Transtorno de Ansiedade Generalizada','Transtorno da Personalidade Esquiva'],
+      correct:1,
+      explicacao:'Conteúdo ilustrativo — medo/ansiedade acentuados e persistentes de situações sociais com possível escrutínio, com esquiva e sofrimento desproporcionais, caracteriza o Transtorno de Ansiedade Social (Fobia Social) (DSM-5-TR).'
+    },
+    {
+      id:'anorexia',
+      patient:{name:'Helena', age:17, sex:'Feminino', ref:'Trazida pelos pais', initials:'H'},
+      chips:['Restrição alimentar', 'Baixo peso significativo', 'Medo de engordar', 'Distorção da imagem'],
+      vinheta:'Conteúdo ilustrativo. Helena, trazida pelos pais, apresenta restrição alimentar acentuada e perda de peso significativa, mantendo peso corporal muito abaixo do esperado para idade e estatura. Demonstra medo intenso de ganhar peso mesmo estando abaixo do peso, percebe-se acima do peso (distorção da imagem corporal) e minimiza a gravidade do quadro.',
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Bulimia Nervosa','Anorexia Nervosa','Transtorno de Compulsão Alimentar','Transtorno Dismórfico Corporal'],
+      correct:1,
+      explicacao:'Conteúdo ilustrativo — restrição da ingesta levando a baixo peso significativo, medo intenso de engordar e perturbação na percepção do peso/forma corporal caracterizam a Anorexia Nervosa (DSM-5-TR), distinta da Bulimia (peso geralmente normal, com compensação) e da Compulsão Alimentar (sem compensação).'
+    },
+    {
+      id:'bipolar1',
+      patient:{name:'Diego', age:29, sex:'Masculino', ref:'Levado pela família', initials:'D'},
+      chips:['Humor eufórico ≈ 1 semana', 'Pouco sono sem cansaço', 'Grandiosidade e gastos', 'Fala acelerada'],
+      vinheta:'Conteúdo ilustrativo. Há cerca de uma semana, Diego apresenta humor anormalmente eufórico e expansivo, com aumento de energia, redução acentuada da necessidade de sono (sente-se descansado com 2 a 3 horas), autoestima inflada, fala acelerada, fuga de ideias e envolvimento em gastos excessivos e negócios arriscados. O quadro prejudicou seu trabalho e exigiu intervenção. Há relato de episódio depressivo no passado.',
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Bipolar Tipo II','Transtorno Bipolar Tipo I','Transtorno Ciclotímico','Transtorno Depressivo Maior'],
+      correct:1,
+      explicacao:'Conteúdo ilustrativo — episódio maníaco (humor elevado + aumento de energia por ≥ 1 semana, com grandiosidade, redução do sono, fuga de ideias e comportamento de risco, causando prejuízo acentuado) define o Transtorno Bipolar Tipo I (DSM-5-TR). No Tipo II ocorre hipomania, sem episódio maníaco pleno.'
+    },
+    {
+      id:'tag',
+      patient:{name:'Sônia', age:45, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'S'},
+      chips:['Preocupação excessiva', '> 6 meses', 'Tensão e insônia', 'Difícil de controlar'],
+      vinheta:'Conteúdo ilustrativo. Há mais de seis meses, Sônia relata preocupação excessiva e difícil de controlar com diversos aspectos do cotidiano — trabalho, saúde da família, finanças. Acompanha-se de inquietação, fadiga, dificuldade de concentração, irritabilidade, tensão muscular e perturbação do sono. Não há ataques de pânico definidos nem foco em um único objeto ou situação.',
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Pânico','Transtorno de Ansiedade Generalizada','Transtorno Obsessivo-Compulsivo','Transtorno de Ansiedade Social (Fobia Social)'],
+      correct:1,
+      explicacao:'Conteúdo ilustrativo — ansiedade e preocupação excessivas, difíceis de controlar, na maior parte dos dias por ≥ 6 meses, com inquietação, fadiga, tensão muscular e alterações do sono, caracterizam o Transtorno de Ansiedade Generalizada (DSM-5-TR).'
+    }
+  ];
+  function currentCaso(){ return CASOS[(state.casoIndex||0) % CASOS.length]; }
 
   var CRITERIA = [
     {letter:'A', text:'Conteúdo ilustrativo. Critério principal do quadro — presença dos sintomas centrais por um período mínimo definido.'},
@@ -162,7 +238,10 @@
     eyeOff:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.1 9.1 0 0 1 12 5c6.5 0 10 7 10 7a13 13 0 0 1-1.7 2.7"/><path d="M6.6 6.6A13 13 0 0 0 2 12s3.5 7 10 7a9 9 0 0 0 5.4-1.7"/><path d="M3 3l18 18"/></svg>',
     x:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
     sidebar:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>',
-    google:'<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.09a6.6 6.6 0 0 1 0-4.18V7.07H2.18a11 11 0 0 0 0 9.86l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>'
+    google:'<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.09a6.6 6.6 0 0 1 0-4.18V7.07H2.18a11 11 0 0 0 0 9.86l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>',
+    more:'<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>',
+    logout:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>',
+    a11y:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.3" r="1.25" fill="currentColor" stroke="none"/><path d="M7 10.2c1.6.8 3.2 1.1 5 1.1s3.4-.3 5-1.1"/><path d="M12 11.3V15l-2 4M12 15l2 4"/></svg>'
   };
 
   // ícones dos modos de exercício
@@ -234,7 +313,7 @@
     matchLeftSel:null, matches:{},
     casoSelected:null, casoAnswered:false, casoIndex:0, casoScore:0, casoStreak:0,
     lastViewed:null,
-    notifOpen:false, notifNew:[],
+    notifOpen:false, notifNew:[], moreOpen:false,
     sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
     dark:false,
     auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false, loadingMsg:'', form:{}, recovery:false},
@@ -303,6 +382,7 @@
     openRef:       function(arg){ var p=String(arg).split(':'); var ci=+p[0], di=+p[1]; setState({screen:'ficha', activeCat:ci, activeDisorder:di, fichaOpen:initOpen(ci,di)}); recordRevised(); scrollTop(); },
     goFlashcards:  function(){ state.deckCat=state.activeCat; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     toggleTheme:   function(){ toggleTheme(); },
+    openA11y:      function(){ if(window.A11Y && window.A11Y.open) window.A11Y.open(); },
     toggleSound:   function(){ Sound.toggle(); render(); },
     openCat:       function(i){ setState({screen:'categoria', activeCat:i}); scrollTop(); },
     openDisorder:  function(i){ setState({screen:'ficha', activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
@@ -343,7 +423,7 @@
     classifyNext:   function(){ if(state.classifyPhase>=CLASSIFY_PHASES.length-1){ state.classifyDone=true; setState({}); } else { startPhase(state.classifyPhase+1); } },
     classifyRestart:function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
     // caso
-    casoSelect: function(i){ if(state.casoAnswered) return; var ok=(i===CASO.correct); state.casoScore+= ok?10:0; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok, (CASO.patient&&CASO.patient.name)||'caso'); },
+    casoSelect: function(i){ if(state.casoAnswered) return; var ca=currentCaso(); var ok=(i===ca.correct); state.casoScore+= ok?10:0; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok, ca.id || (ca.patient&&ca.patient.name) || 'caso'); },
     casoNext:   function(){ setState({casoIndex:state.casoIndex+1, casoSelected:null, casoAnswered:false}); scrollTop(); },
   };
 
@@ -370,6 +450,8 @@
   };
   // voltar: delega ao histórico do navegador (dispara popstate -> navPop)
   actions.goBack = function(){ if(navStack.length){ window.history.back(); } };
+  actions.toggleMore = function(){ state.moreOpen = !state.moreOpen; render(); };
+  actions.closeMore  = function(){ if(state.moreOpen){ state.moreOpen=false; render(); } };
   actions.loginGoogle = function(){
     if(!DB.ready || !DB.loginGoogle){ state.auth.error='Login com Google indisponível no momento.'; render(); return; }
     state.auth.error=''; state.auth.info='';
@@ -594,12 +676,40 @@
     }catch(e){ fallback(); }
   }
   function disorderId(catIndex, d){ return catIndex + '::' + (d.n || ''); }
+  // localiza {ci,di} de um transtorno pelo nome (usado p/ "ver ficha" nos exercícios)
+  function findRef(name){
+    if(!name) return null;
+    var key = String(name).trim().toLowerCase();
+    for(var ci=0; ci<CATS.length; ci++){
+      var items = CATS[ci].items || [];
+      for(var di=0; di<items.length; di++){ if(String(items[di].n||'').trim().toLowerCase() === key) return {ci:ci, di:di}; }
+    }
+    return null;
+  }
+  // botão "ver ficha completa" para abrir a ficha no meio de uma atividade
+  // (o histórico/#voltar preserva o estado do exercício ao retornar).
+  function fichaPeekBtn(ci, di, label){
+    if(ci==null || di==null) return '';
+    return '<button data-action="openRef" data-arg="'+ci+':'+di+'" class="ficha-peek" data-hover="border-color:var(--teal-text);color:var(--teal-text);">'+ICON.book+'<span>'+esc(label||'Ver ficha completa')+'</span></button>';
+  }
   function isRevised(catIndex, d){ return !!state.progress[disorderId(catIndex, d)]; }
   function totalDisorders(){ return CATS.reduce(function(s,c){ return s + (c.items ? c.items.length : 0); }, 0); }
   function totalRevised(){ return Object.keys(state.progress).length; }
   function catRevisedCount(catIndex){
     var c = CATS[catIndex]; if(!c || !c.items) return 0;
     var n = 0; c.items.forEach(function(d){ if(isRevised(catIndex, d)) n++; }); return n;
+  }
+  // nº de atividades (itens dominados) de um tipo, por categoria — 1 passada sobre state.mastered
+  function activityCountsByCat(tipo){
+    var arr = CATS.map(function(){ return 0; });
+    if(!tracking()) return arr;
+    var pre = tipo + ':';
+    Object.keys(state.mastered || {}).forEach(function(k){
+      if(k.indexOf(pre) !== 0) return;
+      var r = findRef(k.slice(pre.length));
+      if(r) arr[r.ci]++;
+    });
+    return arr;
   }
   function catProgress(catIndex){
     var c = CATS[catIndex]; if(!c) return 0;
@@ -851,6 +961,7 @@
 
   function setState(patch){
     if(patch && patch.screen && patch.screen !== state.screen){
+      state.moreOpen = false;   // fecha o menu "Mais" (mobile) ao navegar
       var toAuth   = AUTH_SCREENS.indexOf(patch.screen) >= 0;
       var fromAuth = AUTH_SCREENS.indexOf(state.screen) >= 0;
       if(toAuth){ navStack = []; }                    // entrar no login/cadastro zera o histórico
@@ -1151,6 +1262,7 @@
       levelPill+
       streakChip+
       '<button data-action="toggleSound" title="'+(Sound.isOn()?'Som ligado':'Som desligado')+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:'+(Sound.isOn()?'var(--teal-text)':'var(--muted)')+';transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+(Sound.isOn()?ICON.soundOn:ICON.soundOff)+'</button>'+
+      '<button data-action="openA11y" title="Acessibilidade" aria-label="Abrir painel de acessibilidade" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+ICON.a11y+'</button>'+
       '<button data-action="toggleTheme" title="Alternar tema" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9) rotate(-15deg);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+themeIcon+'</button>'+
       notifBell()+
     '</header>';
@@ -1192,11 +1304,40 @@
      BARRA DE NAVEGAÇÃO INFERIOR (mobile)
      ========================================================= */
   function bottomNav(){
-    return '<nav class="bottom-nav">'+ navItems().filter(function(i){ return i.primary; }).map(function(item){
+    var prim = navItems().filter(function(i){ return i.primary; }).map(function(item){
       var col = item.active ? 'var(--teal-text)' : 'var(--muted)';
       var bgw = item.active ? 'background:var(--accent-bg);' : '';
       return '<button data-action="'+item.action+'" style="color:'+col+';'+bgw+'">'+item.icon+'<span>'+item.label+'</span></button>';
-    }).join('') +'</nav>';
+    }).join('');
+    // botão "Mais" → abre o menu com itens secundários + conta (itens que viviam na sidebar)
+    var secActive = navItems().some(function(i){ return !i.primary && i.active; });
+    var moreCol = (state.moreOpen||secActive) ? 'var(--teal-text)' : 'var(--muted)';
+    var moreBg  = (state.moreOpen||secActive) ? 'background:var(--accent-bg);' : '';
+    var more = '<button data-action="toggleMore" style="color:'+moreCol+';'+moreBg+'">'+ICON.more+'<span>Mais</span></button>';
+    return '<nav class="bottom-nav">'+ prim + more +'</nav>';
+  }
+
+  // menu "Mais" (mobile): bottom sheet com itens secundários + perfil/conta
+  function mobileMenuSheet(){
+    if(!state.moreOpen) return '';
+    var sec = navItems().filter(function(i){ return !i.primary; }).map(function(it){
+      return '<button data-action="'+it.action+'" class="ms-item'+(it.active?' on':'')+'">'+it.icon+'<span>'+esc(it.label)+'</span></button>';
+    }).join('');
+    var account = '';
+    if(DB.ready && state.auth.user && !state.auth.guest){
+      account = '<div class="ms-sep"></div>'+
+        '<button data-action="goPerfil" class="ms-item">'+ICON.user+'<span>Meu perfil</span></button>'+
+        '<button data-action="logout" class="ms-item ms-danger">'+ICON.logout+'<span>Sair da conta</span></button>';
+    } else if(DB.ready && state.auth.guest){
+      account = '<div class="ms-sep"></div>'+
+        '<button data-action="guestToRegister" class="ms-item">'+ICON.user+'<span>Criar conta</span></button>';
+    }
+    return '<div class="ms-backdrop" data-action="closeMore"></div>'+
+      '<div class="ms-sheet" role="dialog" aria-label="Mais opções">'+
+        '<div class="ms-handle"></div>'+
+        '<div class="ms-title">Mais</div>'+
+        '<div class="ms-list">'+sec+account+'</div>'+
+      '</div>';
   }
 
   /* =========================================================
@@ -1443,9 +1584,12 @@
   // célula = string OU lista de parágrafos; 1ª coluna = cabeçalho da linha.
   function renderSecTable(t){
     if(!t || !t.cols) return '';
+    var mx = !!t.matrix;
     function cellHtml(cell){
       if(Array.isArray(cell)) return cell.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
-      return '<p>'+esc(cell)+'</p>';
+      var s = (cell==null?'':String(cell));
+      if(!s) return '';                        // célula vazia (matriz)
+      return mx ? esc(s) : '<p>'+esc(s)+'</p>'; // matriz: token curto sem <p>
     }
     var head = '<thead><tr>'+t.cols.map(function(c,i){
       return '<th'+(i===0?' class="st-corner"':'')+'>'+esc(c)+'</th>';
@@ -1454,10 +1598,10 @@
       return '<tr>'+r.map(function(cell,ci){
         return ci===0
           ? '<th class="st-rowhead">'+esc(cell)+'</th>'
-          : '<td>'+cellHtml(cell)+'</td>';
+          : '<td'+(mx?' class="st-mx"':'')+'>'+cellHtml(cell)+'</td>';
       }).join('')+'</tr>';
     }).join('');
-    return '<div class="sec-table-wrap"><table class="sec-table">'+head+'<tbody>'+rows+'</tbody></table></div>';
+    return '<div class="sec-table-wrap"><table class="sec-table'+(mx?' sec-table-mx':'')+'">'+head+'<tbody>'+rows+'</tbody></table></div>';
   }
   // renderiza um array de linhas (prosa + listas) — usado nos critérios
   function renderRich(lines){
@@ -1683,10 +1827,10 @@
   var DECK_ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>';
   function deckCards(ci){
     var c = CATS[ci]; if(!c) return [];
-    return (c.items||[]).map(function(d){
+    return (c.items||[]).map(function(d, di){
       var sum = (d.summary||'').trim();
       if(!sum || /não disponível/i.test(sum)) return null;
-      return { front:d.n, back:sum, code:(d.code||d.cid||d.dsm||''), cat:c.name, color:c.color };
+      return { front:d.n, back:sum, code:(d.code||d.cid||d.dsm||''), cat:c.name, color:c.color, ci:ci, di:di };
     }).filter(Boolean);
   }
   function allCards(){ var out=[]; CATS.forEach(function(_,ci){ out=out.concat(deckCards(ci)); }); return out; }
@@ -1709,26 +1853,59 @@
         distr = distr.concat(extra);
       }
       var opts = shuffle([card.front].concat(distr));
-      return { q: card.back, opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color };
+      return { q: card.back, opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color, ci: card.ci, di: card.di };
     });
   }
 
   // grade dos 20 decks (reutilizada por flashcards e quiz); unit = 'cartões' | 'questões'
-  function deckGrid(action, unit){
+  // bloco de stats compartilhado (atividades feitas + fichas revisadas)
+  function deckStatsHtml(d, aColor){
+    if(!tracking()) return '';
+    return '<div class="deck-stats">'+
+      '<div class="deck-feitas" style="color:'+aColor+';"><b>'+d.feitas+'</b> '+(d.feitas===1?'atividade feita':'atividades feitas')+'</div>'+
+      '<div class="deck-prog"><span style="width:'+d.pct+'%;background:'+d.c.color+';"></span></div>'+
+      '<div class="deck-prog-lbl">'+d.rev+' / '+d.total+' fichas revisadas</div>'+
+    '</div>';
+  }
+  function deckNum(c, ci){ return '<span class="deck-num" style="color:'+c.color+';background:'+c.color+'14;">'+(ci+1<10?'0':'')+(ci+1)+'</span>'; }
+  // FLASHCARDS — cara de "pilha de cartões" (laranja)
+  function flashDeckCard(d){
+    var c=d.c, ci=d.ci, A='#FF7A45';
+    return '<div class="deck-stack">'+
+      '<button data-action="'+d.action+'" data-arg="'+ci+'" class="deck-card deck-flash" data-hover="border-color:'+A+';transform:translateY(-4px);box-shadow:0 14px 30px rgba(16,42,51,.10);" data-active="transform:translateY(-1px) scale(.99);">'+
+        '<div class="deck-top">'+
+          '<span class="deck-icon" style="background:#FFEDE3;">'+EX_ICON.flashcards+'</span>'+ deckNum(c,ci)+
+        '</div>'+
+        '<div class="deck-name">'+esc(c.name)+'</div>'+
+        '<div class="deck-count-row"><b style="color:'+A+';">'+d.n+'</b> cartões · '+d.total+' transtornos</div>'+
+        deckStatsHtml(d, A)+
+      '</button>'+
+    '</div>';
+  }
+  // QUIZ — cara de "questão de múltipla escolha" (azul)
+  function quizDeckCard(d){
+    var c=d.c, ci=d.ci, A='#4361EE';
+    var opts = '<div class="quiz-opts"><span></span><span></span><span></span></div>';
+    return '<button data-action="'+d.action+'" data-arg="'+ci+'" class="deck-card deck-quiz" style="border-top:3px solid '+A+';" data-hover="border-color:'+A+';transform:translateY(-4px);box-shadow:0 14px 30px rgba(16,42,51,.10);" data-active="transform:translateY(-1px) scale(.99);">'+
+      '<div class="deck-top">'+
+        '<span class="deck-icon quiz-q" style="background:#E8ECFB;color:'+A+';">?</span>'+ deckNum(c,ci)+
+      '</div>'+
+      '<div class="deck-name">'+esc(c.name)+'</div>'+
+      '<div class="deck-count-row"><b style="color:'+A+';">'+d.n+'</b> questões · '+d.total+' transtornos</div>'+
+      opts+
+      deckStatsHtml(d, A)+
+    '</button>';
+  }
+  function deckGrid(action, unit, mode){
+    mode = mode || {};
+    var feitas = activityCountsByCat(mode.tipo);
     return CATS.map(function(c, ci){
       var count = deckCards(ci).length, total = c.items.length;
       var rev = tracking() ? catRevisedCount(ci) : Math.round(total*(c.prog||0));
-      var pct = total ? Math.round(rev/total*100) : 0;
       var n = unit==='questões' ? Math.min(QUIZ_LEN, count) : count;
-      return '<button data-action="'+action+'" data-arg="'+ci+'" class="deck-card" data-hover="border-color:'+c.color+';transform:translateY(-4px);box-shadow:0 14px 30px rgba(16,42,51,.10);" data-active="transform:translateY(-1px) scale(.99);">'+
-        '<div class="deck-top">'+
-          '<span class="deck-icon" style="background:'+c.color+'18;color:'+c.color+';">'+DECK_ICON+'</span>'+
-          '<span class="deck-num" style="color:'+c.color+';background:'+c.color+'14;">'+(ci+1<10?'0':'')+(ci+1)+'</span>'+
-        '</div>'+
-        '<div class="deck-name">'+esc(c.name)+'</div>'+
-        '<div class="deck-count-row"><b style="color:'+c.color+';">'+n+'</b> '+unit+' · '+total+' transtornos</div>'+
-        (tracking() ? '<div class="deck-prog"><span style="width:'+pct+'%;background:'+c.color+';"></span></div><div class="deck-prog-lbl">'+rev+' / '+total+' revisados</div>' : '')+
-      '</button>';
+      var d = { c:c, ci:ci, action:action, n:n, total:total, rev:rev,
+                pct: total ? Math.round(rev/total*100) : 0, feitas: feitas[ci] };
+      return mode.variant==='quiz' ? quizDeckCard(d) : flashDeckCard(d);
     }).join('');
   }
 
@@ -1853,7 +2030,7 @@
       backBtn('goFlashMode','Flashcards')+
       '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Decks por categoria</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:14.5px;max-width:600px;">20 capítulos do DSM-5-TR — escolha um deck para revisar com flashcards.</p>'+
-      '<div class="deck-grid">'+deckGrid('openDeck','cartões')+'</div>'+
+      '<div class="deck-grid">'+deckGrid('openDeck','cartões',{variant:'flash',tipo:'flashcard'})+'</div>'+
     '</section>';
   }
 
@@ -1879,7 +2056,7 @@
       backBtn('goQuizMode','Questionário')+
       '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário por categoria</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:14.5px;max-width:600px;">Escolha um capítulo do DSM-5-TR para responder.</p>'+
-      '<div class="deck-grid">'+deckGrid('openQuizDeck','questões')+'</div>'+
+      '<div class="deck-grid">'+deckGrid('openQuizDeck','questões',{variant:'quiz',tipo:'quiz'})+'</div>'+
     '</section>';
   }
 
@@ -1937,6 +2114,7 @@
         '<button data-action="fcAgain" data-hover="background:#FFEDE3;transform:translateY(-2px);" data-active="transform:scale(.97);" style="flex:1;border-radius:14px;background:#FFF4EE;border:1px solid #FFD9C2;color:#C2410C;font-weight:700;font-size:14.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .18s ease;padding:14px;">'+ICON.redo+'Revisar de novo</button>'+
         '<button data-action="fcKnow" data-hover="background:#13647F;transform:translateY(-2px);box-shadow:0 8px 18px rgba(14,77,100,.3);" data-active="transform:scale(.97);" style="flex:1;border-radius:14px;background:#0E4D64;border:none;color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .18s ease;padding:14px;">'+ICON.knowCheck+'Eu sabia</button>'+
       '</div>'+
+      '<div style="text-align:center;margin-top:16px;">'+ fichaPeekBtn(fc.ci, fc.di, 'Ver ficha completa') +'</div>'+
     '</section>';
   }
 
@@ -2033,7 +2211,7 @@
         '<div style="display:flex;flex-direction:column;gap:11px;">'+opts+'</div>'+
         feedback+
       '</div>'+
-      '<div style="display:flex;justify-content:flex-end;margin-top:20px;">'+nextBtn+'</div>'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;">'+(state.quizAnswered?fichaPeekBtn(qz.ci,qz.di,'Ver ficha'):'<span></span>')+nextBtn+'</div>'+
     '</section>';
   }
 
@@ -2117,7 +2295,8 @@
      TELA: ESTUDO DE CASO
      ========================================================= */
   function screenCaso(){
-    var p = CASO.patient, total = 12;
+    var CASO = currentCaso();
+    var p = CASO.patient, total = CASOS.length;
     var num = (state.casoIndex % total) + 1;
     var pct = Math.round(num/total*100);
     var answered = state.casoAnswered;
@@ -2132,7 +2311,9 @@
         : '<div class="caso-result no"><div class="cr-emoji">🧠</div><div><div class="cr-title">Não foi dessa vez</div><div class="cr-sub">A resposta correta era <b>'+esc(CASO.opts[CASO.correct])+'</b></div></div></div>';
       feedback = banner+
         '<div class="caso-explica"><div class="ce-lbl">Por quê?</div><p>'+esc(CASO.explicacao)+'</p></div>'+
-        '<div style="display:flex;justify-content:flex-end;margin-top:18px;"><button data-action="casoNext" class="caso-next" data-hover="filter:brightness(.93);transform:translateX(2px);">Próximo caso '+ICON.arrowR+'</button></div>';
+        '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px;">'+
+          (function(){ var r=findRef(CASO.opts[CASO.correct]); return r?fichaPeekBtn(r.ci,r.di,'Ver ficha'):'<span></span>'; })()+
+          '<button data-action="casoNext" class="caso-next" data-hover="filter:brightness(.93);transform:translateX(2px);">Próximo caso '+ICON.arrowR+'</button></div>';
     }
 
     return ''+
@@ -2703,7 +2884,7 @@
       '</article>'+
       '<div style="display:flex;flex-direction:column;gap:12px;">'+
         card(ICON.book2, 'Conteúdo', 'Os '+total+' transtornos das 20 categorias da Seção II do DSM-5-TR, com critérios, subtipos, especificadores e seções, além de tabelas recortadas do manual.')+
-        card(ICON.info, 'Fonte', 'Conteúdo extraído do DSM-5-TR (Manual Diagnóstico e Estatístico de Transtornos Mentais, American Psychiatric Association; ed. brasileira Artmed). Veja o manual completo na aba DSM-5-TR.')+
+        card(ICON.info, 'Fonte e finalidade educativa', 'Conteúdo baseado no DSM-5-TR (Manual Diagnóstico e Estatístico de Transtornos Mentais, American Psychiatric Association; ed. brasileira Artmed / Grupo A), utilizado aqui <b>exclusivamente para fins de estudo e revisão de conteúdos</b>. Os trechos extraídos diretamente — em especial os <b>critérios diagnósticos</b> — foram mantidos fiéis ao texto original, prezando pela exatidão e evitando interpretações equivocadas de informações clínicas essenciais. Todos os direitos sobre o DSM-5-TR pertencem aos seus detentores. Veja o manual completo na aba DSM-5-TR.')+
         card(ICON.statShield, 'Aviso importante', 'Ferramenta de <b>estudo</b>, não de diagnóstico. O texto pode conter imprecisões da extração automática — sempre confirme no manual oficial. Não substitui avaliação clínica profissional.')+
         card(ICON.message, 'Encontrou um erro?', 'Use a aba <b>Feedback</b> para relatar erros nas fichas e enviar sugestões.')+
       '</div>'+
@@ -2771,10 +2952,13 @@
           '<div class="content'+(staticUpdate ? ' static-update' : '')+'">'+guestBanner()+currentScreen()+'</div>'+
         '</main>'+
       '</div>'+
-      bottomNav();
+      bottomNav()+
+      mobileMenuSheet();
     bindFx(root);
     bindSearch(root);
     bindClassify(root);
+    // reaplica os efeitos de acessibilidade ao conteúdo recriado (SPA)
+    if(window.A11Y && window.A11Y.reapply){ try{ window.A11Y.reapply(); }catch(e){} }
     if(state.pendingScroll){
       var target = state.pendingScroll; state.pendingScroll = null;
       requestAnimationFrame(function(){
@@ -2877,7 +3061,7 @@
       if(q && !state.quizAnswered && k>='1' && k<='9'){ var qi=+k-1; if(qi<q.opts.length) return run(actions.quizSelect, qi); }
       if(k==='Enter' && state.quizAnswered) return run(actions.quizNext);
     } else if(s==='caso'){
-      if(k>='1' && k<='9'){ var ci=+k-1; if(ci<CASO.opts.length) return run(actions.casoSelect, ci); }
+      if(k>='1' && k<='9'){ var ci=+k-1; if(ci<currentCaso().opts.length) return run(actions.casoSelect, ci); }
       if(k==='Enter' && state.casoAnswered) return run(actions.casoNext);
       if(k==='Escape') return run(actions.goExercicios);
     } else if(s==='ligar'){

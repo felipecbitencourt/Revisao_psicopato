@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A11y Kit · Demonstração</title>
+<link rel="stylesheet" href="./a11y-kit.css" />
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 24px 120px; color: #1c1714; line-height: 1.6; }
+  h1 { font-size: 34px; letter-spacing: -0.02em; }
+  h2 { margin-top: 40px; }
+  a { color: #AB4807; }
+  figure { margin: 24px 0; }
+  img { width: 100%; border-radius: 12px; display: block; }
+  .hint { background: #f4ece4; border-radius: 10px; padding: 16px 18px; font-size: 14px; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Demonstração do A11y Kit</h1>
+    <p class="hint">Clique no botão flutuante (canto inferior direito) para abrir o painel. Arraste-o para qualquer canto. Tudo é persistido no <code>localStorage</code>.</p>
+
+    <h2>Por que linguagem simples importa</h2>
+    <p>As instituições utilizam, com frequência, termos que dificultam a compreensão. A fim de ampliar o acesso, é necessário solicitar revisões e demonstrar que o texto pode ser mais direto.</p>
+    <p>Este parágrafo possui palavras formais propositais para a demonstração do <strong>simplificador</strong>: utilizar, solicitar, mediante, posteriormente.</p>
+
+    <h2>Leitura assistiva</h2>
+    <ul>
+      <li>Ative a <em>leitura biônica</em> para destacar o início das palavras.</li>
+      <li>Use a <em>fonte Atkinson</em> ou <em>Lexend</em> na aba Avançado.</li>
+      <li>Experimente os presets de <em>Assistência de leitura</em>.</li>
+    </ul>
+
+    <figure>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300'%3E%3Crect width='600' height='300' fill='%23246F68'/%3E%3Ctext x='300' y='160' font-size='28' fill='white' text-anchor='middle' font-family='sans-serif'%3EImagem de exemplo%3C/text%3E%3C/svg%3E"
+           data-ak-desc="Um retângulo verde-petróleo com o texto 'Imagem de exemplo' centralizado em branco." alt="">
+    </figure>
+
+    <p>Ative <strong>Descrever imagens</strong> (aba Avançado) para ver a legenda aparecer abaixo da imagem e entrar na leitura em voz alta.</p>
+  </main>
+
+  <script src="./a11y-kit.js"></script>
+  <script>
+    A11yKit.init({
+      contentSelector: 'main',
+      simplifyRules: [
+        [/\butilizar\b/gi, 'usar'], [/\butilizam\b/gi, 'usam'],
+        [/\bsolicitar\b/gi, 'pedir'], [/\bmediante\b/gi, 'com'],
+        [/\bposteriormente\b/gi, 'depois'], [/\bpossui\b/gi, 'tem'],
+        [/\bdemonstrar\b/gi, 'mostrar'], [/\ba fim de\b/gi, 'para'],
+      ],
+      features: { vlibras: false, translate: false },
+    });
+  </script>
+</body>
+</html>

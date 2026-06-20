@@ -1,0 +1,309 @@
+/* ============================================================
+   A11y Kit · v1.0.0 — painel de acessibilidade reutilizável
+   Vanilla CSS, sem dependências. Tudo prefixado com `ak-`.
+   Tematize sobrescrevendo as variáveis em :root (ver --ak-*).
+   ============================================================ */
+
+:root {
+  /* paleta do kit (sobrescreva no projeto host) */
+  --ak-accent: #AB4807;
+  --ak-accent-dark: #8B3700;
+  --ak-accent-soft: rgba(171, 72, 7, 0.08);
+  --ak-surface: #ffffff;
+  --ak-surface-2: #f4ece4;
+  --ak-text: #1c1714;
+  --ak-text-dim: #4a4035;
+  --ak-text-faint: #8a7f78;
+  --ak-line: #e0d6cc;
+  --ak-line-strong: #c0794b;
+  --ak-on-accent: #ffffff;
+  --ak-shadow-md: 0 4px 12px rgba(40, 32, 26, 0.10);
+  --ak-shadow-lg: 0 12px 32px rgba(40, 32, 26, 0.16);
+  --ak-radius: 10px;
+  --ak-z: 2147483000; /* acima de quase tudo */
+  --ak-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* vars de espaçamento de texto (controladas pelo kit) */
+  --ak-line-h: 1.9;
+  --ak-letter: 0.045em;
+  --ak-word: 0.1em;
+}
+
+/* ============ FAB (botão flutuante) ============ */
+.ak-fab {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 58px; height: 58px;
+  display: grid; place-items: center;
+  border: 1px solid var(--ak-line);
+  border-radius: 50%;
+  background: var(--ak-surface);
+  color: var(--ak-accent);
+  box-shadow: var(--ak-shadow-lg);
+  cursor: pointer;
+  z-index: var(--ak-z);
+  touch-action: none;
+  user-select: none; -webkit-user-select: none;
+  transition: transform 0.15s var(--ak-ease), box-shadow 0.15s var(--ak-ease);
+}
+.ak-fab:hover { transform: translateY(-2px) scale(1.04); }
+.ak-fab:active { transform: scale(0.97); }
+.ak-fab svg { width: 28px; height: 28px; pointer-events: none; }
+.ak-fab img { width: 36px; height: 36px; border-radius: 50%; pointer-events: none; -webkit-user-drag: none; }
+/* cantos (definidos depois do base para vencer especificidade) */
+.ak-fab--br { top: auto; bottom: 24px; left: auto; right: 24px; }
+.ak-fab--bl { top: auto; bottom: 24px; right: auto; left: 24px; }
+.ak-fab--tr { bottom: auto; top: 20px; left: auto; right: 24px; }
+.ak-fab--tl { bottom: auto; top: 20px; right: auto; left: 24px; }
+.ak-fab--dragging {
+  transition: none !important;
+  cursor: grabbing;
+  transform: scale(1.08);
+  box-shadow: 0 20px 48px rgba(40, 32, 26, 0.30);
+}
+
+/* zonas de encaixe (durante o arraste) */
+.ak-dropzones {
+  position: fixed; inset: 0; z-index: calc(var(--ak-z) - 1);
+  pointer-events: none; opacity: 0; transition: opacity 0.2s var(--ak-ease);
+}
+.ak-dropzones.is-on { opacity: 1; }
+.ak-dropzone {
+  position: fixed; width: 62px; height: 62px; border-radius: 16px;
+  border: 2px dashed var(--ak-line-strong); background: var(--ak-accent-soft);
+  transition: transform 0.15s var(--ak-ease), background 0.15s, border-color 0.15s;
+}
+.ak-dropzone--br { bottom: 22px; right: 22px; }
+.ak-dropzone--bl { bottom: 22px; left: 22px; }
+.ak-dropzone--tr { top: 18px; right: 22px; }
+.ak-dropzone--tl { top: 18px; left: 22px; }
+.ak-dropzone.is-near { background: var(--ak-accent); border-color: var(--ak-accent); transform: scale(1.12); }
+
+/* ============ Painel ============ */
+.ak-backdrop {
+  position: fixed; inset: 0; z-index: calc(var(--ak-z) + 1);
+  background: rgba(20, 16, 13, 0.35);
+  opacity: 0; pointer-events: none; transition: opacity 0.25s var(--ak-ease);
+}
+.ak-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+.ak-panel {
+  position: fixed; top: 0; right: 0; height: 100%;
+  width: 360px; max-width: calc(100vw - 24px);
+  background: var(--ak-surface);
+  border-left: 1px solid var(--ak-line);
+  box-shadow: var(--ak-shadow-lg);
+  z-index: calc(var(--ak-z) + 2);
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.28s var(--ak-ease);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ak-text);
+}
+.ak-panel.is-open { transform: translateX(0); }
+.ak-panel.ak-panel--left {
+  left: 0; right: auto;
+  border-left: 0; border-right: 1px solid var(--ak-line);
+  transform: translateX(-100%);
+}
+.ak-panel.ak-panel--left.is-open { transform: translateX(0); }
+
+.ak-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px; border-bottom: 1px solid var(--ak-line); flex-shrink: 0;
+}
+.ak-title { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+.ak-head-actions { display: flex; align-items: center; gap: 8px; }
+.ak-reset {
+  font-size: 12px; font-weight: 600; color: var(--ak-text-dim);
+  background: none; border: 0; cursor: pointer; padding: 4px;
+}
+.ak-reset:hover { color: var(--ak-accent); }
+.ak-close {
+  width: 30px; height: 30px; display: grid; place-items: center;
+  border: 0; background: none; color: var(--ak-text-dim); cursor: pointer; border-radius: 6px;
+}
+.ak-close:hover { background: var(--ak-surface-2); color: var(--ak-text); }
+.ak-close svg { width: 18px; height: 18px; }
+
+.ak-tabs { display: flex; padding: 10px 14px 0; gap: 6px; flex-shrink: 0; }
+.ak-tab {
+  flex: 1; padding: 9px 8px; font-size: 13px; font-weight: 600;
+  border: 0; background: none; color: var(--ak-text-dim); cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.ak-tab.is-active { color: var(--ak-accent); border-bottom-color: var(--ak-accent); }
+
+.ak-body { flex: 1; overflow-y: auto; padding: 8px 18px 28px; }
+.ak-pane { display: none; }
+.ak-pane.is-active { display: block; }
+
+.ak-group { padding: 14px 0; border-bottom: 1px solid var(--ak-line); }
+.ak-group:last-child { border-bottom: 0; }
+.ak-group-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--ak-text-faint); margin-bottom: 10px;
+}
+.ak-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 7px 0;
+}
+.ak-row--col { flex-direction: column; align-items: stretch; }
+.ak-rowlabel { font-size: 14px; color: var(--ak-text); }
+.ak-row--col .ak-rowlabel { margin-bottom: 7px; }
+.ak-note { font-size: 12.5px; line-height: 1.5; color: var(--ak-text-dim); margin: 6px 0 0; }
+.ak-badge {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ak-text-faint); border: 1px solid var(--ak-line); border-radius: 99px; padding: 1px 7px;
+}
+
+/* switch */
+.ak-switch {
+  position: relative; width: 44px; height: 26px; flex-shrink: 0;
+  border: 0; background: none; cursor: pointer; padding: 0;
+}
+.ak-switch .ak-track {
+  display: block; width: 44px; height: 26px; border-radius: 99px;
+  background: var(--ak-line); transition: background 0.2s var(--ak-ease);
+}
+.ak-switch .ak-thumb {
+  position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+  border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  transition: transform 0.2s var(--ak-ease);
+}
+.ak-switch.is-on .ak-track { background: var(--ak-accent); }
+.ak-switch.is-on .ak-thumb { transform: translateX(18px); }
+.ak-switch:disabled { opacity: 0.45; cursor: default; }
+
+/* optgroup (segmentado) */
+.ak-optgroup { display: flex; flex-wrap: wrap; gap: 6px; width: 100%; }
+.ak-opt {
+  flex: 1; min-width: 56px; padding: 8px 6px; font-size: 12.5px; font-weight: 600;
+  border: 1px solid var(--ak-line); border-radius: 8px; background: var(--ak-surface);
+  color: var(--ak-text-dim); cursor: pointer; transition: all 0.15s var(--ak-ease);
+}
+.ak-opt:hover { border-color: var(--ak-line-strong); }
+.ak-opt.is-active { background: var(--ak-accent); border-color: var(--ak-accent); color: var(--ak-on-accent); }
+.ak-opt:disabled { opacity: 0.5; cursor: default; }
+
+/* slider */
+.ak-slider { display: flex; align-items: center; gap: 10px; width: 100%; }
+.ak-slider input[type="range"] { flex: 1; accent-color: var(--ak-accent); cursor: pointer; }
+.ak-slider-val { font-size: 12px; font-weight: 600; color: var(--ak-text-dim); min-width: 48px; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* stepper (A- / A+) */
+.ak-stepper { display: flex; align-items: center; gap: 8px; }
+.ak-step {
+  width: 38px; height: 34px; border: 1px solid var(--ak-line); border-radius: 8px;
+  background: var(--ak-surface); color: var(--ak-text); font-weight: 700; cursor: pointer;
+}
+.ak-step:hover { border-color: var(--ak-line-strong); }
+.ak-step--lg { font-size: 18px; }
+.ak-step-val { font-size: 13px; font-weight: 600; color: var(--ak-text-dim); min-width: 44px; text-align: center; }
+
+/* select */
+.ak-select {
+  width: 100%; padding: 8px 10px; border: 1px solid var(--ak-line); border-radius: 8px;
+  background: var(--ak-surface); color: var(--ak-text); font-size: 13px; cursor: pointer;
+}
+
+/* presets (cards) */
+.ak-presets { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.ak-preset {
+  display: flex; flex-direction: column; gap: 4px; width: 100%; text-align: left;
+  padding: 12px 14px; border: 1px solid var(--ak-line); border-radius: var(--ak-radius);
+  background: var(--ak-surface); cursor: pointer; transition: all 0.15s var(--ak-ease);
+}
+.ak-preset:hover { border-color: var(--ak-line-strong); }
+.ak-preset.is-active { border-color: var(--ak-accent); background: var(--ak-accent-soft); box-shadow: inset 0 0 0 1px var(--ak-accent); }
+.ak-preset-title { font-size: 14px; font-weight: 700; color: var(--ak-text); }
+.ak-preset.is-active .ak-preset-title { color: var(--ak-accent); }
+.ak-preset-desc { font-size: 12.5px; line-height: 1.45; color: var(--ak-text-dim); }
+.ak-preset-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
+.ak-preset-tag {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; padding: 2px 8px;
+  border-radius: 99px; background: var(--ak-surface-2); color: var(--ak-text-dim);
+}
+.ak-preset.is-active .ak-preset-tag { background: var(--ak-surface); color: var(--ak-accent); }
+
+/* barra do leitor de voz */
+.ak-reader { display: flex; align-items: center; gap: 8px; }
+.ak-reader button {
+  width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%;
+  border: 0; background: var(--ak-surface-2); color: var(--ak-accent); cursor: pointer;
+}
+.ak-reader button:hover { background: var(--ak-accent); color: var(--ak-on-accent); }
+.ak-reader svg { width: 18px; height: 18px; }
+.ak-reader-speed { width: auto !important; padding: 0 12px; font-weight: 700; font-size: 13px; border-radius: 99px !important; }
+
+/* link "pular para o conteúdo" */
+.ak-skip {
+  position: fixed; top: -200px; left: 16px; z-index: calc(var(--ak-z) + 5);
+  background: var(--ak-accent); color: var(--ak-on-accent); padding: 10px 18px;
+  border-radius: 0 0 var(--ak-radius) var(--ak-radius); font-weight: 600; text-decoration: none;
+  transition: top 0.2s var(--ak-ease);
+}
+
+/* legenda de descrição de imagem */
+.ak-img-desc { display: none; margin-top: 8px; padding: 12px 14px; border-radius: var(--ak-radius);
+  background: var(--ak-surface-2); border-left: 3px solid var(--ak-accent); font-size: 15px; line-height: 1.55; color: var(--ak-text); }
+.ak-img-desc-tag { display: inline-block; margin-right: 8px; font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em; color: var(--ak-accent); }
+
+@media (max-width: 480px) {
+  .ak-fab, .ak-fab--br, .ak-fab--bl { bottom: 16px; }
+  .ak-fab--br { right: 16px; } .ak-fab--bl { left: 16px; }
+}
+
+/* ============================================================
+   EFEITOS — aplicados a <html>; afetam o conteúdo do host.
+   Escopo do conteúdo = a var `--ak-content` (default: body).
+   ============================================================ */
+
+/* foco reforçado (navegação por teclado) */
+html.ak-keyboard :focus-visible {
+  outline: 3px solid var(--ak-accent); outline-offset: 3px; border-radius: 3px;
+}
+html.ak-keyboard .ak-skip:focus { top: 0; }
+
+/* cursor grande */
+html.ak-large-cursor, html.ak-large-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'%3E%3Cpath d='M5 2l14 7-6 2-2 6z' fill='%23000' stroke='%23fff' stroke-width='1.2'/%3E%3C/svg%3E") 4 2, auto;
+}
+
+/* destacar links */
+html.ak-highlight-links a {
+  text-decoration: underline !important; text-underline-offset: 2px;
+  background: var(--ak-accent-soft); outline: 1px solid var(--ak-line-strong);
+}
+
+/* espaçamento de texto */
+html.ak-spacing :where(p, li, h1, h2, h3, h4, h5, h6, blockquote, a, span, td, th) {
+  line-height: var(--ak-line-h) !important;
+  letter-spacing: var(--ak-letter) !important;
+  word-spacing: var(--ak-word) !important;
+}
+
+/* leitura biônica */
+.ak-bionic-strong { font-weight: 700; }
+
+/* fontes assistivas (alvo: elementos com [data-ak-content] ou body) */
+html.ak-font-lexend [data-ak-content], html.ak-font-lexend.ak-content-body body {
+  font-family: "Lexend", system-ui, sans-serif !important;
+}
+html.ak-font-atkinson [data-ak-content], html.ak-font-atkinson.ak-content-body body {
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif !important;
+}
+html.ak-font-dyslexic [data-ak-content], html.ak-font-dyslexic.ak-content-body body {
+  font-family: "OpenDyslexic", system-ui, sans-serif !important;
+}
+
+/* leitor: destaque do trecho lido */
+.ak-reading { background: var(--ak-accent-soft); box-shadow: 0 0 0 4px var(--ak-accent-soft); border-radius: 3px; }
+
+/* modo escuro (inverte tokens — escopo no host via filtro de inversão opcional OU classe) */
+html.ak-dark { background: #16131f; }
+html.ak-dark body { background: #16131f; color: #e8e2da; }
+html.ak-dark .ak-panel { --ak-surface: #211c2b; --ak-surface-2: #2c2638; --ak-text: #e8e2da; --ak-text-dim: #b8b0a6; --ak-line: #3a3346; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ak-panel, .ak-backdrop, .ak-fab, .ak-dropzones, .ak-dropzone, .ak-skip { transition: none !important; }
+}

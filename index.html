@@ -14,7 +14,11 @@
   <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <link rel="stylesheet" href="styles.css?v=22">
+  <link rel="stylesheet" href="styles.css?v=27">
+  <!-- painel de acessibilidade (a11y-kit) -->
+  <link rel="stylesheet" href="a11y-kit/a11y-kit.css?v=1">
+  <!-- o botão é colocado no header do app; escondemos o FAB flutuante padrão -->
+  <style>.ak-fab{display:none !important;}</style>
 </head>
 <body>
   <div id="app"></div>
@@ -22,9 +26,22 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <!-- conteúdo real do DSM-5-TR, gerado por build_content.py -->
-  <script src="content.js?v=3"></script>
+  <script src="content.js?v=4"></script>
   <!-- camada de dados (fala com o Supabase) -->
   <script src="db.js?v=23"></script>
-  <script src="app.js?v=24"></script>
+  <script src="app.js?v=34"></script>
+  <!-- A11y Kit: inicia e expõe a API global (o app abre via botão do header) -->
+  <script src="a11y-kit/a11y-kit.js?v=1"></script>
+  <script>
+    window.A11Y = A11yKit.init({
+      storageKey: 'psp-a11y',
+      contentSelector: '#app',          // elemento estável (o app recria só o innerHTML)
+      readSelector: '.content h1,.content h2,.content h3,.content p,.content li',
+      textSelector: '.content h1,.content h2,.content h3,.content p,.content li',
+      draggable: false,
+      theme: { accent: '#0E4D64' },
+      features: { dark: false, vlibras: false, translate: false }, // o app já tem dark próprio
+    });
+  </script>
 </body>
 </html>

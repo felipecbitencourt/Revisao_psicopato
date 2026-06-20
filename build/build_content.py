@@ -110,6 +110,47 @@ TABLES = {
               "A ocorrência concomitante de prejuízos físicos e sensoriais é barreira frequente à participação (além da observação) em atividades domésticas, recreativas e profissionais. Comportamento mal-adaptativo está presente em uma minoria significativa."]],
         ],
     },
+    "autismo-gravidade": {
+        "cols": ["Nível", "Comunicação social", "Comportamentos restritos e repetitivos"],
+        "rows": [
+            ["Nível 3 — Exigindo apoio muito substancial",
+             ["Déficits graves nas habilidades de comunicação social verbal e não verbal causam prejuízos graves de funcionamento, grande limitação em dar início a interações sociais e resposta mínima a aberturas sociais que partem de outros. Por exemplo, uma pessoa com fala inteligível de poucas palavras que raramente inicia as interações e, quando o faz, tem abordagens incomuns apenas para satisfazer a necessidades e reage somente a abordagens sociais muito diretas."],
+             ["Inflexibilidade de comportamento, extrema dificuldade em lidar com a mudança ou outros comportamentos restritos/repetitivos interferem acentuadamente no funcionamento em todas as esferas. Grande sofrimento/dificuldade para mudar o foco ou as ações."]],
+            ["Nível 2 — Exigindo apoio substancial",
+             ["Déficits graves nas habilidades de comunicação social verbal e não verbal; prejuízos sociais aparentes mesmo na presença de apoio; limitação em dar início a interações sociais e resposta reduzida ou anormal a aberturas sociais que partem de outros. Por exemplo, uma pessoa que fala frases simples, cuja interação se limita a interesses especiais reduzidos e que apresenta comunicação não verbal acentuadamente estranha."],
+             ["Inflexibilidade do comportamento, dificuldade de lidar com a mudança ou outros comportamentos restritos/repetitivos aparecem com frequência suficiente para serem óbvios ao observador casual e interferem no funcionamento em uma variedade de contextos. Sofrimento e/ou dificuldade de mudar o foco ou as ações."]],
+            ["Nível 1 — Exigindo apoio",
+             ["Na ausência de apoio, déficits na comunicação social causam prejuízos notáveis. Dificuldade para iniciar interações sociais e exemplos claros de respostas atípicas ou sem sucesso a aberturas sociais dos outros. Pode parecer apresentar interesse reduzido por interações sociais. Por exemplo, uma pessoa que consegue falar frases completas e envolver-se na comunicação, embora apresente falhas na conversação com os outros e cujas tentativas de fazer amizades são estranhas e comumente malsucedidas."],
+             ["Inflexibilidade de comportamento causa interferência significativa no funcionamento em um ou mais contextos. Dificuldade em trocar de atividade. Problemas para organização e planejamento são obstáculos à independência."]],
+        ],
+    },
+    "lct-gravidade": {
+        "cols": ["Característica da lesão", "LCT leve", "LCT moderada", "LCT grave"],
+        "rows": [
+            ["Perda de consciência", "< 30 min", "30 min–24 horas", "> 24 horas"],
+            ["Amnésia pós-traumática", "< 24 horas", "24 horas–7 dias", "> 7 dias"],
+            ["Desorientação e confusão na primeira avaliação (Escala de Coma de Glasgow)", "13–15 (não abaixo de 13 a 30 minutos)", "9–12", "3–8"],
+        ],
+    },
+    # matriz densa (abreviações). Reconstruída do md + imagem; conferir contra a fonte.
+    "substancias-diagnosticos": {
+        "matrix": True,
+        "cols": ["Classe", "Psicóticos", "Bipolares", "Depressivos", "Ansiedade", "TOC", "Sono",
+                 "Disf. sexuais", "Delirium", "Neurocognitivos", "Uso", "Intoxicação", "Abstinência"],
+        "rows": [
+            ["Álcool", "I/A", "I/A", "I/A", "I/A", "", "I/A", "I/A", "I/A", "I/A/P", "X", "X", "X"],
+            ["Cafeína", "", "", "", "I", "", "I/A", "", "", "", "", "X", "X"],
+            ["Cannabis", "I", "", "", "I", "", "I/A", "", "I", "", "X", "X", "X"],
+            ["Fenciclidina", "I", "I", "I", "I", "", "", "", "I", "", "X", "X", ""],
+            ["Outros alucinógenos", "I*", "I", "I", "I", "", "", "", "I", "", "X", "X", ""],
+            ["Inalantes", "I", "", "I", "I", "", "", "", "I", "I/P", "X", "X", ""],
+            ["Opioides", "", "", "I/A", "A", "", "I/A", "I/A", "I/A", "", "X", "X", "X"],
+            ["Sedativos, hipnóticos ou ansiolíticos", "I/A", "I/A", "I/A", "A", "", "I/A", "I/A", "I/A", "I/A/P", "X", "X", "X"],
+            ["Estimulantes", "I", "I/A", "I/A", "I/A", "I/A", "I/A", "I", "I", "", "X", "X", "X"],
+            ["Tabaco", "", "", "", "", "", "A", "", "", "", "X", "", "X"],
+            ["Outra substância (ou desconhecida)", "I/A", "I/A", "I/A", "I/A", "I/A", "I/A", "I/A", "I/A", "I/A/P", "X", "X", "X"],
+        ],
+    },
 }
 
 # Tabelas do DSM que foram achatadas na extração e que substituímos por
@@ -130,14 +171,14 @@ SECTION_ASSETS = {
     "Transtorno do Espectro Autista": {
         "Especificadores": {
             "drop": [[3, 10]],
-            "images": ["assets/tabelas/espectro-autista/gravidade.png"],
+            "table": "autismo-gravidade",
             "caption": "DSM-5-TR — Tabela 2: Níveis de gravidade do transtorno do espectro autista (comunicação social; comportamentos restritos e repetitivos).",
         }
     },
     "Leve Devido a Lesão Cerebral Traumática": {
         "Desenvolvimento e curso": {
             "drop": [[2, 7]],
-            "images": ["assets/tabelas/lesao-cerebral-traumatica/gravidade.png"],
+            "table": "lct-gravidade",
             "caption": "DSM-5-TR — Tabela 2: Classificações da gravidade de lesão cerebral traumática (LCT).",
         }
     },
@@ -160,8 +201,8 @@ ADD_SECTIONS = {
     "Transtorno por Uso de Álcool": [
         {
             "title": "Diagnósticos por classe de substância",
-            "images": ["assets/tabelas/substancias/diagnosticos-por-classe.png"],
-            "caption": "DSM-5-TR — Tabela 1: Diagnósticos associados a classes de substâncias (referência do capítulo de substâncias).",
+            "table": "substancias-diagnosticos",
+            "caption": "DSM-5-TR — Tabela 1: Diagnósticos associados a classes de substâncias. Legenda: I = início durante a intoxicação · A = início durante a abstinência · I/A = intoxicação e/ou abstinência · P = transtorno persistente · X = categoria reconhecida no DSM-5. * Também transtorno persistente da percepção induzido por alucinógenos (flashbacks). ** Inclui cocaína e substâncias tipo anfetamina.",
         }
     ],
 }

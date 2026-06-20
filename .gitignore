@@ -13,6 +13,12 @@ tools/cats/
 # Memória local do assistente
 memory/
 
+# Segredos / credenciais — NUNCA versionar
+client_secret_*.json
+*.apps.googleusercontent.com.json
+*secret*.json
+supabase-service-role*.json
+
 # Sistema operacional
 .DS_Store
 Thumbs.db

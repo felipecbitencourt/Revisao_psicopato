@@ -597,3 +597,60 @@ button{font-family:inherit;}
 .sec-table td p{margin:0 0 9px;font-size:13px;line-height:1.58;color:var(--body);}
 .sec-table td p:last-child{margin-bottom:0;}
 @media (max-width:560px){ .sec-table th,.sec-table td{padding:10px 11px;} }
+
+/* matriz densa (substâncias): células compactas e centralizadas */
+.sec-table-mx{min-width:840px;}
+.sec-table-mx th,.sec-table-mx td{padding:8px 7px;}
+.sec-table-mx thead th{font-size:10.5px;text-align:center;vertical-align:bottom;line-height:1.2;}
+.sec-table-mx thead th.st-corner{text-align:left;}
+.sec-table-mx .st-mx{text-align:center;white-space:nowrap;font:700 12px 'Hanken Grotesk';color:var(--ink);}
+.sec-table-mx .st-rowhead{font:700 12px 'Hanken Grotesk';min-width:120px;}
+
+/* botão "ver ficha completa" dentro das atividades (#17) */
+.ficha-peek{-webkit-appearance:none;appearance:none;display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:9px 16px;font:700 13.5px 'Hanken Grotesk';color:var(--muted-2);cursor:pointer;transition:border-color .15s ease,color .15s ease;}
+.ficha-peek svg{width:16px;height:16px;flex-shrink:0;}
+
+/* deck cards: dois contadores (atividades feitas + fichas revisadas) — #18 */
+.deck-stats{margin-top:14px;}
+.deck-feitas{font-size:11.5px;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:5px;}
+.deck-feitas b{font:800 13.5px 'Bricolage Grotesque';}
+.deck-stats .deck-prog{margin-top:0;}
+
+/* ===== decks com forma distinta por atividade ===== */
+/* flashcards: pilha de cartões (bordas que "espiam" atrás) */
+.deck-stack{position:relative;padding-top:9px;}
+.deck-stack::before,.deck-stack::after{content:"";position:absolute;height:12px;border-radius:12px 12px 0 0;border:1px solid #FFD9C2;border-bottom:none;z-index:0;}
+.deck-stack::before{top:0;left:12px;right:12px;background:#FFE8D8;}
+.deck-stack::after{top:4px;left:6px;right:6px;background:#FFF1E7;}
+.deck-stack .deck-card{position:relative;z-index:1;}
+:root[data-theme="dark"] .deck-stack::before{background:#3a2a1f;border-color:#4A3526;}
+:root[data-theme="dark"] .deck-stack::after{background:#33251c;border-color:#4A3526;}
+
+/* quiz: "?" + linhas de múltipla escolha */
+.deck-quiz .quiz-q{font:800 22px 'Bricolage Grotesque';line-height:1;}
+.quiz-opts{display:flex;flex-direction:column;gap:7px;margin-top:13px;}
+.quiz-opts span{display:flex;align-items:center;gap:9px;}
+.quiz-opts span::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid #C7D0F5;flex-shrink:0;box-sizing:border-box;}
+.quiz-opts span::after{content:"";height:8px;border-radius:99px;background:var(--surface-2);}
+.quiz-opts span:nth-child(1)::after{width:78%;}
+.quiz-opts span:nth-child(2)::after{width:58%;}
+.quiz-opts span:nth-child(3)::after{width:68%;}
+.quiz-opts span:first-child::before{border-color:#4361EE;background:#4361EE;}
+
+/* ===== menu "Mais" (bottom sheet) — #6 mobile ===== */
+@keyframes sheetUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.ms-backdrop,.ms-sheet{display:none;}
+@media (max-width:760px){
+  .ms-backdrop{display:block;position:fixed;inset:0;z-index:45;background:rgba(16,42,51,.4);animation:fadeIn .2s ease;}
+  .ms-sheet{display:block;position:fixed;left:0;right:0;bottom:0;z-index:46;background:var(--surface);border-radius:20px 20px 0 0;padding:6px 16px calc(18px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(16,42,51,.22);animation:sheetUp .25s cubic-bezier(.2,.7,.3,1);max-height:80vh;overflow-y:auto;}
+  .ms-handle{width:40px;height:4px;border-radius:99px;background:var(--track);margin:8px auto 6px;}
+  .ms-title{font:800 12px 'Hanken Grotesk';text-transform:uppercase;letter-spacing:.6px;color:var(--muted);padding:4px 6px 8px;}
+  .ms-list{display:flex;flex-direction:column;gap:2px;}
+  .ms-item{display:flex;align-items:center;gap:13px;width:100%;background:none;border:none;border-radius:12px;padding:14px 12px;cursor:pointer;font:700 15px 'Hanken Grotesk';color:var(--ink);text-align:left;transition:background .15s ease;}
+  .ms-item:active{background:var(--surface-2);}
+  .ms-item.on{background:var(--accent-bg);color:var(--teal-text);}
+  .ms-item svg{flex-shrink:0;color:var(--muted-2);}
+  .ms-item.on svg{color:var(--teal-text);}
+  .ms-danger,.ms-danger svg{color:#E5484D;}
+  .ms-sep{height:1px;background:var(--border);margin:8px 4px;}
+}
