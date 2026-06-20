@@ -96,6 +96,42 @@ button{font-family:inherit;}
 .rev-tab{-webkit-appearance:none;appearance:none;background:none;border:none;border-radius:9px;padding:8px 16px;font:700 13.5px 'Hanken Grotesk';color:var(--muted-2);cursor:pointer;transition:background .15s ease,color .15s ease;}
 .rev-tab.on{background:var(--surface);color:var(--teal-text);box-shadow:0 1px 3px rgba(16,42,51,.08);}
 
+/* ============================================================
+   ESTUDO DE CASO — gamificado
+   ============================================================ */
+.caso-status{background:linear-gradient(125deg,#8338EC,#5B6CF0);border-radius:18px;padding:15px 18px;color:#fff;margin-bottom:18px;display:grid;grid-template-columns:1fr auto;gap:11px 14px;align-items:center;box-shadow:0 10px 26px rgba(131,56,236,.22);}
+.cs-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.cs-tag{background:rgba(255,255,255,.18);font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;border-radius:7px;padding:4px 10px;}
+.cs-num{font:700 14px 'Hanken Grotesk';opacity:.95;}
+.cs-stats{display:flex;gap:8px;}
+.cs-stat{background:rgba(255,255,255,.16);border-radius:9px;padding:5px 11px;font:800 13px 'Hanken Grotesk';white-space:nowrap;}
+.cs-bar{grid-column:1/-1;height:6px;background:rgba(255,255,255,.24);border-radius:99px;overflow:hidden;}
+.cs-bar>div{height:100%;background:#fff;border-radius:99px;transition:width .5s cubic-bezier(.2,.7,.3,1);}
+
+.caso-dossier{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px 24px;margin-bottom:22px;}
+.cd-head{display:flex;align-items:center;gap:13px;}
+.cd-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8338EC,#5B6CF0);color:#fff;display:flex;align-items:center;justify-content:center;font:800 18px 'Bricolage Grotesque';flex-shrink:0;}
+.cd-name{font-weight:700;font-size:15.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cd-ref{font-size:13px;color:var(--muted);font-weight:600;margin-top:1px;}
+.cd-badge{margin-left:auto;flex-shrink:0;font-size:11px;font-weight:700;color:#8338EC;background:#F3E8FB;border-radius:7px;padding:5px 10px;align-self:flex-start;}
+.caso-chips{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 2px;}
+.caso-chip{font-size:12px;font-weight:700;color:var(--muted-2);background:var(--surface-2);border:1px solid var(--border);border-radius:99px;padding:5px 12px;}
+.cd-vinheta{margin:16px 0 0;font-size:15px;line-height:1.65;color:var(--body);text-wrap:pretty;border-left:3px solid #E0D2F5;padding-left:14px;}
+.caso-pergunta{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:14px;}
+
+.caso-result{display:flex;align-items:center;gap:14px;border-radius:16px;padding:15px 18px;margin-top:20px;animation:pop .35s cubic-bezier(.34,1.56,.64,1) both;}
+.caso-result.ok{background:#E6F6EE;border:1px solid #06D6A0;}
+.caso-result.no{background:#FDECEC;border:1px solid #E5484D;}
+.cr-emoji{font-size:28px;flex-shrink:0;line-height:1;}
+.cr-title{font:800 16px 'Bricolage Grotesque';}
+.caso-result.ok .cr-title{color:#06694A;}
+.caso-result.no .cr-title{color:#B4282C;}
+.cr-sub{font-size:13px;color:var(--muted-2);font-weight:600;margin-top:2px;}
+.caso-explica{margin-top:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.ce-lbl{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.caso-explica p{margin:0;font-size:14px;line-height:1.6;color:var(--body);}
+.caso-next{-webkit-appearance:none;appearance:none;background:linear-gradient(125deg,#8338EC,#5B6CF0);border:none;border-radius:12px;padding:12px 20px;font:700 14px 'Hanken Grotesk';color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:filter .18s ease,transform .18s ease;}
+
 .main{flex:1;min-width:0;display:flex;flex-direction:column;}
 
 .topbar{
@@ -242,6 +278,9 @@ button{font-family:inherit;}
 .ficha-h3 .bar{width:5px;height:18px;background:var(--cat);border-radius:3px;display:inline-block;flex-shrink:0;}
 
 /* timeline de critérios */
+.crit-group{font:800 14.5px 'Bricolage Grotesque';color:var(--cat);margin:22px 0 12px;display:flex;align-items:center;gap:9px;}
+.crit-group:first-child{margin-top:4px;}
+.crit-group::before{content:"";width:5px;height:16px;background:var(--cat);border-radius:3px;flex-shrink:0;}
 .crit-timeline{display:flex;flex-direction:column;gap:14px;}
 .crit-item{position:relative;display:flex;gap:14px;align-items:flex-start;}
 .crit-item::before{content:"";position:absolute;left:14px;top:30px;width:2px;height:calc(100% + 14px);background:var(--cat-soft);z-index:0;transform-origin:top;animation:growV .4s ease both;}

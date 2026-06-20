@@ -78,7 +78,15 @@
   ];
   var MR = [4,9,1,17,6]; // índices de categoria, embaralhados
 
-  var CASO = {opts:['Transtorno depressivo maior','Transtorno de ansiedade generalizada','Transtorno de pânico','Transtorno bipolar tipo II'], correct:2};
+  var CASO = {
+    patient:{name:'Marina', age:27, sex:'Feminino', ref:'Encaminhada pela atenção primária', initials:'M'},
+    chips:['Ataques súbitos de medo', 'Palpitações e falta de ar', '≈ 4 meses', 'Evita sair sozinha'],
+    vinheta:'Conteúdo ilustrativo. Marina relata episódios súbitos e recorrentes de medo intenso, com palpitações, sudorese, falta de ar e sensação de morte iminente, que atingem o pico em poucos minutos. Desde então, vive preocupada com a possibilidade de novos episódios e passou a evitar sair de casa sozinha. Nega uso de substâncias e condição médica que justifique o quadro.',
+    pergunta:'Qual a hipótese diagnóstica mais provável?',
+    opts:['Transtorno depressivo maior','Transtorno de ansiedade generalizada','Transtorno de pânico','Transtorno bipolar tipo II'],
+    correct:2,
+    explicacao:'Conteúdo ilustrativo — ataques de pânico recorrentes e inesperados, seguidos de preocupação persistente com novos ataques e mudança de comportamento (esquiva), apontam para Transtorno de Pânico (DSM-5-TR). Aqui entraria a referência ao critério diagnóstico.'
+  };
 
   var CRITERIA = [
     {letter:'A', text:'Conteúdo ilustrativo. Critério principal do quadro — presença dos sintomas centrais por um período mínimo definido.'},
@@ -200,7 +208,7 @@
     classifyPhase:0, classifyBoard:null, classifyPlaced:{}, classifyLocked:{}, classifySel:null,
     classifyChecked:false, classifyPhaseComplete:false, classifyScore:0, classifyTotal:0, classifyDone:false,
     matchLeftSel:null, matches:{},
-    casoSelected:null, casoAnswered:false,
+    casoSelected:null, casoAnswered:false, casoIndex:0, casoScore:0, casoStreak:0,
     dark:false,
     auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false},
     progress:{}, stats:null, pendingScroll:null,
@@ -288,7 +296,8 @@
     classifyNext:   function(){ if(state.classifyPhase>=CLASSIFY_PHASES.length-1){ state.classifyDone=true; setState({}); } else { startPhase(state.classifyPhase+1); } },
     classifyRestart:function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
     // caso
-    casoSelect: function(i){ if(state.casoAnswered) return; var ok=(i===CASO.correct); setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok); },
+    casoSelect: function(i){ if(state.casoAnswered) return; var ok=(i===CASO.correct); state.casoScore+= ok?10:0; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok); },
+    casoNext:   function(){ setState({casoIndex:state.casoIndex+1, casoSelected:null, casoAnswered:false}); scrollTop(); },
   };
 
   /* ações de autenticação (registradas à parte) */
@@ -1142,14 +1151,27 @@
 
     // ---- critérios (timeline) ----
     var critList = (disorder.criteria && disorder.criteria.length) ? disorder.criteria : null;
+    function critItemHtml(cr){
+      return '<div class="crit-item">'+
+        '<span class="crit-badge">'+esc(cr.letter)+'</span>'+
+        '<div class="crit-card" data-hover="box-shadow:0 6px 18px rgba(16,42,51,.08);transform:translateX(2px);">'+renderRich(cr.text.split('\n'))+'</div>'+
+      '</div>';
+    }
     var criteria;
-    if(critList){
-      criteria = '<div class="crit-timeline">'+ critList.map(function(cr){
-        return '<div class="crit-item">'+
-          '<span class="crit-badge">'+esc(cr.letter)+'</span>'+
-          '<div class="crit-card" data-hover="box-shadow:0 6px 18px rgba(16,42,51,.08);transform:translateX(2px);">'+renderRich(cr.text.split('\n'))+'</div>'+
-        '</div>';
-      }).join('') +'</div>';
+    if(critList && critList.some(function(cr){ return cr.group; })){
+      // critérios agrupados (ex.: bipolar — Episódio Maníaco/Hipomaníaco/...)
+      var groups = [];
+      critList.forEach(function(cr){
+        var g = cr.group || '';
+        if(!groups.length || groups[groups.length-1].g !== g) groups.push({g:g, items:[]});
+        groups[groups.length-1].items.push(cr);
+      });
+      criteria = groups.map(function(grp){
+        var tl = '<div class="crit-timeline">'+ grp.items.map(critItemHtml).join('') +'</div>';
+        return grp.g ? '<div class="crit-group">'+esc(grp.g)+'</div>'+tl : tl;
+      }).join('');
+    } else if(critList){
+      criteria = '<div class="crit-timeline">'+ critList.map(critItemHtml).join('') +'</div>';
     } else {
       criteria = '<div class="crit-empty">'+ICON.book+'<div>Esta é uma categoria residual ou de referência cruzada — não traz um conjunto próprio de critérios A–E no DSM-5-TR. Veja o resumo acima e as seções abaixo.</div></div>';
     }
@@ -1755,26 +1777,44 @@
      TELA: ESTUDO DE CASO
      ========================================================= */
   function screenCaso(){
-    var opts = CASO.opts.map(function(o,i){ return mcOption(o, i, state.casoAnswered, state.casoSelected, CASO.correct, 'casoSelect'); }).join('');
+    var p = CASO.patient, total = 12;
+    var num = (state.casoIndex % total) + 1;
+    var pct = Math.round(num/total*100);
+    var answered = state.casoAnswered;
+    var correct = answered && state.casoSelected===CASO.correct;
+    var opts = CASO.opts.map(function(o,i){ return mcOption(o, i, answered, state.casoSelected, CASO.correct, 'casoSelect'); }).join('');
+    var chips = (CASO.chips||[]).map(function(ch){ return '<span class="caso-chip">'+esc(ch)+'</span>'; }).join('');
+
+    var feedback = '';
+    if(answered){
+      var banner = correct
+        ? '<div class="caso-result ok"><div class="cr-emoji">🎯</div><div><div class="cr-title">Diagnóstico correto!</div><div class="cr-sub">+10 pontos'+(state.casoStreak>1?' · sequência de '+state.casoStreak+' 🔥':'')+'</div></div></div>'
+        : '<div class="caso-result no"><div class="cr-emoji">🩺</div><div><div class="cr-title">Não foi dessa vez</div><div class="cr-sub">A resposta correta era <b>'+esc(CASO.opts[CASO.correct])+'</b></div></div></div>';
+      feedback = banner+
+        '<div class="caso-explica"><div class="ce-lbl">Por quê?</div><p>'+esc(CASO.explicacao)+'</p></div>'+
+        '<div style="display:flex;justify-content:flex-end;margin-top:18px;"><button data-action="casoNext" class="caso-next" data-hover="filter:brightness(.93);transform:translateX(2px);">Próximo caso '+ICON.arrowR+'</button></div>';
+    }
+
     return ''+
-    '<section style="max-width:740px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+    '<section style="max-width:760px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       backToEx()+
-      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">'+
-        '<span style="background:#E8ECFB;color:#4361EE;font-size:12px;font-weight:700;border-radius:8px;padding:5px 11px;">Estudo de caso</span>'+
-        '<span style="font-size:13px;color:var(--muted);font-weight:600;">Caso 3 de 12</span>'+
+      '<div class="caso-status">'+
+        '<div class="cs-left"><span class="cs-tag">Estudo de caso</span><span class="cs-num">Caso '+num+' de '+total+'</span></div>'+
+        '<div class="cs-stats"><span class="cs-stat">🎯 '+state.casoScore+'</span><span class="cs-stat">🔥 '+state.casoStreak+'</span></div>'+
+        '<div class="cs-bar"><div style="width:'+pct+'%;"></div></div>'+
       '</div>'+
-      '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px;">'+
-        '<div style="display:flex;gap:14px;align-items:flex-start;">'+
-          '<div style="width:44px;height:44px;border-radius:50%;background:#EEF4F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+ICON.user+'</div>'+
-          '<div>'+
-            '<div style="font-weight:700;font-size:15px;margin-bottom:2px;">Paciente, 27 anos</div>'+
-            '<div style="font-size:13px;color:var(--muted);font-weight:600;">Encaminhada pela atenção primária</div>'+
-          '</div>'+
+      '<div class="caso-dossier">'+
+        '<div class="cd-head">'+
+          '<div class="cd-avatar">'+esc(p.initials)+'</div>'+
+          '<div style="min-width:0;"><div class="cd-name">'+esc(p.name)+', '+p.age+' anos · '+esc(p.sex)+'</div><div class="cd-ref">'+esc(p.ref)+'</div></div>'+
+          '<span class="cd-badge">Vinheta clínica</span>'+
         '</div>'+
-        '<p style="margin:18px 0 0;font-size:15px;line-height:1.65;color:var(--body);text-wrap:pretty;">Conteúdo ilustrativo. Aqui entra a vinheta clínica: descrição dos sintomas, tempo de evolução, prejuízo funcional e dados relevantes da história. O estudante lê o caso e identifica a hipótese diagnóstica mais provável entre as alternativas abaixo.</p>'+
+        (chips ? '<div class="caso-chips">'+chips+'</div>' : '')+
+        '<p class="cd-vinheta">'+esc(CASO.vinheta)+'</p>'+
       '</div>'+
-      '<div style="font-weight:700;font-size:15.5px;margin-bottom:14px;">Qual a hipótese diagnóstica mais provável?</div>'+
+      '<div class="caso-pergunta">'+esc(CASO.pergunta)+'</div>'+
       '<div style="display:flex;flex-direction:column;gap:11px;">'+opts+'</div>'+
+      feedback+
     '</section>';
   }
 
@@ -2340,6 +2380,7 @@
       if(k==='Enter' && state.quizAnswered) return run(actions.quizNext);
     } else if(s==='caso'){
       if(k>='1' && k<='9'){ var ci=+k-1; if(ci<CASO.opts.length) return run(actions.casoSelect, ci); }
+      if(k==='Enter' && state.casoAnswered) return run(actions.casoNext);
       if(k==='Escape') return run(actions.goExercicios);
     } else if(s==='ligar'){
       if(k==='Escape') return run(actions.goExercicios);
