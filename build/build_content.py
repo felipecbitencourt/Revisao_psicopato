@@ -532,12 +532,20 @@ def first_paragraph(text):
     return text.split("\n")[0] if text else ""
 
 
-def shorten(summary, limit=300):
-    if len(summary) <= limit:
-        return summary
-    cut = summary[:limit]
-    dot = cut.rfind(". ")
-    return cut[: dot + 1] if dot > 120 else cut.rstrip() + "…"
+def shorten(summary, limit=300, hard=520):
+    s = summary.strip()
+    if len(s) <= hard:                       # curto/completo o bastante -> inteiro
+        return s
+    # corta numa fronteira de frase: 1ª ". " a partir de ~limit
+    end = s.find(". ", max(0, limit - 60), hard)
+    if end != -1:
+        return s[: end + 1]
+    dot = s[:limit].rfind(". ")
+    if dot > 120:
+        return s[: dot + 1]
+    cut = s[:limit].rstrip()
+    sp = cut.rfind(" ")
+    return (cut[:sp] if sp > 120 else cut) + "…"
 
 
 def parse_transtorno(path, display_name):

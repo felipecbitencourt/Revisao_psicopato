@@ -157,7 +157,11 @@
     trophy:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
     bookOpen:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
     message:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
-    about:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'
+    about:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>',
+    eye:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
+    eyeOff:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.1 9.1 0 0 1 12 5c6.5 0 10 7 10 7a13 13 0 0 1-1.7 2.7"/><path d="M6.6 6.6A13 13 0 0 0 2 12s3.5 7 10 7a9 9 0 0 0 5.4-1.7"/><path d="M3 3l18 18"/></svg>',
+    x:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+    sidebar:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>'
   };
 
   // ícones dos modos de exercício
@@ -198,6 +202,25 @@
   ];
 
   /* ---------------------------------------------------------
+     Avisos / central de notificações (sino do topo)
+     --------------------------------------------------------- */
+  var NOTICES = [
+    {
+      id:'welcome-1',
+      icon:'🦆',
+      title:'Bem-vindo ao Psico·Pato!',
+      body:'Você acabou de abrir o <b>mural de avisos</b> — é aqui no sino 🔔 do topo que aparecem novidades, '
+         + 'dicas de estudo e atualizações da plataforma. Comece revisando uma ficha, treine nos exercícios e '
+         + 'acompanhe seu progresso e ranking. Bons estudos!',
+      when:'Agora há pouco'
+    }
+  ];
+  function notifReadSet(){ try { return JSON.parse(localStorage.getItem('psp-notif-read')) || []; } catch(e){ return []; } }
+  function notifUnreadIds(){ var r=notifReadSet(); return NOTICES.filter(function(n){ return r.indexOf(n.id)<0; }).map(function(n){ return n.id; }); }
+  function notifUnreadCount(){ return notifUnreadIds().length; }
+  function notifMarkAllRead(){ try { localStorage.setItem('psp-notif-read', JSON.stringify(NOTICES.map(function(n){ return n.id; }))); } catch(e){} }
+
+  /* ---------------------------------------------------------
      Estado
      --------------------------------------------------------- */
   var state = {
@@ -209,6 +232,9 @@
     classifyChecked:false, classifyPhaseComplete:false, classifyScore:0, classifyTotal:0, classifyDone:false,
     matchLeftSel:null, matches:{},
     casoSelected:null, casoAnswered:false, casoIndex:0, casoScore:0, casoStreak:0,
+    lastViewed:null,
+    notifOpen:false, notifNew:[],
+    sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
     dark:false,
     auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false},
     progress:{}, stats:null, pendingScroll:null,
@@ -301,6 +327,26 @@
   };
 
   /* ações de autenticação (registradas à parte) */
+  actions.togglePass = function(id){
+    var inp=document.getElementById(id), btn=document.getElementById(id+'-eye');
+    if(!inp) return;
+    var show = inp.type==='password';
+    inp.type = show ? 'text' : 'password';
+    if(btn){ btn.innerHTML = show ? ICON.eyeOff : ICON.eye; btn.title = show?'Ocultar senha':'Mostrar senha'; }
+    inp.focus();
+  };
+  function closeNotifPanel(){ if(state.notifOpen){ notifMarkAllRead(); state.notifOpen=false; state.notifNew=[]; } }
+  actions.toggleNotif = function(){
+    if(state.notifOpen){ closeNotifPanel(); render(); return; }
+    state.notifNew = notifUnreadIds();   // snapshot p/ marcar como "novo" no painel
+    state.notifOpen = true; render();
+  };
+  actions.closeNotif = function(){ closeNotifPanel(); render(); };
+  actions.toggleSidebar = function(){
+    var v = !state.sideCollapsed;
+    try { localStorage.setItem('psp-side-collapsed', v?'1':'0'); } catch(e){}
+    setState({sideCollapsed:v});
+  };
   actions.goLogin    = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'login'}); };
   actions.goRegister = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'register'}); };
   actions.logout     = function(){ if(DB.ready) DB.logout(); };
@@ -472,7 +518,13 @@
       return s.charAt(0).toUpperCase() + s.slice(1);
     }catch(e){ return ''; }
   }
+  function setLastViewed(){
+    var cat = CATS[state.activeCat]; if(!cat || !cat.items[state.activeDisorder]) return;
+    state.lastViewed = { cat: state.activeCat, dis: state.activeDisorder };
+    try{ localStorage.setItem('dsm-last-viewed', state.activeCat+':'+state.activeDisorder); }catch(e){}
+  }
   function recordRevised(){
+    setLastViewed();                          // "continue de onde parou"
     if(!tracking()) return;
     var cat = CATS[state.activeCat]; if(!cat) return;
     var d = cat.items[state.activeDisorder]; if(!d) return;
@@ -648,7 +700,7 @@
      ========================================================= */
   function navBtn(item){
     if(item.active){
-      return '<button data-action="'+item.action+'" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:600 15px \'Hanken Grotesk\';text-align:left;background:#0E4D64;color:#fff;">'+item.icon+'<span>'+item.label+'</span></button>';
+      return '<button data-action="'+item.action+'" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:700 15px \'Hanken Grotesk\';text-align:left;background:var(--accent-bg);color:var(--teal-text);box-shadow:inset 3px 0 0 var(--teal-text);">'+item.icon+'<span>'+item.label+'</span></button>';
     }
     return '<button data-action="'+item.action+'" data-hover="background:#EEF4F5;color:var(--teal-text);" data-active="transform:scale(.98);" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:600 15px \'Hanken Grotesk\';text-align:left;background:transparent;color:#41595F;transition:background .18s ease,color .18s ease;">'+item.icon+'<span>'+item.label+'</span></button>';
   }
@@ -738,15 +790,15 @@
       '<div style="font-size:10.5px;color:#B7D7DD;margin-top:6px;font-weight:600;">faltam '+lv.toNext+' XP p/ nível '+(lv.level+1)+'</div>'+
     '</div>';
     return ''+
-    '<aside class="sidebar">'+
-      '<div style="display:flex;align-items:center;gap:11px;padding:4px 6px 22px;">'+
-        '<img src="logo-128.png" alt="Psico·Pato" width="38" height="38" style="width:38px;height:38px;border-radius:11px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);">'+
-        '<div>'+
+    '<aside class="sidebar'+(state.sideCollapsed?' collapsed':'')+'">'+
+      '<div class="side-logo" style="display:flex;align-items:center;gap:11px;padding:4px 6px 22px;">'+
+        '<img src="logo-128.png" alt="Psico·Pato" width="38" height="38" style="width:38px;height:38px;border-radius:11px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);flex-shrink:0;">'+
+        '<div class="side-logo-text">'+
           '<div style="font:800 17px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">Psico<span style="color:#5BC0BE;">·</span>Pato</div>'+
           '<div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.3px;">guia de estudos</div>'+
         '</div>'+
       '</div>'+
-      '<nav style="display:flex;flex-direction:column;gap:4px;">'+nav+'</nav>'+
+      '<nav class="side-nav" style="display:flex;flex-direction:column;gap:4px;">'+nav+'</nav>'+
       levelCard+
       '<div class="side-metric" style="margin-top:12px;background:var(--bg);border-radius:16px;padding:16px;">'+ sideMetricCard() +'</div>'+
       profileBlock()+
@@ -915,8 +967,40 @@
       streakChip+
       '<button data-action="toggleSound" title="'+(Sound.isOn()?'Som ligado':'Som desligado')+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:'+(Sound.isOn()?'var(--teal-text)':'var(--muted)')+';transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+(Sound.isOn()?ICON.soundOn:ICON.soundOff)+'</button>'+
       '<button data-action="toggleTheme" title="Alternar tema" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9) rotate(-15deg);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+themeIcon+'</button>'+
-      '<button data-hover="background:var(--surface-2);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:background .18s ease;">'+ICON.bell+'</button>'+
+      notifBell()+
     '</header>';
+  }
+
+  /* sino de avisos + painel dropdown */
+  function notifBell(){
+    var unread = notifUnreadCount();
+    var badge = unread>0 ? '<span class="notif-badge">'+(unread>9?'9+':unread)+'</span>' : '';
+    var btn = '<button data-action="toggleNotif" title="Avisos" aria-label="Avisos'+(unread?(' ('+unread+' novo'+(unread>1?'s':'')+')'):'')+'"'+
+      ' class="topbar-bell'+(unread?' has-unread':'')+(state.notifOpen?' is-open':'')+'"'+
+      ' data-hover="border-color:#5BC0BE;color:var(--teal-text);"'+
+      ' style="position:relative;width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:background .18s ease,border-color .18s ease,color .18s ease;">'+
+      ICON.bell+badge+'</button>';
+    return '<div class="notif-wrap" style="position:relative;">'+ btn + (state.notifOpen ? notifPanel() : '') + '</div>';
+  }
+
+  function notifPanel(){
+    var isNew = {};
+    (state.notifNew||[]).forEach(function(id){ isNew[id]=true; });
+    var list = NOTICES.length ? NOTICES.map(function(n){
+      var nw = !!isNew[n.id];
+      return '<li class="notif-item'+(nw?' is-new':'')+'">'+
+        '<div class="notif-ico">'+n.icon+'</div>'+
+        '<div class="notif-main">'+
+          '<div class="notif-title">'+esc(n.title)+(nw?'<span class="notif-tag">novo</span>':'')+'</div>'+
+          '<div class="notif-body">'+n.body+'</div>'+
+          '<div class="notif-when">'+esc(n.when)+'</div>'+
+        '</div></li>';
+    }).join('') : '<li class="notif-empty">Nenhum aviso por aqui ainda.</li>';
+    return '<div class="notif-panel" id="notif-panel" role="dialog" aria-label="Avisos">'+
+      '<div class="notif-head"><span class="notif-h-title">'+ICON.bell+' Avisos</span>'+
+        '<button class="notif-close" data-action="closeNotif" title="Fechar" aria-label="Fechar">'+ICON.x+'</button></div>'+
+      '<ul class="notif-list">'+list+'</ul>'+
+    '</div>';
   }
 
   /* =========================================================
@@ -950,10 +1034,11 @@
         '<div style="font-size:12px;color:var(--muted);font-weight:500;">'+esc(m.desc)+'</div>'+
       '</div>';
     }
-    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;cursor:default;">'+
+    return '<div title="'+esc(m.desc)+'" style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;cursor:default;">'+
       '<div style="width:42px;height:42px;border-radius:12px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:21px;filter:grayscale(1);opacity:.55;">'+m.emoji+'</div>'+
       '<div style="font-weight:700;font-size:14px;margin-top:10px;color:var(--muted-2);">'+esc(m.title)+'</div>'+
-      '<div style="height:6px;background:var(--track);border-radius:99px;overflow:hidden;margin-top:8px;"><div style="width:'+m.pct+'%;height:100%;background:#9DD9D2;border-radius:99px;"></div></div>'+
+      '<div style="font-size:12px;color:var(--muted);font-weight:500;margin-top:1px;">'+esc(m.desc)+'</div>'+
+      '<div style="height:6px;background:var(--track);border-radius:99px;overflow:hidden;margin-top:9px;"><div style="width:'+m.pct+'%;height:100%;background:#9DD9D2;border-radius:99px;"></div></div>'+
       '<div style="font-size:11px;color:var(--muted);font-weight:600;margin-top:6px;">'+m.cur+' / '+m.goal+'</div>'+
     '</div>';
   }
@@ -978,6 +1063,21 @@
     '</div>';
   }
 
+  function continueCard(){
+    var btnStyle = "background:#5BC0BE;color:#06343F;border:none;border-radius:12px;padding:12px 20px;font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .18s ease,transform .18s ease,box-shadow .18s ease;";
+    var hov = 'background:#7BD0CE;transform:translateY(-2px);box-shadow:0 8px 18px rgba(91,192,190,.4);';
+    var lv = state.lastViewed, cat = lv && CATS[lv.cat], d = cat && cat.items[lv.dis];
+    if(d){
+      return '<span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9DD9D2;">Continue de onde parou</span>'+
+        '<h2 style="font:700 22px \'Bricolage Grotesque\';margin:8px 0 4px;">'+esc(cat.name)+'</h2>'+
+        '<p style="margin:0 0 18px;color:#B7D7DD;font-size:14px;">Você estava em '+esc(d.n)+'.</p>'+
+        '<button data-action="openRef" data-arg="'+lv.cat+':'+lv.dis+'" data-hover="'+hov+'" data-active="transform:translateY(0) scale(.97);" style="'+btnStyle+'">Retomar revisão '+ICON.arrowR+'</button>';
+    }
+    return '<span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9DD9D2;">Comece sua revisão</span>'+
+      '<h2 style="font:700 22px \'Bricolage Grotesque\';margin:8px 0 4px;">As 20 categorias do DSM-5-TR</h2>'+
+      '<p style="margin:0 0 18px;color:#B7D7DD;font-size:14px;">Escolha um capítulo e abra sua primeira ficha-resumo.</p>'+
+      '<button data-action="goCategorias" data-hover="'+hov+'" data-active="transform:translateY(0) scale(.97);" style="'+btnStyle+'">Explorar categorias '+ICON.arrowR+'</button>';
+  }
   function screenHome(){
     var st = tracking() ? (state.stats || {streak:0, revisados:0, exercicios:0, taxa:0})
                         : {streak:12, revisados:38, exercicios:154, taxa:87};
@@ -1007,10 +1107,7 @@
           '<div style="position:absolute;right:-30px;top:-30px;width:160px;height:160px;border-radius:50%;background:rgba(91,192,190,.18);animation:floatY 7s ease-in-out infinite;"></div>'+
           '<div style="position:absolute;right:60px;bottom:-46px;width:110px;height:110px;border-radius:50%;background:rgba(157,217,210,.12);animation:floatY 9s ease-in-out infinite reverse;"></div>'+
           '<div style="position:relative;">'+
-            '<span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9DD9D2;">Continue de onde parou</span>'+
-            '<h2 style="font:700 22px \'Bricolage Grotesque\';margin:8px 0 4px;">Transtornos de Ansiedade</h2>'+
-            '<p style="margin:0 0 18px;color:#B7D7DD;font-size:14px;">Você estava revisando o Transtorno de Pânico.</p>'+
-            '<button data-action="goCategorias" data-hover="background:#7BD0CE;transform:translateY(-2px);box-shadow:0 8px 18px rgba(91,192,190,.4);" data-active="transform:translateY(0) scale(.97);" style="background:#5BC0BE;color:#06343F;border:none;border-radius:12px;padding:12px 20px;font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .18s ease,transform .18s ease,box-shadow .18s ease;">Retomar revisão '+ICON.arrowR+'</button>'+
+            continueCard()+
           '</div>'+
         '</div>'+
         '<div style="display:flex;flex-direction:column;gap:16px;">'+
@@ -1826,7 +1923,7 @@
     if(answered){
       var banner = correct
         ? '<div class="caso-result ok"><div class="cr-emoji">🎯</div><div><div class="cr-title">Diagnóstico correto!</div><div class="cr-sub">+10 pontos'+(state.casoStreak>1?' · sequência de '+state.casoStreak+' 🔥':'')+'</div></div></div>'
-        : '<div class="caso-result no"><div class="cr-emoji">🩺</div><div><div class="cr-title">Não foi dessa vez</div><div class="cr-sub">A resposta correta era <b>'+esc(CASO.opts[CASO.correct])+'</b></div></div></div>';
+        : '<div class="caso-result no"><div class="cr-emoji">🧠</div><div><div class="cr-title">Não foi dessa vez</div><div class="cr-sub">A resposta correta era <b>'+esc(CASO.opts[CASO.correct])+'</b></div></div></div>';
       feedback = banner+
         '<div class="caso-explica"><div class="ce-lbl">Por quê?</div><p>'+esc(CASO.explicacao)+'</p></div>'+
         '<div style="display:flex;justify-content:flex-end;margin-top:18px;"><button data-action="casoNext" class="caso-next" data-hover="filter:brightness(.93);transform:translateX(2px);">Próximo caso '+ICON.arrowR+'</button></div>';
@@ -1905,9 +2002,16 @@
     return '';
   }
   function authInput(id,type,placeholder,label){
+    var isPass = type==='password';
+    var inp = '<input id="'+id+'" class="auth-input" type="'+type+'" placeholder="'+esc(placeholder)+'" style="width:100%;padding:12px '+(isPass?'44px':'14px')+' 12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';outline:none;" />';
+    if(isPass){
+      inp = '<div style="position:relative;">'+inp+
+        '<button type="button" id="'+id+'-eye" data-action="togglePass" data-arg="'+id+'" title="Mostrar senha" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--muted);">'+ICON.eye+'</button>'+
+      '</div>';
+    }
     return '<label style="display:block;margin-bottom:14px;">'+
       '<span style="display:block;font-size:12.5px;font-weight:700;color:var(--muted-2);margin-bottom:6px;">'+esc(label)+'</span>'+
-      '<input id="'+id+'" class="auth-input" type="'+type+'" placeholder="'+esc(placeholder)+'" style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';outline:none;" />'+
+      inp+
     '</label>';
   }
   function authSubmit(action,label,busy){
@@ -2303,7 +2407,7 @@
     var staticUpdate = (key === lastKey);   // re-render por interação (mesma tela)
     lastKey = key;
     root.innerHTML =
-      '<div class="app-shell">'+
+      '<div class="app-shell'+(state.sideCollapsed?' side-collapsed':'')+'">'+
         sidebar()+
         '<main class="main">'+
           topbar()+
@@ -2437,6 +2541,7 @@
     try{ dark = localStorage.getItem('dsm-theme')==='dark'; }catch(e){}
     state.dark = dark;
     applyTheme(dark);
+    try{ var lv=localStorage.getItem('dsm-last-viewed'); if(lv){ var pv=lv.split(':'); state.lastViewed={cat:+pv[0], dis:+pv[1]}; } }catch(e){}
     document.addEventListener('click', handleClick);
     // Enter envia o formulário de auth (não há <form> para evitar reload)
     document.addEventListener('keydown', function(e){
@@ -2455,6 +2560,15 @@
       var inside = e.target && e.target.closest && e.target.closest('.topbar-search');
       if(!inside){ box.style.display = 'none'; }
     });
+    // fecha o mural de avisos ao clicar fora dele
+    document.addEventListener('click', function(e){
+      if(!state.notifOpen) return;
+      var t = e.target;
+      if(t && t.closest && t.closest('.notif-wrap')) return;   // dentro do sino/painel
+      closeNotifPanel(); render();
+    });
+    // primeiro acesso: abre o mural com a mensagem de boas-vindas
+    if(notifUnreadCount()>0){ state.notifOpen=true; state.notifNew=notifUnreadIds(); }
     // atalho "/" foca o campo de busca
     document.addEventListener('keydown', function(e){
       if(e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
