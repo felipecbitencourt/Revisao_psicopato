@@ -161,7 +161,8 @@
     eye:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
     eyeOff:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.1 9.1 0 0 1 12 5c6.5 0 10 7 10 7a13 13 0 0 1-1.7 2.7"/><path d="M6.6 6.6A13 13 0 0 0 2 12s3.5 7 10 7a9 9 0 0 0 5.4-1.7"/><path d="M3 3l18 18"/></svg>',
     x:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
-    sidebar:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>'
+    sidebar:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>',
+    google:'<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.09a6.6 6.6 0 0 1 0-4.18V7.07H2.18a11 11 0 0 0 0 9.86l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>'
   };
 
   // ícones dos modos de exercício
@@ -236,8 +237,8 @@
     notifOpen:false, notifNew:[],
     sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
     dark:false,
-    auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false},
-    progress:{}, stats:null, pendingScroll:null,
+    auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false, loadingMsg:'', form:{}, recovery:false},
+    progress:{}, mastered:{}, stats:null, pendingScroll:null,
     rankPeriod:'week', leaderboard:null, rankLoading:false, rankError:false,
     feedback:{tipo:'erro', transtornoId:'', transtornoNome:'', draft:'', sending:false, sent:false, error:''},
   };
@@ -295,10 +296,10 @@
     // flashcards
     flip:    function(){ setState({fcFlipped:!state.fcFlipped}); },
     fcPrev:  function(){ var n=currentDeck().length; if(!n) return; setState({fcIndex:(state.fcIndex-1+n)%n, fcFlipped:false}); },
-    fcAgain: function(){ var n=currentDeck().length; if(!n) return; logExercise('flashcard', false); setState({fcIndex:(state.fcIndex+1)%n, fcFlipped:false}); },
-    fcKnow:  function(){ var n=currentDeck().length; if(!n) return; logExercise('flashcard', true); setState({fcIndex:(state.fcIndex+1)%n, fcFlipped:false}); },
+    fcAgain: function(){ var d=currentDeck(); if(!d.length) return; logExercise('flashcard', false); setState({fcIndex:(state.fcIndex+1)%d.length, fcFlipped:false}); },
+    fcKnow:  function(){ var d=currentDeck(); if(!d.length) return; var card=d[state.fcIndex]; logExercise('flashcard', true, card&&card.front); setState({fcIndex:(state.fcIndex+1)%d.length, fcFlipped:false}); },
     // quiz
-    quizSelect: function(i){ if(state.quizAnswered || !state.quizSet) return; var ok=(i===state.quizSet[state.quizIndex].correct); if(ok) state.quizScore++; setState({quizSelected:i, quizAnswered:true}); logExercise('quiz', ok); },
+    quizSelect: function(i){ if(state.quizAnswered || !state.quizSet) return; var q=state.quizSet[state.quizIndex]; var ok=(i===q.correct); if(ok) state.quizScore++; setState({quizSelected:i, quizAnswered:true}); logExercise('quiz', ok, q.opts[q.correct]); },
     quizNext:   function(){ if(!state.quizSet) return; if(state.quizIndex<state.quizSet.length-1) setState({quizIndex:state.quizIndex+1, quizSelected:null, quizAnswered:false}); else { state.quizDone=true; setState({}); } },
     // classificar (arrastar/tocar transtorno -> categoria)
     goClassify:     function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
@@ -314,15 +315,18 @@
         if(b.bins[bi].ci===b.pool[id].ci){ state.classifyLocked[id]=true; correctNow++; }
         else { delete state.classifyPlaced[id]; }
       }
-      if(first){ state.classifyScore += correctNow; logExercise('ligar', correctNow===b.pool.length); }
+      if(first){ state.classifyScore += correctNow; }
       state.classifyChecked=true;
-      if(Object.keys(state.classifyLocked).length===b.pool.length) state.classifyPhaseComplete=true;
+      if(Object.keys(state.classifyLocked).length===b.pool.length && !state.classifyPhaseComplete){
+        state.classifyPhaseComplete=true;
+        logExercise('ligar', true, 'fase'+state.classifyPhase);   // domina a fase (1x), som de acerto
+      }
       setState({});
     },
     classifyNext:   function(){ if(state.classifyPhase>=CLASSIFY_PHASES.length-1){ state.classifyDone=true; setState({}); } else { startPhase(state.classifyPhase+1); } },
     classifyRestart:function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
     // caso
-    casoSelect: function(i){ if(state.casoAnswered) return; var ok=(i===CASO.correct); state.casoScore+= ok?10:0; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok); },
+    casoSelect: function(i){ if(state.casoAnswered) return; var ok=(i===CASO.correct); state.casoScore+= ok?10:0; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok, (CASO.patient&&CASO.patient.name)||'caso'); },
     casoNext:   function(){ setState({casoIndex:state.casoIndex+1, casoSelected:null, casoAnswered:false}); scrollTop(); },
   };
 
@@ -347,32 +351,73 @@
     try { localStorage.setItem('psp-side-collapsed', v?'1':'0'); } catch(e){}
     setState({sideCollapsed:v});
   };
+  // voltar: delega ao histórico do navegador (dispara popstate -> navPop)
+  actions.goBack = function(){ if(navStack.length){ window.history.back(); } };
+  actions.loginGoogle = function(){
+    if(!DB.ready || !DB.loginGoogle){ state.auth.error='Login com Google indisponível no momento.'; render(); return; }
+    state.auth.error=''; state.auth.info='';
+    state.auth.busy=true; state.auth.loadingMsg='Conectando ao Google…'; render();
+    DB.loginGoogle().then(function(res){
+      // sucesso: o navegador é redirecionado ao Google; a volta dispara onAuth.
+      if(res && res.error){ state.auth.busy=false; state.auth.error=traduzErro(res.error); render(); }
+    }).catch(function(){ state.auth.busy=false; state.auth.error='Não foi possível iniciar o login com Google.'; render(); });
+  };
   actions.goLogin    = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'login'}); };
+  actions.goForgot   = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'forgot'}); };
+  actions.submitForgot = function(){
+    var email=val('forgot-email'); state.auth.form['forgot-email']=email;
+    state.auth.error=''; state.auth.info='';
+    if(!email){ state.auth.error='Informe o e-mail da sua conta.'; render(); return; }
+    if(!DB.ready || !DB.resetPassword){ state.auth.error='Recuperação indisponível no momento.'; render(); return; }
+    state.auth.busy=true; render();
+    DB.resetPassword(email).then(function(res){
+      state.auth.busy=false;
+      if(res && res.error){ state.auth.error=traduzErro(res.error); render(); return; }
+      // mensagem neutra (não revela se o e-mail existe)
+      state.auth.info='Se houver uma conta com esse e-mail, enviamos um link para redefinir a senha. Confira sua caixa de entrada e o spam.';
+      render();
+    }).catch(function(){ state.auth.busy=false; state.auth.error='Não foi possível enviar o e-mail. Tente novamente.'; render(); });
+  };
+  actions.submitNewPassword = function(){
+    var p1=rawVal('rp-pass'), p2=rawVal('rp-pass2');
+    state.auth.error=''; state.auth.info='';
+    if(!p1 || p1.length<6){ state.auth.error='A senha precisa de ao menos 6 caracteres.'; render(); return; }
+    if(p1!==p2){ state.auth.error='As senhas não conferem.'; render(); return; }
+    state.auth.busy=true; state.auth.loadingMsg='Salvando nova senha…'; render();
+    DB.updatePassword(p1).then(function(res){
+      if(res && res.error){ state.auth.busy=false; state.auth.error=traduzErro(res.error); render(); return; }
+      // sucesso: encerra a recuperação e entra no app
+      state.auth.recovery=false; state.auth.busy=false; state.auth.error=''; state.auth.info='';
+      try{ window.history.replaceState(null,'',window.location.pathname+window.location.search); }catch(e){}
+      applySession(state.auth.user);
+    }).catch(function(){ state.auth.busy=false; state.auth.error='Não foi possível salvar a senha. Tente novamente.'; render(); });
+  };
   actions.goRegister = function(){ state.auth.error=''; state.auth.info=''; setState({screen:'register'}); };
   actions.logout     = function(){ if(DB.ready) DB.logout(); };
   actions.submitLogin = function(){
     var email=val('auth-email'), pass=rawVal('auth-pass');
+    state.auth.form['auth-email']=email; state.auth.form['auth-pass']=pass;   // preserva se der erro
     state.auth.error=''; state.auth.info='';
     if(!email||!pass){ state.auth.error='Preencha e-mail e senha.'; render(); return; }
-    state.auth.busy=true; render();
+    state.auth.busy=true; state.auth.loadingMsg='Entrando…'; render();
     DB.login(email,pass).then(function(res){
-      state.auth.busy=false;
-      if(res && res.error){ state.auth.error=traduzErro(res.error); render(); return; }
-      /* sucesso: onAuth dispara applySession e troca de tela */
+      if(res && res.error){ state.auth.busy=false; state.auth.error=traduzErro(res.error); render(); return; }
+      /* sucesso: mantém o loader; onAuth -> applySession carrega o app e encerra o busy */
     }).catch(function(){ state.auth.busy=false; state.auth.error='Erro de conexão. Tente de novo.'; render(); });
   };
   actions.submitRegister = function(){
     var nome=val('reg-nome'), curso=val('reg-curso'), sem=val('reg-sem');
     var email=val('reg-email'), pass=rawVal('reg-pass');
+    var f=state.auth.form;
+    f['reg-nome']=nome; f['reg-curso']=curso; f['reg-sem']=sem; f['reg-email']=email; f['reg-pass']=pass;
     state.auth.error=''; state.auth.info='';
     if(!nome||!email||!pass){ state.auth.error='Preencha nome, e-mail e senha.'; render(); return; }
     if(pass.length<6){ state.auth.error='A senha precisa de ao menos 6 caracteres.'; render(); return; }
-    state.auth.busy=true; render();
+    state.auth.busy=true; state.auth.loadingMsg='Criando sua conta…'; render();
     DB.register(email,pass,{nome:nome,curso:curso,semestre:sem}).then(function(res){
-      state.auth.busy=false;
-      if(res && res.error){ state.auth.error=traduzErro(res.error); render(); return; }
-      if(res && res.data && res.data.session){ /* já logado: onAuth dispara */ }
-      else { state.auth.info='Conta criada! Confirme pelo link no seu e-mail e depois entre.'; setState({screen:'login'}); }
+      if(res && res.error){ state.auth.busy=false; state.auth.error=traduzErro(res.error); render(); return; }
+      if(res && res.data && res.data.session){ /* já logado: mantém o loader; onAuth -> applySession */ }
+      else { state.auth.busy=false; state.auth.info='Conta criada! Confirme pelo link no seu e-mail e depois entre.'; setState({screen:'login'}); }
     }).catch(function(){ state.auth.busy=false; state.auth.error='Erro de conexão. Tente de novo.'; render(); });
   };
   actions.enterGuest = function(){
@@ -535,12 +580,19 @@
     render();                               // reflete já na sidebar/listas
     DB.markRevised(id).then(refreshStats).catch(function(){});
   }
-  function logExercise(tipo, acerto){
+  // XP por DOMÍNIO: cada item (modo+transtorno) pontua só na 1ª vez que é acertado.
+  // Repetir vira prática (só som, sem XP); errar não pontua. Isso impede o farm de XP.
+  function masteryKey(tipo, item){ return tipo + ':' + (item || '?'); }
+  function logExercise(tipo, acerto, item){
     // som de feedback (também em modo demo); flashcard "Não sei" fica sem som
     if(tipo==='flashcard'){ if(acerto) Sound.correct(); }
     else { acerto ? Sound.correct() : Sound.wrong(); }
     if(!tracking()) return;
-    DB.logEvent(tipo, acerto).then(refreshStats).catch(function(){});
+    if(!acerto) return;                       // erro não dá XP
+    var key = masteryKey(tipo, item);
+    if(state.mastered[key]) return;           // já dominado -> repetir não dá XP
+    state.mastered[key] = true;
+    DB.logEvent(tipo, acerto, key).then(refreshStats).catch(function(){});
   }
   function refreshStats(){
     if(!tracking()) return Promise.resolve();
@@ -548,6 +600,7 @@
     var prevLevel = levelForXP(prevXP);
     return DB.getStats().then(function(s){
       state.stats = s;
+      setMasteredFrom(s.mastered);
       var newXP = userXP();
       var delta = newXP - prevXP;           // ganho real (ficha/exercício/acerto/dia ativo)
       render();
@@ -581,8 +634,13 @@
       var prog = {}; (res[0] || []).forEach(function(row){ prog[row.transtorno_id] = true; });
       state.progress = prog;
       state.stats = res[1] || {revisados:0, exercicios:0, taxa:0, streak:0};
-    }).catch(function(){ state.progress = {}; state.stats = {revisados:0, exercicios:0, taxa:0, streak:0}; });
+      state.mastered = {}; setMasteredFrom(state.stats.mastered);
+    }).catch(function(){ state.progress = {}; state.mastered = {}; state.stats = {revisados:0, exercicios:0, taxa:0, streak:0}; });
   }
+  function setMasteredFrom(arr){ var m=state.mastered||{}; (arr||[]).forEach(function(k){ m[k]=true; }); state.mastered=m; }
+  // nº de transtornos distintos dominados (ignora o prefixo do modo) e % de domínio do conteúdo
+  function masteredDisorders(){ var o={}; Object.keys(state.mastered||{}).forEach(function(k){ var i=k.indexOf(':'); var n=i>=0?k.slice(i+1):k; if(n&&n!=='?') o[n]=1; }); return Object.keys(o).length; }
+  function dominioPct(){ var tot=allCards().length; if(!tot) return 0; return Math.min(100, Math.round(masteredDisorders()/tot*100)); }
 
   /* ---------------------------------------------------------
      XP, NÍVEIS e MEDALHAS (gamificação)
@@ -677,9 +735,41 @@
   }
 
   /* ---------------------------------------------------------
-     setState + render
+     setState + render + histórico de navegação (voltar)
      --------------------------------------------------------- */
-  function setState(patch){ Object.assign(state, patch); render(); }
+  // chaves que definem "em que página/contexto estou" (p/ restaurar no voltar)
+  var NAV_KEYS = ['screen','activeCat','activeDisorder','deckCat','quizCat'];
+  var AUTH_SCREENS = ['login','register'];
+  var navStack = [];          // pilha de snapshots das telas anteriores
+  var navRestoring = false;   // true durante a restauração (evita re-empilhar)
+  function navSnapshot(){ var s={}; for(var i=0;i<NAV_KEYS.length;i++){ s[NAV_KEYS[i]]=state[NAV_KEYS[i]]; } return s; }
+  // restaura a tela anterior — acionado pelo back do navegador (popstate) e pelo botão da UI
+  function navPop(){
+    if(!navStack.length) return false;
+    var snap = navStack.pop();
+    navRestoring = true;
+    state.notifOpen = false;
+    Object.assign(state, snap);
+    render();
+    navRestoring = false;
+    scrollTop();
+    return true;
+  }
+
+  function setState(patch){
+    if(patch && patch.screen && patch.screen !== state.screen){
+      var toAuth   = AUTH_SCREENS.indexOf(patch.screen) >= 0;
+      var fromAuth = AUTH_SCREENS.indexOf(state.screen) >= 0;
+      if(toAuth){ navStack = []; }                    // entrar no login/cadastro zera o histórico
+      else if(!navRestoring && !fromAuth){            // navegação "para frente" entre telas do app
+        navStack.push(navSnapshot());
+        if(navStack.length > 60) navStack.shift();
+        try { window.history.pushState({psp:1}, ''); } catch(e){}
+      }
+    }
+    Object.assign(state, patch);
+    render();
+  }
 
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   // preserva quebras de linha (critérios com sub-itens) como <br>
@@ -700,9 +790,9 @@
      ========================================================= */
   function navBtn(item){
     if(item.active){
-      return '<button data-action="'+item.action+'" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:700 15px \'Hanken Grotesk\';text-align:left;background:var(--accent-bg);color:var(--teal-text);box-shadow:inset 3px 0 0 var(--teal-text);">'+item.icon+'<span>'+item.label+'</span></button>';
+      return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:700 15px \'Hanken Grotesk\';text-align:left;background:var(--accent-bg);color:var(--teal-text);box-shadow:inset 3px 0 0 var(--teal-text);">'+item.icon+'<span>'+item.label+'</span></button>';
     }
-    return '<button data-action="'+item.action+'" data-hover="background:#EEF4F5;color:var(--teal-text);" data-active="transform:scale(.98);" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:600 15px \'Hanken Grotesk\';text-align:left;background:transparent;color:#41595F;transition:background .18s ease,color .18s ease;">'+item.icon+'<span>'+item.label+'</span></button>';
+    return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" data-hover="background:#EEF4F5;color:var(--teal-text);" data-active="transform:scale(.98);" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:600 15px \'Hanken Grotesk\';text-align:left;background:transparent;color:#41595F;transition:background .18s ease,color .18s ease;">'+item.icon+'<span>'+item.label+'</span></button>';
   }
 
   function navItems(){
@@ -730,15 +820,15 @@
     var exe = st ? st.exercicios : 154;
     var fc  = t ? (bt.flashcard||0) : 50;
     var cs  = t ? (bt.caso||0) : 8;
-    var taxa = st ? st.taxa : 87;
+    var dom = t ? dominioPct() : 87;
     var streak = st ? st.streak : 12;
     return [
       {label:'Progresso geral', value:pct+'%', bar:pct, sub:rev+' de '+total+' transtornos revisados'},
-      {label:'Flashcards',      value:String(fc),  sub:'cartões revisados'},
-      {label:'Exercícios',      value:String(exe), sub:'exercícios feitos'},
+      {label:'Flashcards',      value:String(fc),  sub:'cartões dominados'},
+      {label:'Exercícios',      value:String(exe), sub:'exercícios dominados'},
       {label:'Estudos de caso', value:String(cs),  sub:'casos resolvidos'},
       {label:'Ranking',         value:'#—',        sub:'em breve'},
-      {label:'Visão geral',     value:taxa+'%', bar:taxa, sub:streak+' dias de streak · '+taxa+'% de acerto'}
+      {label:'Visão geral',     value:dom+'%', bar:dom, sub:streak+' dias de streak · '+dom+'% de domínio'}
     ];
   }
   function sideMetricCard(){
@@ -773,7 +863,7 @@
     var ovRev   = tracking() ? totalRevised()   : 38;
     var ovPct   = ovTotal ? Math.round(ovRev/ovTotal*100) : 0;
     var lv      = levelInfo(userXP());
-    var levelCard = '<div style="margin-top:auto;background:linear-gradient(135deg,#0E4D64,#15677F);border-radius:16px;padding:14px 15px;color:#fff;">'+
+    var levelCard = '<div class="side-level" style="margin-top:auto;background:linear-gradient(135deg,#0E4D64,#15677F);border-radius:16px;padding:14px 15px;color:#fff;">'+
       '<div style="display:flex;align-items:center;gap:10px;margin-bottom:11px;">'+
         '<div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">'+
           '<span style="font-size:7.5px;font-weight:800;letter-spacing:.4px;opacity:.85;">NÍVEL</span>'+
@@ -957,6 +1047,8 @@
       '</div>';
     return ''+
     '<header class="topbar">'+
+      '<button data-action="toggleSidebar" class="side-toggle-btn" title="'+(state.sideCollapsed?'Expandir menu':'Recolher menu')+'" aria-label="'+(state.sideCollapsed?'Expandir menu':'Recolher menu')+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.92);" style="flex-shrink:0;width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+ICON.sidebar+'</button>'+
+      (navStack.length ? '<button data-action="goBack" class="topbar-back" title="Voltar" aria-label="Voltar" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.92);" style="flex-shrink:0;width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+ICON.chevLbig+'</button>' : '')+
       '<div class="topbar-search" style="position:relative;flex:1;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:9px 14px;max-width:420px;">'+
         ICON.search+
         '<input id="global-search" type="text" autocomplete="off" spellcheck="false" placeholder="Buscar transtorno, categoria ou código…" style="flex:1;min-width:0;border:none;background:transparent;outline:none;font:500 14px \'Hanken Grotesk\';color:var(--ink);">'+
@@ -1098,8 +1190,8 @@
       '<div class="stat-grid">'+
         statCard('animation:ringPulse 2.6s ease-out infinite;', '#FFEDE3', ICON.flameOrange, String(st.streak), 'dias de streak')+
         statCard('', '#E3F3F2', ICON.statBook, String(st.revisados), 'transtornos revisados')+
-        statCard('', '#E8ECFB', ICON.statCheck, String(st.exercicios), 'exercícios feitos')+
-        statCard('', '#E6F6EE', ICON.statShield, st.taxa+'%', 'de acerto médio')+
+        statCard('', '#E8ECFB', ICON.statCheck, String(st.exercicios), 'exercícios dominados')+
+        statCard('', '#E6F6EE', ICON.statShield, (tracking()?dominioPct():st.taxa)+'%', 'do conteúdo dominado')+
       '</div>'+
 
       '<div class="home-mid">'+
@@ -1968,25 +2060,44 @@
     return m || 'Não foi possível concluir. Tente de novo.';
   }
 
-  function applySession(user){
+  function applySession(user, event){
+    // fluxo de recuperação de senha: usuário voltou pelo link do e-mail.
+    if(event==='PASSWORD_RECOVERY') state.auth.recovery=true;
+    if(state.auth.recovery && user){
+      state.auth.user=user; state.auth.checking=false;
+      state.auth.busy=false; state.auth.loadingMsg='';
+      DB.setGuest(false); state.auth.guest=false;
+      render();
+      return;
+    }
     if(!user){
       state.auth.user=null; state.auth.profile=null; state.auth.checking=false;
+      state.auth.busy=false; state.auth.loadingMsg='';
       setState({screen:'login'});
       return;
     }
     state.auth.user=user; state.auth.checking=false;
     DB.setGuest(false); state.auth.guest=false;
+    function done(){
+      state.auth.busy=false; state.auth.loadingMsg=''; state.auth.form={};
+      if(state.screen==='login'||state.screen==='register') state.screen='home';
+      render();
+    }
     DB.getProfile().then(function(p){
-      state.auth.profile=p||{};
+      state.auth.profile = enrichProfile(p||{}, user);
       return loadUserData();
-    }).then(function(){
-      if(state.screen==='login'||state.screen==='register') state.screen='home';
-      render();
-    }).catch(function(){
-      state.auth.profile=state.auth.profile||{};
-      if(state.screen==='login'||state.screen==='register') state.screen='home';
-      render();
+    }).then(done).catch(function(){
+      state.auth.profile = enrichProfile(state.auth.profile||{}, user);
+      done();
     });
+  }
+  // completa nome/avatar a partir dos metadados do provedor (ex.: Google),
+  // quando o perfil do banco ainda não os tem (login social não passa pelo form).
+  function enrichProfile(p, user){
+    var meta = (user && user.user_metadata) || {};
+    if(!p.nome) p.nome = meta.full_name || meta.name || '';
+    if(!p.avatar_url) p.avatar_url = meta.avatar_url || meta.picture || '';
+    return p;
   }
 
   function authLogo(){
@@ -2003,7 +2114,8 @@
   }
   function authInput(id,type,placeholder,label){
     var isPass = type==='password';
-    var inp = '<input id="'+id+'" class="auth-input" type="'+type+'" placeholder="'+esc(placeholder)+'" style="width:100%;padding:12px '+(isPass?'44px':'14px')+' 12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';outline:none;" />';
+    var preset = (state.auth.form && state.auth.form[id]) || '';
+    var inp = '<input id="'+id+'" class="auth-input" type="'+type+'" placeholder="'+esc(placeholder)+'" value="'+esc(preset)+'" style="width:100%;padding:12px '+(isPass?'44px':'14px')+' 12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';outline:none;" />';
     if(isPass){
       inp = '<div style="position:relative;">'+inp+
         '<button type="button" id="'+id+'-eye" data-action="togglePass" data-arg="'+id+'" title="Mostrar senha" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--muted);">'+ICON.eye+'</button>'+
@@ -2016,6 +2128,12 @@
   }
   function authSubmit(action,label,busy){
     return '<button data-action="'+action+'" '+(busy?'':'data-hover="background:#13647F;" data-active="transform:scale(.98);" ')+'style="width:100%;margin-top:6px;background:'+(busy?'#3A6B7C':'#0E4D64')+';border:none;border-radius:12px;padding:13px;font:700 14.5px \'Hanken Grotesk\';color:#fff;cursor:'+(busy?'default':'pointer')+';transition:all .18s ease;">'+esc(label)+'</button>';
+  }
+  function authDivider(){
+    return '<div style="display:flex;align-items:center;gap:10px;margin:18px 0 14px;"><div style="flex:1;height:1px;background:var(--border);"></div><span style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.5px;">OU</span><div style="flex:1;height:1px;background:var(--border);"></div></div>';
+  }
+  function authGoogleBtn(){
+    return '<button data-action="loginGoogle" data-hover="background:var(--surface-2);border-color:#5BC0BE;" data-active="transform:scale(.98);" style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;font:700 14px \'Hanken Grotesk\';color:var(--ink);cursor:pointer;transition:all .18s ease;margin-bottom:12px;">'+ICON.google+'<span>Continuar com Google</span></button>';
   }
 
   function screenLogin(){
@@ -2030,10 +2148,12 @@
           authFeedback()+
           authInput('auth-email','email','voce@email.com','E-mail')+
           authInput('auth-pass','password','••••••••','Senha')+
+          '<div style="text-align:right;margin:-6px 0 14px;"><button data-action="goForgot" style="background:none;border:none;color:var(--teal-text);font-weight:700;font-size:12.5px;cursor:pointer;padding:0;">Esqueci minha senha</button></div>'+
           authSubmit('submitLogin', a.busy?'Entrando…':'Entrar', a.busy)+
           '<p style="margin:16px 0 0;font-size:13px;color:var(--muted);text-align:center;">Não tem conta? '+
             '<button data-action="goRegister" style="background:none;border:none;color:var(--teal-text);font-weight:700;font-size:13px;cursor:pointer;padding:0;">Criar conta</button></p>'+
-          '<div style="display:flex;align-items:center;gap:10px;margin:18px 0 14px;"><div style="flex:1;height:1px;background:var(--border);"></div><span style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.5px;">OU</span><div style="flex:1;height:1px;background:var(--border);"></div></div>'+
+          authDivider()+
+          authGoogleBtn()+
           '<button data-action="enterGuest" data-hover="background:var(--surface-2);border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.98);" style="width:100%;background:transparent;border:1px solid var(--border);border-radius:12px;padding:12px;font:700 14px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .18s ease;">Continuar sem conta</button>'+
           '<p style="margin:10px 0 0;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.45;">No modo visitante, seu histórico fica salvo só neste navegador.</p>'+
         '</div>'+
@@ -2059,6 +2179,8 @@
           authInput('reg-email','email','voce@email.com','E-mail')+
           authInput('reg-pass','password','mínimo 6 caracteres','Senha')+
           authSubmit('submitRegister', a.busy?'Criando…':'Criar conta', a.busy)+
+          authDivider()+
+          authGoogleBtn()+
           '<p style="margin:16px 0 0;font-size:13px;color:var(--muted);text-align:center;">Já tem conta? '+
             '<button data-action="goLogin" style="background:none;border:none;color:var(--teal-text);font-weight:700;font-size:13px;cursor:pointer;padding:0;">Entrar</button></p>'+
         '</div>'+
@@ -2066,10 +2188,54 @@
     '</div>';
   }
 
-  function authScreen(){ return state.screen==='register' ? screenRegister() : screenLogin(); }
-  function authLoading(){
-    return '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;color:var(--muted);font:600 14px \'Hanken Grotesk\';">Carregando…</div>';
+  function screenForgot(){
+    var a=state.auth;
+    return ''+
+    '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">'+
+      '<section style="width:100%;max-width:400px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+        authLogo()+
+        '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(16,42,51,.06);">'+
+          '<h1 style="font:800 22px \'Bricolage Grotesque\';margin:0 0 4px;color:var(--ink);">Recuperar senha</h1>'+
+          '<p style="margin:0 0 20px;font-size:13.5px;color:var(--muted);">Informe o e-mail da sua conta e enviaremos um link para criar uma nova senha.</p>'+
+          authFeedback()+
+          authInput('forgot-email','email','voce@email.com','E-mail')+
+          authSubmit('submitForgot', a.busy?'Enviando…':'Enviar link de recuperação', a.busy)+
+          '<p style="margin:16px 0 0;font-size:13px;color:var(--muted);text-align:center;"><button data-action="goLogin" style="background:none;border:none;color:var(--teal-text);font-weight:700;font-size:13px;cursor:pointer;padding:0;">&lsaquo; Voltar para o login</button></p>'+
+        '</div>'+
+      '</section>'+
+    '</div>';
   }
+  function screenResetPassword(){
+    var a=state.auth;
+    return ''+
+    '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">'+
+      '<section style="width:100%;max-width:400px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+        authLogo()+
+        '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(16,42,51,.06);">'+
+          '<h1 style="font:800 22px \'Bricolage Grotesque\';margin:0 0 4px;color:var(--ink);">Criar nova senha 🔑</h1>'+
+          '<p style="margin:0 0 20px;font-size:13.5px;color:var(--muted);">Defina a nova senha de acesso da sua conta.</p>'+
+          authFeedback()+
+          authInput('rp-pass','password','mínimo 6 caracteres','Nova senha')+
+          authInput('rp-pass2','password','repita a senha','Confirmar nova senha')+
+          authSubmit('submitNewPassword', a.busy?'Salvando…':'Salvar nova senha', a.busy)+
+        '</div>'+
+      '</section>'+
+    '</div>';
+  }
+  function authScreen(){
+    if(state.screen==='register') return screenRegister();
+    if(state.screen==='forgot')   return screenForgot();
+    return screenLogin();
+  }
+  // loader de marca (emoji de cérebro pulsante) — usado em auth e onde houver espera
+  function brandLoader(msg, full){
+    return '<div class="brand-loader'+(full===false?' inline':'')+'">'+
+      '<div class="bl-brain">🧠</div>'+
+      '<div class="bl-msg">'+esc(msg||'Carregando…')+'</div>'+
+      '<div class="bl-dots"><span></span><span></span><span></span></div>'+
+    '</div>';
+  }
+  function authLoading(){ return brandLoader(state.auth.loadingMsg || 'Preparando seus estudos…'); }
 
   function guestBanner(){
     if(!(DB.ready && state.auth.guest)) return '';
@@ -2085,9 +2251,9 @@
 
   function profileBlock(){
     if(DB.ready && state.auth.guest){
-      return '<div style="display:flex;align-items:center;gap:11px;padding:14px 6px 2px;margin-top:12px;border-top:1px solid var(--border);">'+
+      return '<div class="side-profile" style="display:flex;align-items:center;gap:11px;padding:14px 6px 2px;margin-top:12px;border-top:1px solid var(--border);">'+
         '<div style="width:34px;height:34px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;color:var(--muted-2);font:700 13px \'Hanken Grotesk\';flex-shrink:0;">V</div>'+
-        '<div style="line-height:1.25;min-width:0;">'+
+        '<div class="side-profile-text" style="line-height:1.25;min-width:0;">'+
           '<div style="font-size:13.5px;font-weight:700;">Visitante</div>'+
           '<button data-action="guestToRegister" data-hover="color:var(--teal-text);" style="background:none;border:none;padding:0;font-size:11px;color:var(--muted);font-weight:700;cursor:pointer;">Criar conta &rsaquo;</button>'+
         '</div>'+
@@ -2098,11 +2264,11 @@
     var sub  = (p && (p.curso||p.semestre)) ? [p.curso,p.semestre].filter(Boolean).join(' · ') : 'Psicologia · 6º sem';
     var initials = nome.split(/\s+/).slice(0,2).map(function(w){return w.charAt(0).toUpperCase();}).join('');
     var logout = (DB.ready && state.auth.user)
-      ? '<button data-action="logout" data-hover="color:#E5484D;" title="Sair da conta" style="margin-left:auto;background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px;font-weight:700;padding:4px 2px;">Sair</button>'
+      ? '<button data-action="logout" class="side-profile-logout" data-hover="color:#E5484D;" title="Sair da conta" style="margin-left:auto;background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px;font-weight:700;padding:4px 2px;">Sair</button>'
       : '';
-    return '<div style="display:flex;align-items:center;gap:11px;padding:14px 6px 2px;margin-top:12px;border-top:1px solid var(--border);">'+
+    return '<div class="side-profile" style="display:flex;align-items:center;gap:11px;padding:14px 6px 2px;margin-top:12px;border-top:1px solid var(--border);">'+
       '<div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5BC0BE,#0E4D64);display:flex;align-items:center;justify-content:center;color:#fff;font:700 13px \'Hanken Grotesk\';flex-shrink:0;">'+esc(initials||'·')+'</div>'+
-      '<div style="line-height:1.2;min-width:0;">'+
+      '<div class="side-profile-text" style="line-height:1.2;min-width:0;">'+
         '<div style="font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(nome)+'</div>'+
         '<div style="font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(sub)+'</div>'+
       '</div>'+ logout +
@@ -2349,6 +2515,16 @@
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Sobre</div>'+
       '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 8px;">Psico<span style="color:#5BC0BE;">·</span>Pato</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;line-height:1.6;max-width:620px;">Plataforma de estudos e revisão dos transtornos do DSM-5-TR — fichas-resumo com critérios diagnósticos, especificadores, seções narrativas e exercícios.</p>'+
+      '<article class="sobre-ensaio">'+
+        '<div class="se-kicker"><span>🧠</span> Reflexão</div>'+
+        '<h2 class="se-title">Psicodiagnóstico: entre a classificação e a compreensão do sofrimento humano</h2>'+
+        '<p>O psicodiagnóstico ocupa um papel importante na prática em saúde mental. Identificar padrões de funcionamento psicológico, reconhecer sintomas e formular hipóteses diagnósticas pode auxiliar na comunicação entre profissionais, no planejamento de intervenções, na produção de pesquisas e no acesso a serviços e direitos. Nesse contexto, sistemas classificatórios como o DSM-5-TR oferecem uma linguagem comum para descrever fenômenos clínicos e organizar o conhecimento científico disponível.</p>'+
+        '<p>Entretanto, nenhum diagnóstico é capaz de capturar integralmente a complexidade de uma pessoa. O sofrimento psíquico emerge em contextos históricos, sociais, culturais, familiares e biográficos específicos que não podem ser reduzidos a uma lista de critérios. O diagnóstico deve ser entendido como uma ferramenta de compreensão e orientação clínica, e não como uma definição da identidade, do valor ou do potencial de alguém.</p>'+
+        '<p>O uso ético e responsável do psicodiagnóstico exige que profissionais mantenham uma postura crítica diante dos sistemas classificatórios. As categorias diagnósticas são construções teóricas desenvolvidas para facilitar a observação e a comunicação clínica, mas estão sujeitas a revisões, mudanças conceituais e debates científicos. Ao longo da história, diferentes formas de comportamento e experiência humana foram classificadas, redefinidas ou removidas dos manuais diagnósticos, lembrando-nos de que o conhecimento em saúde mental está em constante transformação.</p>'+
+        '<p>Por essa razão, o diagnóstico não deve ser utilizado de forma automática, descontextualizada ou exclusivamente baseada em sintomas isolados. Uma avaliação psicológica adequada envolve múltiplas fontes de informação, escuta qualificada, análise do contexto de vida, consideração das diferenças culturais e reflexão sobre os limites dos instrumentos utilizados. O raciocínio clínico vai além da simples correspondência entre critérios e categorias.</p>'+
+        '<p>Esta plataforma foi desenvolvida como uma ferramenta de estudo e revisão do DSM-5-TR. Seu objetivo é facilitar o acesso ao conteúdo do manual e apoiar processos de aprendizagem. Contudo, conhecer critérios diagnósticos não equivale a desenvolver competência clínica. A formação profissional exige também reflexão ética, supervisão, experiência prática e compromisso com a singularidade de cada sujeito.</p>'+
+        '<p class="se-fecho">Ao estudar psicopatologia, é importante lembrar que os diagnósticos existem para servir às pessoas — e não para que as pessoas sejam reduzidas aos seus diagnósticos.</p>'+
+      '</article>'+
       '<div style="display:flex;flex-direction:column;gap:12px;">'+
         card(ICON.book2, 'Conteúdo', 'Os '+total+' transtornos das 20 categorias da Seção II do DSM-5-TR, com critérios, subtipos, especificadores e seções, além de tabelas recortadas do manual.')+
         card(ICON.info, 'Fonte', 'Conteúdo extraído do DSM-5-TR (Manual Diagnóstico e Estatístico de Transtornos Mentais, American Psychiatric Association; ed. brasileira Artmed). Veja o manual completo na aba DSM-5-TR.')+
@@ -2401,6 +2577,10 @@
     // gating de autenticação (apenas quando o Supabase está configurado)
     if(DB.ready && !state.auth.guest){
       if(state.auth.checking){ root.innerHTML = authLoading(); return; }
+      // recuperação de senha: usuário voltou pelo link do e-mail -> definir nova senha
+      if(state.auth.recovery){ root.innerHTML = screenResetPassword(); bindFx(root); return; }
+      // entrando/cadastrando: mostra o loader de marca no lugar do formulário
+      if(state.auth.busy && !state.auth.user && state.screen!=='forgot'){ root.innerHTML = brandLoader(state.auth.loadingMsg || 'Entrando…'); return; }
       if(!state.auth.user){ root.innerHTML = authScreen(); bindFx(root); return; }
     }
     var key = renderKey();
@@ -2547,7 +2727,10 @@
     document.addEventListener('keydown', function(e){
       if(e.key==='Enter' && e.target && e.target.classList && e.target.classList.contains('auth-input')){
         e.preventDefault();
-        var act = state.screen==='register' ? 'submitRegister' : 'submitLogin';
+        var act = state.auth.recovery ? 'submitNewPassword'
+                : state.screen==='forgot'   ? 'submitForgot'
+                : state.screen==='register' ? 'submitRegister'
+                : 'submitLogin';
         if(actions[act]) actions[act]();
       }
     });
@@ -2569,6 +2752,13 @@
     });
     // primeiro acesso: abre o mural com a mensagem de boas-vindas
     if(notifUnreadCount()>0){ state.notifOpen=true; state.notifNew=notifUnreadIds(); }
+    // histórico de navegação: back do navegador/celular restaura a tela anterior
+    try { window.history.replaceState({psp:1, base:1}, ''); } catch(e){}
+    window.addEventListener('popstate', function(){
+      var hadNotif = state.notifOpen;
+      if(hadNotif){ closeNotifPanel(); }           // fecha overlay aberto (marca como lido)
+      if(!navPop() && hadNotif){ render(); }        // nada na pilha, mas havia overlay -> re-render
+    });
     // atalho "/" foca o campo de busca
     document.addEventListener('keydown', function(e){
       if(e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -2577,6 +2767,10 @@
       var input = document.getElementById('global-search');
       if(input){ e.preventDefault(); input.focus(); }
     });
+
+    // link de recuperação de senha: a URL volta com #...type=recovery...
+    // marca já aqui para não cair na home antes do evento PASSWORD_RECOVERY.
+    try { if(/type=recovery/.test(window.location.hash||'')) state.auth.recovery = true; } catch(e){}
 
     if(DB.ready){
       DB.onAuth(applySession);

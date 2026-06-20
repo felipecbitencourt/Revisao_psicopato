@@ -76,8 +76,8 @@
     /* ---- auth ---- */
     onAuth: function (cb) {
       if (!sb) return;
-      sb.auth.onAuthStateChange(function (_event, session) {
-        cb(session ? session.user : null);
+      sb.auth.onAuthStateChange(function (event, session) {
+        cb(session ? session.user : null, event);
       });
     },
     currentUser: function () {
@@ -96,8 +96,33 @@
     login: function (email, password) {
       return sb.auth.signInWithPassword({ email: email, password: password });
     },
+    // OAuth com Google. Redireciona o navegador para o Google e volta para
+    // a própria página; ao voltar, onAuthStateChange dispara applySession.
+    // Requer: provider Google habilitado no Supabase + esta URL na lista de
+    // "Redirect URLs" do projeto.
+    loginGoogle: function () {
+      var back = (typeof window !== 'undefined')
+        ? window.location.href.split('#')[0].split('?')[0]
+        : undefined;
+      return sb.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: back }
+      });
+    },
     logout: function () {
       return sb.auth.signOut();
+    },
+    // envia o e-mail de recuperação; o link volta para a própria página com
+    // um token de recuperação (dispara o evento PASSWORD_RECOVERY no onAuth).
+    resetPassword: function (email) {
+      var back = (typeof window !== 'undefined')
+        ? window.location.href.split('#')[0].split('?')[0]
+        : undefined;
+      return sb.auth.resetPasswordForEmail(email, { redirectTo: back });
+    },
+    // define a nova senha (válido enquanto a sessão de recuperação está ativa).
+    updatePassword: function (password) {
+      return sb.auth.updateUser({ password: password });
     },
 
     /* ---- perfil ---- */
@@ -177,6 +202,7 @@
         var ac = ca.filter(function (e) { return e.acerto; }).length;
         var datas = ev.map(function (e) { return e.criado_em; })
           .concat(Object.keys(p).map(function (k) { return p[k].revisado_em; }));
+        var gmset = {}; ev.forEach(function (e) { if (e.payload) gmset[e.payload] = 1; });
         return Promise.resolve({
           revisados: Object.keys(p).length,
           exercicios: ev.length,
@@ -184,13 +210,14 @@
           ativos: activeDaysFrom(datas),
           taxa: ca.length ? Math.round(ac / ca.length * 100) : 0,
           streak: streakFrom(datas),
-          byType: ev.reduce(function (o, e) { o[e.tipo] = (o[e.tipo] || 0) + 1; return o; }, {})
+          byType: ev.reduce(function (o, e) { o[e.tipo] = (o[e.tipo] || 0) + 1; return o; }, {}),
+          mastered: Object.keys(gmset)
         });
       }
-      if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, acertos: 0, ativos: 0, taxa: 0, streak: 0, byType: {} });
+      if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, acertos: 0, ativos: 0, taxa: 0, streak: 0, byType: {}, mastered: [] });
       return Promise.all([
         sb.from('progress').select('revisado_em'),
-        sb.from('events').select('acerto,criado_em,tipo')
+        sb.from('events').select('acerto,criado_em,tipo,payload')
       ]).then(function (res) {
         var prog = res[0].data || [];
         var ev = res[1].data || [];
@@ -198,6 +225,7 @@
         var acertos = comAcerto.filter(function (e) { return e.acerto; }).length;
         var datas = ev.map(function (e) { return e.criado_em; })
           .concat(prog.map(function (r) { return r.revisado_em; }));
+        var mset = {}; ev.forEach(function (e) { if (e.payload) mset[e.payload] = 1; });
         return {
           revisados: prog.length,
           exercicios: ev.length,
@@ -205,7 +233,8 @@
           ativos: activeDaysFrom(datas),
           taxa: comAcerto.length ? Math.round(acertos / comAcerto.length * 100) : 0,
           streak: streakFrom(datas),
-          byType: ev.reduce(function (o, e) { o[e.tipo] = (o[e.tipo] || 0) + 1; return o; }, {})
+          byType: ev.reduce(function (o, e) { o[e.tipo] = (o[e.tipo] || 0) + 1; return o; }, {}),
+          mastered: Object.keys(mset)
         };
       });
     },

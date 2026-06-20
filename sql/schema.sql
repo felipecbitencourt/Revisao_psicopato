@@ -66,7 +66,12 @@ begin
   insert into public.profiles (id, nome, curso, semestre)
   values (
     new.id,
-    new.raw_user_meta_data ->> 'nome',
+    -- e-mail/senha envia 'nome'; login social (Google) envia 'full_name'/'name'
+    coalesce(
+      new.raw_user_meta_data ->> 'nome',
+      new.raw_user_meta_data ->> 'full_name',
+      new.raw_user_meta_data ->> 'name'
+    ),
     new.raw_user_meta_data ->> 'curso',
     new.raw_user_meta_data ->> 'semestre'
   );
