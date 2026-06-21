@@ -1,6 +1,6 @@
 # Transtornos do Sono Relacionados à Respiração
 
-*Categoria: Transtornos do Sono-Vigília*
+*Categoria: Transtornos do Sono Vigilia*
 
 ---
 

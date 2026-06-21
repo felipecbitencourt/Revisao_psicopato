@@ -21,7 +21,7 @@ from pathlib import Path
 import fitz
 
 ROOT = Path(__file__).resolve().parent.parent
-PDF = ROOT / "manual-diagnostico-e-estatistico-de-transtornos-mentais-dsm-5-tr-9780890425763-9786558820949_compress.pdf"
+PDF = ROOT / "DSM-5-TR.pdf"
 MD = ROOT / "md" / "categorias"
 OUTROOT = ROOT / "build" / "_pilot_tr"
 
@@ -270,7 +270,9 @@ def emit(d, chapter_title) -> str:
     out = [f"# {d['name']}", "", f"*Categoria: {chapter_title}*", "", "---", ""]
     for s in d["subs"]:
         body = s["body"]
-        if s["title"] and s["title"].lower().startswith("crit"):
+        is_crit = (s["title"] and s["title"].lower().startswith("crit")) or (
+            not s["title"] and body and re.match(r"A\.\s", body[0]))
+        if is_crit:
             body = fix_criteria(body)
         if s["title"]:
             out.append(f"### {s['title']}")

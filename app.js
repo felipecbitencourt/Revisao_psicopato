@@ -164,12 +164,6 @@
   ];
   function currentCaso(){ return CASOS[(state.casoIndex||0) % CASOS.length]; }
 
-  var CRITERIA = [
-    {letter:'A', text:'Conteúdo ilustrativo. Critério principal do quadro — presença dos sintomas centrais por um período mínimo definido.'},
-    {letter:'B', text:'Os sintomas causam sofrimento clinicamente significativo ou prejuízo no funcionamento social, profissional ou em outras áreas.'},
-    {letter:'C', text:'A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica.'},
-    {letter:'D', text:'A perturbação não é mais bem explicada por outro transtorno mental.'},
-  ];
 
   /* ---------------------------------------------------------
      Conteúdo real (content.js), com fallback aos placeholders
@@ -686,10 +680,14 @@
   // localiza {ci,di} de um transtorno pelo nome (usado p/ "ver ficha" nos exercícios)
   function findRef(name){
     if(!name) return null;
-    var key = String(name).trim().toLowerCase();
+    var noParen = function(s){ return String(s).trim().toLowerCase().replace(/\s*\([^)]*\)/g,'').trim(); };
+    var key = String(name).trim().toLowerCase(), keyNP = noParen(name);
     for(var ci=0; ci<CATS.length; ci++){
       var items = CATS[ci].items || [];
-      for(var di=0; di<items.length; di++){ if(String(items[di].n||'').trim().toLowerCase() === key) return {ci:ci, di:di}; }
+      for(var di=0; di<items.length; di++){
+        var nm = String(items[di].n||'').trim().toLowerCase();
+        if(nm === key || noParen(nm) === keyNP) return {ci:ci, di:di};  // tolera parêntese (ex.: "(Fobia Social)" na TR)
+      }
     }
     return null;
   }
@@ -1013,7 +1011,7 @@
       {label:'Revisão',   icon:ICON.book, action:'goCategorias', active:REV_SCREENS.indexOf(s.screen)>=0, primary:true},
       {label:'Exercícios',icon:ICON.check,action:'goExercicios', active:EX_SCREENS.indexOf(s.screen)>=0, primary:true},
       {label:'Ranking',   icon:ICON.trophy,  action:'goRanking',  active:s.screen==='ranking'},
-      {label:'DSM-5',     icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm'},
+      {label:'DSM-5-TR',  icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm'},
       {label:'Feedback',  icon:ICON.message, action:'goFeedback', active:s.screen==='feedback'},
       {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre'},
     ];
@@ -1765,7 +1763,8 @@
       return '<button class="code-copy" data-action="copyCode" data-arg="'+esc(label)+'" data-hover="border-color:var(--cat);color:var(--cat);" title="Copiar código">'+copyIco+'</button>';
     }
     function codeRow(lbl, val, copyLabel){
-      return '<div class="codes-row"><span class="ct-label">'+lbl+'</span><span class="ct-val"><span class="ct-code">'+esc(val||'—')+'</span>'+(val?copyBtn(copyLabel):'')+'</span></div>';
+      if(!val) return '';   // TR usa só ICD-10-CM; não mostra linha sem código (ex.: DSM-5-TR vazio)
+      return '<div class="codes-row"><span class="ct-label">'+lbl+'</span><span class="ct-val"><span class="ct-code">'+esc(val)+'</span>'+copyBtn(copyLabel)+'</span></div>';
     }
     var codesInner;
     if(codes.length>1){
@@ -2969,12 +2968,12 @@
     '<section style="animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">'+
         '<div>'+
-          '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">DSM-5</div>'+
+          '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">DSM-5-TR</div>'+
           '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Manual na íntegra</h1>'+
         '</div>'+
-        '<a href="DSM-V.pdf" target="_blank" rel="noopener" data-hover="border-color:#5BC0BE;" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:9px 14px;font:700 13px \'Hanken Grotesk\';color:var(--teal-text);transition:border-color .18s ease;">Abrir em nova aba ↗</a>'+
+        '<a href="DSM-5-TR.pdf" target="_blank" rel="noopener" data-hover="border-color:#5BC0BE;" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:9px 14px;font:700 13px \'Hanken Grotesk\';color:var(--teal-text);transition:border-color .18s ease;">Abrir em nova aba ↗</a>'+
       '</div>'+
-      '<iframe class="dsm-frame" src="DSM-V.pdf" title="DSM-5 — manual completo"></iframe>'+
+      '<iframe class="dsm-frame" src="DSM-5-TR.pdf" title="DSM-5-TR — manual completo"></iframe>'+
     '</section>';
   }
   function screenSobre(){

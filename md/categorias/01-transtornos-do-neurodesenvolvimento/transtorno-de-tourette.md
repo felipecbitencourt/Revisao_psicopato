@@ -4,7 +4,6 @@
 
 ---
 
-#### 307.23 (F95.2)
 A. Múltiplos tiques motores e um ou mais tiques vocais estiveram presentes em algum momento durante o quadro, embora não necessariamente ao mesmo tempo.
 B. Os tiques podem aumentar e diminuir em frequência, mas persistiram por mais de um ano desde o início do primeiro tique.
 C. O início ocorre antes dos 18 anos de idade.

@@ -30,8 +30,9 @@ import re
 import unicodedata
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # build/ -> raiz do repo
-CAT_DIR = os.path.join(ROOT, "md", "categorias")
-OUT = os.path.join(ROOT, "content.js")
+# entrada/saída configuráveis (p/ staging TR sem tocar no build padrão)
+CAT_DIR = os.environ.get("DSM_CAT_DIR", os.path.join(ROOT, "md", "categorias"))
+OUT = os.environ.get("DSM_OUT", os.path.join(ROOT, "content.js"))
 
 # (cor, nome curto exibido na grade, progresso ilustrativo) — 20 categorias.
 CAT_META = [
@@ -71,8 +72,12 @@ SECTION_MAP = [
     ("desenvolvimento e curso", "Desenvolvimento e curso"),
     ("fatores de risco e prognostico", "Fatores de risco e prognóstico"),
     ("questoes diagnosticas relativas a cultura", "Questões diagnósticas relativas à cultura"),
+    ("questoes diagnosticas relacionadas a cultura", "Questões diagnósticas relativas à cultura"),
     ("questoes diagnosticas relativas ao genero", "Questões diagnósticas relativas ao gênero"),
+    ("questoes diagnosticas relacionadas ao sexo e ao genero", "Questões diagnósticas relativas ao gênero"),
+    ("questoes diagnosticas relacionadas ao genero", "Questões diagnósticas relativas ao gênero"),
     ("risco de suicidio", "Risco de suicídio"),
+    ("associacao com pensamentos ou comportamentos suicidas", "Associação com pensamentos ou comportamentos suicidas"),
     ("consequencias funcionais", "Consequências funcionais"),
     ("diagnostico diferencial", "Diagnóstico diferencial"),
     ("comorbidade", "Comorbidade"),
@@ -160,24 +165,39 @@ TABLES = {
 #   keep_first: mantém N parágrafos iniciais e anexa a imagem ao fim
 #   drop: lista de intervalos [ini, fim) de parágrafos a remover (tabela
 #         achatada no meio da seção); o restante é mantido + imagem ao fim
+# DSM-5-TR: as tabelas de gravidade são visuais no PDF (não extraem como texto),
+# então aqui apenas ANEXAMOS a tabela reconstruída à seção (append). Chaves =
+# nomes TR dos transtornos.
 SECTION_ASSETS = {
-    "Deficiência Intelectual (Transtorno do Desenvolvimento Intelectual)": {
+    "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)": {
         "Especificadores": {
-            "keep_first": 1,
+            "append": True,
             "table": "deficiencia-gravidade",
             "caption": "DSM-5-TR — Tabela 1: Níveis de gravidade da deficiência intelectual (domínios conceitual, social e prático).",
-        }
+        },
+        # "Características diagnósticas" absorveu a Tabela 1 achatada (par. 4+);
+        # mantém os 4 parágrafos de texto real (tabela limpa fica em Especificadores).
+        "Características diagnósticas": {
+            "keep_first": 4,
+        },
     },
     "Transtorno do Espectro Autista": {
         "Especificadores": {
-            "drop": [[3, 10]],
+            "append": True,
             "table": "autismo-gravidade",
             "caption": "DSM-5-TR — Tabela 2: Níveis de gravidade do transtorno do espectro autista (comunicação social; comportamentos restritos e repetitivos).",
-        }
+        },
+        # "Procedimentos para registro" absorveu a Tabela 2 achatada/embaralhada;
+        # mantém só os 4 parágrafos de texto real (a tabela limpa fica em Especificadores).
+        "Procedimentos para registro": {
+            "keep_first": 4,
+        },
     },
-    "Leve Devido a Lesão Cerebral Traumática": {
-        "Desenvolvimento e curso": {
-            "drop": [[2, 7]],
+    "Transtorno Neurocognitivo Maior ou Leve Devido a Lesão Cerebral Traumática": {
+        # a TABELA 2 (gravidade da LCT) aparece achatada no MEIO de "Características
+        # diagnósticas" (par. 3–23), com texto real antes e depois → drop + tabela limpa.
+        "Características diagnósticas": {
+            "drop": [[3, 24]],
             "table": "lct-gravidade",
             "caption": "DSM-5-TR — Tabela 2: Classificações da gravidade de lesão cerebral traumática (LCT).",
         }
@@ -187,7 +207,7 @@ SECTION_ASSETS = {
 # Tabelas de "nível-capítulo" (não pertencem a um transtorno só): adicionadas
 # como uma seção nova (só imagem) a um transtorno representativo.
 ADD_SECTIONS = {
-    "Transtorno Neurocognitivo Maior": [
+    "Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer": [
         {
             "title": "Domínios neurocognitivos",
             "images": [
@@ -381,6 +401,11 @@ PAGE_FOOTER = re.compile(r"^\*\*\d+\*\*")
 HEADING_ANY = re.compile(r"^#{1,6}\s+(.*)$")
 # opção de especificador CODIFICADA: "**300.29 (F40.248) Situacional**..."
 CODED_SPEC_ITEM = re.compile(r"^\*\*\s*\d{2,3}(?:\.\d+)?\s*\([A-Z]\d")
+# código ICD-10-CM isolado (DSM-5-TR): cabeçalho "### F80.2", "### F95.1" etc.
+TR_CODE_HEADING = re.compile(r"^#{2,4}\s+([A-TV-Z]\d{2}(?:\.\d+\w*)?)\s*$", re.MULTILINE)
+# código ICD-10-CM em especificador de gravidade em negrito (substâncias):
+# "**F10.10 Leve:**", "**F12.120 ...**"
+TR_INLINE_CODE = re.compile(r"\*\*\s*([A-TV-Z]\d{2}\.\d+\w*)\b")
 
 
 def normalize(s):
@@ -478,7 +503,35 @@ def extract_codes(head_text):
             continue
         seen.add(key)
         codes.append({"dsm": dsm, "cid": cid, "label": label})
+    # DSM-5-TR: código ICD-10-CM isolado (sem o par DSM-IV "300.x (Fxx)")
+    if not codes:
+        for m in TR_CODE_HEADING.finditer(head_text):
+            cid = m.group(1)
+            if cid in seen:
+                continue
+            seen.add(cid)
+            codes.append({"dsm": "", "cid": cid, "label": ""})
+    # DSM-5-TR substâncias: o código vem no especificador em negrito do tipo
+    # "**F10.10 Leve:**" (uso) / "**F10.120 ...**" (intoxicação/abstinência).
+    # Pega o 1º como código-base (a gravidade/comorbidade muda o código).
+    if not codes:
+        m = TR_INLINE_CODE.search(head_text)
+        if m:
+            codes.append({"dsm": "", "cid": m.group(1), "label": ""})
     return codes
+
+
+# letra de critério (A.–H.) colada no MEIO da linha, após fim de frase/sub-item:
+# "...trabalho. B. Presença..." -> quebra antes do "B." para o parser reconhecer.
+INLINE_LETTER = re.compile(r'([.\)\]"”])\s+([A-H])\.\s+(?=[A-ZÀ-Ú“"])')
+
+
+def split_inline_criteria(lines):
+    out = []
+    for ln in lines:
+        ln = INLINE_LETTER.sub(lambda m: m.group(1) + "\n" + m.group(2) + ". ", ln)
+        out.extend(ln.split("\n"))
+    return out
 
 
 def parse_criteria(head_lines):
@@ -495,10 +548,15 @@ def parse_criteria(head_lines):
         if not s:
             continue
         if s.startswith("#"):
-            # H4 com texto (não código) = possível grupo de critérios (bipolar)
-            if s.startswith("####"):
-                htext = s[4:].strip()
-                if htext and re.match(r"[A-Za-zÀ-ÿ]", htext) and not CODE_HEADING.match(s):
+            # H3+ descritivo (não código, não "Critérios Diagnósticos", não o
+            # título H1) = grupo de critérios: versão por idade (TEPT, disforia)
+            # ou tipo de episódio (bipolar). Vira grupo se um critério "A" seguir.
+            if s.startswith("###"):
+                htext = s.lstrip("#").strip()
+                nh = normalize(htext)
+                is_code = bool(CODE_HEADING.match(s)) or bool(re.match(r"^[A-TV-Z]\d{2}(?:\.\d+\w*)?$", htext))
+                if (htext and re.match(r"[A-Za-zÀ-ÿ]", htext) and not is_code
+                        and not nh.startswith("criterios diagnosticos")):
                     pending_group = clean(htext)
             continue                      # títulos/cabeçalhos/códigos
         if s in ("---",) or s.startswith("*Categoria:"):
@@ -646,14 +704,27 @@ def parse_transtorno(path, display_name):
         if is_section_heading(ln):
             sec_start = i
             break
-    head_lines = lines[:sec_start]
+    head_lines = split_inline_criteria(lines[:sec_start])
     head_text = "\n".join(head_lines)
 
     codes = extract_codes(head_text)
     ov = CODE_OVERRIDES.get(title)
     if ov:
-        codes = ov["codes"] if "codes" in ov else [{"dsm": ov.get("dsm", ""), "cid": ov.get("cid", ""), "label": ""}]
+        raw = ov["codes"] if "codes" in ov else [{"cid": ov.get("cid", ""), "label": ""}]
+        # DSM-5-TR usa apenas ICD-10-CM: descarta o código DSM-IV (300.x) do override,
+        # mantendo só o(s) CID. Se o override não tinha CID, mantém a extração TR.
+        ov_codes = [{"dsm": "", "cid": c.get("cid", ""), "label": c.get("label", "")} for c in raw if c.get("cid")]
+        if ov_codes:
+            codes = ov_codes
     criteria_intro, criteria, specifier, criteria_note = parse_criteria(head_lines)
+    # enxuga rótulos de grupo que repetem o nome do transtorno: "Transtorno X em
+    # Crianças…" -> "Em Crianças…" (o nome já está no título da ficha)
+    tnorm = normalize(title)
+    for cr in criteria:
+        g = cr.get("group")
+        if g and normalize(g).startswith(tnorm) and len(normalize(g)) > len(tnorm) + 1:
+            short = g[len(title):].strip(" –-—:")
+            cr["group"] = (short[:1].upper() + short[1:]) if short else g
     # especificador reconstruído (tabela achatada pelo PDF)
     if title in SPECIFIER_OVERRIDES:
         specifier = SPECIFIER_OVERRIDES[title]
@@ -670,7 +741,9 @@ def parse_transtorno(path, display_name):
             if not a:
                 continue
             body = sec["body"]
-            if "drop" in a:
+            if a.get("append"):
+                pass  # mantém todo o corpo; só anexa a tabela ao fim
+            elif "drop" in a:
                 for s, e in sorted(a["drop"], reverse=True):
                     body = body[:s] + body[e:]
                 sec["body"] = body
@@ -678,8 +751,9 @@ def parse_transtorno(path, display_name):
                 sec["body"] = body[: a.get("keep_first", 0)]
             if "table" in a:
                 sec["table"] = TABLES[a["table"]]
-            else:
+            elif "images" in a:
                 sec["images"] = a["images"]
+            # (sem table/images = apenas apara o corpo, ex.: remover tabela achatada)
             if a.get("caption"):
                 sec["caption"] = a["caption"]
 

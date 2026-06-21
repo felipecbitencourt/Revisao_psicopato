@@ -1,8 +1,0 @@
-# Outros Transtornos Induzidos por Sedativos, Hipnóticos ou Ansiolíticos
-
-*Categoria: Transtornos Relacionados a Substâncias e Transtornos Aditivos*
-
----
-
-Os seguintes transtornos induzidos por sedativos, hipnóticos ou ansiolíticos são descritos em outros capítulos do Manual, juntamente aos transtornos com os quais compartilham fenomenologia (consultar transtornos mentais induzidos por substância/medicamento nestes capítulos):
-transtorno psicótico induzido por sedativos, hipnóticos ou ansiolíticos (“Espectro da Esquizofrenia e Outros Transtornos Psicóticos”); transtorno bipolar induzido por sedativos, hipnóticos ou ansiolíticos (“Transtorno Bipolar e Transtornos Relacionados”); transtorno depressivo induzido por sedativos, hipnóticos ou ansiolíticos (“Transtornos Depressivos”); transtorno de ansiedade induzido por sedativos, hipnóticos ou ansiolíticos (“Transtornos de Ansiedade”); transtorno do sono induzido por sedativos, hipnóticos ou ansiolíticos (“Transtornos do Sono-Vigília”); disfunção sexual induzida por sedativos, hipnóticos ou ansiolíticos (“Disfunções Sexuais”); e transtorno neurocognitivo maior ou leve induzido por sedativos, hipnóticos ou ansiolíticos (“Transtornos Neurocognitivos”). Para *delirium* por intoxicação por sedativos, hipnóticos ou ansiolíticos e *delirium* por abstinência de sedativos, hipnóticos ou ansiolíticos, ver os critérios e a abordagem de *delirium* no capítulo “Transtornos Neurocognitivos”. Esses transtornos induzidos por sedativos, hipnóticos ou ansiolíticos são diagnosticados em lugar de intoxicação por sedativos, hipnóticos ou ansiolíticos ou abstinência de sedativos, hipnóticos ou ansiolíticos apenas quando os sintomas são suficientemente graves para justificar atenção clínica independente.
