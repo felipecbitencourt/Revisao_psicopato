@@ -307,6 +307,9 @@ button{font-family:inherit;}
 .sec-acc-body .crit-sublist{margin:6px 0 12px;}
 .crit-empty{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px dashed var(--border);border-radius:14px;padding:20px;color:var(--muted);font-size:14px;line-height:1.55;}
 .crit-empty svg{flex-shrink:0;color:var(--cat);}
+/* categoria residual / referência cruzada: o texto explica onde encontrar os
+   critérios — bloco legível (não o intro discreto, nem o box contraditório). */
+.crit-ref{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--cat);border-radius:12px;padding:16px 18px;font-size:14.5px;line-height:1.7;color:var(--body);}
 
 /* especificadores / subtipos — blocos com cabeçalho e lista de opções */
 .spec-wrap{margin-top:16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
@@ -654,6 +657,10 @@ button{font-family:inherit;}
   .ms-sheet{display:block;position:fixed;left:0;right:0;bottom:0;z-index:46;background:var(--surface);border-radius:20px 20px 0 0;padding:6px 16px calc(18px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(16,42,51,.22);animation:sheetUp .25s cubic-bezier(.2,.7,.3,1);max-height:80vh;overflow-y:auto;}
   .ms-handle{width:40px;height:4px;border-radius:99px;background:var(--track);margin:8px auto 6px;}
   .ms-title{font:800 12px 'Hanken Grotesk';text-transform:uppercase;letter-spacing:.6px;color:var(--muted);padding:4px 6px 8px;}
+  .ms-search-field{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:11px 14px;margin:0 0 8px;}
+  .ms-search-field svg{flex-shrink:0;color:var(--muted-2);}
+  .ms-search-field input{flex:1;min-width:0;border:none;background:transparent;outline:none;font:500 15px 'Hanken Grotesk';color:var(--ink);}
+  .ms-search-results{position:static;box-shadow:none;border:0;padding:0;margin:0 0 8px;max-height:46vh;}
   .ms-list{display:flex;flex-direction:column;gap:2px;}
   .ms-item{display:flex;align-items:center;gap:13px;width:100%;background:none;border:none;border-radius:12px;padding:14px 12px;cursor:pointer;font:700 15px 'Hanken Grotesk';color:var(--ink);text-align:left;transition:background .15s ease;}
   .ms-item:active{background:var(--surface-2);}

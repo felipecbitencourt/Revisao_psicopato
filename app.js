@@ -85,81 +85,81 @@
       id:'panico',
       patient:{name:'Marina', age:27, sex:'Feminino', ref:'Encaminhada pela atenção primária', initials:'M'},
       chips:['Ataques súbitos de medo', 'Palpitações e falta de ar', '≈ 4 meses', 'Evita sair sozinha'],
-      vinheta:'Conteúdo ilustrativo. Marina relata episódios súbitos e recorrentes de medo intenso, com palpitações, sudorese, falta de ar e sensação de morte iminente, que atingem o pico em poucos minutos. Desde então, vive preocupada com a possibilidade de novos episódios e passou a evitar sair de casa sozinha. Nega uso de substâncias e condição médica que justifique o quadro.',
+      vinheta:'Marina relata episódios súbitos e recorrentes de medo intenso, com palpitações, sudorese, falta de ar e sensação de morte iminente, que atingem o pico em poucos minutos. Desde então, vive preocupada com a possibilidade de novos episódios e passou a evitar sair de casa sozinha. Nega uso de substâncias e condição médica que justifique o quadro.',
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno Depressivo Maior','Transtorno de Ansiedade Generalizada','Transtorno de Pânico','Transtorno Bipolar Tipo II'],
       correct:2,
-      explicacao:'Conteúdo ilustrativo — ataques de pânico recorrentes e inesperados, seguidos de preocupação persistente com novos ataques e mudança de comportamento (esquiva), apontam para Transtorno de Pânico (DSM-5-TR).'
+      explicacao:'Ataques de pânico recorrentes e inesperados, seguidos de preocupação persistente com novos ataques e mudança de comportamento (esquiva), apontam para Transtorno de Pânico (DSM-5-TR).'
     },
     {
       id:'depressao',
       patient:{name:'Rafael', age:34, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'R'},
       chips:['Humor deprimido', 'Anedonia ≈ 2 meses', 'Insônia e fadiga', 'Culpa e baixa concentração'],
-      vinheta:'Conteúdo ilustrativo. Há cerca de dois meses, Rafael refere tristeza na maior parte do dia, quase todos os dias, com perda acentuada de interesse e prazer em atividades que antes apreciava. Relata insônia, fadiga, dificuldade de concentração, sentimentos de inutilidade e culpa excessiva, além de redução de apetite e peso. Nega episódios de humor elevado, uso de substâncias ou condição médica relevante.',
+      vinheta:'Há cerca de dois meses, Rafael refere tristeza na maior parte do dia, quase todos os dias, com perda acentuada de interesse e prazer em atividades que antes apreciava. Relata insônia, fadiga, dificuldade de concentração, sentimentos de inutilidade e culpa excessiva, além de redução de apetite e peso. Nega episódios de humor elevado, uso de substâncias ou condição médica relevante.',
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Ansiedade Generalizada','Transtorno Depressivo Maior','Transtorno Bipolar Tipo I','Transtorno Depressivo Persistente (Distimia)'],
       correct:1,
-      explicacao:'Conteúdo ilustrativo — humor deprimido e/ou anedonia por ≥ 2 semanas, somados a sintomas neurovegetativos e cognitivos (sono, apetite/peso, fadiga, culpa, concentração), sem história de episódio maníaco/hipomaníaco, apontam para Transtorno Depressivo Maior (DSM-5-TR).'
+      explicacao:'Humor deprimido e/ou anedonia por ≥ 2 semanas, somados a sintomas neurovegetativos e cognitivos (sono, apetite/peso, fadiga, culpa, concentração), sem história de episódio maníaco/hipomaníaco, apontam para Transtorno Depressivo Maior (DSM-5-TR).'
     },
     {
       id:'toc',
       patient:{name:'Beatriz', age:22, sex:'Feminino', ref:'Trazida pela família', initials:'B'},
       chips:['Pensamentos de contaminação', 'Rituais de lavagem', '> 3 h/dia', 'Reconhece o excesso'],
-      vinheta:'Conteúdo ilustrativo. Beatriz descreve pensamentos intrusivos e recorrentes de contaminação que lhe causam grande ansiedade. Para aliviá-los, lava as mãos de forma repetitiva e segue rituais rígidos de limpeza, chegando a gastar mais de três horas por dia. Reconhece que os comportamentos são excessivos, mas sente-se incapaz de resistir. O quadro prejudica seus estudos e relações.',
+      vinheta:'Beatriz descreve pensamentos intrusivos e recorrentes de contaminação que lhe causam grande ansiedade. Para aliviá-los, lava as mãos de forma repetitiva e segue rituais rígidos de limpeza, chegando a gastar mais de três horas por dia. Reconhece que os comportamentos são excessivos, mas sente-se incapaz de resistir. O quadro prejudica seus estudos e relações.',
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Ansiedade Generalizada','Transtorno de Pânico','Transtorno Obsessivo-Compulsivo','Fobia Específica'],
       correct:2,
-      explicacao:'Conteúdo ilustrativo — obsessões (pensamentos intrusivos de contaminação) e compulsões (rituais de lavagem) que consomem tempo significativo (> 1 h/dia) e geram sofrimento/prejuízo caracterizam o Transtorno Obsessivo-Compulsivo (DSM-5-TR).'
+      explicacao:'Obsessões (pensamentos intrusivos de contaminação) e compulsões (rituais de lavagem) que consomem tempo significativo (> 1 h/dia) e geram sofrimento/prejuízo caracterizam o Transtorno Obsessivo-Compulsivo (DSM-5-TR).'
     },
     {
       id:'tept',
       patient:{name:'Carlos', age:41, sex:'Masculino', ref:'Encaminhado após acidente', initials:'C'},
       chips:['Acidente grave há 5 meses', 'Revivências e pesadelos', 'Evitação', 'Hipervigilância'],
-      vinheta:'Conteúdo ilustrativo. Cinco meses após sofrer um acidente automobilístico grave, Carlos apresenta revivências intrusivas do evento, pesadelos recorrentes e intenso sofrimento ao ser exposto a estímulos que o lembram. Evita ativamente dirigir e falar sobre o ocorrido, relata embotamento afetivo, hipervigilância e sobressaltos exagerados. Os sintomas persistem e comprometem seu trabalho.',
+      vinheta:'Cinco meses após sofrer um acidente automobilístico grave, Carlos apresenta revivências intrusivas do evento, pesadelos recorrentes e intenso sofrimento ao ser exposto a estímulos que o lembram. Evita ativamente dirigir e falar sobre o ocorrido, relata embotamento afetivo, hipervigilância e sobressaltos exagerados. Os sintomas persistem e comprometem seu trabalho.',
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Estresse Agudo','Transtorno de Estresse Pós-Traumático','Transtorno de Pânico','Transtorno de Ajustamento'],
       correct:1,
-      explicacao:'Conteúdo ilustrativo — exposição a evento traumático seguida de sintomas intrusivos, evitação, alterações de cognição/humor e hiperexcitabilidade por mais de um mês caracteriza o Transtorno de Estresse Pós-Traumático (no Estresse Agudo, a duração é de 3 dias a 1 mês).'
+      explicacao:'Exposição a evento traumático seguida de sintomas intrusivos, evitação, alterações de cognição/humor e hiperexcitabilidade por mais de um mês caracteriza o Transtorno de Estresse Pós-Traumático (no Estresse Agudo, a duração é de 3 dias a 1 mês).'
     },
     {
       id:'social',
       patient:{name:'Júlia', age:19, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'J'},
       chips:['Medo de ser avaliada', 'Evita falar em público', 'Rubor e tremor', 'Desde a adolescência'],
-      vinheta:'Conteúdo ilustrativo. Desde a adolescência, Júlia sente medo intenso e persistente de situações sociais em que possa ser avaliada — apresentar trabalhos, falar com desconhecidos ou comer em público. Teme agir de forma humilhante, apresenta rubor, tremor e taquicardia, e evita essas situações ou as suporta com grande sofrimento. O medo é desproporcional e prejudica a vida acadêmica.',
+      vinheta:'Desde a adolescência, Júlia sente medo intenso e persistente de situações sociais em que possa ser avaliada — apresentar trabalhos, falar com desconhecidos ou comer em público. Teme agir de forma humilhante, apresenta rubor, tremor e taquicardia, e evita essas situações ou as suporta com grande sofrimento. O medo é desproporcional e prejudica a vida acadêmica.',
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Pânico','Transtorno de Ansiedade Social (Fobia Social)','Transtorno de Ansiedade Generalizada','Transtorno da Personalidade Esquiva'],
       correct:1,
-      explicacao:'Conteúdo ilustrativo — medo/ansiedade acentuados e persistentes de situações sociais com possível escrutínio, com esquiva e sofrimento desproporcionais, caracteriza o Transtorno de Ansiedade Social (Fobia Social) (DSM-5-TR).'
+      explicacao:'Medo/ansiedade acentuados e persistentes de situações sociais com possível escrutínio, com esquiva e sofrimento desproporcionais, caracteriza o Transtorno de Ansiedade Social (Fobia Social) (DSM-5-TR).'
     },
     {
       id:'anorexia',
       patient:{name:'Helena', age:17, sex:'Feminino', ref:'Trazida pelos pais', initials:'H'},
       chips:['Restrição alimentar', 'Baixo peso significativo', 'Medo de engordar', 'Distorção da imagem'],
-      vinheta:'Conteúdo ilustrativo. Helena, trazida pelos pais, apresenta restrição alimentar acentuada e perda de peso significativa, mantendo peso corporal muito abaixo do esperado para idade e estatura. Demonstra medo intenso de ganhar peso mesmo estando abaixo do peso, percebe-se acima do peso (distorção da imagem corporal) e minimiza a gravidade do quadro.',
+      vinheta:'Helena, trazida pelos pais, apresenta restrição alimentar acentuada e perda de peso significativa, mantendo peso corporal muito abaixo do esperado para idade e estatura. Demonstra medo intenso de ganhar peso mesmo estando abaixo do peso, percebe-se acima do peso (distorção da imagem corporal) e minimiza a gravidade do quadro.',
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Bulimia Nervosa','Anorexia Nervosa','Transtorno de Compulsão Alimentar','Transtorno Dismórfico Corporal'],
       correct:1,
-      explicacao:'Conteúdo ilustrativo — restrição da ingesta levando a baixo peso significativo, medo intenso de engordar e perturbação na percepção do peso/forma corporal caracterizam a Anorexia Nervosa (DSM-5-TR), distinta da Bulimia (peso geralmente normal, com compensação) e da Compulsão Alimentar (sem compensação).'
+      explicacao:'Restrição da ingesta levando a baixo peso significativo, medo intenso de engordar e perturbação na percepção do peso/forma corporal caracterizam a Anorexia Nervosa (DSM-5-TR), distinta da Bulimia (peso geralmente normal, com compensação) e da Compulsão Alimentar (sem compensação).'
     },
     {
       id:'bipolar1',
       patient:{name:'Diego', age:29, sex:'Masculino', ref:'Levado pela família', initials:'D'},
       chips:['Humor eufórico ≈ 1 semana', 'Pouco sono sem cansaço', 'Grandiosidade e gastos', 'Fala acelerada'],
-      vinheta:'Conteúdo ilustrativo. Há cerca de uma semana, Diego apresenta humor anormalmente eufórico e expansivo, com aumento de energia, redução acentuada da necessidade de sono (sente-se descansado com 2 a 3 horas), autoestima inflada, fala acelerada, fuga de ideias e envolvimento em gastos excessivos e negócios arriscados. O quadro prejudicou seu trabalho e exigiu intervenção. Há relato de episódio depressivo no passado.',
+      vinheta:'Há cerca de uma semana, Diego apresenta humor anormalmente eufórico e expansivo, com aumento de energia, redução acentuada da necessidade de sono (sente-se descansado com 2 a 3 horas), autoestima inflada, fala acelerada, fuga de ideias e envolvimento em gastos excessivos e negócios arriscados. O quadro prejudicou seu trabalho e exigiu intervenção. Há relato de episódio depressivo no passado.',
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno Bipolar Tipo II','Transtorno Bipolar Tipo I','Transtorno Ciclotímico','Transtorno Depressivo Maior'],
       correct:1,
-      explicacao:'Conteúdo ilustrativo — episódio maníaco (humor elevado + aumento de energia por ≥ 1 semana, com grandiosidade, redução do sono, fuga de ideias e comportamento de risco, causando prejuízo acentuado) define o Transtorno Bipolar Tipo I (DSM-5-TR). No Tipo II ocorre hipomania, sem episódio maníaco pleno.'
+      explicacao:'Episódio maníaco (humor elevado + aumento de energia por ≥ 1 semana, com grandiosidade, redução do sono, fuga de ideias e comportamento de risco, causando prejuízo acentuado) define o Transtorno Bipolar Tipo I (DSM-5-TR). No Tipo II ocorre hipomania, sem episódio maníaco pleno.'
     },
     {
       id:'tag',
       patient:{name:'Sônia', age:45, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'S'},
       chips:['Preocupação excessiva', '> 6 meses', 'Tensão e insônia', 'Difícil de controlar'],
-      vinheta:'Conteúdo ilustrativo. Há mais de seis meses, Sônia relata preocupação excessiva e difícil de controlar com diversos aspectos do cotidiano — trabalho, saúde da família, finanças. Acompanha-se de inquietação, fadiga, dificuldade de concentração, irritabilidade, tensão muscular e perturbação do sono. Não há ataques de pânico definidos nem foco em um único objeto ou situação.',
+      vinheta:'Há mais de seis meses, Sônia relata preocupação excessiva e difícil de controlar com diversos aspectos do cotidiano — trabalho, saúde da família, finanças. Acompanha-se de inquietação, fadiga, dificuldade de concentração, irritabilidade, tensão muscular e perturbação do sono. Não há ataques de pânico definidos nem foco em um único objeto ou situação.',
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Pânico','Transtorno de Ansiedade Generalizada','Transtorno Obsessivo-Compulsivo','Transtorno de Ansiedade Social (Fobia Social)'],
       correct:1,
-      explicacao:'Conteúdo ilustrativo — ansiedade e preocupação excessivas, difíceis de controlar, na maior parte dos dias por ≥ 6 meses, com inquietação, fadiga, tensão muscular e alterações do sono, caracterizam o Transtorno de Ansiedade Generalizada (DSM-5-TR).'
+      explicacao:'Ansiedade e preocupação excessivas, difíceis de controlar, na maior parte dos dias por ≥ 6 meses, com inquietação, fadiga, tensão muscular e alterações do sono, caracterizam o Transtorno de Ansiedade Generalizada (DSM-5-TR).'
     }
   ];
   function currentCaso(){ return CASOS[(state.casoIndex||0) % CASOS.length]; }
@@ -1000,11 +1000,48 @@
   /* =========================================================
      SIDEBAR
      ========================================================= */
-  function navBtn(item){
-    if(item.active){
-      return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:700 15px \'Hanken Grotesk\';text-align:left;background:var(--accent-bg);color:var(--teal-text);box-shadow:inset 3px 0 0 var(--teal-text);">'+item.icon+'<span>'+item.label+'</span></button>';
+  /* =========================================================
+     DICIONÁRIO de termos que o tradutor automático erra.
+     O termo é marcado com class="notranslate" (o Google não traduz)
+     e nós aplicamos a tradução correta conforme o idioma ativo.
+     Para adicionar: inclua a chave em TR_DICT com pt/en/es/fr/it/ht/de.
+     ========================================================= */
+  // ⚠️ revisar as colunas ht (Crioulo Haitiano) com um falante.
+  var TR_DICT = {
+    sobre:      {pt:'Sobre',       en:'About',         es:'Acerca de',     fr:'À propos',     it:'Informazioni', ht:'Konsènan',     de:'Über'},
+    mais:       {pt:'Mais',        en:'More',          es:'Más',           fr:'Plus',         it:'Altro',        ht:'Plis',         de:'Mehr'},
+    visaoGeral: {pt:'Visão geral', en:'Overview',      es:'Resumen',       fr:'Aperçu',       it:'Panoramica',   ht:'Apèsi',        de:'Übersicht'},
+    cid10:      {pt:'CID-10',      en:'ICD-10',        es:'CIE-10',        fr:'CIM-10',       it:'ICD-10',       ht:'CIM-10',       de:'ICD-10'},
+    som:        {pt:'Som',         en:'Sound',         es:'Sonido',        fr:'Son',          it:'Audio',        ht:'Son',          de:'Ton'},
+    avisos:     {pt:'Avisos',      en:'Notifications', es:'Notificaciones',fr:'Notifications',it:'Notifiche',    ht:'Notifikasyon', de:'Mitteilungen'},
+  };
+  function activeLang(){
+    try{ var m = document.cookie.match(/googtrans=\/[a-z]+\/([a-z-]+)/); if(m && m[1]) return m[1]; }catch(e){}
+    try{ return localStorage.getItem('psp-a11y-lang') || 'pt'; }catch(e){}
+    return 'pt';
+  }
+  function noTr(key, txt){ return '<span class="notranslate" data-tr="'+key+'">'+esc(txt)+'</span>'; }   // termo com tradução fixa nossa
+  function keepTr(txt){ return '<span class="notranslate">'+esc(txt)+'</span>'; }                         // nome próprio (não traduz)
+  function trLabel(item){
+    if(item.tr) return noTr(item.tr, item.label);
+    if(item.keep) return keepTr(item.label);
+    return esc(item.label);
+  }
+  function applyTrDict(){
+    var lang = activeLang();
+    var els = document.querySelectorAll('[data-tr]');
+    for(var i=0;i<els.length;i++){
+      var d = TR_DICT[els[i].getAttribute('data-tr')];
+      if(d) els[i].textContent = d[lang] || d.pt;
     }
-    return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" data-hover="background:#EEF4F5;color:var(--teal-text);" data-active="transform:scale(.98);" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:600 15px \'Hanken Grotesk\';text-align:left;background:transparent;color:#41595F;transition:background .18s ease,color .18s ease;">'+item.icon+'<span>'+item.label+'</span></button>';
+  }
+
+  function navBtn(item){
+    var lab = trLabel(item);
+    if(item.active){
+      return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:700 15px \'Hanken Grotesk\';text-align:left;background:var(--accent-bg);color:var(--teal-text);box-shadow:inset 3px 0 0 var(--teal-text);">'+item.icon+'<span>'+lab+'</span></button>';
+    }
+    return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" data-hover="background:#EEF4F5;color:var(--teal-text);" data-active="transform:scale(.98);" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:600 15px \'Hanken Grotesk\';text-align:left;background:transparent;color:#41595F;transition:background .18s ease,color .18s ease;">'+item.icon+'<span>'+lab+'</span></button>';
   }
 
   function navItems(){
@@ -1014,9 +1051,9 @@
       {label:'Revisão',   icon:ICON.book, action:'goCategorias', active:REV_SCREENS.indexOf(s.screen)>=0, primary:true},
       {label:'Exercícios',icon:ICON.check,action:'goExercicios', active:EX_SCREENS.indexOf(s.screen)>=0, primary:true},
       {label:'Ranking',   icon:ICON.trophy,  action:'goRanking',  active:s.screen==='ranking'},
-      {label:'DSM-5-TR',  icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm'},
+      {label:'DSM-5-TR',  icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm', keep:true},
       {label:'Feedback',  icon:ICON.message, action:'goFeedback', active:s.screen==='feedback'},
-      {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre'},
+      {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre', tr:'sobre'},
     ];
   }
 
@@ -1035,6 +1072,7 @@
     var dom = t ? dominioPct() : 87;
     var streak = st ? st.streak : 12;
     var nCasos = CASOS.length;
+    var lv = levelInfo(userXP());
     function clampPct(x){ return Math.max(0, Math.min(100, Math.round(x))); }
     return [
       {label:'Progresso geral', value:pct+'%', bar:pct, sub:rev+' de '+total+' transtornos revisados'},
@@ -1042,7 +1080,7 @@
       {label:'Exercícios',      value:String(exe), bar: total?clampPct(exe/total*100):0, sub:'exercícios dominados'},
       {label:'Estudos de caso', value:cs+'/'+nCasos, bar: nCasos?clampPct(cs/nCasos*100):0, sub:'casos resolvidos'},
       sideRankMetric(),
-      {label:'Visão geral',     value:dom+'%', bar:dom, sub:streak+' dias de streak · '+dom+'% de domínio'}
+      {label:'Visão geral', tr:'visaoGeral', value:lv.xp+' XP', bar:lv.pct, sub:'nível '+lv.level+' · '+streak+' dia'+(streak===1?'':'s')+' de streak · '+dom+'% dominado'}
     ];
   }
   // posição real do usuário no ranking (a partir do leaderboard carregado)
@@ -1065,7 +1103,7 @@
     for(var d=0; d<n; d++){ dots += '<span class="sm-dot'+(d===i?' on':'')+'" data-action="sideMetricGo" data-arg="'+d+'" title="'+esc(M[d].label)+'"></span>'; }
     return '<div data-action="sideMetricNext" title="Próxima métrica" style="cursor:pointer;">'+
       '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">'+
-        '<span style="font-size:12px;font-weight:700;color:var(--muted-2);">'+esc(m.label)+'</span>'+
+        '<span style="font-size:12px;font-weight:700;color:var(--muted-2);">'+(m.tr?noTr(m.tr,m.label):esc(m.label))+'</span>'+
         '<span style="font:800 16px \'Bricolage Grotesque\';color:var(--teal-text);">'+esc(m.value)+'</span>'+
       '</div>'+
       (m.bar!=null
@@ -1116,7 +1154,7 @@
       '<div class="side-logo" data-action="goHome" role="button" tabindex="0" title="Ir para o início" aria-label="Ir para o início" data-hover="opacity:.82;" style="display:flex;align-items:center;gap:11px;padding:4px 6px 22px;cursor:pointer;transition:opacity .15s ease;">'+
         '<img src="logo-128.png" alt="Psico·Pato" width="38" height="38" style="width:38px;height:38px;border-radius:11px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);flex-shrink:0;">'+
         '<div class="side-logo-text">'+
-          '<div style="font:800 17px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">Psico<span style="color:#5BC0BE;">·</span>Pato</div>'+
+          '<div style="font:800 17px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;"><span class="notranslate">Psico<span style="color:#5BC0BE;">·</span>Pato</span></div>'+
           '<div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.3px;">guia de estudos</div>'+
         '</div>'+
       '</div>'+
@@ -1138,37 +1176,58 @@
     return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
   }
   var SEARCH_INDEX = null;
+  // texto completo da ficha (resumo + critérios + seções) p/ a busca pegar
+  // termos que não estão no nome (ex.: "autismo" → "Transtorno do Espectro Autista")
+  function fichaText(d){
+    var p = [d.summary||'', d.criteriaIntro||'', d.specifier||'', d.criteriaNote||''];
+    (d.criteria||[]).forEach(function(c){ p.push(c.text||''); });
+    (d.sections||[]).forEach(function(s){
+      p.push(s.title||'');
+      (s.body||[]).forEach(function(b){ p.push(typeof b==='string' ? b : (Array.isArray(b) ? b.join(' ') : '')); });
+    });
+    return p.join(' ');
+  }
   function searchIndex(){
     if(SEARCH_INDEX) return SEARCH_INDEX;
     var idx = [];
     CATS.forEach(function(c, ci){
-      idx.push({type:'cat', ci:ci, di:-1, label:c.name, code:'', color:c.color, norm:searchNormalize(c.name)});
+      idx.push({type:'cat', ci:ci, di:-1, label:c.name, code:'', color:c.color,
+                labelNorm:searchNormalize(c.name), norm:searchNormalize(c.name), body:''});
       (c.items||[]).forEach(function(d, di){
         var code = d.code || d.cid || d.dsm || '';
         idx.push({type:'dis', ci:ci, di:di, label:d.n, code:code, cat:c.name, color:c.color,
-                  norm:searchNormalize(d.n + ' ' + code + ' ' + c.name)});
+                  labelNorm:searchNormalize(d.n),
+                  norm:searchNormalize(d.n + ' ' + code + ' ' + c.name),   // forte: nome/código/categoria
+                  body:searchNormalize(fichaText(d))});                    // fraco: texto completo
       });
     });
     SEARCH_INDEX = idx;
     return idx;
   }
+  function countOcc(hay, needle){ var i=0, c=0; while(c<30 && (i=hay.indexOf(needle, i)) >= 0){ c++; i += needle.length; } return c; }
   function searchQuery(q){
     var nq = searchNormalize(q).trim();
     if(!nq) return [];
     var terms = nq.split(/\s+/);
-    var res = searchIndex().filter(function(e){
-      return terms.every(function(t){ return e.norm.indexOf(t) >= 0; });
+    var useBody = nq.length >= 3;   // full-text só p/ 3+ caracteres (evita ruído de 1-2 letras)
+    var out = [];
+    searchIndex().forEach(function(e){
+      var strongAll = terms.every(function(t){ return e.norm.indexOf(t) >= 0; });
+      var combinedAll = strongAll || (useBody && e.body && terms.every(function(t){ return e.norm.indexOf(t) >= 0 || e.body.indexOf(t) >= 0; }));
+      if(!combinedAll) return;
+      var nameStart = e.labelNorm.indexOf(terms[0]) === 0 ? 1 : 0;
+      var occ = 0;
+      if(!strongAll && e.body){ terms.forEach(function(t){ occ += countOcc(e.body, t); }); }
+      out.push({e:e, strong:strongAll?1:0, nameStart:nameStart, occ:occ});
     });
-    // transtornos antes de categorias; cujo início do nome casa primeiro
-    var first = terms[0];
-    res.sort(function(a, b){
-      var aStart = searchNormalize(a.label).indexOf(first) === 0 ? 0 : 1;
-      var bStart = searchNormalize(b.label).indexOf(first) === 0 ? 0 : 1;
-      if(aStart !== bStart) return aStart - bStart;
-      if(a.type !== b.type) return a.type === 'dis' ? -1 : 1;
-      return a.label.localeCompare(b.label);
+    out.sort(function(a, b){
+      if(a.strong !== b.strong) return b.strong - a.strong;          // nome/código/categoria primeiro
+      if(a.nameStart !== b.nameStart) return b.nameStart - a.nameStart;
+      if(a.e.type !== b.e.type) return a.e.type === 'dis' ? -1 : 1;
+      if(!a.strong && a.occ !== b.occ) return b.occ - a.occ;         // só-texto: mais menções primeiro
+      return a.e.label.localeCompare(b.e.label);
     });
-    return res.slice(0, 12);
+    return out.slice(0, 12).map(function(o){ return o.e; });
   }
   function searchResultsHtml(q){
     if(!q.trim()) return '';
@@ -1243,9 +1302,7 @@
     });
   }
 
-  function bindSearch(scope){
-    var input = scope.querySelector('#global-search');
-    var box = scope.querySelector('#search-results');
+  function bindSearchEl(input, box){
     if(!input || !box) return;
     function update(){
       var html = searchResultsHtml(input.value);
@@ -1257,6 +1314,10 @@
     input.addEventListener('keydown', function(e){
       if(e.key === 'Escape'){ input.value=''; box.innerHTML=''; box.style.display='none'; input.blur(); }
     });
+  }
+  function bindSearch(scope){
+    bindSearchEl(scope.querySelector('#global-search'), scope.querySelector('#search-results'));      // topbar (desktop)
+    bindSearchEl(scope.querySelector('#ms-search'),     scope.querySelector('#ms-search-results'));    // folha "Mais" (mobile)
   }
 
   /* =========================================================
@@ -1350,7 +1411,7 @@
     var secActive = navItems().some(function(i){ return !i.primary && i.active; });
     var moreCol = (state.moreOpen||secActive) ? 'var(--teal-text)' : 'var(--muted)';
     var moreBg  = (state.moreOpen||secActive) ? 'background:var(--accent-bg);' : '';
-    var more = '<button data-action="toggleMore" style="color:'+moreCol+';'+moreBg+'">'+ICON.more+'<span>Mais</span></button>';
+    var more = '<button data-action="toggleMore" style="color:'+moreCol+';'+moreBg+'">'+ICON.more+'<span>'+noTr('mais','Mais')+'</span></button>';
     return '<nav class="bottom-nav">'+ prim + more +'</nav>';
   }
 
@@ -1358,7 +1419,7 @@
   function mobileMenuSheet(){
     if(!state.moreOpen) return '';
     var sec = navItems().filter(function(i){ return !i.primary; }).map(function(it){
-      return '<button data-action="'+it.action+'" class="ms-item'+(it.active?' on':'')+'">'+it.icon+'<span>'+esc(it.label)+'</span></button>';
+      return '<button data-action="'+it.action+'" class="ms-item'+(it.active?' on':'')+'">'+it.icon+'<span>'+trLabel(it)+'</span></button>';
     }).join('');
     // instalar como app (PWA) — só quando o navegador permite instalar
     var install = window.__pwaPrompt
@@ -1376,7 +1437,11 @@
     return '<div class="ms-backdrop" data-action="closeMore"></div>'+
       '<div class="ms-sheet" role="dialog" aria-label="Mais opções">'+
         '<div class="ms-handle"></div>'+
-        '<div class="ms-title">Mais</div>'+
+        '<div class="ms-title">'+noTr('mais','Mais')+'</div>'+
+        '<div class="ms-search-field">'+ICON.search+
+          '<input id="ms-search" type="text" autocomplete="off" spellcheck="false" placeholder="Buscar transtorno, termo ou código…">'+
+        '</div>'+
+        '<div id="ms-search-results" class="search-results ms-search-results" role="listbox" style="display:none;"></div>'+
         '<div class="ms-list">'+sec+install+account+'</div>'+
       '</div>';
   }
@@ -1646,8 +1711,63 @@
     }).join('');
     return '<div class="sec-table-wrap"><table class="sec-table'+(mx?' sec-table-mx':'')+'">'+head+'<tbody>'+rows+'</tbody></table></div>';
   }
+  // Reconstrói os critérios que o PDF quebrou/achatou, de forma LINHA-A-LINHA
+  // (preserva quebras reais de parágrafo, ao contrário de achatar tudo):
+  //  · Fase 1 — separa marcadores embutidos no meio da linha ("…cadeira. b.
+  //    Frequentemente…"), com varredura sequencial: número avança, "1." pode
+  //    reiniciar uma sublista (obsessões/compulsões; categorias do TEPT/TEA) e
+  //    o marcador exige inicial maiúscula/dígito à frente (ignora "p. ex.").
+  //  · Fase 2 — junta linhas de continuação (quebra tipográfica: começam em
+  //    minúscula/"(") ao item/parágrafo anterior; cabeçalhos e novas frases
+  //    (iniciam por maiúscula) permanecem em parágrafo próprio.
+  //  · Fase 3 — destaca a cauda de especificador/codificação colada a um item.
+  var REFLOW_MARK = /(^|[\s.;:)–—”"'])((?:\d{1,2})|[a-z])([.)])\s+(?=[A-ZÀ-Ú0-9“"])/g;
+  var CRIT_BOUNDARY = /([.)”"])\s+(?=(?:Especificar\b|Determinar\b|Código baseado|Nota (?:de|para) codificação))/g;
+  function splitTrailing(seg){
+    return seg.replace(CRIT_BOUNDARY, '$1\n').split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
+  }
+  function reflowCrit(lines){
+    var numNext=1, letNext='a';
+    function take(tok){                       // valida marcador na ordem esperada
+      if(/^\d+$/.test(tok)){
+        var n = parseInt(tok,10);
+        if(n===numNext){ numNext++; letNext='a'; return true; }
+        if(n===1 && numNext>1){ numNext=2; letNext='a'; return true; }   // reinício de sublista
+        return false;
+      }
+      if(tok===letNext){ letNext=String.fromCharCode(letNext.charCodeAt(0)+1); return true; }
+      return false;
+    }
+    // fase 1: divide cada linha nos marcadores válidos; marca itens vs. texto
+    var split=[];
+    lines.forEach(function(ln){
+      var s = String(ln).trim(); if(!s) return;
+      REFLOW_MARK.lastIndex = 0;
+      var cuts=[], m;
+      while((m = REFLOW_MARK.exec(s))){ var pos=m.index+m[1].length; if(take(m[2])) cuts.push(pos); }
+      if(!cuts.length){ split.push({t:'text', s:s}); return; }
+      if(cuts[0]>0) split.push({t:'text', s:s.slice(0,cuts[0]).trim()});
+      for(var k=0;k<cuts.length;k++){
+        var end=(k+1<cuts.length)?cuts[k+1]:s.length;
+        split.push({t:'item', s:s.slice(cuts[k],end).trim()});
+      }
+    });
+    // fase 2: funde continuações (minúscula/"(") ao segmento anterior
+    var merged=[];
+    split.forEach(function(o){
+      if(!o.s) return;
+      var isCont = o.t==='text' && /^[a-zà-ÿ(]/.test(o.s);
+      if(merged.length && isCont) merged[merged.length-1].s = (merged[merged.length-1].s+' '+o.s).replace(/\s+/g,' ').trim();
+      else merged.push(o);
+    });
+    // fase 3: separa cauda de especificador/codificação colada a um item
+    var out=[];
+    merged.forEach(function(o){ splitTrailing(o.s).forEach(function(p){ out.push(p); }); });
+    return out.length ? out : lines;
+  }
   // renderiza um array de linhas (prosa + listas) — usado nos critérios
   function renderRich(lines){
+    lines = reflowCrit(lines);
     var out='', buf=[];
     function flush(){ if(buf.length){ out += sublistHtml(buf); buf=[]; } }
     lines.forEach(function(ln){
@@ -1702,9 +1822,19 @@
       criteria = '<div class="crit-empty">'+ICON.book+'<div>Esta é uma categoria residual ou de referência cruzada — não traz um conjunto próprio de critérios A–E no DSM-5-TR. Veja o resumo acima e as seções abaixo.</div></div>';
     }
 
-    // texto introdutório dos critérios
-    var critIntro = disorder.criteriaIntro
-      ? '<p style="margin:0 0 14px;font-size:14px;line-height:1.55;color:var(--muted-2);">'+esc(disorder.criteriaIntro)+'</p>' : '';
+    // texto introdutório dos critérios. Quando há critérios próprios, é um
+    // intro curto/discreto acima da timeline. Quando NÃO há (categoria residual
+    // ou referência cruzada), o próprio texto explica a categoria — então vira
+    // um bloco legível e dispensa o box "sem critérios" (que soaria contraditório).
+    var critIntro = '';
+    if(disorder.criteriaIntro){
+      if(critList){
+        critIntro = '<p style="margin:0 0 14px;font-size:14px;line-height:1.55;color:var(--muted-2);">'+esc(disorder.criteriaIntro)+'</p>';
+      } else {
+        critIntro = '<div class="crit-ref">'+escMl(disorder.criteriaIntro)+'</div>';
+        criteria = '';   // o bloco de referência já comunica a ausência de critérios
+      }
+    }
 
     // bloco(s) de especificador / subtipos — estruturado em blocos com opções
     var spec = disorder.specifier || [];
@@ -1773,7 +1903,7 @@
 
     // ---- chips de código primário (header — visíveis em qualquer tela) ----
     var chips = '<div class="ficha-code-chips">'+
-      (primary.cid ? '<span class="code-chip"><span class="lbl">CID-10</span><b>'+esc(primary.cid)+'</b></span>' : '')+
+      (primary.cid ? '<span class="code-chip"><span class="lbl">'+noTr('cid10','CID-10')+'</span><b>'+esc(primary.cid)+'</b></span>' : '')+
       (primary.dsm ? '<span class="code-chip"><span class="lbl">DSM-5-TR</span><b>'+esc(primary.dsm)+'</b></span>' : '')+
     '</div>';
 
@@ -1798,11 +1928,11 @@
       codesInner = '<div class="rail-label">Códigos por '+(codes.length>2?'tipo':'variante')+'</div>'+
         codes.map(function(c){
           return (c.label?'<div class="codes-var-label">'+esc(c.label)+'</div>':'')+
-            '<div class="codes-table">'+codeRow('CID-10', c.cid, 'CID '+c.cid)+codeRow('DSM-5-TR', c.dsm, 'DSM '+c.dsm)+'</div>';
+            '<div class="codes-table">'+codeRow(noTr('cid10','CID-10'),c.cid, 'CID '+c.cid)+codeRow('DSM-5-TR', c.dsm, 'DSM '+c.dsm)+'</div>';
         }).join('');
     } else {
       var c0 = codes[0];
-      codesInner = '<div class="rail-label">Códigos</div><div class="codes-table">'+codeRow('CID-10', c0.cid, 'CID '+c0.cid)+codeRow('DSM-5-TR', c0.dsm, 'DSM '+c0.dsm)+'</div>';
+      codesInner = '<div class="rail-label">Códigos</div><div class="codes-table">'+codeRow(noTr('cid10','CID-10'),c0.cid, 'CID '+c0.cid)+codeRow('DSM-5-TR', c0.dsm, 'DSM '+c0.dsm)+'</div>';
     }
     var codesCard = '<div class="rail-card">'+codesInner+'</div>';
 
@@ -2508,7 +2638,7 @@
   function authLogo(){
     return '<button data-action="goWelcome" title="Voltar ao início" data-hover="opacity:.75;" style="display:flex;align-items:center;gap:11px;justify-content:center;margin:0 auto 20px;background:none;border:none;cursor:pointer;transition:opacity .15s ease;">'+
       '<img src="logo-128.png" alt="Psico·Pato" width="42" height="42" style="width:42px;height:42px;border-radius:12px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);">'+
-      '<div style="font:800 20px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">Psico<span style="color:#5BC0BE;">·</span>Pato</div>'+
+      '<div style="font:800 20px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;"><span class="notranslate">Psico<span style="color:#5BC0BE;">·</span>Pato</span></div>'+
     '</button>';
   }
   function authFeedback(){
@@ -2641,7 +2771,7 @@
       '<section style="width:100%;max-width:480px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
         '<div style="text-align:center;margin-bottom:24px;">'+
           '<img src="logo-128.png" alt="Psico·Pato" width="62" height="62" style="width:62px;height:62px;border-radius:17px;object-fit:cover;display:inline-block;background:#fff;border:1px solid var(--border);">'+
-          '<h1 style="font:800 30px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.4px;margin:14px 0 8px;">Psico<span style="color:#5BC0BE;">·</span>Pato</h1>'+
+          '<h1 style="font:800 30px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.4px;margin:14px 0 8px;"><span class="notranslate">Psico<span style="color:#5BC0BE;">·</span>Pato</span></h1>'+
           '<p style="margin:0 auto;font-size:15px;color:var(--muted-2);line-height:1.55;max-width:400px;">Sua plataforma de <b>estudo e revisão do DSM-5-TR</b>: fichas-resumo, exercícios e estudos de caso, com progresso gamificado.</p>'+
         '</div>'+
         '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(16,42,51,.06);">'+
@@ -3015,7 +3145,7 @@
     return ''+
     '<section style="max-width:780px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Sobre</div>'+
-      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 8px;">Psico<span style="color:#5BC0BE;">·</span>Pato</h1>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 8px;"><span class="notranslate">Psico<span style="color:#5BC0BE;">·</span>Pato</span></h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;line-height:1.6;max-width:620px;">Plataforma de estudos e revisão dos transtornos do DSM-5-TR — fichas-resumo com critérios diagnósticos, especificadores, seções narrativas e exercícios.</p>'+
       '<article class="sobre-ensaio">'+
         '<div class="se-kicker"><span>🧠</span> Reflexão</div>'+
@@ -3104,6 +3234,7 @@
     bindClassify(root);
     // reaplica os efeitos de acessibilidade ao conteúdo recriado (SPA)
     if(window.A11Y && window.A11Y.reapply){ try{ window.A11Y.reapply(); }catch(e){} }
+    applyTrDict();   // corrige termos que o tradutor automático erra (ex.: "Sobre")
     if(state.pendingScroll){
       var target = state.pendingScroll; state.pendingScroll = null;
       requestAnimationFrame(function(){

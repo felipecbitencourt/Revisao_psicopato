@@ -271,10 +271,26 @@ TEXT_FIXES = {
 }
 
 
+# Referências cruzadas que o PDF truncou no FIM do critério (perdeu a letra do
+# Critério referido). Restauradas com âncora de fim-de-texto p/ não duplicar
+# ocorrências completas. (regex, repl)
+DANGLING_REFS = [
+    (re.compile(r"(produzir os sintomas (?:do|no) Critério)\s*$"), r"\1 A."),
+    (re.compile(r"(produzir os sintomas mencionados no Critério)\s*$"), r"\1 A."),
+    (re.compile(r"(sintomas dos Critérios A)-\s*$"), r"\1-D."),
+    # rótulo de especificador que vazou inline para o FIM do critério ("…vida do
+    # indivíduo. Especificar se:") — instrução, não diagnóstico; o specifier
+    # real é renderizado à parte. Remove o rótulo órfão.
+    (re.compile(r"\s*(?:Especificar|Determinar)\b[^.:]*:\s*$"), ""),
+]
+
+
 def apply_text_fixes(text):
     for wrong, right in TEXT_FIXES.items():
         if wrong in text:
             text = text.replace(wrong, right)
+    for pat, repl in DANGLING_REFS:
+        text = pat.sub(repl, text)
     return text
 
 
@@ -391,7 +407,7 @@ def apply_subgroups(cat_index, items):
 
 CODE_HEADING = re.compile(r"^#{3,4}\s+[\d(]")              # "### 300.02 (F41.1)" ou "#### ..."
 CODE_PAIR = re.compile(r"(\d{3}(?:\.\d+)?)\s*\(([A-Z]\d{2}(?:\.\d+)?)\)[ \t]*([^\n*(:]{0,48})")
-LETTER_RE = re.compile(r"^([A-H])\.(?=\s|[A-ZÀ-Ú])\s*(.*)$")  # tolera "C.A duração" (sem espaço)
+LETTER_RE = re.compile(r"^([A-N])\.(?=\s|[A-ZÀ-Ú])\s*(.*)$")  # A–N: alguns transtornos vão até I/J/K; tolera "C.A duração"
 SUBITEM_RE = re.compile(r"^\s*(?:[a-z]|\d{1,2})[.)]\s")   # "a. ", "1. ", "2) " ...
 # cabeçalho de bloco de especificador: "Especificar se:", "Determinar o subtipo:" ...
 SPEC_HEAD_RE = re.compile(r"^\*?\s*(?:Especificar|Determinar)\b[^:]*:", re.IGNORECASE)
@@ -523,7 +539,7 @@ def extract_codes(head_text):
 
 # letra de critério (A.–H.) colada no MEIO da linha, após fim de frase/sub-item:
 # "...trabalho. B. Presença..." -> quebra antes do "B." para o parser reconhecer.
-INLINE_LETTER = re.compile(r'([.\)\]"”])\s+([A-H])\.\s+(?=[A-ZÀ-Ú“"])')
+INLINE_LETTER = re.compile(r'([.\)\]"”])\s+([A-N])\.\s+(?=[A-ZÀ-Ú“"])')
 
 
 def split_inline_criteria(lines):
@@ -532,6 +548,35 @@ def split_inline_criteria(lines):
         ln = INLINE_LETTER.sub(lambda m: m.group(1) + "\n" + m.group(2) + ". ", ln)
         out.extend(ln.split("\n"))
     return out
+
+
+# item numerado promovido a H3 pelo PDF (ex.: "### 1. Esforços…", "### 1. Desatenção:")
+NUM_H3 = re.compile(r"^\d{1,2}[.)]\s")
+# marcador de item numerado "N. Xxxx" (Xxx começa com maiúscula/aspas) — usado
+# para dividir a lista politética de critérios que o PDF achatou em um parágrafo
+# (transtornos da personalidade e categorias "Outro … Especificado").
+NUM_MARK = re.compile(r'(\d{1,2})[.)]\s+(?=[A-ZÀ-Ú"“])')
+
+
+def split_numbered_list(text):
+    """Se 'text' é uma frase-tronco seguida de uma lista numerada 1., 2., 3. …
+    (sequencial a partir de 1, ≥2 itens), devolve (tronco, [itens]); senão None.
+    A varredura é sequencial (só aceita o próximo número esperado), de modo que
+    "Critério 5.)" ou anos como "2 a 13 dias" no meio de um item não disparam
+    uma divisão falsa."""
+    markers, expected = [], 1
+    for m in NUM_MARK.finditer(text):
+        if int(m.group(1)) == expected:
+            markers.append((m.start(), m.end()))
+            expected += 1
+    if len(markers) < 2:
+        return None
+    stem = text[:markers[0][0]].strip()
+    items = []
+    for i, (st, en) in enumerate(markers):
+        end = markers[i + 1][0] if i + 1 < len(markers) else len(text)
+        items.append(clean(text[en:end].strip()))
+    return stem, items
 
 
 def parse_criteria(head_lines):
@@ -543,22 +588,30 @@ def parse_criteria(head_lines):
     cur = None
     cur_group = None         # grupo ativo (ex.: "Episódio Maníaco")
     pending_group = None     # H4 visto, só vira grupo se um critério "A" seguir
+    last_letter = None       # última letra de critério aceita (validação sequencial)
     for raw in head_lines:
         s = raw.strip()
         if not s:
             continue
         if s.startswith("#"):
-            # H3+ descritivo (não código, não "Critérios Diagnósticos", não o
-            # título H1) = grupo de critérios: versão por idade (TEPT, disforia)
-            # ou tipo de episódio (bipolar). Vira grupo se um critério "A" seguir.
-            if s.startswith("###"):
-                htext = s.lstrip("#").strip()
-                nh = normalize(htext)
-                is_code = bool(CODE_HEADING.match(s)) or bool(re.match(r"^[A-TV-Z]\d{2}(?:\.\d+\w*)?$", htext))
-                if (htext and re.match(r"[A-Za-zÀ-ÿ]", htext) and not is_code
-                        and not nh.startswith("criterios diagnosticos")):
-                    pending_group = clean(htext)
-            continue                      # títulos/cabeçalhos/códigos
+            htext = s.lstrip("#").strip()
+            # item numerado promovido a H3 pelo PDF (ex.: "### 1. Esforços…",
+            # "### 1. Desatenção: …") NÃO é cabeçalho — é conteúdo de critério.
+            # Rebaixa para linha de corpo e segue o fluxo normal (intro/crit).
+            if s.startswith("###") and NUM_H3.match(htext):
+                s = htext
+            else:
+                # H3+ descritivo (não código, não "Critérios Diagnósticos", não
+                # o título H1) = grupo de critérios: versão por idade (TEPT,
+                # disforia) ou tipo de episódio (bipolar). Vira grupo se um
+                # critério "A" seguir.
+                if s.startswith("###"):
+                    nh = normalize(htext)
+                    is_code = bool(CODE_HEADING.match(s)) or bool(re.match(r"^[A-TV-Z]\d{2}(?:\.\d+\w*)?$", htext))
+                    if (htext and re.match(r"[A-Za-zÀ-ÿ]", htext) and not is_code
+                            and not nh.startswith("criterios diagnosticos")):
+                        pending_group = clean(htext)
+                continue                  # títulos/cabeçalhos/códigos
         if s in ("---",) or s.startswith("*Categoria:"):
             continue
         if PAGE_FOOTER.match(s):
@@ -569,20 +622,27 @@ def parse_criteria(head_lines):
         # detecção sobre o texto JÁ limpo (sem ** / * do markdown)
         low = normalize(clean(s))
 
-        # uma letra de critério (A., B., ...) SEMPRE reabre o modo critério —
-        # mesmo após um "Especificar"/"Nota" inline (ex.: gravidade entre A e B)
+        # uma letra de critério (A., B., ...) reabre o modo critério — mesmo após
+        # um "Especificar"/"Nota" inline (ex.: gravidade entre A e B). Validação
+        # SEQUENCIAL: aceita "A" (início/novo grupo) ou a próxima letra (tolera 1
+        # salto p/ critério perdido pelo PDF); rejeita letras fora de ordem (ex.:
+        # uma inicial "V." solta). Necessário porque o range agora vai até N.
         m = LETTER_RE.match(s)
         if m:
-            mode = "crit"
             letter = m.group(1)
-            if letter == "A" and pending_group:   # novo conjunto de critérios
-                cur_group = pending_group
-            pending_group = None                  # H4 não seguido de "A" é descartado
-            cur = {"letter": letter, "text": clean(m.group(2))}
-            if cur_group:
-                cur["group"] = cur_group
-            criteria.append(cur)
-            continue
+            seq_ok = (letter == "A") or (last_letter is not None and 0 < (ord(letter) - ord(last_letter)) <= 2)
+            if seq_ok:
+                mode = "crit"
+                if letter == "A" and pending_group:   # novo conjunto de critérios
+                    cur_group = pending_group
+                pending_group = None                  # H4 não seguido de "A" é descartado
+                cur = {"letter": letter, "text": clean(m.group(2))}
+                if cur_group:
+                    cur["group"] = cur_group
+                criteria.append(cur)
+                last_letter = letter
+                continue
+            # letra fora de ordem: não é um novo critério -> cai como texto abaixo
         if low.startswith("especificar") or low.startswith("determinar"):
             mode = "spec"          # novo bloco de especificador
             hm = SPEC_HEAD_RE.match(s)
@@ -619,6 +679,13 @@ def parse_criteria(head_lines):
             if c not in notes:
                 notes.append(c)
         elif mode == "crit" and cur is not None:
+            # um H3 de texto seguido de SUB-ITEM (número) dentro de um critério é
+            # um sub-cabeçalho de categoria (ex.: TEA crit. B: "Sintomas de
+            # Intrusão", "Humor Negativo"…), não um grupo de critérios A/B.
+            # Reincorpora-o ao texto do critério para não perder a estrutura.
+            if pending_group and SUBITEM_RE.match(s):
+                cur["text"] += "\n" + pending_group
+                pending_group = None
             extra = clean(s)
             if extra:
                 cur["text"] += "\n" + extra
@@ -629,7 +696,21 @@ def parse_criteria(head_lines):
     note = re.sub(r"^Nota[:.]?\s*", "", note, flags=re.IGNORECASE)
     # remove blocos de especificador vazios
     spec_blocks = [b for b in spec_blocks if b["items"]]
-    return " ".join(intro).strip(), criteria, spec_blocks, note
+
+    intro_text = " ".join(intro).strip()
+    # Sem critérios "A./B." mas com uma lista politética numerada na introdução
+    # (transtornos da personalidade — critério único; categorias "Outro …
+    # Especificado" — exemplos). Divide a lista em itens, restaurando a
+    # estrutura: o tronco vira a introdução e cada "N." vira um critério.
+    if not criteria:
+        parsed = split_numbered_list(intro_text)
+        if parsed:
+            stem, items = parsed
+            intro_text = stem
+            for i, txt in enumerate(items, 1):
+                criteria.append({"letter": str(i), "text": txt})
+
+    return intro_text, criteria, spec_blocks, note
 
 
 def parse_sections(lines):
