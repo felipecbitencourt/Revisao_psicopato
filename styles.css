@@ -283,6 +283,11 @@ button{font-family:inherit;}
 .ficha-facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;}
 .fact-chip{font-size:12.5px;line-height:1.45;color:var(--body);background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:5px 10px;}
 .fact-chip b{display:block;font-size:9.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted-2);margin-bottom:1px;}
+/* enunciado do quiz "por fatos": perfil epidemiológico (rótulo + valor) */
+.quiz-facts{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+.qf-row{display:flex;flex-direction:column;gap:2px;background:var(--surface-2);border:1px solid var(--border);border-left:3px solid var(--cat,#C2410C);border-radius:11px;padding:10px 13px;}
+.qf-lbl{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted-2);}
+.qf-val{font:600 15.5px 'Bricolage Grotesque';line-height:1.4;color:var(--body);}
 
 /* heading com barra na cor da categoria */
 .ficha-h3{font:700 17px 'Bricolage Grotesque';margin:0 0 14px;display:flex;align-items:center;gap:9px;}

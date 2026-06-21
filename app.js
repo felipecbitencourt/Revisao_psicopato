@@ -310,6 +310,7 @@
     lastViewed:null,
     notifOpen:false, notifNew:[], moreOpen:false,
     sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
+    reduced:(function(){ try { return localStorage.getItem('psp-reduced')==='1'; } catch(e){ return false; } })(),
     dark:false,
     auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false, loadingMsg:'', form:{}, recovery:false},
     progress:{}, mastered:{}, stats:null, pendingScroll:null,
@@ -353,6 +354,8 @@
     openQuizDeck:  function(ci){ state.quizCat=ci; startQuiz(buildQuizSet(state.quizKind, ci)); },
     quizNomeRandom:function(){ state.quizKind='nome';     state.quizCat=-1; startQuiz(buildQuizSet('nome', -1)); },
     quizCritRandom:function(){ state.quizKind='criterio'; state.quizCat=-1; startQuiz(buildQuizSet('criterio', -1)); },
+    quizFatosDecks: function(){ state.quizKind='fatos';   go('quizDecks'); },
+    quizFatosRandom:function(){ state.quizKind='fatos';    state.quizCat=-1; startQuiz(buildQuizSet('fatos', -1)); },
     quizRandom:    function(){ state.quizKind='nome';     state.quizCat=-1; startQuiz(buildQuizSet('nome', -1)); },
     quizRestart:   function(){ startQuiz(buildQuizSet(state.quizKind, state.quizCat)); },
     goIndice:      function(){ go('indice'); },
@@ -383,14 +386,15 @@
     openRef:       function(arg){ var p=String(arg).split(':'); var ci=+p[0], di=+p[1]; setState({screen:'ficha', activeCat:ci, activeDisorder:di, fichaOpen:initOpen(ci,di)}); recordRevised(); scrollTop(); },
     goFlashcards:  function(){ state.deckCat=state.activeCat; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     toggleTheme:   function(){ toggleTheme(); },
+    setReduced:    function(v){ var r=(v===1||v==='1'); if(r!==state.reduced){ state.reduced=r; try{ localStorage.setItem('psp-reduced', r?'1':'0'); }catch(e){} render(); } },
     openA11y:      function(){ if(window.A11Y && window.A11Y.open) window.A11Y.open(); },
     installPwa:    function(){ var p=window.__pwaPrompt; if(!p) return; state.moreOpen=false; p.prompt(); if(p.userChoice){ p.userChoice.then(function(){ window.__pwaPrompt=null; render(); }); } else { render(); } },
     toggleSound:   function(){ Sound.toggle(); render(); },
     openCat:       function(i){ setState({screen:'categoria', activeCat:i}); scrollTop(); },
     openDisorder:  function(i){ setState({screen:'ficha', activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
     backToCategoria:function(){ setState({screen:'categoria'}); scrollTop(); },
-    prevDisorder:  function(){ var i=Math.max(0, state.activeDisorder-1); setState({activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
-    nextDisorder:  function(){ var c=CATS[state.activeCat]; var i=Math.min(c.items.length-1, state.activeDisorder+1); setState({activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
+    prevDisorder:  function(){ var c=CATS[state.activeCat]; var i=adjIndex(c, state.activeDisorder, -1); if(i<0) return; setState({activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
+    nextDisorder:  function(){ var c=CATS[state.activeCat]; var i=adjIndex(c, state.activeDisorder, +1); if(i<0) return; setState({activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
     toggleSec:     function(i){ var o=Object.assign({}, state.fichaOpen); o[i]=!o[i]; setState({fichaOpen:o}); },
     // flashcards
     flip:    function(){ setState({fcFlipped:!state.fcFlipped}); },
@@ -1573,9 +1577,32 @@
     }
     return '<div class="rev-toggle">'+tab('Categorias','categorias')+tab('Índice','indice')+'</div>';
   }
+  // ----- modo Completo x Reduzido (esconde categorias residuais) -----
+  // residual = "Outro … Especificado", "… Não Especificado/a", "Outra …".
+  function isResidual(n){
+    var s = (n||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    return /nao especificad|especificad[oa]\b|^outro |^outra /.test(s);
+  }
+  function hiddenReduced(d){ return state.reduced && d && isResidual(d.n); }
+  function visibleItems(cat){ return (cat.items||[]).filter(function(d){ return !hiddenReduced(d); }); }
+  // próximo/anterior índice VISÍVEL na categoria (pula residuais no reduzido)
+  function adjIndex(cat, di, dir){
+    var i = di + dir;
+    while(i>=0 && i<cat.items.length){ if(!hiddenReduced(cat.items[i])) return i; i += dir; }
+    return -1;
+  }
+  function reducedToggle(){
+    function tab(label, on, v){ return '<button data-action="setReduced" data-arg="'+v+'" class="rev-tab'+(on?' on':'')+'">'+label+'</button>'; }
+    return '<div class="rev-toggle" title="Reduzido esconde as categorias residuais (Outro… / Não Especificado)">'+
+      tab('Completo', !state.reduced, '0')+tab('Reduzido', state.reduced, '1')+'</div>';
+  }
 
   function screenCategorias(){
+    var nVisCats = 0;
     var cards = CATS.map(function(c,i){
+      var visN = visibleItems(c).length;
+      if(state.reduced && visN===0) return '';          // categoria toda residual: oculta
+      nVisCats++;
       var pct = Math.round(catProgress(i)*100);
       var cardStyle = "display:flex;flex-direction:column;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-top:3px solid "+c.color+";border-radius:18px;padding:18px;cursor:pointer;text-align:left;transition:transform .2s ease,box-shadow .2s ease;animation:popIn .45s cubic-bezier(.2,.7,.3,1) both;animation-delay:"+(i*0.035).toFixed(3)+"s;";
       var tileStyle = "width:40px;height:40px;border-radius:11px;background:"+c.color+"1A;color:"+c.color+";font:800 17px 'Bricolage Grotesque';display:flex;align-items:center;justify-content:center;";
@@ -1584,7 +1611,7 @@
       return '<button data-action="openCat" data-arg="'+i+'" data-hover="transform:translateY(-3px);box-shadow:0 12px 26px rgba(16,42,51,.10);" style="'+cardStyle+'">'+
         '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;">'+
           '<div style="'+tileStyle+'">'+(i+1)+'</div>'+
-          '<span style="'+countChip+'">'+c.items.length+'</span>'+
+          '<span style="'+countChip+'">'+visN+'</span>'+
         '</div>'+
         '<div style="font:700 15.5px \'Bricolage Grotesque\';line-height:1.25;margin-top:14px;color:var(--ink);text-wrap:balance;">'+esc(c.name)+'</div>'+
         '<div style="display:flex;align-items:center;gap:8px;width:100%;margin-top:14px;">'+
@@ -1597,9 +1624,9 @@
     return ''+
     '<section style="animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px;">Revisão</div>'+
-      revViewToggle('categorias')+
-      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:18px 0 6px;">As 20 categorias do DSM-5-TR</h1>'+
-      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:620px;">Escolha um capítulo para ver os transtornos e suas fichas-resumo.</p>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">'+revViewToggle('categorias')+reducedToggle()+'</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:18px 0 6px;">'+(state.reduced?('Categorias do DSM-5-TR'):'As 20 categorias do DSM-5-TR')+'</h1>'+
+      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:620px;">Escolha um capítulo para ver os transtornos e suas fichas-resumo.'+(state.reduced?' <b>Modo reduzido:</b> categorias residuais ocultas.':'')+'</p>'+
       '<div class="cats-grid">'+cards+'</div>'+
     '</section>';
   }
@@ -1615,6 +1642,7 @@
     cat.items.forEach(function(d){ if(d.sg){ sgCount[d.sg] = (sgCount[d.sg]||0)+1; } });
     var lastSg = null;
     var items = cat.items.map(function(d,i){
+      if(hiddenReduced(d)) return '';                    // residual oculto no reduzido
       var sg = d.sg || '';
       var header = '';
       if(sg !== lastSg){
@@ -1647,7 +1675,7 @@
         headerTile+
         '<div>'+
           '<h1 style="font:800 27px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;text-wrap:balance;">'+esc(cat.name)+'</h1>'+
-          '<p style="margin:0;color:var(--muted-2);font-size:14.5px;">'+cat.items.length+' transtornos nesta categoria · conteúdo ilustrativo</p>'+
+          '<p style="margin:0;color:var(--muted-2);font-size:14.5px;">'+visibleItems(cat).length+' transtornos nesta categoria · conteúdo ilustrativo</p>'+
         '</div>'+
       '</div>'+
       '<div style="display:flex;flex-direction:column;gap:10px;">'+items+'</div>'+
@@ -1958,8 +1986,9 @@
       : '';
 
     // ---- navegação anterior/próximo (próximo nomeado) ----
-    var prevItem = cat.items[state.activeDisorder-1];
-    var nextItem = cat.items[state.activeDisorder+1];
+    var pIdx = adjIndex(cat, state.activeDisorder, -1), nIdx = adjIndex(cat, state.activeDisorder, +1);
+    var prevItem = pIdx>=0 ? cat.items[pIdx] : null;
+    var nextItem = nIdx>=0 ? cat.items[nIdx] : null;
     var nav = '<div class="ficha-nav">'+
       (prevItem ? '<button data-action="prevDisorder" class="nav-prev" data-hover="border-color:var(--cat);color:var(--cat);" data-active="transform:scale(.96);">'+ICON.chevLsm+'Anterior</button>' : '<span></span>')+
       (nextItem ? '<button data-action="nextDisorder" class="nav-next" data-hover="filter:brightness(.92);transform:translateX(2px);" data-active="transform:scale(.97);" title="'+esc(nextItem.n)+'"><span class="nn-col"><span class="nn-lbl">Próximo</span><span class="nn-name">'+esc(shortName(nextItem.n))+'</span></span>'+ICON.chevRsm+'</button>' : '')+
@@ -2012,12 +2041,17 @@
   function deckCards(ci){
     var c = CATS[ci]; if(!c) return [];
     return (c.items||[]).map(function(d, di){
+      if(hiddenReduced(d)) return null;                 // modo reduzido: sem residuais
       var sum = (d.summary||'').trim();
       if(!sum || /não disponível/i.test(sum)) return null;
-      return { front:d.n, back:sum, code:(d.code||d.cid||d.dsm||''), cat:c.name, color:c.color, ci:ci, di:di };
+      return { front:d.n, back:sum, tldr:(d.tldr||'').trim(), facts:d.facts||null,
+        code:(d.code||d.cid||d.dsm||''), cat:c.name, color:c.color, ci:ci, di:di };
     }).filter(Boolean);
   }
   function allCards(){ var out=[]; CATS.forEach(function(_,ci){ out=out.concat(deckCards(ci)); }); return out; }
+  // todos os nomes de transtorno (p/ casar diagnósticos diferenciais -> distratores)
+  var ALL_NAMES = null;
+  function allNames(){ if(!ALL_NAMES){ ALL_NAMES=[]; CATS.forEach(function(c){ (c.items||[]).forEach(function(d){ ALL_NAMES.push(d.n); }); }); } return ALL_NAMES; }
   function shuffle(arr){
     var a=arr.slice();
     for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
@@ -2049,22 +2083,51 @@
     return out.replace(/______(?:[\s/–-]+______)+/g, QUIZ_BLANK); // colapsa lacunas adjacentes
   }
 
-  /* questionário "pelo resumo": resumo (mascarado) -> nome */
+  /* questionário "pelo resumo": tldr (mascarado) -> nome */
   var QUIZ_LEN = 10;
+  // distratores a partir dos diagnósticos diferenciais REAIS (facts.diferencial):
+  // casa cada termo do diferencial com um nome de transtorno do acervo, forçando
+  // o aluno a distinguir quadros parecidos. Cai em aleatório quando faltar.
+  // categorias residuais são distratores ruins — usa o predicado global isResidual.
+  function isResidualName(n){ return isResidual(n); }
+  function difDistractors(card){
+    var dif = card.facts && card.facts.diferencial; if(!dif) return [];
+    var pool = allNames();
+    var poolN = pool.map(qzNorm);
+    var frontN = qzNorm(card.front);
+    var out = [], seen = {};
+    dif.split(/[;,]|\s+e\s+/).forEach(function(part){
+      var np = qzNorm(part).trim(); if(np.length < 4) return;
+      var match = null;
+      for(var i=0;i<pool.length;i++){
+        if(poolN[i]===frontN || isResidualName(pool[i])) continue;
+        if(np.indexOf(poolN[i])>=0 || poolN[i].indexOf(np)>=0){ match = pool[i]; break; }
+      }
+      if(!match){                                  // fallback: sobreposição de tokens
+        var pt = np.split(/[^a-z0-9]+/).filter(function(t){ return t.length>=5; });
+        for(var j=0;j<pool.length && pt.length;j++){
+          if(poolN[j]===frontN || isResidualName(pool[j])) continue;
+          var nt = poolN[j].split(/[^a-z0-9]+/).filter(function(t){ return t.length>=5; });
+          if(pt.filter(function(t){ return nt.indexOf(t)>=0; }).length>=2){ match = pool[j]; break; }
+        }
+      }
+      if(match && !seen[match] && match!==card.front){ seen[match]=1; out.push(match); }
+    });
+    return out.slice(0,3);
+  }
   function pickDistractors(card, names, pool){
-    var distr = shuffle(names.filter(function(n){ return n!==card.front; })).slice(0,3);
-    if(distr.length<3){
-      var extra = shuffle(pool.filter(function(n){ return n!==card.front && distr.indexOf(n)<0; })).slice(0, 3-distr.length);
-      distr = distr.concat(extra);
-    }
-    return distr;
+    var distr = difDistractors(card);                       // 1º: diferenciais reais
+    function fill(src){ shuffle(src).forEach(function(n){ if(distr.length<3 && n!==card.front && distr.indexOf(n)<0) distr.push(n); }); }
+    fill(names);                                            // 2º: nomes do mesmo conjunto
+    fill(pool);                                             // 3º: qualquer transtorno
+    return distr.slice(0,3);
   }
   function buildQuiz(items){
     var pool = allCards().map(function(x){ return x.front; });
     var names = items.map(function(x){ return x.front; });
     return shuffle(items).slice(0, QUIZ_LEN).map(function(card){
       var opts = shuffle([card.front].concat(pickDistractors(card, names, pool)));
-      return { q: maskName(card.back, card.front), opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color, ci: card.ci, di: card.di };
+      return { q: maskName(card.tldr || card.back, card.front), opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color, ci: card.ci, di: card.di };
     });
   }
 
@@ -2074,9 +2137,10 @@
     var cats = ci===-1 ? CATS.map(function(c,i){ return {c:c,i:i}; }) : [{c:CATS[ci],i:ci}];
     var out=[];
     cats.forEach(function(o){ if(!o.c) return; (o.c.items||[]).forEach(function(d,di){
+      if(hiddenReduced(d)) return;
       var crit = Array.isArray(d.criteria) ? d.criteria.filter(function(x){ return x && (x.text||'').trim().length>=25; }) : [];
       if(!crit.length) return;
-      out.push({ front:d.n, crit:crit, cat:o.c.name, color:o.c.color, ci:o.i, di:di });
+      out.push({ front:d.n, crit:crit, facts:d.facts||null, cat:o.c.name, color:o.c.color, ci:o.i, di:di });
     }); });
     return out;
   }
@@ -2094,9 +2158,40 @@
     });
   }
 
+  /* questionário "por fatos / epidemiologia": início + prevalência + sexo ->
+     nome. Distratores = diferenciais reais do próprio transtorno (quadros
+     parecidos). Só usa fichas com pelo menos 2 desses fatos. */
+  function factCards(ci){
+    var cats = ci===-1 ? CATS.map(function(c,i){ return {c:c,i:i}; }) : [{c:CATS[ci],i:ci}];
+    var out=[];
+    cats.forEach(function(o){ if(!o.c) return; (o.c.items||[]).forEach(function(d,di){
+      if(hiddenReduced(d)) return;
+      var f = d.facts; if(!f) return;
+      if(['inicio','prevalencia','sexo'].filter(function(k){ return f[k]; }).length < 2) return;
+      out.push({ front:d.n, facts:f, cat:o.c.name, color:o.c.color, ci:o.i, di:di });
+    }); });
+    return out;
+  }
+  function buildFactQuiz(ci){
+    var items = factCards(ci);
+    if(!items.length) return [];
+    var names = items.map(function(x){ return x.front; });
+    var pool = allCards().map(function(x){ return x.front; });
+    return shuffle(items).slice(0, QUIZ_LEN).map(function(card){
+      var opts = shuffle([card.front].concat(pickDistractors(card, names, pool)));
+      var f = card.facts;
+      var rows = [['Início', f.inicio], ['Prevalência', f.prevalencia], ['Predomínio por sexo', f.sexo]]
+        .filter(function(r){ return r[1]; })
+        .map(function(r){ return { label:r[0], value:maskName(String(r[1]), card.front) }; });
+      return { factsList:rows, prompt:'Qual transtorno tem este perfil epidemiológico?',
+        opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color, ci: card.ci, di: card.di };
+    });
+  }
+
   // dispatcher: monta o set conforme o tipo escolhido (com fallback)
   function buildQuizSet(kind, ci){
     if(kind==='criterio'){ var s=buildCritQuiz(ci); if(s.length) return s; }
+    if(kind==='fatos'){ var fz=buildFactQuiz(ci); if(fz.length) return fz; }
     return buildQuiz(ci===-1 ? allCards() : deckCards(ci));
   }
 
@@ -2143,8 +2238,9 @@
     mode = mode || {};
     var feitas = activityCountsByCat(mode.tipo);
     return CATS.map(function(c, ci){
-      var count = deckCards(ci).length, total = c.items.length;
-      var rev = tracking() ? catRevisedCount(ci) : Math.round(total*(c.prog||0));
+      var count = deckCards(ci).length, total = state.reduced ? visibleItems(c).length : c.items.length;
+      if(state.reduced && total===0) return '';        // categoria residual: sem deck
+      var rev = Math.min(total, tracking() ? catRevisedCount(ci) : Math.round(total*(c.prog||0)));
       var n = unit==='questões' ? Math.min(QUIZ_LEN, count) : count;
       var d = { c:c, ci:ci, action:action, n:n, total:total, rev:rev,
                 pct: total ? Math.round(rev/total*100) : 0, feitas: feitas[ci] };
@@ -2236,9 +2332,10 @@
     var cards = EX_MODES.map(exModeCard).join('');
     return ''+
     '<section style="max-width:1000px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
-      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Exercícios</div>'+
-      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Coloque seu conhecimento à prova</h1>'+
-      '<p style="margin:0 0 26px;color:var(--muted-2);font-size:15px;max-width:620px;">Quatro modos de praticar o conteúdo do DSM-5-TR.</p>'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px;">Exercícios</div>'+
+      reducedToggle()+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:18px 0 6px;">Coloque seu conhecimento à prova</h1>'+
+      '<p style="margin:0 0 26px;color:var(--muted-2);font-size:15px;max-width:620px;">Quatro modos de praticar o conteúdo do DSM-5-TR.'+(state.reduced?' <b>Modo reduzido:</b> sem categorias residuais.':'')+'</p>'+
       '<div class="ex-grid">'+cards+'</div>'+
     '</section>';
   }
@@ -2296,6 +2393,11 @@
         modeOption('quizCritDecks', icoCat, '#7C3AED', '#F1E9FB', 'Por categoria', 'Receba um critério A–E e diga de qual transtorno é — um capítulo por vez.')+
         modeOption('quizCritRandom', icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', QUIZ_LEN+' critérios sorteados de todas as categorias.')+
       '</div>'+
+      '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Por fatos / epidemiologia</div>'+
+      '<div class="ex-grid">'+
+        modeOption('quizFatosDecks', icoCat, '#C2410C', '#FBE7DE', 'Por categoria', 'Veja o perfil (início, prevalência, sexo) e identifique o transtorno — as opções são quadros parecidos.')+
+        modeOption('quizFatosRandom', icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', QUIZ_LEN+' perfis sorteados de todas as categorias.')+
+      '</div>'+
     '</section>';
   }
   // grade dos 20 decks (questionário)
@@ -2303,7 +2405,7 @@
     return ''+
     '<section style="max-width:1080px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       backBtn('goQuizMode','Questionário')+
-      '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário · '+(state.quizKind==='criterio'?'por critério':'pelo resumo')+'</h1>'+
+      '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário · '+(state.quizKind==='criterio'?'por critério':state.quizKind==='fatos'?'por fatos':'pelo resumo')+'</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:14.5px;max-width:600px;">Escolha um capítulo do DSM-5-TR para responder.</p>'+
       '<div class="deck-grid">'+deckGrid('openQuizDeck','questões',{variant:'quiz',tipo:'quiz'})+'</div>'+
     '</section>';
@@ -2457,7 +2559,9 @@
       '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;">'+
         '<div style="font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">'+esc(qz.prompt||'Qual transtorno corresponde a esta descrição?')+'</div>'+
         (qz.qlabel ? '<span style="display:inline-block;font:800 11px \'Bricolage Grotesque\';letter-spacing:.4px;color:'+ccolor+';background:'+ccolor+'14;border:1px solid '+ccolor+'33;border-radius:7px;padding:3px 9px;margin-bottom:12px;">'+esc(qz.qlabel)+'</span>' : '')+
-        '<div style="font:600 18px \'Bricolage Grotesque\';line-height:1.45;margin-bottom:22px;text-wrap:pretty;color:var(--body);">'+esc(qz.q)+'</div>'+
+        (qz.factsList
+          ? '<div class="quiz-facts">'+qz.factsList.map(function(r){ return '<div class="qf-row"><span class="qf-lbl">'+esc(r.label)+'</span><span class="qf-val">'+esc(r.value)+'</span></div>'; }).join('')+'</div>'
+          : '<div style="font:600 18px \'Bricolage Grotesque\';line-height:1.45;margin-bottom:22px;text-wrap:pretty;color:var(--body);">'+esc(qz.q)+'</div>')+
         '<div style="display:flex;flex-direction:column;gap:11px;">'+opts+'</div>'+
         feedback+
       '</div>'+
@@ -2921,9 +3025,12 @@
      TELA: REFERÊNCIAS (índice completo de transtornos)
      ========================================================= */
   function screenIndice(){
-    var total = CATS.reduce(function(s,c){ return s + c.items.length; }, 0);
+    var total = CATS.reduce(function(s,c){ return s + visibleItems(c).length; }, 0);
     var blocks = CATS.map(function(c, ci){
+      var visN = visibleItems(c).length;
+      if(state.reduced && visN===0) return '';
       var items = c.items.map(function(d, di){
+        if(hiddenReduced(d)) return '';
         var code = d.code || d.cid || d.dsm || '';
         return '<button data-action="openRef" data-arg="'+ci+':'+di+'" class="ref-item" data-hover="background:var(--surface-2);border-color:#5BC0BE;">'+
           '<span class="ref-dot" style="background:'+c.color+';"></span>'+
@@ -2935,7 +3042,7 @@
         '<div class="ref-cat-head">'+
           '<span class="ref-cat-num" style="background:'+c.color+'1A;color:'+c.color+';">'+(ci+1)+'</span>'+
           '<span class="ref-cat-name">'+esc(c.name)+'</span>'+
-          '<span class="ref-cat-count">'+c.items.length+'</span>'+
+          '<span class="ref-cat-count">'+visN+'</span>'+
         '</div>'+
         '<div class="ref-list">'+items+'</div>'+
       '</div>';
@@ -2944,9 +3051,9 @@
     return ''+
     '<section style="max-width:1040px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px;">Revisão</div>'+
-      revViewToggle('indice')+
+      '<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">'+revViewToggle('indice')+reducedToggle()+'</div>'+
       '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:18px 0 6px;">Índice de transtornos</h1>'+
-      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:640px;">Todos os '+total+' transtornos do DSM-5-TR, organizados pelas 20 categorias. Toque em um item para abrir a ficha.</p>'+
+      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:640px;">'+(state.reduced?('Os '+total+' transtornos principais'):('Todos os '+total+' transtornos'))+' do DSM-5-TR, organizados pelas categorias. Toque em um item para abrir a ficha.</p>'+
       '<div class="ref-cats">'+blocks+'</div>'+
     '</section>';
   }
