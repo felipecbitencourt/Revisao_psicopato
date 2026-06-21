@@ -33,6 +33,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # build/ -> 
 # entrada/saída configuráveis (p/ staging TR sem tocar no build padrão)
 CAT_DIR = os.environ.get("DSM_CAT_DIR", os.path.join(ROOT, "md", "categorias"))
 OUT = os.environ.get("DSM_OUT", os.path.join(ROOT, "content.js"))
+# resumos curados (linha autoral "tldr" + fatos-chave), gerados/revisados à parte.
+# Chaveado por "<pasta>::<arquivo-sem-.md>"; ver build/tldr_facts.json.
+TLDR_FACTS = os.environ.get("DSM_TLDR", os.path.join(ROOT, "build", "tldr_facts.json"))
 
 # (cor, nome curto exibido na grade, progresso ilustrativo) — 20 categorias.
 CAT_META = [
@@ -767,7 +770,7 @@ def shorten(summary, limit=300, hard=520):
     return (cut[:sp] if sp > 120 else cut) + "…"
 
 
-def parse_transtorno(path, display_name):
+def parse_transtorno(path, display_name, tldr_entry=None):
     with open(path, encoding="utf-8") as f:
         raw = f.read()
     lines = raw.split("\n")
@@ -861,6 +864,12 @@ def parse_transtorno(path, display_name):
         summary = first_paragraph(criteria[0]["text"])
     summary = shorten(summary)
 
+    # resumo híbrido curado (linha autoral + fatos-chave) p/ EXIBIÇÃO; o
+    # `summary` clínico fica intacto (flashcards/quiz/busca). Ausente -> fallback.
+    te = tldr_entry or {}
+    tldr = (te.get("tldr") or "").strip()
+    facts = te.get("facts") or None
+
     primary = codes[0] if codes else {"dsm": "", "cid": "", "label": ""}
     return {
         "n": title,
@@ -874,6 +883,8 @@ def parse_transtorno(path, display_name):
         "specifier": specifier,
         "sections": sections,
         "summary": summary,
+        "tldr": tldr,
+        "facts": facts,
     }
 
 
@@ -896,12 +907,34 @@ def parse_category_readme(folder):
     return items
 
 
+def load_tldr_facts():
+    """Lê build/tldr_facts.json -> (por_chave, por_nome). 'por_nome' (nome
+    normalizado) é só fallback e descarta nomes duplicados. Ausente = {}, {}."""
+    if not os.path.exists(TLDR_FACTS):
+        return {}, {}
+    with open(TLDR_FACTS, encoding="utf-8") as f:
+        data = json.load(f)
+    by_name, dup = {}, set()
+    for k, v in data.items():
+        nm = normalize(v.get("n", ""))
+        if not nm:
+            continue
+        if nm in by_name or nm in dup:
+            by_name.pop(nm, None)
+            dup.add(nm)
+        else:
+            by_name[nm] = v
+    return data, by_name
+
+
 def main():
     folders = sorted(
         d for d in os.listdir(CAT_DIR)
         if os.path.isdir(os.path.join(CAT_DIR, d)) and re.match(r"^\d{2}-", d)
     )
     assert len(folders) == 20, f"esperava 20 categorias, achei {len(folders)}"
+
+    tf_by_key, tf_by_name = load_tldr_facts()
 
     categories, flashcards = [], []
     for idx, folder in enumerate(folders):
@@ -911,7 +944,9 @@ def main():
         for disp_name, fname in parse_category_readme(fpath):
             full = os.path.join(fpath, fname)
             if os.path.exists(full):
-                items.append(parse_transtorno(full, disp_name))
+                key = folder + "::" + fname[:-3]      # tira ".md"
+                entry = tf_by_key.get(key) or tf_by_name.get(normalize(disp_name))
+                items.append(parse_transtorno(full, disp_name, entry))
 
         items = drop_fake_items(idx, items)
         apply_subgroups(idx, items)

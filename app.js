@@ -1900,6 +1900,16 @@
         '<div style="display:flex;flex-direction:column;gap:10px;">'+accordions+'</div>' : '';
 
     var summaryText = disorder.summary || 'Resumo não disponível para este quadro.';
+    // "Resumo rápido": linha autoral (tldr) em vez do parágrafo clínico que
+    // duplicava o Critério A; cai no summary quando ainda não há tldr curado.
+    var hasTldr = !!(disorder.tldr && disorder.tldr.trim());
+    var leadText = hasTldr ? disorder.tldr : summaryText;
+    var leadLabel = hasTldr ? 'Em poucas palavras' : 'Resumo rápido';
+    var ff = disorder.facts || {};
+    var factChips = [['Início', ff.inicio], ['Prevalência', ff.prevalencia], ['Sexo', ff.sexo], ['Diferencial', ff.diferencial]]
+      .filter(function(d){ return d[1] && String(d[1]).trim(); })
+      .map(function(d){ return '<span class="fact-chip"><b>'+esc(d[0])+'</b>'+esc(d[1])+'</span>'; }).join('');
+    var factsHtml = factChips ? '<div class="ficha-facts">'+factChips+'</div>' : '';
 
     // ---- chips de código primário (header — visíveis em qualquer tela) ----
     var chips = '<div class="ficha-code-chips">'+
@@ -1965,7 +1975,7 @@
           '<h1 class="ficha-title">'+esc(disorder.n)+'</h1>'+
           chips+
 
-          '<div class="ficha-summary"><span class="fs-icon">'+ICON.info+'</span><div><div class="fs-label">Resumo rápido</div><p>'+esc(summaryText)+'</p></div></div>'+
+          '<div class="ficha-summary"><span class="fs-icon">'+ICON.info+'</span><div><div class="fs-label">'+leadLabel+'</div><p>'+esc(leadText)+'</p>'+factsHtml+'</div></div>'+
 
           '<h3 class="ficha-h3"><span class="bar"></span>Critérios diagnósticos</h3>'+
           critIntro+

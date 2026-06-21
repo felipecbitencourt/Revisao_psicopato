@@ -1,0 +1,2356 @@
+{
+  "01-transtornos-do-neurodesenvolvimento::atraso-global-do-desenvolvimento": {
+    "n": "Atraso Global do Desenvolvimento",
+    "tldr": "Diagnóstico provisório para crianças menores de 5 anos que não atingem os marcos esperados em várias áreas e ainda não podem ter a gravidade avaliada de forma confiável; exige reavaliação posterior.",
+    "facts": {
+      "inicio": "primeira infância (crianças menores de 5 anos)",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": null
+    },
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "01-transtornos-do-neurodesenvolvimento::outro-transtorno-de-deficit-de-atencao-hiperatividade-especificado": {
+    "n": "Outro Transtorno de Déficit de Atenção/Hiperatividade Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de desatenção/hiperatividade que não preenchem por completo os critérios de nenhum transtorno do neurodesenvolvimento específico, com o motivo informado pelo clínico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::outro-transtorno-de-tique-especificado": {
+    "n": "Outro Transtorno de Tique Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de transtorno de tique que não preenchem todos os critérios de nenhum transtorno de tique específico, registrando-se o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::outro-transtorno-do-neurodesenvolvimento-especificado": {
+    "n": "Outro Transtorno do Neurodesenvolvimento Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de um transtorno do neurodesenvolvimento que não preenchem os critérios completos de nenhum transtorno específico, com o clínico indicando o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-da-comunicacao-nao-especificado": {
+    "n": "Transtorno da Comunicação Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de dificuldade na comunicação que não preenchem os critérios completos de nenhum transtorno específico, ou faltam informações para detalhar.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-da-comunicacao-social-pragmatica": {
+    "n": "Transtorno da Comunicação Social (Pragmática)",
+    "tldr": "Dificuldade persistente em usar a linguagem socialmente, como adaptar a fala ao interlocutor e seguir regras de conversa, sem os comportamentos restritos do autismo.",
+    "facts": {
+      "inicio": "infância (raro antes dos 4 anos; déficits identificáveis por volta dos 4–5 anos, formas leves só na adolescência)",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "transtorno do espectro autista; TDAH; transtorno de ansiedade"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-da-fala": {
+    "n": "Transtorno da Fala",
+    "tldr": "Dificuldade persistente para produzir os sons da fala, deixando-a pouco inteligível e atrapalhando a comunicação, sem causa física ou neurológica.",
+    "facts": {
+      "inicio": "precoce no desenvolvimento; fala deve ser inteligível por volta dos 3 anos e a maioria dos sons clara aos 5 anos",
+      "prevalencia": null,
+      "sexo": "predomínio masculino (≈1,5–1,8:1 meninos)",
+      "diferencial": "variações normais da fala; deficiência auditiva/sensorial; déficits estruturais (fenda palatina); disartria; mutismo seletivo"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-da-fluencia-com-inicio-na-infancia-gagueira": {
+    "n": "Transtorno da Fluência com Início na Infância (Gagueira)",
+    "tldr": "Alteração persistente da fluência da fala, com repetições, prolongamentos e bloqueios que atrapalham a comunicação e geram ansiedade ao falar.",
+    "facts": {
+      "inicio": "início precoce, entre 2 e 7 anos (até os 6 anos em 80–90% dos casos)",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "déficits sensoriais/auditivos; disfluências normais da fala; transtorno específico da aprendizagem com dificuldades na leitura; disfluência por efeito de medicamentos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-da-linguagem": {
+    "n": "Transtorno da Linguagem",
+    "tldr": "Dificuldade persistente para adquirir e usar a linguagem (vocabulário, gramática e discurso), abaixo do esperado para a idade, com início precoce no desenvolvimento.",
+    "facts": {
+      "inicio": "início precoce no desenvolvimento; torna-se estável e diagnosticável a partir dos ~4 anos e tende a persistir na vida adulta",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "variações normais da linguagem; deficiência auditiva/sensorial; transtorno do desenvolvimento intelectual; transtorno do espectro autista"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-de-deficit-de-atencao-hiperatividade": {
+    "n": "Transtorno de Déficit de Atenção/Hiperatividade",
+    "tldr": "Padrão persistente de desatenção e/ou hiperatividade-impulsividade que começa na infância e atrapalha o funcionamento em vários contextos da vida.",
+    "facts": {
+      "inicio": "infância (vários sintomas antes dos 12 anos); hiperatividade já na pré-escola, desatenção mais evidente no ensino fundamental",
+      "prevalencia": "~7,2% das crianças (varia de 0,1 a 10,2% entre países); ~2,5% dos adultos",
+      "sexo": null,
+      "diferencial": "transtorno de oposição desafiante; transtorno explosivo intermitente; transtorno do movimento estereotipado; transtorno do espectro autista"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-de-deficit-de-atencao-hiperatividade-nao-especificado": {
+    "n": "Transtorno de Déficit de Atenção/Hiperatividade Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de desatenção/hiperatividade que não preenchem os critérios completos de nenhum transtorno do neurodesenvolvimento específico, sem detalhar o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-de-tique-motor-ou-vocal-persistente-cronico": {
+    "n": "Transtorno de Tique Motor ou Vocal Persistente (Crônico)",
+    "tldr": "Tiques motores OU vocais (nunca ambos) que persistem por mais de um ano, com início na infância e sem nunca terem preenchido critérios de Tourette.",
+    "facts": {
+      "inicio": "antes dos 18 anos de idade",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": null
+    },
+    "needsReview": true,
+    "confidence": "low",
+    "_review": "inicio idade s/ ancoragem: 18"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-de-tique-nao-especificado": {
+    "n": "Transtorno de Tique Não Especificado",
+    "tldr": "Diagnóstico de exceção: tiques que causam sofrimento ou prejuízo significativo, mas não preenchem os critérios completos de nenhum transtorno de tique específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-de-tique-transitorio": {
+    "n": "Transtorno de Tique Transitório",
+    "tldr": "Tiques motores e/ou vocais que surgem na infância e duram menos de um ano, sem chegar a configurar Tourette ou tique persistente.",
+    "facts": {
+      "inicio": "infância, tipicamente entre 4 e 6 anos (início antes dos 18 anos)",
+      "prevalencia": "~3 por 1.000 casos clinicamente identificados",
+      "sexo": "predomínio masculino (proporção de 2:1 a 4:1)",
+      "diferencial": "estereotipias motoras; coreia; distonia; discinesias paroxísticas"
+    },
+    "needsReview": true,
+    "confidence": "low",
+    "_review": "inicio idade s/ ancoragem: 18"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-de-tourette": {
+    "n": "Transtorno de Tourette",
+    "tldr": "Transtorno do neurodesenvolvimento com vários tiques motores e ao menos um tique vocal, que persistem por mais de um ano e começam na infância.",
+    "facts": {
+      "inicio": "antes dos 18 anos (infância)",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": null
+    },
+    "needsReview": true,
+    "confidence": "low",
+    "_review": "inicio idade s/ ancoragem: 18"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-do-desenvolvimento-da-coordenacao": {
+    "n": "Transtorno do Desenvolvimento da Coordenação",
+    "tldr": "Dificuldade motora persistente desde a infância: a pessoa é desajeitada e lenta em tarefas que exigem coordenação, prejudicando o dia a dia.",
+    "facts": {
+      "inicio": "primeira infância (precoce no desenvolvimento), com atrasos em marcos motores",
+      "prevalencia": "~5–8% em crianças de 5 a 11 anos",
+      "sexo": "predomínio masculino (proporção de 2:1 a 7:1)",
+      "diferencial": "prejuízos motores por outra condição médica/neurológica (ex.: paralisia cerebral); transtorno do desenvolvimento intelectual; TDAH; transtorno do espectro autista"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-do-desenvolvimento-intelectual-deficiencia-intelectual": {
+    "n": "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)",
+    "tldr": "Limitações no funcionamento intelectual (raciocínio, aprendizagem) e nas habilidades adaptativas do dia a dia, com início no período do desenvolvimento.",
+    "facts": {
+      "inicio": "período do desenvolvimento (infância); formas graves já nos 2 primeiros anos, leves só na idade escolar",
+      "prevalencia": "~10 por 1.000 na população geral",
+      "sexo": null,
+      "diferencial": "transtornos neurocognitivos maiores e leves; síndromes genéticas associadas; transtornos da comunicação"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-do-desenvolvimento-intelectual-deficiencia-intelectual-nao-especificado": {
+    "n": "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual) Não Especificado",
+    "tldr": "Categoria de exceção para maiores de 5 anos com deficiência intelectual provável, mas cuja gravidade não pode ser avaliada por prejuízos sensoriais, físicos ou comportamentais associados.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-do-espectro-autista": {
+    "n": "Transtorno do Espectro Autista",
+    "tldr": "Condição do neurodesenvolvimento marcada por dificuldades persistentes na comunicação e interação social aliadas a comportamentos e interesses restritos e repetitivos.",
+    "facts": {
+      "inicio": "primeira infância; sintomas geralmente reconhecidos entre 12 e 24 meses",
+      "prevalencia": "~1% mundialmente (média global 0,62%); 1–2% nos EUA",
+      "sexo": "predomínio masculino, cerca de 3:1",
+      "diferencial": "TDAH; transtorno do desenvolvimento intelectual (deficiência intelectual)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-do-movimento-estereotipado": {
+    "n": "Transtorno do Movimento Estereotipado",
+    "tldr": "Movimentos repetitivos, rítmicos e sem propósito (balançar, abanar as mãos, bater a cabeça) que começam cedo e atrapalham o dia a dia, podendo causar autolesão.",
+    "facts": {
+      "inicio": "primeiros 3 anos de vida (~80% antes dos 24 meses nas formas complexas)",
+      "prevalencia": "estereotipias simples ~5–19%; complexas ~3–4%; com autolesão em ~10–15% de pessoas com deficiência intelectual institucionalizadas",
+      "sexo": null,
+      "diferencial": "desenvolvimento normal; transtorno do espectro autista; transtornos de tique"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-do-neurodesenvolvimento-nao-especificado": {
+    "n": "Transtorno do Neurodesenvolvimento Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos do neurodesenvolvimento que causam prejuízo, mas não preenchem os critérios completos de nenhum transtorno específico da classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "01-transtornos-do-neurodesenvolvimento::transtorno-especifico-da-aprendizagem": {
+    "n": "Transtorno Específico da Aprendizagem",
+    "tldr": "Dificuldade persistente para aprender habilidades acadêmicas básicas (leitura, escrita ou matemática), bem abaixo do esperado para a idade e apesar de ensino adequado.",
+    "facts": {
+      "inicio": "anos do ensino fundamental (precursores na primeira infância)",
+      "prevalencia": "5 a 15% entre crianças em idade escolar",
+      "sexo": null,
+      "diferencial": "variações normais no desempenho acadêmico; transtorno do desenvolvimento intelectual; dificuldades por alterações neurológicas ou sensoriais; transtornos neurocognitivos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::catatonia-associada-a-outro-transtorno-mental-especificador-de-catatonia": {
+    "n": "Catatonia Associada a Outro Transtorno Mental (Especificador de Catatonia)",
+    "tldr": "Especificador para perturbação psicomotora acentuada (catatonia) que surge durante outro transtorno mental, como psicótico, bipolar ou depressivo.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "catatonia em até 35% das pessoas com esquizofrenia; ~9% dos pacientes em amostras clínicas",
+      "sexo": null,
+      "diferencial": null
+    },
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::catatonia-nao-especificada": {
+    "n": "Catatonia Não Especificada",
+    "tldr": "Diagnóstico de exceção para sintomas catatônicos com sofrimento clínico relevante quando a causa não está clara ou não há informação suficiente para um diagnóstico específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::esquizofrenia": {
+    "n": "Esquizofrenia",
+    "tldr": "Transtorno psicótico crônico com perda de contato com a realidade (delírios, alucinações), pensamento e comportamento desorganizados e prejuízo funcional marcante.",
+    "facts": {
+      "inicio": "fim da adolescência aos meados dos 30 anos; pico no início/metade dos 20 anos (homens) e final dos 20 anos (mulheres)",
+      "prevalencia": "~0,3–0,7% ao longo da vida",
+      "sexo": "sem diferença clara; maior incidência em homens quando há predomínio de sintomas negativos e pior prognóstico",
+      "diferencial": "transtorno depressivo maior ou bipolar com características psicóticas/catatônicas; transtorno esquizoafetivo; transtorno esquizofreniforme e psicótico breve; transtorno delirante"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::outro-transtorno-do-espectro-da-esquizofrenia-e-outro-transtorno-psicotico-especificado": {
+    "n": "Outro Transtorno do Espectro da Esquizofrenia e Outro Transtorno Psicótico Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas psicóticos clinicamente significativos que não preenchem os critérios completos de nenhum transtorno psicótico específico, com o clínico indicando o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-catatonico-devido-a-outra-condicao-medica": {
+    "n": "Transtorno Catatônico Devido a Outra Condição Médica",
+    "tldr": "Quadro de catatonia (estupor, posturas anormais, rigidez) causado diretamente por uma doença física comprovada, e não por outro transtorno mental.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "delirium; síndrome neuroléptica maligna; transtornos do movimento induzidos por medicamento; catatonia em transtornos psicóticos/bipolares/depressivos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-da-personalidade-esquizotipica": {
+    "n": "Transtorno (da Personalidade) Esquizotípica",
+    "tldr": "Padrão duradouro de desconforto nas relações próximas, distorções cognitivas e perceptivas e comportamento excêntrico, situado no espectro da esquizofrenia.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "low"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-delirante": {
+    "n": "Transtorno Delirante",
+    "tldr": "Pessoa mantém um ou mais delírios persistentes por pelo menos um mês, sem os demais sintomas da esquizofrenia e com o funcionamento e o comportamento em geral preservados.",
+    "facts": {
+      "inicio": "pode ocorrer em adultos jovens, mas tende a ser mais prevalente em idosos",
+      "prevalencia": "~0,2% ao longo da vida (amostra finlandesa)",
+      "sexo": "sem grandes diferenças na frequência geral (subtipo ciumento mais comum em homens)",
+      "diferencial": "transtorno obsessivo-compulsivo e relacionados (incl. dismórfico corporal); transtorno neurocognitivo maior / delirium / psicótico por condição médica; transtorno psicótico induzido por substância; esquizofrenia e transtorno esquizofreniforme"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-do-espectro-da-esquizofrenia-e-outro-transtorno-psicotico-nao-especificado": {
+    "n": "Transtorno do Espectro da Esquizofrenia e Outro Transtorno Psicótico Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas psicóticos significativos que não preenchem os critérios completos de nenhum transtorno psicótico específico, sem o clínico especificar o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-esquizoafetivo": {
+    "n": "Transtorno Esquizoafetivo",
+    "tldr": "Combina sintomas de psicose (delírios/alucinações) com episódios de humor (depressão ou mania), mas a psicose também surge sozinha, sem o quadro de humor.",
+    "facts": {
+      "inicio": "começo da fase adulta (pode ir da adolescência a fases mais tardias)",
+      "prevalencia": "~0,3% ao longo da vida",
+      "sexo": "mais comum em mulheres do que em homens",
+      "diferencial": "esquizofrenia; transtorno depressivo maior com características psicóticas; transtorno bipolar com características psicóticas; transtorno psicótico induzido por substâncias/medicamentos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-esquizofreniforme": {
+    "n": "Transtorno Esquizofreniforme",
+    "tldr": "Quadro psicótico idêntico ao da esquizofrenia, mas com duração entre 1 e 6 meses; pode evoluir para recuperação ou tornar-se esquizofrenia.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "incidência baixa em países desenvolvidos (~5x menor que a esquizofrenia); pode ser tão comum quanto a esquizofrenia em países em desenvolvimento",
+      "sexo": null,
+      "diferencial": "esquizofrenia; transtorno psicótico breve; transtorno esquizoafetivo; transtorno psicótico induzido por substância/medicamento"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-psicotico-breve": {
+    "n": "Transtorno Psicótico Breve",
+    "tldr": "Surto psicótico de início súbito (delírios, alucinações ou desorganização) que dura de 1 dia a menos de 1 mês, com retorno total ao funcionamento normal.",
+    "facts": {
+      "inicio": "adolescência ao início da vida adulta; idade média ~35 anos",
+      "prevalencia": "2 a 7% dos casos de primeiro surto psicótico",
+      "sexo": null,
+      "diferencial": "transtorno psicótico devido a outra condição médica/delirium; transtorno psicótico induzido por substância/medicamento; transtornos depressivo e bipolar"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-psicotico-devido-a-outra-condicao-medica": {
+    "n": "Transtorno Psicótico Devido a Outra Condição Médica",
+    "tldr": "Delírios ou alucinações causados diretamente por uma doença física (ex.: epilepsia, lúpus, distúrbios endócrinos ou neurológicos), e não por outro transtorno mental.",
+    "facts": {
+      "inicio": "qualquer idade, mas mais comum em idosos (>65 anos), conforme as condições médicas subjacentes",
+      "prevalencia": "~0,21–0,54% ao longo da vida (chega a ~0,74% acima de 65 anos)",
+      "sexo": "possível predomínio feminino entre idosos, mas pouco claro",
+      "diferencial": "delirium; transtorno neurocognitivo maior ou leve; transtorno psicótico induzido por substância/medicamento"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "02-espectro-da-esquizofrenia-e-outros-transtornos-psicoticos::transtorno-psicotico-induzido-por-substancia-medicamento": {
+    "n": "Transtorno Psicótico Induzido por Substância/Medicamento",
+    "tldr": "Delírios e/ou alucinações proeminentes desencadeados pelo uso, intoxicação ou abstinência de uma droga, medicamento ou toxina capaz de produzi-los.",
+    "facts": {
+      "inicio": "varia conforme a substância (de minutos, ex.: cocaína fumada, a dias/semanas, ex.: álcool e sedativos)",
+      "prevalencia": "desconhecida na população geral; 7–25% dos primeiros episódios de psicose",
+      "sexo": null,
+      "diferencial": "intoxicação ou abstinência de substância com perturbação da percepção; transtorno persistente da percepção induzido por alucinógenos; delirium; transtorno psicótico independente (ex.: esquizofrenia, transtorno esquizoafetivo)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "03-transtorno-bipolar-e-transtornos-relacionados::outro-transtorno-bipolar-e-transtorno-relacionado-especificado": {
+    "n": "Outro Transtorno Bipolar e Transtorno Relacionado Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas bipolares significativos que não preenchem os critérios completos de nenhum transtorno bipolar específico, e o clínico indica o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "03-transtorno-bipolar-e-transtornos-relacionados::transtorno-bipolar-e-transtorno-relacionado-devido-a-outra-condicao-medica": {
+    "n": "Transtorno Bipolar e Transtorno Relacionado Devido a Outra Condição Médica",
+    "tldr": "Mania ou hipomania (humor elevado/irritável e energia aumentada) causada diretamente por uma doença física, e não por um transtorno mental primário.",
+    "facts": {
+      "inicio": "início agudo ou subagudo, geralmente na primeira semana ou no primeiro mês do surgimento da condição médica",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "delirium; transtorno neurocognitivo maior ou leve; catatonia e ansiedade aguda; sintomas maníacos induzidos por medicamentos (ex.: esteroides, interferon alfa)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "03-transtorno-bipolar-e-transtornos-relacionados::transtorno-bipolar-e-transtorno-relacionado-induzido-por-substancia-medicamento": {
+    "n": "Transtorno Bipolar e Transtorno Relacionado Induzido por Substância/Medicamento",
+    "tldr": "Quadro de humor elevado, expansivo ou irritável com energia aumentada que surge como efeito direto de uma substância, medicamento ou toxina.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "dados limitados; depende da disponibilidade e do uso da substância na sociedade",
+      "sexo": null,
+      "diferencial": "outros transtornos bipolares; delirium por intoxicação por substância; efeitos colaterais de medicamentos; intoxicação e abstinência de substância"
+    },
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "03-transtorno-bipolar-e-transtornos-relacionados::transtorno-bipolar-e-transtorno-relacionado-nao-especificado": {
+    "n": "Transtorno Bipolar e Transtorno Relacionado Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas bipolares com sofrimento ou prejuízo significativos que não preenchem os critérios completos de nenhum transtorno bipolar específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "03-transtorno-bipolar-e-transtornos-relacionados::transtorno-bipolar-tipo-i": {
+    "n": "Transtorno Bipolar Tipo I",
+    "tldr": "Transtorno do humor marcado por ao menos um episódio de mania (euforia ou irritabilidade intensa com energia elevada), geralmente alternando com fases depressivas.",
+    "facts": {
+      "inicio": "vida adulta jovem (média ~20–30 anos; idade média de ~22 anos)",
+      "prevalencia": "~1,5% em 12 meses (adultos dos EUA)",
+      "sexo": "sem predomínio claro (razão homens:mulheres ~1,1:1)",
+      "diferencial": "transtorno depressivo maior; transtorno bipolar tipo II; transtorno ciclotímico; transtornos de ansiedade"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "03-transtorno-bipolar-e-transtornos-relacionados::transtorno-bipolar-tipo-ii": {
+    "n": "Transtorno Bipolar Tipo II",
+    "tldr": "Oscilação de humor com episódios de depressão maior alternando com fases de hipomania (euforia/irritabilidade mais leve), sem nunca ter havido mania plena.",
+    "facts": {
+      "inicio": "fim da adolescência / vida adulta; idade média de início ~25 anos",
+      "prevalencia": "~0,8% em 12 meses (EUA); ~0,3% internacional",
+      "sexo": null,
+      "diferencial": "transtorno depressivo maior; transtorno ciclotímico; esquizofrenia"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "03-transtorno-bipolar-e-transtornos-relacionados::transtorno-ciclotimico": {
+    "n": "Transtorno Ciclotímico",
+    "tldr": "Oscilações crônicas e leves do humor por pelo menos 2 anos, com fases hipomaníacas e depressivas que nunca chegam a configurar episódios completos.",
+    "facts": {
+      "inicio": "adolescência ou início da vida adulta (muitos antes dos 10 anos)",
+      "prevalencia": "~0,4 a 2,5% ao longo da vida",
+      "sexo": "igualmente comum em ambos os sexos na população geral",
+      "diferencial": "transtorno bipolar/relacionado devido a outra condição médica; transtorno bipolar/depressivo induzido por substância; transtorno bipolar tipo I e II com ciclagem rápida"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "04-transtornos-depressivos::outro-transtorno-depressivo-especificado": {
+    "n": "Outro Transtorno Depressivo Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas depressivos clinicamente significativos que não preenchem os critérios completos de nenhum transtorno depressivo específico, e o clínico registra o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "04-transtornos-depressivos::transtorno-depressivo-devido-a-outra-condicao-medica": {
+    "n": "Transtorno Depressivo Devido a Outra Condição Médica",
+    "tldr": "Humor deprimido ou perda de interesse persistentes causados diretamente, por um mecanismo fisiológico, por uma doença física (ex.: AVC, Parkinson, hipotireoidismo).",
+    "facts": {
+      "inicio": "variável conforme a doença de base; após AVC costuma ser agudo (poucos dias), às vezes semanas a meses depois",
+      "prevalencia": null,
+      "sexo": "depende da condição médica de base (ex.: lúpus mais comum em mulheres; AVC um pouco mais em homens de meia-idade)",
+      "diferencial": "transtornos depressivos não devidos a condição médica; transtorno depressivo induzido por medicamento; delirium; transtorno neurocognitivo maior ou leve"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "04-transtornos-depressivos::transtorno-depressivo-induzido-por-substancia-medicamento": {
+    "n": "Transtorno Depressivo Induzido por Substância/Medicamento",
+    "tldr": "Humor depressivo ou perda de interesse causados diretamente pelo uso, intoxicação ou abstinência de uma substância ou medicamento capaz de provocar esses sintomas.",
+    "facts": {
+      "inicio": "durante o uso ou abstinência da substância; em geral nas primeiras semanas ou após um mês de uso pesado",
+      "prevalencia": "~0,26% ao longo da vida (na ausência de depressão independente)",
+      "sexo": null,
+      "diferencial": "intoxicação por substância; abstinência de substância; transtorno depressivo independente; transtorno depressivo devido a outra condição médica"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "04-transtornos-depressivos::transtorno-depressivo-maior": {
+    "n": "Transtorno Depressivo Maior",
+    "tldr": "Períodos de pelo menos duas semanas de humor deprimido ou perda de prazer, com vários outros sintomas, sem história de mania ou hipomania.",
+    "facts": {
+      "inicio": "qualquer idade, mas a probabilidade aumenta com a puberdade; pico de incidência na década dos 20 anos",
+      "prevalencia": "~7% em 12 meses (EUA)",
+      "sexo": "≈2:1 mulheres",
+      "diferencial": "episódios maníacos com humor irritável/características mistas; transtorno bipolar tipo I; transtorno bipolar tipo II; transtorno depressivo persistente"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "04-transtornos-depressivos::transtorno-depressivo-nao-especificado": {
+    "n": "Transtorno Depressivo Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas depressivos clinicamente significativos que não preenchem os critérios completos de nenhum transtorno depressivo específico, usado quando o clínico opta por não detalhar o motivo ou faltam informações.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "04-transtornos-depressivos::transtorno-depressivo-persistente": {
+    "n": "Transtorno Depressivo Persistente",
+    "tldr": "Humor deprimido crônico que dura pelo menos dois anos (um ano em crianças/adolescentes), mais brando que a depressão maior, mas constante e duradouro.",
+    "facts": {
+      "inicio": "início precoce e insidioso (infância, adolescência ou início da vida adulta; antes dos 21 anos)",
+      "prevalencia": "~0,5% (distimia) e ~1,5% (depressão maior crônica) em 12 meses",
+      "sexo": "≈1,5–2:1 mulheres",
+      "diferencial": "transtorno depressivo maior"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "04-transtornos-depressivos::transtorno-disforico-pre-menstrual": {
+    "n": "Transtorno Disfórico Pré-menstrual",
+    "tldr": "Alterações intensas de humor, irritabilidade e ansiedade que surgem na semana antes da menstruação e somem logo após o início dela.",
+    "facts": {
+      "inicio": "qualquer momento após a menarca; sintomas cessam após a menopausa",
+      "prevalencia": "~1,3% (avaliação prospectiva, EUA); até 5,8% em 12 meses (estimativa alemã)",
+      "sexo": null,
+      "diferencial": "síndrome pré-menstrual; dismenorreia; transtorno bipolar; transtorno depressivo maior; transtorno depressivo persistente"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "04-transtornos-depressivos::transtorno-disruptivo-da-desregulacao-do-humor": {
+    "n": "Transtorno Disruptivo da Desregulação do Humor",
+    "tldr": "Irritabilidade crônica grave na infância, com explosões de raiva frequentes e desproporcionais e humor zangado persistente entre elas.",
+    "facts": {
+      "inicio": "infância; início antes dos 10 anos (diagnóstico válido dos 6 aos 18 anos)",
+      "prevalencia": "incerta na comunidade; ~2,5% em coorte de crianças de 11 anos (até ~8,2% aos 6 anos)",
+      "sexo": "sem diferença consistente em amostras populacionais; predomínio masculino em amostras clínicas",
+      "diferencial": "transtorno bipolar; transtorno de oposição desafiante"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::agorafobia": {
+    "n": "Agorafobia",
+    "tldr": "Medo intenso de situações de onde seria difícil escapar ou conseguir ajuda (transportes, multidões, filas, sair sozinho), levando a esquiva persistente.",
+    "facts": {
+      "inicio": "pico no fim da adolescência e início da vida adulta (idade média ~21 anos; início na infância é raro)",
+      "prevalencia": "~1 a 1,7% ao ano em adolescentes e adultos",
+      "sexo": "≈2:1 mulheres",
+      "diferencial": "fobia específica situacional; transtorno de ansiedade de separação; transtorno de ansiedade social"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::fobia-especifica": {
+    "n": "Fobia Específica",
+    "tldr": "Medo intenso e persistente de um objeto ou situação específica (ex.: animais, alturas, sangue, voar), levando a evitação e sofrimento desproporcionais ao perigo real.",
+    "facts": {
+      "inicio": "infância, geralmente antes dos 10 anos (média ~7 a 11 anos)",
+      "prevalencia": "~8 a 12% em 12 meses (EUA); ~6% na Europa",
+      "sexo": "mulheres mais afetadas, razão ~2:1",
+      "diferencial": "agorafobia; transtorno de ansiedade social"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::mutismo-seletivo": {
+    "n": "Mutismo Seletivo",
+    "tldr": "Criança que fala normalmente em casa mas, por intensa ansiedade, não consegue falar em situações sociais específicas como a escola.",
+    "facts": {
+      "inicio": "habitualmente antes dos 5 anos (notado na entrada na escola)",
+      "prevalencia": "raro; ~0,03–1,9% (estimativas pontuais)",
+      "sexo": "distribuição igual; possível leve predomínio em meninas",
+      "diferencial": "transtornos da comunicação (ex.: gagueira); transtorno do espectro autista e transtornos psicóticos; transtorno de ansiedade social; período de silêncio em crianças imigrantes"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::outro-transtorno-de-ansiedade-especificado": {
+    "n": "Outro Transtorno de Ansiedade Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de ansiedade que não preenchem todos os critérios de nenhum transtorno de ansiedade específico, com o clínico registrando o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::transtorno-de-ansiedade-de-separacao": {
+    "n": "Transtorno de Ansiedade de Separação",
+    "tldr": "Medo ou ansiedade intensos e desproporcionais ao se afastar de casa ou das pessoas de apego, com preocupação de que algo ruim aconteça a elas ou impeça o reencontro.",
+    "facts": {
+      "inicio": "geralmente na infância (pré-escolar em diante); raramente na adolescência; em adultos, fim da adolescência até 20-30 anos",
+      "prevalencia": "~4% em crianças; ~1,6% em adolescentes; ~0,9-1,9% em adultos (média de 1,0% em estudos de 18 países)",
+      "sexo": "predomínio feminino (mais frequente em meninas e mulheres)",
+      "diferencial": "transtorno de ansiedade generalizada; transtorno de pânico; agorafobia; transtorno de ansiedade social"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::transtorno-de-ansiedade-devido-a-outra-condicao-medica": {
+    "n": "Transtorno de Ansiedade Devido a Outra Condição Médica",
+    "tldr": "Ansiedade ou ataques de pânico significativos causados diretamente, no plano fisiológico, por uma doença física (não apenas pela preocupação com ela).",
+    "facts": {
+      "inicio": "acompanha o curso da doença médica subjacente",
+      "prevalencia": "incerta; maior entre pessoas com asma, hipertensão, úlcera e artrite",
+      "sexo": null,
+      "diferencial": "delirium; transtorno neurocognitivo maior ou leve; transtorno de adaptação com ansiedade; transtorno de ansiedade induzido por substância/medicamento"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::transtorno-de-ansiedade-generalizada": {
+    "n": "Transtorno de Ansiedade Generalizada",
+    "tldr": "Preocupação e ansiedade excessivas e difíceis de controlar, sobre vários assuntos do dia a dia, persistentes por meses e desproporcionais à realidade.",
+    "facts": {
+      "inicio": "idade média de início ~35 anos (raro antes da adolescência); curso crônico com oscilações",
+      "prevalencia": "~2,9% ao ano em adultos (EUA); ~1,3% no mundo; ~9% ao longo da vida",
+      "sexo": "≈2:1 mulheres",
+      "diferencial": "transtorno de ansiedade devido a condição médica; transtorno de ansiedade induzido por substância/medicamento; ansiedade social; ansiedade de separação; transtorno de pânico"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::transtorno-de-ansiedade-induzido-por-substancia-medicamento": {
+    "n": "Transtorno de Ansiedade Induzido por Substância/Medicamento",
+    "tldr": "Ansiedade ou ataques de pânico intensos que surgem como efeito direto do uso, intoxicação ou abstinência de uma substância ou medicamento capaz de causá-los.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "~0,002% em 12 meses (população geral dos EUA); provavelmente raro, mas maior em populações clínicas",
+      "sexo": null,
+      "diferencial": "intoxicação por substância; abstinência de substância; transtorno de ansiedade independente (não induzido)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::transtorno-de-ansiedade-nao-especificado": {
+    "n": "Transtorno de Ansiedade Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas de ansiedade que causam sofrimento ou prejuízo, mas não preenchem os critérios completos de nenhum transtorno de ansiedade específico, sem detalhar o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::transtorno-de-ansiedade-social": {
+    "n": "Transtorno de Ansiedade Social",
+    "tldr": "Medo intenso e persistente de situações sociais por receio de ser avaliado ou julgado negativamente pelos outros, levando à esquiva e a prejuízo na vida.",
+    "facts": {
+      "inicio": "infância/adolescência (idade média ~13 anos; 75% entre 8 e 15 anos)",
+      "prevalencia": "~7% em 12 meses nos EUA; ~0,5–2,3% em outras regiões",
+      "sexo": "predomínio em mulheres na população geral (OR 1,5–2,2)",
+      "diferencial": "timidez normal; agorafobia; transtorno de pânico"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "05-transtornos-de-ansiedade::transtorno-de-panico": {
+    "n": "Transtorno de Pânico",
+    "tldr": "Ataques de pânico inesperados que se repetem, seguidos de medo constante de ter novas crises ou mudanças no comportamento para evitá-las.",
+    "facts": {
+      "inicio": "idade adulta jovem (~20–24 anos nos EUA); pico na vida adulta",
+      "prevalencia": "~2–3% em 12 meses (EUA/Europa); ~1,7% ao longo da vida",
+      "sexo": "≈2:1 mulheres",
+      "diferencial": "transtorno de ansiedade devido a outra condição médica; transtorno de ansiedade induzido por substância/medicamento; ataques de pânico apenas com sintomas limitados"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::outro-transtorno-obsessivo-compulsivo-e-transtorno-relacionado-especificado": {
+    "n": "Outro Transtorno Obsessivo-compulsivo e Transtorno Relacionado Especificado",
+    "tldr": "Categoria de exceção: sintomas obsessivo-compulsivos significativos que não preenchem os critérios completos de nenhum transtorno específico, com o motivo registrado (ex.: ciúme obsessivo, koro).",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::transtorno-de-acumulacao": {
+    "n": "Transtorno de Acumulação",
+    "tldr": "Dificuldade persistente de se desfazer de objetos, que se acumulam e congestionam os espaços de moradia, causando sofrimento e prejuízo.",
+    "facts": {
+      "inicio": "sintomas surgem por volta dos 15–19 anos; prejuízo significativo aos 30–40 anos",
+      "prevalencia": "~2,5% (estimativas comunitárias de ~1,5–6%)",
+      "sexo": "sem diferença entre gêneros em amostras comunitárias; predomínio feminino em amostras clínicas",
+      "diferencial": "outra condição médica (p. ex., lesão cerebral, Prader-Willi); transtornos do neurodesenvolvimento (autismo, deficiência intelectual); transtornos psicóticos; episódio depressivo maior"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::transtorno-de-escoriacao-skin-picking": {
+    "n": "Transtorno de Escoriação (Skin-picking)",
+    "tldr": "Ato recorrente de cutucar/beliscar a própria pele que causa lesões, com tentativas frustradas de parar e sofrimento ou prejuízo importante.",
+    "facts": {
+      "inicio": "mais frequentemente na adolescência, coincidindo ou logo após o início da puberdade",
+      "prevalencia": "~2,1% atual; ~3,1% ao longo da vida (adultos, EUA)",
+      "sexo": "predomínio feminino (mais de 3/4 são mulheres)",
+      "diferencial": "transtorno psicótico (delírio de parasitose/alucinação tátil); TOC; transtorno dismórfico corporal; transtorno do movimento estereotipado / tiques (Tourette); dermatite artefacta"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::transtorno-dismorfico-corporal": {
+    "n": "Transtorno Dismórfico Corporal",
+    "tldr": "Preocupação intensa e angustiante com falhas na aparência que ninguém mais nota, levando a checagens e rituais repetitivos.",
+    "facts": {
+      "inicio": "adolescência, em média 16–17 anos (mais comum 12–13); 2/3 começam antes dos 18",
+      "prevalencia": "~2,4% (ponto), nos EUA",
+      "sexo": "distribuição semelhante entre os sexos; taxas um pouco maiores em meninas/jovens mulheres",
+      "diferencial": "preocupações normais com a aparência; transtornos alimentares; TOC"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::transtorno-obsessivo-compulsivo": {
+    "n": "Transtorno Obsessivo-compulsivo",
+    "tldr": "Pensamentos intrusivos e indesejados (obsessões) que geram ansiedade e levam a rituais repetitivos (compulsões) para aliviar o sofrimento, tomando muito tempo da pessoa.",
+    "facts": {
+      "inicio": "idade média de ~19,5 anos; 25% dos casos começam por volta dos 14 anos; início após os 35 é incomum",
+      "prevalencia": "~1,2% em 12 meses nos EUA (1,1–1,8% internacionalmente)",
+      "sexo": "leve predomínio feminino na vida adulta; predomínio masculino na infância",
+      "diferencial": "transtorno de ansiedade generalizada; fobia específica; transtorno de ansiedade social; transtorno depressivo maior; transtorno dismórfico corporal"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::transtorno-obsessivo-compulsivo-e-transtorno-relacionado-devido-a-outra-condicao-medica": {
+    "n": "Transtorno Obsessivo-compulsivo e Transtorno Relacionado Devido a Outra Condição Médica",
+    "tldr": "Sintomas obsessivo-compulsivos (obsessões, compulsões, comportamentos repetitivos) causados diretamente por uma condição médica geral.",
+    "facts": {
+      "inicio": "acompanha o curso da doença médica subjacente",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "delirium; transtorno neurocognitivo maior (demência); TOC e relacionado induzido por substância/medicamento"
+    },
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::transtorno-obsessivo-compulsivo-e-transtorno-relacionado-induzido-por-substancia-medicamento": {
+    "n": "Transtorno Obsessivo-compulsivo e Transtorno Relacionado Induzido por Substância/Medicamento",
+    "tldr": "Obsessões, compulsões ou comportamentos repetitivos que surgem como efeito direto de uma substância, medicamento ou abstinência, e não de um quadro obsessivo-compulsivo próprio.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "muito rara na população geral",
+      "sexo": null,
+      "diferencial": "intoxicação ou abstinência de substância; transtorno obsessivo-compulsivo e transtorno relacionado primário (não induzido)"
+    },
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::transtorno-obsessivo-compulsivo-e-transtorno-relacionado-nao-especificado": {
+    "n": "Transtorno Obsessivo-compulsivo e Transtorno Relacionado Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas obsessivo-compulsivos significativos que não preenchem os critérios completos de nenhum transtorno específico da classe, sem especificar o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "06-transtorno-obsessivo-compulsivo-e-transtornos-relacionados::tricotilomania-transtorno-de-arrancar-o-cabelo": {
+    "n": "Tricotilomania (Transtorno de Arrancar o Cabelo)",
+    "tldr": "Arrancar repetidamente os próprios pelos a ponto de causar falhas, sem conseguir parar, gerando sofrimento ou prejuízo.",
+    "facts": {
+      "inicio": "geralmente na puberdade ou logo após",
+      "prevalencia": "~1–2% em 12 meses (adultos e adolescentes)",
+      "sexo": "predomínio feminino em amostras clínicas (~10:1); proporção mais próxima de 2:1 em amostras comunitárias",
+      "diferencial": "transtorno obsessivo-compulsivo; transtorno dismórfico corporal; transtorno do movimento estereotipado; remoção estética/normal do cabelo"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "07-transtornos-relacionados-a-trauma-e-a-estressores::outro-transtorno-relacionado-a-trauma-e-a-estressores-especificado": {
+    "n": "Outro Transtorno Relacionado a Trauma e a Estressores Especificado",
+    "tldr": "Categoria de exceção: sintomas significativos ligados a trauma ou estresse que não preenchem os critérios completos de nenhum transtorno específico da classe, com o clínico indicando o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "07-transtornos-relacionados-a-trauma-e-a-estressores::transtorno-de-apego-reativo": {
+    "n": "Transtorno de Apego Reativo",
+    "tldr": "Criança que, por cuidado gravemente insuficiente, não busca nem aceita conforto dos cuidadores e mostra pouca emoção positiva e perturbação emocional.",
+    "facts": {
+      "inicio": "primeira infância; sinais evidentes entre 9 meses e 5 anos (antes dos 5 anos)",
+      "prevalencia": "desconhecida; rara, em menos de 10% das crianças negligenciadas",
+      "sexo": null,
+      "diferencial": "transtorno do espectro autista"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "07-transtornos-relacionados-a-trauma-e-a-estressores::transtorno-de-estresse-agudo": {
+    "n": "Transtorno de Estresse Agudo",
+    "tldr": "Reação intensa logo após um trauma grave, com revivência, evitação, dissociação e tensão, durando de 3 dias a 1 mês.",
+    "facts": {
+      "inicio": "primeiro mês após o trauma (3 dias a 1 mês)",
+      "prevalencia": "<20% após traumas não interpessoais; 19–50% após traumas interpessoais (agressão, estupro)",
+      "sexo": null,
+      "diferencial": "transtorno de adaptação; transtorno de pânico; TEPT; transtorno psicótico breve"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "07-transtornos-relacionados-a-trauma-e-a-estressores::transtorno-de-estresse-pos-traumatico": {
+    "n": "Transtorno de Estresse Pós-traumático",
+    "tldr": "Quadro que surge após viver ou presenciar um trauma grave, com revivescências, evitação, alterações de humor e hiperexcitação persistentes.",
+    "facts": {
+      "inicio": "qualquer idade (a partir do 1º ano de vida); sintomas geralmente nos primeiros 3 meses pós-trauma",
+      "prevalencia": "~6,1–8,3% ao longo da vida (EUA, DSM-5); ~3,9% média global",
+      "sexo": null,
+      "diferencial": "transtornos de adaptação; transtorno de estresse agudo; amnésia dissociativa; transtorno de pânico"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "07-transtornos-relacionados-a-trauma-e-a-estressores::transtorno-de-interacao-social-desinibida": {
+    "n": "Transtorno de Interação Social Desinibida",
+    "tldr": "Criança que, após cuidado gravemente negligente, se aproxima e interage de forma excessivamente familiar com adultos estranhos, sem a cautela social esperada.",
+    "facts": {
+      "inicio": "primeiros meses/segundo ano de vida; idade mínima de desenvolvimento de 9 meses, persistindo até a adolescência",
+      "prevalencia": "desconhecida; rara, até ~2% em populações de baixa renda no Reino Unido",
+      "sexo": null,
+      "diferencial": "transtorno de déficit de atenção/hiperatividade (TDAH)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "07-transtornos-relacionados-a-trauma-e-a-estressores::transtorno-relacionado-a-trauma-e-a-estressores-nao-especificado": {
+    "n": "Transtorno Relacionado a Trauma e a Estressores Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos ligados a trauma ou estresse que não preenchem todos os critérios de nenhum transtorno específico dessa classe, usado quando o clínico não especifica o motivo ou faltam informações.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "07-transtornos-relacionados-a-trauma-e-a-estressores::transtornos-de-adaptacao": {
+    "n": "Transtornos de Adaptação",
+    "tldr": "Reação emocional ou comportamental desproporcional a um estressor identificável (perda, mudança, dificuldade), que surge logo após o evento e tende a ceder quando ele passa.",
+    "facts": {
+      "inicio": "dentro de 3 meses do início do estressor; quadro agudo costuma surgir em poucos dias e raramente dura mais de 6 meses após cessar o estressor",
+      "prevalencia": "~5 a 20% dos pacientes ambulatoriais de saúde mental; até >50% em interconsulta hospitalar",
+      "sexo": "possivelmente mais comum em mulheres",
+      "diferencial": "transtorno depressivo maior; transtorno de estresse pós-traumático; transtorno de estresse agudo; luto/transtorno do luto prolongado"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "08-transtornos-dissociativos::amnesia-dissociativa": {
+    "n": "Amnésia Dissociativa",
+    "tldr": "Incapacidade de lembrar informações pessoais importantes, em geral ligadas a trauma ou estresse, sem causa neurológica e bem além do esquecimento normal.",
+    "facts": {
+      "inicio": "qualquer idade (crianças a idosos); início costuma ser súbito",
+      "prevalencia": "~1,8% em 12 meses (adultos, estudo comunitário nos EUA)",
+      "sexo": null,
+      "diferencial": "transtorno dissociativo de identidade; transtorno de estresse pós-traumático; transtornos neurocognitivos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "08-transtornos-dissociativos::outro-transtorno-dissociativo-especificado": {
+    "n": "Outro Transtorno Dissociativo Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas dissociativos significativos (como transe ou alterações da identidade) que não preenchem os critérios completos de nenhum transtorno dissociativo específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "08-transtornos-dissociativos::transtorno-de-despersonalizacao-desrealizacao": {
+    "n": "Transtorno de Despersonalização/Desrealização",
+    "tldr": "Sensação persistente e angustiante de estar distanciado de si mesmo ou do mundo, como num sonho, mantendo a noção de que isso não é real.",
+    "facts": {
+      "inicio": "média de 16 anos; raro após os 25 e bastante incomum a partir dos 40",
+      "prevalencia": "~1–2% (prevalência de um mês, Reino Unido)",
+      "sexo": null,
+      "diferencial": "transtorno de ansiedade de doença; transtorno depressivo maior; transtorno obsessivo-compulsivo; outros transtornos dissociativos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "08-transtornos-dissociativos::transtorno-dissociativo-de-identidade": {
+    "n": "Transtorno Dissociativo de Identidade",
+    "tldr": "Presença de dois ou mais estados de personalidade distintos que se alternam, com falhas de memória que vão além do esquecimento comum.",
+    "facts": {
+      "inicio": "qualquer idade, da primeira infância à idade adulta avançada",
+      "prevalencia": "~1,5% em 12 meses (adultos, EUA); 1,1% ao longo da vida (mulheres, Turquia)",
+      "sexo": null,
+      "diferencial": "amnésia dissociativa; transtorno de despersonalização/desrealização; transtorno depressivo maior"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "08-transtornos-dissociativos::transtorno-dissociativo-nao-especificado": {
+    "n": "Transtorno Dissociativo Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas dissociativos significativos que não preenchem os critérios completos de nenhum transtorno dissociativo específico, sem detalhar o motivo (ex.: emergências, informação insuficiente).",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "09-transtorno-de-sintomas-somaticos-e-transtornos-relacionados::fatores-psicologicos-que-afetam-outras-condicoes-medicas": {
+    "n": "Fatores Psicológicos que Afetam Outras Condições Médicas",
+    "tldr": "Fatores emocionais ou comportamentais (estresse, ansiedade, má adesão) pioram o curso ou o tratamento de uma doença física real, aumentando o risco à saúde.",
+    "facts": {
+      "inicio": "pode ocorrer ao longo de toda a vida",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "transtorno mental devido a outra condição médica; transtornos de adaptação; transtorno por uso de substância"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "09-transtorno-de-sintomas-somaticos-e-transtornos-relacionados::outro-transtorno-de-sintomas-somaticos-e-transtorno-relacionado-especificado": {
+    "n": "Outro Transtorno de Sintomas Somáticos e Transtorno Relacionado Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas relevantes de transtorno de sintomas somáticos (ou relacionado) que causam sofrimento, mas não preenchem todos os critérios de nenhum transtorno específico da classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "09-transtorno-de-sintomas-somaticos-e-transtornos-relacionados::transtorno-de-ansiedade-de-doenca": {
+    "n": "Transtorno de Ansiedade de Doença",
+    "tldr": "Medo persistente de ter ou contrair uma doença grave, com pouco ou nenhum sintoma físico real, levando a checagens repetidas ou evitação de médicos.",
+    "facts": {
+      "inicio": "início e meio da vida adulta (raro em crianças)",
+      "prevalencia": "~1,3–10% na população; ~3% em ambulatórios médicos",
+      "sexo": "semelhante em homens e mulheres",
+      "diferencial": "transtorno de sintomas somáticos; transtornos de adaptação; outras condições médicas subjacentes"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "09-transtorno-de-sintomas-somaticos-e-transtornos-relacionados::transtorno-de-sintomas-neurologicos-funcionais-transtorno-conversivo": {
+    "n": "Transtorno de Sintomas Neurológicos Funcionais (Transtorno Conversivo)",
+    "tldr": "Sintomas neurológicos reais (motores ou sensoriais) que, ao exame, mostram-se incompatíveis com qualquer doença neurológica conhecida.",
+    "facts": {
+      "inicio": "qualquer idade; ataques não epiléticos com pico entre 20-29 anos e sintomas motores entre 30-39 anos",
+      "prevalencia": "prevalência exata desconhecida; incidência de ~4-12/100.000 ao ano; 5-15% em clínicas de neurologia",
+      "sexo": null,
+      "diferencial": "doença neurológica reconhecida; transtorno de sintomas somáticos; transtorno factício e simulação; transtornos dissociativos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "09-transtorno-de-sintomas-somaticos-e-transtornos-relacionados::transtorno-de-sintomas-somaticos": {
+    "n": "Transtorno de Sintomas Somáticos",
+    "tldr": "Sintomas físicos que geram muito sofrimento somados a preocupações, pensamentos e comportamentos excessivos e persistentes em torno da saúde, independentemente de haver causa médica.",
+    "facts": {
+      "inicio": "pode começar na infância (queixas comuns dos 5-7 anos), mas curso costuma ser crônico e flutuante",
+      "prevalencia": "~4 a 6% em adultos da população geral (estimativas variam de 6,7% a 17,4%; 10-20% na atenção primária)",
+      "sexo": "provável predomínio feminino (mulheres relatam mais sintomas somáticos)",
+      "diferencial": "transtorno de pânico; outras condições médicas (ex.: síndrome do intestino irritável, fibromialgia); fatores psicológicos que afetam outras condições médicas"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "09-transtorno-de-sintomas-somaticos-e-transtornos-relacionados::transtorno-de-sintomas-somaticos-e-transtorno-relacionado-nao-especificado": {
+    "n": "Transtorno de Sintomas Somáticos e Transtorno Relacionado Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas somáticos clinicamente significativos que não preenchem os critérios completos de nenhum transtorno específico dessa classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "09-transtorno-de-sintomas-somaticos-e-transtornos-relacionados::transtorno-facticio-autoimposto": {
+    "n": "Transtorno Factício Autoimposto",
+    "tldr": "A pessoa finge, fabrica ou provoca em si mesma sinais de doença ou lesão para se passar por doente, sem ganho externo óbvio que justifique o engano.",
+    "facts": {
+      "inicio": "início da idade adulta, em geral após uma hospitalização",
+      "prevalencia": "desconhecida; ~1% entre internados encaminhados a psiquiatria",
+      "sexo": "predomínio feminino (~2/3 mulheres)",
+      "diferencial": "simulação; transtorno de sintomas somáticos; transtorno de ansiedade de doença; transtorno de sintomas neurológicos funcionais (conversivo)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "10-transtornos-alimentares::anorexia-nervosa": {
+    "n": "Anorexia Nervosa",
+    "tldr": "Restrição alimentar que leva a peso muito baixo, com medo intenso de engordar e distorção da imagem corporal.",
+    "facts": {
+      "inicio": "adolescência ou início da vida adulta (raro antes da puberdade ou após os 40 anos)",
+      "prevalencia": "~0,60–0,80% ao longo da vida",
+      "sexo": "muito mais frequente em mulheres do que em homens",
+      "diferencial": "condições médicas (ex.: doença gastrintestinal, hipertireoidismo); transtorno depressivo maior; esquizofrenia; transtornos por uso de substâncias"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "10-transtornos-alimentares::bulimia-nervosa": {
+    "n": "Bulimia Nervosa",
+    "tldr": "Episódios recorrentes de compulsão alimentar seguidos de medidas para não engordar (como vômitos ou jejum), com autoavaliação muito ligada ao peso e à forma do corpo.",
+    "facts": {
+      "inicio": "adolescência ou início da vida adulta (raro antes da puberdade ou após os 40 anos)",
+      "prevalencia": "~0,14–0,3% em 12 meses; ~0,28–1,0% ao longo da vida",
+      "sexo": "muito mais frequente em mulheres do que em homens",
+      "diferencial": "anorexia nervosa tipo compulsão alimentar purgativa; transtorno de compulsão alimentar; síndrome de Kleine-Levin; transtorno depressivo maior com aspectos atípicos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "10-transtornos-alimentares::outro-transtorno-alimentar-especificado": {
+    "n": "Outro Transtorno Alimentar Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas alimentares clinicamente significativos que não preenchem por completo os critérios de nenhum transtorno alimentar específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "10-transtornos-alimentares::pica": {
+    "n": "Pica",
+    "tldr": "Ingestão persistente de substâncias sem valor nutritivo (terra, papel, giz, cabelo) por pelo menos um mês, inadequada à idade e fora de práticas culturais.",
+    "facts": {
+      "inicio": "infância, adolescência ou idade adulta (idade mínima de 2 anos), mais comum na infância",
+      "prevalencia": "~5% em crianças em idade escolar; cerca de 1/3 das gestantes",
+      "sexo": null,
+      "diferencial": "anorexia nervosa; transtorno factício; autolesão/transtornos da personalidade; síndrome de Kleine-Levin"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "10-transtornos-alimentares::transtorno-alimentar-nao-especificado": {
+    "n": "Transtorno Alimentar Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de transtorno alimentar que não preenchem os critérios completos de nenhum transtorno específico, sem detalhar o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "10-transtornos-alimentares::transtorno-alimentar-restritivo-evitativo": {
+    "n": "Transtorno Alimentar Restritivo/Evitativo",
+    "tldr": "Pessoa come pouco ou evita alimentos (por falta de interesse, rejeição sensorial ou medo após experiência ruim), prejudicando peso e nutrição, sem distorção da imagem corporal.",
+    "facts": {
+      "inicio": "geralmente na fase de lactente ou na primeira infância, podendo persistir na vida adulta",
+      "prevalencia": "~0,3% (indivíduos com 15 anos ou mais, estudo na Austrália)",
+      "sexo": null,
+      "diferencial": "condições médicas (doença gastrintestinal, alergias/intolerâncias alimentares, malignidades ocultas); transtorno obsessivo-compulsivo; anorexia nervosa/bulimia nervosa"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "10-transtornos-alimentares::transtorno-de-compulsao-alimentar": {
+    "n": "Transtorno de Compulsão Alimentar",
+    "tldr": "Episódios recorrentes de comer grandes quantidades com sensação de perda de controle e sofrimento, mas sem comportamentos compensatórios.",
+    "facts": {
+      "inicio": "adolescência ou idade adulta jovem, podendo iniciar mais tarde na vida adulta",
+      "prevalencia": "~0,44–1,2% em 12 meses; ~0,85–2,8% ao longo da vida",
+      "sexo": "2 a 3 vezes mais comum em mulheres",
+      "diferencial": "bulimia nervosa; obesidade"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "10-transtornos-alimentares::transtorno-de-ruminacao": {
+    "n": "Transtorno de Ruminação",
+    "tldr": "A pessoa traz de volta à boca alimento já engolido, de forma repetida e sem náusea, podendo remastigá-lo, deglutir de novo ou cuspir.",
+    "facts": {
+      "inicio": "geralmente entre 3 e 12 meses, mas pode surgir na infância, adolescência ou vida adulta",
+      "prevalencia": "~1 a 2% das crianças em idade escolar (dados europeus limitados)",
+      "sexo": null,
+      "diferencial": "condições gastrintestinais (refluxo, estenose pilórica, hérnia hiatal, síndrome de Sandifer); anorexia nervosa; bulimia nervosa"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "11-transtornos-da-eliminacao::encoprese": {
+    "n": "Encoprese",
+    "tldr": "Eliminação repetida de fezes em locais inapropriados (roupa, chão) em crianças a partir de 4 anos, em geral involuntária e ligada a constipação e retenção.",
+    "facts": {
+      "inicio": "a partir dos 4 anos; mais prevalente dos 4 aos 6 anos",
+      "prevalencia": "1 a 4% das crianças (até 2 a 8% em alguns países asiáticos)",
+      "sexo": null,
+      "diferencial": "incontinência fecal por outra condição médica (diarreia crônica; espinha bífida; estenose anal)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "11-transtornos-da-eliminacao::enurese": {
+    "n": "Enurese",
+    "tldr": "Eliminação repetida de urina na cama ou na roupa, voluntária ou involuntária, em quem já deveria ter controle (a partir dos 5 anos).",
+    "facts": {
+      "inicio": "a partir dos 5 anos; enurese secundária surge mais comumente entre 5 e 8 anos",
+      "prevalencia": "enurese noturna ~5–10% até os 5 anos, ~3–5% aos 10 anos e ~1% aos 15 anos ou mais",
+      "sexo": "maior prevalência em meninos",
+      "diferencial": "bexiga neurogênica ou outra condição médica (p. ex., diabetes, infecção urinária); efeitos colaterais de medicamentos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "11-transtornos-da-eliminacao::outro-transtorno-da-eliminacao-especificado": {
+    "n": "Outro Transtorno da Eliminação Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de transtorno da eliminação que não preenchem por completo os critérios de nenhum transtorno específico, com a razão registrada pelo clínico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "11-transtornos-da-eliminacao::transtorno-da-eliminacao-nao-especificado": {
+    "n": "Transtorno da Eliminação Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de eliminação (urina ou fezes em locais inadequados) que não preenchem todos os critérios de nenhum transtorno específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::apneia-central-do-sono": {
+    "n": "Apneia Central do Sono",
+    "tldr": "Pausas repetidas na respiração durante o sono por falha no comando ventilatório do cérebro (sem obstrução das vias aéreas), causando sonolência e despertares.",
+    "facts": {
+      "inicio": "predomina após os 60 anos",
+      "prevalencia": "tipo idiopático raro (desconhecida); respiração de Cheyne-Stokes 15–44% na insuficiência cardíaca",
+      "sexo": "predomínio masculino",
+      "diferencial": "apneia e hipopneia obstrutivas do sono; respiração periódica de altitudes elevadas; outros transtornos do sono; condições médicas que fragmentam o sono"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::apneia-e-hipopneia-obstrutivas-do-sono": {
+    "n": "Apneia e Hipopneia Obstrutivas do Sono",
+    "tldr": "Bloqueios repetidos da via aérea superior durante o sono, com ronco e sonolência diurna, confirmados por estudo do sono.",
+    "facts": {
+      "inicio": "vários picos: infância (3-8 anos) e meia-idade; início insidioso e progressivo",
+      "prevalencia": "comum; nos EUA ~13% dos homens e ~6% das mulheres têm 15+ eventos/hora; crianças ~1-4%",
+      "sexo": "predomínio masculino (2:1 a 4:1); diferença diminui após a menopausa",
+      "diferencial": "ronco primário; narcolepsia; apneia central do sono; hipoventilação relacionada ao sono"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::hipoventilacao-relacionada-ao-sono": {
+    "n": "Hipoventilação Relacionada ao Sono",
+    "tldr": "Respiração insuficiente durante o sono que eleva o CO2 no sangue, geralmente ligada a obesidade, doença pulmonar ou neuromuscular.",
+    "facts": {
+      "inicio": "geralmente no nascimento na forma congênita; na vida adulta nas formas idiopática e comórbida",
+      "prevalencia": "forma idiopática rara em adultos; comórbida por obesidade ~0,14–0,6% na população geral (até 42% em encaminhados com IMC > 35)",
+      "sexo": null,
+      "diferencial": "outras condições médicas que afetam a ventilação; hipoxemia por doença pulmonar; apneia/hipopneia obstrutiva do sono; apneia central do sono"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::narcolepsia": {
+    "n": "Narcolepsia",
+    "tldr": "Sonolência diurna excessiva com ataques de sono recorrentes, muitas vezes acompanhada de perda súbita do tônus muscular (cataplexia) desencadeada por emoções.",
+    "facts": {
+      "inicio": "infância/adolescência ou adultos jovens; pico entre 15 e 25 anos",
+      "prevalencia": "NT1 afeta ~0,02–0,05% da população adulta",
+      "sexo": "afeta ambos os sexos igualmente",
+      "diferencial": "transtorno de hipersonolência (hipersonia idiopática); privação do sono / sono noturno insuficiente"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::outro-transtorno-de-hipersonolencia-especificado": {
+    "n": "Outro Transtorno de Hipersonolência Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de hipersonolência (sonolência excessiva) que não preenchem os critérios completos de nenhum transtorno do sono-vigília específico, com o clínico registrando o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::outro-transtorno-de-insonia-especificado": {
+    "n": "Outro Transtorno de Insônia Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de insônia que não preenchem os critérios completos de nenhum transtorno do sono-vigília específico, com a razão registrada pelo clínico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::outro-transtorno-do-sono-vigilia-especificado": {
+    "n": "Outro Transtorno do Sono-Vigília Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de sono-vigília que não preenchem os critérios completos de nenhum transtorno específico, e o clínico indica o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::sindrome-das-pernas-inquietas": {
+    "n": "Síndrome das Pernas Inquietas",
+    "tldr": "Urgência de mexer as pernas, com sensações desagradáveis que pioram em repouso e à noite e são aliviadas pelo movimento, atrapalhando o sono.",
+    "facts": {
+      "inicio": "segunda ou terceira década de vida (cerca de 40% relatam sintomas antes dos 20 anos)",
+      "prevalencia": "~1,6% (sintomas ≥3x/semana com sofrimento moderado/grave); ~2-3% nas formas que prejudicam o funcionamento",
+      "sexo": "cerca de 2x mais comum em mulheres",
+      "diferencial": "cãibras nas pernas; desconforto postural; neuropatia periférica; acatisia induzida por medicamentos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::transtorno-comportamental-do-sono-rem": {
+    "n": "Transtorno Comportamental do Sono REM",
+    "tldr": "Pessoa 'encena' os sonhos durante o sono REM, com vocalizações e movimentos bruscos que podem ferir a si ou ao parceiro de leito.",
+    "facts": {
+      "inicio": "meia-idade e idosos (geralmente acima dos 50 anos)",
+      "prevalencia": "~1–2% em populações de meia-idade e idosos",
+      "sexo": "sem diferença clara entre os gêneros",
+      "diferencial": "despertares confusionais, sonambulismo e terrores noturnos; transtorno do sono induzido por medicamento, tipo parassonia; sono REM sem atonia assintomático"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::transtorno-de-hipersonolencia": {
+    "n": "Transtorno de Hipersonolência",
+    "tldr": "Sonolência diurna excessiva e persistente mesmo dormindo bem à noite, com cochilos longos, dificuldade de acordar e prejuízo no funcionamento diário.",
+    "facts": {
+      "inicio": "fim da adolescência / início da vida adulta (média de 17 a 24 anos)",
+      "prevalencia": "~1% da população geral tem episódios de inércia do sono; 5–10% das consultas em clínicas do sono por sonolência diurna",
+      "sexo": "frequência semelhante entre homens e mulheres",
+      "diferencial": "variação normal do sono; sono noturno inadequado (síndrome de sono insuficiente); narcolepsia"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::transtorno-de-hipersonolencia-nao-especificado": {
+    "n": "Transtorno de Hipersonolência Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de sonolência excessiva que não preenchem todos os critérios de nenhum transtorno do sono-vigília específico, sem indicar o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::transtorno-de-insonia": {
+    "n": "Transtorno de Insônia",
+    "tldr": "Insatisfação persistente com a quantidade ou qualidade do sono (dificuldade de iniciar ou manter o sono) que causa sofrimento e prejuízo no dia a dia.",
+    "facts": {
+      "inicio": "qualquer idade, mas o primeiro episódio é mais comum em adultos jovens; nas mulheres pode iniciar na menopausa",
+      "prevalencia": "~10% dos adultos (faixa de 4–22%) atendem aos critérios do transtorno",
+      "sexo": "predomínio feminino (~1,3:1; sobe para ~1,7:1 após os 45 anos)",
+      "diferencial": "variações do sono normal / pessoas com sono curto; alterações do sono associadas à idade; privação do sono por oportunidade inadequada; insônia situacional/aguda"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::transtorno-de-insonia-nao-especificado": {
+    "n": "Transtorno de Insônia Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de insônia que não preenchem os critérios completos de nenhum transtorno do sono-vigília específico, quando o clínico opta por não detalhar a razão ou faltam informações.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::transtorno-do-pesadelo": {
+    "n": "Transtorno do Pesadelo",
+    "tldr": "Episódios recorrentes de sonhos longos e angustiantes, bem lembrados, que perturbam o sono e causam sofrimento ou prejuízo durante o dia.",
+    "facts": {
+      "inicio": "geralmente entre 3 e 6 anos, com pico no fim da adolescência / início da vida adulta",
+      "prevalencia": "~1–5% na infância; ~6% dos adultos têm pesadelos ao menos mensalmente",
+      "sexo": null,
+      "diferencial": "transtorno do terror noturno; transtorno comportamental do sono REM"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::transtorno-do-sono-induzido-por-substancia-medicamento": {
+    "n": "Transtorno do Sono Induzido por Substância/Medicamento",
+    "tldr": "Perturbação grave do sono (insônia, sonolência ou parassonia) causada diretamente por uma droga, medicamento ou toxina, surgindo na intoxicação ou na abstinência.",
+    "facts": {
+      "inicio": "ligado ao uso de substâncias ilícitas na adolescência/início da vida adulta; idosos e pessoas com demência também são grupos de risco",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "intoxicação por substância; abstinência de substância; delirium; outros transtornos do sono"
+    },
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "12-transtornos-do-sono-vigilia::transtornos-de-despertar-do-sono-nao-rem": {
+    "n": "Transtornos de Despertar do Sono Não REM",
+    "tldr": "Despertares incompletos no início da noite, sem consciência plena, com sonambulismo ou terror noturno e amnésia do episódio.",
+    "facts": {
+      "inicio": "mais frequente na infância, diminuindo com a idade",
+      "prevalencia": "sonambulismo na vida ~6,9–29,2%; episódios de sonambulismo em ~5% das crianças/ano e 1,5–3,6% dos adultos/ano",
+      "sexo": null,
+      "diferencial": "transtorno do pesadelo; transtornos do sono relacionados à respiração; transtorno comportamental do sono REM"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "12-transtornos-do-sono-vigilia::transtornos-do-sono-relacionados-a-respiracao": {
+    "n": "Transtornos do Sono Relacionados à Respiração",
+    "tldr": "Grupo de transtornos em que alterações da respiração durante o sono prejudicam seu descanso, reunindo apneia obstrutiva, apneia central e hipoventilação.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "12-transtornos-do-sono-vigilia::transtornos-do-sono-vigilia-do-ritmo-circadiano": {
+    "n": "Transtornos do Sono-Vigília do Ritmo Circadiano",
+    "tldr": "Sono perturbado por descompasso entre o relógio biológico interno e os horários exigidos, causando insônia e/ou sonolência excessiva.",
+    "facts": {
+      "inicio": "geralmente na adolescência / início da vida adulta",
+      "prevalencia": "~3,3–4,6% em adolescentes/adultos jovens; ~0,2–1,7% em adultos",
+      "sexo": null,
+      "diferencial": "variações normais do sono; transtorno de insônia; outros transtornos do sono-vigília do ritmo circadiano; transtornos do sono relacionados à respiração (apneia)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::disfuncao-sexual-induzida-por-substancia-medicamento": {
+    "n": "Disfunção Sexual Induzida por Substância/Medicamento",
+    "tldr": "Problema sexual relevante que surge por causa de uma droga ou remédio (sobretudo antidepressivos), ligado ao seu uso, intoxicação ou abstinência.",
+    "facts": {
+      "inicio": "logo no início do tratamento (antidepressivos: até ~8 dias); efeitos da nicotina/álcool podem surgir após anos de uso",
+      "prevalencia": "~25–80% com antidepressivos; ~50% com antipsicóticos",
+      "sexo": null,
+      "diferencial": "disfunções sexuais não induzidas por substância/medicamento; manifestação de transtorno mental subjacente (depressivo, bipolar, ansiedade, psicótico)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::disfuncao-sexual-nao-especificada": {
+    "n": "Disfunção Sexual Não Especificada",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de disfunção sexual que causam sofrimento, mas não preenchem os critérios de nenhuma disfunção sexual específica, sem o clínico especificar o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::ejaculacao-prematura-precoce": {
+    "n": "Ejaculação Prematura (Precoce)",
+    "tldr": "Ejaculação que ocorre muito cedo, antes do desejado e logo após a penetração, de forma persistente e causando sofrimento ao indivíduo.",
+    "facts": {
+      "inicio": "forma ao longo da vida começa nas primeiras experiências sexuais; forma adquirida surge mais tarde (em geral na 4ª década ou depois)",
+      "prevalencia": "~8 a 30% (varia muito conforme a definição); cerca de 1 a 3% pelo critério de ~1 minuto",
+      "sexo": "exclusivo/predominante no sexo masculino",
+      "diferencial": "disfunção sexual induzida por substância/medicamento; preocupações ejaculatórias que não preenchem os critérios (latência normal ou ejaculação prematura episódica)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::ejaculacao-retardada": {
+    "n": "Ejaculação Retardada",
+    "tldr": "Dificuldade persistente para chegar ao orgasmo: o homem demora muito ou não consegue ejacular durante o sexo com parceria, mesmo com estímulo e desejo, gerando sofrimento.",
+    "facts": {
+      "inicio": "no subtipo ao longo da vida, desde as primeiras experiências sexuais; prevalência aumenta com a idade",
+      "prevalencia": "~1 a 5% (EUA); até 11% em estudos internacionais",
+      "sexo": "afeta indivíduos do sexo masculino",
+      "diferencial": "ejaculação retrógrada/anejaculação e outras condições urológicas; disfunção sexual induzida por substância/medicamento; disfunção do orgasmo"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::outra-disfuncao-sexual-especificada": {
+    "n": "Outra Disfunção Sexual Especificada",
+    "tldr": "Diagnóstico de exceção: sintomas sexuais que causam sofrimento significativo, mas não preenchem todos os critérios de nenhuma disfunção sexual específica.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::transtorno-da-dor-genito-pelvica-penetracao": {
+    "n": "Transtorno da Dor Gênito-pélvica/Penetração",
+    "tldr": "Dificuldade persistente com penetração vaginal, marcada por dor genital/pélvica, medo da penetração e tensão dos músculos do assoalho pélvico, causando sofrimento.",
+    "facts": {
+      "inicio": "pico no início da vida adulta e nos períodos peri/pós-menopáusico",
+      "prevalencia": "desconhecida; ~8–28% das mulheres em idade reprodutiva relatam dor recorrente na relação sexual",
+      "sexo": "descrito em mulheres",
+      "diferencial": "outra condição médica (líquen escleroso, endometriose, doença inflamatória pélvica, síndrome geniturinária da menopausa); transtorno de sintomas somáticos; fobia específica"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::transtorno-do-desejo-sexual-masculino-hipoativo": {
+    "n": "Transtorno do Desejo Sexual Masculino Hipoativo",
+    "tldr": "Falta persistente de desejo sexual e de pensamentos/fantasias eróticas no homem (≥6 meses), causando sofrimento e não explicada por outra causa.",
+    "facts": {
+      "inicio": "pode ser ao longo da vida ou adquirido; prevalência sobe com a idade (~5% aos 27 anos, ~18% aos 50 anos)",
+      "prevalencia": "~3 a 17% (queixa persistente ≥6 meses em ~6%)",
+      "sexo": "exclusivo do sexo masculino",
+      "diferencial": "transtorno depressivo maior; disfunção sexual induzida por substância/medicamento; outra condição médica (ex.: hipogonadismo, diabetes); fatores interpessoais/conjugais"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::transtorno-do-interesse-excitacao-sexual-feminino": {
+    "n": "Transtorno do Interesse/Excitação Sexual Feminino",
+    "tldr": "Falta ou redução persistente do desejo e da excitação sexual na mulher, que causa sofrimento e não se explica por relacionamento, doença ou medicamento.",
+    "facts": {
+      "inicio": "pode ser ao longo da vida (desde as primeiras experiências sexuais) ou adquirido (após período de funcionamento normal); sintomas persistentes por ~6 meses",
+      "prevalencia": "~30% das mulheres relatam baixo desejo crônico (cerca de metade com sofrimento ligado ao parceiro e um quarto com sofrimento pessoal)",
+      "sexo": null,
+      "diferencial": "transtorno depressivo maior e outros transtornos mentais não sexuais; disfunção sexual induzida por substância/medicamento; outra condição médica (p. ex., diabetes, disfunção da tireoide)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::transtorno-do-orgasmo-feminino": {
+    "n": "Transtorno do Orgasmo Feminino",
+    "tldr": "Dificuldade persistente da mulher para atingir o orgasmo ou sensações orgásmicas muito reduzidas, causando sofrimento clinicamente significativo.",
+    "facts": {
+      "inicio": "variável: primeiro orgasmo pode ocorrer da fase pré-púbere à vida adulta; subtipo ao longo da vida (sempre presente) ou adquirido",
+      "prevalencia": "problemas orgásmicos em mulheres na pré-menopausa: ~8 a 72%; ~10% nunca têm orgasmo na vida",
+      "sexo": "exclusivo de mulheres (por definição da categoria)",
+      "diferencial": "transtornos mentais não sexuais (ex.: depressão maior); disfunção sexual induzida por substância/medicamento; outra condição médica (ex.: esclerose múltipla, lesão medular); transtorno do interesse/excitação sexual feminino"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "13-disfuncoes-sexuais::transtorno-eretil": {
+    "n": "Transtorno Erétil",
+    "tldr": "Dificuldade persistente em obter ou manter ereção durante a atividade sexual, que se mantém por pelo menos meses e gera sofrimento.",
+    "facts": {
+      "inicio": "incidência aumenta com a idade, especialmente após os 50 anos",
+      "prevalencia": "~13–21% em homens de 40 a 80 anos (<10% abaixo dos 40; 50–75% acima dos 70)",
+      "sexo": "exclusivo de indivíduos do sexo masculino",
+      "diferencial": "transtorno depressivo maior; disfunção sexual induzida por substância/medicamento; disfunção erétil por outra condição médica (ex.: doença vascular)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "14-disforia-de-genero::disforia-de-genero": {
+    "n": "Disforia de Gênero",
+    "tldr": "Sofrimento marcante causado pela incongruência persistente entre o gênero que a pessoa vivencia e o que lhe foi designado no nascimento.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "menos de 0,1% (<1/1.000) em populações que buscam tratamento; autorrelatos populacionais sugerem ~0,2–0,6%",
+      "sexo": "prevalência semelhante entre designados masculino e feminino no nascimento",
+      "diferencial": "não conformidade com os papéis de gênero; transtorno transvéstico"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "14-disforia-de-genero::disforia-de-genero-nao-especificada": {
+    "n": "Disforia de Gênero Não Especificada",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de disforia de gênero que não preenchem os critérios completos, sem especificar o motivo ou por falta de informações.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "14-disforia-de-genero::outra-disforia-de-genero-especificada": {
+    "n": "Outra Disforia de Gênero Especificada",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de disforia de gênero que causam sofrimento, mas não preenchem todos os critérios (ex.: duração inferior a 6 meses), com o clínico especificando o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta::cleptomania": {
+    "n": "Cleptomania",
+    "tldr": "Impulso recorrente e irresistível de furtar objetos que a pessoa nem precisa nem deseja, com tensão antes e alívio ou prazer durante o ato.",
+    "facts": {
+      "inicio": "variável, mas com frequência na adolescência",
+      "prevalencia": "~0,3–0,6% na população geral",
+      "sexo": "predomínio feminino (~3:1)",
+      "diferencial": "furtos comuns / furto em lojas; simulação; transtorno da personalidade antissocial e transtorno da conduta; episódios maníacos, psicóticos e transtorno neurocognitivo maior"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta::outro-transtorno-disruptivo-do-controle-de-impulsos-e-da-conduta-especificado": {
+    "n": "Outro Transtorno Disruptivo, do Controle de Impulsos e da Conduta Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de controle de impulsos ou da conduta que não preenchem os critérios completos de nenhum transtorno específico, com o clínico indicando o porquê.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta::piromania": {
+    "n": "Piromania",
+    "tldr": "Impulso recorrente de atear fogo por prazer ou alívio, com fascínio pelo fogo, sem motivo prático como lucro, vingança ou crime.",
+    "facts": {
+      "inicio": "fim da adolescência (idade típica de início sugerida)",
+      "prevalencia": "desconhecida; diagnóstico primário muito raro (~3,3–3,4% entre amostras de risco)",
+      "sexo": "atear fogo é mais frequente em homens, mas o predomínio na piromania é desconhecido",
+      "diferencial": "incêndio intencional por lucro/vingança/crime/política; transtorno da conduta; episódio maníaco; transtorno da personalidade antissocial"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta::transtorno-da-conduta": {
+    "n": "Transtorno da Conduta",
+    "tldr": "Padrão repetitivo de comportamento na infância/adolescência que viola direitos dos outros e regras sociais, com agressão, destruição, mentira/furto e transgressões graves.",
+    "facts": {
+      "inicio": "da fase intermediária da infância à intermediária da adolescência (raro após os 16 anos)",
+      "prevalencia": "~2 a >10% ao ano (mediana 4%); ao longo da vida 12% em homens e 7,1% em mulheres",
+      "sexo": "predomínio masculino",
+      "diferencial": "transtorno de oposição desafiante; TDAH; transtornos depressivo e bipolar"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta::transtorno-da-personalidade-antissocial": {
+    "n": "Transtorno da Personalidade Antissocial",
+    "tldr": "Padrão persistente de desrespeito e violação dos direitos dos outros; aqui aparece como referência cruzada, com critérios e texto completos no capítulo \"Transtornos da Personalidade\".",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta::transtorno-de-oposicao-desafiante": {
+    "n": "Transtorno de Oposição Desafiante",
+    "tldr": "Padrão persistente de irritabilidade, comportamento desafiante/questionador e índole vingativa, especialmente diante de figuras de autoridade.",
+    "facts": {
+      "inicio": "anos pré-escolares; raramente após o início da adolescência",
+      "prevalencia": "~1 a 11% (média ~3,3%)",
+      "sexo": "leve predomínio masculino antes da adolescência (~1,59:1)",
+      "diferencial": "transtorno da conduta; transtorno de adaptação; transtorno de estresse pós-traumático"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta::transtorno-disruptivo-do-controle-de-impulsos-e-da-conduta-nao-especificado": {
+    "n": "Transtorno Disruptivo, do Controle de Impulsos e da Conduta Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de um transtorno do controle de impulsos e da conduta que não preenchem todos os critérios de nenhum transtorno específico da classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "15-transtornos-disruptivos-do-controle-de-impulsos-e-da-conduta::transtorno-explosivo-intermitente": {
+    "n": "Transtorno Explosivo Intermitente",
+    "tldr": "Explosões impulsivas e recorrentes de agressividade (verbal ou física), desproporcionais à provocação e sem objetivo planejado, que causam sofrimento ou prejuízo.",
+    "facts": {
+      "inicio": "fim da infância ou adolescência (raramente começa após os 40 anos)",
+      "prevalencia": "~2,6% em 1 ano e ~4,0% ao longo da vida (EUA)",
+      "sexo": "maior em homens em alguns estudos, mas outros não acham diferença de sexo",
+      "diferencial": "transtorno disruptivo da desregulação do humor; transtorno depressivo maior; transtorno bipolar; transtornos da personalidade antissocial e borderline"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::abstinencia-de-alcool": {
+    "n": "Abstinência de Álcool",
+    "tldr": "Conjunto de sintomas (tremores, suor, taquicardia, insônia, ansiedade) que surge horas a dias após parar ou reduzir o uso pesado e prolongado de álcool.",
+    "facts": {
+      "inicio": "rara antes dos 30 anos; risco e gravidade aumentam com a idade",
+      "prevalencia": "~50% dos casos de transtorno por uso de álcool; >80% entre hospitalizados/sem-teto",
+      "sexo": null,
+      "diferencial": "outras condições médicas (hipoglicemia, cetoacidose); tremor essencial; transtornos mentais induzidos por álcool; abstinência de sedativos, hipnóticos ou ansiolíticos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::abstinencia-de-cafeina": {
+    "n": "Abstinência de Cafeína",
+    "tldr": "Conjunto de sintomas (cefaleia, fadiga, irritabilidade, dificuldade de concentração) que surge ao parar ou reduzir bruscamente o uso diário de cafeína.",
+    "facts": {
+      "inicio": "sintomas começam 12 a 24h após a última dose, com pico em 1 a 2 dias",
+      "prevalencia": "mais de 85% dos adultos/crianças nos EUA consomem cafeína; cerca de 50% dos casos de abstinência têm cefaleia",
+      "sexo": null,
+      "diferencial": "enxaqueca e outros transtornos de cefaleia; doenças virais/sinusites; abstinência de outras drogas (anfetaminas, cocaína); transtorno do sono induzido por cafeína"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::abstinencia-de-cannabis": {
+    "n": "Abstinência de Cannabis",
+    "tldr": "Conjunto de sintomas, mais emocionais/comportamentais que físicos, que surge ao parar o uso pesado e prolongado de maconha.",
+    "facts": {
+      "inicio": "24 a 48 horas após interromper o uso; pico em 2 a 5 dias e fim em 1 a 2 semanas",
+      "prevalencia": "~12% dos usuários regulares adultos atingem a síndrome completa; 50 a 95% entre usuários crônicos ou em tratamento",
+      "sexo": "mulheres podem ter sintomas mais graves que homens",
+      "diferencial": "abstinência de outra substância (tabaco, álcool); transtorno de ansiedade generalizada; transtorno depressivo maior"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::abstinencia-de-estimulantes": {
+    "n": "Abstinência de Estimulantes",
+    "tldr": "Mal-estar que surge ao parar ou reduzir o uso prolongado de estimulantes (anfetaminas, cocaína), com humor deprimido, fadiga e alterações de sono e apetite.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "transtornos mentais induzidos por estimulantes"
+    },
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::abstinencia-de-opioides": {
+    "n": "Abstinência de Opioides",
+    "tldr": "Conjunto de sintomas físicos e psíquicos desagradáveis (dores, náusea, lacrimejamento, sudorese, disforia) que surge ao parar ou reduzir o uso prolongado de opioides.",
+    "facts": {
+      "inicio": "sintomas surgem 6-12h após a última dose (opioides curtos como heroína) ou 2-4 dias (metadona/buprenorfina)",
+      "prevalencia": "abstinência ocorreu em 60% de usuários de heroína no último ano (EUA)",
+      "sexo": null,
+      "diferencial": "abstinência de sedativo-hipnóticos; intoxicação por alucinógenos ou estimulantes; transtornos mentais induzidos por opioides"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::abstinencia-de-outra-substancia-ou-substancia-desconhecida": {
+    "n": "Abstinência de Outra Substância (ou Substância Desconhecida)",
+    "tldr": "Síndrome de abstinência que surge ao parar ou reduzir uma substância que não se encaixa nas classes definidas (álcool, opioides etc.) ou que é desconhecida.",
+    "facts": {
+      "inicio": "geralmente algumas horas após a interrupção do uso; início e curso variam conforme a dose e a eliminação da substância",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "redução de dose sem preencher critérios de abstinência; transtornos mentais induzidos por substância/medicamento; condições neurológicas/médicas (tóxicas, metabólicas, infecciosas) que mimetizam abstinência; intoxicação por substância"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::abstinencia-de-sedativos-hipnoticos-ou-ansioliticos": {
+    "n": "Abstinência de Sedativos, Hipnóticos ou Ansiolíticos",
+    "tldr": "Síndrome que surge ao parar ou reduzir o uso prolongado desses calmantes, com hiperatividade autonômica, tremor, insônia, ansiedade e risco de convulsões.",
+    "facts": {
+      "inicio": "horas a dias após a cessação/redução, em pessoas com várias semanas ou mais de uso regular",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "abstinência de álcool; tremor essencial; transtornos mentais induzidos por sedativos/hipnóticos/ansiolíticos; outras condições médicas (ex.: hipoglicemia, cetoacidose)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::abstinencia-de-tabaco": {
+    "n": "Abstinência de Tabaco",
+    "tldr": "Conjunto de sintomas (irritabilidade, ansiedade, dificuldade de concentração, fome) que surge ao parar ou reduzir o tabaco após uso diário, por privação de nicotina.",
+    "facts": {
+      "inicio": "em até 24 horas após parar/reduzir; pico em 2–3 dias e duração de 2–3 semanas",
+      "prevalencia": "~50% dos que abandonam por 2 dias ou mais apresentam 4+ sintomas",
+      "sexo": null,
+      "diferencial": "abstinência de outras substâncias (álcool, sedativos, estimulantes, cafeína, opioides); intoxicação por cafeína; transtornos de ansiedade, depressivo e bipolar; acatisia induzida por medicamento"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-alcool": {
+    "n": "Intoxicação por Álcool",
+    "tldr": "Estado transitório após beber álcool, com mudanças de comportamento e sinais como fala arrastada, descoordenação e prejuízo de atenção; nos casos graves, coma.",
+    "facts": {
+      "inicio": "primeira intoxicação em média aos ~15 anos; prevalência maior entre 18 e 25 anos",
+      "prevalencia": "consumo de alto risco em 12 meses ~7,2–17,4% dos adultos nos EUA conforme o grupo",
+      "sexo": null,
+      "diferencial": "outras condições médicas/neurológicas (acidose diabética, ataxia cerebelar); transtornos mentais induzidos por álcool; intoxicação por sedativos, hipnóticos ou ansiolíticos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-cafeina": {
+    "n": "Intoxicação por Cafeína",
+    "tldr": "Reação aguda ao consumo recente de muita cafeína, com nervosismo, agitação, insônia e sintomas cardíacos/gastrintestinais que causam prejuízo.",
+    "facts": {
+      "inicio": "logo após consumo de dose alta; remissão em 1-2 dias (meia-vida ~4-6h)",
+      "prevalencia": "~7% da população (EUA) podem ter sintomas compatíveis",
+      "sexo": null,
+      "diferencial": "transtorno de pânico; transtorno de ansiedade generalizada; intoxicação por anfetaminas; episódios maníacos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-cannabis": {
+    "n": "Intoxicação por Cannabis",
+    "tldr": "Efeitos agudos do uso recente de maconha, com mudanças no comportamento e no humor e sinais físicos como olhos vermelhos, fome e taquicardia.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "desconhecida na população geral; provavelmente semelhante à prevalência de usuários de Cannabis",
+      "sexo": null,
+      "diferencial": "transtorno psicótico induzido por substância; intoxicação por outras substâncias (álcool, sedativos, alucinógenos, fenciclidina); outros transtornos mentais induzidos por Cannabis"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-estimulantes": {
+    "n": "Intoxicação por Estimulantes",
+    "tldr": "Quadro agudo após uso de cocaína, anfetaminas ou similares, com euforia ou agitação e sinais físicos como taquicardia, pupilas dilatadas e alteração da pressão.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "desconhecida; usa-se o uso de estimulantes como aproximação (cocaína ~2,2% e metanfetamina ~0,6% em 12 meses nos EUA, a partir dos 12 anos)",
+      "sexo": "mais comum em homens (cocaína 3% vs 1,4%; metanfetamina 0,8% vs 0,4%)",
+      "diferencial": "transtornos mentais induzidos por estimulantes; esquizofrenia; transtornos bipolar e depressivo; transtorno de ansiedade generalizada; transtorno de pânico"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-fenciclidina": {
+    "n": "Intoxicação por Fenciclidina",
+    "tldr": "Quadro agudo logo após usar fenciclidina, com agitação/violência, confusão e sinais neurológicos como nistagmo, ataxia e resposta diminuída à dor.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "uso de fenciclidina raro (<0,1% acima de 12 anos nos EUA em 12 meses); ketamina ~1,2% no último ano do ensino médio",
+      "sexo": null,
+      "diferencial": "transtorno psicótico induzido por fenciclidina; intoxicação por outras substâncias (alucinógenos, estimulantes, anticolinérgicos); abstinência de benzodiazepínicos; outras condições médicas (hipoglicemia, hiponatremia)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-inalantes": {
+    "n": "Intoxicação por Inalantes",
+    "tldr": "Quadro agudo após inalar solventes voláteis (cola, gasolina, tolueno), com mudanças de comportamento e sinais neurológicos que passam em minutos a horas.",
+    "facts": {
+      "inicio": "mais comum em jovens, sobretudo adolescentes (12–17 anos)",
+      "prevalencia": "uso no último ano em ~0,6% dos norte-americanos com mais de 12 anos (2,3% entre 12–17 anos)",
+      "sexo": "uso ligeiramente maior em homens no geral (0,8% vs. 0,5%), mas semelhante ou levemente maior em meninas adolescentes",
+      "diferencial": "intoxicação por outras substâncias sedativas (álcool, benzodiazepínicos, barbitúricos); transtornos mentais induzidos por inalantes; outras condições tóxicas/metabólicas/traumáticas/infecciosas cerebrais"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-opioides": {
+    "n": "Intoxicação por Opioides",
+    "tldr": "Quadro agudo após uso recente de opioide, com mudanças de humor/comportamento, pupilas contraídas, sonolência, fala arrastada e atenção e memória prejudicadas.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "intoxicação por álcool; intoxicação por sedativo-hipnótico; transtornos mentais induzidos por opioides"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-outra-substancia-ou-substancia-desconhecida": {
+    "n": "Intoxicação por Outra Substância (ou Substância Desconhecida)",
+    "tldr": "Quadro reversível de alterações comportamentais e psicológicas logo após usar uma substância não coberta pelas demais categorias ou de identidade desconhecida.",
+    "facts": {
+      "inicio": "surge minutos a horas após o uso e resolve-se em horas a poucos dias (varia conforme agente e via)",
+      "prevalencia": "desconhecida",
+      "sexo": null,
+      "diferencial": "uso de substância sem preencher critérios de intoxicação; transtornos mentais induzidos por substância/medicamento; outras condições tóxicas, metabólicas, neurológicas ou infecciosas; abstinência de drogas"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-outros-alucinogenos": {
+    "n": "Intoxicação por Outros Alucinógenos",
+    "tldr": "Quadro agudo após uso de alucinógenos (LSD, MDMA, sálvia), com alterações da percepção e do comportamento e sinais físicos como pupilas dilatadas e taquicardia.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "uso no último ano nos EUA (2018): ~1,5% (12-17 anos), ~6,9% (18-25 anos), ~1,3% (26+ anos)",
+      "sexo": "mais frequente em meninos/homens",
+      "diferencial": "intoxicação por estimulantes (anfetamina/cocaína), anticolinérgicos, inalantes e fenciclidina; transtorno persistente da percepção induzido por alucinógenos; transtornos mentais induzidos por alucinógenos; esquizofrenia"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::intoxicacao-por-sedativos-hipnoticos-ou-ansioliticos": {
+    "n": "Intoxicação por Sedativos, Hipnóticos ou Ansiolíticos",
+    "tldr": "Efeitos agudos do uso recente de calmantes/sedativos: fala arrastada, descoordenação, falhas de memória e alterações de comportamento e julgamento.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "uso sem fins medicinais nos EUA (2018): 2,4% acima de 12 anos; 4,9% entre 18 e 25 anos",
+      "sexo": null,
+      "diferencial": "transtorno por uso de álcool; intoxicação por álcool; transtornos mentais induzidos por sedativos/hipnóticos/ansiolíticos; transtornos neurocognitivos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-do-jogo": {
+    "n": "Transtorno do Jogo",
+    "tldr": "Padrão persistente de apostar que foge ao controle e prejudica a vida pessoal, familiar e profissional, com tentativas de recuperar perdas e mentiras para esconder o envolvimento.",
+    "facts": {
+      "inicio": "adolescência ou início da vida adulta, podendo surgir na meia-idade ou idade avançada",
+      "prevalencia": "~0,4–1,0% ao longo da vida (0,2–0,3% no último ano nos EUA)",
+      "sexo": "predomínio masculino (homens ~0,6% vs. mulheres ~0,2% ao longo da vida)",
+      "diferencial": "jogo profissional/social sem transtorno; episódio maníaco; transtorno da personalidade antissocial; jogo por medicamentos dopaminérgicos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-persistente-da-percepcao-induzido-por-alucinogenos": {
+    "n": "Transtorno Persistente da Percepção Induzido por Alucinógenos",
+    "tldr": "Reaparecimento de alterações visuais (como rastros, halos e flashes de cor) já fora do efeito da droga, causando sofrimento, com a pessoa consciente de que são ilusões.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "~4,2% entre usuários de alucinógenos (estimativa inicial)",
+      "sexo": null,
+      "diferencial": "esquizofrenia; transtornos neurodegenerativos; AVC e tumores cerebrais; efeitos de outras drogas"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-alcool": {
+    "n": "Transtorno por Uso de Álcool",
+    "tldr": "Padrão problemático de consumo de álcool que persiste apesar dos prejuízos, marcado por perda de controle, fissura, tolerância e abstinência.",
+    "facts": {
+      "inicio": "fim da adolescência / entre 20 e 25 anos",
+      "prevalencia": "~29% ao longo da vida (EUA); ~4,6% nos 12-17 anos, ~16,2% nos 18-29 anos (12 meses)",
+      "sexo": "predomínio masculino (homens 36% vs. mulheres 22,7% ao longo da vida)",
+      "diferencial": "uso de álcool não patológico; intoxicação por álcool; abstinência de álcool; transtornos mentais induzidos por álcool"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-cannabis": {
+    "n": "Transtorno por Uso de Cannabis",
+    "tldr": "Padrão problemático de uso de maconha que persiste apesar dos prejuízos, com perda de controle, tolerância e abstinência.",
+    "facts": {
+      "inicio": "adolescência ou início da vida adulta (pico dos 18 aos 29 anos)",
+      "prevalencia": "~2,5% em 12 meses entre adultos (DSM-5)",
+      "sexo": null,
+      "diferencial": "uso não problemático de Cannabis; intoxicação por Cannabis; abstinência de Cannabis; transtornos mentais induzidos por Cannabis"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-estimulantes": {
+    "n": "Transtorno por Uso de Estimulantes",
+    "tldr": "Padrão problemático de uso de estimulantes (anfetaminas, metilfenidato ou cocaína) que leva a perda de controle, prejuízo e sofrimento significativos.",
+    "facts": {
+      "inicio": "mais comum dos 18 aos 25 anos; primeiro uso regular em média ~23 anos",
+      "prevalencia": "~0,4% em 12 meses (anfetaminas e também cocaína), nos EUA",
+      "sexo": "predomínio masculino (anfetaminas: 0,5% homens vs 0,2% mulheres)",
+      "diferencial": "intoxicação por fenciclidina (PCP); intoxicação por estimulantes; abstinência de estimulantes; transtornos mentais induzidos por estimulantes"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-fenciclidina": {
+    "n": "Transtorno por Uso de Fenciclidina",
+    "tldr": "Uso problemático e continuado de fenciclidina (PCP) e drogas dissociativas semelhantes, que persiste apesar do prejuízo e do sofrimento que causa.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "taxas aparentemente baixas; ~0,1% (categoria geral de alucinógenos) e 0,3% das internações por uso de substância",
+      "sexo": null,
+      "diferencial": "transtornos por uso de outras substâncias; intoxicação por fenciclidina; transtornos mentais induzidos por fenciclidina; transtornos mentais independentes (esquizofrenia, depressão maior)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-inalantes": {
+    "n": "Transtorno por Uso de Inalantes",
+    "tldr": "Uso repetido e intencional de solventes voláteis (colas, combustíveis, tintas) que segue mesmo causando prejuízo claro na vida e na saúde.",
+    "facts": {
+      "inicio": "principalmente na adolescência/jovens adultos (pico de abuso intencional por volta dos 14 anos); raro em idosos",
+      "prevalencia": "~0,1% (12-17 anos) e ~0,04% (adultos) ao longo de 12 meses",
+      "sexo": null,
+      "diferencial": "exposição acidental/não intencional a inalantes; intoxicação por inalante; transtornos mentais induzidos por inalantes"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-opioides": {
+    "n": "Transtorno por Uso de Opioides",
+    "tldr": "Uso compulsivo e descontrolado de opioides (heroína, fentanil, analgésicos) que persiste apesar dos prejuízos, com tolerância e abstinência.",
+    "facts": {
+      "inicio": "qualquer idade, mas tipicamente no fim da adolescência / início dos 20 anos",
+      "prevalencia": "~0,6–0,9% (medicamentos opioides) e ~0,1–0,3% (heroína) em adultos",
+      "sexo": "mais prevalente em homens",
+      "diferencial": "intoxicação por opioides; abstinência de opioides; transtornos mentais induzidos por opioides; intoxicação por álcool ou por sedativos, hipnóticos ou ansiolíticos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-outra-substancia-ou-substancia-desconhecida": {
+    "n": "Transtorno por Uso de Outra Substância (ou Substância Desconhecida)",
+    "tldr": "Uso problemático de substância intoxicante que não se encaixa nas nove classes do capítulo (ou cuja droga é desconhecida), causando prejuízo e perda de controle.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": "provavelmente mais baixa que as nove classes; uso de gases não é raro (~4,6% óxido nitroso e ~2,5% nitritos ao longo da vida, a partir dos 12 anos)",
+      "sexo": null,
+      "diferencial": "intoxicação por outra substância (ou desconhecida); abstinência por outra substância (ou desconhecida); transtornos mentais induzidos por outra substância; outros transtornos por uso de substância"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-outros-alucinogenos": {
+    "n": "Transtorno por Uso de Outros Alucinógenos",
+    "tldr": "Uso problemático e fora de controle de alucinógenos (como LSD, psilocibina, ecstasy/MDMA), causando prejuízo ou sofrimento clínico significativo.",
+    "facts": {
+      "inicio": "adultos jovens (maioria entre 18 e 29 anos)",
+      "prevalencia": "~0,1% nos últimos 12 meses (EUA, a partir dos 12 anos); pico de ~0,4% entre 18-25 anos",
+      "sexo": null,
+      "diferencial": "transtorno por uso de outra substância; intoxicação por alucinógenos; transtornos mentais induzidos por alucinógenos; esquizofrenia e transtornos depressivos/bipolares independentes"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-sedativos-hipnoticos-ou-ansioliticos": {
+    "n": "Transtorno por Uso de Sedativos, Hipnóticos ou Ansiolíticos",
+    "tldr": "Uso problemático de calmantes e remédios para dormir (como benzodiazepínicos) que gera tolerância, fissura e perda de controle, com prejuízos na vida.",
+    "facts": {
+      "inicio": "adolescência / jovens adultos na faixa dos 20 anos",
+      "prevalencia": "~0,3% em 12 meses (maior aos 18–29 anos: ~0,5%)",
+      "sexo": "sem variação consistente por gênero nos EUA; outros países apontam taxas maiores em mulheres",
+      "diferencial": "intoxicação por sedativos, hipnóticos ou ansiolíticos; abstinência de sedativos, hipnóticos ou ansiolíticos; transtornos mentais induzidos por sedativos, hipnóticos ou ansiolíticos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-por-uso-de-tabaco": {
+    "n": "Transtorno por Uso de Tabaco",
+    "tldr": "Dependência de tabaco/nicotina: a pessoa fuma de forma compulsiva e continuada, com tolerância e abstinência, apesar dos prejuízos à saúde.",
+    "facts": {
+      "inicio": "início costuma ser na adolescência; iniciar a fumar após os 21 anos é raro",
+      "prevalencia": "~20% em 12 meses entre adultos (EUA, 2012-2013); ~50% entre fumantes diários",
+      "sexo": "predomínio masculino (uso diário sempre maior em homens, razão de 1,2:1 a 16,9:1 conforme a região)",
+      "diferencial": null
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-relacionado-a-cafeina-nao-especificado": {
+    "n": "Transtorno Relacionado à Cafeína Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas relevantes ligados à cafeína que causam sofrimento ou prejuízo, mas não preenchem os critérios completos de nenhum transtorno específico relacionado à cafeína.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-relacionado-a-cannabis-nao-especificado": {
+    "n": "Transtorno Relacionado a Cannabis Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos ligados ao uso de cannabis que não preenchem os critérios completos de nenhum transtorno específico da classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-relacionado-a-estimulantes-nao-especificado": {
+    "n": "Transtorno Relacionado a Estimulantes Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos ligados ao uso de estimulantes que não preenchem os critérios completos de nenhum transtorno específico dessa classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-relacionado-a-fenciclidina-nao-especificado": {
+    "n": "Transtorno Relacionado a Fenciclidina Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos ligados ao uso de fenciclidina (PCP) que não preenchem todos os critérios de nenhum transtorno específico dessa classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-relacionado-a-inalantes-nao-especificado": {
+    "n": "Transtorno Relacionado a Inalantes Não Especificado",
+    "tldr": "Categoria de exceção: sintomas significativos ligados ao uso de inalantes que não preenchem os critérios completos de nenhum transtorno relacionado a inalantes específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-relacionado-a-opioides-nao-especificado": {
+    "n": "Transtorno Relacionado a Opioides Não Especificado",
+    "tldr": "Categoria de exceção: sintomas significativos ligados a opioides que causam sofrimento ou prejuízo, mas não preenchem os critérios completos de nenhum transtorno específico da classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtorno-relacionado-a-outra-substancia-ou-substancia-desconhecida-nao-especificado": {
+    "n": "Transtorno Relacionado a Outra Substância (ou Substância Desconhecida) Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos ligados a outra substância (ou substância desconhecida) que não preenchem os critérios completos de nenhum transtorno específico dessa classe.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtornos-mentais-induzidos-por-outra-substancia-ou-substancia-desconhecida": {
+    "n": "Transtornos Mentais Induzidos por Outra Substância (ou Substância Desconhecida)",
+    "tldr": "Categoria de referência cruzada: sintomas mentais causados por uma substância não classificada ou desconhecida, descritos nos capítulos dos transtornos que eles imitam.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "16-transtornos-relacionados-a-substancias-e-transtornos-aditivos::transtornos-mentais-induzidos-por-sedativos-hipnoticos-ou-ansioliticos": {
+    "n": "Transtornos Mentais Induzidos por Sedativos, Hipnóticos ou Ansiolíticos",
+    "tldr": "Categoria de referência cruzada: quadros mentais (psicótico, bipolar, depressivo, de ansiedade, do sono) causados por sedativos, hipnóticos ou ansiolíticos, descritos nos capítulos dos transtornos com que se parecem.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::delirium": {
+    "n": "Delirium",
+    "tldr": "Quadro confusional agudo e flutuante, com queda da atenção e da consciência, causado por condição médica, substância ou abstinência.",
+    "facts": {
+      "inicio": "agudo (horas a poucos dias); mais comum em idosos hospitalizados",
+      "prevalencia": "1–2% na comunidade; 18–35% na admissão hospitalar; até 81% em UTI e 88% na doença terminal",
+      "sexo": null,
+      "diferencial": "transtornos psicóticos; transtornos bipolar e depressivo com características psicóticas; transtorno de estresse agudo; outros transtornos neurocognitivos (TNC maior)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::delirium-nao-especificado": {
+    "n": "Delirium Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de delirium que causam prejuízo, mas não preenchem os critérios completos de delirium nem de outro transtorno neurocognitivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::outro-delirium-especificado": {
+    "n": "Outro Delirium Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de delirium que não preenchem todos os critérios de nenhum transtorno neurocognitivo específico, com o clínico registrando o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-frontotemporal-maior-ou-leve": {
+    "n": "Transtorno Neurocognitivo Frontotemporal Maior ou Leve",
+    "tldr": "Degeneração progressiva dos lobos frontais e temporais que causa mudanças de personalidade e comportamento e/ou prejuízo da linguagem, com memória relativamente preservada no início.",
+    "facts": {
+      "inicio": "geralmente por volta dos 50 anos (varia dos 20 aos 80 anos)",
+      "prevalencia": "2 a 31 por 100.000; cerca de 5% das demências",
+      "sexo": "taxas geralmente iguais em homens e mulheres",
+      "diferencial": "TNC devido à doença de Alzheimer; TNC com corpos de Lewy; TNC devido à doença de Parkinson; TNC vascular"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-com-corpos-de-lewy": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve com Corpos de Lewy",
+    "tldr": "Demência progressiva com cognição flutuante, alucinações visuais, parkinsonismo e alterações do sono REM, ligada ao acúmulo de corpos de Lewy no cérebro.",
+    "facts": {
+      "inicio": "geralmente entre 50 e 89 anos, com maioria dos casos surgindo por volta dos 75 anos",
+      "prevalencia": "~4,2% das demências na comunidade (até 7,5% em estudos clínicos); 0 a 1,2% da população idosa geral",
+      "sexo": "incidência cerca de 3x maior em homens (em idosos ≥65 anos)",
+      "diferencial": "transtorno neurocognitivo devido à doença de Parkinson; delirium"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-doenca-de-alzheimer": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer",
+    "tldr": "Declínio cognitivo de início lento e progressão gradual, tipicamente começando pela memória, causado pela degeneração cerebral da doença de Alzheimer.",
+    "facts": {
+      "inicio": "geralmente 70–89 anos; formas precoces aos 40–59 anos (muitas ligadas a mutações)",
+      "prevalencia": "~11% acima de 65 anos e ~32% acima de 85 anos; 5–10% entre 60–69 anos",
+      "sexo": null,
+      "diferencial": "TNC com corpos de Lewy; TNC frontotemporal; TNC vascular"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-doenca-de-huntington": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Huntington",
+    "tldr": "Declínio cognitivo progressivo (sobretudo das funções executivas) causado pela doença de Huntington, hereditária, que também leva a alterações de humor e movimentos involuntários.",
+    "facts": {
+      "inicio": "geralmente entre 35 e 45 anos (forma juvenil antes dos 20 anos)",
+      "prevalencia": "~2,7 por 100.000 no mundo (5,7 na América do Norte/Europa/Austrália; 0,40 na Ásia)",
+      "sexo": null,
+      "diferencial": "outros transtornos mentais (humor/irritabilidade); TNC vascular maior ou leve; outras coreias (doença de Wilson, discinesia tardia, coreia de Sydenham)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-doenca-de-parkinson": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Parkinson",
+    "tldr": "Declínio cognitivo gradual que surge no curso da doença de Parkinson já estabelecida, sem outra causa que o explique melhor.",
+    "facts": {
+      "inicio": "no curso da doença de Parkinson (início da doença geralmente entre 50 e 89 anos, com pico no começo dos 60 anos); forma leve surge cedo, prejuízos maiores em idade mais avançada",
+      "prevalencia": "até 80% dos indivíduos com Parkinson desenvolvem TNC maior; TNC leve estimado em ~25–27%",
+      "sexo": "mais comum em homens do que em mulheres",
+      "diferencial": "transtorno neurocognitivo maior ou leve com corpos de Lewy (TNCCL)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-doenca-do-prion": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido à Doença do Príon",
+    "tldr": "Declínio cognitivo causado por doenças priônicas (como a de Creutzfeldt-Jakob), com progressão muito rápida e sinais motores como mioclonia e ataxia.",
+    "facts": {
+      "inicio": "qualquer idade adulta; pico da DCJ esporádica por volta dos 67 anos",
+      "prevalencia": "muito rara; incidência da DCJ esporádica ~1–2 casos por milhão/ano (maior em ≥65 anos)",
+      "sexo": null,
+      "diferencial": "outros transtornos neurocognitivos maiores"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-etiologia-desconhecida": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido a Etiologia Desconhecida",
+    "tldr": "Categoria usada quando há declínio cognitivo claramente ligado a causa médica, mas sem informações suficientes para identificar qual etiologia específica o provoca.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-infeccao-por-hiv": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido à Infecção por HIV",
+    "tldr": "Declínio cognitivo causado pelo HIV, com padrão subcortical: lentidão, prejuízo executivo e de atenção, mais que perda de memória já aprendida.",
+    "facts": {
+      "inicio": "pode surgir já na fase assintomática da infecção por HIV (qualquer estágio da doença)",
+      "prevalencia": "~25–43% dos indivíduos com HIV têm alguma perturbação neurocognitiva; TNC leve ~17–25% e demência associada ao HIV <5–6%",
+      "sexo": null,
+      "diferencial": "TNC por doença de Alzheimer; doença cerebrovascular; infecções oportunistas do SNC (toxoplasmose, criptococose); delirium"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-lesao-cerebral-traumatica": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido a Lesão Cerebral Traumática",
+    "tldr": "Declínio cognitivo adquirido após um impacto na cabeça (com perda de consciência, amnésia ou sinais neurológicos) que persiste depois da fase aguda da lesão.",
+    "facts": {
+      "inicio": "logo após a lesão cerebral traumática, persistindo além da fase aguda; pior no período agudo, com recuperação variável",
+      "prevalencia": "varia com gravidade e tempo da lesão; nos EUA, >2,87 milhões de LCTs por ano",
+      "sexo": "mais comum em homens (~40% mais) até cerca dos 65 anos; risco feminino sobe após essa idade",
+      "diferencial": "transtorno depressivo maior; transtornos de ansiedade; TEPT; transtorno factício/simulação"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-multiplas-etiologias": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido a Múltiplas Etiologias",
+    "tldr": "Declínio cognitivo causado por mais de um processo etiológico ao mesmo tempo (ex.: Alzheimer somado a doença vascular), sem ser por substâncias.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-devido-a-outra-condicao-medica": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Devido a Outra Condição Médica",
+    "tldr": "Declínio cognitivo causado por uma condição médica geral (ex.: esclerose múltipla, hipotireoidismo, tumor cerebral), cujo curso acompanha a doença de base.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "outro transtorno neurocognitivo maior ou leve"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-maior-ou-leve-induzido-por-substancia-medicamento": {
+    "n": "Transtorno Neurocognitivo Maior ou Leve Induzido por Substância/Medicamento",
+    "tldr": "Declínio cognitivo causado pelo uso prolongado de substâncias ou medicamentos, que persiste depois da intoxicação e da abstinência aguda.",
+    "facts": {
+      "inicio": "uso de substância costuma começar na adolescência (pico entre 20 e 30 anos); TNC mais provável e persistente após os 50 anos",
+      "prevalencia": "pouco conhecida; no uso de álcool, TNC leve em ~30-40% nos 2 primeiros meses de abstinência; TNC maior é raro",
+      "sexo": "TNC maior induzido por álcool pode ser mais comum em homens",
+      "diferencial": "TNCs do uso/intoxicação/abstinência de substância; lesão cerebral traumática; infecções (HIV, hepatite C, sífilis)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-nao-especificado": {
+    "n": "Transtorno Neurocognitivo Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas neurocognitivos com sofrimento ou prejuízo importantes que não preenchem os critérios completos de nenhum transtorno neurocognitivo específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "17-transtornos-neurocognitivos::transtorno-neurocognitivo-vascular-maior-ou-leve": {
+    "n": "Transtorno Neurocognitivo Vascular Maior ou Leve",
+    "tldr": "Declínio cognitivo causado por doença dos vasos cerebrais (como AVC ou lesões de pequenos vasos), com curso muitas vezes em degraus ou flutuante.",
+    "facts": {
+      "inicio": "qualquer idade, mas a prevalência aumenta exponencialmente após os 65 anos",
+      "prevalencia": "~0,98% (71–79 anos), ~4,09% (80–89 anos) e ~6,19% (90+ anos); 20–30% após AVC",
+      "sexo": "AVC mais comum em homens até os 65 anos e em mulheres após os 65 anos",
+      "diferencial": "doença de Alzheimer; TNC com corpos de Lewy; TNC frontotemporal; outras condições médicas (ex.: tumor cerebral, esclerose múltipla)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::mudanca-de-personalidade-devido-a-outra-condicao-medica": {
+    "n": "Mudança de Personalidade Devido a Outra Condição Médica",
+    "tldr": "Alteração persistente da personalidade (instabilidade afetiva, impulsividade, agressividade, apatia ou paranoia) causada diretamente por uma condição médica.",
+    "facts": {
+      "inicio": null,
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "condições médicas crônicas com dor/incapacidade (adaptação comportamental); delirium; transtorno neurocognitivo maior; outro transtorno mental devido a outra condição médica"
+    },
+    "needsReview": true,
+    "confidence": "medium"
+  },
+  "18-transtornos-da-personalidade::outro-transtorno-da-personalidade-especificado": {
+    "n": "Outro Transtorno da Personalidade Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de um transtorno da personalidade que não preenchem todos os critérios de nenhum tipo específico, com o clínico indicando o motivo.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-antissocial": {
+    "n": "Transtorno da Personalidade Antissocial",
+    "tldr": "Padrão persistente de desrespeito e violação dos direitos dos outros, com manipulação, falsidade e desconsideração pelas normas sociais.",
+    "facts": {
+      "inicio": "infância ou início da adolescência; diagnóstico só após os 18 anos, com sintomas de transtorno da conduta antes dos 15",
+      "prevalencia": "~0,6% a 3,6% (mediana 3,6%); >70% em ambientes forenses e por uso de substâncias",
+      "sexo": null,
+      "diferencial": "transtorno da conduta; transtornos por uso de substância; esquizofrenia; transtorno bipolar; outros transtornos da personalidade"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-borderline": {
+    "n": "Transtorno da Personalidade Borderline",
+    "tldr": "Instabilidade intensa e duradoura nas emoções, relacionamentos e autoimagem, com impulsividade e medo profundo de ser abandonado.",
+    "facts": {
+      "inicio": "início da vida adulta (sintomas podem aparecer já na adolescência, aos 12–13 anos)",
+      "prevalencia": "mediana ~2,7% na população (estimativas variam de 1,4% a 5,9%)",
+      "sexo": null,
+      "diferencial": "transtornos depressivos e bipolares; transtorno de ansiedade de separação em adultos; outros transtornos da personalidade (p. ex., histriônica)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-dependente": {
+    "n": "Transtorno da Personalidade Dependente",
+    "tldr": "Necessidade excessiva de ser cuidado, gerando comportamento submisso, apego aos outros e medo intenso de separação e de ter que se virar sozinho.",
+    "facts": {
+      "inicio": "início da vida adulta",
+      "prevalencia": "~0,4–0,6% (mediana ~0,4%)",
+      "sexo": null,
+      "diferencial": "transtorno de ansiedade de separação em adultos; transtornos depressivos; transtorno de pânico; agorafobia"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-esquizoide": {
+    "n": "Transtorno da Personalidade Esquizoide",
+    "tldr": "Padrão duradouro de afastamento das relações sociais e pouca expressão emocional: a pessoa prefere a solidão, busca intimidade e parece indiferente aos outros.",
+    "facts": {
+      "inicio": "início da vida adulta; pode aparecer já na infância/adolescência",
+      "prevalencia": "varia entre estudos (mediana ~1,3%; até ~3–5%)",
+      "sexo": null,
+      "diferencial": "transtorno delirante/esquizofrenia e transtornos com sintomas psicóticos; transtorno do espectro autista; mudança de personalidade por outra condição médica"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-esquizotipica": {
+    "n": "Transtorno da Personalidade Esquizotípica",
+    "tldr": "Padrão duradouro de desconforto intenso com a proximidade afetiva, somado a pensamento e percepção distorcidos (crenças mágicas, ideias de referência) e comportamento excêntrico.",
+    "facts": {
+      "inicio": "início da vida adulta; sinais já na infância/adolescência",
+      "prevalencia": "~0,6% (mediana) a 3,3–3,9% em levantamentos dos EUA",
+      "sexo": null,
+      "diferencial": "esquizofrenia; transtorno delirante; transtorno do espectro autista; transtornos da comunicação/linguagem"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-evitativa": {
+    "n": "Transtorno da Personalidade Evitativa",
+    "tldr": "Padrão persistente de timidez extrema, sentimento de inadequação e medo de crítica ou rejeição, que leva a pessoa a evitar contatos sociais e novas situações.",
+    "facts": {
+      "inicio": "início da vida adulta; precursores (timidez, isolamento) já na infância",
+      "prevalencia": "~2,1–2,4% (mediana ~2,1%); ~0,8% após os 65 anos",
+      "sexo": null,
+      "diferencial": "transtorno de ansiedade social; agorafobia; outros transtornos da personalidade"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-histrionica": {
+    "n": "Transtorno da Personalidade Histriônica",
+    "tldr": "Padrão persistente de emocionalidade exagerada e teatral com forte necessidade de ser o centro das atenções, levando a comportamentos sedutores e dramáticos.",
+    "facts": {
+      "inicio": "início da vida adulta",
+      "prevalencia": "~0,9% (mediana de estudos; até ~1,8%)",
+      "sexo": null,
+      "diferencial": "transtorno da personalidade borderline; transtorno da personalidade antissocial; transtorno da personalidade narcisista"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-nao-especificado": {
+    "n": "Transtorno da Personalidade Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de transtorno da personalidade que não preenchem os critérios completos de nenhum tipo específico, usado sem especificar o motivo ou por falta de informações.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-narcisista": {
+    "n": "Transtorno da Personalidade Narcisista",
+    "tldr": "Padrão persistente de grandiosidade, busca de admiração e pouca empatia, com autoimagem inflada e dificuldade em valorizar os outros.",
+    "facts": {
+      "inicio": "início da vida adulta",
+      "prevalencia": "mediana ~1,6% (0,0%–6,2% entre estudos)",
+      "sexo": null,
+      "diferencial": "transtorno da personalidade borderline; transtorno da personalidade histriônica; transtorno da personalidade antissocial"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-obsessivo-compulsiva": {
+    "n": "Transtorno da Personalidade Obsessivo- compulsiva",
+    "tldr": "Padrão rígido de busca por ordem, perfeccionismo e controle que sacrifica a flexibilidade e atrapalha concluir tarefas e se relacionar.",
+    "facts": {
+      "inicio": "início da vida adulta",
+      "prevalencia": "~2,4% a 7,9% (mediana ~4,7%)",
+      "sexo": null,
+      "diferencial": "transtorno obsessivo-compulsivo (TOC); transtorno de acumulação; transtorno da personalidade narcisista"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "18-transtornos-da-personalidade::transtorno-da-personalidade-paranoide": {
+    "n": "Transtorno da Personalidade Paranoide",
+    "tldr": "Padrão persistente de desconfiança e suspeita dos outros, interpretando suas intenções como hostis ou malévolas mesmo sem evidências.",
+    "facts": {
+      "inicio": "início da vida adulta (sinais já na infância/adolescência)",
+      "prevalencia": "~2,3–4,4% (mediana ~3,2%); até 23% em ambientes forenses",
+      "sexo": null,
+      "diferencial": "transtorno delirante persecutório; esquizofrenia; transtorno bipolar/depressivo com sintomas psicóticos; mudança de personalidade por outra condição médica"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::outro-transtorno-parafilico-especificado": {
+    "n": "Outro Transtorno Parafílico Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas parafílicos que causam sofrimento ou prejuízo significativos, mas não preenchem os critérios completos de nenhum transtorno parafílico específico (o clínico indica o motivo, ex.: zoofilia).",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-do-masoquismo-sexual": {
+    "n": "Transtorno do Masoquismo Sexual",
+    "tldr": "Excitação sexual intensa e recorrente ligada a ser humilhado, espancado, amarrado ou sofrer de outra forma, que causa sofrimento ou prejuízo na vida da pessoa.",
+    "facts": {
+      "inicio": "início médio por volta dos ~19 anos, com fantasias podendo surgir na puberdade/infância",
+      "prevalencia": "desconhecida (na Austrália, ~2,2% dos homens e 1,3% das mulheres relataram comportamento BDSM nos últimos 12 meses)",
+      "sexo": null,
+      "diferencial": "interesse/masoquismo sexual sem sofrimento ou prejuízo (não é transtorno)"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-do-sadismo-sexual": {
+    "n": "Transtorno do Sadismo Sexual",
+    "tldr": "Excitação sexual intensa e persistente ao causar sofrimento físico ou psicológico a outra pessoa, que vira transtorno quando praticada sem consentimento ou gera sofrimento/prejuízo.",
+    "facts": {
+      "inicio": "interesse sádico costuma surgir na adolescência",
+      "prevalencia": "desconhecida; <10% dos condenados por crimes sexuais e ~1/3 dos homicídios sexuais",
+      "sexo": "predomínio masculino (quase exclusivamente homens em amostras forenses)",
+      "diferencial": "sadismo sexual (sem transtorno); imposição de dor durante crime sexual; transtorno da conduta; transtorno da personalidade antissocial"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-exibicionista": {
+    "n": "Transtorno Exibicionista",
+    "tldr": "Excitação sexual intensa e persistente em mostrar os próprios genitais a quem não espera, gerando sofrimento ou levando a atos com pessoas que não consentem.",
+    "facts": {
+      "inicio": "adolescência ou início da vida adulta",
+      "prevalencia": "~4,1% (homens) e ~2,1% (mulheres) ao longo da vida (estudo sueco)",
+      "sexo": "predomínio masculino; raro em mulheres",
+      "diferencial": "interesse/exibicionismo sem transtorno; episódio maníaco; transtorno neurocognitivo maior; intoxicação por substância; esquizofrenia; transtorno da conduta / personalidade antissocial"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-fetichista": {
+    "n": "Transtorno Fetichista",
+    "tldr": "Excitação sexual intensa e persistente ligada a objetos inanimados ou a uma parte não genital do corpo, que causa sofrimento ou prejuízo na vida da pessoa.",
+    "facts": {
+      "inicio": "geralmente na puberdade (interesses fetichistas podem surgir antes da adolescência)",
+      "prevalencia": null,
+      "sexo": null,
+      "diferencial": "transtorno transvéstico; transtorno do masoquismo sexual; outros transtornos parafílicos"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-frotteurista": {
+    "n": "Transtorno Frotteurista",
+    "tldr": "Excitação sexual intensa e persistente por tocar ou esfregar-se em pessoas sem o consentimento delas, gerando sofrimento ou levando a agir sobre esses impulsos.",
+    "facts": {
+      "inicio": "fim da adolescência / início da vida adulta",
+      "prevalencia": "atos frotteuristas em até ~30% dos homens; transtorno bem menos comum (~10–14% em ambulatório de parafilias/hipersexualidade)",
+      "sexo": "predomínio masculino (prevalência menor entre mulheres)",
+      "diferencial": "frotteurismo (interesse sem transtorno); episódio maníaco; transtorno neurocognitivo maior / esquizofrenia / intoxicação por substância; transtorno da conduta e transtorno da personalidade antissocial"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-parafilico-nao-especificado": {
+    "n": "Transtorno Parafílico Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas parafílicos com sofrimento ou prejuízo significativos que não preenchem os critérios completos de nenhum transtorno parafílico específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-pedofilico": {
+    "n": "Transtorno Pedofílico",
+    "tldr": "Atração sexual intensa e persistente por crianças pré-púberes que leva a sofrimento, prejuízo nas relações ou a agir conforme esses impulsos.",
+    "facts": {
+      "inicio": "interesse sexual percebido por volta da puberdade; diagnóstico só a partir dos 16 anos",
+      "prevalencia": "provavelmente <3% entre homens; nas mulheres, fração ainda menor",
+      "sexo": "predomínio masculino (muito mais comum em homens)",
+      "diferencial": "pedofilia (sem transtorno); outros transtornos parafílicos (ex.: transtorno exibicionista); transtorno da personalidade antissocial"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-transvestico": {
+    "n": "Transtorno Transvéstico",
+    "tldr": "Excitação sexual intensa e recorrente por vestir-se com roupas do gênero oposto, que causa sofrimento significativo ou prejuízo na vida da pessoa.",
+    "facts": {
+      "inicio": "primeiros sinais na infância; excitação começa na puberdade",
+      "prevalencia": "desconhecida; <3% dos homens suecos relatam já ter tido excitação vestindo-se como mulher",
+      "sexo": "mais comum em homens",
+      "diferencial": "travestismo; transtorno fetichista; disforia de gênero"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "19-transtornos-parafilicos::transtorno-voyeurista": {
+    "n": "Transtorno Voyeurista",
+    "tldr": "Excitação sexual intensa e persistente ao observar secretamente pessoas nuas ou em atividade sexual sem consentimento, gerando sofrimento ou prejuízo.",
+    "facts": {
+      "inicio": "interesse percebido na adolescência; diagnóstico só a partir dos 18 anos",
+      "prevalencia": "desconhecida; comportamentos voyeuristas ao longo da vida ~34,5% (50,3% homens, 21,2% mulheres), mas o transtorno é bem mais raro",
+      "sexo": "predomínio masculino (~2:1 a 3:1)",
+      "diferencial": "voyeurismo (interesse sem transtorno); episódio maníaco, transtorno neurocognitivo maior, esquizofrenia ou intoxicação por substância; transtorno da conduta e transtorno da personalidade antissocial"
+    },
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "20-outros-transtornos-mentais::outro-transtorno-mental-especificado": {
+    "n": "Outro Transtorno Mental Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de um transtorno mental que não preenchem os critérios completos de nenhum transtorno específico, registrando-se a razão.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "20-outros-transtornos-mentais::outro-transtorno-mental-especificado-devido-a-outra-condicao-medica": {
+    "n": "Outro Transtorno Mental Especificado Devido a Outra Condição Médica",
+    "tldr": "Categoria de exceção: sintomas de transtorno mental claramente causados por outra condição médica que não preenchem todos os critérios de nenhum transtorno específico, com a razão registrada pelo clínico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "20-outros-transtornos-mentais::transtorno-mental-nao-especificado": {
+    "n": "Transtorno Mental Não Especificado",
+    "tldr": "Diagnóstico de exceção: sintomas significativos de um transtorno mental que não preenchem os critérios completos de nenhuma categoria específica, usado quando o clínico não especifica o motivo ou faltam informações (ex.: emergências).",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  },
+  "20-outros-transtornos-mentais::transtorno-mental-nao-especificado-devido-a-outra-condicao-medica": {
+    "n": "Transtorno Mental Não Especificado Devido a Outra Condição Médica",
+    "tldr": "Categoria de exceção: sintomas mentais claramente causados por uma condição médica, sem informação suficiente ou sem se enquadrar em um transtorno específico.",
+    "facts": null,
+    "needsReview": true,
+    "confidence": "high"
+  }
+}
