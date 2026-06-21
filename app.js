@@ -358,6 +358,8 @@
     goIndice:      function(){ go('indice'); },
     goRanking:     function(){ go('ranking'); loadLeaderboard(); },
     setRankPeriod: function(p){ if(state.rankPeriod===p) return; state.rankPeriod=p; setState({}); loadLeaderboard(); },
+    sideMetricNext: function(){ sideMetricIdx = (sideMetricIdx + 1) % sideMetrics().length; paintSideMetric(); resetSideMetricTimer(); },
+    sideMetricGo:   function(i){ sideMetricIdx = ((Number(i)||0)) % sideMetrics().length; paintSideMetric(); resetSideMetricTimer(); },
     goDsm:         function(){ go('dsm'); },
     goFeedback:    function(){ var f=state.feedback; f.sent=false; f.error=''; f.transtornoId=''; f.transtornoNome=''; go('feedback'); },
     setFeedbackTipo:function(t){ state.feedback.draft=rawVal('fb-msg'); state.feedback.tipo=t; state.feedback.error=''; render(); },
@@ -382,7 +384,7 @@
     goFlashcards:  function(){ state.deckCat=state.activeCat; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     toggleTheme:   function(){ toggleTheme(); },
     openA11y:      function(){ if(window.A11Y && window.A11Y.open) window.A11Y.open(); },
-    installPwa:    function(){ var p=window.__pwaPrompt; if(!p) return; p.prompt(); if(p.userChoice){ p.userChoice.then(function(){ window.__pwaPrompt=null; render(); }); } },
+    installPwa:    function(){ var p=window.__pwaPrompt; if(!p) return; state.moreOpen=false; p.prompt(); if(p.userChoice){ p.userChoice.then(function(){ window.__pwaPrompt=null; render(); }); } else { render(); } },
     toggleSound:   function(){ Sound.toggle(); render(); },
     openCat:       function(i){ setState({screen:'categoria', activeCat:i}); scrollTop(); },
     openDisorder:  function(i){ setState({screen:'ficha', activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
@@ -843,6 +845,7 @@
       state.progress = prog;
       state.stats = res[1] || {revisados:0, exercicios:0, taxa:0, streak:0};
       state.mastered = {}; setMasteredFrom(state.stats.mastered);
+      if(canRank() && !state.leaderboard) loadLeaderboard();   // popula o card de Ranking da sidebar
     }).catch(function(){ state.progress = {}; state.mastered = {}; state.stats = {revisados:0, exercicios:0, taxa:0, streak:0}; });
   }
   function setMasteredFrom(arr){ var m=state.mastered||{}; (arr||[]).forEach(function(k){ m[k]=true; }); state.mastered=m; }
@@ -1031,20 +1034,37 @@
     var cs  = t ? (bt.caso||0) : 8;
     var dom = t ? dominioPct() : 87;
     var streak = st ? st.streak : 12;
+    var nCasos = CASOS.length;
+    function clampPct(x){ return Math.max(0, Math.min(100, Math.round(x))); }
     return [
       {label:'Progresso geral', value:pct+'%', bar:pct, sub:rev+' de '+total+' transtornos revisados'},
-      {label:'Flashcards',      value:String(fc),  sub:'cartões dominados'},
-      {label:'Exercícios',      value:String(exe), sub:'exercícios dominados'},
-      {label:'Estudos de caso', value:String(cs),  sub:'casos resolvidos'},
-      {label:'Ranking',         value:'#—',        sub:'em breve'},
+      {label:'Flashcards',      value:String(fc),  bar: total?clampPct(fc/total*100):0,  sub:fc+' de '+total+' cartões dominados'},
+      {label:'Exercícios',      value:String(exe), bar: total?clampPct(exe/total*100):0, sub:'exercícios dominados'},
+      {label:'Estudos de caso', value:cs+'/'+nCasos, bar: nCasos?clampPct(cs/nCasos*100):0, sub:'casos resolvidos'},
+      sideRankMetric(),
       {label:'Visão geral',     value:dom+'%', bar:dom, sub:streak+' dias de streak · '+dom+'% de domínio'}
     ];
+  }
+  // posição real do usuário no ranking (a partir do leaderboard carregado)
+  function sideRankMetric(){
+    if(!canRank()){
+      if(!tracking()) return {label:'Ranking', value:'#12', bar:95, sub:'de 240 estudantes'};   // demo (deslogado)
+      return {label:'Ranking', value:'#—', sub:'crie uma conta para competir'};                  // visitante
+    }
+    var rows = state.leaderboard, meId = state.auth.user ? state.auth.user.id : null;
+    if(!rows || !rows.length) return {label:'Ranking', value:'#—', sub:'some XP para entrar no ranking'};
+    var pos = 0;
+    for(var i=0;i<rows.length;i++){ if(rows[i].user_id===meId){ pos=i+1; break; } }
+    if(!pos) return {label:'Ranking', value:'#—', sub:'de '+rows.length+' estudantes'};
+    var bar = rows.length>1 ? Math.round((rows.length - pos + 1)/rows.length*100) : 100;
+    return {label:'Ranking', value:'#'+pos, bar:bar, sub:'de '+rows.length+' estudantes'};
   }
   function sideMetricCard(){
     var M = sideMetrics(), n = M.length, i = sideMetricIdx % n, m = M[i];
     var dots = '';
-    for(var d=0; d<n; d++){ dots += '<span class="sm-dot'+(d===i?' on':'')+'"></span>'; }
-    return '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">'+
+    for(var d=0; d<n; d++){ dots += '<span class="sm-dot'+(d===i?' on':'')+'" data-action="sideMetricGo" data-arg="'+d+'" title="'+esc(M[d].label)+'"></span>'; }
+    return '<div data-action="sideMetricNext" title="Próxima métrica" style="cursor:pointer;">'+
+      '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">'+
         '<span style="font-size:12px;font-weight:700;color:var(--muted-2);">'+esc(m.label)+'</span>'+
         '<span style="font:800 16px \'Bricolage Grotesque\';color:var(--teal-text);">'+esc(m.value)+'</span>'+
       '</div>'+
@@ -1052,16 +1072,19 @@
         ? '<div style="height:8px;background:var(--track);border-radius:99px;overflow:hidden;"><div style="width:'+m.bar+'%;height:100%;background:linear-gradient(90deg,#0E4D64,#3F95A3,#5BC0BE,#3F95A3,#0E4D64);background-size:200% 100%;border-radius:99px;animation:slide 4s linear infinite;"></div></div>'
         : '<div style="height:8px;"></div>')+
       '<div style="font-size:11.5px;color:var(--muted);margin-top:9px;font-weight:600;line-height:1.35;min-height:30px;">'+esc(m.sub)+'</div>'+
+      '</div>'+
       '<div class="sm-dots">'+dots+'</div>';
   }
-  function tickSideMetric(){
-    sideMetricIdx = (sideMetricIdx + 1) % sideMetrics().length;
+  function paintSideMetric(){
     var el = document.querySelector('.side-metric');
     if(el){
       el.innerHTML = sideMetricCard();
       el.style.animation='none'; void el.offsetWidth; el.style.animation='fadeIn .45s ease';
     }
   }
+  function tickSideMetric(){ sideMetricIdx = (sideMetricIdx + 1) % sideMetrics().length; paintSideMetric(); }
+  var sideMetricTimer = null;
+  function resetSideMetricTimer(){ if(sideMetricTimer) clearInterval(sideMetricTimer); sideMetricTimer = setInterval(tickSideMetric, 15000); }
 
   function sidebar(){
     var its = navItems();
@@ -1337,6 +1360,10 @@
     var sec = navItems().filter(function(i){ return !i.primary; }).map(function(it){
       return '<button data-action="'+it.action+'" class="ms-item'+(it.active?' on':'')+'">'+it.icon+'<span>'+esc(it.label)+'</span></button>';
     }).join('');
+    // instalar como app (PWA) — só quando o navegador permite instalar
+    var install = window.__pwaPrompt
+      ? '<div class="ms-sep"></div><button data-action="installPwa" class="ms-item ms-install">'+ICON.download+'<span>Instalar app na tela inicial</span></button>'
+      : '';
     var account = '';
     if(DB.ready && state.auth.user && !state.auth.guest){
       account = '<div class="ms-sep"></div>'+
@@ -1350,7 +1377,7 @@
       '<div class="ms-sheet" role="dialog" aria-label="Mais opções">'+
         '<div class="ms-handle"></div>'+
         '<div class="ms-title">Mais</div>'+
-        '<div class="ms-list">'+sec+account+'</div>'+
+        '<div class="ms-list">'+sec+install+account+'</div>'+
       '</div>';
   }
 
@@ -3214,7 +3241,7 @@
       }
     });
     document.addEventListener('keydown', handleKeyNav);
-    setInterval(tickSideMetric, 15000);   // carrossel de métricas na sidebar
+    resetSideMetricTimer();   // carrossel de métricas (auto + interação do usuário)
     // fecha o dropdown de busca ao clicar fora dele
     document.addEventListener('click', function(e){
       var box = document.getElementById('search-results');
