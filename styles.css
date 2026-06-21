@@ -203,6 +203,8 @@ button{font-family:inherit;}
 .ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:16px;}
 .ficha-grid{display:grid;grid-template-columns:1fr 290px;gap:24px;align-items:start;}
+/* itens encolhíveis: evita que nomes longos do "Próximo" estourem a coluna no mobile */
+.ficha-grid>*{min-width:0;}
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;position:relative;}
 
 /* ============================================================
@@ -538,6 +540,11 @@ button{font-family:inherit;}
 @media (max-width:760px){
   .side-toggle-btn{display:none !important;}
   .streak-lbl{display:none;}
+  /* header compacto: pílula mostra só o nível (sem "130 XP") */
+  .xp-amount, .xp-label{display:none;}
+  #xp-pill{padding:5px;}
+  /* ficha no mobile: sem índice "Nesta ficha" — navega pelo Anterior/Próximo */
+  .rail-index{display:none;}
 }
 
 /* ============================================================

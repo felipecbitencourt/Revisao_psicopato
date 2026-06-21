@@ -1253,8 +1253,8 @@
     var lv = levelInfo(userXP());
     var levelPill = '<button id="xp-pill" data-action="goRanking" title="Ver ranking" data-hover="border-color:#5BC0BE;" style="display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:6px 13px 6px 7px;cursor:pointer;transition:border-color .18s ease;">'+
         '<span style="width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#5BC0BE,#0E4D64);color:#fff;display:flex;align-items:center;justify-content:center;font:800 12px \'Bricolage Grotesque\';flex-shrink:0;">'+lv.level+'</span>'+
-        '<span style="font:800 13px \'Bricolage Grotesque\';color:var(--teal-text);">'+lv.xp+'</span>'+
-        '<span style="font-size:12px;font-weight:600;color:var(--muted);">XP</span>'+
+        '<span class="xp-amount" style="font:800 13px \'Bricolage Grotesque\';color:var(--teal-text);">'+lv.xp+'</span>'+
+        '<span class="xp-label" style="font-size:12px;font-weight:600;color:var(--muted);">XP</span>'+
       '</button>';
     var streakChip = (tracking() && streak===0) ? '' :
       '<div style="display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid #FFD9C2;border-radius:99px;padding:7px 14px 7px 11px;">'+
@@ -1752,7 +1752,7 @@
 
     // ---- rail: índice de seções (quick-jump) ----
     var indexCard = sections.length
-      ? '<div class="rail-card"><div class="rail-label">Nesta ficha</div><div class="ficha-index">'+
+      ? '<div class="rail-card rail-index"><div class="rail-label">Nesta ficha</div><div class="ficha-index">'+
         sections.map(function(sec,i){
           return '<button class="ficha-index-item" data-action="jumpToSection" data-arg="'+i+'" data-hover="background:var(--surface-2);color:var(--ink);">'+sectionIcon(sec.title)+'<span>'+esc(sec.title)+'</span></button>';
         }).join('')+
