@@ -537,6 +537,7 @@ button{font-family:inherit;}
 
 @media (max-width:760px){
   .side-toggle-btn{display:none !important;}
+  .streak-lbl{display:none;}
 }
 
 /* ============================================================

@@ -21,9 +21,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Psico·Pato">
 
-  <link rel="stylesheet" href="styles.css?v=28">
+  <link rel="stylesheet" href="styles.css?v=29">
   <!-- painel de acessibilidade (a11y-kit) -->
-  <link rel="stylesheet" href="a11y-kit/a11y-kit.css?v=1">
+  <link rel="stylesheet" href="a11y-kit/a11y-kit.css?v=2">
   <!-- o botão é colocado no header do app; escondemos o FAB flutuante padrão -->
   <style>.ak-fab{display:none !important;}</style>
 </head>
@@ -36,9 +36,9 @@
   <script src="content.js?v=4"></script>
   <!-- camada de dados (fala com o Supabase) -->
   <script src="db.js?v=25"></script>
-  <script src="app.js?v=38"></script>
+  <script src="app.js?v=43"></script>
   <!-- A11y Kit: inicia e expõe a API global (o app abre via botão do header) -->
-  <script src="a11y-kit/a11y-kit.js?v=1"></script>
+  <script src="a11y-kit/a11y-kit.js?v=2"></script>
   <script>
     window.A11Y = A11yKit.init({
       storageKey: 'psp-a11y',
@@ -47,7 +47,11 @@
       textSelector: '.content h1,.content h2,.content h3,.content p,.content li',
       draggable: false,
       theme: { accent: '#0E4D64' },
-      features: { dark: false, vlibras: false, translate: false }, // o app já tem dark próprio
+      // o app já tem dark próprio; descrição de imagens desativada por ora
+      features: { dark: false, vlibras: false, translate: true, imageDesc: false },
+      // tradução via Google: PT/EN/ES no simplificado; mais idiomas no avançado
+      translateSimple:   [['pt', 'PT'], ['en', 'EN'], ['es', 'ES']],
+      translateAdvanced: [['pt', 'Português'], ['fr', 'Français'], ['it', 'Italiano'], ['ht', 'Kreyòl ayisyen'], ['de', 'Deutsch']],
     });
   </script>
   <!-- PWA: registra o service worker e captura o convite de instalação -->

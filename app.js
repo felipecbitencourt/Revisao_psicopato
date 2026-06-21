@@ -307,7 +307,7 @@
   var state = {
     screen:'home', activeCat:4, activeDisorder:0, fichaOpen:{},
     deckCat:4, deckAll:null, fcIndex:0, fcFlipped:false,
-    quizCat:4, quizSet:null, quizScore:0, quizDone:false,
+    quizCat:4, quizKind:'nome', quizSet:null, quizScore:0, quizDone:false,
     quizIndex:0, quizSelected:null, quizAnswered:false,
     classifyPhase:0, classifyBoard:null, classifyPlaced:{}, classifyLocked:{}, classifySel:null,
     classifyChecked:false, classifyPhaseComplete:false, classifyScore:0, classifyTotal:0, classifyDone:false,
@@ -354,9 +354,13 @@
     flashRandom:   function(){ state.deckAll=shuffle(allCards()); state.deckCat=-1; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     goQuizMode:    function(){ go('quizMode'); },
     goQuizDecks:   function(){ go('quizDecks'); },
-    openQuizDeck:  function(ci){ state.quizCat=ci; startQuiz(buildQuiz(deckCards(ci))); },
-    quizRandom:    function(){ state.quizCat=-1; startQuiz(buildQuiz(allCards())); },
-    quizRestart:   function(){ startQuiz(buildQuiz(state.quizCat===-1 ? allCards() : deckCards(state.quizCat))); },
+    quizNomeDecks: function(){ state.quizKind='nome';     go('quizDecks'); },
+    quizCritDecks: function(){ state.quizKind='criterio'; go('quizDecks'); },
+    openQuizDeck:  function(ci){ state.quizCat=ci; startQuiz(buildQuizSet(state.quizKind, ci)); },
+    quizNomeRandom:function(){ state.quizKind='nome';     state.quizCat=-1; startQuiz(buildQuizSet('nome', -1)); },
+    quizCritRandom:function(){ state.quizKind='criterio'; state.quizCat=-1; startQuiz(buildQuizSet('criterio', -1)); },
+    quizRandom:    function(){ state.quizKind='nome';     state.quizCat=-1; startQuiz(buildQuizSet('nome', -1)); },
+    quizRestart:   function(){ startQuiz(buildQuizSet(state.quizKind, state.quizCat)); },
     goIndice:      function(){ go('indice'); },
     goRanking:     function(){ go('ranking'); loadLeaderboard(); },
     setRankPeriod: function(p){ if(state.rankPeriod===p) return; state.rankPeriod=p; setState({}); loadLeaderboard(); },
@@ -1009,7 +1013,7 @@
       {label:'Revisão',   icon:ICON.book, action:'goCategorias', active:REV_SCREENS.indexOf(s.screen)>=0, primary:true},
       {label:'Exercícios',icon:ICON.check,action:'goExercicios', active:EX_SCREENS.indexOf(s.screen)>=0, primary:true},
       {label:'Ranking',   icon:ICON.trophy,  action:'goRanking',  active:s.screen==='ranking'},
-      {label:'DSM-5-TR',  icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm'},
+      {label:'DSM-5',     icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm'},
       {label:'Feedback',  icon:ICON.message, action:'goFeedback', active:s.screen==='feedback'},
       {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre'},
     ];
@@ -1088,7 +1092,7 @@
     '</div>';
     return ''+
     '<aside class="sidebar'+(state.sideCollapsed?' collapsed':'')+'">'+
-      '<div class="side-logo" style="display:flex;align-items:center;gap:11px;padding:4px 6px 22px;">'+
+      '<div class="side-logo" data-action="goHome" role="button" tabindex="0" title="Ir para o início" aria-label="Ir para o início" data-hover="opacity:.82;" style="display:flex;align-items:center;gap:11px;padding:4px 6px 22px;cursor:pointer;transition:opacity .15s ease;">'+
         '<img src="logo-128.png" alt="Psico·Pato" width="38" height="38" style="width:38px;height:38px;border-radius:11px;object-fit:cover;display:block;background:#fff;border:1px solid var(--border);flex-shrink:0;">'+
         '<div class="side-logo-text">'+
           '<div style="font:800 17px \'Bricolage Grotesque\';color:var(--teal-text);letter-spacing:-.3px;">Psico<span style="color:#5BC0BE;">·</span>Pato</div>'+
@@ -1258,7 +1262,7 @@
       '<div style="display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid #FFD9C2;border-radius:99px;padding:7px 14px 7px 11px;">'+
         ICON.flame+
         '<span style="font:800 14px \'Bricolage Grotesque\';color:#E8590C;">'+streak+'</span>'+
-        '<span style="font-size:12.5px;font-weight:600;color:#C2410C;">dias</span>'+
+        '<span class="streak-lbl" style="font-size:12.5px;font-weight:600;color:#C2410C;">dias</span>'+
       '</div>';
     return ''+
     '<header class="topbar">'+
@@ -1274,7 +1278,7 @@
       streakChip+
       '<button data-action="toggleSound" title="'+(Sound.isOn()?'Som ligado':'Som desligado')+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:'+(Sound.isOn()?'var(--teal-text)':'var(--muted)')+';transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+(Sound.isOn()?ICON.soundOn:ICON.soundOff)+'</button>'+
       pwaInstallBtn()+
-      '<button data-action="openA11y" title="Acessibilidade" aria-label="Abrir painel de acessibilidade" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+ICON.a11y+'</button>'+
+      '<button data-action="openA11y" title="Acessibilidade" aria-label="Abrir painel de acessibilidade" data-hover="border-color:#5BC0BE;" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .18s ease,border-color .18s ease;overflow:hidden;"><img src="a11y-kit/acessibilidade_icone.png?v=1" alt="" width="24" height="24" style="width:24px;height:24px;object-fit:contain;pointer-events:none;display:block;"></button>'+
       '<button data-action="toggleTheme" title="Alternar tema" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9) rotate(-15deg);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+themeIcon+'</button>'+
       notifBell()+
     '</header>';
@@ -1357,8 +1361,10 @@
      ========================================================= */
   function statCard(iconWrapExtra, bg, icon, value, label){
     return '<div data-hover="transform:translateY(-3px);box-shadow:0 12px 26px rgba(16,42,51,.08);border-color:var(--accent-bd);" style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 18px 16px;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;">'+
-      '<div style="width:36px;height:36px;border-radius:10px;background:'+bg+';display:flex;align-items:center;justify-content:center;margin-bottom:12px;'+iconWrapExtra+'">'+icon+'</div>'+
-      '<div style="font:800 26px \'Bricolage Grotesque\';color:var(--ink);">'+value+'</div>'+
+      '<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">'+
+        '<div style="width:36px;height:36px;border-radius:10px;background:'+bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0;'+iconWrapExtra+'">'+icon+'</div>'+
+        '<div style="font:800 26px \'Bricolage Grotesque\';color:var(--ink);line-height:1;">'+value+'</div>'+
+      '</div>'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);">'+label+'</div>'+
     '</div>';
   }
@@ -1451,11 +1457,11 @@
         '<div style="display:flex;flex-direction:column;gap:16px;">'+
           '<button data-action="goCategorias" data-hover="border-color:#5BC0BE;transform:translateY(-3px);box-shadow:0 12px 26px rgba(14,77,100,.10);" data-active="transform:translateY(-1px) scale(.99);" style="flex:1;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;cursor:pointer;display:flex;gap:14px;align-items:center;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;">'+
             '<div style="width:46px;height:46px;border-radius:13px;background:#E3F3F2;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+ICON.book2+'</div>'+
-            '<div><div style="font:700 16px \'Bricolage Grotesque\';">Revisão</div><div style="font-size:13px;color:var(--muted);font-weight:500;">20 categorias · fichas-resumo</div></div>'+
+            '<div><div style="font:700 16px \'Bricolage Grotesque\';color:var(--ink);">Revisão</div><div style="font-size:13px;color:var(--muted);font-weight:500;">20 categorias · fichas-resumo</div></div>'+
           '</button>'+
           '<button data-action="goExercicios" data-hover="border-color:#5BC0BE;transform:translateY(-3px);box-shadow:0 12px 26px rgba(14,77,100,.10);" data-active="transform:translateY(-1px) scale(.99);" style="flex:1;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;cursor:pointer;display:flex;gap:14px;align-items:center;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;">'+
             '<div style="width:46px;height:46px;border-radius:13px;background:#FFEDE3;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+ICON.pencil+'</div>'+
-            '<div><div style="font:700 16px \'Bricolage Grotesque\';">Exercícios</div><div style="font-size:13px;color:var(--muted);font-weight:500;">4 modos · flashcards e quiz</div></div>'+
+            '<div><div style="font:700 16px \'Bricolage Grotesque\';color:var(--ink);">Exercícios</div><div style="font-size:13px;color:var(--muted);font-weight:500;">4 modos · flashcards e quiz</div></div>'+
           '</button>'+
         '</div>'+
       '</div>'+
@@ -1853,20 +1859,79 @@
   }
   function currentDeck(){ return state.deckCat===-1 ? (state.deckAll||[]) : deckCards(state.deckCat); }
 
-  /* questionário gerado das fichas: resumo -> nome, distratores da mesma categoria */
+  /* ---------------------------------------------------------
+     Mascaramento do nome do transtorno no enunciado.
+     Evita que o resumo/critério entregue a resposta: troca o
+     nome e suas flexões (por prefixo) por uma lacuna "______".
+     --------------------------------------------------------- */
+  var QUIZ_BLANK = '______';
+  var QZ_STOP = {transtorno:1,transtornos:1,de:1,da:1,do:1,dos:1,das:1,e:1,ou:1,com:1,sem:1,na:1,no:1,a:1,o:1,por:1,outro:1,outra:1,outros:1,outras:1,nao:1,um:1,uma:1,que:1,em:1,ao:1,tipo:1,devido:1,relacionado:1,relacionados:1,especificado:1,especificada:1,induzido:1,induzida:1,i:1,ii:1,maior:1,geral:1,grave:1,leve:1};
+  function qzNorm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+  function qzStems(name){
+    var toks = qzNorm(name).split(/[^a-z0-9]+/).filter(function(t){ return t.length>=4 && !QZ_STOP[t]; });
+    var seen={}, out=[];
+    toks.forEach(function(t){ var st=t.slice(0, Math.min(t.length,6)); if(!seen[st]){ seen[st]=1; out.push(st); } });
+    return out;
+  }
+  function maskName(text, name){
+    var stems = qzStems(name); if(!stems.length || !text) return text;
+    var out = text.replace(/[0-9A-Za-zÀ-ÿ]+(?:-[0-9A-Za-zÀ-ÿ]+)*/g, function(w){
+      var nw = qzNorm(w);
+      for(var i=0;i<stems.length;i++){ if(nw.indexOf(stems[i])===0) return QUIZ_BLANK; }
+      return w;
+    });
+    return out.replace(/______(?:[\s/–-]+______)+/g, QUIZ_BLANK); // colapsa lacunas adjacentes
+  }
+
+  /* questionário "pelo resumo": resumo (mascarado) -> nome */
   var QUIZ_LEN = 10;
+  function pickDistractors(card, names, pool){
+    var distr = shuffle(names.filter(function(n){ return n!==card.front; })).slice(0,3);
+    if(distr.length<3){
+      var extra = shuffle(pool.filter(function(n){ return n!==card.front && distr.indexOf(n)<0; })).slice(0, 3-distr.length);
+      distr = distr.concat(extra);
+    }
+    return distr;
+  }
   function buildQuiz(items){
     var pool = allCards().map(function(x){ return x.front; });
     var names = items.map(function(x){ return x.front; });
     return shuffle(items).slice(0, QUIZ_LEN).map(function(card){
-      var distr = shuffle(names.filter(function(n){ return n!==card.front; })).slice(0,3);
-      if(distr.length<3){
-        var extra = shuffle(pool.filter(function(n){ return n!==card.front && distr.indexOf(n)<0; })).slice(0, 3-distr.length);
-        distr = distr.concat(extra);
-      }
-      var opts = shuffle([card.front].concat(distr));
-      return { q: card.back, opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color, ci: card.ci, di: card.di };
+      var opts = shuffle([card.front].concat(pickDistractors(card, names, pool)));
+      return { q: maskName(card.back, card.front), opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color, ci: card.ci, di: card.di };
     });
+  }
+
+  /* questionário "por critério diagnóstico": um critério A–E -> nome.
+     Só usa transtornos que têm critérios estruturados com texto. */
+  function critCards(ci){
+    var cats = ci===-1 ? CATS.map(function(c,i){ return {c:c,i:i}; }) : [{c:CATS[ci],i:ci}];
+    var out=[];
+    cats.forEach(function(o){ if(!o.c) return; (o.c.items||[]).forEach(function(d,di){
+      var crit = Array.isArray(d.criteria) ? d.criteria.filter(function(x){ return x && (x.text||'').trim().length>=25; }) : [];
+      if(!crit.length) return;
+      out.push({ front:d.n, crit:crit, cat:o.c.name, color:o.c.color, ci:o.i, di:di });
+    }); });
+    return out;
+  }
+  function buildCritQuiz(ci){
+    var items = critCards(ci);
+    if(!items.length) return [];
+    var names = items.map(function(x){ return x.front; });
+    var pool = (ci===-1 ? items : critCards(-1)).map(function(x){ return x.front; });
+    return shuffle(items).slice(0, QUIZ_LEN).map(function(card){
+      var opts = shuffle([card.front].concat(pickDistractors(card, names, pool)));
+      var ch = card.crit[Math.floor(Math.random()*card.crit.length)];
+      return { q: maskName((ch.text||'').trim(), card.front), qlabel:'Critério '+(ch.letter||''),
+        prompt:'De qual transtorno é este critério diagnóstico?',
+        opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color, ci: card.ci, di: card.di };
+    });
+  }
+
+  // dispatcher: monta o set conforme o tipo escolhido (com fallback)
+  function buildQuizSet(kind, ci){
+    if(kind==='criterio'){ var s=buildCritQuiz(ci); if(s.length) return s; }
+    return buildQuiz(ci===-1 ? allCards() : deckCards(ci));
   }
 
   // grade dos 20 decks (reutilizada por flashcards e quiz); unit = 'cartões' | 'questões'
@@ -2054,10 +2119,16 @@
     '<section style="max-width:760px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       backBtn('goExercicios','Exercícios')+
       '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário</h1>'+
-      '<p style="margin:0 0 26px;color:var(--muted-2);font-size:15px;max-width:560px;">Leia a descrição e escolha o transtorno. Como você quer praticar?</p>'+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:15px;max-width:560px;">Escolha o tipo de questão e como praticar.</p>'+
+      '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:4px 0 10px;">Pelo resumo clínico</div>'+
       '<div class="ex-grid">'+
-        modeOption('goQuizDecks', icoCat, '#4361EE', '#E8ECFB', 'Por categoria', 'Questões de um capítulo do DSM-5-TR por vez (até '+QUIZ_LEN+' por rodada).')+
-        modeOption('quizRandom',  icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', QUIZ_LEN+' questões sorteadas de todas as categorias.')+
+        modeOption('quizNomeDecks', icoCat, '#4361EE', '#E8ECFB', 'Por categoria', 'Leia o resumo (com o nome oculto) e identifique o transtorno — um capítulo por vez.')+
+        modeOption('quizNomeRandom', icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', QUIZ_LEN+' resumos sorteados de todas as categorias.')+
+      '</div>'+
+      '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Por critério diagnóstico</div>'+
+      '<div class="ex-grid">'+
+        modeOption('quizCritDecks', icoCat, '#7C3AED', '#F1E9FB', 'Por categoria', 'Receba um critério A–E e diga de qual transtorno é — um capítulo por vez.')+
+        modeOption('quizCritRandom', icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', QUIZ_LEN+' critérios sorteados de todas as categorias.')+
       '</div>'+
     '</section>';
   }
@@ -2066,7 +2137,7 @@
     return ''+
     '<section style="max-width:1080px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       backBtn('goQuizMode','Questionário')+
-      '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário por categoria</h1>'+
+      '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário · '+(state.quizKind==='criterio'?'por critério':'pelo resumo')+'</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:14.5px;max-width:600px;">Escolha um capítulo do DSM-5-TR para responder.</p>'+
       '<div class="deck-grid">'+deckGrid('openQuizDeck','questões',{variant:'quiz',tipo:'quiz'})+'</div>'+
     '</section>';
@@ -2218,7 +2289,8 @@
       '</div>'+
       '<div style="height:6px;background:var(--track);border-radius:99px;overflow:hidden;margin-bottom:24px;">'+bar+'</div>'+
       '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;">'+
-        '<div style="font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Qual transtorno corresponde a esta descrição?</div>'+
+        '<div style="font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">'+esc(qz.prompt||'Qual transtorno corresponde a esta descrição?')+'</div>'+
+        (qz.qlabel ? '<span style="display:inline-block;font:800 11px \'Bricolage Grotesque\';letter-spacing:.4px;color:'+ccolor+';background:'+ccolor+'14;border:1px solid '+ccolor+'33;border-radius:7px;padding:3px 9px;margin-bottom:12px;">'+esc(qz.qlabel)+'</span>' : '')+
         '<div style="font:600 18px \'Bricolage Grotesque\';line-height:1.45;margin-bottom:22px;text-wrap:pretty;color:var(--body);">'+esc(qz.q)+'</div>'+
         '<div style="display:flex;flex-direction:column;gap:11px;">'+opts+'</div>'+
         feedback+
@@ -2897,12 +2969,12 @@
     '<section style="animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">'+
         '<div>'+
-          '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">DSM-5-TR</div>'+
+          '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">DSM-5</div>'+
           '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Manual na íntegra</h1>'+
         '</div>'+
         '<a href="DSM-V.pdf" target="_blank" rel="noopener" data-hover="border-color:#5BC0BE;" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:9px 14px;font:700 13px \'Hanken Grotesk\';color:var(--teal-text);transition:border-color .18s ease;">Abrir em nova aba ↗</a>'+
       '</div>'+
-      '<iframe class="dsm-frame" src="DSM-V.pdf" title="DSM-5-TR — manual completo"></iframe>'+
+      '<iframe class="dsm-frame" src="DSM-V.pdf" title="DSM-5 — manual completo"></iframe>'+
     '</section>';
   }
   function screenSobre(){

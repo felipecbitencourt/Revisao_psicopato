@@ -15,6 +15,8 @@
     grpAudio: 'Áudio', grpNav: 'Navegação', grpLang: 'Línguas', grpIdioma: 'Idioma',
     grpAdvText: 'Texto assistivo', grpAdvColor: 'Cor e luminosidade', grpAdvNav: 'Navegação',
     grpAdvAudio: 'Áudio', grpAdvImg: 'Imagens', grpAdvLang: 'Tradução',
+    grpAdvColorCustom: 'Cores personalizadas',
+    ccBg: 'Fundo', ccText: 'Texto', ccHead: 'Títulos', ccReset: 'Restaurar cores', ccDefault: 'Padrão',
     fontSize: 'Tamanho da fonte', font: 'Fonte', bionic: 'Leitura biônica',
     spacing: 'Espaçamento do texto', lineH: 'Entrelinha', letter: 'Espaço entre letras',
     word: 'Espaço entre palavras', simplify: 'Simplificar texto',
@@ -36,11 +38,11 @@
 
   var DEFAULT_PRESETS = [
     { id: 'off', title: 'Desativado', desc: 'Leitura padrão, sem ajustes.', tags: [],
-      set: { font: 'default', links: false, bionic: false, simplify: false, imageDesc: false } },
+      set: { font: 'default', links: false, bionic: false, simplify: false } },
     { id: 'r1', title: 'Assistência de leitura 1', desc: 'Fonte Atkinson e links destacados.', tags: ['Dislexia', 'Baixa visão'],
-      set: { font: 'atkinson', links: true, bionic: false, simplify: false, imageDesc: false } },
-    { id: 'r2', title: 'Assistência de leitura 2', desc: 'Atkinson, links destacados, leitura biônica, simplificação e descrição de imagens.', tags: ['TDAH', 'Dislexia', 'Baixa visão'],
-      set: { font: 'atkinson', links: true, bionic: true, simplify: true, imageDesc: true } },
+      set: { font: 'atkinson', links: true, bionic: false, simplify: false } },
+    { id: 'r2', title: 'Assistência de leitura 2', desc: 'Atkinson, links destacados, leitura biônica e simplificação.', tags: ['TDAH', 'Dislexia', 'Baixa visão'],
+      set: { font: 'atkinson', links: true, bionic: true, simplify: true } },
   ];
 
   var DEFAULTS = {
@@ -69,7 +71,7 @@
       colorblind: true, saturation: true, grayscale: true, brightness: true, dark: true,
       cursor: true, links: true, keyboard: true,
       presets: true, reader: true, imageDesc: true, simplify: true,
-      vlibras: false, translate: false,
+      customColors: true, vlibras: false, translate: false,
     },
   };
 
@@ -79,6 +81,7 @@
     colorblind: 'none', saturation: 'normal', grayscale: false, brightness: 1, dark: false,
     cursor: false, links: false, keyboard: false,
     simplify: false, imageDesc: false,
+    colorBg: null, colorText: null, colorHead: null,
   };
 
   /* ---------- utils ---------- */
@@ -149,6 +152,29 @@
       w.appendChild(i); w.appendChild(o); w._render = function () { i.value = get(); paint(); }; return w;
     }
     function group(pane, title) { var g = el('div', 'ak-group', '<div class="ak-group-title">' + title + '</div>'); pane.appendChild(g); return g; }
+    function toHex(c) { if (/^#([0-9a-f]{3})$/i.test(c)) return '#' + c[1] + c[1] + c[2] + c[2] + c[3] + c[3]; if (/^#([0-9a-f]{6})$/i.test(c)) return c; return '#000000'; }
+    function swatches(key, palette) {
+      var wrap = el('div', 'ak-swatches');
+      var none = el('button', 'ak-swatch ak-swatch--none'); none.type = 'button'; none.title = labels.ccDefault; none.setAttribute('aria-label', labels.ccDefault);
+      none.addEventListener('click', function () { set(key, null); });
+      wrap.appendChild(none);
+      palette.forEach(function (c) {
+        var b = el('button', 'ak-swatch'); b.type = 'button'; b.dataset.c = c; b.style.background = c; b.title = c; b.setAttribute('aria-label', c);
+        b.addEventListener('click', function () { set(key, c); });
+        wrap.appendChild(b);
+      });
+      var custom = el('label', 'ak-swatch ak-swatch--custom'); custom.title = labels.ccDefault;
+      var inp = el('input'); inp.type = 'color'; custom.appendChild(inp);
+      inp.addEventListener('input', function () { set(key, inp.value); });
+      wrap.appendChild(custom);
+      var paint = function () {
+        var v = s[key];
+        wrap.querySelectorAll('.ak-swatch').forEach(function (x) { x.classList.toggle('is-active', !!v && !!x.dataset.c && x.dataset.c.toLowerCase() === String(v).toLowerCase()); });
+        none.classList.toggle('is-active', !v);
+        if (v) inp.value = toHex(v);
+      };
+      paint(); wrap._render = paint; return wrap;
+    }
 
     var set = function (key, val) { s[key] = val; save(); applyAll(); refresh(); };
 
@@ -254,6 +280,13 @@
       // descrição de imagens
       if (s.imageDesc) setupImageDesc();
       html.classList.toggle('ak-show-img-desc', !!s.imageDesc);
+      // cores personalizadas (fundo / texto / títulos)
+      html.classList.toggle('ak-cc-bg', !!s.colorBg);
+      html.classList.toggle('ak-cc-text', !!s.colorText);
+      html.classList.toggle('ak-cc-head', !!s.colorHead);
+      if (s.colorBg) html.style.setProperty('--ak-cc-bg', s.colorBg); else html.style.removeProperty('--ak-cc-bg');
+      if (s.colorText) html.style.setProperty('--ak-cc-text', s.colorText); else html.style.removeProperty('--ak-cc-text');
+      if (s.colorHead) html.style.setProperty('--ak-cc-head', s.colorHead); else html.style.removeProperty('--ak-cc-head');
       // transformações de texto
       transformContent();
     }
@@ -391,6 +424,17 @@
     if (F.saturation) aC.appendChild(row(labels.saturation, optgroup([['low', labels.satLow], ['normal', labels.satNormal], ['high', labels.satHigh]], function () { return s.saturation; }, function (v) { set('saturation', v); }), { col: true }));
     if (F.grayscale) aC.appendChild(row(labels.grayscale, toggle(function () { return s.grayscale; }, function () { set('grayscale', !s.grayscale); })));
 
+    // AVANÇADO · Cores personalizadas (fundo / texto / títulos)
+    if (F.customColors) {
+      var aCC = group(paneA, labels.grpAdvColorCustom);
+      aCC.appendChild(row(labels.ccBg, track(swatches('colorBg', ['#FFFFFF', '#FDF6E3', '#F4F7F8', '#FFFDE7', '#1A1A2E', '#000000'])), { col: true }));
+      aCC.appendChild(row(labels.ccText, track(swatches('colorText', ['#1C1714', '#000000', '#FFFFFF', '#FFD400', '#0E4D64'])), { col: true }));
+      aCC.appendChild(row(labels.ccHead, track(swatches('colorHead', ['#0E4D64', '#AB4807', '#000000', '#FFD400', '#FFFFFF'])), { col: true }));
+      var rstC = el('button', 'ak-reset-colors'); rstC.type = 'button'; rstC.textContent = labels.ccReset;
+      rstC.addEventListener('click', function () { s.colorBg = s.colorText = s.colorHead = null; save(); applyAll(); refresh(); });
+      aCC.appendChild(rstC);
+    }
+
     // AVANÇADO · Navegação
     var aN = group(paneA, labels.grpAdvNav);
     if (F.links) aN.appendChild(row(labels.links, track(toggle(function () { return s.links; }, function () { set('links', !s.links); }))));
@@ -474,8 +518,8 @@
     function loadW() { if (window.__akGT) return; window.__akGT = true; var h = el('div'); h.id = 'google_translate_element'; h.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden'; document.body.appendChild(h); window.googleTranslateElementInit = function () { try { new google.translate.TranslateElement({ pageLanguage: 'pt', autoDisplay: false }, 'google_translate_element'); } catch (e) {} }; var sc = el('script'); sc.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'; sc.async = true; document.body.appendChild(sc); }
     function apply(l) { if (l && l !== 'pt') { try { localStorage.setItem(KEY, l); } catch (e) {} ck(l); } else { try { localStorage.removeItem(KEY); } catch (e) {} ck('pt'); } location.reload(); }
 
-    var SIMPLE = cfg.translateSimple   || [['pt', 'PT'], ['es', 'ES'], ['en', 'EN']];
-    var ADV    = cfg.translateAdvanced || [['pt', 'Português'], ['en', 'English'], ['es', 'Español']];
+    var SIMPLE = cfg.translateSimple   || [['pt', 'PT'], ['en', 'EN'], ['es', 'ES']];
+    var ADV    = cfg.translateAdvanced || [['pt', 'Português'], ['fr', 'Français'], ['it', 'Italiano'], ['ht', 'Kreyòl ayisyen'], ['de', 'Deutsch']];
 
     // Simplificado — um botão por idioma (segmentado)
     if (paneS) {

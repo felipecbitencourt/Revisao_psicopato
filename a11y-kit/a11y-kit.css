@@ -307,3 +307,52 @@ html.ak-dark .ak-panel { --ak-surface: #211c2b; --ak-surface-2: #2c2638; --ak-te
 @media (prefers-reduced-motion: reduce) {
   .ak-panel, .ak-backdrop, .ak-fab, .ak-dropzones, .ak-dropzone, .ak-skip { transition: none !important; }
 }
+
+/* ============================================================
+   CORES PERSONALIZADAS — paleta de swatches (aba Avançado)
+   ============================================================ */
+.ak-swatches { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+.ak-swatch {
+  width: 28px; height: 28px; border-radius: 50%; padding: 0; cursor: pointer;
+  border: 1px solid var(--ak-line); position: relative; overflow: hidden;
+  transition: transform 0.12s var(--ak-ease);
+}
+.ak-swatch:hover { transform: scale(1.1); border-color: var(--ak-line-strong); }
+.ak-swatch.is-active { box-shadow: 0 0 0 2px var(--ak-surface), 0 0 0 4px var(--ak-accent); }
+.ak-swatch--none { background: var(--ak-surface); }
+.ak-swatch--none::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top right, transparent calc(50% - 1px), #d9534f 50%, transparent calc(50% + 1px));
+}
+.ak-swatch--custom { display: grid; place-items: center; background: conic-gradient(red, orange, yellow, lime, cyan, blue, magenta, red); }
+.ak-swatch--custom input { opacity: 0; width: 100%; height: 100%; cursor: pointer; border: 0; padding: 0; }
+.ak-reset-colors {
+  margin-top: 12px; font-size: 12.5px; font-weight: 600; color: var(--ak-text-dim);
+  background: none; border: 1px solid var(--ak-line); border-radius: 8px; padding: 7px 12px; cursor: pointer;
+}
+.ak-reset-colors:hover { border-color: var(--ak-line-strong); color: var(--ak-accent); }
+
+/* aplica as cores escolhidas ao conteúdo do host (vence o tema do app via !important) */
+html.ak-cc-bg [data-ak-content],
+html.ak-cc-bg.ak-content-body body { background-color: var(--ak-cc-bg) !important; }
+html.ak-cc-text [data-ak-content] :where(p, li, span, a, td, th, blockquote, label, strong, em, small, dd, dt) { color: var(--ak-cc-text) !important; }
+html.ak-cc-head [data-ak-content] :where(h1, h2, h3, h4, h5, h6) { color: var(--ak-cc-head) !important; }
+
+/* ============================================================
+   GOOGLE TRADUTOR — esconde toda a UI injetada pelo widget
+   (banner do topo, balão ao passar o mouse, tooltip, spinner)
+   sem afetar o texto traduzido da página.
+   ============================================================ */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon,
+iframe.skiptranslate,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,           /* spinner "carregando tradução" */
+.VIpgJd-ZVi9od-l4eHX-hSRGPd,            /* link "Google Tradutor" do balão */
+#goog-gt-tt, .goog-te-balloon-frame,    /* balão/tooltip ao passar o mouse */
+.goog-tooltip, .goog-tooltip:hover { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; border: 0 !important; }
+/* o widget desloca o body para baixo p/ caber o banner; anulamos */
+body { top: 0 !important; }
+/* o gadget oculto não deve reservar espaço */
+#google_translate_element { position: absolute !important; width: 0 !important; height: 0 !important; overflow: hidden !important; }
