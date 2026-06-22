@@ -216,6 +216,11 @@
     knowCheck:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
     cards:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8590C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>',
     user:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E4D64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
+    users:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+    userPlus:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>',
+    userCheck:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>',
+    copy:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+    searchNav:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>',
     info:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E8A86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>',
     book2:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E8A86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>',
     pencil:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF7A45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
@@ -319,10 +324,18 @@
     dark:false,
     auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false, loadingMsg:'', form:{}, recovery:false},
     progress:{}, mastered:{}, stats:null, pendingScroll:null,
-    rankPeriod:'week', leaderboard:null, rankLoading:false, rankError:false,
+    rankPeriod:'week', leaderboard:null, rankLoading:false, rankError:false, rankScope:'geral',
     feedback:{tipo:'erro', transtornoId:'', transtornoNome:'', draft:'', sending:false, sent:false, error:''},
+    // modo dev: leitura dos feedbacks (RPC admin)
+    fbAdmin:{list:null, loading:false, loaded:false, err:'', filter:'todos'},
     profileDraft:{anonimo:false}, profileMsg:null, profileSaving:false, profileUploading:false,
     profileTab:'conta', activityByDay:null, activityLoading:false,
+    // amigos (follow) + perfis de outros
+    amigos:{tab:'following', following:null, followers:null, loading:false, err:false,
+            code:'', lookup:null, looking:false, lookErr:'', adding:false},
+    profView:{id:null, from:'amigos', card:null, loading:false, err:false, busy:false},
+    // busca avançada (texto livre → transtornos por correspondência)
+    adv:{query:'', results:null, analyzing:false, done:false},
   };
 
   // avatares predefinidos (emoji + fundo). Guardado no perfil como "preset:N".
@@ -371,6 +384,48 @@
     setRankPeriod: function(p){ if(state.rankPeriod===p) return; state.rankPeriod=p; setState({}); loadLeaderboard(); },
     sideMetricNext: function(){ sideMetricIdx = (sideMetricIdx + 1) % sideMetrics().length; paintSideMetric(); resetSideMetricTimer(); },
     sideMetricGo:   function(i){ sideMetricIdx = ((Number(i)||0)) % sideMetrics().length; paintSideMetric(); resetSideMetricTimer(); },
+    /* ---- amigos (follow) + perfis de outros ---- */
+    goAmigos:      function(){ state.rankScope='amigos'; go('ranking'); loadFriends(state.amigos.tab); },
+    rankScopeSet:  function(scope){ scope=String(scope); if(state.rankScope===scope){ return; } state.rankScope=scope; setState({}); if(scope==='amigos') loadFriends(state.amigos.tab); else loadLeaderboard(); },
+    amigosTab:     function(k){ k=String(k); if(state.amigos.tab===k){ return; } state.amigos.tab=k; setState({}); loadFriends(k); },
+    copyMyCode:    function(){ var c=myCodeRaw(); if(c) copyToClipboard(fmtCode(c)); },
+    lookupCode:    function(){
+      var a=state.amigos; var v=rawVal('amigo-code'); a.code=v; a.lookErr=''; a.lookup=null;
+      var norm=String(v||'').replace(/[^A-Za-z0-9]/g,'').toUpperCase();
+      if(norm.length<4){ a.lookErr='Digite o código completo.'; render(); return; }
+      if(myCodeRaw() && norm===myCodeRaw()){ a.lookErr='Esse é o seu próprio código 🙂'; render(); return; }
+      a.looking=true; render();
+      DB.findByCode(norm).then(function(res){
+        a.looking=false;
+        if(!res){ a.lookErr='Nenhum usuário com esse código.'; render(); return; }
+        a.lookup=res; render();
+      }).catch(function(){ a.looking=false; a.lookErr='Erro de conexão. Tente de novo.'; render(); });
+    },
+    clearLookup:   function(){ var a=state.amigos; a.lookup=null; a.code=''; a.lookErr=''; render(); },
+    followUser:    function(id){ doFollow(String(id), true); },
+    unfollowUser:  function(id){ doFollow(String(id), false); },
+    openProfile:   function(id){ openProfile(String(id)); },
+    backFromProfile:function(){ go('ranking'); if(state.rankScope==='amigos') loadFriends(state.amigos.tab); else loadLeaderboard(); },
+    profFollow:    function(){ var p=state.profView; if(p.id) doFollow(p.id, true); },
+    profUnfollow:  function(){ var p=state.profView; if(p.id) doFollow(p.id, false); },
+    /* ---- busca avançada (texto livre) ---- */
+    goBusca:       function(){ go('busca'); },
+    advFromSearch: function(){ var v=(rawVal('global-search')||rawVal('ms-search')||'').trim(); state.adv.query=v; state.adv.results=null; state.adv.done=false; go('busca'); if(v) actions.runAdvSearch(); },
+    advExample:    function(arg){ state.adv.query=ADV_EXAMPLES[Number(arg)]||''; state.adv.results=null; state.adv.done=false; render(); setTimeout(function(){ var el=document.getElementById('adv-input'); if(el){ el.focus(); el.setSelectionRange(el.value.length,el.value.length); } },20); },
+    clearAdv:      function(){ state.adv.query=''; state.adv.results=null; state.adv.done=false; render(); setTimeout(function(){ var el=document.getElementById('adv-input'); if(el) el.focus(); },20); },
+    runAdvSearch:  function(){
+      var q=(rawVal('adv-input')!=='' ? rawVal('adv-input') : state.adv.query)||'';
+      state.adv.query=q;
+      if(q.trim().length<3){ state.adv.results=[]; state.adv.done=true; render(); return; }
+      if(!window.SemanticSearch){ state.adv.results=[]; state.adv.done=true; render(); return; }
+      state.adv.analyzing=true; render();
+      // deixa o spinner pintar antes do trabalho síncrono
+      setTimeout(function(){
+        try{ state.adv.results = window.SemanticSearch.analyze(q, 12); }
+        catch(e){ state.adv.results = []; }
+        state.adv.analyzing=false; state.adv.done=true; render(); scrollTop();
+      }, 20);
+    },
     goDsm:         function(){ go('dsm'); },
     goFeedback:    function(){ var f=state.feedback; f.sent=false; f.error=''; f.transtornoId=''; f.transtornoNome=''; go('feedback'); },
     setFeedbackTipo:function(t){ state.feedback.draft=rawVal('fb-msg'); state.feedback.tipo=t; state.feedback.error=''; render(); },
@@ -563,6 +618,33 @@
       if(state.screen==='dadosTeste') render();
     });
   }
+  // modo dev: carrega todos os feedbacks (RPC admin). Não renderiza de forma
+  // síncrona (é chamado de dentro do render da tela).
+  function loadDevFeedback(){
+    var fa = state.fbAdmin;
+    if(fa.loaded || fa.loading) return;
+    if(!DB.ready || state.auth.guest || !state.auth.user){ fa.loaded=true; fa.list=null; fa.err='auth'; return; }
+    fa.loading=true;
+    DB.getFeedbackList(300).then(function(rows){
+      fa.loading=false; fa.loaded=true;
+      if(rows===null){ fa.err='rpc'; fa.list=null; } else { fa.err=''; fa.list=rows; }
+      if(state.screen==='devFeedback') render();
+    }).catch(function(){
+      fa.loading=false; fa.loaded=true; fa.err='rpc'; fa.list=null;
+      if(state.screen==='devFeedback') render();
+    });
+  }
+  actions.goDevFeedback = function(){ if(state.devMode) go('devFeedback'); };
+  actions.reloadDevFeedback = function(){ var fa=state.fbAdmin; fa.loaded=false; fa.list=null; fa.err=''; loadDevFeedback(); render(); };
+  actions.setFbFilter = function(t){ state.fbAdmin.filter=String(t); render(); };
+  actions.deleteFb = function(id){
+    id=Number(id);
+    if(!DB.deleteFeedback) return;
+    var fa=state.fbAdmin;
+    if(fa.list) fa.list = fa.list.filter(function(f){ return f.id!==id; });   // otimista
+    render();
+    DB.deleteFeedback(id).then(function(ok){ if(!ok){ fa.loaded=false; loadDevFeedback(); } });
+  };
   actions.pickPreset = function(i){ state.profileDraft.avatar='preset:'+i; state.profileMsg=null; render(); };
   actions.useGooglePhoto = function(){ var g=googlePhoto(); if(g){ state.profileDraft.avatar=g; state.profileMsg=null; render(); } };
   actions.removeAvatar = function(){ state.profileDraft.avatar=''; render(); };
@@ -1122,12 +1204,14 @@
       {label:'Início',    icon:ICON.home, action:'goHome',       active:s.screen==='home', primary:true},
       {label:'Revisão',   icon:ICON.book, action:'goCategorias', active:REV_SCREENS.indexOf(s.screen)>=0, primary:true},
       {label:'Exercícios',icon:ICON.check,action:'goExercicios', active:EX_SCREENS.indexOf(s.screen)>=0, primary:true},
-      {label:'Ranking',   icon:ICON.trophy,  action:'goRanking',  active:s.screen==='ranking'},
+      {label:'Busca avançada', icon:ICON.searchNav, action:'goBusca', active:s.screen==='busca'},
+      {label:'Ranking',   icon:ICON.trophy,  action:'goRanking',  active:s.screen==='ranking'||s.screen==='perfilOutro'},
       {label:'DSM-5-TR',  icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm', keep:true},
       {label:'Feedback',  icon:ICON.message, action:'goFeedback', active:s.screen==='feedback'},
       {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre', tr:'sobre'},
     ].concat(s.devMode ? [
-      {label:'Dados para teste', icon:ICON.about, action:'goDadosTeste', active:s.screen==='dadosTeste'}
+      {label:'Dados para teste', icon:ICON.about, action:'goDadosTeste', active:s.screen==='dadosTeste'},
+      {label:'Feedbacks', icon:ICON.message, action:'goDevFeedback', active:s.screen==='devFeedback'}
     ] : []);
   }
 
@@ -1308,8 +1392,13 @@
   function searchResultsHtml(q){
     if(!q.trim()) return '';
     var res = searchQuery(q);
+    var foot = '<button class="search-item" data-action="advFromSearch" style="border-top:1px solid var(--border);color:var(--teal-text);">'+
+      '<span class="search-dot" style="background:transparent;display:flex;align-items:center;justify-content:center;">'+ICON.searchNav+'</span>'+
+      '<span class="search-name" style="font-weight:700;">Busca avançada — descrever um caso</span>'+
+      '<span class="search-tag">novo</span>'+
+    '</button>';
     if(!res.length){
-      return '<div class="search-empty">Nada encontrado para “'+esc(q.trim())+'”.</div>';
+      return '<div class="search-empty">Nada encontrado para “'+esc(q.trim())+'”.</div>'+foot;
     }
     return res.map(function(e){
       if(e.type === 'cat'){
@@ -1324,7 +1413,7 @@
         '<span class="search-name">'+esc(e.label)+'</span>'+
         (e.code ? '<span class="search-code">'+esc(e.code)+'</span>' : '')+
       '</button>';
-    }).join('');
+    }).join('')+foot;
   }
   // (re)liga os eventos do campo de busca após cada render
   // arrasto (pointer-events) dos chips no modo Classificar; toque/clique
@@ -1394,6 +1483,25 @@
   function bindSearch(scope){
     bindSearchEl(scope.querySelector('#global-search'), scope.querySelector('#search-results'));      // topbar (desktop)
     bindSearchEl(scope.querySelector('#ms-search'),     scope.querySelector('#ms-search-results'));    // folha "Mais" (mobile)
+  }
+  // input "adicionar amigo por código": guarda o texto no estado (sem re-render)
+  // e dispara a busca no Enter.
+  function bindAmigos(scope){
+    var inp = scope.querySelector('#amigo-code');
+    if(!inp) return;
+    inp.addEventListener('input', function(){ state.amigos.code = inp.value; });
+    inp.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); if(actions.lookupCode) actions.lookupCode(); }
+    });
+  }
+  // textarea da busca avançada: guarda o texto (sem re-render); Ctrl/Cmd+Enter analisa.
+  function bindAdv(scope){
+    var ta = scope.querySelector('#adv-input');
+    if(!ta) return;
+    ta.addEventListener('input', function(){ state.adv.query = ta.value; });
+    ta.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && (e.ctrlKey || e.metaKey)){ e.preventDefault(); if(actions.runAdvSearch) actions.runAdvSearch(); }
+    });
   }
 
   /* =========================================================
@@ -3288,6 +3396,11 @@
           '<input type="file" id="avatar-file" accept="image/*" style="display:none;">'+
         '</div>'+
         '<div class="av-gallery">'+presets+'</div>'+
+        (myCodeRaw() ? '<div style="display:flex;align-items:center;gap:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:13px;padding:13px 15px;margin-top:18px;flex-wrap:wrap;">'+
+          '<div style="flex:1;min-width:140px;"><div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;">Seu código de amigo</div><div style="font:800 18px \'Bricolage Grotesque\';letter-spacing:1.5px;color:var(--ink);margin-top:1px;">'+esc(fmtCode(myCodeRaw()))+'</div></div>'+
+          '<button data-action="copyMyCode" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.copy+'<span>Copiar</span></button>'+
+          '<button data-action="goAmigos" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.users+'<span>Amigos</span></button>'+
+        '</div>' : '')+
         '<div style="height:1px;background:var(--border);margin:22px 0;"></div>'+
         profileField('pf-apelido','Apelido', d.apelido||'', 'Como quer ser chamado(a)')+
         '<div style="font-size:11.5px;color:var(--muted);margin:-8px 0 16px;">É assim que você aparece na saudação da home e no ranking.</div>'+
@@ -3509,7 +3622,8 @@
     var L = levelForXP(row.xp);
     var initials = String(row.nome||'?').trim().split(/\s+/).slice(0,2).map(function(w){return w.charAt(0).toUpperCase();}).join('');
     var hl = isMe ? 'background:var(--accent-bg);border-color:var(--accent-bd);' : 'background:var(--surface);border-color:var(--border);';
-    return '<div style="display:flex;align-items:center;gap:13px;border:1px solid;border-radius:14px;padding:11px 14px;'+hl+'">'+
+    var clickable = row.user_id ? ' data-action="openProfile" data-arg="'+esc(row.user_id)+'" data-hover="border-color:#5BC0BE;" style="cursor:pointer;display:flex;align-items:center;gap:13px;border:1px solid;border-radius:14px;padding:11px 14px;transition:border-color .15s ease;'+hl+'"' : ' style="display:flex;align-items:center;gap:13px;border:1px solid;border-radius:14px;padding:11px 14px;'+hl+'"';
+    return '<div'+clickable+'>'+
       rankBadge(Number(row.rnk))+
       '<div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5BC0BE,#0E4D64);color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px \'Hanken Grotesk\';flex-shrink:0;">'+esc(initials||'·')+'</div>'+
       '<div style="flex:1;min-width:0;">'+
@@ -3555,38 +3669,303 @@
     '</section>';
   }
 
-  function screenRanking(){
-    if(!canRank()) return rankInvite();
+  /* =========================================================
+     AMIGOS (follow) + PERFIL DE OUTROS USUÁRIOS
+     ========================================================= */
+  function myCodeRaw(){ var p=state.auth.profile||{}; return String(p.codigo||'').toUpperCase(); }
+  function fmtCode(c){ c=String(c||'').toUpperCase().replace(/[^A-Z0-9]/g,''); return c.length>3 ? c.slice(0,3)+'-'+c.slice(3) : c; }
 
-    var lv = levelInfo(userXP());
-    var rows = state.leaderboard;
-    var meId = state.auth.user ? state.auth.user.id : null;
-    var periodLabel = RANK_PERIOD_LABEL[state.rankPeriod] || '';
+  function loadFriends(kind){
+    if(!canRank()) return;
+    kind = kind || 'following';
+    var a = state.amigos;
+    if((kind==='following' && a.following) || (kind==='followers' && a.followers)) return;   // cache
+    a.loading=true; a.err=false; render();
+    DB.followList(kind).then(function(rows){
+      a.loading=false;
+      if(rows===null){ a.err=true; }
+      else if(kind==='followers'){ a.followers=rows; }
+      else { a.following=rows; }
+      render();
+    }).catch(function(){ a.loading=false; a.err=true; render(); });
+  }
+
+  function doFollow(id, follow){
+    if(!canRank() || !id) return;
+    var pv = state.profView;
+    if(pv.id===id && pv.card) pv.busy=true;
+    render();
+    (follow ? DB.followAdd(id) : DB.followRemove(id)).then(function(rel){
+      if(pv.id===id){ pv.busy=false; if(pv.card && rel) pv.card.relationship=rel; }
+      var lk=state.amigos.lookup; if(lk && lk.user_id===id && rel) lk.relationship=rel;
+      state.amigos.following=null; state.amigos.followers=null;   // listas mudaram
+      if(state.screen==='ranking' && state.rankScope==='amigos'){ loadFriends(state.amigos.tab); } else { render(); }
+    }).catch(function(){ if(pv.id===id) pv.busy=false; render(); });
+  }
+
+  function openProfile(id){
+    if(!canRank() || !id) return;
+    var myId = state.auth.user ? state.auth.user.id : null;
+    if(id===myId){ go('perfil'); return; }
+    var pv = state.profView;
+    pv.from = (state.screen==='perfilOutro') ? pv.from : state.screen;
+    pv.id=id; pv.card=null; pv.loading=true; pv.err=false; pv.busy=false;
+    setState({screen:'perfilOutro'}); scrollTop();
+    DB.profileCard(id).then(function(card){
+      pv.loading=false;
+      if(!card){ pv.err=true; } else { pv.card=card; }
+      render();
+    }).catch(function(){ pv.loading=false; pv.err=true; render(); });
+  }
+
+  function relBadge(rel){
+    if(rel==='mutual')   return '<span style="display:inline-flex;align-items:center;gap:4px;font:800 10.5px \'Hanken Grotesk\';color:var(--teal-text);background:var(--accent-bg);border-radius:99px;padding:2px 8px;flex-shrink:0;"><span style="display:flex;transform:scale(.8);">'+ICON.userCheck+'</span>Amigos</span>';
+    if(rel==='follower') return '<span style="font:700 10.5px \'Hanken Grotesk\';color:var(--muted);background:var(--surface-2);border-radius:99px;padding:2px 8px;flex-shrink:0;">Segue você</span>';
+    return '';
+  }
+  function followBtn(id, rel, ctx, busy){
+    var following = (rel==='following' || rel==='mutual');
+    var act = ctx==='prof' ? (following?'profUnfollow':'profFollow') : (following?'unfollowUser':'followUser');
+    var arg = ctx==='prof' ? '' : (' data-arg="'+esc(id)+'"');
+    var dis = busy ? ' disabled' : '';
+    if(following){
+      return '<button data-action="'+act+'"'+arg+dis+(busy?'':' data-hover="border-color:#E5484D;color:#E5484D;"')+' style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:'+(busy?'default':'pointer')+';transition:all .15s ease;">'+ICON.userCheck+'<span>Seguindo</span></button>';
+    }
+    return '<button data-action="'+act+'"'+arg+dis+(busy?'':' data-hover="background:#0c6a66;" data-active="transform:scale(.97);"')+' style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--accent-solid);border:none;border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:#fff;cursor:'+(busy?'default':'pointer')+';transition:background .15s ease;">'+ICON.userPlus+'<span>Seguir</span></button>';
+  }
+
+  function friendRow(r){
+    var L = levelForXP(r.xp||0);
+    return '<div data-action="openProfile" data-arg="'+esc(r.user_id)+'" data-hover="border-color:#5BC0BE;" style="display:flex;align-items:center;gap:13px;border:1px solid var(--border);border-radius:14px;padding:11px 13px;background:var(--surface);cursor:pointer;transition:border-color .15s ease;">'+
+      avatarHtml(r.avatar, r.nome, 40)+
+      '<div style="flex:1;min-width:0;">'+
+        '<div style="display:flex;align-items:center;gap:7px;min-width:0;"><span style="font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(r.nome||'Estudante')+'</span>'+relBadge(r.relationship)+'</div>'+
+        '<div style="font-size:11.5px;color:var(--muted);font-weight:600;">Nível '+L+' · '+(r.xp||0)+' XP'+(r.instituicao?(' · '+esc(r.instituicao)):'')+'</div>'+
+      '</div>'+
+      followBtn(r.user_id, r.relationship, 'row')+
+    '</div>';
+  }
+  function lookupRow(r){
+    return '<div style="display:flex;align-items:center;gap:13px;border:1px solid var(--accent-bd);border-radius:14px;padding:11px 13px;background:var(--accent-bg);">'+
+      avatarHtml(r.avatar, r.nome, 40)+
+      '<div style="flex:1;min-width:0;cursor:pointer;" data-action="openProfile" data-arg="'+esc(r.user_id)+'">'+
+        '<div style="display:flex;align-items:center;gap:7px;min-width:0;"><span style="font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(r.nome||'Estudante')+'</span>'+relBadge(r.relationship)+'</div>'+
+        '<div style="font-size:11.5px;color:var(--muted);font-weight:600;">'+(r.instituicao?esc(r.instituicao):'Toque para ver o perfil')+'</div>'+
+      '</div>'+
+      followBtn(r.user_id, r.relationship, 'row')+
+    '</div>';
+  }
+
+  // painel "Amigos" embutido na tela de Ranking (sem section/título próprios).
+  function amigosPanel(){
+    var a = state.amigos;
+    var code = myCodeRaw(), codeFmt = fmtCode(code);
+
+    var codeCard = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px;">'+
+      '<div style="width:46px;height:46px;border-radius:13px;background:var(--accent-bg);color:var(--accent-tx);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="transform:scale(1.2);display:flex;">'+ICON.users+'</span></div>'+
+      '<div style="flex:1;min-width:160px;">'+
+        '<div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">Seu código</div>'+
+        '<div style="font:800 22px \'Bricolage Grotesque\';letter-spacing:2px;color:var(--ink);">'+(codeFmt?esc(codeFmt):'—')+'</div>'+
+        '<div style="font-size:11.5px;color:var(--muted);margin-top:2px;">'+(code?'Compartilhe para que colegas te adicionem.':'Disponível após aplicar o <code>sql/friends.sql</code> no Supabase.')+'</div>'+
+      '</div>'+
+      (code?'<button data-action="copyMyCode" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:10px 15px;font:700 13px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.copy+'<span>Copiar</span></button>':'')+
+    '</div>';
+
+    var resultHtml = '';
+    if(a.looking){ resultHtml = '<div style="margin-top:12px;color:var(--muted);font-size:13px;">Procurando…</div>'; }
+    else if(a.lookErr){ resultHtml = '<div style="margin-top:12px;color:#E5484D;font-size:12.5px;font-weight:600;">'+esc(a.lookErr)+'</div>'; }
+    else if(a.lookup){ resultHtml = '<div style="margin-top:14px;">'+lookupRow(a.lookup)+'</div>'; }
+    var addCard = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;margin-bottom:22px;">'+
+      '<div style="font:700 14.5px \'Bricolage Grotesque\';color:var(--ink);margin-bottom:10px;">Adicionar por código</div>'+
+      '<div style="display:flex;gap:9px;flex-wrap:wrap;">'+
+        '<input id="amigo-code" value="'+esc(a.code||'')+'" maxlength="9" placeholder="Ex.: K7F-3QR" autocomplete="off" spellcheck="false" style="flex:1;min-width:150px;text-transform:uppercase;letter-spacing:1.5px;font:700 15px \'Hanken Grotesk\';padding:11px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--ink);outline:none;">'+
+        '<button data-action="lookupCode" data-hover="background:#0c6a66;" style="background:var(--accent-solid);border:none;border-radius:12px;padding:11px 18px;font:700 13.5px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:background .15s;">Procurar</button>'+
+      '</div>'+
+      resultHtml+
+    '</div>';
+
+    function tabBtn(k,label){ var on=a.tab===k; return '<button data-action="amigosTab" data-arg="'+k+'" style="border:none;border-radius:9px;padding:7px 15px;font:700 13px \'Hanken Grotesk\';cursor:pointer;transition:all .15s;'+(on?'background:var(--surface);color:var(--teal-text);box-shadow:0 1px 3px rgba(16,42,51,.12);':'background:transparent;color:var(--muted);')+'">'+label+'</button>'; }
+    var tabs = '<div style="display:inline-flex;gap:4px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:14px;">'+tabBtn('following','Seguindo')+tabBtn('followers','Seguidores')+'</div>';
+
+    var rows = a.tab==='followers' ? a.followers : a.following;
+    if(rows && rows.length){ rows = rows.slice().sort(function(x,y){ return (y.xp||0)-(x.xp||0); }); }   // ordena por XP (cara de ranking)
+    var listHtml;
+    if(a.loading && !rows){ listHtml = rankSkeleton(); }
+    else if(a.err){ listHtml = rankMessage('⚠️','Não foi possível carregar','Verifique a conexão e se o sql/friends.sql foi aplicado no Supabase.'); }
+    else if(!rows || !rows.length){
+      listHtml = a.tab==='followers'
+        ? rankMessage('👋','Ninguém te segue ainda','Quando um colega adicionar o seu código, ele aparece aqui.')
+        : rankMessage('🔍','Você ainda não segue ninguém','Adicione colegas pelo código acima para acompanhar o progresso e o XP deles.');
+    } else {
+      listHtml = '<div style="display:flex;flex-direction:column;gap:9px;'+(a.loading?'opacity:.5;':'')+'">'+rows.map(friendRow).join('')+'</div>';
+    }
+
+    return codeCard + addCard + tabs + listHtml;
+  }
+
+  function screenPerfilOutro(){
+    var pv = state.profView;
+    var back = backBtn('backFromProfile','Voltar');
+    function wrap(inner){ return '<section style="max-width:640px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+back+inner+'</section>'; }
+    if(pv.loading && !pv.card) return wrap(rankSkeleton());
+    if(pv.err || !pv.card)     return wrap(rankMessage('⚠️','Perfil indisponível','Não foi possível carregar este perfil. Pode estar privado ou houve um erro de conexão.'));
+
+    var c = pv.card;
+    var L = levelForXP(c.xp||0);
+    function tile(val,label){ return '<div style="background:var(--surface-2);border:1px solid var(--border);border-radius:13px;padding:14px 12px;text-align:center;"><div style="font:800 20px \'Bricolage Grotesque\';color:var(--teal-text);">'+val+'</div><div style="font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:3px;">'+esc(label)+'</div></div>'; }
+    var sub = [];
+    if(c.instituicao) sub.push(esc(c.instituicao));
+    if(c.visivel && c.curso) sub.push(esc(c.curso)+(c.semestre?(' · '+esc(c.semestre)):''));
+    var memberSince='';
+    try{ if(c.criado_em){ var s=new Date(c.criado_em).toLocaleDateString('pt-BR',{month:'long',year:'numeric'}); memberSince='Desde '+s.charAt(0).toUpperCase()+s.slice(1); } }catch(e){}
+
+    var header = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px;">'+
+      avatarHtml(c.avatar, c.nome, 78)+
+      '<div style="flex:1;min-width:180px;">'+
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><h1 style="font:800 23px \'Bricolage Grotesque\';letter-spacing:-.4px;margin:0;color:var(--ink);">'+esc(c.nome||'Estudante')+'</h1>'+relBadge(c.relationship)+'</div>'+
+        (sub.length?'<div style="font-size:13px;color:var(--muted-2);font-weight:600;margin-top:3px;">'+sub.join(' · ')+'</div>':'')+
+        (c.visivel?'<div style="font-size:12px;color:var(--muted);margin-top:4px;">Nível '+L+' · '+esc(levelTitle(L))+(memberSince?(' · '+memberSince):'')+'</div>':'')+
+        '<div style="margin-top:13px;">'+followBtn(c.user_id, c.relationship, 'prof', pv.busy)+'</div>'+
+      '</div>'+
+    '</div>';
 
     var body;
-    if(state.rankLoading && !rows){
-      body = rankSkeleton();
-    } else if(state.rankError){
-      body = rankMessage('⚠️', 'Não foi possível carregar o ranking', 'Verifique sua conexão. Se persistir, confirme que o gamification.sql foi executado no Supabase.');
-    } else if(!rows || !rows.length){
-      body = rankMessage('🏁', 'Ninguém pontuou ainda', 'Seja o primeiro a marcar presença neste período — revise fichas e faça exercícios para somar XP.');
+    if(c.visivel){
+      body = '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">'+
+          tile(c.xp||0, 'XP total')+
+          tile('Nv '+L, levelTitle(L))+
+          tile(c.revisados||0, 'Fichas revisadas')+
+          tile(c.dominados||0, 'Exercícios dominados')+
+          tile(c.seguidores||0, 'Seguidores')+
+          tile(c.seguindo||0, 'Seguindo')+
+        '</div>';
     } else {
-      body = '<div style="display:flex;flex-direction:column;gap:9px;'+(state.rankLoading?'opacity:.5;transition:opacity .2s;':'')+'">'+
-        rows.map(function(r){ return rankRow(r, !!(meId && r.user_id === meId)); }).join('')+
+      body = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px 24px;text-align:center;">'+
+          '<div style="font-size:30px;margin-bottom:10px;">🔒</div>'+
+          '<div style="font:800 16px \'Bricolage Grotesque\';color:var(--ink);margin-bottom:6px;">Perfil privado</div>'+
+          '<p style="margin:0 auto 4px;max-width:380px;font-size:13.5px;line-height:1.6;color:var(--muted-2);">Este usuário está em modo anônimo. As estatísticas só aparecem para amigos — quando vocês <b>se seguem mutuamente</b>.</p>'+
+          '<div style="display:flex;justify-content:center;gap:20px;margin-top:16px;">'+
+            '<div style="text-align:center;"><div style="font:800 18px \'Bricolage Grotesque\';color:var(--muted-2);">'+(c.seguidores||0)+'</div><div style="font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;">Seguidores</div></div>'+
+            '<div style="text-align:center;"><div style="font:800 18px \'Bricolage Grotesque\';color:var(--muted-2);">'+(c.seguindo||0)+'</div><div style="font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;">Seguindo</div></div>'+
+          '</div>'+
+        '</div>';
+    }
+    return wrap(header+body);
+  }
+
+  /* =========================================================
+     BUSCA AVANÇADA (texto livre → transtornos por correspondência)
+     ========================================================= */
+  var ADV_EXAMPLES = [
+    'Paciente com humor deprimido há semanas, insônia, perda de interesse e ideação suicida.',
+    'Criança que evita contato visual, tem interesses restritos e comportamentos repetitivos.',
+    'Episódios de medo súbito com palpitação, falta de ar e sensação de morte iminente.',
+    'Preocupação excessiva e incontrolável na maior parte dos dias, com tensão e dificuldade de concentração.'
+  ];
+
+  function advResultCard(r, i){
+    var pct = r.score100;
+    var barCol = pct>=75 ? '#06915A' : (pct>=45 ? '#0E8A86' : '#C2410C');
+    var ev = (r.evidence||[]).slice(0,2).map(function(g){
+      var terms = g.terms.slice(0,4).map(function(t){ return '<span style="background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:2px 8px;font-size:11.5px;font-weight:600;color:var(--muted-2);">'+esc(t)+'</span>'; }).join('');
+      return '<div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:5px;"><span style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);min-width:72px;">'+esc(g.label)+'</span>'+terms+'</div>';
+    }).join('');
+    return '<button data-action="openRef" data-arg="'+r.ci+':'+r.di+'" data-hover="border-color:#5BC0BE;" style="text-align:left;width:100%;display:block;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:15px 17px;cursor:pointer;transition:border-color .15s ease;">'+
+      '<div style="display:flex;align-items:center;gap:12px;">'+
+        '<div style="font:800 13px \'Bricolage Grotesque\';color:var(--muted);width:18px;flex-shrink:0;text-align:center;">'+(i+1)+'</div>'+
+        '<span style="width:9px;height:9px;border-radius:50%;background:'+r.color+';flex-shrink:0;"></span>'+
+        '<div style="flex:1;min-width:0;"><div style="font:700 15px \'Hanken Grotesk\';color:var(--ink);">'+esc(r.name)+'</div>'+
+          '<div style="font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(r.cat)+(r.code?(' · '+esc(r.code)):'')+'</div></div>'+
+        '<div style="text-align:right;flex-shrink:0;"><div style="font:800 20px \'Bricolage Grotesque\';color:'+barCol+';line-height:1;">'+pct+'%</div><div style="font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;margin-top:2px;">match</div></div>'+
+      '</div>'+
+      '<div style="height:5px;border-radius:99px;background:var(--surface-2);margin:11px 0 2px;overflow:hidden;"><div style="height:100%;width:'+pct+'%;background:'+barCol+';border-radius:99px;"></div></div>'+
+      (ev?'<div style="margin-top:9px;">'+ev+'</div>':'')+
+      (r.snippet?'<div style="margin-top:9px;font-size:12.5px;line-height:1.5;color:var(--muted-2);">'+esc(r.snippet)+'</div>':'')+
+    '</button>';
+  }
+
+  function screenBusca(){
+    var a = state.adv;
+    var examples = ADV_EXAMPLES.map(function(ex,i){ return '<button data-action="advExample" data-arg="'+i+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:12px;line-height:1.4;color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+esc(ex)+'</button>'; }).join('');
+
+    var resultsHtml = '';
+    if(a.analyzing){
+      resultsHtml = '<div style="color:var(--muted);font-size:14px;padding:26px 0;font-weight:600;animation:pulse 1.2s ease-in-out infinite;">Analisando o texto…</div>';
+    } else if(a.done && (!a.results || !a.results.length)){
+      resultsHtml = rankMessage('🔍','Sem correspondências','Descreva sintomas, critérios ou características com um pouco mais de detalhe (mínimo 3 letras).');
+    } else if(a.results && a.results.length){
+      resultsHtml = '<div style="margin-top:8px;">'+
+        '<div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin:6px 0 12px;">Transtornos por correspondência</div>'+
+        '<div style="display:flex;flex-direction:column;gap:10px;">'+a.results.map(advResultCard).join('')+'</div>'+
       '</div>';
+    }
+
+    var clearBtn = a.query ? '<button data-action="clearAdv" data-hover="border-color:#E5484D;color:#E5484D;" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 16px;font:700 13.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">Limpar</button>' : '';
+
+    return ''+
+    '<section style="max-width:720px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Busca avançada</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Descreva o caso</h1>'+
+      '<p style="margin:0 0 18px;color:var(--muted-2);font-size:14.5px;max-width:580px;">Escreva em linguagem livre — sintomas, queixas, contexto. A busca compara seu texto com os <b>critérios e seções</b> de cada ficha e devolve os transtornos mais correspondentes.</p>'+
+      '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;">'+
+        '<textarea id="adv-input" rows="4" placeholder="Ex.: paciente de 25 anos com humor deprimido há 3 semanas, insônia, perda de interesse e pensamentos recorrentes de morte…" style="width:100%;box-sizing:border-box;resize:vertical;min-height:96px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';line-height:1.55;padding:13px 15px;outline:none;">'+esc(a.query||'')+'</textarea>'+
+        '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;">'+
+          '<button data-action="runAdvSearch" data-hover="background:#0c6a66;transform:translateY(-1px);" data-active="transform:scale(.98);" style="background:var(--accent-solid);border:none;border-radius:12px;padding:11px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:all .18s ease;">Analisar</button>'+
+          clearBtn+
+          '<span style="font-size:11.5px;color:var(--muted);margin-left:auto;">Ctrl+Enter</span>'+
+        '</div>'+
+      '</div>'+
+      '<div style="display:flex;gap:9px;align-items:flex-start;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:11px 14px;margin:14px 0 0;">'+ICON.info+'<span style="font-size:12px;line-height:1.5;color:var(--muted-2);">Correspondência de <b>estudo</b> por análise de texto — não é probabilidade diagnóstica. Sempre confirme nos critérios do DSM-5-TR.</span></div>'+
+      (!a.done && !a.analyzing ? '<div style="margin-top:18px;"><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:10px;">Exemplos para testar</div><div style="display:grid;gap:8px;">'+examples+'</div></div>' : '')+
+      resultsHtml+
+    '</section>';
+  }
+
+  // seletor Geral | Amigos (topo do Ranking)
+  function rankScopeToggle(){
+    function b(scope,label,icon){ var on=state.rankScope===scope; return '<button data-action="rankScopeSet" data-arg="'+scope+'" style="display:inline-flex;align-items:center;gap:7px;border:none;border-radius:10px;padding:8px 16px;font:700 13.5px \'Hanken Grotesk\';cursor:pointer;transition:all .15s;'+(on?'background:var(--surface);color:var(--teal-text);box-shadow:0 1px 3px rgba(16,42,51,.12);':'background:transparent;color:var(--muted);')+'"><span style="display:flex;transform:scale(.82);">'+icon+'</span>'+label+'</button>'; }
+    return '<div style="display:inline-flex;gap:4px;background:var(--surface-2);border:1px solid var(--border);border-radius:13px;padding:4px;margin-bottom:18px;">'+b('geral','Geral',ICON.trophy)+b('amigos','Amigos',ICON.users)+'</div>';
+  }
+
+  function screenRanking(){
+    if(!canRank()) return rankInvite();
+    var amigos = state.rankScope==='amigos';
+
+    var inner;
+    if(amigos){
+      inner = amigosPanel();
+    } else {
+      var lv = levelInfo(userXP());
+      var rows = state.leaderboard;
+      var meId = state.auth.user ? state.auth.user.id : null;
+      var periodLabel = RANK_PERIOD_LABEL[state.rankPeriod] || '';
+      var body;
+      if(state.rankLoading && !rows){
+        body = rankSkeleton();
+      } else if(state.rankError){
+        body = rankMessage('⚠️', 'Não foi possível carregar o ranking', 'Verifique sua conexão. Se persistir, confirme que o gamification.sql foi executado no Supabase.');
+      } else if(!rows || !rows.length){
+        body = rankMessage('🏁', 'Ninguém pontuou ainda', 'Seja o primeiro a marcar presença neste período — revise fichas e faça exercícios para somar XP.');
+      } else {
+        body = '<div style="display:flex;flex-direction:column;gap:9px;'+(state.rankLoading?'opacity:.5;transition:opacity .2s;':'')+'">'+
+          rows.map(function(r){ return rankRow(r, !!(meId && r.user_id === meId)); }).join('')+
+        '</div>';
+      }
+      inner = levelHeroCard(lv)+
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;">'+
+          rankTabs()+
+          '<span style="font-size:12.5px;font-weight:700;color:var(--muted);">'+esc(periodLabel)+'</span>'+
+        '</div>'+
+        body;
     }
 
     return ''+
     '<section style="max-width:760px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Ranking</div>'+
       '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Ranking de XP</h1>'+
-      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:14.5px;max-width:560px;">Sua posição entre os estudantes — XP por fichas revisadas, exercícios e dias ativos.</p>'+
-      levelHeroCard(lv)+
-      '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;">'+
-        rankTabs()+
-        '<span style="font-size:12.5px;font-weight:700;color:var(--muted);">'+esc(periodLabel)+'</span>'+
-      '</div>'+
-      body+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:14.5px;max-width:560px;">'+(amigos?'Veja o XP e o progresso dos colegas que você segue — e adicione novos pelo código.':'Sua posição entre os estudantes — XP por fichas revisadas, exercícios e dias ativos.')+'</p>'+
+      rankScopeToggle()+
+      inner+
     '</section>';
   }
   var FB_TIPOS = [['erro','Erro na ficha'],['sugestao','Sugestão'],['duvida','Dúvida'],['outro','Outro']];
@@ -3756,6 +4135,74 @@
     '</section>';
   }
 
+  /* ----- modo dev: ver feedbacks enviados ----- */
+  var FB_TIPO_META = {
+    erro:     { label:'Erro',     bg:'#FDECEC', tx:'#C0322B' },
+    sugestao: { label:'Sugestão', bg:'#E7F6EF', tx:'#06915A' },
+    duvida:   { label:'Dúvida',   bg:'#FFF4E0', tx:'#B45309' },
+    outro:    { label:'Outro',    bg:'var(--surface-2)', tx:'var(--muted-2)' }
+  };
+  function fbDate(iso){ try{ return new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}); }catch(e){ return ''; } }
+  function fbCard(f){
+    var meta = FB_TIPO_META[f.tipo] || FB_TIPO_META.outro;
+    var ficha = (f.contexto && f.contexto.ficha) || f.transtorno_id || '';
+    var guest = !!(f.contexto && f.contexto.guest);
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px 16px;">'+
+      '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px;">'+
+        '<span style="font:800 10.5px \'Hanken Grotesk\';text-transform:uppercase;letter-spacing:.4px;color:'+meta.tx+';background:'+meta.bg+';border-radius:7px;padding:3px 9px;">'+meta.label+'</span>'+
+        (ficha?'<span style="font-size:11.5px;font-weight:600;color:var(--muted-2);background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:3px 9px;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+esc(ficha)+'</span>':'')+
+        '<span style="margin-left:auto;font-size:11.5px;color:var(--muted);">'+esc(fbDate(f.criado_em))+'</span>'+
+      '</div>'+
+      '<div style="font-size:14px;line-height:1.55;color:var(--ink);white-space:pre-wrap;word-break:break-word;">'+esc(f.mensagem||'')+'</div>'+
+      '<div style="display:flex;align-items:center;gap:8px;margin-top:11px;">'+
+        '<span style="font-size:11.5px;color:var(--muted);">'+esc(f.autor||'—')+(guest?' · visitante':'')+'</span>'+
+        '<button data-action="deleteFb" data-arg="'+f.id+'" data-hover="color:#E5484D;border-color:#E5484D;" style="margin-left:auto;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:5px 11px;font:700 11.5px \'Hanken Grotesk\';color:var(--muted);cursor:pointer;transition:all .15s ease;">Apagar</button>'+
+      '</div>'+
+    '</div>';
+  }
+  function screenDevFeedback(){
+    if(!state.devMode) return screenHome();
+    loadDevFeedback();
+    var fa = state.fbAdmin;
+
+    function note(txt){ return '<div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;color:var(--muted-2);font-size:13.5px;line-height:1.6;">'+txt+'</div>'; }
+
+    var body;
+    if(fa.loading && !fa.list){
+      body = '<div style="color:var(--muted);font-size:13.5px;padding:18px 0;">Carregando…</div>';
+    } else if(fa.err==='auth'){
+      body = note('Entre com a <b>conta de administrador</b> para ler os feedbacks. Você está como visitante ou deslogado.');
+    } else if(fa.err==='rpc' || fa.list===null){
+      body = note('Sem permissão ou RPC ausente. Confirme que você está logado com o <b>e-mail admin</b> e que o <code>sql/feedback.sql</code> (com <code>is_admin</code> / <code>feedback_list</code>) foi <b>reaplicado</b> no Supabase.');
+    } else if(!fa.list.length){
+      body = note('Nenhum feedback recebido ainda.');
+    } else {
+      var counts = { todos: fa.list.length };
+      fa.list.forEach(function(f){ var t=f.tipo||'outro'; counts[t]=(counts[t]||0)+1; });
+      var tabsDef = [['todos','Todos']].concat(FB_TIPOS.map(function(t){ return [t[0], FB_TIPO_META[t[0]]?FB_TIPO_META[t[0]].label:t[1]]; }));
+      var tabs = '<div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;">'+ tabsDef.map(function(td){
+        var on = fa.filter===td[0]; var n = counts[td[0]]||0;
+        return '<button data-action="setFbFilter" data-arg="'+td[0]+'" style="border:1px solid '+(on?'var(--accent-bd)':'var(--border)')+';border-radius:10px;padding:7px 13px;font:700 12.5px \'Hanken Grotesk\';cursor:pointer;transition:all .15s;'+(on?'background:var(--accent-bg);color:var(--teal-text);':'background:var(--surface);color:var(--muted-2);')+'">'+esc(td[1])+' <span style="opacity:.7;">'+n+'</span></button>';
+      }).join('') +'</div>';
+      var list = fa.filter==='todos' ? fa.list : fa.list.filter(function(f){ return (f.tipo||'outro')===fa.filter; });
+      var cards = list.length
+        ? '<div style="display:flex;flex-direction:column;gap:10px;">'+list.map(fbCard).join('')+'</div>'
+        : note('Nenhum feedback deste tipo.');
+      body = tabs + cards;
+    }
+
+    return ''+
+    '<section style="max-width:760px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">'+
+        '<span style="font:800 10.5px \'Hanken Grotesk\';text-transform:uppercase;letter-spacing:.6px;color:#fff;background:#0E4D64;border-radius:7px;padding:4px 9px;">DEV</span>'+
+        '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Feedbacks</h1>'+
+        '<button data-action="reloadDevFeedback" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.redoSm+'<span>Atualizar</span></button>'+
+      '</div>'+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:15px;max-width:600px;">Mensagens enviadas pela aba <b>Feedback</b> — erros nas fichas, sugestões e dúvidas.</p>'+
+      body+
+    '</section>';
+  }
+
   /* =========================================================
      RENDER PRINCIPAL
      ========================================================= */
@@ -3776,11 +4223,14 @@
       case 'caso':        return screenCaso();
       case 'indice':      return screenIndice();
       case 'ranking':     return screenRanking();
+      case 'perfilOutro': return screenPerfilOutro();
+      case 'busca':       return screenBusca();
       case 'dsm':         return screenDsm();
       case 'feedback':    return screenFeedback();
       case 'sobre':       return screenSobre();
       case 'perfil':      return screenPerfil();
       case 'dadosTeste':  return screenDadosTeste();
+      case 'devFeedback': return screenDevFeedback();
       default:            return screenHome();
     }
   }
@@ -3824,6 +4274,8 @@
     bindFx(root);
     bindSearch(root);
     bindClassify(root);
+    bindAmigos(root);
+    bindAdv(root);
     // reaplica os efeitos de acessibilidade ao conteúdo recriado (SPA)
     if(window.A11Y && window.A11Y.reapply){ try{ window.A11Y.reapply(); }catch(e){} }
     applyTrDict();   // corrige termos que o tradutor automático erra (ex.: "Sobre")

@@ -396,6 +396,60 @@
         .catch(function () { return null; });
     },
 
+    /* ---- amigos (follow) + perfis de outros ---- */
+    // Tudo exige login (RPCs SECURITY DEFINER). Visitante/sem Supabase → null.
+    // procura um usuário pelo código de identificação.
+    findByCode: function (code) {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('find_by_code', { p_code: String(code || '') })
+        .then(function (r) { return r.error ? null : ((r.data && r.data[0]) || null); })
+        .catch(function () { return null; });
+    },
+    // segue um usuário; devolve a nova relação ('following'|'mutual'|...).
+    followAdd: function (targetId) {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('follow_add', { p_target: targetId })
+        .then(function (r) { return r.error ? null : r.data; })
+        .catch(function () { return null; });
+    },
+    // deixa de seguir; devolve a nova relação.
+    followRemove: function (targetId) {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('follow_remove', { p_target: targetId })
+        .then(function (r) { return r.error ? null : r.data; })
+        .catch(function () { return null; });
+    },
+    // lista 'following' (padrão) ou 'followers'.
+    followList: function (kind) {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('follow_list', { p_kind: kind || 'following' })
+        .then(function (r) { return r.error ? null : (r.data || []); })
+        .catch(function () { return null; });
+    },
+    // cartão de perfil de um usuário (respeita privacidade). null = falhou.
+    profileCard: function (targetId) {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('profile_card', { p_target: targetId })
+        .then(function (r) { return r.error ? null : ((r.data && r.data[0]) || null); })
+        .catch(function () { return null; });
+    },
+
+    // ADMIN (modo dev): lista todos os feedbacks. null = sem permissão/erro.
+    // Requer estar logado como o e-mail admin (feedback.sql → is_admin/feedback_list).
+    getFeedbackList: function (lim) {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('feedback_list', { lim: lim || 300 })
+        .then(function (r) { return r.error ? null : (r.data || []); })
+        .catch(function () { return null; });
+    },
+    // ADMIN: apaga um feedback. Devolve true/false.
+    deleteFeedback: function (id) {
+      if (!sb || this.guest) return Promise.resolve(false);
+      return sb.rpc('feedback_delete', { p_id: id })
+        .then(function (r) { return !r.error; })
+        .catch(function () { return false; });
+    },
+
     // estatísticas dos estudos de caso (modo dev): % de acerto por caso entre
     // TODOS os usuários (1ª tentativa de cada um). Requer caso_stats.sql aplicado.
     // null = sem Supabase ou RPC não aplicada; [] = aplicada mas sem dados.

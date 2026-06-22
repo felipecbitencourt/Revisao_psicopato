@@ -37,6 +37,30 @@ Run). Ele cria a tabela `feedback` com RLS: logados gravam o próprio feedback e
 visitantes gravam de forma anônima. Você lê tudo em **Table Editor → feedback**
 (ou `select * from public.feedback order by criado_em desc;`).
 
+O `feedback.sql` também cria as funções de **admin** `is_admin()` e
+`feedback_list()` (+ `feedback_delete()`), que liberam a aba **DEV → Feedbacks**
+dentro do app para ler/apagar as mensagens. A leitura é autorizada **só para o
+seu e-mail de dono** — ajuste o e-mail no topo dessa seção do `feedback.sql` se
+mudar de conta. Se já tinha rodado o `feedback.sql` antes, **rode de novo**
+(é idempotente) para criar essas funções. Para usar no app: ative o modo dev
+(Ctrl+D) estando **logado com o e-mail admin**.
+
+### 2d. Amigos (código de usuário + seguir)
+
+Para ligar a aba **Amigos**, rode o arquivo [`friends.sql`](../sql/friends.sql)
+(SQL Editor → cole → Run). Ele:
+
+- adiciona a coluna `codigo` em `profiles` (um código curto e único por usuário,
+  ex.: `K7F3QR`), gerado por gatilho e preenchido nos perfis já existentes;
+- cria a tabela `follows` (modelo *seguir*: "amigo" = quem você segue; quando os
+  dois se seguem, vira **mútuo**) com RLS;
+- cria as funções (`SECURITY DEFINER`) `find_by_code`, `follow_add`,
+  `follow_remove`, `follow_list` e `profile_card`, que o app usa para procurar
+  por código, seguir/deixar de seguir e abrir o perfil de outros respeitando a
+  privacidade (perfil de quem está em **modo anônimo** só aparece para amigos).
+
+É idempotente — pode rodar de novo sem erro. Requer o `schema.sql` já aplicado.
+
 ## 3. Pegar as chaves
 
 1. Menu lateral: **Project Settings** (engrenagem) → **API**.

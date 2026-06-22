@@ -13,6 +13,7 @@ login, progresso e métricas.
 ├── index.html            página única
 ├── app.js                UI + lógica (render por estado, sem framework)
 ├── db.js                 camada de dados (Supabase ou modo visitante/demo)
+├── search-engine.js      busca avançada: motor léxico ponderado + sinônimos clínicos
 ├── styles.css            estilos
 ├── content.js            ⚙️ GERADO — as 20 categorias / 222 fichas (DSM-5-TR)
 ├── supabase-config.js    URL + chave anon do Supabase
@@ -31,7 +32,8 @@ login, progresso e métricas.
 ├── sql/                  setup do banco (rodar no SQL Editor do Supabase)
 │   ├── schema.sql            perfis, progresso, eventos + RLS
 │   ├── gamification.sql      função leaderboard() (ranking por período)
-│   └── feedback.sql          tabela de feedback + RLS
+│   ├── feedback.sql          tabela de feedback + RLS
+│   └── friends.sql           código de usuário + follows (amigos) + perfis públicos
 ├── tools/
 │   └── scan_fichas.cjs   auditoria determinística das fichas (regressão)
 └── docs/
@@ -75,5 +77,5 @@ Para auditar as fichas (códigos faltando, truncamento, etc.):
 ## Banco de dados (Supabase)
 
 Veja [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md). Em resumo: rodar
-`sql/schema.sql`, `sql/gamification.sql` e `sql/feedback.sql` no SQL Editor e
-preencher `supabase-config.js`.
+`sql/schema.sql`, `sql/gamification.sql`, `sql/feedback.sql` e `sql/friends.sql`
+no SQL Editor e preencher `supabase-config.js`.
