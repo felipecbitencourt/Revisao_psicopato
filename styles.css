@@ -335,6 +335,12 @@ button{font-family:inherit;}
 .crit-note{margin-top:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 15px;display:flex;gap:11px;align-items:flex-start;}
 .crit-note-lbl{flex-shrink:0;font:800 10.5px 'Hanken Grotesk';text-transform:uppercase;letter-spacing:.5px;color:var(--muted-2);background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3px 8px;}
 .crit-note p{margin:0;font-size:13.5px;line-height:1.55;color:var(--body);}
+.crit-note + .crit-note{margin-top:8px;}   /* notas múltiplas: divisão visual */
+.crit-note-cod{border-style:dashed;}        /* nota de codificação: acento próprio */
+.crit-note-cod .crit-note-lbl{color:var(--cat,#0E4D64);border-color:var(--cat,#0E4D64);}
+/* "Nota:" destacada DENTRO do card do critério (separa do enunciado) */
+.crit-subnote{margin:11px 0 0;padding:9px 12px;background:var(--surface-2);border-left:3px solid var(--cat,#0E4D64);border-radius:9px;font-size:13px;line-height:1.55;color:var(--muted-2);}
+.crit-subnote b{display:inline-block;font:800 10px 'Hanken Grotesk';text-transform:uppercase;letter-spacing:.5px;color:var(--cat,#0E4D64);margin-right:6px;}
 
 /* seções: controles + acordeão */
 .sec-controls{display:flex;gap:8px;margin-bottom:12px;}

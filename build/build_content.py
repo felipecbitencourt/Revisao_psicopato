@@ -379,47 +379,56 @@ SPECIFIER_OVERRIDES = {
 
 
 # Subgrupos da "Classificação do DSM-5" dentro de cada categoria.
-# índice da categoria -> lista ordenada de (nome do subgrupo, nível, nome do
-# 1º transtorno que inicia o subgrupo). nível 2 = aninhado no subgrupo anterior.
+# índice da categoria -> lista ordenada de (nome do subgrupo, nível, [palavras-
+# chave]). Cada transtorno é atribuído ao 1º grupo cuja palavra-chave aparece no
+# nome (independente da ordem do README, que é alfabética); depois os itens são
+# REORDENADOS para a ordem dos grupos (e, dentro do grupo, pela ordem da
+# palavra-chave). nível 2 = subgrupo aninhado; nome "" = sem cabeçalho (item de
+# nível superior, fora de qualquer subgrupo). Antes era um modelo "sticky" que
+# assumia ordem de documento e agrupava errado quando o README era alfabético.
 SUBGROUPS = {
     0: [  # Transtornos do Neurodesenvolvimento
-        ("Deficiências Intelectuais", 1, "Deficiência Intelectual (Transtorno do Desenvolvimento Intelectual)"),
-        ("Transtornos da Comunicação", 1, "Transtorno da Linguagem"),
-        ("Transtorno do Espectro Autista", 1, "Transtorno do Espectro Autista"),
-        ("Transtorno de Déficit de Atenção/Hiperatividade", 1, "Transtorno de Déficit de Atenção/Hiperatividade"),
-        ("Transtorno Específico da Aprendizagem", 1, "Transtorno Específico da Aprendizagem"),
-        ("Transtornos Motores", 1, "Transtorno do Desenvolvimento da Coordenação"),
-        ("Transtornos de Tique", 2, "Transtorno de Tourette"),
-        ("Outros Transtornos do Neurodesenvolvimento", 1, "Outro Transtorno do Neurodesenvolvimento Especificado"),
+        ("Deficiências Intelectuais", 1, ["Desenvolvimento Intelectual", "Atraso Global"]),
+        ("Transtornos da Comunicação", 1, ["Linguagem", "da Fala", "Fluência", "Comunicação"]),
+        ("Transtorno do Espectro Autista", 1, ["Espectro Autista"]),
+        ("Transtorno de Déficit de Atenção/Hiperatividade", 1, ["Déficit de Atenção"]),
+        ("Transtorno Específico da Aprendizagem", 1, ["Aprendizagem"]),
+        ("Transtornos Motores", 1, ["Coordenação", "Movimento Estereotipado"]),
+        ("Transtornos de Tique", 2, ["Tique", "Tourette"]),
+        ("Outros Transtornos do Neurodesenvolvimento", 1, ["Neurodesenvolvimento"]),
     ],
-    11: [  # Transtornos do Sono-Vigília  (nome "" = volta ao nível superior)
-        ("Transtornos do Sono Relacionados à Respiração", 1, "Apneia e Hipopneia Obstrutivas do Sono"),
-        ("", 0, "Transtorno do Sono-Vigília do Ritmo Circadiano"),
-        ("Parassonias", 1, "Transtornos de Despertar do Sono Não REM"),
-        ("", 0, "Síndrome das Pernas Inquietas"),
+    11: [  # Transtornos do Sono-Vigília (nome "" = transtorno de nível superior)
+        ("", 0, ["Insônia"]),
+        ("", 0, ["Hipersonolência"]),
+        ("", 0, ["Narcolepsia"]),
+        ("Transtornos do Sono Relacionados à Respiração", 1, ["Apneia", "Hipoventilação"]),
+        ("", 0, ["Ritmo Circadiano"]),
+        ("Parassonias", 1, ["Despertar", "Pesadelo", "Comportamental do Sono REM", "Pernas Inquietas"]),
+        ("", 0, ["Induzido por Substância"]),
+        ("", 0, ["Sono-Vigília Especificado"]),
     ],
     15: [  # Substâncias e transtornos aditivos (por classe de substância)
-        ("Transtornos Relacionados ao Álcool", 1, "Transtorno por Uso de Álcool"),
-        ("Transtornos Relacionados à Cafeína", 1, "Intoxicação por Cafeína"),
-        ("Transtornos Relacionados à Cannabis", 1, "Transtorno por Uso de Cannabis"),
-        ("Transtornos Relacionados aos Alucinógenos", 1, "Transtorno por Uso de Fenciclidina"),
-        ("Transtornos Relacionados aos Inalantes", 1, "Transtorno por Uso de Inalantes"),
-        ("Transtornos Relacionados aos Opioides", 1, "Transtorno por Uso de Opioides"),
-        ("Transtornos Relacionados aos Sedativos, Hipnóticos ou Ansiolíticos", 1, "Transtorno por Uso de Sedativos, Hipnóticos ou Ansiolíticos"),
-        ("Transtornos Relacionados aos Estimulantes", 1, "Transtorno por Uso de Estimulantes"),
-        ("Transtornos Relacionados ao Tabaco", 1, "Transtorno por Uso de Tabaco"),
-        ("Transtornos Relacionados a Outras Substâncias (ou Desconhecidas)", 1, "(ou Substância Desconhecida)"),
-        ("Transtornos Não Relacionados a Substâncias", 1, "Transtorno do Jogo"),
+        ("Transtornos Relacionados ao Álcool", 1, ["Álcool"]),
+        ("Transtornos Relacionados à Cafeína", 1, ["Cafeína"]),
+        ("Transtornos Relacionados à Cannabis", 1, ["Cannabis"]),
+        ("Transtornos Relacionados aos Alucinógenos", 1, ["Fenciclidina", "Alucinógenos"]),
+        ("Transtornos Relacionados aos Inalantes", 1, ["Inalantes"]),
+        ("Transtornos Relacionados aos Opioides", 1, ["Opioides"]),
+        ("Transtornos Relacionados aos Sedativos, Hipnóticos ou Ansiolíticos", 1, ["Sedativos"]),
+        ("Transtornos Relacionados aos Estimulantes", 1, ["Estimulantes"]),
+        ("Transtornos Relacionados ao Tabaco", 1, ["Tabaco"]),
+        ("Transtornos Relacionados a Outras Substâncias (ou Desconhecidas)", 1, ["Outra Substância", "Substância Desconhecida"]),
+        ("Transtornos Não Relacionados a Substâncias", 1, ["Jogo"]),
     ],
     16: [  # Transtornos neurocognitivos
-        ("Delirium", 1, "Outro Delirium Especificado"),
-        ("Transtornos Neurocognitivos Maiores e Leves", 1, "Transtorno Neurocognitivo Maior"),
+        ("Delirium", 1, ["Delirium"]),
+        ("Transtornos Neurocognitivos Maiores e Leves", 1, ["Neurocognitivo"]),
     ],
     17: [  # Transtornos da personalidade (grupos A/B/C + outros)
-        ("Transtornos da Personalidade do Grupo A", 1, "Transtorno da Personalidade Paranoide"),
-        ("Transtornos da Personalidade do Grupo B", 1, "Transtorno da Personalidade Antissocial"),
-        ("Transtornos da Personalidade do Grupo C", 1, "Transtorno da Personalidade Evitativa"),
-        ("Outros Transtornos da Personalidade", 1, "Mudança de Personalidade Devido a Outra Condição Médica"),
+        ("Transtornos da Personalidade do Grupo A", 1, ["Paranoide", "Esquizoide", "Esquizotípica"]),
+        ("Transtornos da Personalidade do Grupo B", 1, ["Antissocial", "Borderline", "Histriônica", "Narcisista"]),
+        ("Transtornos da Personalidade do Grupo C", 1, ["Evitativa", "Dependente", "Obsessivo"]),
+        ("Outros Transtornos da Personalidade", 1, ["Mudança", "Especificado"]),
     ],
 }
 
@@ -437,24 +446,35 @@ def drop_fake_items(cat_index, items):
 
 
 def apply_subgroups(cat_index, items):
-    """Atribui item['sg'] (nome do subgrupo) e item['sgl'] (nível) conforme o
-    manifesto, percorrendo os transtornos na ordem do documento."""
+    """Atribui item['sg']/['sgl'] por PALAVRA-CHAVE (independente da ordem do
+    README) e REORDENA os itens para a ordem dos grupos do manifesto (e, dentro
+    do grupo, pela ordem da palavra-chave). Itens sem grupo ficam no fim com
+    sg=''. Devolve a lista reordenada (mutada in-place)."""
     spec = SUBGROUPS.get(cat_index)
     if not spec:
-        return
-    starts = {s[2]: (s[0], s[1]) for s in spec}
-    found = set()
-    cur_name, cur_level = "", 0
-    for it in items:
-        if it["n"] in starts:
-            cur_name, cur_level = starts[it["n"]]
-            found.add(it["n"])
-        if cur_name:
-            it["sg"] = cur_name
-            it["sgl"] = cur_level
-    missing = set(starts) - found
-    if missing:
-        print(f"  [subgrupos] cat {cat_index}: inicios nao encontrados: {sorted(missing)}")
+        return items
+
+    def classify(name):
+        for gi, (gname, glevel, kws) in enumerate(spec):
+            for ki, kw in enumerate(kws):
+                if kw in name:
+                    return gi, ki, gname, glevel
+        return len(spec), 0, "", 0   # sem grupo -> fim
+
+    ungrouped = []
+    keyed = []
+    for orig_i, it in enumerate(items):
+        gi, ki, gname, glevel = classify(it["n"])
+        it["sg"], it["sgl"] = gname, glevel
+        if gi == len(spec):                 # não casou em NENHUM grupo (nem nível superior)
+            ungrouped.append(it["n"])
+        keyed.append((gi, ki, orig_i, it))
+
+    keyed.sort(key=lambda t: (t[0], t[1], t[2]))   # grupo, palavra-chave, ordem original
+    items[:] = [t[3] for t in keyed]
+    if ungrouped:
+        print(f"  [subgrupos] cat {cat_index}: sem grupo: {sorted(ungrouped)}")
+    return items
 
 
 CODE_HEADING = re.compile(r"^#{3,4}\s+[\d(]")              # "### 300.02 (F41.1)" ou "#### ..."
@@ -486,6 +506,7 @@ def normalize(s):
 def clean(text):
     text = text.replace("**", "").replace("*", "")
     text = text.replace("“", '"').replace("”", '"').replace("’", "'")
+    text = text.replace("[NR]", " ")     # marcador de nota de rodapé do PDF
     # remove referências dangling a tabelas/figuras/quadros que não levam a nada
     text = re.sub(r"\s*\(ver (?:a |as |o |os )?(?:Tabela|Figura|Quadro)[^)]*\)", "", text)
     return re.sub(r"[ \t]+", " ", text).strip()
@@ -511,13 +532,55 @@ def body_text(entry):
     return entry
 
 
+# várias opções em negrito coladas numa linha ("**A:** desc **B:** desc") —
+# quebra antes de cada novo rótulo em negrito (inicial maiúscula). A janela é
+# larga (até 100 chars) porque alguns rótulos são longos (especificadores de
+# curso ~52; subtipos de fobia com exemplos "F40.23x Sangue-injeção-ferimentos
+# (p. ex., agulhas, …)" ~80). Só atua em contexto de especificador.
+SPEC_OPT_SPLIT = re.compile(r'(?<=\S)\s+(?=\*\*[A-ZÀ-Ú][^*\n]{0,100}(?::|\*\*))')
+
+# Especificadores de CURSO (espectro psicótico): o PDF cola vários rótulos num
+# único negrito sem separador ("…agudoEpisódios múltiplos…parcial…completaContínuo:").
+# São vocabulário FECHADO do DSM-5-TR; reinsere as fronteiras de opção (fecha e
+# reabre o negrito) onde um rótulo conhecido aparece grudado (minúscula→Rótulo).
+COURSE_JAM = re.compile(
+    r"(?<=[a-zà-ú])"
+    r"(?=(?:Primeiro episódio, atualmente\b|Episódios múltiplos, atualmente\b|Contínuo:))")
+# Matriz de códigos por SUBSTÂNCIA/SUBTIPO: o PDF cola vários rótulos
+# codificados num único negrito ("…inicialF10.11 Leve, em remissão
+# sustentadaF10.20 Moderada:"; subtipos de fobia "…cães).F40.228 Ambiente…").
+# Fronteira = código ICD-10-CM (Fxx.xx) grudado logo após minúscula, ")" ou "."
+# (sem separador). O ":" inserido em rótulo sem ":" é removido pelo rstrip.
+CODE_JAM = re.compile(r"(?<=[a-zà-ú).])(?=F\d{2}\.\d)")
+# Especificadores "Com…/Sem…" colados sem separador — de humor com pág. ("Com
+# sintomas ansiosos (p. 169-170)Com características mistas…") ou de comorbidade
+# ("…por uso de substânciasCom condição médica…"; sono, autismo). Fronteira =
+# "Com"/"Sem" (maiúsculo) grudado logo após minúscula, dígito ou ")" (sem
+# espaço); o "Com"/"sem" correto vem com espaço antes e não dispara.
+PAGEREF_JAM = re.compile(r"(?<=[a-zà-ú0-9)])(?=(?:Com|Sem)\s)")
+# referência de página do PDF impresso ("(p. 169-170)"), inútil no app.
+PAGE_REF = re.compile(r"\s*\(p\.\s*[\d\-–,\s]+\)")
+
+
 def spec_add(block, raw):
-    """Adiciona uma linha-opção a um bloco de especificador: {label, desc}.
-    Linha sem rótulo (continuação) é anexada à descrição da opção anterior."""
+    """Adiciona uma ou mais opções de especificador a um bloco. Se 'raw' traz
+    várias opções em negrito coladas (curso, códigos por substância ou
+    especificadores de humor com pág.), separa cada uma."""
+    raw = COURSE_JAM.sub(":** **", raw)    # de-jam dos especificadores de curso
+    raw = CODE_JAM.sub(":** **", raw)      # de-jam da matriz de códigos
+    raw = PAGEREF_JAM.sub("** **", raw)    # de-jam dos especificadores de humor
+    for part in SPEC_OPT_SPLIT.split(raw.strip()):
+        _spec_add_one(block, part)
+
+
+def _spec_add_one(block, raw):
     raw = re.sub(r"^\*\s+", "", raw.strip())   # remove "* " de fechamento de itálico
+    if not raw:
+        return
     m = SPEC_ITEM_RE.match(raw)
     if m:
         label = clean(m.group(1)).rstrip(": ")
+        label = PAGE_REF.sub("", label).strip()    # tira "(p. …)" do rótulo
         desc = clean(m.group(2))
         block["items"].append({"label": label, "desc": desc})
         return
@@ -592,11 +655,20 @@ def extract_codes(head_text):
 # letra de critério (A.–H.) colada no MEIO da linha, após fim de frase/sub-item:
 # "...trabalho. B. Presença..." -> quebra antes do "B." para o parser reconhecer.
 INLINE_LETTER = re.compile(r'([.\)\]"”])\s+([A-N])\.\s+(?=[A-ZÀ-Ú“"])')
+# bloco de especificador colado no MEIO da linha (TR): "…obsessivo-compulsivo).
+# *Especificar* se: …" -> quebra antes de cada *Especificar*/*Determinar*/"Nota
+# para codificação" para o parser separá-los do critério. O itálico (*…*) marca
+# o cabeçalho no DSM, evitando falsos positivos com "especificar" em prosa.
+INLINE_SPEC = re.compile(
+    r'(?<=\S)[ \t]+(?=\*{1,2}(?:Especificar|Determinar)\b)'                      # cabeçalho em itálico
+    r'|(?<=[.\)\]”"])[ \t]+(?=(?:Especificar|Determinar)\b[^.:\n]{0,60}:)'       # cabeçalho simples após fim de frase
+    r'|(?<=\S)[ \t]+(?=\*{0,2}Nota para codifica)')                             # nota de codificação
 
 
 def split_inline_criteria(lines):
     out = []
     for ln in lines:
+        ln = INLINE_SPEC.sub("\n", ln)
         ln = INLINE_LETTER.sub(lambda m: m.group(1) + "\n" + m.group(2) + ". ", ln)
         out.extend(ln.split("\n"))
     return out
@@ -629,6 +701,49 @@ def split_numbered_list(text):
         end = markers[i + 1][0] if i + 1 < len(markers) else len(text)
         items.append(clean(text[en:end].strip()))
     return stem, items
+
+
+# marcador de nota de rodapé do PDF ("[NR]") + sufixo de nota residual ("...perda.1")
+NR_MARK = re.compile(r"\s*\[NR\]\s*")
+# cabeçalho de nota inline ("Nota:", "Nota para codificação:")
+NOTE_HEAD = re.compile(r"(?i)\bNota(\s+para\s+codifica\w*)?\s*[:.]\s*")
+# run de especificadores com referência de página que vazou para a nota
+# ("Com início no periparto (p. 172-174)Com padrão sazonal (p. 174-175)") — já
+# constam (de-jammed) no bloco de especificador; remover da nota.
+LEAKED_SPEC = re.compile(r"(?:(?:Com|Sem|Tipo)\b[^.]*?\(p\.\s*[\d\-–,\s]+\)\s*)+\s*$")
+
+
+def split_notes(notes):
+    """Recebe as linhas de nota coletadas e devolve uma LISTA de blocos
+    {text, kind} — separando notas inline ("… Nota: … Nota: …") e classificando
+    "Nota para codificação" (kind='codificacao'). Remove o marcador [NR] e o run
+    de especificadores com pág. que vazou para o fim da nota."""
+    raw = " ".join(notes).strip()
+    raw = NR_MARK.sub(" ", raw)
+    raw = re.sub(r"\s+", " ", raw).strip()
+    if not raw:
+        return []
+    marks = list(NOTE_HEAD.finditer(raw))
+    blocks = []
+    if not marks:
+        blocks.append({"text": raw, "kind": "nota"})
+    else:
+        pre = raw[: marks[0].start()].strip()
+        if pre:
+            blocks.append({"text": pre, "kind": "nota"})
+        for i, mk in enumerate(marks):
+            end = marks[i + 1].start() if i + 1 < len(marks) else len(raw)
+            body = raw[mk.end():end].strip()
+            if body:
+                kind = "codificacao" if mk.group(1) else "nota"
+                blocks.append({"text": body, "kind": kind})
+    out = []
+    for b in blocks:
+        t = LEAKED_SPEC.sub("", b["text"]).strip()
+        if t:
+            b["text"] = t
+            out.append(b)
+    return out
 
 
 def parse_criteria(head_lines):
@@ -744,8 +859,7 @@ def parse_criteria(head_lines):
         elif mode == "intro":
             intro.append(clean(s))
 
-    note = " ".join(notes).strip()
-    note = re.sub(r"^Nota[:.]?\s*", "", note, flags=re.IGNORECASE)
+    note = split_notes(notes)        # LISTA de blocos {text, kind}
     # remove blocos de especificador vazios
     spec_blocks = [b for b in spec_blocks if b["items"]]
 
@@ -794,7 +908,19 @@ def parse_sections(lines):
             t = strip_footer(t)
             if not t:
                 continue
-        cur["body"].append(make_body_entry(t))
+        entry = make_body_entry(t)
+        # linha começando em minúscula/"(" é continuação de um parágrafo quebrado
+        # pelo PDF (ex.: "…parentes\n\nbiológicos…") — funde na entrada anterior em
+        # vez de criar uma nova (que renderizaria com identação errada, sem o
+        # sub-rótulo). Só funde texto plano (não um novo run-in heading).
+        if (cur["body"] and isinstance(entry, str) and re.match(r"^[a-zà-ÿ(]", t)):
+            prev = cur["body"][-1]
+            if isinstance(prev, dict):
+                prev["text"] = (prev["text"] + " " + entry).strip()
+            else:
+                cur["body"][-1] = (prev + " " + entry).strip()
+        else:
+            cur["body"].append(entry)
     # remove seções vazias
     return [sec for sec in sections if sec["body"]]
 

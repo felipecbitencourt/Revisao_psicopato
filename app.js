@@ -307,6 +307,7 @@
     classifyChecked:false, classifyPhaseComplete:false, classifyScore:0, classifyTotal:0, classifyDone:false,
     matchLeftSel:null, matches:{},
     casoSelected:null, casoAnswered:false, casoIndex:0, casoScore:0, casoStreak:0,
+    casoHints:(function(){ try { return localStorage.getItem('psp-caso-hints')!=='0'; } catch(e){ return true; } })(),
     lastViewed:null,
     notifOpen:false, notifNew:[], moreOpen:false,
     sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
@@ -434,6 +435,7 @@
     // caso
     casoSelect: function(i){ if(state.casoAnswered) return; var ca=currentCaso(); var ok=(i===ca.correct); state.casoScore+= ok?10:0; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok, ca.id || (ca.patient&&ca.patient.name) || 'caso'); },
     casoNext:   function(){ setState({casoIndex:state.casoIndex+1, casoSelected:null, casoAnswered:false}); scrollTop(); },
+    setCasoHints: function(v){ var on=(v===1||v==='1'); if(on!==state.casoHints){ state.casoHints=on; try{ localStorage.setItem('psp-caso-hints', on?'1':'0'); }catch(e){} render(); } },
   };
 
   /* ações de autenticação (registradas à parte) */
@@ -1191,7 +1193,9 @@
   // texto completo da ficha (resumo + critérios + seções) p/ a busca pegar
   // termos que não estão no nome (ex.: "autismo" → "Transtorno do Espectro Autista")
   function fichaText(d){
-    var p = [d.summary||'', d.criteriaIntro||'', d.specifier||'', d.criteriaNote||''];
+    var cn = d.criteriaNote;
+    var cnStr = Array.isArray(cn) ? cn.map(function(n){ return n.text||''; }).join(' ') : (cn||'');
+    var p = [d.summary||'', d.criteriaIntro||'', d.specifier||'', cnStr];
     (d.criteria||[]).forEach(function(c){ p.push(c.text||''); });
     (d.sections||[]).forEach(function(s){
       p.push(s.title||'');
@@ -1816,8 +1820,18 @@
         out += '<p class="rich-p rich-grp">'+esc(s)+'</p>';
         return;
       }
-      if(it){ buf.push(it); }
-      else { flush(); if(s.trim()) out += '<p class="rich-p">'+esc(s)+'</p>'; }
+      if(it){ buf.push(it); return; }
+      flush();
+      if(!s.trim()) return;
+      // "Nota:" NÃO parentética colada ao fim da frase ("…desenvolvimento. Nota: …")
+      // vira um sub-bloco destacado dentro do critério (ex.: Deficiência Intelectual C).
+      var nm = s.match(/^(.*?[.!?])\s+Nota[:.]\s*([\s\S]+)$/);
+      if(nm){
+        if(nm[1].trim()) out += '<p class="rich-p">'+esc(nm[1].trim())+'</p>';
+        out += '<p class="crit-subnote"><b>Nota</b> '+esc(nm[2].trim())+'</p>';
+      } else {
+        out += '<p class="rich-p">'+esc(s)+'</p>';
+      }
     });
     flush();
     return out;
@@ -1890,9 +1904,18 @@
           return '<div class="spec-block">'+head+'<ul class="spec-list">'+opts+'</ul></div>';
         }).join('') +'</div>' : '';
 
-    // nota dos critérios (terminologia/esclarecimentos — fora do critério)
-    var noteBlock = disorder.criteriaNote
-      ? '<div class="crit-note"><span class="crit-note-lbl">Nota</span><p>'+escMl(disorder.criteriaNote)+'</p></div>' : '';
+    // nota(s) dos critérios (terminologia/esclarecimentos — fora do critério).
+    // criteriaNote é uma LISTA de {text, kind}; cada nota vira um bloco próprio
+    // (divisão visual). Compat: aceita string antiga.
+    var notes = disorder.criteriaNote;
+    if(typeof notes === 'string') notes = notes ? [{text:notes, kind:'nota'}] : [];
+    var noteBlock = (notes && notes.length)
+      ? notes.map(function(n){
+          var cod = n.kind === 'codificacao';
+          return '<div class="crit-note'+(cod?' crit-note-cod':'')+'">'+
+            '<span class="crit-note-lbl">'+(cod?'Nota para codificação':'Nota')+'</span>'+
+            '<p>'+escMl(n.text||'')+'</p></div>';
+        }).join('') : '';
 
     // ---- acordeões de seções narrativas (com ícone por tipo + id estável) ----
     var sections = disorder.sections || [];
@@ -2729,6 +2752,11 @@
   /* =========================================================
      TELA: ESTUDO DE CASO
      ========================================================= */
+  function casoHintsToggle(){
+    function tab(label, on, v){ return '<button data-action="setCasoHints" data-arg="'+v+'" class="rev-tab'+(on?' on':'')+'">'+label+'</button>'; }
+    return '<div class="rev-toggle" title="Sem dicas esconde as tags-resumo da vinheta (sintomas, duração) — só o relato corrido">'+
+      tab('Com dicas', state.casoHints, '1')+tab('Sem dicas', !state.casoHints, '0')+'</div>';
+  }
   function screenCaso(){
     var CASO = currentCaso();
     var p = CASO.patient, total = CASOS.length;
@@ -2737,7 +2765,7 @@
     var answered = state.casoAnswered;
     var correct = answered && state.casoSelected===CASO.correct;
     var opts = CASO.opts.map(function(o,i){ return mcOption(o, i, answered, state.casoSelected, CASO.correct, 'casoSelect'); }).join('');
-    var chips = (CASO.chips||[]).map(function(ch){ return '<span class="caso-chip">'+esc(ch)+'</span>'; }).join('');
+    var chips = state.casoHints ? (CASO.chips||[]).map(function(ch){ return '<span class="caso-chip">'+esc(ch)+'</span>'; }).join('') : '';
 
     var feedback = '';
     if(answered){
@@ -2754,6 +2782,7 @@
     return ''+
     '<section style="max-width:760px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       backToEx()+
+      '<div style="display:flex;justify-content:flex-end;margin-bottom:12px;">'+casoHintsToggle()+'</div>'+
       '<div class="caso-status">'+
         '<div class="cs-left"><span class="cs-tag">Estudo de caso</span><span class="cs-num">Caso '+num+' de '+total+'</span></div>'+
         '<div class="cs-stats"><span class="cs-stat">🎯 '+state.casoScore+'</span><span class="cs-stat">🔥 '+state.casoStreak+'</span></div>'+
