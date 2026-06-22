@@ -1,0 +1,116 @@
+[
+ {
+  "ci": 0,
+  "cat": "Transtornos do neurodesenvolvimento",
+  "file": "tools/qa_batches/cat_00.txt",
+  "count": 61
+ },
+ {
+  "ci": 1,
+  "cat": "Espectro da esquizofrenia e psicóticos",
+  "file": "tools/qa_batches/cat_01.txt",
+  "count": 28
+ },
+ {
+  "ci": 2,
+  "cat": "Transtorno bipolar e relacionados",
+  "file": "tools/qa_batches/cat_02.txt",
+  "count": 16
+ },
+ {
+  "ci": 3,
+  "cat": "Transtornos depressivos",
+  "file": "tools/qa_batches/cat_03.txt",
+  "count": 30
+ },
+ {
+  "ci": 4,
+  "cat": "Transtornos de ansiedade",
+  "file": "tools/qa_batches/cat_04.txt",
+  "count": 42
+ },
+ {
+  "ci": 5,
+  "cat": "TOC e transtornos relacionados",
+  "file": "tools/qa_batches/cat_05.txt",
+  "count": 22
+ },
+ {
+  "ci": 6,
+  "cat": "Trauma e estressores",
+  "file": "tools/qa_batches/cat_06.txt",
+  "count": 38
+ },
+ {
+  "ci": 7,
+  "cat": "Transtornos dissociativos",
+  "file": "tools/qa_batches/cat_07.txt",
+  "count": 11
+ },
+ {
+  "ci": 8,
+  "cat": "Sintomas somáticos e relacionados",
+  "file": "tools/qa_batches/cat_08.txt",
+  "count": 27
+ },
+ {
+  "ci": 9,
+  "cat": "Transtornos alimentares",
+  "file": "tools/qa_batches/cat_09.txt",
+  "count": 30
+ },
+ {
+  "ci": 10,
+  "cat": "Transtornos da eliminação",
+  "file": "tools/qa_batches/cat_10.txt",
+  "count": 8
+ },
+ {
+  "ci": 11,
+  "cat": "Transtornos do sono-vigília",
+  "file": "tools/qa_batches/cat_11.txt",
+  "count": 49
+ },
+ {
+  "ci": 12,
+  "cat": "Disfunções sexuais",
+  "file": "tools/qa_batches/cat_12.txt",
+  "count": 22
+ },
+ {
+  "ci": 13,
+  "cat": "Disforia de gênero",
+  "file": "tools/qa_batches/cat_13.txt",
+  "count": 4
+ },
+ {
+  "ci": 14,
+  "cat": "Disruptivos, controle de impulsos e conduta",
+  "file": "tools/qa_batches/cat_14.txt",
+  "count": 30
+ },
+ {
+  "ci": 15,
+  "cat": "Substâncias e transtornos aditivos",
+  "file": "tools/qa_batches/cat_15.txt",
+  "count": 88
+ },
+ {
+  "ci": 16,
+  "cat": "Transtornos neurocognitivos",
+  "file": "tools/qa_batches/cat_16.txt",
+  "count": 19
+ },
+ {
+  "ci": 17,
+  "cat": "Transtornos da personalidade",
+  "file": "tools/qa_batches/cat_17.txt",
+  "count": 76
+ },
+ {
+  "ci": 18,
+  "cat": "Transtornos parafílicos",
+  "file": "tools/qa_batches/cat_18.txt",
+  "count": 27
+ }
+]

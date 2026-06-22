@@ -1,0 +1,20 @@
+CATEGORIA: Disforia de gênero  (ci=13)
+Total de questões neste lote: 4
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Disforia de Gênero
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Sofrimento marcante causado pela incongruência persistente entre o ______ que a pessoa vivencia e o que lhe foi designado no nascimento.
+
+[2] (criterio · Critério A)  RESPOSTA: Disforia de Gênero
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Incongruência acentuada entre o ______ experienciado/expressado e o ______ designado de uma pessoa, com duração de pelo menos seis meses, manifestada por no mínimo seis dos seguintes (um deles deve ser o Critério A1): 1. Forte desejo de pertencer ao outro ______ ou insistência de que um ______ é outro (ou algum ______ alternativo diferente do designado). 2. Em meninos (______ designado), uma forte preferência por vestir roupas femininas típicas ou simular trajes femininos; em meninas (______ designado), uma forte preferência por vestir somente roupas masculinas típicas e uma forte resistência a vestir roupas femininas típicas. 3. Forte preferência por papéis transgêneros em brincadeiras de faz de conta ou de fantasias. 4. Forte preferência por brinquedos, jogos ou atividades tipicamente usados ou preferidos pelo outro ______. 5. Forte preferência por brincar com pares do outro ______. 6. Em meninos (______ designado), forte rejeição de brinquedos, jogos e atividades tipicamente masculinos e forte evitação de brincadeiras agressivas e competitivas; em meninas (______ designado), forte rejeição de brinquedos, jogos e atividades tipicamente femininas. 7. Forte desgosto com a própria anatomia sexual. 8. Desejo intenso por características sexuais primárias e/ou secundárias compatíveis com o ______ experienciado.
+
+[3] (criterio · Critério A)  RESPOSTA: Disforia de Gênero
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Incongruência acentuada entre o ______ experienciado/expressado e o ______ designado de uma pessoa, com duração de pelo menos seis meses, manifestada por no mínimo dois dos seguintes: 1. Incongruência acentuada entre o ______ experienciado/expressado e as características sexuais primárias e/ou secundárias (ou, em adolescentes jovens, as características sexuais secundárias previstas). 2. Forte desejo de livrar-se das próprias características sexuais primárias e/ou secundárias em razão de incongruência acentuada com o ______ experienciado/expressado (ou, em adolescentes jovens, desejo de impedir o desenvolvimento das características sexuais secundárias previstas). 3. Forte desejo pelas características sexuais primárias e/ou secundárias do outro ______. 4. Forte desejo de pertencer ao outro ______ (ou a algum ______ alternativo diferente do designado). 5. Forte desejo de ser tratado como o outro ______ (ou como algum ______ alternativo diferente do designado). 6. Forte convicção de ter os sentimentos e reações típicos do outro ______ (ou de algum ______ alternativo diferente do designado).
+
+[4] (fatos)  RESPOSTA: Disforia de Gênero
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Prevalência: menos de 0,1% (<1/1.000) em populações que buscam tratamento; autorrelatos populacionais sugerem ~0,2–0,6% | Sexo: prevalência semelhante entre designados masculino e feminino no nascimento
+

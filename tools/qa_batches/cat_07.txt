@@ -1,0 +1,48 @@
+CATEGORIA: Transtornos dissociativos  (ci=7)
+Total de questões neste lote: 11
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Amnésia Dissociativa
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Incapacidade de lembrar informações pessoais importantes, em geral ligadas a trauma ou estresse, sem causa neurológica e bem além do esquecimento normal.
+
+[2] (criterio · Critério A)  RESPOSTA: Amnésia Dissociativa
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Incapacidade de recordar informações autobiográficas importantes, geralmente de natureza traumática ou estressante, incompatível com o esquecimento normal. Nota: A ______ consiste mais frequentemente em ______ localizada ou seletiva de um evento ou eventos específicos ou ______ generalizada da identidade e da história de vida.
+
+[3] (fatos)  RESPOSTA: Amnésia Dissociativa
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Início: qualquer idade (crianças a idosos); início costuma ser súbito | Prevalência: ~1,8% em 12 meses (adultos, estudo comunitário nos EUA)
+
+[4] (resumo)  RESPOSTA: Transtorno de Despersonalização/Desrealização
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Sensação persistente e angustiante de estar distanciado de si mesmo ou do mundo, como num sonho, mantendo a noção de que isso não é real.
+
+[5] (criterio · Critério A)  RESPOSTA: Transtorno de Despersonalização/Desrealização
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Presença de experiências persistentes ou recorrentes de ______, ______ ou ambas: 1. ______: Experiências de irrealidade, distanciamento ou de ser um observador externo dos próprios pensamentos, sentimentos, sensações, corpo ou ações (p. ex., alterações da percepção, senso distorcido do tempo, sensação de irrealidade ou senso de si mesmo irreal ou ausente, anestesia emocional e/ou física). 2. ______: Experiências de irrealidade ou distanciamento em relação ao ambiente ao redor (p. ex., indivíduos ou objetos são vivenciados como irreais, oníricos, nebulosos, inertes ou visualmente distorcidos).
+
+[6] (criterio · Critério B)  RESPOSTA: Transtorno de Despersonalização/Desrealização
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Durante as experiências de ______ ou ______, o teste de realidade permanece intacto.
+
+[7] (fatos)  RESPOSTA: Transtorno de Despersonalização/Desrealização
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: média de 16 anos; raro após os 25 e bastante incomum a partir dos 40 | Prevalência: ~1–2% (prevalência de um mês, Reino Unido)
+
+[8] (resumo)  RESPOSTA: Transtorno Dissociativo de Identidade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Presença de dois ou mais estados de personalidade distintos que se alternam, com falhas de memória que vão além do esquecimento comum.
+
+[9] (criterio · Critério A)  RESPOSTA: Transtorno Dissociativo de Identidade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Ruptura da ______ caracterizada pela presença de dois ou mais estados de personalidade distintos, descrita em algumas culturas como uma experiência de possessão. A ruptura na ______ envolve descontinuidade acentuada no senso de si mesmo e de domínio das próprias ações, acompanhada por alterações relacionadas no afeto, no comportamento, na consciência, na memória, na percepção, na cognição e/ou no funcionamento sensório-motor. Esses sinais e sintomas podem ser observados por outros ou relatados pelo indivíduo.
+
+[10] (criterio · Critério B)  RESPOSTA: Transtorno Dissociativo de Identidade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Lacunas recorrentes na recordação de eventos cotidianos, informações pessoais importantes e/ou eventos traumáticos que são incompatíveis com o esquecimento comum.
+
+[11] (fatos)  RESPOSTA: Transtorno Dissociativo de Identidade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Início: qualquer idade, da primeira infância à idade adulta avançada | Prevalência: ~1,5% em 12 meses (adultos, EUA); 1,1% ao longo da vida (mulheres, Turquia)
+

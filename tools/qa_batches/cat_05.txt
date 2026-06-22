@@ -1,0 +1,92 @@
+CATEGORIA: TOC e transtornos relacionados  (ci=5)
+Total de questões neste lote: 22
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Transtorno de Acumulação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Dificuldade persistente de se desfazer de objetos, que se ______ e congestionam os espaços de moradia, causando sofrimento e prejuízo.
+
+[2] (criterio · Critério A)  RESPOSTA: Transtorno de Acumulação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Dificuldade persistente de descartar ou de se desfazer de pertences, independentemente do seu valor real.
+
+[3] (criterio · Critério B)  RESPOSTA: Transtorno de Acumulação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Esta dificuldade se deve a uma necessidade percebida de guardar os itens e ao sofrimento associado a descartá-los.
+
+[4] (criterio · Critério C)  RESPOSTA: Transtorno de Acumulação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: A dificuldade de descartar os pertences resulta na ______ de itens que congestionam e obstruem as áreas em uso e compromete substancialmente o uso pretendido. Se as áreas de estar não estão obstruídas, é somente devido a intervenções de outras pessoas (p. ex., membros da família, funcionários de limpeza, autoridades).
+
+[5] (criterio · Critério E)  RESPOSTA: Transtorno de Acumulação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: A ______ não é devida a outra condição médica (p. ex., lesão cerebral, doença cerebrovascular, síndrome de Prader-Willi).
+
+[6] (fatos)  RESPOSTA: Transtorno de Acumulação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: sintomas surgem por volta dos 15–19 anos; prejuízo significativo aos 30–40 anos | Prevalência: ~2,5% (estimativas comunitárias de ~1,5–6%) | Sexo: sem diferença entre gêneros em amostras comunitárias; predomínio feminino em amostras clínicas
+
+[7] (resumo)  RESPOSTA: Transtorno de Escoriação (Skin-picking)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Ato recorrente de cutucar/beliscar a própria pele que causa lesões, com tentativas frustradas de parar e sofrimento ou prejuízo importante.
+
+[8] (criterio · Critério A)  RESPOSTA: Transtorno de Escoriação (Skin-picking)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Beliscar a pele de forma recorrente, resultando em lesões.
+
+[9] (criterio · Critério B)  RESPOSTA: Transtorno de Escoriação (Skin-picking)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Tentativas repetidas de reduzir ou parar o comportamento de beliscar a pele.
+
+[10] (fatos)  RESPOSTA: Transtorno de Escoriação (Skin-picking)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: mais frequentemente na adolescência, coincidindo ou logo após o início da puberdade | Prevalência: ~2,1% atual; ~3,1% ao longo da vida (adultos, EUA) | Sexo: predomínio feminino (mais de 3/4 são mulheres)
+
+[11] (resumo)  RESPOSTA: Transtorno Dismórfico Corporal
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Preocupação intensa e angustiante com falhas na aparência que ninguém mais nota, levando a checagens e rituais repetitivos.
+
+[12] (criterio · Critério A)  RESPOSTA: Transtorno Dismórfico Corporal
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Preocupação com um ou mais defeitos ou falhas percebidas na aparência física que não são observáveis ou que parecem leves para os outros.
+
+[13] (criterio · Critério B)  RESPOSTA: Transtorno Dismórfico Corporal
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Em algum momento durante o curso do transtorno, o indivíduo executou comportamentos repetitivos (p. ex., verificar-se no espelho, arrumar-se excessivamente, beliscar a pele, buscar tranquilização) ou atos mentais (p. ex., comparando sua aparência com a de outros) em resposta às preocupações com a aparência.
+
+[14] (fatos)  RESPOSTA: Transtorno Dismórfico Corporal
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Início: adolescência, em média 16–17 anos (mais comum 12–13); 2/3 começam antes dos 18 | Prevalência: ~2,4% (ponto), nos EUA | Sexo: distribuição semelhante entre os sexos; taxas um pouco maiores em meninas/jovens mulheres
+
+[15] (resumo)  RESPOSTA: Transtorno Obsessivo-compulsivo
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Pensamentos intrusivos e indesejados (______) que geram ansiedade e levam a rituais repetitivos (______) para aliviar o sofrimento, tomando muito tempo da pessoa.
+
+[16] (criterio · Critério A)  RESPOSTA: Transtorno Obsessivo-compulsivo
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Presença de ______, ______ ou ambas: ______ são definidas por (1) e (2): 1. Pensamentos, impulsos ou imagens recorrentes e persistentes que são vivenciados, em algum momento durante a perturbação, como intrusivos e indesejados e que na maioria dos indivíduos causam acentuada ansiedade ou sofrimento. 2. O indivíduo tenta ignorar ou suprimir tais pensamentos, impulsos ou imagens ou neutralizá-los com algum outro pensamento ou ação (i. e., executando uma ______). As ______ são definidas por (1) e (2): 1. Comportamentos repetitivos (p. ex., lavar as mãos, organizar, verificar) ou atos mentais (p. ex., orar, contar ou repetir palavras em silêncio) que o indivíduo se sente compelido a executar em resposta a uma ______ ou de acordo com regras que devem ser rigidamente aplicadas. 2. Os comportamentos ou os atos mentais visam a prevenir ou reduzir a ansiedade ou o sofrimento ou evitar algum evento ou situação temida; entretanto, esses comportamentos ou atos mentais não têm uma conexão realista com o que visam a neutralizar ou evitar ou são claramente excessivos. Nota: Crianças pequenas podem não ser capazes de enunciar os objetivos desses comportamentos ou atos mentais.
+
+[17] (fatos)  RESPOSTA: Transtorno Obsessivo-compulsivo
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Início: idade média de ~19,5 anos; 25% dos casos começam por volta dos 14 anos; início após os 35 é incomum | Prevalência: ~1,2% em 12 meses nos EUA (1,1–1,8% internacionalmente) | Sexo: leve predomínio feminino na vida adulta; predomínio masculino na infância
+
+[18] (resumo)  RESPOSTA: Tricotilomania (Transtorno de Arrancar o Cabelo)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: ______ repetidamente os próprios pelos a ponto de causar falhas, sem conseguir parar, gerando sofrimento ou prejuízo.
+
+[19] (criterio · Critério A)  RESPOSTA: Tricotilomania (Transtorno de Arrancar o Cabelo)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: ______ o próprio ______ de forma recorrente, resultando em perda de ______.
+
+[20] (criterio · Critério B)  RESPOSTA: Tricotilomania (Transtorno de Arrancar o Cabelo)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Tentativas repetidas de reduzir ou parar o comportamento de ______ o ______.
+
+[21] (criterio · Critério D)  RESPOSTA: Tricotilomania (Transtorno de Arrancar o Cabelo)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O ato de ______ ou a perda de ______ não se deve a outra condição médica (p. ex., uma condição dermatológica).
+
+[22] (fatos)  RESPOSTA: Tricotilomania (Transtorno de Arrancar o Cabelo)
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: geralmente na puberdade ou logo após | Prevalência: ~1–2% em 12 meses (adultos e adolescentes) | Sexo: predomínio feminino em amostras clínicas (~10:1); proporção mais próxima de 2:1 em amostras comunitárias
+

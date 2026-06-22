@@ -1,0 +1,124 @@
+CATEGORIA: Disruptivos, controle de impulsos e conduta  (ci=14)
+Total de questões neste lote: 30
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Cleptomania
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Impulso recorrente e irresistível de furtar objetos que a pessoa nem precisa nem deseja, com tensão antes e alívio ou prazer durante o ato.
+
+[2] (criterio · Critério A)  RESPOSTA: Cleptomania
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Falha recorrente em resistir aos impulsos de roubar objetos que não são necessários para uso pessoal ou em razão de seu valor monetário.
+
+[3] (criterio · Critério B)  RESPOSTA: Cleptomania
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Sensação crescente de tensão imediatamente antes de cometer o furto.
+
+[4] (criterio · Critério C)  RESPOSTA: Cleptomania
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Prazer, gratificação ou alívio no momento de cometer o furto.
+
+[5] (criterio · Critério D)  RESPOSTA: Cleptomania
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O ato de furtar não é cometido para expressar raiva ou vingança e não ocorre em resposta a um delírio ou a uma alucinação.
+
+[6] (fatos)  RESPOSTA: Cleptomania
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: variável, mas com frequência na adolescência | Prevalência: ~0,3–0,6% na população geral | Sexo: predomínio feminino (~3:1)
+
+[7] (resumo)  RESPOSTA: Piromania
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Impulso recorrente de atear fogo por prazer ou alívio, com fascínio pelo fogo, sem motivo prático como lucro, vingança ou crime.
+
+[8] (criterio · Critério A)  RESPOSTA: Piromania
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Atear fogo de forma deliberada e proposital em mais de uma ocasião.
+
+[9] (criterio · Critério B)  RESPOSTA: Piromania
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Tensão ou excitação afetiva antes do ato.
+
+[10] (criterio · Critério C)  RESPOSTA: Piromania
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Fascinação, interesse, curiosidade ou atração pelo fogo e seu contexto situacional (p. ex., equipamentos, usos, consequências).
+
+[11] (criterio · Critério D)  RESPOSTA: Piromania
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Prazer, gratificação ou alívio ao atear fogo ou quando testemunhando ou participando de suas consequências.
+
+[12] (criterio · Critério E)  RESPOSTA: Piromania
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: O incêndio não é feito com fins monetários, como expressão de uma ideologia sociopolítica, para ocultar atividades criminosas, para expressar raiva ou vingança, para melhorar as circunstâncias de vida de uma pessoa, em resposta a um delírio ou alucinação ou como resultado de julgamento alterado (p. ex., no transtorno neurocognitivo maior, no transtorno do desenvolvimento intelectual [deficiência intelectual], na intoxicação por substâncias).
+
+[13] (fatos)  RESPOSTA: Piromania
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Início: fim da adolescência (idade típica de início sugerida) | Prevalência: desconhecida; diagnóstico primário muito raro (~3,3–3,4% entre amostras de risco) | Sexo: atear fogo é mais frequente em homens, mas o predomínio na ______ é desconhecido
+
+[14] (resumo)  RESPOSTA: Transtorno da Conduta
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Padrão repetitivo de comportamento na infância/adolescência que viola direitos dos outros e regras sociais, com agressão, destruição, mentira/furto e transgressões graves.
+
+[15] (criterio · Critério A)  RESPOSTA: Transtorno da Conduta
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Um padrão de comportamento repetitivo e persistente no qual são violados direitos básicos de outras pessoas ou normas ou regras sociais relevantes e apropriadas para a idade, tal como manifestado pela presença de ao menos três dos 15 critérios seguintes, nos últimos 12 meses, de qualquer uma das categorias a seguir, com ao menos um critério presente nos últimos seis meses: Agressão a Pessoas e Animais 1. Frequentemente provoca, ameaça ou intimida outros. 2. Frequentemente inicia brigas físicas. 3. Usou alguma arma que pode causar danos físicos graves a outros (p. ex., bastão, tijolo, garrafa quebrada, faca, arma de fogo). 4. Foi fisicamente cruel com pessoas. 5. Foi fisicamente cruel com animais. 6. Roubou durante o confronto com uma vítima (p. ex., assalto, roubo de bolsa, extorsão, roubo à mão armada). 7. Forçou alguém a atividade sexual. Destruição de Propriedade 8. Envolveu-se deliberadamente na provocação de incêndios com a intenção de causar danos graves. 9. Destruiu deliberadamente propriedade de outras pessoas (excluindo provocação de incêndios). Falsidade ou Furto 10. Invadiu a casa, o edifício ou o carro de outra pessoa. 11. Frequentemente mente para obter bens materiais ou favores ou para evitar obrigações (i. e., "trapaceia"). 12. Furtou itens de valores consideráveis sem confrontar a vítima (p. ex., furto em lojas, mas sem invadir ou forçar a entrada; falsificação). Violações Graves de Regras 13. Frequentemente fica fora de casa à noite, apesar da proibição dos pais, com início antes dos 13 anos de idade. 14. Fugiu de casa, passando a noite fora, pelo menos duas vezes enquanto morando com os pais ou em lar substituto, ou uma vez sem retornar por um longo período. 15. Com frequência falta às aulas, com início antes dos 13 anos de idade.
+
+[16] (criterio · Critério B)  RESPOSTA: Transtorno da Conduta
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: A perturbação comportamental causa prejuízos clinicamente significativos no funcionamento social, acadêmico ou profissional.
+
+[17] (criterio · Critério C)  RESPOSTA: Transtorno da Conduta
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Se o indivíduo tem 18 anos ou mais, os critérios para transtorno da personalidade antissocial não são preenchidos.
+
+[18] (fatos)  RESPOSTA: Transtorno da Conduta
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Início: da fase intermediária da infância à intermediária da adolescência (raro após os 16 anos) | Prevalência: ~2 a >10% ao ano (mediana 4%); ao longo da vida 12% em homens e 7,1% em mulheres | Sexo: predomínio masculino
+
+[19] (resumo)  RESPOSTA: Transtorno da Personalidade Antissocial
+    sinais: difDistratores=0 familiaTamanho=2
+    ENUNCIADO: Padrão persistente de desrespeito e violação dos direitos dos outros; aqui aparece como referência cruzada, com critérios e texto completos no capítulo "Transtornos da ______".
+
+[20] (resumo)  RESPOSTA: Transtorno de Oposição Desafiante
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Padrão persistente de irritabilidade, comportamento ______/questionador e índole vingativa, especialmente diante de figuras de autoridade.
+
+[21] (criterio · Critério A)  RESPOSTA: Transtorno de Oposição Desafiante
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Um padrão de humor raivoso/irritável, de comportamento questionador/______ ou índole vingativa com duração de pelo menos seis meses, como evidenciado por pelo menos quatro sintomas de qualquer das categorias seguintes e exibido na interação com pelo menos um indivíduo que não seja um irmão. Humor Raivoso/Irritável 1. Com frequência perde a calma. 2. Com frequência é sensível ou facilmente incomodado. 3. Com frequência é raivoso e ressentido. Comportamento Questionador/______ 4. Frequentemente questiona figuras de autoridade ou, no caso de crianças e adolescentes, adultos. 5. Frequentemente ______ acintosamente ou se recusa a obedecer a regras ou pedidos de figuras de autoridade. 6. Frequentemente incomoda deliberadamente outras pessoas. 7. Frequentemente culpa outros por seus erros ou mau comportamento. Índole Vingativa 8. Foi malvado ou vingativo pelo menos duas vezes nos últimos seis meses.
+
+[22] (criterio · Critério B)  RESPOSTA: Transtorno de Oposição Desafiante
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: A perturbação no comportamento está associada a sofrimento para o indivíduo ou para os outros em seu contexto social imediato (p. ex., família, grupo de pares, colegas de trabalho) ou causa impactos negativos no funcionamento social, educacional, profissional ou outras áreas importantes da vida do indivíduo.
+
+[23] (criterio · Critério C)  RESPOSTA: Transtorno de Oposição Desafiante
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Os comportamentos não ocorrem exclusivamente durante o curso de um transtorno psicótico, por uso de substância, depressivo ou bipolar. Além disso, os critérios para transtorno disruptivo da desregulação do humor não são preenchidos.
+
+[24] (fatos)  RESPOSTA: Transtorno de Oposição Desafiante
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Início: anos pré-escolares; raramente após o início da adolescência | Prevalência: ~1 a 11% (média ~3,3%) | Sexo: leve predomínio masculino antes da adolescência (~1,59:1)
+
+[25] (resumo)  RESPOSTA: Transtorno Explosivo Intermitente
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: ______ impulsivas e recorrentes de agressividade (verbal ou física), desproporcionais à provocação e sem objetivo planejado, que causam sofrimento ou prejuízo.
+
+[26] (criterio · Critério A)  RESPOSTA: Transtorno Explosivo Intermitente
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: ______ comportamentais recorrentes representando uma falha em controlar impulsos agressivos, conforme manifestado por um dos seguintes aspectos: 1. Agressão verbal (p. ex., acessos de raiva, injúrias, discussões ou agressões verbais) ou agressão física dirigida a propriedade, animais ou outros indivíduos, ocorrendo em uma média de duas vezes por semana, durante um período de três meses. A agressão física não resulta em danos ou destruição de propriedade nem em lesões físicas em animais ou em outros indivíduos. 2. Três ______ comportamentais envolvendo danos ou destruição de propriedade e/ou agressão física envolvendo lesões físicas contra animais ou outros indivíduos ocorrendo dentro de um período de 12 meses.
+
+[27] (criterio · Critério B)  RESPOSTA: Transtorno Explosivo Intermitente
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: A magnitude da agressividade expressa durante as ______ recorrentes é grosseiramente desproporcional em relação à provocação ou a quaisquer estressores psicossociais precipitantes.
+
+[28] (criterio · Critério C)  RESPOSTA: Transtorno Explosivo Intermitente
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: As ______ de agressividade recorrentes não são premeditadas (i. e., são impulsivas e/ou decorrentes de raiva) e não têm por finalidade atingir algum objetivo tangível (p. ex., dinheiro, poder, intimidação).
+
+[29] (criterio · Critério E)  RESPOSTA: Transtorno Explosivo Intermitente
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: A idade cronológica é de pelo menos 6 anos (ou nível de desenvolvimento equivalente).
+
+[30] (fatos)  RESPOSTA: Transtorno Explosivo Intermitente
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: fim da infância ou adolescência (raramente começa após os 40 anos) | Prevalência: ~2,6% em 1 ano e ~4,0% ao longo da vida (EUA) | Sexo: maior em homens em alguns estudos, mas outros não acham diferença de sexo
+

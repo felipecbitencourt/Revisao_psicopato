@@ -1,0 +1,112 @@
+CATEGORIA: Transtornos parafílicos  (ci=18)
+Total de questões neste lote: 27
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Transtorno do Masoquismo Sexual
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Excitação ______ intensa e recorrente ligada a ser humilhado, espancado, amarrado ou sofrer de outra forma, que causa sofrimento ou prejuízo na vida da pessoa.
+
+[2] (criterio · Critério A)  RESPOSTA: Transtorno do Masoquismo Sexual
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Por um período de pelo menos seis meses, excitação ______ recorrente e intensa resultante do ato de ser humilhado, espancado, amarrado ou vítima de qualquer outro tipo de sofrimento, conforme manifestado por fantasias, impulsos ou comportamentos.
+
+[3] (fatos)  RESPOSTA: Transtorno do Masoquismo Sexual
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Início: início médio por volta dos ~19 anos, com fantasias podendo surgir na puberdade/infância | Prevalência: desconhecida (na Austrália, ~2,2% dos homens e 1,3% das mulheres relataram comportamento BDSM nos últimos 12 meses)
+
+[4] (resumo)  RESPOSTA: Transtorno do Sadismo Sexual
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Excitação ______ intensa e persistente ao causar sofrimento físico ou psicológico a outra pessoa, que vira transtorno quando praticada sem consentimento ou gera sofrimento/prejuízo.
+
+[5] (criterio · Critério A)  RESPOSTA: Transtorno do Sadismo Sexual
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Por um período de pelo menos seis meses, excitação ______ recorrente e intensa resultante de sofrimento físico ou psicológico de outra pessoa, conforme manifestado por fantasias, impulsos ou comportamentos.
+
+[6] (fatos)  RESPOSTA: Transtorno do Sadismo Sexual
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Início: interesse sádico costuma surgir na adolescência | Prevalência: desconhecida; <10% dos condenados por crimes sexuais e ~1/3 dos homicídios sexuais | Sexo: predomínio masculino (quase exclusivamente homens em amostras forenses)
+
+[7] (resumo)  RESPOSTA: Transtorno Exibicionista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Excitação sexual intensa e persistente em mostrar os próprios genitais a quem não espera, gerando sofrimento ou levando a atos com pessoas que não consentem.
+
+[8] (criterio · Critério A)  RESPOSTA: Transtorno Exibicionista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Por um período de pelo menos seis meses, excitação sexual recorrente e intensa decorrente da exposição dos próprios genitais a uma pessoa que não espera o fato, conforme manifestado por fantasias, impulsos ou comportamentos.
+
+[9] (fatos)  RESPOSTA: Transtorno Exibicionista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: adolescência ou início da vida adulta | Prevalência: ~4,1% (homens) e ~2,1% (mulheres) ao longo da vida (estudo sueco) | Sexo: predomínio masculino; raro em mulheres
+
+[10] (resumo)  RESPOSTA: Transtorno Fetichista
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Excitação sexual intensa e persistente ligada a objetos inanimados ou a uma parte não genital do corpo, que causa sofrimento ou prejuízo na vida da pessoa.
+
+[11] (criterio · Critério A)  RESPOSTA: Transtorno Fetichista
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Por um período de pelo menos seis meses, excitação sexual recorrente e intensa resultante do uso de objetos inanimados ou de um foco altamente específico em uma ou mais de uma parte não genital do corpo, conforme manifestado por fantasias, impulsos ou comportamentos.
+
+[12] (criterio · Critério C)  RESPOSTA: Transtorno Fetichista
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Os objetos de ______ não se limitam a artigos do vestuário usados em cross-dressing (como no transtorno transvéstico) ou a dispositivos especificamente criados para estimulação genital tátil (p. ex., vibrador).
+
+[13] (resumo)  RESPOSTA: Transtorno Frotteurista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Excitação sexual intensa e persistente por tocar ou esfregar-se em pessoas sem o consentimento delas, gerando sofrimento ou levando a agir sobre esses impulsos.
+
+[14] (criterio · Critério A)  RESPOSTA: Transtorno Frotteurista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Por um período de pelo menos seis meses, excitação sexual recorrente e intensa resultante de tocar ou esfregar-se em pessoa que não consentiu, conforme manifestado por fantasias, impulsos ou comportamentos.
+
+[15] (fatos)  RESPOSTA: Transtorno Frotteurista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: fim da adolescência / início da vida adulta | Prevalência: atos ______ em até ~30% dos homens; transtorno bem menos comum (~10–14% em ambulatório de parafilias/hipersexualidade) | Sexo: predomínio masculino (prevalência menor entre mulheres)
+
+[16] (resumo)  RESPOSTA: Transtorno Pedofílico
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Atração sexual intensa e persistente por crianças pré-púberes que leva a sofrimento, prejuízo nas relações ou a agir conforme esses impulsos.
+
+[17] (criterio · Critério A)  RESPOSTA: Transtorno Pedofílico
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Por um período de pelo menos seis meses, fantasias sexualmente excitantes, impulsos sexuais ou comportamentos intensos e recorrentes envolvendo atividade sexual com criança ou crianças pré-púberes (em geral, 13 anos ou menos).
+
+[18] (criterio · Critério B)  RESPOSTA: Transtorno Pedofílico
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: O indivíduo coloca em prática esses impulsos sexuais, ou os impulsos ou as fantasias sexuais causam sofrimento intenso ou dificuldades interpessoais.
+
+[19] (criterio · Critério C)  RESPOSTA: Transtorno Pedofílico
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: O indivíduo tem, no mínimo, 16 anos de idade e é pelo menos cinco anos mais velho que a criança ou as crianças do Critério A. Nota: Não incluir um indivíduo no fim da adolescência envolvido em relacionamento sexual contínuo com pessoa de 12 ou 13 anos de idade.
+
+[20] (fatos)  RESPOSTA: Transtorno Pedofílico
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Início: interesse sexual percebido por volta da puberdade; diagnóstico só a partir dos 16 anos | Prevalência: provavelmente <3% entre homens; nas mulheres, fração ainda menor | Sexo: predomínio masculino (muito mais comum em homens)
+
+[21] (resumo)  RESPOSTA: Transtorno Transvéstico
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Excitação sexual intensa e recorrente por vestir-se com roupas do gênero oposto, que causa sofrimento significativo ou prejuízo na vida da pessoa.
+
+[22] (criterio · Critério A)  RESPOSTA: Transtorno Transvéstico
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Por um período de pelo menos seis meses, excitação sexual recorrente e intensa resultante de vestir-se como o gênero oposto (cross-dressing), conforme manifestado por fantasias, impulsos ou comportamentos.
+
+[23] (fatos)  RESPOSTA: Transtorno Transvéstico
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Início: primeiros sinais na infância; excitação começa na puberdade | Prevalência: desconhecida; <3% dos homens suecos relatam já ter tido excitação vestindo-se como mulher | Sexo: mais comum em homens
+
+[24] (resumo)  RESPOSTA: Transtorno Voyeurista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Excitação sexual intensa e persistente ao observar secretamente pessoas nuas ou em atividade sexual sem consentimento, gerando sofrimento ou prejuízo.
+
+[25] (criterio · Critério A)  RESPOSTA: Transtorno Voyeurista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Por um período de pelo menos seis meses, excitação sexual recorrente e intensa ao observar uma pessoa que ignora estar sendo observada e que está nua, despindo-se ou em meio a atividade sexual, conforme manifestado por fantasias, impulsos ou comportamentos.
+
+[26] (criterio · Critério C)  RESPOSTA: Transtorno Voyeurista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O indivíduo que se excita e/ou coloca em prática os impulsos tem, no mínimo, 18 anos de idade.
+
+[27] (fatos)  RESPOSTA: Transtorno Voyeurista
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: interesse percebido na adolescência; diagnóstico só a partir dos 18 anos | Prevalência: desconhecida; comportamentos ______ ao longo da vida ~34,5% (50,3% homens, 21,2% mulheres), mas o transtorno é bem mais raro | Sexo: predomínio masculino (~2:1 a 3:1)
+

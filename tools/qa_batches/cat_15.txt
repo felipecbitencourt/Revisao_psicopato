@@ -1,0 +1,356 @@
+CATEGORIA: Substâncias e transtornos aditivos  (ci=15)
+Total de questões neste lote: 88
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Abstinência de Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Conjunto de sintomas (tremores, suor, taquicardia, insônia, ansiedade) que surge horas a dias após parar ou reduzir o uso pesado e prolongado de ______.
+
+[2] (criterio · Critério A)  RESPOSTA: Abstinência de Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Cessação (ou redução) do uso de ______ que tenha sido intenso e prolongado.
+
+[3] (criterio · Critério B)  RESPOSTA: Abstinência de Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Dois (ou mais) dos seguintes sintomas, desenvolvidos no período de algumas horas a alguns dias após a cessação (ou redução) do uso de ______ descrita no Critério A: 1. Hiperatividade autonômica (p. ex., sudorese ou frequência cardíaca maior que 100 bpm). 2. Tremor aumentado nas mãos. 3. Insônia. 4. Náusea ou vômitos. 5. Alucinações ou ilusões visuais, táteis ou auditivas transitórias. 6. Agitação psicomotora. 7. Ansiedade. 8. Convulsões tônico-clônicas generalizadas.
+
+[4] (fatos)  RESPOSTA: Abstinência de Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: rara antes dos 30 anos; risco e gravidade aumentam com a idade | Prevalência: ~50% dos casos de transtorno por uso de ______; >80% entre hospitalizados/sem-teto
+
+[5] (resumo)  RESPOSTA: Intoxicação por Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Estado transitório após beber ______, com mudanças de comportamento e sinais como fala arrastada, descoordenação e prejuízo de atenção; nos casos graves, coma.
+
+[6] (criterio · Critério A)  RESPOSTA: Intoxicação por Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Ingestão recente de ______.
+
+[7] (criterio · Critério B)  RESPOSTA: Intoxicação por Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Alterações comportamentais ou psicológicas clinicamente significativas e problemáticas (p. ex., comportamento sexual ou agressivo inadequado, humor instável, julgamento prejudicado) desenvolvidas durante ou logo após a ingestão de ______.
+
+[8] (criterio · Critério C)  RESPOSTA: Intoxicação por Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Um (ou mais) dos seguintes sinais ou sintomas, desenvolvidos durante ou logo após o uso de ______: 1. Fala arrastada. 2. Incoordenação. 3. Marcha instável. 4. Nistagmo. 5. Comprometimento da atenção ou da memória. 6. Estupor ou coma.
+
+[9] (fatos)  RESPOSTA: Intoxicação por Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: primeira ______ em média aos ~15 anos; prevalência maior entre 18 e 25 anos | Prevalência: consumo de alto risco em 12 meses ~7,2–17,4% dos adultos nos EUA conforme o grupo
+
+[10] (resumo)  RESPOSTA: Transtorno por Uso de Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Padrão problemático de consumo de ______ que persiste apesar dos prejuízos, marcado por perda de controle, fissura, tolerância e abstinência.
+
+[11] (fatos)  RESPOSTA: Transtorno por Uso de Álcool
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: fim da adolescência / entre 20 e 25 anos | Prevalência: ~29% ao longo da vida (EUA); ~4,6% nos 12-17 anos, ~16,2% nos 18-29 anos (12 meses) | Sexo: predomínio masculino (homens 36% vs. mulheres 22,7% ao longo da vida)
+
+[12] (resumo)  RESPOSTA: Abstinência de Cafeína
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Conjunto de sintomas (cefaleia, fadiga, irritabilidade, dificuldade de concentração) que surge ao parar ou reduzir bruscamente o uso diário de ______.
+
+[13] (criterio · Critério A)  RESPOSTA: Abstinência de Cafeína
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Uso diário prolongado de ______.
+
+[14] (criterio · Critério B)  RESPOSTA: Abstinência de Cafeína
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Cessação ou redução abrupta do uso de ______, seguida, no período de 24 horas, de três (ou mais) dos seguintes sinais ou sintomas: 1. Cefaleia. 2. Fadiga ou sonolência acentuadas. 3. Humor disfórico, humor deprimido ou irritabilidade. 4. Dificuldade de concentração. 5. Sintomas gripais (náusea, vômitos ou dor/rigidez muscular).
+
+[15] (criterio · Critério D)  RESPOSTA: Abstinência de Cafeína
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Os sinais ou sintomas não estão associados aos efeitos fisiológicos de outra condição médica (p. ex., enxaqueca, doença viral) nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou ______ de outra substância.
+
+[16] (fatos)  RESPOSTA: Abstinência de Cafeína
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Início: sintomas começam 12 a 24h após a última dose, com pico em 1 a 2 dias | Prevalência: mais de 85% dos adultos/crianças nos EUA consomem ______; cerca de 50% dos casos de ______ têm cefaleia
+
+[17] (resumo)  RESPOSTA: Intoxicação por Cafeína
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Reação aguda ao consumo recente de muita ______, com nervosismo, agitação, insônia e sintomas cardíacos/gastrintestinais que causam prejuízo.
+
+[18] (criterio · Critério A)  RESPOSTA: Intoxicação por Cafeína
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Consumo recente de ______ (geralmente uma dose alta muito superior a 250 mg).
+
+[19] (criterio · Critério B)  RESPOSTA: Intoxicação por Cafeína
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Cinco (ou mais) dos seguintes sinais ou sintomas, desenvolvidos durante ou logo após o uso de ______: 1. Inquietação. 2. Nervosismo. 3. Excitação. 4. Insônia. 5. Rubor facial. 6. Diurese. 7. Perturbação gastrintestinal. 8. Abalos musculares. 9. Fluxo errático do pensamento e do discurso. 10. Taquicardia ou arritmia cardíaca. 11. Períodos de energia inesgotável. 12. Agitação psicomotora.
+
+[20] (fatos)  RESPOSTA: Intoxicação por Cafeína
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Início: logo após consumo de dose alta; remissão em 1-2 dias (meia-vida ~4-6h) | Prevalência: ~7% da população (EUA) podem ter sintomas compatíveis
+
+[21] (resumo)  RESPOSTA: Abstinência de Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Conjunto de sintomas, mais emocionais/comportamentais que físicos, que surge ao parar o uso pesado e prolongado de maconha.
+
+[22] (criterio · Critério A)  RESPOSTA: Abstinência de Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Cessação do uso pesado e prolongado de ______ (i. e., normalmente uso diário ou quase diário durante um período mínimo de alguns meses).
+
+[23] (criterio · Critério B)  RESPOSTA: Abstinência de Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Três (ou mais) dos seguintes sinais e sintomas, desenvolvidos no prazo de aproximadamente uma semana após o Critério A: 1. Irritabilidade, raiva ou agressividade. 2. Nervosismo ou ansiedade. 3. Dificuldade em dormir (insônia, sonhos perturbadores). 4. Apetite reduzido ou perda de peso. 5. Inquietação. 6. Humor deprimido. 7. Pelo menos um dos seguintes sintomas físicos causa desconforto significativo: dor abdominal, tremor, sudorese, febre, calafrios ou cefaleia.
+
+[24] (fatos)  RESPOSTA: Abstinência de Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: 24 a 48 horas após interromper o uso; pico em 2 a 5 dias e fim em 1 a 2 semanas | Prevalência: ~12% dos usuários regulares adultos atingem a síndrome completa; 50 a 95% entre usuários crônicos ou em tratamento | Sexo: mulheres podem ter sintomas mais graves que homens
+
+[25] (resumo)  RESPOSTA: Intoxicação por Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Efeitos agudos do uso recente de maconha, com mudanças no comportamento e no humor e sinais físicos como olhos vermelhos, fome e taquicardia.
+
+[26] (criterio · Critério B)  RESPOSTA: Intoxicação por Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Alterações comportamentais ou psicológicas clinicamente significativas e problemáticas (p. ex., prejuízo na coordenação motora, euforia, ansiedade, sensação de lentidão do tempo, julgamento prejudicado, retraimento social) desenvolvidas durante ou logo após o uso de ______.
+
+[27] (criterio · Critério C)  RESPOSTA: Intoxicação por Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Dois (ou mais) dos seguintes sinais ou sintomas, desenvolvidos no período de 2 horas após o uso de ______: 1. Conjuntivas hiperemiadas. 2. Apetite aumentado. 3. Boca seca. 4. Taquicardia.
+
+[28] (resumo)  RESPOSTA: Transtorno por Uso de Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Padrão problemático de uso de maconha que persiste apesar dos prejuízos, com perda de controle, tolerância e abstinência.
+
+[29] (fatos)  RESPOSTA: Transtorno por Uso de Cannabis
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: adolescência ou início da vida adulta (pico dos 18 aos 29 anos) | Prevalência: ~2,5% em 12 meses entre adultos (DSM-5)
+
+[30] (resumo)  RESPOSTA: Intoxicação por Fenciclidina
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Quadro agudo logo após usar ______, com agitação/violência, confusão e sinais neurológicos como nistagmo, ataxia e resposta diminuída à dor.
+
+[31] (criterio · Critério A)  RESPOSTA: Intoxicação por Fenciclidina
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Uso recente de ______ (ou substância farmacologicamente semelhante).
+
+[32] (criterio · Critério B)  RESPOSTA: Intoxicação por Fenciclidina
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Alterações comportamentais clinicamente significativas e problemáticas (p. ex., beligerância, agressividade, impulsividade, imprevisibilidade, agitação psicomotora, julgamento prejudicado) desenvolvidas durante ou logo após o uso de ______.
+
+[33] (criterio · Critério C)  RESPOSTA: Intoxicação por Fenciclidina
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: No prazo de 1 hora, dois (ou mais) dos seguintes sinais ou sintomas: Nota: Quando a droga for fumada, cheirada ou usada na forma intravenosa, o início pode ser bem mais rápido. 1. Nistagmo vertical ou horizontal. 2. Hipertensão ou taquicardia. 3. Torpor ou resposta diminuída à dor. 4. Ataxia. 5. Disartria. 6. Rigidez muscular. 7. Convulsões ou coma. 8. Hiperacusia.
+
+[34] (resumo)  RESPOSTA: Transtorno por Uso de Fenciclidina
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Uso problemático e continuado de ______ (PCP) e drogas dissociativas semelhantes, que persiste apesar do prejuízo e do sofrimento que causa.
+
+[35] (resumo)  RESPOSTA: Intoxicação por Outros Alucinógenos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Quadro agudo após uso de ______ (LSD, MDMA, sálvia), com alterações da percepção e do comportamento e sinais físicos como pupilas dilatadas e taquicardia.
+
+[36] (criterio · Critério A)  RESPOSTA: Intoxicação por Outros Alucinógenos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Uso recente de ______ (que não fenciclidina).
+
+[37] (criterio · Critério B)  RESPOSTA: Intoxicação por Outros Alucinógenos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Alterações comportamentais ou psicológicas clinicamente significativas e problemáticas (p. ex., ansiedade ou depressão acentuadas, ideias de referência, medo de perder o juízo, ideação paranoide, julgamento prejudicado) desenvolvidas durante ou logo após o uso de ______.
+
+[38] (criterio · Critério C)  RESPOSTA: Intoxicação por Outros Alucinógenos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Alterações da percepção ocorrendo em um estado de plena vigília e alerta (p. ex., intensificação subjetiva de percepções, despersonalização, desrealização, ilusões, ______, sinestesias) que se desenvolveram durante ou logo após o uso de ______.
+
+[39] (criterio · Critério D)  RESPOSTA: Intoxicação por Outros Alucinógenos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Dois (ou mais) dos seguintes sinais desenvolvidos durante ou logo após o uso de ______: 1. Dilatação pupilar. 2. Taquicardia. 3. Sudorese. 4. Palpitações. 5. Visão borrada. 6. Tremores. 7. Incoordenação.
+
+[40] (fatos)  RESPOSTA: Intoxicação por Outros Alucinógenos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Prevalência: uso no último ano nos EUA (2018): ~1,5% (12-17 anos), ~6,9% (18-25 anos), ~1,3% (26+ anos) | Sexo: mais frequente em meninos/homens
+
+[41] (resumo)  RESPOSTA: Transtorno Persistente da Percepção Induzido por Alucinógenos
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Reaparecimento de alterações visuais (como rastros, halos e flashes de cor) já fora do efeito da droga, causando sofrimento, com a pessoa consciente de que são ilusões.
+
+[42] (criterio · Critério A)  RESPOSTA: Transtorno Persistente da Percepção Induzido por Alucinógenos
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Após a cessação do uso de um ______, a revivência de no mínimo um dos sintomas ______ experimentados durante a intoxicação pelo ______ (p. ex., ______ geométricas, falsas ______ de movimento nos campos visuais periféricos, flashes coloridos, cores intensificadas, rastros de imagens de objetos em movimento, sensação de imagem vívida após o estímulo ter cessado [pós-imagem positiva], halos em torno dos objetos, macropsia e micropsia).
+
+[43] (resumo)  RESPOSTA: Transtorno por Uso de Outros Alucinógenos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Uso problemático e fora de controle de ______ (como LSD, psilocibina, ecstasy/MDMA), causando prejuízo ou sofrimento clínico significativo.
+
+[44] (fatos)  RESPOSTA: Transtorno por Uso de Outros Alucinógenos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: adultos jovens (maioria entre 18 e 29 anos) | Prevalência: ~0,1% nos últimos 12 meses (EUA, a partir dos 12 anos); pico de ~0,4% entre 18-25 anos
+
+[45] (resumo)  RESPOSTA: Intoxicação por Inalantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Quadro agudo após inalar solventes voláteis (cola, gasolina, tolueno), com mudanças de comportamento e sinais neurológicos que passam em minutos a horas.
+
+[46] (criterio · Critério A)  RESPOSTA: Intoxicação por Inalantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Exposição breve e recente, intencional ou não, a altas doses de substâncias ______, incluindo hidrocarbonetos voláteis como tolueno ou gasolina.
+
+[47] (criterio · Critério B)  RESPOSTA: Intoxicação por Inalantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Alterações comportamentais ou psicológicas clinicamente significativas e problemáticas (p. ex., beligerância, agressividade, apatia, julgamento prejudicado) desenvolvidas durante ou logo após o uso ou a exposição a ______.
+
+[48] (criterio · Critério C)  RESPOSTA: Intoxicação por Inalantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Dois (ou mais) dos seguintes sinais ou sintomas, desenvolvidos durante ou logo após o uso ou a exposição a ______: 1. Tontura. 2. Nistagmo. 3. Incoordenação. 4. Fala arrastada. 5. Instabilidade de marcha. 6. Letargia. 7. Reflexos deprimidos. 8. Retardo psicomotor. 9. Tremor. 10. Fraqueza muscular generalizada. 11. Visão borrada ou diplopia. 12. Estupor ou coma. 13. Euforia.
+
+[49] (fatos)  RESPOSTA: Intoxicação por Inalantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: mais comum em jovens, sobretudo adolescentes (12–17 anos) | Prevalência: uso no último ano em ~0,6% dos norte-americanos com mais de 12 anos (2,3% entre 12–17 anos) | Sexo: uso ligeiramente maior em homens no geral (0,8% vs. 0,5%), mas semelhante ou levemente maior em meninas adolescentes
+
+[50] (resumo)  RESPOSTA: Transtorno por Uso de Inalantes
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Uso repetido e intencional de solventes voláteis (colas, combustíveis, tintas) que segue mesmo causando prejuízo claro na vida e na saúde.
+
+[51] (fatos)  RESPOSTA: Transtorno por Uso de Inalantes
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Início: principalmente na adolescência/jovens adultos (pico de abuso intencional por volta dos 14 anos); raro em idosos | Prevalência: ~0,1% (12-17 anos) e ~0,04% (adultos) ao longo de 12 meses
+
+[52] (resumo)  RESPOSTA: Abstinência de Opioides
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Conjunto de sintomas físicos e psíquicos desagradáveis (dores, náusea, lacrimejamento, sudorese, disforia) que surge ao parar ou reduzir o uso prolongado de ______.
+
+[53] (criterio · Critério A)  RESPOSTA: Abstinência de Opioides
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Presença de qualquer um dos seguintes: 1. Cessação (ou redução) do uso pesado e prolongado de ______ (i. e., algumas semanas ou mais). 2. Administração de um antagonista de ______ após um período de uso de ______.
+
+[54] (criterio · Critério B)  RESPOSTA: Abstinência de Opioides
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Três (ou mais) dos seguintes sintomas, desenvolvidos no prazo de alguns minutos a alguns dias após o Critério A: 1. Humor disfórico. 2. Náusea ou vômito. 3. Dores musculares. 4. Lacrimejamento ou rinorreia. 5. Midríase, piloereção ou sudorese. 6. Diarreia. 7. Bocejos. 8. Febre. 9. Insônia.
+
+[55] (fatos)  RESPOSTA: Abstinência de Opioides
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: sintomas surgem 6-12h após a última dose (______ curtos como heroína) ou 2-4 dias (metadona/buprenorfina) | Prevalência: ______ ocorreu em 60% de usuários de heroína no último ano (EUA)
+
+[56] (resumo)  RESPOSTA: Intoxicação por Opioides
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Quadro agudo após uso recente de ______, com mudanças de humor/comportamento, pupilas contraídas, sonolência, fala arrastada e atenção e memória prejudicadas.
+
+[57] (criterio · Critério B)  RESPOSTA: Intoxicação por Opioides
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Alterações comportamentais ou psicológicas clinicamente significativas e problemáticas (p. ex., euforia inicial seguida por apatia, disforia, agitação ou retardo psicomotor, julgamento prejudicado) desenvolvidas durante ou logo após o uso de ______.
+
+[58] (criterio · Critério C)  RESPOSTA: Intoxicação por Opioides
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Miose (ou midríase devido à anoxia decorrente de overdose grave) e um (ou mais) dos seguintes sinais ou sintomas, desenvolvidos durante ou logo após o uso de ______. 1. Torpor ou coma. 2. Fala arrastada. 3. Prejuízo na atenção ou na memória.
+
+[59] (resumo)  RESPOSTA: Transtorno por Uso de Opioides
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Uso compulsivo e descontrolado de ______ (heroína, fentanil, analgésicos) que persiste apesar dos prejuízos, com tolerância e abstinência.
+
+[60] (fatos)  RESPOSTA: Transtorno por Uso de Opioides
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: qualquer idade, mas tipicamente no fim da adolescência / início dos 20 anos | Prevalência: ~0,6–0,9% (medicamentos ______) e ~0,1–0,3% (heroína) em adultos | Sexo: mais prevalente em homens
+
+[61] (resumo)  RESPOSTA: Abstinência de Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Síndrome que surge ao parar ou reduzir o uso prolongado desses calmantes, com hiperatividade autonômica, tremor, insônia, ansiedade e risco de convulsões.
+
+[62] (criterio · Critério A)  RESPOSTA: Abstinência de Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Cessação (ou redução) do uso prolongado de ______, ______ ou ______.
+
+[63] (criterio · Critério B)  RESPOSTA: Abstinência de Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Dois (ou mais) dos seguintes sintomas, desenvolvidos no período de algumas horas a alguns dias após a cessação (ou redução) do uso de ______, ______ ou ______ descrita no Critério A: 1. Hiperatividade autonômica (p. ex., sudorese ou frequência cardíaca superior a 100 bpm). 2. Tremor nas mãos. 3. Insônia. 4. Náusea ou vômito. 5. Alucinações ou ilusões visuais, táteis ou auditivas transitórias. 6. Agitação psicomotora. 7. Ansiedade. 8. Convulsões do tipo grande mal.
+
+[64] (resumo)  RESPOSTA: Intoxicação por Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Efeitos agudos do uso recente de calmantes/______: fala arrastada, descoordenação, falhas de memória e alterações de comportamento e julgamento.
+
+[65] (criterio · Critério B)  RESPOSTA: Intoxicação por Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Alterações comportamentais ou psicológicas clinicamente significativas e mal-adaptativas (p. ex., comportamento sexual ou agressivo inadequado, humor instável, julgamento prejudicado) desenvolvidas durante ou logo após o uso de ______, ______ ou ______.
+
+[66] (criterio · Critério C)  RESPOSTA: Intoxicação por Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Um (ou mais) dos seguintes sinais ou sintomas, desenvolvidos durante ou logo após o uso de ______, ______ ou ______: 1. Fala arrastada. 2. Incoordenação. 3. Marcha instável. 4. Nistagmo. 5. Prejuízo na cognição (p. ex., atenção, memória). 6. Estupor ou coma.
+
+[67] (resumo)  RESPOSTA: Transtorno por Uso de Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Uso problemático de calmantes e remédios para dormir (como benzodiazepínicos) que gera tolerância, fissura e perda de controle, com prejuízos na vida.
+
+[68] (fatos)  RESPOSTA: Transtorno por Uso de Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: adolescência / jovens adultos na faixa dos 20 anos | Prevalência: ~0,3% em 12 meses (maior aos 18–29 anos: ~0,5%) | Sexo: sem variação consistente por gênero nos EUA; outros países apontam taxas maiores em mulheres
+
+[69] (resumo)  RESPOSTA: Transtornos Mentais Induzidos por Sedativos, Hipnóticos ou Ansiolíticos
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: Categoria de referência cruzada: quadros ______ (psicótico, bipolar, depressivo, de ansiedade, do sono) causados por ______, ______ ou ______, descritos nos capítulos dos transtornos com que se parecem.
+
+[70] (resumo)  RESPOSTA: Abstinência de Estimulantes
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Mal-estar que surge ao parar ou reduzir o uso prolongado de ______ (anfetaminas, cocaína), com humor deprimido, fadiga e alterações de sono e apetite.
+
+[71] (criterio · Critério A)  RESPOSTA: Abstinência de Estimulantes
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Cessação (ou redução) do uso prolongado de substância tipo anfetamina, cocaína ou outro ______.
+
+[72] (criterio · Critério B)  RESPOSTA: Abstinência de Estimulantes
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Humor disfórico e duas (ou mais) das seguintes alterações fisiológicas, desenvolvidos no prazo de algumas horas a alguns dias após o Critério A: 1. Fadiga. 2. Sonhos vívidos e desagradáveis. 3. Insônia ou hipersonia. 4. Aumento do apetite. 5. Retardo ou agitação psicomotora.
+
+[73] (resumo)  RESPOSTA: Intoxicação por Estimulantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Quadro agudo após uso de cocaína, anfetaminas ou similares, com euforia ou agitação e sinais físicos como taquicardia, pupilas dilatadas e alteração da pressão.
+
+[74] (criterio · Critério A)  RESPOSTA: Intoxicação por Estimulantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Uso recente de uma substância tipo anfetamina, cocaína ou outro ______.
+
+[75] (criterio · Critério B)  RESPOSTA: Intoxicação por Estimulantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Alterações comportamentais ou psicológicas clinicamente significativas e problemáticas (p. ex., euforia ou embotamento afetivo; alterações na sociabilidade; hipervigilância; sensibilidade interpessoal; ansiedade, tensão ou raiva; comportamentos estereotipados; julgamento prejudicado) desenvolvidas durante ou logo após o uso de um ______.
+
+[76] (criterio · Critério C)  RESPOSTA: Intoxicação por Estimulantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Dois (ou mais) dos seguintes sinais ou sintomas, desenvolvidos durante ou logo após o uso de ______: 1. Taquicardia ou bradicardia. 2. Dilatação pupilar. 3. Pressão arterial elevada ou diminuída. 4. Transpiração ou calafrios. 5. Náusea ou vômito. 6. Evidências de perda de peso. 7. Agitação ou retardo psicomotor. 8. Fraqueza muscular, depressão respiratória, dor torácica ou arritmias cardíacas. 9. Confusão, convulsões, discinesias, distonias ou coma.
+
+[77] (fatos)  RESPOSTA: Intoxicação por Estimulantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Prevalência: desconhecida; usa-se o uso de ______ como aproximação (cocaína ~2,2% e metanfetamina ~0,6% em 12 meses nos EUA, a partir dos 12 anos) | Sexo: mais comum em homens (cocaína 3% vs 1,4%; metanfetamina 0,8% vs 0,4%)
+
+[78] (resumo)  RESPOSTA: Transtorno por Uso de Estimulantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Padrão problemático de uso de ______ (anfetaminas, metilfenidato ou cocaína) que leva a perda de controle, prejuízo e sofrimento significativos.
+
+[79] (fatos)  RESPOSTA: Transtorno por Uso de Estimulantes
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: mais comum dos 18 aos 25 anos; primeiro uso regular em média ~23 anos | Prevalência: ~0,4% em 12 meses (anfetaminas e também cocaína), nos EUA | Sexo: predomínio masculino (anfetaminas: 0,5% homens vs 0,2% mulheres)
+
+[80] (resumo)  RESPOSTA: Abstinência de Tabaco
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Conjunto de sintomas (irritabilidade, ansiedade, dificuldade de concentração, fome) que surge ao parar ou reduzir o ______ após uso diário, por privação de nicotina.
+
+[81] (criterio · Critério A)  RESPOSTA: Abstinência de Tabaco
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Uso diário de ______ durante um período mínimo de várias semanas.
+
+[82] (criterio · Critério B)  RESPOSTA: Abstinência de Tabaco
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Cessação abrupta do uso de ______, ou redução da quantidade de ______ utilizada, seguida, no prazo de 24 horas, por quatro (ou mais) dos seguintes sinais ou sintomas: 1. Irritabilidade, frustração ou raiva. 2. Ansiedade. 3. Dificuldade de concentração. 4. Aumento do apetite. 5. Inquietação. 6. Humor deprimido. 7. Insônia.
+
+[83] (fatos)  RESPOSTA: Abstinência de Tabaco
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: em até 24 horas após parar/reduzir; pico em 2–3 dias e duração de 2–3 semanas | Prevalência: ~50% dos que abandonam por 2 dias ou mais apresentam 4+ sintomas
+
+[84] (resumo)  RESPOSTA: Transtorno por Uso de Tabaco
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: Dependência de ______/nicotina: a pessoa fuma de forma compulsiva e continuada, com tolerância e abstinência, apesar dos prejuízos à saúde.
+
+[85] (fatos)  RESPOSTA: Transtorno por Uso de Tabaco
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: Início: início costuma ser na adolescência; iniciar a fumar após os 21 anos é raro | Prevalência: ~20% em 12 meses entre adultos (EUA, 2012-2013); ~50% entre fumantes diários | Sexo: predomínio masculino (uso diário sempre maior em homens, razão de 1,2:1 a 16,9:1 conforme a região)
+
+[86] (resumo)  RESPOSTA: Transtorno do Jogo
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Padrão persistente de apostar que foge ao controle e prejudica a vida pessoal, familiar e profissional, com tentativas de recuperar perdas e mentiras para esconder o envolvimento.
+
+[87] (criterio · Critério A)  RESPOSTA: Transtorno do Jogo
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Comportamento de ______ problemático persistente e recorrente levando a sofrimento ou comprometimento clinicamente significativo, conforme indicado pela apresentação de quatro (ou mais) dos seguintes aspectos em um período de 12 meses: 1. Necessidade de apostar quantias de dinheiro cada vez maiores a fim de atingir a excitação desejada. 2. Inquietude ou irritabilidade quando tenta reduzir ou interromper o hábito de jogar. 3. Fez esforços repetidos e malsucedidos no sentido de controlar, reduzir ou interromper o hábito de jogar. 4. Preocupação frequente com o ______ (p. ex., apresenta pensamentos persistentes sobre experiências de ______ passadas, avalia possibilidades ou planeja a próxima quantia a ser apostada, pensa em modos de obter dinheiro para jogar). 5. Frequentemente joga quando se sente angustiado (p. ex., sentimentos de impotência, culpa, ansiedade, depressão). 6. Após perder dinheiro no ______, frequentemente volta outro dia para ficar quite ("recuperar o prejuízo"). 7. Mente para esconder a extensão de seu envolvimento com o ______. 8. Prejudicou ou perdeu um relacionamento significativo, o emprego ou uma oportunidade educacional ou profissional em razão do ______. 9. Depende de outras pessoas para obter dinheiro a fim de saldar situações financeiras desesperadoras causadas pelo ______.
+
+[88] (fatos)  RESPOSTA: Transtorno do Jogo
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Início: adolescência ou início da vida adulta, podendo surgir na meia-idade ou idade avançada | Prevalência: ~0,4–1,0% ao longo da vida (0,2–0,3% no último ano nos EUA) | Sexo: predomínio masculino (homens ~0,6% vs. mulheres ~0,2% ao longo da vida)
+

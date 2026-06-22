@@ -1,0 +1,80 @@
+CATEGORIA: Transtornos neurocognitivos  (ci=16)
+Total de questões neste lote: 19
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Delirium
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Quadro confusional agudo e flutuante, com queda da atenção e da consciência, causado por condição médica, substância ou abstinência.
+
+[2] (criterio · Critério A)  RESPOSTA: Delirium
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Perturbação da atenção (i. e., capacidade reduzida para direcionar, focalizar, manter e mudar a atenção) acompanhada por uma consciência reduzida do ambiente.
+
+[3] (criterio · Critério B)  RESPOSTA: Delirium
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: A perturbação se desenvolve em um período breve de tempo (normalmente de horas a poucos dias), representa uma mudança da atenção e da consciência basais e tende a oscilar quanto à gravidade ao longo de um dia.
+
+[4] (criterio · Critério C)  RESPOSTA: Delirium
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Perturbação adicional na cognição (p. ex., déficit de memória, desorientação, linguagem, capacidade visuoespacial ou percepção).
+
+[5] (criterio · Critério E)  RESPOSTA: Delirium
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Há evidências a partir da história, do exame físico ou de achados laboratoriais de que a perturbação é uma consequência fisiológica direta de outra condição médica, intoxicação ou abstinência de substância (i. e., devido a uma droga de abuso ou a um medicamento), de exposição a uma toxina ou de que ela se deva a múltiplas etiologias.
+
+[6] (fatos)  RESPOSTA: Delirium
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Início: agudo (horas a poucos dias); mais comum em idosos hospitalizados | Prevalência: 1–2% na comunidade; 18–35% na admissão hospitalar; até 81% em UTI e 88% na doença terminal
+
+[7] (resumo)  RESPOSTA: Transtorno Neurocognitivo Frontotemporal Maior ou Leve
+    sinais: difDistratores=1 familiaTamanho=7
+    ENUNCIADO: Degeneração progressiva dos lobos frontais e temporais que causa mudanças de personalidade e comportamento e/ou prejuízo da linguagem, com memória relativamente preservada no início.
+
+[8] (criterio · Critério B)  RESPOSTA: Transtorno Neurocognitivo Frontotemporal Maior ou Leve
+    sinais: difDistratores=1 familiaTamanho=7
+    ENUNCIADO: A perturbação tem surgimento insidioso e progressão gradual.
+
+[9] (criterio · Critério C)  RESPOSTA: Transtorno Neurocognitivo Frontotemporal Maior ou Leve
+    sinais: difDistratores=1 familiaTamanho=7
+    ENUNCIADO: Qualquer um entre (1) e (2): 1. Variante comportamental: a. Três ou mais dos sintomas comportamentais a seguir: i. Desinibição comportamental. ii. Apatia ou inércia. iii. Perda de simpatia ou empatia. iv. Comportamento perseverante, estereotipado ou compulsivo/ritualístico. v. Hiperoralidade e mudanças na dieta. b. Declínio proeminente na cognição social e/ou nas capacidades executivas. 2. Variante linguística: a. Declínio proeminente na capacidade linguística, na forma de produção da fala, no encontro de palavras, na nomeação de objetos, na gramática ou na compreensão de palavras.
+
+[10] (criterio · Critério D)  RESPOSTA: Transtorno Neurocognitivo Frontotemporal Maior ou Leve
+    sinais: difDistratores=1 familiaTamanho=7
+    ENUNCIADO: Preservação relativa da aprendizagem e da memória e da função perceptomotora.
+
+[11] (fatos)  RESPOSTA: Transtorno Neurocognitivo Frontotemporal Maior ou Leve
+    sinais: difDistratores=1 familiaTamanho=7
+    ENUNCIADO: Início: geralmente por volta dos 50 anos (varia dos 20 aos 80 anos) | Prevalência: 2 a 31 por 100.000; cerca de 5% das demências | Sexo: taxas geralmente iguais em homens e mulheres
+
+[12] (resumo)  RESPOSTA: Transtorno Neurocognitivo Maior ou Leve com Corpos de Lewy
+    sinais: difDistratores=2 familiaTamanho=7
+    ENUNCIADO: Demência progressiva com cognição flutuante, alucinações visuais, parkinsonismo e alterações do sono REM, ligada ao acúmulo de ______ de ______ no cérebro.
+
+[13] (criterio · Critério B)  RESPOSTA: Transtorno Neurocognitivo Maior ou Leve com Corpos de Lewy
+    sinais: difDistratores=2 familiaTamanho=7
+    ENUNCIADO: O transtorno tem surgimento insidioso e progressão gradual.
+
+[14] (criterio · Critério C)  RESPOSTA: Transtorno Neurocognitivo Maior ou Leve com Corpos de Lewy
+    sinais: difDistratores=2 familiaTamanho=7
+    ENUNCIADO: O transtorno atende a uma combinação de características diagnósticas centrais e sugestivas para provável ou possível transtorno ______ com ______ de ______. Para transtorno ______ maior ou leve com provável ______ de ______,o indivíduo tem duas características centrais ou uma sugestiva com um oumais aspectos principais. Para transtorno ______ maior ou leve com possível ______ de ______,o indivíduo tem apenas uma característica central ou um ou mais aspectossugestivos. 1. Características diagnósticas centrais: a. Cognição oscilante, com variações acentuadas na atenção e no estado de alerta. b. Alucinações visuais recorrentes, bem formadas e detalhadas. c. Características espontâneas de parkinsonismo, com aparecimento subsequente ao desenvolvimento do declínio cognitivo. 2. Características diagnósticas sugestivas: a. Atende a critérios de transtorno comportamental do sono do movimento rápido dos olhos (ou sono REM – rapid eye movement). b. Sensibilidade neuroléptica grave.
+
+[15] (fatos)  RESPOSTA: Transtorno Neurocognitivo Maior ou Leve com Corpos de Lewy
+    sinais: difDistratores=2 familiaTamanho=7
+    ENUNCIADO: Início: geralmente entre 50 e 89 anos, com maioria dos casos surgindo por volta dos 75 anos | Prevalência: ~4,2% das demências na comunidade (até 7,5% em estudos clínicos); 0 a 1,2% da população idosa geral | Sexo: incidência cerca de 3x maior em homens (em idosos ≥65 anos)
+
+[16] (resumo)  RESPOSTA: Transtorno Neurocognitivo Vascular Maior ou Leve
+    sinais: difDistratores=2 familiaTamanho=7
+    ENUNCIADO: Declínio cognitivo causado por doença dos vasos cerebrais (como AVC ou lesões de pequenos vasos), com curso muitas vezes em degraus ou flutuante.
+
+[17] (criterio · Critério B)  RESPOSTA: Transtorno Neurocognitivo Vascular Maior ou Leve
+    sinais: difDistratores=2 familiaTamanho=7
+    ENUNCIADO: Os aspectos clínicos são consistentes com uma etiologia ______, conforme sugerido por um dos seguintes: 1. O surgimento de déficits cognitivos está temporariamente relacionado com um ou mais de um evento cerebrovascular. 2. Evidências de declínio são destacadas na atenção complexa (incluindo velocidade de processamento) e na função executiva frontal.
+
+[18] (criterio · Critério C)  RESPOSTA: Transtorno Neurocognitivo Vascular Maior ou Leve
+    sinais: difDistratores=2 familiaTamanho=7
+    ENUNCIADO: Há evidências da presença de doença cerebrovascular a partir da história, do exame físico e/ou de neuroimagem consideradas suficientes para responder pelos déficits cognitivos.
+
+[19] (fatos)  RESPOSTA: Transtorno Neurocognitivo Vascular Maior ou Leve
+    sinais: difDistratores=2 familiaTamanho=7
+    ENUNCIADO: Início: qualquer idade, mas a prevalência aumenta exponencialmente após os 65 anos | Prevalência: ~0,98% (71–79 anos), ~4,09% (80–89 anos) e ~6,19% (90+ anos); 20–30% após AVC | Sexo: AVC mais comum em homens até os 65 anos e em mulheres após os 65 anos
+

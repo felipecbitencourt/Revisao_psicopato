@@ -1,0 +1,116 @@
+CATEGORIA: Espectro da esquizofrenia e psicóticos  (ci=1)
+Total de questões neste lote: 28
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Catatonia Associada a Outro Transtorno Mental (Especificador de Catatonia)
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: ______ para perturbação psicomotora acentuada (______) que surge durante outro transtorno ______, como psicótico, bipolar ou depressivo.
+
+[2] (criterio · Critério A)  RESPOSTA: Catatonia Associada a Outro Transtorno Mental (Especificador de Catatonia)
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: O quadro clínico é dominado por três (ou mais) dos sintomas a seguir: 1. Estupor (i. e., ausência de atividade psicomotora; sem relação ativa com o ambiente). 2. Catalepsia (i. e., indução passiva de uma postura mantida contra a gravidade). 3. Flexibilidade cérea (i. e., resistência leve ao posicionamento pelo examinador). 4. Mutismo (i. e., resposta verbal ausente ou muito pouca [excluir com afasia conhecida]). 5. Negativismo (i. e., oposição ou resposta ausente a instruções ou a estímulos externos). 6. Postura (i. e., manutenção espontânea e ativa de uma postura contrária à gravidade). 7. Maneirismo (i. e., caricatura esquisita e circunstancial de ações normais). 8. Estereotipia (i. e., movimentos repetitivos, anormalmente frequentes e não voltados a metas). 9. Agitação, não influenciada por estímulos externos. 10. Caretas. 11. Ecolalia (i. e., imitação da fala de outra pessoa). 12. Ecopraxia (i. e., imitação dos movimentos de outra pessoa).
+
+[3] (resumo)  RESPOSTA: Esquizofrenia
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Transtorno psicótico crônico com perda de contato com a realidade (delírios, alucinações), pensamento e comportamento desorganizados e prejuízo funcional marcante.
+
+[4] (criterio · Critério B)  RESPOSTA: Esquizofrenia
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Por período significativo de tempo desde o aparecimento da perturbação, o nível de funcionamento em uma ou mais áreas importantes do funcionamento, como trabalho, relações interpessoais ou autocuidado, está acentuadamente abaixo do nível alcançado antes do início (ou, quando o início se dá na infância ou na adolescência, incapacidade de atingir o nível esperado de funcionamento interpessoal, acadêmico ou profissional).
+
+[5] (criterio · Critério C)  RESPOSTA: Esquizofrenia
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Sinais contínuos de perturbação persistem durante, pelo menos, seis meses. Esse período de seis meses deve incluir no mínimo um mês de sintomas (ou menos, se tratados com sucesso) que precisam satisfazer ao Critério A (i. e., sintomas da fase ativa) e pode incluir períodos de sintomas prodrômicos ou residuais. Durante esses períodos prodrômicos ou residuais, os sinais da perturbação podem ser manifestados apenas por sintomas negativos ou por dois ou mais sintomas listados no Critério A presentes em uma forma atenuada (p. ex., crenças esquisitas, experiências perceptivas incomuns).
+
+[6] (criterio · Critério D)  RESPOSTA: Esquizofrenia
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Transtorno ______ e transtorno depressivo ou transtorno bipolar com características psicóticas são descartados porque 1) não ocorreram episódios depressivos maiores ou maníacos concomitantemente com os sintomas da fase ativa, ou 2) se episódios de humor ocorreram durante os sintomas da fase ativa, sua duração total foi breve em relação aos períodos ativo e residual da doença.
+
+[7] (criterio · Critério E)  RESPOSTA: Esquizofrenia
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: A perturbação não pode ser atribuída aos efeitos de uma substância (p. ex., droga de abuso, medicamento) ou a outra condição médica.
+
+[8] (criterio · Critério F)  RESPOSTA: Esquizofrenia
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Se há história de transtorno do espectro autista ou de um transtorno da comunicação iniciado na infância, o diagnóstico adicional de ______ é realizado somente se delírios ou alucinações proeminentes, além dos demais sintomas exigidos de ______, estão também presentes por pelo menos um mês (ou menos, se tratados com sucesso).
+
+[9] (fatos)  RESPOSTA: Esquizofrenia
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: fim da adolescência aos meados dos 30 anos; pico no início/metade dos 20 anos (homens) e final dos 20 anos (mulheres) | Prevalência: ~0,3–0,7% ao longo da vida | Sexo: sem diferença clara; maior incidência em homens quando há predomínio de sintomas negativos e pior prognóstico
+
+[10] (resumo)  RESPOSTA: Transtorno (da Personalidade) Esquizotípica
+    sinais: difDistratores=0 familiaTamanho=2
+    ENUNCIADO: Padrão duradouro de desconforto nas relações próximas, distorções cognitivas e perceptivas e comportamento excêntrico, situado no espectro da ______.
+
+[11] (resumo)  RESPOSTA: Transtorno Delirante
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Pessoa mantém um ou mais delírios persistentes por pelo menos um mês, sem os demais sintomas da esquizofrenia e com o funcionamento e o comportamento em geral preservados.
+
+[12] (criterio · Critério A)  RESPOSTA: Transtorno Delirante
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: A presença de um delírio (ou mais) com duração de um mês ou mais.
+
+[13] (criterio · Critério B)  RESPOSTA: Transtorno Delirante
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O Critério A para esquizofrenia jamais foi atendido. Nota: Alucinações, quando presentes, não são proeminentes e têm relação com o tema do delírio (p. ex., a sensação de estar infestado de insetos associada a delírios de infestação).
+
+[14] (criterio · Critério C)  RESPOSTA: Transtorno Delirante
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Exceto pelo impacto do(s) delírio(s) ou de seus desdobramentos, o funcionamento não está acentuadamente prejudicado, e o comportamento não é claramente bizarro ou esquisito.
+
+[15] (criterio · Critério D)  RESPOSTA: Transtorno Delirante
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Se episódios maníacos ou depressivos ocorreram, eles foram breves em comparação com a duração dos períodos ______.
+
+[16] (fatos)  RESPOSTA: Transtorno Delirante
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: pode ocorrer em adultos jovens, mas tende a ser mais prevalente em idosos | Prevalência: ~0,2% ao longo da vida (amostra finlandesa) | Sexo: sem grandes diferenças na frequência geral (subtipo ciumento mais comum em homens)
+
+[17] (resumo)  RESPOSTA: Transtorno Esquizoafetivo
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Combina sintomas de psicose (delírios/alucinações) com episódios de humor (depressão ou mania), mas a psicose também surge sozinha, sem o quadro de humor.
+
+[18] (criterio · Critério A)  RESPOSTA: Transtorno Esquizoafetivo
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Um período ininterrupto de doença durante o qual há um episódio depressivo maior ou maníaco concomitante com o Critério A da ______. Nota: O episódio depressivo maior deve incluir o Critério A1: humor deprimido.
+
+[19] (criterio · Critério B)  RESPOSTA: Transtorno Esquizoafetivo
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Delírios ou alucinações por duas semanas ou mais na ausência de episódio depressivo maior ou maníaco durante a duração da doença ao longo da vida.
+
+[20] (criterio · Critério C)  RESPOSTA: Transtorno Esquizoafetivo
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Os sintomas que satisfazem os critérios para um episódio de humor estão presentes na maior parte da duração total das fases ativa e residual da doença.
+
+[21] (fatos)  RESPOSTA: Transtorno Esquizoafetivo
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: começo da fase adulta (pode ir da adolescência a fases mais tardias) | Prevalência: ~0,3% ao longo da vida | Sexo: mais comum em mulheres do que em homens
+
+[22] (resumo)  RESPOSTA: Transtorno Esquizofreniforme
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Quadro psicótico idêntico ao da ______, mas com duração entre 1 e 6 meses; pode evoluir para recuperação ou tornar-se ______.
+
+[23] (criterio · Critério B)  RESPOSTA: Transtorno Esquizofreniforme
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Um episódio do transtorno que dura pelo menos um mês, mas menos do que seis meses. Quando deve ser feito um diagnóstico sem aguardar a recuperação, ele deve ser qualificado como "provisório".
+
+[24] (criterio · Critério C)  RESPOSTA: Transtorno Esquizofreniforme
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Transtorno ______ e transtorno depressivo ou transtorno bipolar com características psicóticas foram descartados porque 1) nenhum episódio depressivo maior ou maníaco ocorreu concomitantemente com os sintomas da fase ativa ou 2) se os episódios de humor ocorreram durante os sintomas da fase ativa, estiveram presentes pela menor parte da duração total dos períodos ativo e residual da doença.
+
+[25] (resumo)  RESPOSTA: Transtorno Psicótico Breve
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Surto ______ de início súbito (delírios, alucinações ou desorganização) que dura de 1 dia a menos de 1 mês, com retorno total ao funcionamento normal.
+
+[26] (criterio · Critério A)  RESPOSTA: Transtorno Psicótico Breve
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Presença de um (ou mais) dos sintomas a seguir. Pelo menos um deles deve ser (1), (2) ou (3): 1. Delírios. 2. Alucinações. 3. Discurso desorganizado (p. ex., descarrilamento ou incoerência frequentes). 4. Comportamento grosseiramente desorganizado ou catatônico. Nota: Não incluir um sintoma que seja um padrão de resposta culturalmente aceito.
+
+[27] (criterio · Critério B)  RESPOSTA: Transtorno Psicótico Breve
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: A duração de um episódio da perturbação é de, pelo menos, um dia, mas inferior a um mês, com eventual retorno completo a um nível de funcionamento pré-mórbido.
+
+[28] (fatos)  RESPOSTA: Transtorno Psicótico Breve
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: adolescência ao início da vida adulta; idade média ~35 anos | Prevalência: 2 a 7% dos casos de primeiro surto ______
+

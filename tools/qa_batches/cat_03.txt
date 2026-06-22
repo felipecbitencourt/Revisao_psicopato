@@ -1,0 +1,124 @@
+CATEGORIA: Transtornos depressivos  (ci=3)
+Total de questões neste lote: 30
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Transtorno Depressivo Maior
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: Períodos de pelo menos duas semanas de humor deprimido ou perda de prazer, com vários outros sintomas, sem história de mania ou hipomania.
+
+[2] (criterio · Critério A)  RESPOSTA: Transtorno Depressivo Maior
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: Cinco (ou mais) dos seguintes sintomas estiveram presentes durante o mesmo período de duas semanas e representam uma mudança no funcionamento anterior; pelo menos um dos sintomas é (1) humor deprimido ou (2) perda de interesse ou prazer. Nota: Não incluir sintomas nitidamente devidos a outra condição médica. 1. Humor deprimido na maior parte do dia, quase todos os dias, conforme indicado por relato subjetivo (p. ex., sente-se triste, vazio, sem esperança) ou por observação feita por outras pessoas (p. ex., parece choroso). (Nota: Em crianças e adolescentes, pode ser humor irritável.) 2. Acentuada diminuição do interesse ou prazer em todas ou quase todas as atividades na maior parte do dia, quase todos os dias (conforme indicado por relato subjetivo ou por observação feita por outras pessoas). 3. Perda ou ganho significativo de peso sem estar fazendo dieta (p. ex., uma alteração de mais de 5% do peso corporal em um mês), ou redução ou aumento do apetite quase todos os dias. (Nota: Em crianças, considerar o insucesso em obter o ganho de peso esperado.) 4. Insônia ou hipersonia quase todos os dias. 5. Agitação ou retardo psicomotor quase todos os dias (observáveis por outras pessoas; não meramente sensações subjetivas de inquietação ou de estar mais lento). 6. Fadiga ou perda de energia quase todos os dias. 7. Sentimentos de inutilidade ou culpa excessiva ou inapropriada (que podem ser delirantes) quase todos os dias (não meramente autorrecriminação ou culpa por estar doente). 8. Capacidade diminuída para pensar ou se concentrar, ou indecisão, quase todos os dias (por relato subjetivo ou observação feita por outras pessoas). 9. Pensamentos recorrentes de morte (não somente medo de morrer), ideação suicida recorrente, sem um plano específico, um plano específico de suicídio ou tentativa de suicídio.
+
+[3] (criterio · Critério E)  RESPOSTA: Transtorno Depressivo Maior
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: Nunca houve um episódio maníaco ou um episódio hipomaníaco. Nota: Essa exclusão não se aplica se todos os episódios do tipo maníaco ou do tipo hipomaníaco são induzidos por substância ou são atribuíveis aos efeitos fisiológicos de outra condição médica. Procedimentos para Codificação e Registro O código diagnóstico para transtorno ______ maior está baseado em se este é um episódio único ou recorrente, gravidade atual, presença de características psicóticas e estado de remissão. A gravidade atual e as características psicóticas são indicadas apenas se todos os critérios são satisfeitos atualmente para um episódio ______ maior. Os especificadores de remissão são indicados apenas se todos os critérios não estão atualmente presentes para episódio ______ maior. Os códigos são descritos a seguir: Leve (p. 214) F32.0 F33.0 Moderada (p. 214) F32.1 F33.1 Grave (p. 214) F32.2 F33.2 Com características psicóticas (p. 212-213) F32.3 F33.3 Em remissão parcial (p. 214) F32.4 F33.41 Em remissão completa (p. 214) F32.5 F33.42 Não especificado F32.9 F33.9 Ao registrar o nome de um diagnóstico, os termos devem ser listados na seguinte ordem: transtorno ______ maior, episódio único ou recorrente, especificadores de gravidade/psicótico/remissão, seguidos pelos seguintes especificadores sem código que se aplicam ao episódio atual (ou episódio mais recente se o transtorno ______ maior estiver em remissão parcial ou total). Nota: O especificador "com padrão sazonal" descreve o padrão de recorrência do transtorno ______ maior.
+
+[4] (fatos)  RESPOSTA: Transtorno Depressivo Maior
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: Início: qualquer idade, mas a probabilidade aumenta com a puberdade; pico de incidência na década dos 20 anos | Prevalência: ~7% em 12 meses (EUA) | Sexo: ≈2:1 mulheres
+
+[5] (resumo)  RESPOSTA: Transtorno Depressivo Persistente
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Humor deprimido crônico que dura pelo menos dois anos (um ano em crianças/adolescentes), mais brando que a ______ maior, mas constante e duradouro.
+
+[6] (criterio · Critério A)  RESPOSTA: Transtorno Depressivo Persistente
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Humor deprimido na maior parte do dia, na maioria dos dias, indicado por relato subjetivo ou por observação feita por outras pessoas, pelo período mínimo de dois anos. Nota: Em crianças e adolescentes, o humor pode ser irritável, com duração mínima de um ano.
+
+[7] (criterio · Critério B)  RESPOSTA: Transtorno Depressivo Persistente
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Presença, enquanto deprimido, de duas (ou mais) das seguintes características: 1. Apetite diminuído ou alimentação em excesso. 2. Insônia ou hipersonia. 3. Baixa energia ou fadiga. 4. Baixa autoestima 5. Concentração pobre ou dificuldade em tomar decisões. 6. Sentimentos de desesperança.
+
+[8] (criterio · Critério C)  RESPOSTA: Transtorno Depressivo Persistente
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Durante o período de dois anos (um ano para crianças ou adolescentes) de perturbação, o indivíduo jamais esteve sem os sintomas dos Critérios A e B por mais de dois meses.
+
+[9] (criterio · Critério D)  RESPOSTA: Transtorno Depressivo Persistente
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Os critérios para um transtorno ______ maior podem estar continuamente presentes por dois anos.
+
+[10] (criterio · Critério E)  RESPOSTA: Transtorno Depressivo Persistente
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Nunca houve um episódio maníaco ou um episódio hipomaníaco.
+
+[11] (criterio · Critério H)  RESPOSTA: Transtorno Depressivo Persistente
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Os sintomas causam sofrimento clinicamente significativo ou prejuízo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo. Nota: Se os critérios forem suficientes para o diagnóstico de episódio ______ maior em qualquer momento durante o período de dois anos de humor ______, então um diagnóstico separado de ______ maior deve ser feito, além do diagnóstico de transtorno ______, juntamente com o especificador relevante (p. ex., com episódios ______ maiores intermitentes ou com episódio atual).
+
+[12] (fatos)  RESPOSTA: Transtorno Depressivo Persistente
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Início: início precoce e insidioso (infância, adolescência ou início da vida adulta; antes dos 21 anos) | Prevalência: ~0,5% (distimia) e ~1,5% (______ maior crônica) em 12 meses | Sexo: ≈1,5–2:1 mulheres
+
+[13] (resumo)  RESPOSTA: Transtorno Disfórico Pré-menstrual
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Alterações intensas de humor, irritabilidade e ansiedade que surgem na semana antes da ______ e somem logo após o início dela.
+
+[14] (criterio · Critério A)  RESPOSTA: Transtorno Disfórico Pré-menstrual
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Na maioria dos ciclos ______, pelo menos cinco sintomas devem estar presentes na semana final antes do início da ______, começar a melhorar poucos dias depois do início da ______ e tornar-se mínimos ou ausentes na semana pós-menstrual.
+
+[15] (criterio · Critério B)  RESPOSTA: Transtorno Disfórico Pré-menstrual
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Um (ou mais) dos seguintes sintomas deve estar presente: 1. Labilidade afetiva acentuada (p. ex., mudanças de humor; sentir-se repentinamente triste ou chorosa ou sensibilidade aumentada à rejeição). 2. Irritabilidade ou raiva acentuadas ou aumento nos conflitos interpessoais. 3. Humor deprimido acentuado, sentimentos de desesperança ou pensamentos autodepreciativos. 4. Ansiedade acentuada, tensão e/ou sentimentos de estar nervosa ou no limite.
+
+[16] (criterio · Critério C)  RESPOSTA: Transtorno Disfórico Pré-menstrual
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Um (ou mais) dos seguintes sintomas deve adicionalmente estar presente para atingir um total de cinco sintomas quando combinados com os sintomas do Critério B. 1. Interesse diminuído pelas atividades habituais (p. ex., trabalho, escola, amigos, passatempos). 2. Sentimento subjetivo de dificuldade em se concentrar. 3. Letargia, fadiga fácil ou falta de energia acentuada. 4. Alteração acentuada do apetite; comer em demasia; ou avidez por alimentos específicos. 5. Hipersonia ou insônia. 6. Sentir-se sobrecarregada ou fora de controle. 7. Sintomas físicos como sensibilidade ou inchaço das mamas, dor articular ou muscular, sensação de "inchaço" ou ganho de peso. Nota: Os sintomas nos Critérios A-C devem ser satisfeitos para a maioria dos ciclos ______ que ocorreram no ano precedente.
+
+[17] (criterio · Critério E)  RESPOSTA: Transtorno Disfórico Pré-menstrual
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: A perturbação não é meramente uma exacerbação dos sintomas de outro transtorno, como transtorno depressivo maior, transtorno de pânico, transtorno depressivo persistente ou um transtorno da personalidade (embora possa ser concomitante a qualquer um desses transtornos).
+
+[18] (criterio · Critério F)  RESPOSTA: Transtorno Disfórico Pré-menstrual
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O Critério A deve ser confirmado por avaliações prospectivas diárias durante pelo menos dois ciclos sintomáticos. (Nota: O diagnóstico pode ser feito provisoriamente antes dessa confirmação.)
+
+[19] (fatos)  RESPOSTA: Transtorno Disfórico Pré-menstrual
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: qualquer momento após a menarca; sintomas cessam após a menopausa | Prevalência: ~1,3% (avaliação prospectiva, EUA); até 5,8% em 12 meses (estimativa alemã)
+
+[20] (resumo)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Irritabilidade crônica grave na infância, com explosões de raiva frequentes e desproporcionais e ______ zangado persistente entre elas.
+
+[21] (criterio · Critério A)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Explosões de raiva recorrentes e graves manifestadas pela linguagem (p. ex., violência verbal) e/ou pelo comportamento (p. ex., agressão física a pessoas ou propriedade) que são consideravelmente desproporcionais em intensidade ou duração à situação ou provocação.
+
+[22] (criterio · Critério B)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: As explosões de raiva são inconsistentes com o nível de desenvolvimento.
+
+[23] (criterio · Critério C)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: As explosões de raiva ocorrem, em média, três ou mais vezes por semana.
+
+[24] (criterio · Critério D)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: O ______ entre as explosões de raiva é persistentemente irritável ou zangado na maior parte do dia, quase todos os dias, e é observável por outras pessoas (p. ex., pais, professores, pares).
+
+[25] (criterio · Critério E)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Os Critérios A-D estão presentes por 12 meses ou mais. Durante esse tempo, o indivíduo não teve um período que durou três ou mais meses consecutivos sem todos os sintomas dos Critérios A-D.
+
+[26] (criterio · Critério F)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Os Critérios A e D estão presentes em pelo menos dois de três ambientes (p. ex., em casa, na escola, com os pares) e são graves em pelo menos um deles.
+
+[27] (criterio · Critério G)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: O diagnóstico não deve ser feito pela primeira vez antes dos 6 anos ou após os 18 anos de idade.
+
+[28] (criterio · Critério H)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Por relato ou observação, a idade de início dos Critérios A-E é antes dos 10 anos.
+
+[29] (criterio · Critério I)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Nunca houve um período distinto durando mais de um dia durante o qual foram satisfeitos todos os critérios de sintomas, exceto a duração, para um episódio maníaco ou hipomaníaco. Nota: Uma elevação do ______ apropriada para o desenvolvimento, como a que ocorre no contexto de um evento altamente positivo ou de sua antecipação, não deve ser considerada como um sintoma de mania ou hipomania.
+
+[30] (fatos)  RESPOSTA: Transtorno Disruptivo da Desregulação do Humor
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Início: infância; início antes dos 10 anos (diagnóstico válido dos 6 aos 18 anos) | Prevalência: incerta na comunidade; ~2,5% em coorte de crianças de 11 anos (até ~8,2% aos 6 anos) | Sexo: sem diferença consistente em amostras populacionais; predomínio masculino em amostras clínicas
+

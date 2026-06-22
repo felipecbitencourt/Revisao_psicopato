@@ -457,9 +457,13 @@
       return sb.from('push_subscriptions').delete().eq('endpoint', endpoint).catch(function () {});
     },
     // dispara o envio do push de "novo seguidor" para o alvo (Edge Function).
+    // OBS.: o slug real da função no Supabase é "swift-action" (o painel gerou
+    // esse slug aleatório na criação e ele não pode ser renomeado depois). O
+    // nome de exibição é "notify-follow"; o código é o de
+    // supabase/functions/notify-follow/index.ts.
     notifyFollow: function (target) {
       if (!sb || this.guest || !target) return Promise.resolve();
-      return sb.functions.invoke('notify-follow', { body: { target: target } }).catch(function () {});
+      return sb.functions.invoke('swift-action', { body: { target: target } }).catch(function () {});
     },
 
     // ADMIN (modo dev): lista todos os feedbacks. null = sem permissão/erro.

@@ -1,0 +1,200 @@
+CATEGORIA: Transtornos do sono-vigília  (ci=11)
+Total de questões neste lote: 49
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Transtorno de Insônia
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: Insatisfação persistente com a quantidade ou qualidade do sono (dificuldade de iniciar ou manter o sono) que causa sofrimento e prejuízo no dia a dia.
+
+[2] (criterio · Critério A)  RESPOSTA: Transtorno de Insônia
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: Queixas de insatisfação predominantes com a quantidade ou a qualidade do sono associadas a um (ou mais) dos seguintes sintomas: 1. Dificuldade para iniciar o sono. (Em crianças, pode se manifestar como dificuldade para iniciar o sono sem intervenção de cuidadores.) 2. Dificuldade para manter o sono, que se caracteriza por despertares frequentes ou por problemas para retornar ao sono depois de cada despertar. (Em crianças, pode se manifestar como dificuldade para retornar ao sono sem intervenção de cuidadores.) 3. Despertar antes do horário habitual com incapacidade de retornar ao sono.
+
+[3] (criterio · Critério C)  RESPOSTA: Transtorno de Insônia
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: As dificuldades relacionadas ao sono ocorrem pelo menos três noites por semana.
+
+[4] (criterio · Critério D)  RESPOSTA: Transtorno de Insônia
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: As dificuldades relacionadas ao sono permanecem durante pelo menos três meses.
+
+[5] (criterio · Critério E)  RESPOSTA: Transtorno de Insônia
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: As dificuldades relacionadas ao sono ocorrem a despeito de oportunidades adequadas para dormir.
+
+[6] (fatos)  RESPOSTA: Transtorno de Insônia
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: Início: qualquer idade, mas o primeiro episódio é mais comum em adultos jovens; nas mulheres pode iniciar na menopausa | Prevalência: ~10% dos adultos (faixa de 4–22%) atendem aos critérios do transtorno | Sexo: predomínio feminino (~1,3:1; sobe para ~1,7:1 após os 45 anos)
+
+[7] (resumo)  RESPOSTA: Transtorno de Hipersonolência
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Sonolência diurna excessiva e persistente mesmo dormindo bem à noite, com cochilos longos, dificuldade de acordar e prejuízo no funcionamento diário.
+
+[8] (criterio · Critério A)  RESPOSTA: Transtorno de Hipersonolência
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Relato do próprio indivíduo de sonolência excessiva (______) apesar de o período principal do sono durar no mínimo 7 horas, com pelo menos um entre os seguintes sintomas: 1. Períodos recorrentes de sono ou de cair no sono no mesmo dia. 2. Um episódio de sono principal prolongado de mais de 9 horas por dia que não é reparador (i. e., não é revigorante). 3. Dificuldade de estar totalmente acordado depois de um despertar abrupto.
+
+[9] (criterio · Critério B)  RESPOSTA: Transtorno de Hipersonolência
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: A ______ ocorre pelo menos três vezes por semana, durante pelo menos três meses.
+
+[10] (fatos)  RESPOSTA: Transtorno de Hipersonolência
+    sinais: difDistratores=1 familiaTamanho=3
+    ENUNCIADO: Início: fim da adolescência / início da vida adulta (média de 17 a 24 anos) | Prevalência: ~1% da população geral tem episódios de inércia do sono; 5–10% das consultas em clínicas do sono por sonolência diurna | Sexo: frequência semelhante entre homens e mulheres
+
+[11] (resumo)  RESPOSTA: Narcolepsia
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Sonolência diurna excessiva com ataques de sono recorrentes, muitas vezes acompanhada de perda súbita do tônus muscular (cataplexia) desencadeada por emoções.
+
+[12] (criterio · Critério A)  RESPOSTA: Narcolepsia
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Períodos recorrentes de necessidade irresistível de dormir, cair no sono ou cochilar em um mesmo dia. Esses períodos devem estar ocorrendo pelo menos três vezes por semana nos últimos três meses.
+
+[13] (criterio · Critério B)  RESPOSTA: Narcolepsia
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Presença de pelo menos um entre os seguintes sintomas: 1. Episódio de cataplexia, definido como (a) ou (b), que ocorre pelo menos algumas vezes por mês: a. Em indivíduos com doença de longa duração, episódios breves (variando de segundos a minutos) de perda bilateral de tônus muscular, com manutenção da consciência, precipitados por risadas ou brincadeiras. b. Em crianças ou em indivíduos dentro de seis meses a partir do início, episódios espontâneos de caretas ou abertura da mandíbula com projeção da língua ou hipotonia global, sem nenhum desencadeante emocional óbvio. 2. Deficiência de hipocretina, medida usando os valores de imunorreatividade da hipocretina-1 no líquido cerebrospinal (LCS) (inferior ou igual a um terço dos valores obtidos em testes feitos em indivíduos saudáveis usando o mesmo teste ou inferior ou igual a 110 pg/ mL). Níveis baixos de hipocretina-1 no LCS não devem ser observados no contexto de inflamação, infecção ou lesão cerebral aguda. 3. Polissonografia do sono noturno demonstrando latência do sono REM inferior ou igual a 15 minutos ou teste de latência múltipla do sono demonstrando média de latência do sono inferior ou igual a 8 minutos e dois ou mais períodos de REM no início do sono.
+
+[14] (fatos)  RESPOSTA: Narcolepsia
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Início: infância/adolescência ou adultos jovens; pico entre 15 e 25 anos | Prevalência: NT1 afeta ~0,02–0,05% da população adulta | Sexo: afeta ambos os sexos igualmente
+
+[15] (resumo)  RESPOSTA: Apneia Central do Sono
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Pausas repetidas na respiração durante o ______ por falha no comando ventilatório do cérebro (sem obstrução das vias aéreas), causando ______ e despertares.
+
+[16] (criterio · Critério A)  RESPOSTA: Apneia Central do Sono
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Evidências polissonográficas de cinco ou mais ______ por hora de ______.
+
+[17] (fatos)  RESPOSTA: Apneia Central do Sono
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Início: predomina após os 60 anos | Prevalência: tipo idiopático raro (desconhecida); respiração de Cheyne-Stokes 15–44% na insuficiência cardíaca | Sexo: predomínio masculino
+
+[18] (resumo)  RESPOSTA: Apneia e Hipopneia Obstrutivas do Sono
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Bloqueios repetidos da via aérea superior durante o ______, com ronco e ______ diurna, confirmados por estudo do ______.
+
+[19] (criterio · Critério A)  RESPOSTA: Apneia e Hipopneia Obstrutivas do Sono
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Alternativamente (1) ou (2): 1. Evidências polissonográficas de pelo menos cinco ______ ou ______ por hora de ______ e qualquer um entre os seguintes sintomas do ______: a. Perturbações na respiração noturna: ronco, respiração difícil/ofegante ou pausas respiratórias durante o ______. b. Sintomas como ______ diurna, fadiga ou ______ não reparador a despeito de oportunidades suficientes para dormir que não podem ser mais bem explicados por qualquer outro transtorno mental (incluindo um transtorno do ______) nem ser atribuídos a alguma outra condição médica. 2. Evidências polissonográficas de 15 ou mais ______ e/ou ______ por hora de ______, independentemente da presença de sintomas.
+
+[20] (fatos)  RESPOSTA: Apneia e Hipopneia Obstrutivas do Sono
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Início: vários picos: infância (3-8 anos) e meia-idade; início insidioso e progressivo | Prevalência: comum; nos EUA ~13% dos homens e ~6% das mulheres têm 15+ eventos/hora; crianças ~1-4% | Sexo: predomínio masculino (2:1 a 4:1); diferença diminui após a menopausa
+
+[21] (resumo)  RESPOSTA: Hipoventilação Relacionada ao Sono
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Respiração insuficiente durante o ______ que eleva o CO2 no sangue, geralmente ligada a obesidade, doença pulmonar ou neuromuscular.
+
+[22] (criterio · Critério A)  RESPOSTA: Hipoventilação Relacionada ao Sono
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: A polissonografia demonstra episódios de respiração reduzida associada a níveis elevados de CO2. (Nota: Na ausência de medições objetivas do CO2, níveis baixos persistentes de saturação de oxigênio na hemoglobina não associados com eventos apneicos/hipopneicos podem ser uma indicação de ______).
+
+[23] (fatos)  RESPOSTA: Hipoventilação Relacionada ao Sono
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: geralmente no nascimento na forma congênita; na vida adulta nas formas idiopática e comórbida | Prevalência: forma idiopática rara em adultos; comórbida por obesidade ~0,14–0,6% na população geral (até 42% em encaminhados com IMC > 35)
+
+[24] (resumo)  RESPOSTA: Transtornos do Sono-Vigília do Ritmo Circadiano
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: ______ perturbado por descompasso entre o relógio biológico interno e os horários exigidos, causando insônia e/ou ______ excessiva.
+
+[25] (criterio · Critério A)  RESPOSTA: Transtornos do Sono-Vigília do Ritmo Circadiano
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Padrão persistente ou recorrente de interrupção do ______ devido, principalmente, a alteração no sistema ______ ou a desequilíbrio entre o ______ endógeno e os horários de ______ impostos pelos horários dos ambientes físico, social ou profissional do indivíduo.
+
+[26] (criterio · Critério B)  RESPOSTA: Transtornos do Sono-Vigília do Ritmo Circadiano
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: A interrupção do ______ leva a ______ excessiva ou insônia, ou ambas.
+
+[27] (fatos)  RESPOSTA: Transtornos do Sono-Vigília do Ritmo Circadiano
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Início: geralmente na adolescência / início da vida adulta | Prevalência: ~3,3–4,6% em adolescentes/adultos jovens; ~0,2–1,7% em adultos
+
+[28] (resumo)  RESPOSTA: Transtornos de Despertar do Sono Não REM
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: ______ incompletos no início da noite, sem consciência plena, com sonambulismo ou terror noturno e amnésia do episódio.
+
+[29] (criterio · Critério A)  RESPOSTA: Transtornos de Despertar do Sono Não REM
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Episódios recorrentes de ______ incompletos, em geral ocorrendo durante o primeiro terço do episódio de ______ principal, acompanhados de uma entre as seguintes alternativas: 1. Sonambulismo: Episódios repetidos de levantar-se da cama durante o ______ e deambular. Durante o sonambulismo, o indivíduo se apresenta com o olhar fixo e o rosto vazio, praticamente não responde aos esforços de comunicação por parte de outras pessoas e pode ser acordado apenas com muita dificuldade. 2. Terrores noturnos: Em geral, episódios recorrentes de ______ súbitos provocados por terror que iniciam com um grito de pânico. O medo é intenso, com sinais de estimulação autonômica como midríase, taquicardia, respiração rápida e sudorese durante cada episódio. Há relativa ausência de resposta aos esforços de outras pessoas para confortar o indivíduo durante os episódios.
+
+[30] (criterio · Critério B)  RESPOSTA: Transtornos de Despertar do Sono Não REM
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Há pouca ou nenhuma lembrança de imagens oníricas (p. ex., apenas uma cena visual).
+
+[31] (criterio · Critério C)  RESPOSTA: Transtornos de Despertar do Sono Não REM
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Presença de amnésia em relação ao episódio.
+
+[32] (criterio · Critério F)  RESPOSTA: Transtornos de Despertar do Sono Não REM
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: A coexistência de outros transtornos mentais e médicos não explica os episódios de sonambulismo ou de terrores noturnos.
+
+[33] (fatos)  RESPOSTA: Transtornos de Despertar do Sono Não REM
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Início: mais frequente na infância, diminuindo com a idade | Prevalência: sonambulismo na vida ~6,9–29,2%; episódios de sonambulismo em ~5% das crianças/ano e 1,5–3,6% dos adultos/ano
+
+[34] (resumo)  RESPOSTA: Transtorno do Pesadelo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Episódios recorrentes de sonhos longos e angustiantes, bem lembrados, que perturbam o sono e causam sofrimento ou prejuízo durante o dia.
+
+[35] (criterio · Critério A)  RESPOSTA: Transtorno do Pesadelo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Ocorrências repetidas de sonhos prolongados, extremamente disfóricos e bem lembrados que, em geral, envolvem esforços para evitar ameaças à sobrevivência, à segurança ou à integridade física e que tipicamente ocorrem na segunda metade do episódio principal do sono.
+
+[36] (criterio · Critério B)  RESPOSTA: Transtorno do Pesadelo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Ao despertar de sonhos disfóricos, o indivíduo torna-se rapidamente orientado e alerta.
+
+[37] (criterio · Critério E)  RESPOSTA: Transtorno do Pesadelo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: A coexistência de transtornos médicos e mentais não explica adequadamente a queixa predominante de sonhos disfóricos.
+
+[38] (fatos)  RESPOSTA: Transtorno do Pesadelo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Início: geralmente entre 3 e 6 anos, com pico no fim da adolescência / início da vida adulta | Prevalência: ~1–5% na infância; ~6% dos adultos têm ______ ao menos mensalmente
+
+[39] (resumo)  RESPOSTA: Transtorno Comportamental do Sono REM
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Pessoa 'encena' os sonhos durante o ______ REM, com vocalizações e movimentos bruscos que podem ferir a si ou ao parceiro de leito.
+
+[40] (criterio · Critério A)  RESPOSTA: Transtorno Comportamental do Sono REM
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Episódios repetidos de despertar durante o ______ associados a vocalização e/ou a ______ complexos.
+
+[41] (criterio · Critério B)  RESPOSTA: Transtorno Comportamental do Sono REM
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Esses ______ surgem durante o ______ com movimentos rápidos dos olhos (REM), portanto, em geral, mais de 90 minutos depois do início do ______, são mais frequentes durante as porções finais do período de ______ e ocorrem raramente durante os cochilos diurnos.
+
+[42] (criterio · Critério C)  RESPOSTA: Transtorno Comportamental do Sono REM
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Ao acordar desses episódios, o indivíduo está completamente desperto, alerta e não permanece confuso nem desorientado.
+
+[43] (criterio · Critério D)  RESPOSTA: Transtorno Comportamental do Sono REM
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Qualquer uma das seguintes situações: 1. ______ REM sem atonia nos registros polissonográficos. 2. História sugestiva de transtorno ______ do ______ REM e um diagnóstico estabelecido de sinucleinopatia (p. ex., doença de Parkinson, atrofias sistêmicas múltiplas).
+
+[44] (criterio · Critério G)  RESPOSTA: Transtorno Comportamental do Sono REM
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Coexistência de transtornos mentais e condições médicas que não explicam os episódios.
+
+[45] (fatos)  RESPOSTA: Transtorno Comportamental do Sono REM
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Início: meia-idade e idosos (geralmente acima dos 50 anos) | Prevalência: ~1–2% em populações de meia-idade e idosos | Sexo: sem diferença clara entre os gêneros
+
+[46] (resumo)  RESPOSTA: Síndrome das Pernas Inquietas
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Urgência de mexer as ______, com sensações desagradáveis que pioram em repouso e à noite e são aliviadas pelo movimento, atrapalhando o sono.
+
+[47] (criterio · Critério A)  RESPOSTA: Síndrome das Pernas Inquietas
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Necessidade de movimentar as ______, em geral acompanhada por, ou em resposta a, sensações desconfortáveis e desagradáveis nas ______, que se caracteriza por todas as circunstâncias a seguir: 1. A necessidade de movimentar as ______ inicia-se e agrava-se durante períodos de repouso ou de inatividade. 2. A necessidade de movimentar as ______ é aliviada, completa ou parcialmente, pelo movimento. 3. A necessidade de movimentar as ______ é maior no fim da tarde ou durante a noite do que durante o dia ou ocorre somente no fim da tarde ou à noite.
+
+[48] (criterio · Critério B)  RESPOSTA: Síndrome das Pernas Inquietas
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Os sintomas do Critério A ocorrem pelo menos três vezes por semana e persistiram durante no mínimo três meses.
+
+[49] (fatos)  RESPOSTA: Síndrome das Pernas Inquietas
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Início: segunda ou terceira década de vida (cerca de 40% relatam sintomas antes dos 20 anos) | Prevalência: ~1,6% (sintomas ≥3x/semana com sofrimento moderado/grave); ~2-3% nas formas que prejudicam o funcionamento | Sexo: cerca de 2x mais comum em mulheres
+

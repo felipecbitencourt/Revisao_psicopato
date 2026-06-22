@@ -1,0 +1,36 @@
+CATEGORIA: Transtornos da eliminação  (ci=10)
+Total de questões neste lote: 8
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Encoprese
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Eliminação repetida de fezes em locais inapropriados (roupa, chão) em crianças a partir de 4 anos, em geral involuntária e ligada a constipação e retenção.
+
+[2] (criterio · Critério A)  RESPOSTA: Encoprese
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Eliminação intestinal repetida de fezes em locais inapropriados (p. ex., roupa, chão), voluntária ou involuntária.
+
+[3] (criterio · Critério B)  RESPOSTA: Encoprese
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Pelo menos um evento desse tipo ocorre a cada mês por pelo menos três meses.
+
+[4] (fatos)  RESPOSTA: Encoprese
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Início: a partir dos 4 anos; mais prevalente dos 4 aos 6 anos | Prevalência: 1 a 4% das crianças (até 2 a 8% em alguns países asiáticos)
+
+[5] (resumo)  RESPOSTA: Enurese
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Eliminação repetida de urina na cama ou na roupa, voluntária ou involuntária, em quem já deveria ter controle (a partir dos 5 anos).
+
+[6] (criterio · Critério A)  RESPOSTA: Enurese
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Eliminação repetida de urina na cama ou na roupa, voluntária ou involuntária.
+
+[7] (criterio · Critério B)  RESPOSTA: Enurese
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: O comportamento é clinicamente significativo conforme manifestado por uma frequência de no mínimo duas vezes por semana durante pelo menos três meses consecutivos ou pela presença de sofrimento clinicamente significativo ou prejuízo no funcionamento social, acadêmico (profissional) ou em outras áreas importantes da vida do indivíduo.
+
+[8] (fatos)  RESPOSTA: Enurese
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Início: a partir dos 5 anos; ______ secundária surge mais comumente entre 5 e 8 anos | Prevalência: ______ noturna ~5–10% até os 5 anos, ~3–5% aos 10 anos e ~1% aos 15 anos ou mais | Sexo: maior prevalência em meninos
+

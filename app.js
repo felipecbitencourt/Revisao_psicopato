@@ -2395,6 +2395,18 @@
   // o aluno a distinguir quadros parecidos. Cai em aleatório quando faltar.
   // categorias residuais são distratores ruins — usa o predicado global isResidual.
   function isResidualName(n){ return isResidual(n); }
+  // Transtornos com conteúdo "boilerplate" (residuais, ou definidos por
+  // ETIOLOGIA — "devido a outra condição médica / doença de X" — ou por
+  // substância genérica). O texto deles é um modelo compartilhado: quando
+  // mascarado, a pergunta fica ambígua/impossível. Por isso são barrados como
+  // ENUNCIADO do quiz (mas seguem válidos como distratores).
+  function quizBadSubject(name){
+    if(isResidual(name)) return true;
+    var s = qzNorm(name);
+    return /\bdevido a\b/.test(s)                                  // ...devido a (outra condição médica / doença de X)
+        || /induzid[oa] por (substancia|medicamento)/.test(s)     // ...induzido por substância/medicamento
+        || /(outra substancia|substancia desconhecida)/.test(s);  // intoxicação/abstinência de outra substância
+  }
   function difDistractors(card){
     var dif = card.facts && card.facts.diferencial; if(!dif) return [];
     var pool = allNames();
@@ -2430,7 +2442,8 @@
   function buildQuiz(items){
     var pool = allCards().map(function(x){ return x.front; });
     var names = items.map(function(x){ return x.front; });
-    return shuffle(items).slice(0, QUIZ_LEN).map(function(card){
+    var subjects = items.filter(function(x){ return !quizBadSubject(x.front); });   // boilerplate só como distrator, não como enunciado
+    return shuffle(subjects).slice(0, QUIZ_LEN).map(function(card){
       var opts = shuffle([card.front].concat(pickDistractors(card, names, pool)));
       return { q: maskName(card.tldr || card.back, card.front), opts: opts, correct: opts.indexOf(card.front), cat: card.cat, color: card.color, ci: card.ci, di: card.di };
     });
@@ -2504,7 +2517,7 @@
     var cats = ci===-1 ? CATS.map(function(c,i){ return {c:c,i:i}; }) : [{c:CATS[ci],i:ci}];
     var out=[];
     cats.forEach(function(o){ if(!o.c) return; (o.c.items||[]).forEach(function(d,di){
-      if(hiddenReduced(d)) return;
+      if(hiddenReduced(d) || quizBadSubject(d.n)) return;
       var crit = distinctiveCrits(d);
       if(!crit.length) return;
       out.push({ front:d.n, crit:crit, facts:d.facts||null, cat:o.c.name, color:o.c.color, ci:o.i, di:di });
@@ -2532,7 +2545,7 @@
     var cats = ci===-1 ? CATS.map(function(c,i){ return {c:c,i:i}; }) : [{c:CATS[ci],i:ci}];
     var out=[];
     cats.forEach(function(o){ if(!o.c) return; (o.c.items||[]).forEach(function(d,di){
-      if(hiddenReduced(d)) return;
+      if(hiddenReduced(d) || quizBadSubject(d.n)) return;
       var f = d.facts; if(!f) return;
       if(['inicio','prevalencia','sexo'].filter(function(k){ return f[k]; }).length < 2) return;
       out.push({ front:d.n, facts:f, cat:o.c.name, color:o.c.color, ci:o.i, di:di });

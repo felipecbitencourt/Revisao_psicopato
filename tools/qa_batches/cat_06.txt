@@ -1,0 +1,156 @@
+CATEGORIA: Trauma e estressores  (ci=6)
+Total de questões neste lote: 38
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Transtorno de Apego Reativo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Criança que, por cuidado gravemente insuficiente, não busca nem aceita conforto dos cuidadores e mostra pouca emoção positiva e perturbação emocional.
+
+[2] (criterio · Critério A)  RESPOSTA: Transtorno de Apego Reativo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Um padrão consistente de comportamento inibido e emocionalmente retraído em relação ao cuidador adulto, manifestado por dois aspectos: 1. A criança rara ou minimamente busca conforto quando aflita. 2. A criança rara ou minimamente responde a medidas de conforto quando aflita.
+
+[3] (criterio · Critério B)  RESPOSTA: Transtorno de Apego Reativo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Perturbação social e emocional persistente caracterizada por pelo menos dois dos seguintes aspectos: 1. Responsividade social e emocional mínima a outras pessoas. 2. Afeto positivo limitado. 3. Episódios de irritabilidade, tristeza ou temor inexplicados, evidentes até mesmo durante interações não ameaçadoras com cuidadores adultos.
+
+[4] (criterio · Critério C)  RESPOSTA: Transtorno de Apego Reativo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: A criança vivenciou um padrão de extremos de cuidado insuficiente evidenciado por pelo menos um dos seguintes aspectos: 1. Negligência ou privação social na forma de ausência persistente de atendimento às suas necessidades emocionais básicas de conforto, estimulação e afeto por parte de cuidadores adultos. 2. Mudanças repetidas de cuidadores, limitando as oportunidades de formar vínculos estáveis (p. ex., trocas frequentes de lares adotivos temporários). 3. Criação em contextos peculiares que limitam gravemente oportunidades de formar vínculos seletivos (p. ex., instituições com alta proporção de crianças por cuidador).
+
+[5] (criterio · Critério D)  RESPOSTA: Transtorno de Apego Reativo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Presume-se que o cuidado do Critério C seja responsável pela perturbação comportamental do Critério A (p. ex., as perturbações do Critério A iniciam após a ausência de cuidado adequado do Critério C).
+
+[6] (criterio · Critério E)  RESPOSTA: Transtorno de Apego Reativo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Não são preenchidos os critérios para transtorno do espectro autista.
+
+[7] (criterio · Critério F)  RESPOSTA: Transtorno de Apego Reativo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: A perturbação é evidente antes dos 5 anos de idade.
+
+[8] (fatos)  RESPOSTA: Transtorno de Apego Reativo
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Início: primeira infância; sinais evidentes entre 9 meses e 5 anos (antes dos 5 anos) | Prevalência: desconhecida; rara, em menos de 10% das crianças negligenciadas
+
+[9] (resumo)  RESPOSTA: Transtorno de Estresse Agudo
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Reação intensa logo após um trauma grave, com revivência, evitação, dissociação e tensão, durando de 3 dias a 1 mês.
+
+[10] (criterio · Critério A)  RESPOSTA: Transtorno de Estresse Agudo
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Exposição a episódio concreto ou ameaça de morte, lesão grave ou violência sexual em uma (ou mais) das seguintes formas: 1. Vivenciar diretamente o evento traumático. 2. Testemunhar pessoalmente o evento ocorrido a outras pessoas. 3. Saber que o evento ocorreu com familiar ou amigo próximo. Nota: Nos casos de morte ou ameaça de morte de um familiar ou amigo, é preciso que o evento tenha sido violento ou acidental. 4. Ser exposto de forma repetida ou extrema a detalhes aversivos do evento traumático (p. ex., socorristas que recolhem restos de corpos humanos, policiais repetidamente expostos a detalhes de abuso infantil). Nota: Isso não se aplica à exposição por intermédio de mídia eletrônica, televisão, filmes ou fotografias, a menos que tal exposição esteja relacionada ao trabalho.
+
+[11] (criterio · Critério B)  RESPOSTA: Transtorno de Estresse Agudo
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Presença de nove (ou mais) dos seguintes sintomas de qualquer uma das cinco categorias de intrusão, humor negativo, dissociação, evitação e excitação, começando ou piorando depois da ocorrência do evento traumático: Sintomas de Intrusão 1. Lembranças angustiantes recorrentes, involuntárias e intrusivas do evento traumático. Nota: Em crianças, pode ocorrer a brincadeira repetitiva na qual temas ou aspectos do evento traumático são expressos. 2. Sonhos angustiantes recorrentes nos quais o conteúdo e/ou o afeto do sonho estão relacionados ao evento. Nota: Em crianças, pode haver pesadelos sem conteúdo identificável. 3. Reações dissociativas (p. ex., flashbacks) nas quais o indivíduo sente ou age como se o evento traumático estivesse acontecendo novamente. (Essas reações podem ocorrer em um continuum, com a expressão mais extrema sendo uma perda completa de percepção do ambiente ao redor.) Nota: Em crianças, a reencenação específica do trauma pode ocorrer nas brincadeiras. 4. Sofrimento psicológico intenso ou prolongado ou reações fisiológicas acentuadas em resposta a sinais internos ou externos que simbolizem ou se assemelhem a algum aspecto do evento traumático. Humor Negativo 1. Incapacidade persistente de vivenciar emoções positivas (p. ex., incapacidade de vivenciar sentimentos de felicidade, satisfação ou amor). Sintomas Dissociativos 1. Senso de realidade alterado acerca de si mesmo ou do ambiente ao redor (p. ex., ver-se a partir da perspectiva de outra pessoa, estar entorpecido, sentir-se como se estivesse em câmera lenta). 2. Incapacidade de recordar um aspecto importante do evento traumático (geralmente devido a amnésia dissociativa, e não a outros fatores, como traumatismo craniano, álcool ou drogas). Sintomas de Evitação 1. Esforços para evitar recordações, pensamentos ou sentimentos angustiantes acerca do, ou fortemente relacionados ao, evento traumático. 2. Esforços para evitar lembranças (pessoas, lugares, conversas, atividades, objetos, situações) que despertem recordações, pensamentos ou sentimentos angustiantes acerca do, ou fortemente relacionados ao, evento traumático. Sintomas de Excitação 1. Perturbação do sono (p. ex., dificuldade de iniciar ou manter o sono, sono agitado). 2. Comportamento irritadiço e surtos de raiva (com pouca ou nenhuma provocação) geralmente expressos como agressão verbal ou física em relação a pessoas ou objetos. 3. Hipervigilância. 4. Problemas de concentração. 5. Resposta de sobressalto exagerada.
+
+[12] (criterio · Critério C)  RESPOSTA: Transtorno de Estresse Agudo
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: A duração da perturbação (sintomas do Critério B) é de três dias a um mês depois do trauma. Nota: Os sintomas começam geralmente logo após o trauma, mas é preciso que persistam no mínimo três dias e até um mês para satisfazerem os critérios do transtorno.
+
+[13] (fatos)  RESPOSTA: Transtorno de Estresse Agudo
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Início: primeiro mês após o trauma (3 dias a 1 mês) | Prevalência: <20% após traumas não interpessoais; 19–50% após traumas interpessoais (agressão, estupro)
+
+[14] (resumo)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Quadro que surge após viver ou presenciar um ______ grave, com revivescências, evitação, alterações de humor e hiperexcitação persistentes.
+
+[15] (criterio · Critério A)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Exposição a episódio concreto ou ameaça de morte, lesão grave ou violência sexual em uma (ou mais) das seguintes formas: 1. Vivenciar diretamente o evento ______. 2. Testemunhar pessoalmente o evento ocorrido a outras pessoas. 3. Saber que o evento ______ ocorreu com familiar ou amigo próximo. Nos casos de episódio concreto ou ameaça de morte envolvendo um familiar ou amigo, é preciso que o evento tenha sido violento ou acidental. 4. Ser exposto de forma repetida ou extrema a detalhes aversivos do evento ______ (p. ex., socorristas que recolhem restos de corpos humanos; policiais repetidamente expostos a detalhes de abuso infantil). Nota: O Critério A4 não se aplica à exposição por meio de mídia eletrônica, televisão, filmes ou fotografias, a menos que tal exposição esteja relacionada ao trabalho.
+
+[16] (criterio · Critério B)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Presença de um (ou mais) dos seguintes sintomas intrusivos associados ao evento ______, começando depois de sua ocorrência: 1. Lembranças intrusivas angustiantes, recorrentes e involuntárias do evento ______. Nota: Em crianças acima de 6 anos de idade, pode ocorrer brincadeira repetitiva na qual temas ou aspectos do evento ______ são expressos. 2. Sonhos angustiantes recorrentes nos quais o conteúdo e/ou o sentimento do sonho estão relacionados ao evento ______. Nota: Em crianças, pode haver pesadelos sem conteúdo identificável. 3. Reações dissociativas (p. ex., flashbacks) nas quais o indivíduo sente ou age como se o evento ______ estivesse ocorrendo novamente. (Essas reações podem ocorrer em um continuum, com a expressão mais extrema na forma de uma perda completa de percepção do ambiente ao redor.) Nota: Em crianças, a reencenação específica do ______ pode ocorrer nas brincadeiras. 4. Sofrimento psicológico intenso ou prolongado ante a exposição a sinais internos ou externos que simbolizem ou se assemelhem a algum aspecto do evento ______. 5. Reações fisiológicas intensas a sinais internos ou externos que simbolizem ou se assemelhem a algum aspecto do evento ______.
+
+[17] (criterio · Critério C)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Evitação persistente de estímulos associados ao evento ______, começando após a ocorrência do evento, conforme evidenciado por um ou ambos dos seguintes aspectos: 1. Evitação ou esforços para evitar recordações, pensamentos ou sentimentos angustiantes acerca de ou associados de perto ao evento ______. 2. Evitação ou esforços para evitar lembranças externas (pessoas, lugares, conversas, atividades, objetos, situações) que despertem recordações, pensamentos ou sentimentos angustiantes acerca de ou associados de perto ao evento ______.
+
+[18] (criterio · Critério D)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Alterações negativas em cognições e no humor associadas ao evento ______ começando ou piorando depois da ocorrência de tal evento, conforme evidenciado por dois (ou mais) dos seguintes aspectos: 1. Incapacidade de recordar algum aspecto importante do evento ______ (geralmente devido a amnésia dissociativa, e não a outros fatores, como ______ craniano, álcool ou drogas). 2. Crenças ou expectativas negativas persistentes e exageradas a respeito de si mesmo, dos outros e do mundo (p. ex., "Sou mau", "Não se deve confiar em ninguém", "O mundo é perigoso", "Todo o meu sistema nervoso está arruinado para sempre"). 3. Cognições distorcidas persistentes a respeito da causa ou das consequências do evento ______ que levam o indivíduo a culpar a si mesmo ou os outros. 4. Estado emocional negativo persistente (p. ex., medo, pavor, raiva, culpa ou vergonha). 5. Interesse ou participação bastante diminuída em atividades significativas. 6. Sentimentos de distanciamento e alienação em relação aos outros. 7. Incapacidade persistente de sentir emoções positivas (p. ex., incapacidade de vivenciar sentimentos de felicidade, satisfação ou amor).
+
+[19] (criterio · Critério E)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Alterações marcantes na excitação e na reatividade associadas ao evento ______, começando ou piorando após o evento, conforme evidenciado por dois (ou mais) dos seguintes aspectos: 1. Comportamento irritadiço e surtos de raiva (com pouca ou nenhuma provocação) geralmente expressos sob a forma de agressão verbal ou física em relação a pessoas e objetos. 2. Comportamento imprudente ou autodestrutivo. 3. Hipervigilância. 4. Respostas de sobressalto exageradas. 5. Problemas de concentração. 6. Perturbação do sono (p. ex., dificuldade em iniciar ou manter o sono, ou sono agitado).
+
+[20] (criterio · Critério F)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: A perturbação (Critérios B, C, D e E) dura mais de um mês.
+
+[21] (criterio · Critério A)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Em crianças de 6 anos ou menos, exposição a episódio concreto ou ameaça de morte, lesão grave ou violência sexual em uma (ou mais) das seguintes formas: 1. Vivenciar diretamente o evento ______. 2. Testemunhar pessoalmente o evento ocorrido com outras pessoas, especialmente cuidadores primários. 3. Saber que o evento ______ ocorreu com pai/mãe ou cuidador.
+
+[22] (criterio · Critério B)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Presença de um (ou mais) dos seguintes sintomas intrusivos associados ao evento ______, começando depois de sua ocorrência: 1. Lembranças intrusivas angustiantes, recorrentes e involuntárias do evento ______. Nota: Lembranças espontâneas e intrusivas podem não parecer necessariamente angustiantes e podem ser expressas como reencenação em brincadeiras. 2. Sonhos angustiantes recorrentes nos quais o conteúdo e/ou a emoção do sonho estão relacionados ao evento ______. Nota: Pode não ser possível determinar que o conteúdo assustador está relacionado ao evento ______. 3. Reações dissociativas (p. ex., flashbacks) nas quais a criança sente ou age como se o evento ______ estivesse acontecendo novamente. (Essas reações podem ocorrer em um continuum, com a expressão mais extrema manifestada como uma perda completa da percepção do ambiente ao redor.) Essa reencenação específica do ______ pode ocorrer na brincadeira. 4. Sofrimento psicológico intenso ou prolongado ante a exposição a sinais internos ou externos que simbolizem ou se assemelhem a algum aspecto do evento ______. 5. Reações fisiológicas intensas a lembranças do evento ______.
+
+[23] (criterio · Critério C)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Um (ou mais) dos seguintes sintomas, representando evitação persistente de estímulos associados ao evento ______ ou alterações negativas em cognições e no humor associadas ao evento ______, deve estar presente, começando depois do evento ou piorando após sua ocorrência. Evitação Persistente de Estímulos 1. Evitação ou esforços para evitar atividades, lugares ou lembranças físicas que despertem recordações do evento ______. 2. Evitação ou esforços para evitar pessoas, conversas ou situações interpessoais que despertem recordações do evento ______. Alterações Negativas em Cognições 1. Frequência substancialmente maior de estados emocionais negativos (p. ex., medo, culpa, tristeza, vergonha, confusão). 2. Interesse ou participação bastante diminuídos em atividades significativas, incluindo redução do brincar. 3. Comportamento socialmente retraído. 4. Redução persistente na expressão de emoções positivas.
+
+[24] (criterio · Critério D)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Alterações na excitação e na reatividade associadas ao evento ______, começando ou piorando depois de sua ocorrência, conforme evidenciado por dois (ou mais) dos seguintes aspectos: 1. Comportamento irritadiço ou surtos de raiva (com pouca ou nenhuma provocação) geralmente manifestados como agressão verbal ou física em relação a pessoas ou objetos (incluindo acessos de raiva extremos). 2. Hipervigilância. 3. Respostas de sobressalto exageradas. 4. Problemas de concentração. 5. Perturbação do sono (p. ex., dificuldade em iniciar ou manter o sono, ou sono agitado).
+
+[25] (criterio · Critério E)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: A perturbação dura mais de um mês.
+
+[26] (fatos)  RESPOSTA: Transtorno de Estresse Pós-traumático
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Início: qualquer idade (a partir do 1º ano de vida); sintomas geralmente nos primeiros 3 meses pós-trauma | Prevalência: ~6,1–8,3% ao longo da vida (EUA, DSM-5); ~3,9% média global
+
+[27] (resumo)  RESPOSTA: Transtorno de Interação Social Desinibida
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Criança que, após cuidado gravemente negligente, se aproxima e ______ de forma excessivamente familiar com adultos estranhos, sem a cautela ______ esperada.
+
+[28] (criterio · Critério A)  RESPOSTA: Transtorno de Interação Social Desinibida
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Um padrão de comportamento no qual uma criança aborda e ______ com adultos desconhecidos e exibe pelo menos dois dos seguintes comportamentos: 1. Discrição reduzida ou ausente em abordar e ______ com adultos desconhecidos. 2. Comportamento verbal ou físico excessivamente familiar (não compatível com limites sociais culturalmente aceitos ou apropriados à idade). 3. Diminuição ou ausência de retorno ao cuidador adulto depois de aventurar-se, mesmo em contextos não familiares. 4. Vontade de sair com um adulto estranho com mínima ou nenhuma hesitação.
+
+[29] (criterio · Critério B)  RESPOSTA: Transtorno de Interação Social Desinibida
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Os comportamentos do Critério A não se limitam a impulsividade (como no transtorno de déficit de atenção/hiperatividade), incluindo comportamento ______.
+
+[30] (criterio · Critério C)  RESPOSTA: Transtorno de Interação Social Desinibida
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: A criança sofreu um padrão de extremos de cuidado insuficiente evidenciado por pelo menos um dos seguintes aspectos: 1. Negligência ou privação ______ na forma de ausência persistente de atendimento às suas necessidades emocionais básicas de conforto, estimulação e afeto por parte de cuidadores adultos. 2. Mudanças repetidas de cuidadores, limitando as oportunidades de formar vínculos estáveis (p. ex., trocas frequentes de lares adotivos temporários). 3. Criação em contextos peculiares que limitam gravemente as oportunidades de formar vínculos seletivos (p. ex., instituições com alta proporção de crianças por cuidador).
+
+[31] (criterio · Critério D)  RESPOSTA: Transtorno de Interação Social Desinibida
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Presume-se que o cuidado do Critério C seja responsável pela perturbação comportamental do Critério A (p. ex., as perturbações do Critério A começam depois do cuidado patogênico do Critério C).
+
+[32] (fatos)  RESPOSTA: Transtorno de Interação Social Desinibida
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Início: primeiros meses/segundo ano de vida; idade mínima de desenvolvimento de 9 meses, persistindo até a adolescência | Prevalência: desconhecida; rara, até ~2% em populações de baixa renda no Reino Unido
+
+[33] (resumo)  RESPOSTA: Transtornos de Adaptação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Reação emocional ou comportamental desproporcional a um estressor identificável (perda, mudança, dificuldade), que surge logo após o evento e tende a ceder quando ele passa.
+
+[34] (criterio · Critério A)  RESPOSTA: Transtornos de Adaptação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Desenvolvimento de sintomas emocionais ou comportamentais em resposta a um estressor ou estressores identificáveis ocorrendo dentro de três meses do início do estressor ou estressores.
+
+[35] (criterio · Critério B)  RESPOSTA: Transtornos de Adaptação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Esses sintomas ou comportamentos são clinicamente significativos, conforme evidenciado por um ou mais dos seguintes aspectos: 1. Sofrimento intenso desproporcional à gravidade ou à intensidade do estressor, considerando-se o contexto cultural e os fatores culturais que poderiam influenciar a gravidade e a apresentação dos sintomas. 2. Prejuízo significativo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo.
+
+[36] (criterio · Critério C)  RESPOSTA: Transtornos de Adaptação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: A perturbação relacionada ao estresse não satisfaz os critérios para outro transtorno mental e não é meramente uma exacerbação de um transtorno mental preexistente.
+
+[37] (criterio · Critério E)  RESPOSTA: Transtornos de Adaptação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Uma vez que o estressor ou suas consequências tenham cedido, os sintomas não persistem por mais de seis meses.
+
+[38] (fatos)  RESPOSTA: Transtornos de Adaptação
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: dentro de 3 meses do início do estressor; quadro agudo costuma surgir em poucos dias e raramente dura mais de 6 meses após cessar o estressor | Prevalência: ~5 a 20% dos pacientes ambulatoriais de saúde mental; até >50% em interconsulta hospitalar | Sexo: possivelmente mais comum em mulheres
+

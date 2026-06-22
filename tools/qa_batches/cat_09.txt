@@ -1,0 +1,124 @@
+CATEGORIA: Transtornos alimentares  (ci=9)
+Total de questões neste lote: 30
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Anorexia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Restrição alimentar que leva a peso muito baixo, com medo intenso de engordar e distorção da imagem corporal.
+
+[2] (criterio · Critério A)  RESPOSTA: Anorexia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Restrição da ingesta calórica em relação às necessidades, levando a um peso corporal significativamente baixo no contexto de idade, gênero, trajetória do desenvolvimento e saúde física. Peso significativamente baixo é definido como um peso inferior ao peso mínimo normal ou, no caso de crianças e adolescentes, menor do que o minimamente esperado.
+
+[3] (criterio · Critério B)  RESPOSTA: Anorexia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Medo intenso de ganhar peso ou de engordar, ou comportamento persistente que interfere no ganho de peso, mesmo estando com peso significativamente baixo.
+
+[4] (criterio · Critério C)  RESPOSTA: Anorexia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Perturbação no modo como o próprio peso ou a forma corporal são vivenciados, influência indevida do peso ou da forma corporal na autoavaliação ou ausência persistente de reconhecimento da gravidade do baixo peso corporal atual.
+
+[5] (fatos)  RESPOSTA: Anorexia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Início: adolescência ou início da vida adulta (raro antes da puberdade ou após os 40 anos) | Prevalência: ~0,60–0,80% ao longo da vida | Sexo: muito mais frequente em mulheres do que em homens
+
+[6] (resumo)  RESPOSTA: Bulimia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Episódios recorrentes de compulsão alimentar seguidos de medidas para não engordar (como vômitos ou jejum), com autoavaliação muito ligada ao peso e à forma do corpo.
+
+[7] (criterio · Critério A)  RESPOSTA: Bulimia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Episódios recorrentes de compulsão alimentar. Um episódio de compulsão alimentar é caracterizado pelos seguintes aspectos: 1. Ingestão, em um período de tempo determinado (p. ex., dentro de cada período de duas horas), de uma quantidade de alimento definitivamente maior do que a maioria dos indivíduos consumiria no mesmo período sob circunstâncias semelhantes. 2. Sensação de falta de controle sobre a ingestão durante o episódio (p. ex., sentimento de não conseguir parar de comer ou controlar o que e o quanto se está ingerindo).
+
+[8] (criterio · Critério B)  RESPOSTA: Bulimia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Comportamentos compensatórios inapropriados recorrentes a fim de impedir o ganho de peso, como vômitos autoinduzidos; uso indevido de laxantes, diuréticos ou outros medicamentos; jejum; ou exercício em excesso.
+
+[9] (criterio · Critério C)  RESPOSTA: Bulimia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: A compulsão alimentar e os comportamentos compensatórios inapropriados ocorrem, em média, no mínimo uma vez por semana durante três meses.
+
+[10] (criterio · Critério D)  RESPOSTA: Bulimia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: A autoavaliação é indevidamente influenciada pela forma e pelo peso corporais.
+
+[11] (fatos)  RESPOSTA: Bulimia Nervosa
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Início: adolescência ou início da vida adulta (raro antes da puberdade ou após os 40 anos) | Prevalência: ~0,14–0,3% em 12 meses; ~0,28–1,0% ao longo da vida | Sexo: muito mais frequente em mulheres do que em homens
+
+[12] (resumo)  RESPOSTA: Pica
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Ingestão persistente de substâncias sem valor nutritivo (terra, papel, giz, cabelo) por pelo menos um mês, inadequada à idade e fora de práticas culturais.
+
+[13] (criterio · Critério A)  RESPOSTA: Pica
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Ingestão persistente de substâncias não nutritivas, não alimentares, durante um período mínimo de um mês.
+
+[14] (criterio · Critério B)  RESPOSTA: Pica
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: A ingestão de substâncias não nutritivas, não alimentares, é inapropriada ao estágio de desenvolvimento do indivíduo.
+
+[15] (criterio · Critério C)  RESPOSTA: Pica
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: O comportamento alimentar não faz parte de uma prática culturalmente aceita.
+
+[16] (criterio · Critério D)  RESPOSTA: Pica
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Se o comportamento alimentar ocorrer no contexto de outro transtorno mental (p. ex., transtorno do desenvolvimento intelectual [deficiência intelectual], transtorno do espectro autista, esquizofrenia) ou condição médica (incluindo gestação), é suficientemente grave a ponto de necessitar de atenção clínica adicional.
+
+[17] (fatos)  RESPOSTA: Pica
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Início: infância, adolescência ou idade adulta (idade mínima de 2 anos), mais comum na infância | Prevalência: ~5% em crianças em idade escolar; cerca de 1/3 das gestantes
+
+[18] (resumo)  RESPOSTA: Transtorno Alimentar Restritivo/Evitativo
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Pessoa come pouco ou evita ______ (por falta de interesse, rejeição sensorial ou medo após experiência ruim), prejudicando peso e nutrição, sem distorção da imagem corporal.
+
+[19] (criterio · Critério A)  RESPOSTA: Transtorno Alimentar Restritivo/Evitativo
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Uma perturbação ______ (p. ex., falta aparente de interesse na ______ ou em ______; esquiva baseada nas características sensoriais do ______; preocupação acerca de consequências aversivas ______) associada a um (ou mais) dos seguintes aspectos: 1. Perda de peso significativa (ou insucesso em obter o ganho de peso esperado ou atraso de crescimento em crianças). 2. Deficiência nutricional significativa. 3. Dependência de ______ enteral ou suplementos nutricionais orais. 4. Interferência marcante no funcionamento psicossocial.
+
+[20] (fatos)  RESPOSTA: Transtorno Alimentar Restritivo/Evitativo
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Início: geralmente na fase de lactente ou na primeira infância, podendo persistir na vida adulta | Prevalência: ~0,3% (indivíduos com 15 anos ou mais, estudo na Austrália)
+
+[21] (resumo)  RESPOSTA: Transtorno de Compulsão Alimentar
+    sinais: difDistratores=1 familiaTamanho=4
+    ENUNCIADO: Episódios recorrentes de comer grandes quantidades com sensação de perda de controle e sofrimento, mas sem comportamentos compensatórios.
+
+[22] (criterio · Critério A)  RESPOSTA: Transtorno de Compulsão Alimentar
+    sinais: difDistratores=1 familiaTamanho=4
+    ENUNCIADO: Episódios recorrentes de ______. Um episódio de ______ é caracterizado pelos seguintes aspectos: 1. Ingestão, em um período determinado (p. ex., dentro de cada período de duas horas), de uma quantidade de ______ definitivamente maior do que a maioria das pessoas consumiria no mesmo período sob circunstâncias semelhantes. 2. Sensação de falta de controle sobre a ingestão durante o episódio (p. ex., sentimento de não conseguir parar de comer ou controlar o que e o quanto se está ingerindo).
+
+[23] (criterio · Critério B)  RESPOSTA: Transtorno de Compulsão Alimentar
+    sinais: difDistratores=1 familiaTamanho=4
+    ENUNCIADO: Os episódios de ______ estão associados a três (ou mais) dos seguintes aspectos: 1. Comer mais rapidamente do que o normal. 2. Comer até se sentir desconfortavelmente cheio. 3. Comer grandes quantidades de ______ na ausência da sensação física de fome. 4. Comer sozinho por vergonha do quanto se está comendo. 5. Sentir-se desgostoso de si mesmo, deprimido ou muito culpado em seguida.
+
+[24] (criterio · Critério C)  RESPOSTA: Transtorno de Compulsão Alimentar
+    sinais: difDistratores=1 familiaTamanho=4
+    ENUNCIADO: Sofrimento marcante em virtude da ______.
+
+[25] (criterio · Critério D)  RESPOSTA: Transtorno de Compulsão Alimentar
+    sinais: difDistratores=1 familiaTamanho=4
+    ENUNCIADO: Os episódios de ______ ocorrem, em média, ao menos uma vez por semana durante três meses.
+
+[26] (fatos)  RESPOSTA: Transtorno de Compulsão Alimentar
+    sinais: difDistratores=1 familiaTamanho=4
+    ENUNCIADO: Início: adolescência ou idade adulta jovem, podendo iniciar mais tarde na vida adulta | Prevalência: ~0,44–1,2% em 12 meses; ~0,85–2,8% ao longo da vida | Sexo: 2 a 3 vezes mais comum em mulheres
+
+[27] (resumo)  RESPOSTA: Transtorno de Ruminação
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: A pessoa traz de volta à boca alimento já engolido, de forma repetida e sem náusea, podendo remastigá-lo, deglutir de novo ou cuspir.
+
+[28] (criterio · Critério A)  RESPOSTA: Transtorno de Ruminação
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Regurgitação repetida de alimento durante um período mínimo de um mês. O alimento regurgitado pode ser remastigado, novamente deglutido ou cuspido.
+
+[29] (criterio · Critério D)  RESPOSTA: Transtorno de Ruminação
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Se os sintomas ocorrerem no contexto de outro transtorno mental (p. ex., transtorno do desenvolvimento intelectual [deficiência intelectual] ou outro transtorno do neurodesenvolvimento), eles são suficientemente graves para justificar atenção clínica adicional.
+
+[30] (fatos)  RESPOSTA: Transtorno de Ruminação
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Início: geralmente entre 3 e 12 meses, mas pode surgir na infância, adolescência ou vida adulta | Prevalência: ~1 a 2% das crianças em idade escolar (dados europeus limitados)
+

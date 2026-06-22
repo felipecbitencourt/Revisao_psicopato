@@ -1,0 +1,112 @@
+CATEGORIA: Sintomas somáticos e relacionados  (ci=8)
+Total de questões neste lote: 27
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Fatores Psicológicos que Afetam Outras Condições Médicas
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: ______ emocionais ou comportamentais (estresse, ansiedade, má adesão) pioram o curso ou o tratamento de uma doença física real, aumentando o risco à saúde.
+
+[2] (criterio · Critério A)  RESPOSTA: Fatores Psicológicos que Afetam Outras Condições Médicas
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Um sintoma ou ______ (que não um transtorno mental) está presente.
+
+[3] (criterio · Critério B)  RESPOSTA: Fatores Psicológicos que Afetam Outras Condições Médicas
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: ______ ou comportamentais ______ de maneira adversa a ______ em uma das seguintes maneiras: 1. Os ______ influenciaram o curso da ______ conforme demonstrado por uma associação temporal próxima entre os ______ e o desenvolvimento, a exacerbação ou a demora na recuperação da ______. 2. Os ______ interferem no tratamento da ______ (p. ex., má adesão). 3. Os ______ constituem riscos de saúde adicionais bem estabelecidos ao indivíduo. 4. Os ______ influenciam a fisiopatologia subjacente, precipitando ou exacerbando sintomas e demandando atenção ______.
+
+[4] (resumo)  RESPOSTA: Transtorno de Ansiedade de Doença
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Medo persistente de ter ou contrair uma ______ grave, com pouco ou nenhum sintoma físico real, levando a checagens repetidas ou evitação de médicos.
+
+[5] (criterio · Critério A)  RESPOSTA: Transtorno de Ansiedade de Doença
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Preocupação em ter ou contrair uma ______ grave.
+
+[6] (criterio · Critério B)  RESPOSTA: Transtorno de Ansiedade de Doença
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Sintomas somáticos não estão presentes ou, se estiverem, são de intensidade apenas leve. Se uma outra condição médica está presente ou há risco elevado de desenvolver uma condição médica (p. ex., presença de forte história familiar), a preocupação é claramente excessiva ou desproporcional.
+
+[7] (criterio · Critério C)  RESPOSTA: Transtorno de Ansiedade de Doença
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Há alto nível de ______ com relação à saúde, e o indivíduo é facilmente alarmado a respeito do estado de saúde pessoal.
+
+[8] (criterio · Critério D)  RESPOSTA: Transtorno de Ansiedade de Doença
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: O indivíduo tem comportamentos excessivos relacionados à saúde (p. ex., verificações repetidas do corpo procurando sinais de ______) ou exibe evitação mal-adaptativa (p. ex., evita consultas médicas e hospitais).
+
+[9] (criterio · Critério E)  RESPOSTA: Transtorno de Ansiedade de Doença
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Preocupação relacionada a ______ presente há pelo menos 6 meses, mas a ______ específica que é temida pode mudar nesse período.
+
+[10] (fatos)  RESPOSTA: Transtorno de Ansiedade de Doença
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: início e meio da vida adulta (raro em crianças) | Prevalência: ~1,3–10% na população; ~3% em ambulatórios médicos | Sexo: semelhante em homens e mulheres
+
+[11] (resumo)  RESPOSTA: Transtorno de Sintomas Neurológicos Funcionais (Transtorno Conversivo)
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: ______ reais (motores ou sensoriais) que, ao exame, mostram-se incompatíveis com qualquer doença ______ conhecida.
+
+[12] (criterio · Critério A)  RESPOSTA: Transtorno de Sintomas Neurológicos Funcionais (Transtorno Conversivo)
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Um ou mais ______ de função motora ou sensorial alterada.
+
+[13] (criterio · Critério B)  RESPOSTA: Transtorno de Sintomas Neurológicos Funcionais (Transtorno Conversivo)
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Achados físicos evidenciam incompatibilidade entre o ______ e as condições médicas ou ______ encontradas.
+
+[14] (fatos)  RESPOSTA: Transtorno de Sintomas Neurológicos Funcionais (Transtorno Conversivo)
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Início: qualquer idade; ataques não epiléticos com pico entre 20-29 anos e ______ motores entre 30-39 anos | Prevalência: prevalência exata desconhecida; incidência de ~4-12/100.000 ao ano; 5-15% em clínicas de ______
+
+[15] (resumo)  RESPOSTA: Transtorno de Sintomas Somáticos
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: ______ físicos que geram muito sofrimento somados a preocupações, pensamentos e comportamentos excessivos e persistentes em torno da saúde, independentemente de haver causa médica.
+
+[16] (criterio · Critério A)  RESPOSTA: Transtorno de Sintomas Somáticos
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: Um ou mais ______ que causam aflição ou resultam em perturbação significativa da vida diária.
+
+[17] (criterio · Critério B)  RESPOSTA: Transtorno de Sintomas Somáticos
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: Pensamentos, sentimentos ou comportamentos excessivos relacionados aos ______ ou associados a preocupações com a saúde manifestados por pelo menos um dos seguintes: 1. Pensamentos desproporcionais e persistentes acerca da gravidade dos próprios ______. 2. Nível de ansiedade persistentemente elevado acerca da saúde e dos ______. 3. Tempo e energia excessivos dedicados a esses ______ ou a preocupações a respeito da saúde.
+
+[18] (criterio · Critério C)  RESPOSTA: Transtorno de Sintomas Somáticos
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: Embora algum dos ______ possa não estar continuamente presente, a condição de estar ______ é persistente (em geral mais de 6 meses).
+
+[19] (fatos)  RESPOSTA: Transtorno de Sintomas Somáticos
+    sinais: difDistratores=2 familiaTamanho=3
+    ENUNCIADO: Início: pode começar na infância (queixas comuns dos 5-7 anos), mas curso costuma ser crônico e flutuante | Prevalência: ~4 a 6% em adultos da população geral (estimativas variam de 6,7% a 17,4%; 10-20% na atenção primária) | Sexo: provável predomínio feminino (mulheres relatam mais ______)
+
+[20] (resumo)  RESPOSTA: Transtorno Factício Autoimposto
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: A pessoa finge, fabrica ou provoca em si mesma sinais de doença ou lesão para se passar por doente, sem ganho externo óbvio que justifique o engano.
+
+[21] (criterio · Critério A)  RESPOSTA: Transtorno Factício Autoimposto
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Falsificação de sinais ou sintomas físicos ou psicológicos, ou indução de lesão ou doença, associada a fraude identificada.
+
+[22] (criterio · Critério B)  RESPOSTA: Transtorno Factício Autoimposto
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O indivíduo se apresenta a outros como doente, incapacitado ou lesionado.
+
+[23] (criterio · Critério C)  RESPOSTA: Transtorno Factício Autoimposto
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O comportamento fraudulento é evidente mesmo na ausência de recompensas externas óbvias.
+
+[24] (criterio · Critério E)  RESPOSTA: Transtorno Factício Autoimposto
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Falsificação de sinais ou sintomas físicos ou psicológicos, ou indução de lesão ou doença em outro, associada a fraude identificada.
+
+[25] (criterio · Critério F)  RESPOSTA: Transtorno Factício Autoimposto
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O indivíduo apresenta outro (vítima) a terceiros como doente, incapacitado ou lesionado.
+
+[26] (criterio · Critério G)  RESPOSTA: Transtorno Factício Autoimposto
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: O comportamento fraudulento é evidente até mesmo na ausência de recompensas externas óbvias.
+
+[27] (fatos)  RESPOSTA: Transtorno Factício Autoimposto
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: início da idade adulta, em geral após uma hospitalização | Prevalência: desconhecida; ~1% entre internados encaminhados a psiquiatria | Sexo: predomínio feminino (~2/3 mulheres)
+

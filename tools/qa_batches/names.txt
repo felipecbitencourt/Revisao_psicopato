@@ -1,0 +1,222 @@
+Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual) Não Especificado
+Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)
+Atraso Global do Desenvolvimento
+Transtorno da Linguagem
+Transtorno da Fala
+Transtorno da Fluência com Início na Infância (Gagueira)
+Transtorno da Comunicação Não Especificado
+Transtorno da Comunicação Social (Pragmática)
+Transtorno do Espectro Autista
+Outro Transtorno de Déficit de Atenção/Hiperatividade Especificado
+Transtorno de Déficit de Atenção/Hiperatividade Não Especificado
+Transtorno de Déficit de Atenção/Hiperatividade
+Transtorno Específico da Aprendizagem
+Transtorno do Desenvolvimento da Coordenação
+Transtorno do Movimento Estereotipado
+Outro Transtorno de Tique Especificado
+Transtorno de Tique Motor ou Vocal Persistente (Crônico)
+Transtorno de Tique Não Especificado
+Transtorno de Tique Transitório
+Transtorno de Tourette
+Outro Transtorno do Neurodesenvolvimento Especificado
+Transtorno do Neurodesenvolvimento Não Especificado
+Catatonia Associada a Outro Transtorno Mental (Especificador de Catatonia)
+Catatonia Não Especificada
+Esquizofrenia
+Outro Transtorno do Espectro da Esquizofrenia e Outro Transtorno Psicótico Especificado
+Transtorno Catatônico Devido a Outra Condição Médica
+Transtorno (da Personalidade) Esquizotípica
+Transtorno Delirante
+Transtorno do Espectro da Esquizofrenia e Outro Transtorno Psicótico Não Especificado
+Transtorno Esquizoafetivo
+Transtorno Esquizofreniforme
+Transtorno Psicótico Breve
+Transtorno Psicótico Devido a Outra Condição Médica
+Transtorno Psicótico Induzido por Substância/Medicamento
+Outro Transtorno Bipolar e Transtorno Relacionado Especificado
+Transtorno Bipolar e Transtorno Relacionado Devido a Outra Condição Médica
+Transtorno Bipolar e Transtorno Relacionado Induzido por Substância/Medicamento
+Transtorno Bipolar e Transtorno Relacionado Não Especificado
+Transtorno Bipolar Tipo I
+Transtorno Bipolar Tipo II
+Transtorno Ciclotímico
+Outro Transtorno Depressivo Especificado
+Transtorno Depressivo Devido a Outra Condição Médica
+Transtorno Depressivo Induzido por Substância/Medicamento
+Transtorno Depressivo Maior
+Transtorno Depressivo Não Especificado
+Transtorno Depressivo Persistente
+Transtorno Disfórico Pré-menstrual
+Transtorno Disruptivo da Desregulação do Humor
+Agorafobia
+Fobia Específica
+Mutismo Seletivo
+Outro Transtorno de Ansiedade Especificado
+Transtorno de Ansiedade de Separação
+Transtorno de Ansiedade Devido a Outra Condição Médica
+Transtorno de Ansiedade Generalizada
+Transtorno de Ansiedade Induzido por Substância/Medicamento
+Transtorno de Ansiedade Não Especificado
+Transtorno de Ansiedade Social
+Transtorno de Pânico
+Outro Transtorno Obsessivo-compulsivo e Transtorno Relacionado Especificado
+Transtorno de Acumulação
+Transtorno de Escoriação (Skin-picking)
+Transtorno Dismórfico Corporal
+Transtorno Obsessivo-compulsivo e Transtorno Relacionado Devido a Outra Condição Médica
+Transtorno Obsessivo-compulsivo e Transtorno Relacionado Induzido por Substância/Medicamento
+Transtorno Obsessivo-compulsivo e Transtorno Relacionado Não Especificado
+Transtorno Obsessivo-compulsivo
+Tricotilomania (Transtorno de Arrancar o Cabelo)
+Outro Transtorno Relacionado a Trauma e a Estressores Especificado
+Transtorno de Apego Reativo
+Transtorno de Estresse Agudo
+Transtorno de Estresse Pós-traumático
+Transtorno de Interação Social Desinibida
+Transtorno Relacionado a Trauma e a Estressores Não Especificado
+Transtornos de Adaptação
+Amnésia Dissociativa
+Outro Transtorno Dissociativo Especificado
+Transtorno de Despersonalização/Desrealização
+Transtorno Dissociativo de Identidade
+Transtorno Dissociativo Não Especificado
+Fatores Psicológicos que Afetam Outras Condições Médicas
+Outro Transtorno de Sintomas Somáticos e Transtorno Relacionado Especificado
+Transtorno de Ansiedade de Doença
+Transtorno de Sintomas Neurológicos Funcionais (Transtorno Conversivo)
+Transtorno de Sintomas Somáticos e Transtorno Relacionado Não Especificado
+Transtorno de Sintomas Somáticos
+Transtorno Factício Autoimposto
+Anorexia Nervosa
+Bulimia Nervosa
+Outro Transtorno Alimentar Especificado
+Pica
+Transtorno Alimentar Não Especificado
+Transtorno Alimentar Restritivo/Evitativo
+Transtorno de Compulsão Alimentar
+Transtorno de Ruminação
+Encoprese
+Enurese
+Outro Transtorno da Eliminação Especificado
+Transtorno da Eliminação Não Especificado
+Outro Transtorno de Insônia Especificado
+Transtorno de Insônia Não Especificado
+Transtorno de Insônia
+Outro Transtorno de Hipersonolência Especificado
+Transtorno de Hipersonolência Não Especificado
+Transtorno de Hipersonolência
+Narcolepsia
+Apneia Central do Sono
+Apneia e Hipopneia Obstrutivas do Sono
+Hipoventilação Relacionada ao Sono
+Transtornos do Sono-Vigília do Ritmo Circadiano
+Transtornos de Despertar do Sono Não REM
+Transtorno do Pesadelo
+Transtorno Comportamental do Sono REM
+Síndrome das Pernas Inquietas
+Transtorno do Sono Induzido por Substância/Medicamento
+Outro Transtorno do Sono-Vigília Especificado
+Disfunção Sexual Induzida por Substância/Medicamento
+Disfunção Sexual Não Especificada
+Ejaculação Prematura (Precoce)
+Ejaculação Retardada
+Outra Disfunção Sexual Especificada
+Transtorno da Dor Gênito-pélvica/Penetração
+Transtorno do Desejo Sexual Masculino Hipoativo
+Transtorno do Interesse/Excitação Sexual Feminino
+Transtorno do Orgasmo Feminino
+Transtorno Erétil
+Disforia de Gênero Não Especificada
+Disforia de Gênero
+Outra Disforia de Gênero Especificada
+Cleptomania
+Outro Transtorno Disruptivo, do Controle de Impulsos e da Conduta Especificado
+Piromania
+Transtorno da Conduta
+Transtorno da Personalidade Antissocial
+Transtorno de Oposição Desafiante
+Transtorno Disruptivo, do Controle de Impulsos e da Conduta Não Especificado
+Transtorno Explosivo Intermitente
+Abstinência de Álcool
+Intoxicação por Álcool
+Transtorno por Uso de Álcool
+Abstinência de Cafeína
+Intoxicação por Cafeína
+Transtorno Relacionado à Cafeína Não Especificado
+Abstinência de Cannabis
+Intoxicação por Cannabis
+Transtorno por Uso de Cannabis
+Transtorno Relacionado a Cannabis Não Especificado
+Intoxicação por Fenciclidina
+Transtorno por Uso de Fenciclidina
+Transtorno Relacionado a Fenciclidina Não Especificado
+Intoxicação por Outros Alucinógenos
+Transtorno Persistente da Percepção Induzido por Alucinógenos
+Transtorno por Uso de Outros Alucinógenos
+Intoxicação por Inalantes
+Transtorno por Uso de Inalantes
+Transtorno Relacionado a Inalantes Não Especificado
+Abstinência de Opioides
+Intoxicação por Opioides
+Transtorno por Uso de Opioides
+Transtorno Relacionado a Opioides Não Especificado
+Abstinência de Sedativos, Hipnóticos ou Ansiolíticos
+Intoxicação por Sedativos, Hipnóticos ou Ansiolíticos
+Transtorno por Uso de Sedativos, Hipnóticos ou Ansiolíticos
+Transtornos Mentais Induzidos por Sedativos, Hipnóticos ou Ansiolíticos
+Abstinência de Estimulantes
+Intoxicação por Estimulantes
+Transtorno por Uso de Estimulantes
+Transtorno Relacionado a Estimulantes Não Especificado
+Abstinência de Tabaco
+Transtorno por Uso de Tabaco
+Abstinência de Outra Substância (ou Substância Desconhecida)
+Intoxicação por Outra Substância (ou Substância Desconhecida)
+Transtorno por Uso de Outra Substância (ou Substância Desconhecida)
+Transtorno Relacionado a Outra Substância (ou Substância Desconhecida) Não Especificado
+Transtornos Mentais Induzidos por Outra Substância (ou Substância Desconhecida)
+Transtorno do Jogo
+Delirium Não Especificado
+Delirium
+Outro Delirium Especificado
+Transtorno Neurocognitivo Frontotemporal Maior ou Leve
+Transtorno Neurocognitivo Maior ou Leve com Corpos de Lewy
+Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer
+Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Huntington
+Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Parkinson
+Transtorno Neurocognitivo Maior ou Leve Devido à Doença do Príon
+Transtorno Neurocognitivo Maior ou Leve Devido a Etiologia Desconhecida
+Transtorno Neurocognitivo Maior ou Leve Devido à Infecção por HIV
+Transtorno Neurocognitivo Maior ou Leve Devido a Lesão Cerebral Traumática
+Transtorno Neurocognitivo Maior ou Leve Devido a Múltiplas Etiologias
+Transtorno Neurocognitivo Maior ou Leve Devido a Outra Condição Médica
+Transtorno Neurocognitivo Maior ou Leve Induzido por Substância/Medicamento
+Transtorno Neurocognitivo Não Especificado
+Transtorno Neurocognitivo Vascular Maior ou Leve
+Transtorno da Personalidade Paranoide
+Transtorno da Personalidade Esquizoide
+Transtorno da Personalidade Esquizotípica
+Transtorno da Personalidade Antissocial
+Transtorno da Personalidade Borderline
+Transtorno da Personalidade Histriônica
+Transtorno da Personalidade Narcisista
+Transtorno da Personalidade Evitativa
+Transtorno da Personalidade Dependente
+Transtorno da Personalidade Obsessivo- compulsiva
+Mudança de Personalidade Devido a Outra Condição Médica
+Outro Transtorno da Personalidade Especificado
+Transtorno da Personalidade Não Especificado
+Outro Transtorno Parafílico Especificado
+Transtorno do Masoquismo Sexual
+Transtorno do Sadismo Sexual
+Transtorno Exibicionista
+Transtorno Fetichista
+Transtorno Frotteurista
+Transtorno Parafílico Não Especificado
+Transtorno Pedofílico
+Transtorno Transvéstico
+Transtorno Voyeurista
+Outro Transtorno Mental Especificado Devido a Outra Condição Médica
+Outro Transtorno Mental Especificado
+Transtorno Mental Não Especificado Devido a Outra Condição Médica
+Transtorno Mental Não Especificado

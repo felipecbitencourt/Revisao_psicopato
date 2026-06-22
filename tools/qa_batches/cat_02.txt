@@ -1,0 +1,68 @@
+CATEGORIA: Transtorno bipolar e relacionados  (ci=2)
+Total de questões neste lote: 16
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Transtorno Bipolar Tipo I
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Transtorno do humor marcado por ao menos um episódio de mania (euforia ou irritabilidade intensa com energia elevada), geralmente alternando com fases depressivas.
+
+[2] (criterio · Critério A)  RESPOSTA: Transtorno Bipolar Tipo I
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Um período distinto de humor anormal e persistentemente elevado, expansivo ou irritável e aumento anormal e persistente da atividade ou da energia, com duração mínima de uma semana e presente na maior parte do dia, quase todos os dias (ou qualquer duração, se a hospitalização se fizer necessária).
+
+[3] (criterio · Critério B)  RESPOSTA: Transtorno Bipolar Tipo I
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Durante o período de perturbação do humor e aumento da energia ou atividade, três (ou mais) dos seguintes sintomas (quatro se o humor é apenas irritável) estão presentes em grau significativo e representam uma mudança notável do comportamento habitual: 1. Autoestima inflada ou grandiosidade. 2. Redução da necessidade de sono (p. ex., sente-se descansado com apenas três horas de sono). 3. Mais loquaz que o habitual ou pressão para continuar falando. 4. Fuga de ideias ou experiência subjetiva de que os pensamentos estão acelerados. 5. Distratibilidade (i. e., a atenção é desviada muito facilmente por estímulos externos insignificantes ou irrelevantes), conforme relatado ou observado. 6. Aumento da atividade dirigida a objetivos (seja socialmente, no trabalho ou escola, seja sexualmente) ou agitação psicomotora (i. e., atividade sem propósito não dirigida a objetivos). 7. Envolvimento excessivo em atividades com elevado potencial para consequências dolorosas (p. ex., envolvimento em surtos desenfreados de compras, indiscrições sexuais ou investimentos financeiros insensatos).
+
+[4] (criterio · Critério C)  RESPOSTA: Transtorno Bipolar Tipo I
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: A perturbação do humor é suficientemente grave a ponto de causar prejuízo acentuado no funcionamento social ou profissional ou para necessitar de hospitalização a fim de prevenir dano a si mesmo ou a outras pessoas, ou existem características psicóticas.
+
+[5] (criterio · Critério A)  RESPOSTA: Transtorno Bipolar Tipo I
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Foram atendidos os critérios para pelo menos um episódio maníaco (Critérios A-D em "Episódio Maníaco" descritos anteriormente).
+
+[6] (fatos)  RESPOSTA: Transtorno Bipolar Tipo I
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Início: vida adulta jovem (média ~20–30 anos; idade média de ~22 anos) | Prevalência: ~1,5% em 12 meses (adultos dos EUA) | Sexo: sem predomínio claro (razão homens:mulheres ~1,1:1)
+
+[7] (resumo)  RESPOSTA: Transtorno Bipolar Tipo II
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Oscilação de humor com episódios de depressão maior alternando com fases de hipomania (euforia/irritabilidade mais leve), sem nunca ter havido mania plena.
+
+[8] (criterio · Critério A)  RESPOSTA: Transtorno Bipolar Tipo II
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Foram atendidos os critérios para pelo menos um episódio hipomaníaco (Critérios A-F em "Episódio Hipomaníaco" descritos anteriormente) e para pelo menos um episódio depressivo maior (Critérios A-C em "Episódio Depressivo Maior").
+
+[9] (criterio · Critério B)  RESPOSTA: Transtorno Bipolar Tipo II
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Jamais houve um episódio maníaco.
+
+[10] (criterio · Critério D)  RESPOSTA: Transtorno Bipolar Tipo II
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Os sintomas de depressão ou a imprevisibilidade causada por alternância frequente entre períodos de depressão e hipomania causam sofrimento clinicamente significativo ou prejuízo no funcionamento social, profissional ou em outra área importante da vida do indivíduo. O transtorno ______ tipo II tem o seguinte código diagnóstico: F31.81. Sua caracterização com respeito a gravidade atual, presença de características psicóticas, curso e outros especificadores não pode ser codificada, mas deve ser indicada por escrito (p. ex., transtorno ______ tipo II F31.81, episódio atual depressivo, gravidade moderada, com características mistas; transtorno ______ tipo II F31.81, episódio mais recente depressivo, em remissão parcial).
+
+[11] (fatos)  RESPOSTA: Transtorno Bipolar Tipo II
+    sinais: difDistratores=3 familiaTamanho=4
+    ENUNCIADO: Início: fim da adolescência / vida adulta; idade média de início ~25 anos | Prevalência: ~0,8% em 12 meses (EUA); ~0,3% internacional
+
+[12] (resumo)  RESPOSTA: Transtorno Ciclotímico
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Oscilações crônicas e leves do humor por pelo menos 2 anos, com fases hipomaníacas e depressivas que nunca chegam a configurar episódios completos.
+
+[13] (criterio · Critério A)  RESPOSTA: Transtorno Ciclotímico
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Por pelo menos dois anos (um ano em crianças e adolescentes), presença de vários períodos com sintomas hipomaníacos que não satisfazem os critérios para episódio hipomaníaco e vários períodos com sintomas depressivos que não satisfazem os critérios para episódio depressivo maior.
+
+[14] (criterio · Critério B)  RESPOSTA: Transtorno Ciclotímico
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Durante o período antes citado de dois anos (um ano em crianças e adolescentes), os períodos hipomaníaco e depressivo estiveram presentes por pelo menos metade do tempo, e o indivíduo não permaneceu sem os sintomas por mais que dois meses consecutivos.
+
+[15] (criterio · Critério C)  RESPOSTA: Transtorno Ciclotímico
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Os critérios para um episódio depressivo maior, maníaco ou hipomaníaco nunca foram satisfeitos.
+
+[16] (fatos)  RESPOSTA: Transtorno Ciclotímico
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: adolescência ou início da vida adulta (muitos antes dos 10 anos) | Prevalência: ~0,4 a 2,5% ao longo da vida | Sexo: igualmente comum em ambos os sexos na população geral
+

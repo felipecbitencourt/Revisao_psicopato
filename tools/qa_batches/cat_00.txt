@@ -1,0 +1,248 @@
+CATEGORIA: Transtornos do neurodesenvolvimento  (ci=0)
+Total de questões neste lote: 61
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)
+    sinais: difDistratores=0 familiaTamanho=2
+    ENUNCIADO: Limitações no funcionamento ______ (raciocínio, aprendizagem) e nas habilidades adaptativas do dia a dia, com início no período do ______.
+
+[2] (criterio · Critério A)  RESPOSTA: Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)
+    sinais: difDistratores=0 familiaTamanho=2
+    ENUNCIADO: ______ em funções ______ como raciocínio, solução de problemas, planejamento, pensamento abstrato, juízo, aprendizagem acadêmica e aprendizagem pela experiência confirmados tanto pela avaliação clínica quanto por testes de inteligência padronizados e individualizados.
+
+[3] (criterio · Critério B)  RESPOSTA: Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)
+    sinais: difDistratores=0 familiaTamanho=2
+    ENUNCIADO: ______ em funções adaptativas que resultam em falha em atingir padrões de ______ e socioculturais em relação a independência pessoal e responsabilidade social. Sem apoio continuado, os ______ de adaptação limitam o funcionamento em uma ou mais atividades diárias, como comunicação, participação social e vida independente, e em múltiplos ambientes, como em casa, na escola, no local de trabalho e na comunidade.
+
+[4] (criterio · Critério C)  RESPOSTA: Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)
+    sinais: difDistratores=0 familiaTamanho=2
+    ENUNCIADO: Início dos ______ e adaptativos durante o período de ______. Nota: O termo transtorno do ______ é usado para clarificar sua relação com o sistema de classificação da CID-11, da OMS, que usa o termo Transtornos do ______. O termo equivalente, ______, é colocado entre parênteses para uso continuado. A literatura médica e de pesquisa usa ambos os termos, enquanto ______ é o termo mais comumente usado por educadores e outros profissionais, por grupos de defesa dos direitos desses indivíduos e pelo público leigo. Além disso, a Lei Federal dos Estados Unidos (Public Law 111- 256, Rosa's Law) substituiu todas as referências ao termo retardo mental em leis federais pelo termo ______.
+
+[5] (fatos)  RESPOSTA: Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)
+    sinais: difDistratores=0 familiaTamanho=2
+    ENUNCIADO: Início: período do ______ (infância); formas graves já nos 2 primeiros anos, leves só na idade escolar | Prevalência: ~10 por 1.000 na população geral
+
+[6] (resumo)  RESPOSTA: Atraso Global do Desenvolvimento
+    sinais: difDistratores=0 familiaTamanho=2
+    ENUNCIADO: Diagnóstico provisório para crianças menores de 5 anos que não atingem os marcos esperados em várias áreas e ainda não podem ter a gravidade avaliada de forma confiável; exige reavaliação posterior.
+
+[7] (resumo)  RESPOSTA: Transtorno da Linguagem
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Dificuldade persistente para adquirir e usar a ______ (vocabulário, gramática e discurso), abaixo do esperado para a idade, com início precoce no desenvolvimento.
+
+[8] (criterio · Critério A)  RESPOSTA: Transtorno da Linguagem
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: Dificuldades persistentes na aquisição e no uso da ______ em suas diversas modalidades (i. e., falada, escrita, ______ de sinais ou outra) devido a déficits na compreensão ou na produção, inclusive: 1. Vocabulário reduzido (conhecimento e uso de palavras). 2. Estrutura limitada de frases (capacidade de unir palavras e terminações de palavras de modo a formar frases, com base nas regras gramaticais e morfológicas). 3. Prejuízos no discurso (capacidade de usar vocabulário e unir frases para explicar ou descrever um tópico ou uma série de eventos, ou ter uma conversa).
+
+[9] (criterio · Critério B)  RESPOSTA: Transtorno da Linguagem
+    sinais: difDistratores=2 familiaTamanho=45
+    ENUNCIADO: As capacidades linguísticas estão, de forma substancial e quantificável, abaixo do esperado para a idade, resultando em limitações funcionais na comunicação efetiva, na participação social, no sucesso acadêmico ou no desempenho profissional, individualmente ou em qualquer combinação.
+
+[10] (resumo)  RESPOSTA: Transtorno da Fala
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Dificuldade persistente para produzir os sons da ______, deixando-a pouco inteligível e atrapalhando a comunicação, sem causa física ou neurológica.
+
+[11] (criterio · Critério A)  RESPOSTA: Transtorno da Fala
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Dificuldade persistente para produção da ______ que interfere na inteligibilidade da ______ ou impede a comunicação verbal de mensagens.
+
+[12] (criterio · Critério B)  RESPOSTA: Transtorno da Fala
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: A perturbação causa limitações na comunicação eficaz, que interferem na participação social, no sucesso acadêmico ou no desempenho profissional, individualmente ou em qualquer combinação.
+
+[13] (fatos)  RESPOSTA: Transtorno da Fala
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Início: precoce no desenvolvimento; ______ deve ser inteligível por volta dos 3 anos e a maioria dos sons clara aos 5 anos | Sexo: predomínio masculino (≈1,5–1,8:1 meninos)
+
+[14] (resumo)  RESPOSTA: Transtorno da Fluência com Início na Infância (Gagueira)
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Alteração persistente da ______ da fala, com repetições, prolongamentos e bloqueios que atrapalham a comunicação e geram ansiedade ao falar.
+
+[15] (criterio · Critério A)  RESPOSTA: Transtorno da Fluência com Início na Infância (Gagueira)
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Perturbações na ______ normal e no padrão temporal da fala inapropriadas para a idade e para as habilidades linguísticas do indivíduo persistentes e caracterizadas por ocorrências frequentes e marcantes de um (ou mais) entre os seguintes: 1. Repetição de som e sílabas. 2. Prolongamentos sonoros das consoantes e das vogais. 3. Palavras interrompidas (p. ex., pausas em uma palavra). 4. Bloqueio audível ou silencioso (pausas preenchidas ou não preenchidas na fala). 5. Circunlocuções (substituições de palavras para evitar palavras problemáticas). 6. Palavras produzidas com excesso de tensão física. 7. Repetições de palavras monossilábicas (p. ex., "Eu-eu-eu-eu vejo").
+
+[16] (criterio · Critério B)  RESPOSTA: Transtorno da Fluência com Início na Infância (Gagueira)
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: A perturbação causa ansiedade em relação à fala ou limitações na comunicação efetiva, na participação social ou no desempenho acadêmico ou profissional, individualmente ou em qualquer combinação.
+
+[17] (criterio · Critério C)  RESPOSTA: Transtorno da Fluência com Início na Infância (Gagueira)
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: O ______ dos sintomas ocorre precocemente no período do desenvolvimento. (Nota: Casos de ______ tardio são diagnosticados como F98.5 - transtorno da ______ com ______ na idade adulta.)
+
+[18] (criterio · Critério D)  RESPOSTA: Transtorno da Fluência com Início na Infância (Gagueira)
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: A perturbação não é passível de ser atribuída a um déficit motor da fala ou sensorial, a disfluência associada a lesão neurológica (p. ex., acidente vascular cerebral, tumor, trauma) ou a outra condição médica, não sendo mais bem explicada por outro transtorno mental.
+
+[19] (resumo)  RESPOSTA: Transtorno da Comunicação Social (Pragmática)
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Dificuldade persistente em usar a linguagem ______, como adaptar a fala ao interlocutor e seguir regras de conversa, sem os comportamentos restritos do autismo.
+
+[20] (criterio · Critério A)  RESPOSTA: Transtorno da Comunicação Social (Pragmática)
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Dificuldades persistentes no uso ______ da ______ verbal e não verbal como manifestado por todos os elementos a seguir: 1. Déficits no uso da ______ com fins sociais, como em saudações e compartilhamento de informações, de forma adequada ao contexto ______. 2. Prejuízo da capacidade de adaptar a ______ para se adequar ao contexto ou às necessidades do ouvinte, tal como falar de forma diferente em uma sala de aula do que em uma pracinha, falar de forma diferente a uma criança do que a um adulto e evitar o uso de linguagem excessivamente formal. 3. Dificuldades de seguir regras para conversar e contar histórias, tais como aguardar a vez, reconstituir o que foi dito quando não entendido e saber como usar sinais verbais e não verbais para regular a interação. 4. Dificuldades para compreender o que não é dito de forma explícita (p. ex., fazer inferências) e sentidos não literais ou ambíguos da linguagem (p. ex., expressões idiomáticas, humor, metáforas, múltiplos significados que dependem do contexto para interpretação).
+
+[21] (criterio · Critério B)  RESPOSTA: Transtorno da Comunicação Social (Pragmática)
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: Os déficits resultam em limitações funcionais na ______ efetiva, na participação ______, nas relações sociais, no sucesso acadêmico ou no desempenho profissional, individualmente ou em combinação.
+
+[22] (criterio · Critério C)  RESPOSTA: Transtorno da Comunicação Social (Pragmática)
+    sinais: difDistratores=2 familiaTamanho=1
+    ENUNCIADO: O início dos sintomas ocorre precocemente no período inicial do desenvolvimento (embora os déficits possam não se tornar plenamente manifestos até que as demandas de ______ excedam as capacidades limitadas).
+
+[23] (resumo)  RESPOSTA: Transtorno do Espectro Autista
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Condição do neurodesenvolvimento marcada por dificuldades persistentes na comunicação e interação social aliadas a comportamentos e interesses restritos e repetitivos.
+
+[24] (criterio · Critério A)  RESPOSTA: Transtorno do Espectro Autista
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Déficits persistentes na comunicação social e na interação social em múltiplos contextos, conforme manifestado por todos os seguintes aspectos, atualmente ou por história prévia (os exemplos são apenas ilustrativos, e não exaustivos; ver o texto): 1. Déficits na reciprocidade socioemocional, variando, por exemplo, de abordagem social anormal e dificuldade para estabelecer uma conversa normal a compartilhamento reduzido de interesses, emoções ou afeto, a dificuldade para iniciar ou responder a interações sociais. 2. Déficits nos comportamentos comunicativos não verbais usados para interação social, variando, por exemplo, de comunicação verbal e não verbal pouco integrada a anormalidade no contato visual e linguagem corporal ou déficits na compreensão e uso de gestos, a ausência total de expressões faciais e comunicação não verbal. 3. Déficits para desenvolver, manter e compreender relacionamentos, variando, por exemplo, de dificuldade em ajustar o comportamento para se adequar a contextos sociais diversos a dificuldade em compartilhar brincadeiras imaginativas ou em fazer amigos, a ausência de interesse por pares.
+
+[25] (criterio · Critério B)  RESPOSTA: Transtorno do Espectro Autista
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Padrões restritos e repetitivos de comportamento, interesses ou atividades, conforme manifestado por pelo menos dois dos seguintes, atualmente ou por história prévia (os exemplos são apenas ilustrativos, e não exaustivos; ver o texto): 1. Movimentos motores, uso de objetos ou fala estereotipados ou repetitivos (p. ex., estereotipias motoras simples, alinhar brinquedos ou girar objetos, ecolalia, frases idiossincráticas). 2. Insistência nas mesmas coisas, adesão inflexível a rotinas ou padrões ritualizados de comportamento verbal ou não verbal (p. ex., sofrimento extremo em relação a pequenas mudanças, dificuldades com transições, padrões rígidos de pensamento, rituais de saudação, necessidade de fazer o mesmo caminho ou ingerir os mesmos alimentos diariamente). 3. Interesses fixos e altamente restritos que são anormais em intensidade ou foco (p. ex., forte apego a ou preocupação com objetos incomuns, interesses excessivamente circunscritos ou perseverativos). 4. Hiper ou hiporreatividade a estímulos sensoriais ou interesse incomum por aspectos sensoriais do ambiente (p. ex., indiferença aparente a dor/temperatura, reação contrária a sons ou texturas específicas, cheirar ou tocar objetos de forma excessiva, fascinação visual por luzes ou movimento).
+
+[26] (criterio · Critério C)  RESPOSTA: Transtorno do Espectro Autista
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Os sintomas devem estar presentes precocemente no período do desenvolvimento (mas podem não se tornar plenamente manifestos até que as demandas sociais excedam as capacidades limitadas ou podem ser mascarados por estratégias aprendidas mais tarde na vida).
+
+[27] (fatos)  RESPOSTA: Transtorno do Espectro Autista
+    sinais: difDistratores=1 familiaTamanho=1
+    ENUNCIADO: Início: primeira infância; sintomas geralmente reconhecidos entre 12 e 24 meses | Prevalência: ~1% mundialmente (média global 0,62%); 1–2% nos EUA | Sexo: predomínio masculino, cerca de 3:1
+
+[28] (resumo)  RESPOSTA: Transtorno de Déficit de Atenção/Hiperatividade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Padrão persistente de desatenção e/ou ______ que começa na infância e atrapalha o funcionamento em vários contextos da vida.
+
+[29] (criterio · Critério A)  RESPOSTA: Transtorno de Déficit de Atenção/Hiperatividade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Um padrão persistente de desatenção e/ou ______ que interfere no funcionamento e no desenvolvimento, conforme caracterizado por (1) e/ou (2): 1. Desatenção: Seis (ou mais) dos seguintes sintomas persistem por pelo menos seis meses em um grau que é inconsistente com o nível do desenvolvimento e têm impacto negativo diretamente nas atividades sociais e acadêmicas/profissionais: Nota: Os sintomas não são apenas uma manifestação de comportamento opositor, desafio, hostilidade ou dificuldade para compreender tarefas ou instruções. Para adolescentes mais velhos e adultos (17 anos ou mais), pelo menos cinco sintomas são necessários. a. Frequentemente não presta ______ em detalhes ou comete erros por descuido em tarefas escolares, no trabalho ou durante outras atividades (p. ex., negligencia ou deixa passar detalhes, o trabalho é impreciso). b. Frequentemente tem dificuldade de manter a ______ em tarefas ou atividades lúdicas (p. ex., dificuldade de manter o foco durante aulas, conversas ou leituras prolongadas). c. Frequentemente parece não escutar quando alguém lhe dirige a palavra diretamente (p. ex., parece estar com a cabeça longe, mesmo na ausência de qualquer distração óbvia). d. Frequentemente não segue instruções até o fim e não consegue terminar trabalhos escolares, tarefas ou deveres no local de trabalho (p. ex., começa as tarefas, mas rapidamente perde o foco e facilmente perde o rumo). e. Frequentemente tem dificuldade para organizar tarefas e atividades (p. ex., dificuldade em gerenciar tarefas sequenciais; dificuldade em manter materiais e objetos pessoais em ordem; trabalho desorganizado e desleixado; mau gerenciamento do tempo; dificuldade em cumprir prazos). f. Frequentemente evita, não gosta ou reluta em se envolver em tarefas que exijam esforço mental prolongado (p. ex., trabalhos escolares ou lições de casa; para adolescentes mais velhos e adultos, preparo de relatórios, preenchimento de formulários, revisão de trabalhos longos). g. Frequentemente perde coisas necessárias para tarefas ou atividades (p. ex., materiais escolares, lápis, livros, instrumentos, carteiras, chaves, documentos, óculos, celular). h. Com frequência é facilmente distraído por estímulos externos (para adolescentes mais velhos e adultos, pode incluir pensamentos não relacionados). i. Com frequência é esquecido em relação a atividades cotidianas (p. ex., realizar tarefas, obrigações; para adolescentes mais velhos e adultos, retornar ligações, pagar contas, manter horários agendados). 2. ______ e impulsividade: Seis (ou mais) dos seguintes sintomas persistem por pelo menos seis meses em um grau que é inconsistente com o nível do desenvolvimento e têm impacto negativo diretamente nas atividades sociais e acadêmicas/profissionais: a. Frequentemente remexe ou batuca as mãos ou os pés ou se contorce na cadeira. b. Frequentemente se levanta da cadeira em situações em que se espera que permaneça sentado (p. ex., sai do seu lugar em sala de aula, no escritório ou em outro local de trabalho ou em outras situações que exijam que se permaneça em um mesmo lugar). c. Frequentemente corre ou sobe nas coisas em situações em que isso é inapropriado. (Nota: Em adolescentes ou adultos, pode se limitar a sensações de inquietude.) d. Com frequência é incapaz de brincar ou se envolver em atividades de lazer calmamente. e. Com frequência "não para", agindo como se estivesse "com o motor ligado" (p. ex., não consegue ou se sente desconfortável em ficar parado por muito tempo, como em restaurantes, reuniões; outros podem ver o indivíduo como inquieto ou difícil de acompanhar). f. Frequentemente fala demais. g. Frequentemente deixa escapar uma resposta antes que a pergunta tenha sido concluída (p. ex., termina frases dos outros, não consegue aguardar a vez de falar). h. Frequentemente tem dificuldade para esperar a sua vez (p. ex., aguardar em uma fila). i. Frequentemente interrompe ou se intromete (p. ex., mete-se nas conversas, jogos ou atividades; pode começar a usar as coisas de outras pessoas sem pedir ou receber permissão; para adolescentes e adultos, pode intrometer-se em ou assumir o controle sobre o que outros estão fazendo).
+
+[30] (criterio · Critério B)  RESPOSTA: Transtorno de Déficit de Atenção/Hiperatividade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Vários sintomas de desatenção ou ______ estavam presentes antes dos 12 anos de idade.
+
+[31] (criterio · Critério C)  RESPOSTA: Transtorno de Déficit de Atenção/Hiperatividade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Vários sintomas de desatenção ou ______ estão presentes em dois ou mais ambientes (p. ex., em casa, na escola, no trabalho; com amigos ou parentes; em outras atividades).
+
+[32] (criterio · Critério D)  RESPOSTA: Transtorno de Déficit de Atenção/Hiperatividade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Há evidências claras de que os sintomas interferem no funcionamento social, acadêmico ou profissional ou de que reduzem sua qualidade.
+
+[33] (fatos)  RESPOSTA: Transtorno de Déficit de Atenção/Hiperatividade
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Início: infância (vários sintomas antes dos 12 anos); ______ já na pré-escola, desatenção mais evidente no ensino fundamental | Prevalência: ~7,2% das crianças (varia de 0,1 a 10,2% entre países); ~2,5% dos adultos
+
+[34] (resumo)  RESPOSTA: Transtorno Específico da Aprendizagem
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Dificuldade persistente para ______ habilidades acadêmicas básicas (leitura, escrita ou matemática), bem abaixo do esperado para a idade e apesar de ensino adequado.
+
+[35] (criterio · Critério A)  RESPOSTA: Transtorno Específico da Aprendizagem
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Dificuldades na ______ e no uso de habilidades acadêmicas, conforme indicado pela presença de ao menos um dos sintomas a seguir que tenha persistido por pelo menos 6 meses, apesar da provisão de intervenções dirigidas a essas dificuldades: 1. Leitura de palavras de forma imprecisa ou lenta e com esforço (p. ex., lê palavras isoladas em voz alta, de forma incorreta ou lenta e hesitante, frequentemente adivinha palavras, tem dificuldade de soletrá-las). 2. Dificuldade para compreender o sentido do que é lido (p. ex., pode ler o texto com precisão, mas não compreende a sequência, as relações, as inferências ou os sentidos mais profundos do que é lido). 3. Dificuldades para ortografar (ou escrever ortograficamente) (p. ex., pode adicionar, omitir ou substituir vogais e consoantes). 4. Dificuldades com a expressão escrita (p. ex., comete múltiplos erros de gramática ou pontuação nas frases; emprega organização inadequada de parágrafos; expressão escrita das ideias sem clareza). 5. Dificuldades para dominar o senso numérico, fatos numéricos ou cálculo (p. ex., entende números, sua magnitude e relações de forma insatisfatória; conta com os dedos para adicionar números de um dígito em vez de lembrar o fato aritmético, como fazem os colegas; perde-se no meio de cálculos aritméticos e pode trocar as operações). 6. Dificuldades no raciocínio (p. ex., tem grave dificuldade em aplicar conceitos, fatos ou operações matemáticas para solucionar problemas quantitativos).
+
+[36] (criterio · Critério B)  RESPOSTA: Transtorno Específico da Aprendizagem
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: As habilidades acadêmicas afetadas estão substancial e quantitativamente abaixo do esperado para a idade cronológica do indivíduo, causando interferência significativa no desempenho acadêmico ou profissional ou nas atividades cotidianas, confirmada por meio de medidas de desempenho padronizadas administradas individualmente e por avaliação clínica abrangente. Para indivíduos com 17 anos ou mais, história documentada das dificuldades de ______ com prejuízo pode ser substituída por uma avaliação padronizada.
+
+[37] (criterio · Critério C)  RESPOSTA: Transtorno Específico da Aprendizagem
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: As dificuldades de ______ iniciam-se durante os anos escolares, mas podem não se manifestar completamente até que as exigências pelas habilidades acadêmicas afetadas excedam as capacidades limitadas do indivíduo (p. ex., em testes cronometrados, em leitura ou escrita de textos complexos longos e com prazo curto, em alta sobrecarga de exigências acadêmicas).
+
+[38] (criterio · Critério D)  RESPOSTA: Transtorno Específico da Aprendizagem
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: As dificuldades de ______ não podem ser explicadas por deficiências intelectuais, acuidade visual ou auditiva não corrigida, outros transtornos mentais ou neurológicos, adversidade psicossocial, falta de proficiência na língua de instrução acadêmica ou instrução educacional inadequada. Nota: Os quatro critérios diagnósticos devem ser preenchidos com base em uma síntese clínica da história do indivíduo (do desenvolvimento, médica, familiar, educacional), em relatórios escolares e em avaliação psicoeducacional.
+
+[39] (fatos)  RESPOSTA: Transtorno Específico da Aprendizagem
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Início: anos do ensino fundamental (precursores na primeira infância) | Prevalência: 5 a 15% entre crianças em idade escolar
+
+[40] (resumo)  RESPOSTA: Transtorno do Desenvolvimento da Coordenação
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Dificuldade motora persistente desde a infância: a pessoa é desajeitada e lenta em tarefas que exigem ______, prejudicando o dia a dia.
+
+[41] (criterio · Critério A)  RESPOSTA: Transtorno do Desenvolvimento da Coordenação
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: A aquisição e a execução de habilidades motoras ______ estão substancialmente abaixo do esperado considerando-se a idade cronológica do indivíduo e a oportunidade de aprender e usar a habilidade. As dificuldades manifestam-se por falta de jeito (p. ex., derrubar ou bater em objetos), bem como por lentidão e imprecisão no desempenho de habilidades motoras (p. ex., apanhar um objeto, usar tesouras ou facas, escrever a mão, andar de bicicleta ou praticar esportes).
+
+[42] (criterio · Critério B)  RESPOSTA: Transtorno do Desenvolvimento da Coordenação
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: O déficit nas habilidades motoras do Critério A interfere, significativa e persistentemente, nas atividades cotidianas apropriadas à idade cronológica (p. ex., autocuidado e automanutenção), causando impacto na produtividade acadêmica/escolar, em atividades pré-profissionais e profissionais, no lazer e nas brincadeiras.
+
+[43] (criterio · Critério C)  RESPOSTA: Transtorno do Desenvolvimento da Coordenação
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: O início dos sintomas ocorre precocemente no período do ______.
+
+[44] (fatos)  RESPOSTA: Transtorno do Desenvolvimento da Coordenação
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Início: primeira infância (precoce no ______), com atrasos em marcos motores | Prevalência: ~5–8% em crianças de 5 a 11 anos | Sexo: predomínio masculino (proporção de 2:1 a 7:1)
+
+[45] (resumo)  RESPOSTA: Transtorno do Movimento Estereotipado
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: ______ repetitivos, rítmicos e sem propósito (balançar, abanar as mãos, bater a cabeça) que começam cedo e atrapalham o dia a dia, podendo causar autolesão.
+
+[46] (criterio · Critério A)  RESPOSTA: Transtorno do Movimento Estereotipado
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Comportamento motor repetitivo, aparentemente direcionado e sem propósito (p. ex., apertar as mãos ou abanar, balançar o corpo, bater a cabeça, morder-se, golpear o próprio corpo).
+
+[47] (criterio · Critério B)  RESPOSTA: Transtorno do Movimento Estereotipado
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: O comportamento motor repetitivo interfere em atividades sociais, acadêmicas ou outras, podendo resultar em autolesão.
+
+[48] (criterio · Critério C)  RESPOSTA: Transtorno do Movimento Estereotipado
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: O início se dá precocemente no período do desenvolvimento.
+
+[49] (fatos)  RESPOSTA: Transtorno do Movimento Estereotipado
+    sinais: difDistratores=1 familiaTamanho=45
+    ENUNCIADO: Início: primeiros 3 anos de vida (~80% antes dos 24 meses nas formas complexas) | Prevalência: ______ simples ~5–19%; complexas ~3–4%; com autolesão em ~10–15% de pessoas com deficiência intelectual institucionalizadas
+
+[50] (resumo)  RESPOSTA: Transtorno de Tique Motor ou Vocal Persistente (Crônico)
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: ______ OU vocais (nunca ambos) que ______ por mais de um ano, com início na infância e sem nunca terem preenchido critérios de Tourette.
+
+[51] (criterio · Critério A)  RESPOSTA: Transtorno de Tique Motor ou Vocal Persistente (Crônico)
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: ______ ou vocais únicos ou múltiplos estão presentes durante o quadro, embora não ambos.
+
+[52] (criterio · Critério B)  RESPOSTA: Transtorno de Tique Motor ou Vocal Persistente (Crônico)
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: Os ______ podem aumentar e diminuir em frequência, mas ______ por mais de um ano desde o início do primeiro ______.
+
+[53] (criterio · Critério E)  RESPOSTA: Transtorno de Tique Motor ou Vocal Persistente (Crônico)
+    sinais: difDistratores=0 familiaTamanho=1
+    ENUNCIADO: Jamais foram preenchidos critérios para transtorno de Tourette.
+
+[54] (resumo)  RESPOSTA: Transtorno de Tique Transitório
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: ______ motores e/ou vocais que surgem na infância e duram menos de um ano, sem chegar a configurar Tourette ou ______ persistente.
+
+[55] (criterio · Critério A)  RESPOSTA: Transtorno de Tique Transitório
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: ______ motores e/ou vocais, únicos ou múltiplos.
+
+[56] (criterio · Critério B)  RESPOSTA: Transtorno de Tique Transitório
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: Os ______ estiveram presentes por pelo menos um ano desde o início do primeiro ______.
+
+[57] (criterio · Critério E)  RESPOSTA: Transtorno de Tique Transitório
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: Jamais foram preenchidos critérios para transtorno de Tourette ou transtorno de ______ motor ou vocal persistente (crônico).
+
+[58] (fatos)  RESPOSTA: Transtorno de Tique Transitório
+    sinais: difDistratores=0 familiaTamanho=3
+    ENUNCIADO: Início: infância, tipicamente entre 4 e 6 anos (início antes dos 18 anos) | Prevalência: ~3 por 1.000 casos clinicamente identificados | Sexo: predomínio masculino (proporção de 2:1 a 4:1)
+
+[59] (resumo)  RESPOSTA: Transtorno de Tourette
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Transtorno do neurodesenvolvimento com vários tiques motores e ao menos um tique vocal, que persistem por mais de um ano e começam na infância.
+
+[60] (criterio · Critério A)  RESPOSTA: Transtorno de Tourette
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Múltiplos tiques motores e um ou mais tiques vocais estiveram presentes em algum momento durante o quadro, embora não necessariamente ao mesmo tempo.
+
+[61] (criterio · Critério B)  RESPOSTA: Transtorno de Tourette
+    sinais: difDistratores=0 familiaTamanho=45
+    ENUNCIADO: Os tiques podem aumentar e diminuir em frequência, mas persistiram por mais de um ano desde o início do primeiro tique.
+

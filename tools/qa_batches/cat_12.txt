@@ -1,0 +1,92 @@
+CATEGORIA: Disfunções sexuais  (ci=12)
+Total de questões neste lote: 22
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Ejaculação Prematura (Precoce)
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: ______ que ocorre muito cedo, antes do desejado e logo após a penetração, de forma persistente e causando sofrimento ao indivíduo.
+
+[2] (criterio · Critério A)  RESPOSTA: Ejaculação Prematura (Precoce)
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Padrão persistente ou recorrente de ______ que ocorre durante a atividade sexual com parceria dentro de aproximadamente um minuto após a penetração vaginal e antes do momento desejado pelo indivíduo. Nota: Embora o diagnóstico de ______ (______) também possa ser aplicado a indivíduos envolvidos em atividades sexuais não vaginais, não foram estabelecidos critérios específicos para o tempo de duração dessas atividades.
+
+[3] (criterio · Critério B)  RESPOSTA: Ejaculação Prematura (Precoce)
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Os sintomas do Critério A devem estar presentes por pelo menos seis meses e devem ser experimentados em quase todas ou todas as ocasiões (aproximadamente 75 a 100%) de atividade sexual (em contextos situacionais identificados ou, caso generalizada, em todos os contextos).
+
+[4] (fatos)  RESPOSTA: Ejaculação Prematura (Precoce)
+    sinais: difDistratores=1 familiaTamanho=2
+    ENUNCIADO: Início: forma ao longo da vida começa nas primeiras experiências sexuais; forma adquirida surge mais tarde (em geral na 4ª década ou depois) | Prevalência: ~8 a 30% (varia muito conforme a definição); cerca de 1 a 3% pelo critério de ~1 minuto | Sexo: exclusivo/predominante no sexo masculino
+
+[5] (resumo)  RESPOSTA: Ejaculação Retardada
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Dificuldade persistente para chegar ao orgasmo: o homem demora muito ou não consegue ______ durante o sexo com parceria, mesmo com estímulo e desejo, gerando sofrimento.
+
+[6] (criterio · Critério A)  RESPOSTA: Ejaculação Retardada
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Qualquer um dos seguintes sintomas deve ser vivenciado em quase todas ou em todas as ocasiões (aproximadamente 75 a 100%) da atividade sexual com parceria (em contextos situacionais identificados ou, se generalizada, em todos os contextos), sem que o indivíduo deseje o ______: 1. ______ acentuado na ______. 2. Baixa frequência marcante ou ausência de ______.
+
+[7] (fatos)  RESPOSTA: Ejaculação Retardada
+    sinais: difDistratores=2 familiaTamanho=2
+    ENUNCIADO: Início: no subtipo ao longo da vida, desde as primeiras experiências sexuais; prevalência aumenta com a idade | Prevalência: ~1 a 5% (EUA); até 11% em estudos internacionais | Sexo: afeta indivíduos do sexo masculino
+
+[8] (resumo)  RESPOSTA: Transtorno da Dor Gênito-pélvica/Penetração
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Dificuldade persistente com ______ vaginal, marcada por dor genital/______, medo da ______ e tensão dos músculos do assoalho ______, causando sofrimento.
+
+[9] (criterio · Critério A)  RESPOSTA: Transtorno da Dor Gênito-pélvica/Penetração
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Dificuldades persistentes ou recorrentes com um (ou mais) dos seguintes: 1. ______ vaginal durante a relação sexual. 2. Dor vulvovaginal ou ______ intensa durante a relação sexual vaginal ou nas tentativas de ______. 3. Medo ou ansiedade intensa de dor vulvovaginal ou ______ em antecipação a, durante ou como resultado de ______ vaginal. 4. Tensão ou contração acentuada dos músculos do assoalho ______ durante tentativas de ______ vaginal.
+
+[10] (fatos)  RESPOSTA: Transtorno da Dor Gênito-pélvica/Penetração
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: pico no início da vida adulta e nos períodos peri/pós-menopáusico | Prevalência: desconhecida; ~8–28% das mulheres em idade reprodutiva relatam dor recorrente na relação sexual | Sexo: descrito em mulheres
+
+[11] (resumo)  RESPOSTA: Transtorno do Desejo Sexual Masculino Hipoativo
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Falta persistente de ______ e de pensamentos/fantasias eróticas no homem (≥6 meses), causando sofrimento e não explicada por outra causa.
+
+[12] (criterio · Critério A)  RESPOSTA: Transtorno do Desejo Sexual Masculino Hipoativo
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Pensamentos ou fantasias sexuais/eróticas e ______ para atividade ______ deficientes (ou ausentes) de forma persistente ou recorrente. O julgamento da deficiência é feito pelo clínico, levando em conta fatores que afetam o funcionamento ______, tais como idade e contextos gerais e socioculturais da vida do indivíduo.
+
+[13] (fatos)  RESPOSTA: Transtorno do Desejo Sexual Masculino Hipoativo
+    sinais: difDistratores=3 familiaTamanho=3
+    ENUNCIADO: Início: pode ser ao longo da vida ou adquirido; prevalência sobe com a idade (~5% aos 27 anos, ~18% aos 50 anos) | Prevalência: ~3 a 17% (queixa persistente ≥6 meses em ~6%) | Sexo: exclusivo do sexo ______
+
+[14] (resumo)  RESPOSTA: Transtorno do Interesse/Excitação Sexual Feminino
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Falta ou redução persistente do desejo e da ______ na mulher, que causa sofrimento e não se explica por relacionamento, doença ou medicamento.
+
+[15] (criterio · Critério A)  RESPOSTA: Transtorno do Interesse/Excitação Sexual Feminino
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Ausência ou redução significativa do ______ ou da ______, manifestada por pelo menos três dos seguintes: 1. Ausência ou redução do ______ pela atividade ______. 2. Ausência ou redução dos pensamentos ou fantasias sexuais/eróticas. 3. Nenhuma iniciativa ou iniciativa reduzida de atividade ______ e, geralmente, ausência de receptividade às tentativas de iniciativa feitas pelo(a) parceiro(a). 4. Ausência ou redução na ______/prazer ______ durante a atividade ______ em quase todos ou em todos (aproximadamente 75 a 100%) os encontros sexuais (em contextos situacionais identificados ou, se generalizado, em todos os contextos). 5. Ausência ou redução do ______ em resposta a quaisquer indicações sexuais ou eróticas, internas ou externas (p. ex., escritas, verbais, visuais). 6. Ausência ou redução de sensações genitais ou não genitais durante a atividade ______ em quase todos ou em todos (aproximadamente 75 a 100%) os encontros sexuais (em contextos situacionais identificados ou, se generalizado, em todos os contextos).
+
+[16] (fatos)  RESPOSTA: Transtorno do Interesse/Excitação Sexual Feminino
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: pode ser ao longo da vida (desde as primeiras experiências sexuais) ou adquirido (após período de funcionamento normal); sintomas persistentes por ~6 meses | Prevalência: ~30% das mulheres relatam baixo desejo crônico (cerca de metade com sofrimento ligado ao parceiro e um quarto com sofrimento pessoal)
+
+[17] (resumo)  RESPOSTA: Transtorno do Orgasmo Feminino
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Dificuldade persistente da mulher para atingir o ______ ou sensações ______ muito reduzidas, causando sofrimento clinicamente significativo.
+
+[18] (criterio · Critério A)  RESPOSTA: Transtorno do Orgasmo Feminino
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Presença de qualquer um dos sintomas a seguir, vivenciados em quase todas ou em todas as ocasiões (aproximadamente 75 a 100%) de atividade sexual (em contextos situacionais identificados ou, se generalizado, em todos os contextos): 1. Retardo acentuado, infrequência acentuada ou ausência de ______. 2. Intensidade muito reduzida de sensações ______.
+
+[19] (fatos)  RESPOSTA: Transtorno do Orgasmo Feminino
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: variável: primeiro ______ pode ocorrer da fase pré-púbere à vida adulta; subtipo ao longo da vida (sempre presente) ou adquirido | Prevalência: problemas ______ em mulheres na pré-menopausa: ~8 a 72%; ~10% nunca têm ______ na vida | Sexo: exclusivo de mulheres (por definição da categoria)
+
+[20] (resumo)  RESPOSTA: Transtorno Erétil
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Dificuldade persistente em obter ou manter ereção durante a atividade sexual, que se mantém por pelo menos meses e gera sofrimento.
+
+[21] (criterio · Critério A)  RESPOSTA: Transtorno Erétil
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Pelo menos um dos três sintomas a seguir deve ser vivenciado em quase todas ou em todas as ocasiões (aproximadamente 75 a 100%) de atividade sexual (em contextos situacionais identificados ou, se generalizado, em todos os contextos): 1. Dificuldade acentuada em obter ereção durante a atividade sexual. 2. Dificuldade acentuada em manter uma ereção até o fim da atividade sexual. 3. Diminuição acentuada na rigidez ______.
+
+[22] (fatos)  RESPOSTA: Transtorno Erétil
+    sinais: difDistratores=3 familiaTamanho=45
+    ENUNCIADO: Início: incidência aumenta com a idade, especialmente após os 50 anos | Prevalência: ~13–21% em homens de 40 a 80 anos (<10% abaixo dos 40; 50–75% acima dos 70) | Sexo: exclusivo de indivíduos do sexo masculino
+

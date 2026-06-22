@@ -1,0 +1,308 @@
+CATEGORIA: Transtornos da personalidade  (ci=17)
+Total de questões neste lote: 76
+Formato: cada questão tem o ENUNCIADO (com o nome do transtorno mascarado por ______) e a RESPOSTA correta.
+
+[1] (resumo)  RESPOSTA: Transtorno da Personalidade Paranoide
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Padrão persistente de desconfiança e suspeita dos outros, interpretando suas intenções como hostis ou malévolas mesmo sem evidências.
+
+[2] (criterio · Critério A)  RESPOSTA: Transtorno da Personalidade Paranoide
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Um padrão de desconfiança e suspeita difusa dos outros, de modo que suas motivações são interpretadas como malévolas, que surge no início da vida adulta e está presente em vários contextos, conforme indicado por quatro (ou mais) dos seguintes: 1. Suspeita, sem embasamento suficiente, de estar sendo explorado, maltratado ou enganado por outros. 2. Preocupa-se com dúvidas injustificadas acerca da lealdade ou da confiabilidade de amigos ou sócios. 3. Reluta em confiar nos outros devido a medo infundado de que as informações serão usadas maldosamente contra si. 4. Percebe significados ocultos humilhantes ou ameaçadores em comentários ou eventos benignos. 5. Guarda rancores de forma persistente (i. e., não perdoa insultos, injúrias ou desprezo). 6. Percebe ataques a seu caráter ou reputação que não são percebidos pelos outros e reage com raiva ou contra-ataca rapidamente. 7. Tem suspeitas recorrentes e injustificadas acerca da fidelidade do cônjuge ou parceiro sexual.
+
+[3] (fatos)  RESPOSTA: Transtorno da Personalidade Paranoide
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Início: início da vida adulta (sinais já na infância/adolescência) | Prevalência: ~2,3–4,4% (mediana ~3,2%); até 23% em ambientes forenses
+
+[4] (resumo)  RESPOSTA: Transtorno da Personalidade Esquizoide
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Padrão duradouro de afastamento das relações sociais e pouca expressão emocional: a pessoa prefere a solidão, busca intimidade e parece indiferente aos outros.
+
+[5] (criterio · Critério A)  RESPOSTA: Transtorno da Personalidade Esquizoide
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Um padrão difuso de distanciamento das relações sociais e uma faixa restrita de expressão de emoções em contextos interpessoais que surgem no início da vida adulta e estão presentes em vários contextos, conforme indicado por quatro (ou mais) dos seguintes: 1. Não deseja nem desfruta de relações íntimas, inclusive ser parte de uma família. 2. Quase sempre opta por atividades solitárias. 3. Manifesta pouco ou nenhum interesse em ter experiências sexuais com outra pessoa. 4. Tem prazer em poucas atividades, por vezes em nenhuma. 5. Não tem amigos próximos ou confidentes que não sejam os familiares de primeiro grau. 6. Mostra-se indiferente ao elogio ou à crítica de outros. 7. Demonstra frieza emocional, distanciamento ou embotamento afetivo.
+
+[6] (fatos)  RESPOSTA: Transtorno da Personalidade Esquizoide
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Início: início da vida adulta; pode aparecer já na infância/adolescência | Prevalência: varia entre estudos (mediana ~1,3%; até ~3–5%)
+
+[7] (resumo)  RESPOSTA: Transtorno da Personalidade Esquizotípica
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Padrão duradouro de desconforto intenso com a proximidade afetiva, somado a pensamento e percepção distorcidos (crenças mágicas, ideias de referência) e comportamento excêntrico.
+
+[8] (criterio · Critério A)  RESPOSTA: Transtorno da Personalidade Esquizotípica
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Um padrão difuso de déficits sociais e interpessoais marcado por desconforto agudo e capacidade reduzida para relacionamentos íntimos, além de distorções cognitivas ou perceptivas e comportamento excêntrico, que surge no início da vida adulta e está presente em vários contextos, conforme indicado por cinco (ou mais) dos seguintes: 1. Ideias de referência (excluindo delírios de referência). 2. Crenças estranhas ou pensamento mágico que influenciam o comportamento e são inconsistentes com as normas subculturais (p. ex., superstições, crença em clarividência, telepatia ou "sexto sentido"; em crianças e adolescentes, fantasias ou preocupações bizarras). 3. Experiências perceptivas incomuns, incluindo ilusões corporais. 4. Pensamento e discurso estranhos (p. ex., vago, circunstancial, metafórico, excessivamente elaborado ou estereotipado). 5. Desconfiança ou ideação paranoide. 6. Afeto inadequado ou constrito. 7. Comportamento ou aparência estranha, excêntrica ou peculiar. 8. Ausência de amigos próximos ou confidentes que não sejam parentes de primeiro grau. 9. Ansiedade social excessiva que não diminui com o convívio e que tende a estar associada mais a temores paranoides do que a julgamentos negativos sobre si mesmo.
+
+[9] (fatos)  RESPOSTA: Transtorno da Personalidade Esquizotípica
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Início: início da vida adulta; sinais já na infância/adolescência | Prevalência: ~0,6% (mediana) a 3,3–3,9% em levantamentos dos EUA
+
+[10] (resumo)  RESPOSTA: Transtorno da Personalidade Antissocial
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Padrão persistente de desrespeito e violação dos direitos dos outros, com manipulação, falsidade e desconsideração pelas normas sociais.
+
+[11] (criterio · Critério A)  RESPOSTA: Transtorno da Personalidade Antissocial
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Um padrão difuso de desconsideração e violação dos direitos das outras pessoas que ocorre desde os 15 anos de idade, conforme indicado por três (ou mais) dos seguintes: 1. Fracasso em ajustar-se às normas sociais relativas a comportamentos legais, conforme indicado pela repetição de atos que constituem motivos de detenção. 2. Tendência à falsidade, conforme indicado por mentiras repetidas, uso de nomes falsos ou de trapaça para ganho ou prazer pessoal. 3. Impulsividade ou fracasso em fazer planos para o futuro. 4. Irritabilidade e agressividade, conforme indicado por repetidas lutas corporais ou agressões físicas. 5. Desrespeito imprudente pela segurança própria ou de outros. 6. Irresponsabilidade reiterada, conforme indicado por falha repetida em manter uma conduta consistente no trabalho ou honrar obrigações financeiras. 7. Ausência de remorso, conforme indicado pela indiferença ou racionalização em relação a ter ferido, maltratado ou roubado outras pessoas.
+
+[12] (criterio · Critério B)  RESPOSTA: Transtorno da Personalidade Antissocial
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: O indivíduo tem no mínimo 18 anos de idade.
+
+[13] (criterio · Critério C)  RESPOSTA: Transtorno da Personalidade Antissocial
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Há evidências de transtorno da conduta com surgimento anterior aos 15 anos de idade.
+
+[14] (criterio · Critério D)  RESPOSTA: Transtorno da Personalidade Antissocial
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: A ocorrência de comportamento ______ não se dá exclusivamente durante o curso de esquizofrenia ou transtorno bipolar.
+
+[15] (fatos)  RESPOSTA: Transtorno da Personalidade Antissocial
+    sinais: difDistratores=3 familiaTamanho=2
+    ENUNCIADO: Início: infância ou início da adolescência; diagnóstico só após os 18 anos, com sintomas de transtorno da conduta antes dos 15 | Prevalência: ~0,6% a 3,6% (mediana 3,6%); >70% em ambientes forenses e por uso de substâncias
+
+[16] (resumo)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Instabilidade intensa e duradoura nas emoções, relacionamentos e autoimagem, com impulsividade e medo profundo de ser abandonado.
+
+[17] (criterio · Critério 1)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Esforços desesperados para evitar abandono real ou imaginado. (Nota: Não incluir comportamento suicida ou de automutilação, coberto pelo Critério 5.)
+
+[18] (criterio · Critério 2)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Um padrão de relacionamentos interpessoais instáveis e intensos caracterizado pela alternância entre extremos de idealização e desvalorização.
+
+[19] (criterio · Critério 3)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Perturbação da identidade: instabilidade acentuada e persistente da autoimagem ou da percepção de si mesmo.
+
+[20] (criterio · Critério 4)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Impulsividade em pelo menos duas áreas potencialmente autodestrutivas (p. ex., gastos, sexo, abuso de substância, direção imprudente, compulsão alimentar). (Nota: Não incluir comportamento suicida ou de automutilação, coberto pelo Critério 5.)
+
+[21] (criterio · Critério 5)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Recorrência de comportamento, gestos ou ameaças suicidas ou de comportamento automutilante.
+
+[22] (criterio · Critério 6)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Instabilidade afetiva devida a uma acentuada reatividade de humor (p. ex., disforia episódica, irritabilidade ou ansiedade intensa com duração geralmente de poucas horas e apenas raramente de mais de alguns dias).
+
+[23] (criterio · Critério 7)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Sentimentos crônicos de vazio.
+
+[24] (criterio · Critério 8)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Raiva intensa e inapropriada ou dificuldade em controlá-la (p. ex., mostras frequentes de irritação, raiva constante, brigas físicas recorrentes).
+
+[25] (criterio · Critério 9)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Ideação paranoide transitória associada a estresse ou sintomas dissociativos intensos.
+
+[26] (fatos)  RESPOSTA: Transtorno da Personalidade Borderline
+    sinais: difDistratores=1 familiaTamanho=9
+    ENUNCIADO: Início: início da vida adulta (sintomas podem aparecer já na adolescência, aos 12–13 anos) | Prevalência: mediana ~2,7% na população (estimativas variam de 1,4% a 5,9%)
+
+[27] (resumo)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Padrão persistente de emocionalidade exagerada e teatral com forte necessidade de ser o centro das atenções, levando a comportamentos sedutores e dramáticos.
+
+[28] (criterio · Critério 1)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Desconforto em situações em que a pessoa não é o centro das atenções.
+
+[29] (criterio · Critério 2)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: A interação com os outros é frequentemente caracterizada por comportamento sexualmente sedutor inadequado ou provocativo.
+
+[30] (criterio · Critério 3)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Exibe mudanças rápidas e expressão superficial das emoções.
+
+[31] (criterio · Critério 4)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Usa reiteradamente a aparência física para atrair a atenção para si.
+
+[32] (criterio · Critério 5)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Tem um estilo de discurso que é excessivamente impressionista e carente de detalhes.
+
+[33] (criterio · Critério 6)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Mostra autodramatização, teatralidade e expressão exagerada das emoções.
+
+[34] (criterio · Critério 7)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: É sugestionável (i. e., facilmente influenciado pelos outros ou pelas circunstâncias).
+
+[35] (criterio · Critério 8)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Considera as relações pessoais mais íntimas do que na realidade são.
+
+[36] (fatos)  RESPOSTA: Transtorno da Personalidade Histriônica
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Início: início da vida adulta | Prevalência: ~0,9% (mediana de estudos; até ~1,8%)
+
+[37] (resumo)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Padrão persistente de grandiosidade, busca de admiração e pouca empatia, com autoimagem inflada e dificuldade em valorizar os outros.
+
+[38] (criterio · Critério 1)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Tem uma sensação grandiosa da própria importância (p. ex., exagera conquistas e talentos, espera ser reconhecido como superior sem que tenha as conquistas correspondentes).
+
+[39] (criterio · Critério 2)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: É preocupado com fantasias de sucesso ilimitado, poder, brilho, beleza ou amor ideal.
+
+[40] (criterio · Critério 3)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Acredita ser "especial" e único e que pode ser somente compreendido por, ou associado a, outras pessoas (ou instituições) especiais ou com condição elevada.
+
+[41] (criterio · Critério 4)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Demanda admiração excessiva.
+
+[42] (criterio · Critério 5)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Apresenta um sentimento de possuir direitos (i. e., expectativas irracionais de tratamento especialmente favorável ou que estejam automaticamente de acordo com as próprias expectativas).
+
+[43] (criterio · Critério 6)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: É explorador em relações interpessoais (i. e., tira vantagem de outros para atingir os próprios fins).
+
+[44] (criterio · Critério 7)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Carece de empatia: reluta em reconhecer ou identificar-se com os sentimentos e as necessidades dos outros.
+
+[45] (criterio · Critério 8)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: É frequentemente invejoso em relação aos outros ou acredita que os outros o invejam.
+
+[46] (criterio · Critério 9)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Demonstra comportamentos ou atitudes arrogantes e insolentes.
+
+[47] (fatos)  RESPOSTA: Transtorno da Personalidade Narcisista
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Início: início da vida adulta | Prevalência: mediana ~1,6% (0,0%–6,2% entre estudos)
+
+[48] (resumo)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Padrão persistente de timidez extrema, sentimento de inadequação e medo de crítica ou rejeição, que leva a pessoa a evitar contatos sociais e novas situações.
+
+[49] (criterio · Critério 1)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Evita atividades profissionais que envolvam contato interpessoal significativo por medo de crítica, desaprovação ou rejeição.
+
+[50] (criterio · Critério 2)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Não se dispõe a envolver-se com pessoas, a menos que tenha certeza de que será recebido de forma positiva.
+
+[51] (criterio · Critério 3)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Mostra-se reservado em relacionamentos íntimos devido a medo de passar vergonha ou de ser ridicularizado.
+
+[52] (criterio · Critério 4)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Preocupa-se com críticas ou rejeição em situações sociais.
+
+[53] (criterio · Critério 5)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Inibe-se em situações interpessoais novas em razão de sentimentos de inadequação.
+
+[54] (criterio · Critério 6)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Vê a si mesmo como socialmente incapaz, sem atrativos pessoais ou inferior aos outros.
+
+[55] (criterio · Critério 7)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Reluta de forma incomum em assumir riscos pessoais ou se envolver em quaisquer novas atividades, pois estas podem ser constrangedoras.
+
+[56] (fatos)  RESPOSTA: Transtorno da Personalidade Evitativa
+    sinais: difDistratores=2 familiaTamanho=9
+    ENUNCIADO: Início: início da vida adulta; precursores (timidez, isolamento) já na infância | Prevalência: ~2,1–2,4% (mediana ~2,1%); ~0,8% após os 65 anos
+
+[57] (resumo)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Necessidade excessiva de ser cuidado, gerando comportamento submisso, apego aos outros e medo intenso de separação e de ter que se virar sozinho.
+
+[58] (criterio · Critério 1)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Tem dificuldades em tomar decisões cotidianas sem uma quantidade excessiva de conselhos e reasseguramento de outros.
+
+[59] (criterio · Critério 2)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Precisa que outros assumam responsabilidade pela maior parte das principais áreas de sua vida.
+
+[60] (criterio · Critério 3)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Tem dificuldades em manifestar desacordo com outros devido a medo de perder apoio ou aprovação. (Nota: Não incluir os medos reais de retaliação.)
+
+[61] (criterio · Critério 4)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Apresenta dificuldade em iniciar projetos ou fazer coisas por conta própria (devido mais a falta de autoconfiança em seu julgamento ou em suas capacidades do que a falta de motivação ou energia).
+
+[62] (criterio · Critério 5)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Vai a extremos para obter carinho e apoio de outros, a ponto de voluntariar-se para fazer coisas desagradáveis.
+
+[63] (criterio · Critério 6)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Sente-se desconfortável ou desamparado quando sozinho devido a temores exagerados de ser incapaz de cuidar de si mesmo.
+
+[64] (criterio · Critério 7)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Busca com urgência outro relacionamento como fonte de cuidado e amparo logo após o término de um relacionamento íntimo.
+
+[65] (criterio · Critério 8)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Tem preocupações irreais com medos de ser abandonado à própria sorte.
+
+[66] (fatos)  RESPOSTA: Transtorno da Personalidade Dependente
+    sinais: difDistratores=3 familiaTamanho=9
+    ENUNCIADO: Início: início da vida adulta | Prevalência: ~0,4–0,6% (mediana ~0,4%)
+
+[67] (resumo)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Padrão rígido de busca por ordem, perfeccionismo e controle que sacrifica a flexibilidade e atrapalha concluir tarefas e se relacionar.
+
+[68] (criterio · Critério 1)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: É tão preocupado com detalhes, regras, listas, ordem, organização ou horários a ponto de o objetivo principal da atividade ser perdido.
+
+[69] (criterio · Critério 2)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Demonstra perfeccionismo que interfere na conclusão de tarefas (p. ex., não consegue completar um projeto porque seus padrões próprios demasiadamente rígidos não são atingidos).
+
+[70] (criterio · Critério 3)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: É excessivamente dedicado ao trabalho e à produtividade em detrimento de atividades de lazer e amizades (não explicado por uma óbvia necessidade financeira).
+
+[71] (criterio · Critério 4)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: É excessivamente consciencioso, escrupuloso e inflexível quanto a assuntos de moralidade, ética ou valores (não explicado por identificação cultural ou religiosa).
+
+[72] (criterio · Critério 5)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: É incapaz de descartar objetos usados ou sem valor mesmo quando não têm valor sentimental.
+
+[73] (criterio · Critério 6)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Reluta em delegar tarefas ou trabalhar com outras pessoas a menos que elas se submetam à sua forma exata de fazer as coisas.
+
+[74] (criterio · Critério 7)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Adota um estilo miserável de gastos em relação a si e a outros; o dinheiro é visto como algo a ser acumulado para futuras catástrofes.
+
+[75] (criterio · Critério 8)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Exibe rigidez e teimosia.
+
+[76] (fatos)  RESPOSTA: Transtorno da Personalidade Obsessivo- compulsiva
+    sinais: difDistratores=3 familiaTamanho=1
+    ENUNCIADO: Início: início da vida adulta | Prevalência: ~2,4% a 7,9% (mediana ~4,7%)
+
