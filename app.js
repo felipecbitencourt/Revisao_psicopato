@@ -446,7 +446,7 @@
     classifyNext:   function(){ if(state.classifyPhase>=CLASSIFY_PHASES.length-1){ state.classifyDone=true; setState({}); } else { startPhase(state.classifyPhase+1); } },
     classifyRestart:function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
     // caso
-    casoSelect: function(i){ if(state.casoAnswered) return; var ca=currentCaso(); var ok=(i===ca.correct); var pts= ok ? (state.casoHints?5:10) : 0; state.casoScore+= pts; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true, casoGain:pts}); logExercise('caso', ok, ca.id || (ca.patient&&ca.patient.name) || 'caso'); },
+    casoSelect: function(i){ if(state.casoAnswered) return; var ca=currentCaso(); var ok=(i===ca.correct); var pts= ok ? (state.casoHints?5:10) : 0; state.casoScore+= pts; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true, casoGain:pts}); logExercise('caso', ok, ca.id || (ca.patient&&ca.patient.name) || 'caso', state.casoHints); },
     casoNext:   function(){ setState({casoIndex:state.casoIndex+1, casoSelected:null, casoAnswered:false}); scrollTop(); },
     setCasoHints: function(v){ var on=(v===1||v==='1'); if(on!==state.casoHints){ state.casoHints=on; try{ localStorage.setItem('psp-caso-hints', on?'1':'0'); }catch(e){} render(); } },
   };
@@ -847,20 +847,20 @@
   // XP por DOMÍNIO: cada item (modo+transtorno) pontua só na 1ª vez que é acertado.
   // Repetir vira prática (só som, sem XP); errar não pontua. Isso impede o farm de XP.
   function masteryKey(tipo, item){ return tipo + ':' + (item || '?'); }
-  function logExercise(tipo, acerto, item){
+  function logExercise(tipo, acerto, item, comDica){
     // som de feedback (também em modo demo); flashcard "Não sei" fica sem som
     if(tipo==='flashcard'){ if(acerto) Sound.correct(); }
     else { acerto ? Sound.correct() : Sound.wrong(); }
     if(!tracking()) return;
     var key = masteryKey(tipo, item);
-    // Trava de XP/domínio: só na 1ª vez que o item é acertado.
-    //  - acerto===true e ainda não dominado -> marca dominado (dá XP).
-    //  - erro ou repetição -> registra a tentativa (p/ taxa de acerto real)
-    //    mas NÃO mexe em state.mastered nem dá XP.
-    var ganhaXP = acerto && !state.mastered[key];
+    // Trava de XP/domínio: só na 1ª vez que o item é acertado SEM dica.
+    //  - acerto sem dica e ainda não dominado -> marca dominado (dá XP).
+    //  - erro, repetição, ou acerto COM DICA -> registra a tentativa (p/ taxa de
+    //    acerto real) mas NÃO domina o item nem dá XP global.
+    var ganhaXP = acerto && !comDica && !state.mastered[key];
     if(ganhaXP) state.mastered[key] = true;
-    // SEMPRE grava a tentativa (inclusive erros) para a taxa de acerto real.
-    DB.logEvent(tipo, acerto, key).then(refreshStats).catch(function(){});
+    // SEMPRE grava a tentativa (inclusive erros e acertos com dica) para a taxa.
+    DB.logEvent(tipo, acerto, key, comDica).then(refreshStats).catch(function(){});
   }
   function refreshStats(){
     if(!tracking()) return Promise.resolve();
@@ -1099,7 +1099,7 @@
     if(item.active){
       return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:700 15px \'Hanken Grotesk\';text-align:left;background:var(--accent-bg);color:var(--teal-text);box-shadow:inset 3px 0 0 var(--teal-text);">'+item.icon+'<span>'+lab+'</span></button>';
     }
-    return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" data-hover="background:#EEF4F5;color:var(--teal-text);" data-active="transform:scale(.98);" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:600 15px \'Hanken Grotesk\';text-align:left;background:transparent;color:#41595F;transition:background .18s ease,color .18s ease;">'+item.icon+'<span>'+lab+'</span></button>';
+    return '<button data-action="'+item.action+'" title="'+esc(item.label)+'" data-hover="background:var(--surface-2);color:var(--teal-text);" data-active="transform:scale(.98);" style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;border-radius:12px;cursor:pointer;font:600 15px \'Hanken Grotesk\';text-align:left;background:transparent;color:var(--muted-2);transition:background .18s ease,color .18s ease;">'+item.icon+'<span>'+lab+'</span></button>';
   }
 
   function navItems(){
@@ -1422,7 +1422,7 @@
       streakChip+
       '<button data-action="toggleSound" title="'+(Sound.isOn()?'Som ligado':'Som desligado')+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:'+(Sound.isOn()?'var(--teal-text)':'var(--muted)')+';transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+(Sound.isOn()?ICON.soundOn:ICON.soundOff)+'</button>'+
       pwaInstallBtn()+
-      '<button data-action="openA11y" title="Acessibilidade" aria-label="Abrir painel de acessibilidade" data-hover="border-color:#5BC0BE;" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .18s ease,border-color .18s ease;overflow:hidden;"><img src="a11y-kit/acessibilidade_icone.png?v=1" alt="" width="24" height="24" style="width:24px;height:24px;object-fit:contain;pointer-events:none;display:block;"></button>'+
+      '<button data-action="openA11y" title="Acessibilidade" aria-label="Abrir painel de acessibilidade" data-hover="border-color:#5BC0BE;" data-active="transform:scale(.9);" style="width:40px;height:40px;border-radius:12px;background:#fff;border:1px solid #E6EDEF;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .18s ease,border-color .18s ease;overflow:hidden;"><img src="a11y-kit/acessibilidade_icone.png?v=1" alt="" width="24" height="24" style="width:24px;height:24px;object-fit:contain;pointer-events:none;display:block;"></button>'+
       '<button data-action="toggleTheme" title="Alternar tema" data-hover="border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.9) rotate(-15deg);" style="width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted-2);transition:transform .18s ease,border-color .18s ease,color .18s ease;">'+themeIcon+'</button>'+
       notifBell()+
     '</header>';
@@ -2673,15 +2673,18 @@
     var isCorrect = idx===correctIdx;
     var style = "display:flex;align-items:center;gap:13px;width:100%;padding:14px 16px;border-radius:14px;cursor:pointer;background:var(--surface);border:1.5px solid var(--border);transition:all .15s;";
     var letterStyle = "width:28px;height:28px;border-radius:8px;background:var(--surface-2);color:var(--muted-2);font:800 13px 'Bricolage Grotesque';display:flex;align-items:center;justify-content:center;flex-shrink:0;";
+    var txtCol = 'var(--ink)';     // cor do texto da alternativa (segue o tema)
     var iconHtml = '';
     var hover = ' data-hover="transform:translateX(4px);"';
     if(answered){
       hover = '';
       if(isCorrect){
+        txtCol = '#06694A';        // fundo verde claro fixo -> texto verde escuro
         style = "display:flex;align-items:center;gap:13px;width:100%;padding:14px 16px;border-radius:14px;cursor:default;background:#E6F6EE;border:1.5px solid #06D6A0;animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both;";
         letterStyle = "width:28px;height:28px;border-radius:8px;background:#06915A;color:#fff;font:800 13px 'Bricolage Grotesque';display:flex;align-items:center;justify-content:center;flex-shrink:0;";
         iconHtml = '<span style="color:#06915A;font-weight:800;font-size:17px;">✓</span>';
       } else if(sel){
+        txtCol = '#B4282C';        // fundo vermelho claro fixo -> texto vermelho escuro
         style = "display:flex;align-items:center;gap:13px;width:100%;padding:14px 16px;border-radius:14px;cursor:default;background:#FDECEC;border:1.5px solid #E5484D;";
         letterStyle = "width:28px;height:28px;border-radius:8px;background:#E5484D;color:#fff;font:800 13px 'Bricolage Grotesque';display:flex;align-items:center;justify-content:center;flex-shrink:0;";
         iconHtml = '<span style="color:#E5484D;font-weight:800;font-size:16px;">✕</span>';
@@ -2691,7 +2694,7 @@
     }
     return '<button data-action="'+action+'" data-arg="'+idx+'"'+hover+' style="'+style+'">'+
       '<span style="'+letterStyle+'">'+letter(idx)+'</span>'+
-      '<span style="flex:1;text-align:left;font-size:14.5px;font-weight:600;line-height:1.4;">'+esc(opt)+'</span>'+
+      '<span style="flex:1;text-align:left;font-size:14.5px;font-weight:600;line-height:1.4;color:'+txtCol+';">'+esc(opt)+'</span>'+
       iconHtml+
     '</button>';
   }
@@ -3147,7 +3150,7 @@
         '<div style="font-weight:700;font-size:13.5px;color:var(--accent-tx);margin-bottom:2px;">Você está no modo visitante</div>'+
         '<p style="margin:0;font-size:13px;line-height:1.5;color:var(--body);">Seu histórico fica salvo só neste navegador. Para mantê-lo entre sessões e acessar de qualquer dispositivo, recomendamos criar uma conta.</p>'+
       '</div>'+
-      '<button data-action="guestToRegister" data-hover="background:#0c6a66;" data-active="transform:scale(.98);" style="background:var(--accent-tx);border:none;border-radius:10px;padding:10px 16px;font:700 13px \'Hanken Grotesk\';color:#fff;cursor:pointer;white-space:nowrap;transition:background .18s ease;">Criar conta</button>'+
+      '<button data-action="guestToRegister" data-hover="background:#0c6a66;" data-active="transform:scale(.98);" style="background:var(--accent-solid);border:none;border-radius:10px;padding:10px 16px;font:700 13px \'Hanken Grotesk\';color:#fff;cursor:pointer;white-space:nowrap;transition:background .18s ease;">Criar conta</button>'+
     '</div>';
   }
 
@@ -3523,7 +3526,7 @@
 
   function rankInvite(){
     var btn = DB.ready
-      ? '<button data-action="guestToRegister" data-hover="background:#0c6a66;transform:translateY(-2px);" data-active="transform:scale(.98);" style="margin-top:18px;background:var(--accent-tx);border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:background .18s ease,transform .18s ease;">Criar conta grátis</button>'
+      ? '<button data-action="guestToRegister" data-hover="background:#0c6a66;transform:translateY(-2px);" data-active="transform:scale(.98);" style="margin-top:18px;background:var(--accent-solid);border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:background .18s ease,transform .18s ease;">Criar conta grátis</button>'
       : '<p style="margin:16px 0 0;font-size:13px;color:var(--muted);">Configure o Supabase para ativar contas e o ranking entre usuários.</p>';
     return ''+
     '<section style="max-width:620px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
@@ -3593,7 +3596,7 @@
           '<div style="width:56px;height:56px;border-radius:16px;background:var(--ok-bg);color:var(--ok-tx);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><span style="transform:scale(1.5);display:flex;">'+ICON.knowCheck+'</span></div>'+
           '<h2 style="font:800 19px \'Bricolage Grotesque\';margin:0 0 7px;color:var(--ink);">Feedback enviado!</h2>'+
           '<p style="margin:0 auto 20px;max-width:380px;font-size:14.5px;line-height:1.6;color:var(--muted-2);">Obrigado por ajudar a melhorar o conteúdo. Cada relato é revisado.</p>'+
-          '<button data-action="goFeedback" data-hover="background:#0c6a66;transform:translateY(-2px);" style="background:var(--accent-tx);border:none;border-radius:12px;padding:11px 20px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:background .18s,transform .18s;">Enviar outro</button>'+
+          '<button data-action="goFeedback" data-hover="background:#0c6a66;transform:translateY(-2px);" style="background:var(--accent-solid);border:none;border-radius:12px;padding:11px 20px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:background .18s,transform .18s;">Enviar outro</button>'+
         '</div>'+
       '</section>';
     }

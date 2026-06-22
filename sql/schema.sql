@@ -41,6 +41,9 @@ create table if not exists public.events (
   payload   jsonb,                -- dados extras (ex.: qual questão)
   criado_em timestamptz not null default now()
 );
+-- coluna adicionada depois (idempotente): marca acertos feitos COM DICA, que
+-- contam para a taxa de acerto mas NÃO dominam o item nem dão XP global.
+alter table public.events add column if not exists com_dica boolean not null default false;
 
 -- 4) ROW LEVEL SECURITY ----------------------------------------------
 --    Cada usuário só enxerga/edita as próprias linhas. É isto que

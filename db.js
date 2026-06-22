@@ -95,9 +95,11 @@
     // Itens DOMINADOS = payloads distintos com pelo menos um acerto.
     // Deduplica por payload (item) para que repetir um acerto já dominado
     // não infle dominados/acertos/byType/XP.
-    var mset = {};      // payload -> tipo do 1º acerto
+    var mset = {};      // payload -> tipo do 1º acerto SEM dica
     ev.forEach(function (e) {
-      if (e.acerto === true && e.payload && !mset.hasOwnProperty(e.payload)) {
+      // domínio/XP: só acertos SEM dica contam. Acertos com dica entram na taxa
+      // (abaixo, em attempts), mas não dominam o item nem dão XP global.
+      if (e.acerto === true && !e.com_dica && e.payload && !mset.hasOwnProperty(e.payload)) {
         mset[e.payload] = e.tipo;
       }
     });
@@ -292,21 +294,25 @@
     },
 
     /* ---- métricas ---- */
-    logEvent: function (tipo, acerto, payload) {
+    logEvent: function (tipo, acerto, payload, comDica) {
       if (this.guest) {
         var ev = lsGet(LS_EV, []);
-        ev.push({ tipo: tipo, acerto: (acerto === undefined ? null : acerto), payload: payload || null, criado_em: new Date().toISOString() });
+        ev.push({ tipo: tipo, acerto: (acerto === undefined ? null : acerto), payload: payload || null, com_dica: !!comDica, criado_em: new Date().toISOString() });
         lsSet(LS_EV, ev);
         return Promise.resolve();
       }
       return uid().then(function (id) {
         if (!id) return null;
-        return sb.from('events').insert({
+        var row = {
           user_id: id,
           tipo: tipo,
           acerto: (acerto === undefined ? null : acerto),
           payload: payload || null
-        });
+        };
+        // só envia com_dica quando true; assim inserts normais não dependem da
+        // coluna existir (compatível antes de aplicar a migração do schema).
+        if (comDica) row.com_dica = true;
+        return sb.from('events').insert(row);
       });
     },
     getStats: function () {
@@ -330,7 +336,7 @@
       if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, acertos: 0, ativos: 0, taxa: 0, taxaPorModo: {}, streak: 0, byType: {}, mastered: [] });
       return Promise.all([
         sb.from('progress').select('revisado_em'),
-        sb.from('events').select('acerto,criado_em,tipo,payload')
+        sb.from('events').select('*')
       ]).then(function (res) {
         var prog = res[0].data || [];
         var ev = res[1].data || [];

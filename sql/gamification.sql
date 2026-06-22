@@ -10,7 +10,7 @@
 --
 --  Regras de XP (devem espelhar as do front-end em app.js / db.js):
 --    • Revisar uma ficha (progress)      → +25 XP  (1x por transtorno)
---    • DOMINAR um exercício (1º acerto de um item) → +15 XP (10 base + 5 bônus)
+--    • DOMINAR um exercício (1º acerto de um item, SEM DICA) → +15 XP (10 base + 5 bônus)
 --    • Cada dia ativo na plataforma       → +15 XP  (dia com ≥1 ação)
 --
 --  IMPORTANTE: a tabela `events` agora também registra ERROS (acerto=false)
@@ -52,13 +52,14 @@ begin
     group by p.user_id
   ),
   ev as (
-    -- 15 XP por ITEM DOMINADO (payload distinto com ≥1 acerto na janela).
-    -- Erros (acerto=false) e repetições de itens já dominados NÃO contam.
+    -- 15 XP por ITEM DOMINADO (payload distinto com ≥1 acerto SEM DICA na janela).
+    -- Erros (acerto=false), repetições e acertos COM DICA (com_dica=true) NÃO contam.
     select d.user_id as uid, count(*)::bigint * 15 as xp
     from (
       select e.user_id, e.payload
       from public.events e
       where e.criado_em >= start_ts and e.acerto is true
+        and coalesce(e.com_dica, false) = false
       group by e.user_id, e.payload
     ) d
     group by d.user_id

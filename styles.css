@@ -8,6 +8,7 @@
   --ink:#102A33; --body:#2D4A50; --muted:#8AA0A6; --muted-2:#5A7077;
   --border:#E6EDEF; --track:#E0E9EB; --teal-text:#0E4D64;
   --accent-bg:#F0F8F7; --accent-bd:#CDE9E7; --accent-tx:#0E6A66;
+  --accent-solid:#0E6A66;   /* fundo de botão teal sólido (combina com texto branco nos 2 temas) */
   --warm-bg:#FFF4EE; --warm-bd:#FFD9C2; --warm-tx:#C2410C; --warm-tx2:#E08A5C; --warm-hover:#FFEDE3;
   --ok-bg:#E6F6EE; --ok-bd:#A7E3C4; --ok-tx:#06915A;
 }
@@ -146,6 +147,10 @@ button{font-family:inherit;}
 .caso-result.ok .cr-title{color:#06694A;}
 .caso-result.no .cr-title{color:#B4282C;}
 .cr-sub{font-size:13px;color:var(--muted-2);font-weight:600;margin-top:2px;}
+/* banner do caso tem fundo claro FIXO nos dois temas -> subtítulo escuro fixo
+   (senão no dark herda cinza-claro e some) */
+.caso-result.ok .cr-sub{color:#0A7350;}
+.caso-result.no .cr-sub{color:#9B3034;}
 .caso-explica{margin-top:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
 .ce-lbl{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
 .caso-explica p{margin:0;font-size:14px;line-height:1.6;color:var(--body);}
@@ -248,6 +253,7 @@ button{font-family:inherit;}
 @media (max-width:760px){
   .sidebar{display:none;}
   .topbar-search{display:none !important;}
+  .pwa-pill{display:none !important;}   /* instalar app fica só no menu "Mais" */
   .match-grid{gap:18px;}
   .bottom-nav{
     display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;
@@ -423,7 +429,7 @@ button{font-family:inherit;}
 :root[data-theme="dark"] .fb-error{background:#2A1718;border-color:#4A2A2B;color:#F0A6A6;}
 .fb-note{display:flex;gap:9px;align-items:flex-start;margin-top:12px;font-size:12.5px;line-height:1.5;color:var(--muted-2);}
 .fb-note svg{flex-shrink:0;width:16px;height:16px;margin-top:1px;}
-.fb-submit{margin-top:16px;background:var(--accent-tx);border:none;border-radius:12px;padding:12px 20px;font:700 14px 'Hanken Grotesk';color:#fff;cursor:pointer;transition:background .18s ease,transform .18s ease;}
+.fb-submit{margin-top:16px;background:var(--accent-solid);border:none;border-radius:12px;padding:12px 20px;font:700 14px 'Hanken Grotesk';color:#fff;cursor:pointer;transition:background .18s ease,transform .18s ease;}
 .fb-submit[disabled]{opacity:.6;cursor:default;}
 
 /* flashcards card (tema corrigido) */
