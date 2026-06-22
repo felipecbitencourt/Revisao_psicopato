@@ -313,7 +313,7 @@
     lastViewed:null,
     notifOpen:false, notifNew:[], moreOpen:false,
     devMode:(function(){ try { return localStorage.getItem('psp-dev')==='1'; } catch(e){ return false; } })(),
-    devPrompt:false, devErr:'',
+    devPrompt:false, devErr:'', casoStats:null, casoStatsLoading:false, casoStatsLoaded:false,
     sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
     reduced:(function(){ try { return localStorage.getItem('psp-reduced')==='1'; } catch(e){ return false; } })(),
     dark:false,
@@ -547,6 +547,20 @@
     }).catch(function(){
       state.activityByDay = []; state.activityLoading = false;
       if(state.screen==='perfil' && state.profileTab==='metricas') render();
+    });
+  }
+  // carrega (e cacheia) as estatísticas de acerto dos casos (modo dev).
+  function loadCasoStats(){
+    if(state.casoStatsLoaded || state.casoStatsLoading) return;
+    if(!DB.getCasoStats){ state.casoStats=[]; state.casoStatsLoaded=true; return; }
+    state.casoStatsLoading = true;
+    DB.getCasoStats().then(function(rows){
+      state.casoStats = rows;   // null = RPC não aplicada; [] = sem dados
+      state.casoStatsLoading = false; state.casoStatsLoaded = true;
+      if(state.screen==='dadosTeste') render();
+    }).catch(function(){
+      state.casoStats = null; state.casoStatsLoading = false; state.casoStatsLoaded = true;
+      if(state.screen==='dadosTeste') render();
     });
   }
   actions.pickPreset = function(i){ state.profileDraft.avatar='preset:'+i; state.profileMsg=null; render(); };
@@ -3700,21 +3714,43 @@
     '</div>';
   }
 
+  function casoStatsTable(){
+    if(state.casoStatsLoading) return '<div style="color:var(--muted);font-size:13.5px;padding:18px 0;">Carregando…</div>';
+    var rows = state.casoStats;
+    if(rows===null) return '<div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--muted-2);font-size:13px;line-height:1.55;">Sem dados — verifique se a RPC <b>caso_stats</b> foi aplicada no Supabase (<code>sql/caso_stats.sql</code>) e se há respostas registradas.</div>';
+    if(!rows.length) return '<div style="color:var(--muted);font-size:13.5px;padding:12px 0;">Ainda não há respostas de estudos de caso registradas.</div>';
+    // mapa payload ("caso:id") -> caso
+    var byKey={}; CASOS.forEach(function(c){ if(c.id) byKey['caso:'+c.id]=c; });
+    var head='<div style="display:grid;grid-template-columns:1fr 64px 84px;gap:8px;padding:0 12px 8px;font:800 10.5px \'Hanken Grotesk\';text-transform:uppercase;letter-spacing:.5px;color:var(--muted);">'+
+      '<span>Caso</span><span style="text-align:center;">Usuários</span><span style="text-align:right;">% acerto</span></div>';
+    var body=rows.map(function(r){
+      var c=byKey[r.caso];
+      var nome = c ? (c.patient.name+' · '+esc(c.opts[c.correct])) : esc(String(r.caso).replace(/^caso:/,''));
+      var pct = r.pct_acerto;
+      var barCol = pct>=70 ? '#06915A' : (pct>=40 ? '#C2410C' : '#E5484D');
+      return '<div style="display:grid;grid-template-columns:1fr 64px 84px;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 12px;">'+
+        '<div style="min-width:0;"><div style="font-weight:700;font-size:13.5px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+nome+'</div>'+
+          '<div style="font-size:11.5px;color:var(--muted);margin-top:1px;">'+r.acertos+' acertos · '+r.erros+' erros'+(r.com_dica>0?(' · '+r.com_dica+' c/ dica'):'')+'</div></div>'+
+        '<div style="text-align:center;font-weight:700;font-size:14px;color:var(--muted-2);">'+r.usuarios+'</div>'+
+        '<div style="text-align:right;font:800 15px \'Bricolage Grotesque\';color:'+barCol+';">'+pct+'%</div>'+
+      '</div>';
+    }).join('');
+    return head+'<div style="display:flex;flex-direction:column;gap:8px;">'+body+'</div>';
+  }
+
   function screenDadosTeste(){
     if(!state.devMode) return screenHome();
+    loadCasoStats();
     return ''+
     '<section style="max-width:760px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">'+
         '<span style="font:800 10.5px \'Hanken Grotesk\';text-transform:uppercase;letter-spacing:.6px;color:#fff;background:#0E4D64;border-radius:7px;padding:4px 9px;">DEV</span>'+
         '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Dados para teste</h1>'+
       '</div>'+
-      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:600px;">Área do modo desenvolvedor — placeholder. As informações extras de teste entram aqui.</p>'+
-      '<div style="background:var(--surface);border:1px dashed var(--border);border-radius:16px;padding:28px;text-align:center;color:var(--muted);">'+
-        '<div style="font-size:30px;margin-bottom:10px;">🧪</div>'+
-        '<div style="font:700 15px \'Hanken Grotesk\';color:var(--muted-2);">Em construção</div>'+
-        '<div style="font-size:13px;margin-top:6px;">Conteúdo de teste será adicionado aqui.</div>'+
-      '</div>'+
-      '<div style="margin-top:22px;">'+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:15px;max-width:600px;">Métricas internas. Os percentuais consideram a <b>1ª tentativa de cada usuário</b> em cada caso.</p>'+
+      '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:4px 0 12px;">Acerto por estudo de caso</div>'+
+      casoStatsTable()+
+      '<div style="margin-top:26px;">'+
         '<button data-action="exitDevMode" data-hover="border-color:#E5484D;color:#E5484D;" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 18px;font:700 13.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .18s ease;">Sair do modo desenvolvedor</button>'+
       '</div>'+
     '</section>';

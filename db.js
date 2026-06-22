@@ -396,6 +396,16 @@
         .catch(function () { return null; });
     },
 
+    // estatísticas dos estudos de caso (modo dev): % de acerto por caso entre
+    // TODOS os usuários (1ª tentativa de cada um). Requer caso_stats.sql aplicado.
+    // null = sem Supabase ou RPC não aplicada; [] = aplicada mas sem dados.
+    getCasoStats: function () {
+      if (!sb) return Promise.resolve(null);
+      return sb.rpc('caso_stats')
+        .then(function (r) { return r.error ? null : (r.data || []); })
+        .catch(function () { return null; });
+    },
+
     /* ---- feedback ---- */
     // Envia um feedback. Logado -> user_id próprio; visitante -> user_id nulo
     // (anônimo). Requer o feedback.sql aplicado no Supabase.
