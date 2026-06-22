@@ -404,7 +404,7 @@
     toggleTheme:   function(){ toggleTheme(); },
     setReduced:    function(v){ var r=(v===1||v==='1'); if(r!==state.reduced){ state.reduced=r; try{ localStorage.setItem('psp-reduced', r?'1':'0'); }catch(e){} render(); } },
     openA11y:      function(){ if(window.A11Y && window.A11Y.open) window.A11Y.open(); },
-    installPwa:    function(){ var p=window.__pwaPrompt; if(p){ state.moreOpen=false; p.prompt(); if(p.userChoice){ p.userChoice.then(function(){ window.__pwaPrompt=null; render(); }); } else { render(); } } else { state.pwaHint=true; render(); } },
+    installPwa:    function(){ var p=window.__pwaPrompt; if(!p) return; state.moreOpen=false; p.prompt(); if(p.userChoice){ p.userChoice.then(function(){ window.__pwaPrompt=null; render(); }); } else { render(); } },
     toggleSound:   function(){ Sound.toggle(); render(); },
     openCat:       function(i){ setState({screen:'categoria', activeCat:i}); scrollTop(); },
     openDisorder:  function(i){ setState({screen:'ficha', activeDisorder:i, fichaOpen:initOpen(state.activeCat, i)}); recordRevised(); scrollTop(); },
@@ -1483,15 +1483,10 @@
     var sec = navItems().filter(function(i){ return !i.primary; }).map(function(it){
       return '<button data-action="'+it.action+'" class="ms-item'+(it.active?' on':'')+'">'+it.icon+'<span>'+trLabel(it)+'</span></button>';
     }).join('');
-    // instalar como app (PWA) — sempre disponível no mobile, exceto quando já
-    // está rodando como app instalado. Se o prompt nativo não existir (ex.: iOS
-    // Safari), mostra instruções ao tocar.
-    var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
-    var install = standalone ? '' :
-      '<div class="ms-sep"></div><button data-action="installPwa" class="ms-item ms-install">'+ICON.download+'<span>Instalar app na tela inicial</span></button>'+
-      ((state.pwaHint && !window.__pwaPrompt)
-        ? '<div style="margin:6px 4px 0;padding:10px 12px;border-radius:10px;background:var(--surface-2);color:var(--muted-2);font-size:12.5px;line-height:1.5;">No navegador, abra o menu (<b>⋮</b> ou <b>Compartilhar</b>) e escolha <b>“Instalar app”</b> ou <b>“Adicionar à Tela de Início”</b>.</div>'
-        : '');
+    // instalar como app (PWA) — só quando o navegador permite instalar
+    var install = window.__pwaPrompt
+      ? '<div class="ms-sep"></div><button data-action="installPwa" class="ms-item ms-install">'+ICON.download+'<span>Instalar app na tela inicial</span></button>'
+      : '';
     var account = '';
     if(DB.ready && state.auth.user && !state.auth.guest){
       account = '<div class="ms-sep"></div>'+
