@@ -223,6 +223,7 @@
     statBook:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E8A86" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M4 9h16"/></svg>',
     statCheck:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4361EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3 8-8"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
     statShield:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06915A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8 8 10 4.6-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg>',
+    statTarget:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>',
     list:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>',
     trophy:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
     bookOpen:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
@@ -261,6 +262,7 @@
     'Fatores de risco e prognóstico': SI('<path d="M12 2 4 6v6c0 5 3.4 8 8 10 4.6-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/>'),
     'Questões diagnósticas relativas à cultura': SI('<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>'),
     'Questões diagnósticas relativas ao gênero': SI('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
+    'Questões diagnósticas relativas ao sexo e ao gênero': SI('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
     'Risco de suicídio': SI('<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'),
     'Consequências funcionais': SI('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>'),
     'Diagnóstico diferencial': SI('<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/>'),
@@ -302,14 +304,16 @@
     screen:'home', activeCat:4, activeDisorder:0, fichaOpen:{},
     deckCat:4, deckAll:null, fcIndex:0, fcFlipped:false,
     quizCat:4, quizKind:'nome', quizSet:null, quizScore:0, quizDone:false,
-    quizIndex:0, quizSelected:null, quizAnswered:false,
+    quizIndex:0, quizSelected:null, quizAnswered:false, quizHint:false,
     classifyPhase:0, classifyBoard:null, classifyPlaced:{}, classifyLocked:{}, classifySel:null,
     classifyChecked:false, classifyPhaseComplete:false, classifyScore:0, classifyTotal:0, classifyDone:false,
     matchLeftSel:null, matches:{},
     casoSelected:null, casoAnswered:false, casoIndex:0, casoScore:0, casoStreak:0,
-    casoHints:(function(){ try { return localStorage.getItem('psp-caso-hints')!=='0'; } catch(e){ return true; } })(),
+    casoHints:(function(){ try { return localStorage.getItem('psp-caso-hints')==='1'; } catch(e){ return false; } })(),
     lastViewed:null,
     notifOpen:false, notifNew:[], moreOpen:false,
+    devMode:(function(){ try { return localStorage.getItem('psp-dev')==='1'; } catch(e){ return false; } })(),
+    devPrompt:false, devErr:'',
     sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
     reduced:(function(){ try { return localStorage.getItem('psp-reduced')==='1'; } catch(e){ return false; } })(),
     dark:false,
@@ -317,7 +321,8 @@
     progress:{}, mastered:{}, stats:null, pendingScroll:null,
     rankPeriod:'week', leaderboard:null, rankLoading:false, rankError:false,
     feedback:{tipo:'erro', transtornoId:'', transtornoNome:'', draft:'', sending:false, sent:false, error:''},
-    profileDraft:{}, profileMsg:null, profileSaving:false, profileUploading:false,
+    profileDraft:{anonimo:false}, profileMsg:null, profileSaving:false, profileUploading:false,
+    profileTab:'conta', activityByDay:null, activityLoading:false,
   };
 
   // avatares predefinidos (emoji + fundo). Guardado no perfil como "preset:N".
@@ -357,6 +362,8 @@
     quizCritRandom:function(){ state.quizKind='criterio'; state.quizCat=-1; startQuiz(buildQuizSet('criterio', -1)); },
     quizFatosDecks: function(){ state.quizKind='fatos';   go('quizDecks'); },
     quizFatosRandom:function(){ state.quizKind='fatos';    state.quizCat=-1; startQuiz(buildQuizSet('fatos', -1)); },
+    quizMistoDecks: function(){ state.quizKind='misto';   go('quizDecks'); },
+    quizMistoRandom:function(){ state.quizKind='misto';    state.quizCat=-1; startQuiz(buildQuizSet('misto', -1)); },
     quizRandom:    function(){ state.quizKind='nome';     state.quizCat=-1; startQuiz(buildQuizSet('nome', -1)); },
     quizRestart:   function(){ startQuiz(buildQuizSet(state.quizKind, state.quizCat)); },
     goIndice:      function(){ go('indice'); },
@@ -387,6 +394,11 @@
       }).catch(function(){ f.sending=false; f.error='Erro de conexão. Tente de novo.'; render(); });
     },
     goSobre:       function(){ go('sobre'); },
+    goDadosTeste:  function(){ if(state.devMode) go('dadosTeste'); },
+    openDevPrompt: function(){ if(state.devMode){ go('dadosTeste'); return; } state.devPrompt=true; state.devErr=''; render(); setTimeout(function(){ var el=document.getElementById('dev-pass'); if(el) el.focus(); }, 30); },
+    closeDevPrompt:function(){ state.devPrompt=false; state.devErr=''; render(); },
+    submitDevPass: function(){ var v=rawVal('dev-pass'); if(v==='190603'){ state.devMode=true; state.devPrompt=false; state.devErr=''; try{ localStorage.setItem('psp-dev','1'); }catch(e){} render(); } else { state.devErr='Senha incorreta.'; render(); setTimeout(function(){ var el=document.getElementById('dev-pass'); if(el){ el.value=''; el.focus(); } }, 20); } },
+    exitDevMode:   function(){ state.devMode=false; state.devPrompt=false; try{ localStorage.removeItem('psp-dev'); }catch(e){} if(state.screen==='dadosTeste') state.screen='home'; render(); },
     openRef:       function(arg){ var p=String(arg).split(':'); var ci=+p[0], di=+p[1]; setState({screen:'ficha', activeCat:ci, activeDisorder:di, fichaOpen:initOpen(ci,di)}); recordRevised(); scrollTop(); },
     goFlashcards:  function(){ state.deckCat=state.activeCat; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     toggleTheme:   function(){ toggleTheme(); },
@@ -407,7 +419,8 @@
     fcKnow:  function(){ var d=currentDeck(); if(!d.length) return; var card=d[state.fcIndex]; logExercise('flashcard', true, card&&card.front); setState({fcIndex:(state.fcIndex+1)%d.length, fcFlipped:false}); },
     // quiz
     quizSelect: function(i){ if(state.quizAnswered || !state.quizSet) return; var q=state.quizSet[state.quizIndex]; var ok=(i===q.correct); if(ok) state.quizScore++; setState({quizSelected:i, quizAnswered:true}); logExercise('quiz', ok, q.opts[q.correct]); },
-    quizNext:   function(){ if(!state.quizSet) return; if(state.quizIndex<state.quizSet.length-1) setState({quizIndex:state.quizIndex+1, quizSelected:null, quizAnswered:false}); else { state.quizDone=true; setState({}); } },
+    quizNext:   function(){ if(!state.quizSet) return; if(state.quizIndex<state.quizSet.length-1) setState({quizIndex:state.quizIndex+1, quizSelected:null, quizAnswered:false, quizHint:false}); else { state.quizDone=true; setState({}); } },
+    quizHintShow: function(){ state.quizHint=true; render(); },
     // classificar (arrastar/tocar transtorno -> categoria)
     goClassify:     function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
     classifyPick:   function(id){ if(classifyJustDropped) return; id=Number(id); if(state.classifyLocked[id]) return; state.classifySel = (state.classifySel===id ? null : id); setState({}); },
@@ -433,7 +446,7 @@
     classifyNext:   function(){ if(state.classifyPhase>=CLASSIFY_PHASES.length-1){ state.classifyDone=true; setState({}); } else { startPhase(state.classifyPhase+1); } },
     classifyRestart:function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
     // caso
-    casoSelect: function(i){ if(state.casoAnswered) return; var ca=currentCaso(); var ok=(i===ca.correct); state.casoScore+= ok?10:0; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true}); logExercise('caso', ok, ca.id || (ca.patient&&ca.patient.name) || 'caso'); },
+    casoSelect: function(i){ if(state.casoAnswered) return; var ca=currentCaso(); var ok=(i===ca.correct); var pts= ok ? (state.casoHints?5:10) : 0; state.casoScore+= pts; state.casoStreak= ok?state.casoStreak+1:0; setState({casoSelected:i, casoAnswered:true, casoGain:pts}); logExercise('caso', ok, ca.id || (ca.patient&&ca.patient.name) || 'caso'); },
     casoNext:   function(){ setState({casoIndex:state.casoIndex+1, casoSelected:null, casoAnswered:false}); scrollTop(); },
     setCasoHints: function(v){ var on=(v===1||v==='1'); if(on!==state.casoHints){ state.casoHints=on; try{ localStorage.setItem('psp-caso-hints', on?'1':'0'); }catch(e){} render(); } },
   };
@@ -506,10 +519,36 @@
   /* ---- perfil (apelido + avatar) ---- */
   actions.goPerfil = function(){
     var p = state.auth.profile || {};
-    state.profileDraft = { apelido:p.apelido||'', nome:p.nome||'', curso:p.curso||'', semestre:p.semestre||'', instituicao:p.instituicao||'', avatar:p.avatar||'' };
+    state.profileDraft = { apelido:p.apelido||'', nome:p.nome||'', curso:p.curso||'', semestre:p.semestre||'', instituicao:p.instituicao||'', avatar:p.avatar||'', anonimo:!!p.anonimo };
     state.profileMsg=null; state.profileSaving=false; state.profileUploading=false;
+    state.profileTab='conta';
     setState({screen:'perfil'}); scrollTop();
   };
+  // alterna entre as abas "Conta" e "Métricas" do perfil (client-side).
+  actions.setProfileTab = function(tab){
+    tab = (tab==='metricas') ? 'metricas' : 'conta';
+    if(state.profileTab===tab){ return; }
+    state.profileTab = tab;
+    if(tab==='metricas'){ loadActivityByDay(); }   // carrega o gráfico sob demanda
+    render(); scrollTop();
+  };
+  // carrega (e cacheia em state) a série de atividade por dia p/ o gráfico.
+  function loadActivityByDay(){
+    if(state.activityByDay || state.activityLoading) return;   // já carregado / em curso
+    if(!tracking() || !DB.getActivityByDay){
+      state.activityByDay = [];   // demo/sem backend: gráfico vazio gracioso
+      return;
+    }
+    state.activityLoading = true;
+    DB.getActivityByDay(70).then(function(rows){
+      state.activityByDay = rows || [];
+      state.activityLoading = false;
+      if(state.screen==='perfil' && state.profileTab==='metricas') render();
+    }).catch(function(){
+      state.activityByDay = []; state.activityLoading = false;
+      if(state.screen==='perfil' && state.profileTab==='metricas') render();
+    });
+  }
   actions.pickPreset = function(i){ state.profileDraft.avatar='preset:'+i; state.profileMsg=null; render(); };
   actions.useGooglePhoto = function(){ var g=googlePhoto(); if(g){ state.profileDraft.avatar=g; state.profileMsg=null; render(); } };
   actions.removeAvatar = function(){ state.profileDraft.avatar=''; render(); };
@@ -531,12 +570,13 @@
     var d = state.profileDraft || {};
     d.apelido=rawVal('pf-apelido').trim(); d.nome=rawVal('pf-nome').trim();
     d.curso=rawVal('pf-curso').trim(); d.semestre=rawVal('pf-sem').trim(); d.instituicao=rawVal('pf-inst').trim();
+    var anonEl=document.getElementById('pf-anon'); d.anonimo = anonEl ? !!anonEl.checked : !!d.anonimo;
     if(!DB.updateProfile){ state.profileMsg={type:'err',text:'Salvar indisponível (faça login).'}; render(); return; }
     state.profileSaving=true; state.profileMsg=null; render();
-    DB.updateProfile({apelido:d.apelido, nome:d.nome, curso:d.curso, semestre:d.semestre, instituicao:d.instituicao, avatar:d.avatar}).then(function(res){
+    DB.updateProfile({apelido:d.apelido, nome:d.nome, curso:d.curso, semestre:d.semestre, instituicao:d.instituicao, avatar:d.avatar, anonimo:d.anonimo}).then(function(res){
       state.profileSaving=false;
       if(res && res.error){ state.profileMsg={type:'err',text:'Não foi possível salvar. Tente novamente.'}; render(); return; }
-      state.auth.profile = Object.assign({}, state.auth.profile, (res&&res.data) || {apelido:d.apelido,nome:d.nome,curso:d.curso,semestre:d.semestre,instituicao:d.instituicao,avatar:d.avatar});
+      state.auth.profile = Object.assign({}, state.auth.profile, (res&&res.data) || {apelido:d.apelido,nome:d.nome,curso:d.curso,semestre:d.semestre,instituicao:d.instituicao,avatar:d.avatar,anonimo:d.anonimo});
       state.profileMsg={type:'ok',text:'Perfil atualizado!'};
       render();
     }).catch(function(){ state.profileSaving=false; state.profileMsg={type:'err',text:'Erro ao salvar o perfil.'}; render(); });
@@ -812,10 +852,14 @@
     if(tipo==='flashcard'){ if(acerto) Sound.correct(); }
     else { acerto ? Sound.correct() : Sound.wrong(); }
     if(!tracking()) return;
-    if(!acerto) return;                       // erro não dá XP
     var key = masteryKey(tipo, item);
-    if(state.mastered[key]) return;           // já dominado -> repetir não dá XP
-    state.mastered[key] = true;
+    // Trava de XP/domínio: só na 1ª vez que o item é acertado.
+    //  - acerto===true e ainda não dominado -> marca dominado (dá XP).
+    //  - erro ou repetição -> registra a tentativa (p/ taxa de acerto real)
+    //    mas NÃO mexe em state.mastered nem dá XP.
+    var ganhaXP = acerto && !state.mastered[key];
+    if(ganhaXP) state.mastered[key] = true;
+    // SEMPRE grava a tentativa (inclusive erros) para a taxa de acerto real.
     DB.logEvent(tipo, acerto, key).then(refreshStats).catch(function(){});
   }
   function refreshStats(){
@@ -1068,7 +1112,9 @@
       {label:'DSM-5-TR',  icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm', keep:true},
       {label:'Feedback',  icon:ICON.message, action:'goFeedback', active:s.screen==='feedback'},
       {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre', tr:'sobre'},
-    ];
+    ].concat(s.devMode ? [
+      {label:'Dados para teste', icon:ICON.about, action:'goDadosTeste', active:s.screen==='dadosTeste'}
+    ] : []);
   }
 
   // --- carrossel de métricas na sidebar (troca a cada 15s) ---
@@ -1549,6 +1595,7 @@
         statCard('animation:ringPulse 2.6s ease-out infinite;', '#FFEDE3', ICON.flameOrange, String(st.streak), 'dias de streak')+
         statCard('', '#E3F3F2', ICON.statBook, String(st.revisados), 'transtornos revisados')+
         statCard('', '#E8ECFB', ICON.statCheck, String(st.exercicios), 'exercícios dominados')+
+        statCard('', '#FFEDE3', ICON.statTarget, (st.taxa||0)+'%', 'taxa de acerto')+
         statCard('', '#E6F6EE', ICON.statShield, (tracking()?dominioPct():st.taxa)+'%', 'do conteúdo dominado')+
       '</div>'+
 
@@ -2003,6 +2050,7 @@
       codesInner = '<div class="rail-label">Código</div><p style="margin:7px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted-2);">'+codeNote+'</p>';
     } else if(codes.length>1){
       codesInner = '<div class="rail-label">Códigos por '+(codes.length>2?'tipo':'variante')+'</div>'+
+        '<p style="margin:7px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted-2);">O código a seguir varia conforme o tipo/variante:</p>'+
         codes.map(function(c){
           return (c.label?'<div class="codes-var-label">'+esc(c.label)+'</div>':'')+
             '<div class="codes-table">'+codeRow(noTr('cid10','CID-10'),c.cid, 'CID '+c.cid)+codeRow('DSM-5-TR', c.dsm, 'DSM '+c.dsm)+'</div>';
@@ -2289,8 +2337,32 @@
     });
   }
 
+  /* questionário COMBINADO: junta os três tipos (resumo + critério + fatos) num
+     só set. Gera as questões de cada tipo e intercala em rodízio (balanceado por
+     tipo), sem repetir o mesmo transtorno, até QUIZ_LEN. Cada questão mantém o
+     shape do seu tipo, então a screenQuiz já a renderiza corretamente. */
+  function buildMixedQuiz(ci){
+    var pools = [
+      buildQuiz(ci===-1 ? allCards() : deckCards(ci)),
+      buildCritQuiz(ci),
+      buildFactQuiz(ci)
+    ].map(shuffle).filter(function(p){ return p.length; });
+    if(!pools.length) return [];
+    var out=[], seen={}, guard=0;
+    while(out.length < QUIZ_LEN && pools.some(function(p){ return p.length; }) && guard++ < 500){
+      var p = pools[guard % pools.length];
+      if(!p.length) continue;
+      var q = p.shift();
+      var key = q.ci+':'+q.di;
+      if(seen[key]) continue;          // evita o mesmo transtorno duas vezes
+      seen[key]=1; out.push(q);
+    }
+    return shuffle(out);
+  }
+
   // dispatcher: monta o set conforme o tipo escolhido (com fallback)
   function buildQuizSet(kind, ci){
+    if(kind==='misto'){ var m=buildMixedQuiz(ci); if(m.length) return m; }
     if(kind==='criterio'){ var s=buildCritQuiz(ci); if(s.length) return s; }
     if(kind==='fatos'){ var fz=buildFactQuiz(ci); if(fz.length) return fz; }
     return buildQuiz(ci===-1 ? allCards() : deckCards(ci));
@@ -2335,12 +2407,30 @@
       deckStatsHtml(d, A)+
     '</button>';
   }
+  // nº exato de questões disponíveis num deck conforme o tipo de quiz atual
+  // (resumo/critério/fatos/combinado). O combinado deduplica por transtorno,
+  // então conta a UNIÃO de transtornos cobertos pelos três tipos.
+  function quizDeckCount(ci){
+    var kind = state.quizKind;
+    if(kind==='criterio') return critCards(ci).length;
+    if(kind==='fatos')    return factCards(ci).length;
+    if(kind==='misto'){
+      var seen={};
+      deckCards(ci).forEach(function(x){ seen[x.ci+':'+x.di]=1; });
+      critCards(ci).forEach(function(x){ seen[x.ci+':'+x.di]=1; });
+      factCards(ci).forEach(function(x){ seen[x.ci+':'+x.di]=1; });
+      return Object.keys(seen).length;
+    }
+    return deckCards(ci).length;   // 'nome' (resumo)
+  }
   function deckGrid(action, unit, mode){
     mode = mode || {};
     var feitas = activityCountsByCat(mode.tipo);
     return CATS.map(function(c, ci){
-      var count = deckCards(ci).length, total = state.reduced ? visibleItems(c).length : c.items.length;
+      var count = (mode.variant==='quiz') ? quizDeckCount(ci) : deckCards(ci).length,
+          total = state.reduced ? visibleItems(c).length : c.items.length;
       if(state.reduced && total===0) return '';        // categoria residual: sem deck
+      if(mode.variant==='quiz' && count===0) return ''; // sem questões deste tipo: oculta
       var rev = Math.min(total, tracking() ? catRevisedCount(ci) : Math.round(total*(c.prog||0)));
       var n = unit==='questões' ? Math.min(QUIZ_LEN, count) : count;
       var d = { c:c, ci:ci, action:action, n:n, total:total, rev:rev,
@@ -2351,7 +2441,7 @@
 
   function startQuiz(set){
     state.quizSet = set; state.quizScore = 0; state.quizDone = false;
-    setState({screen:'quiz', quizIndex:0, quizSelected:null, quizAnswered:false});
+    setState({screen:'quiz', quizIndex:0, quizSelected:null, quizAnswered:false, quizHint:false});
     scrollTop();
   }
 
@@ -2484,7 +2574,12 @@
       backBtn('goExercicios','Exercícios')+
       '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário</h1>'+
       '<p style="margin:0 0 22px;color:var(--muted-2);font-size:15px;max-width:560px;">Escolha o tipo de questão e como praticar.</p>'+
-      '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:4px 0 10px;">Pelo resumo clínico</div>'+
+      '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:4px 0 10px;">Combinado (resumo + critérios + epidemiologia)</div>'+
+      '<div class="ex-grid">'+
+        modeOption('quizMistoDecks', icoCat, '#0E4D64', '#E3F0F2', 'Por categoria', 'Mistura os três tipos de questão (resumo, critério e perfil epidemiológico) — um capítulo por vez.')+
+        modeOption('quizMistoRandom', icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', QUIZ_LEN+' questões dos três tipos, sorteadas de todas as categorias.')+
+      '</div>'+
+      '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Pelo resumo clínico</div>'+
       '<div class="ex-grid">'+
         modeOption('quizNomeDecks', icoCat, '#4361EE', '#E8ECFB', 'Por categoria', 'Leia o resumo (com o nome oculto) e identifique o transtorno — um capítulo por vez.')+
         modeOption('quizNomeRandom', icoRnd, '#0E6A66', '#F0F8F7', 'Geral (aleatório)', QUIZ_LEN+' resumos sorteados de todas as categorias.')+
@@ -2506,7 +2601,7 @@
     return ''+
     '<section style="max-width:1080px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       backBtn('goQuizMode','Questionário')+
-      '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário · '+(state.quizKind==='criterio'?'por critério':state.quizKind==='fatos'?'por fatos':'pelo resumo')+'</h1>'+
+      '<h1 style="font:800 26px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Questionário · '+(state.quizKind==='misto'?'combinado':state.quizKind==='criterio'?'por critério':state.quizKind==='fatos'?'por fatos':'pelo resumo')+'</h1>'+
       '<p style="margin:0 0 24px;color:var(--muted-2);font-size:14.5px;max-width:600px;">Escolha um capítulo do DSM-5-TR para responder.</p>'+
       '<div class="deck-grid">'+deckGrid('openQuizDeck','questões',{variant:'quiz',tipo:'quiz'})+'</div>'+
     '</section>';
@@ -2633,8 +2728,8 @@
     }
 
     var qz = set[state.quizIndex];
-    var ccolor = qz.color || '#0E4D64';
-    var clabel = geral ? (qz.cat||'Aleatório') : (qz.cat||'');
+    var ccolor = geral ? '#4361EE' : (qz.color || '#0E4D64');
+    var clabel = geral ? 'Aleatório' : (qz.cat||'');
     var pct = Math.round((state.quizIndex+1)/set.length*100);
     var bar = '<div style="width:'+pct+'%;height:100%;background:linear-gradient(90deg,#0E4D64,#5BC0BE);border-radius:99px;transition:width .5s cubic-bezier(.2,.7,.3,1);"></div>';
     var opts = qz.opts.map(function(o,i){ return mcOption(o, i, state.quizAnswered, state.quizSelected, qz.correct, 'quizSelect'); }).join('');
@@ -2653,7 +2748,7 @@
     '<section style="max-width:680px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       backBtn(backAction,'Questionário')+
       '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px;">'+
-        '<div><div style="font-size:12.5px;font-weight:700;color:'+ccolor+';margin-bottom:2px;transition:color .3s ease;">'+esc(clabel)+(geral?' · aleatório':'')+'</div><h1 style="font:800 22px \'Bricolage Grotesque\';margin:0;">Questionário</h1></div>'+
+        '<div><div style="font-size:12.5px;font-weight:700;color:'+ccolor+';margin-bottom:2px;transition:color .3s ease;">'+esc(clabel)+'</div><h1 style="font:800 22px \'Bricolage Grotesque\';margin:0;">Questionário</h1></div>'+
         '<span style="font-weight:700;font-size:14px;color:var(--muted);white-space:nowrap;">'+(state.quizIndex+1)+' / '+set.length+'</span>'+
       '</div>'+
       '<div style="height:6px;background:var(--track);border-radius:99px;overflow:hidden;margin-bottom:24px;">'+bar+'</div>'+
@@ -2663,6 +2758,9 @@
         (qz.factsList
           ? '<div class="quiz-facts">'+qz.factsList.map(function(r){ return '<div class="qf-row"><span class="qf-lbl">'+esc(r.label)+'</span><span class="qf-val">'+esc(r.value)+'</span></div>'; }).join('')+'</div>'
           : '<div style="font:600 18px \'Bricolage Grotesque\';line-height:1.45;margin-bottom:22px;text-wrap:pretty;color:var(--body);">'+esc(qz.q)+'</div>')+
+        (geral ? (state.quizHint
+          ? '<div style="margin:0 0 16px;display:inline-flex;align-items:center;gap:7px;font:700 13px \'Hanken Grotesk\';color:'+(qz.color||'#0E4D64')+';background:'+(qz.color||'#0E4D64')+'14;border:1px solid '+(qz.color||'#0E4D64')+'33;border-radius:9px;padding:7px 12px;">💡 Grupo: '+esc(qz.cat||'—')+'</div>'
+          : '<button data-action="quizHintShow" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="margin:0 0 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:7px 12px;font:700 13px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .15s ease;">💡 Ver dica (grupo do transtorno)</button>') : '')+
         '<div style="display:flex;flex-direction:column;gap:11px;">'+opts+'</div>'+
         feedback+
       '</div>'+
@@ -2770,7 +2868,7 @@
     var feedback = '';
     if(answered){
       var banner = correct
-        ? '<div class="caso-result ok"><div class="cr-emoji">🎯</div><div><div class="cr-title">Diagnóstico correto!</div><div class="cr-sub">+10 pontos'+(state.casoStreak>1?' · sequência de '+state.casoStreak+' 🔥':'')+'</div></div></div>'
+        ? '<div class="caso-result ok"><div class="cr-emoji">🎯</div><div><div class="cr-title">Diagnóstico correto!</div><div class="cr-sub">+'+(state.casoGain!=null?state.casoGain:10)+' pontos'+(state.casoHints?' · com dicas':'')+(state.casoStreak>1?' · sequência de '+state.casoStreak+' 🔥':'')+'</div></div></div>'
         : '<div class="caso-result no"><div class="cr-emoji">🧠</div><div><div class="cr-title">Não foi dessa vez</div><div class="cr-sub">A resposta correta era <b>'+esc(CASO.opts[CASO.correct])+'</b></div></div></div>';
       feedback = banner+
         '<div class="caso-explica"><div class="ce-lbl">Por quê?</div><p>'+esc(CASO.explicacao)+'</p></div>'+
@@ -2885,6 +2983,17 @@
       inp+
     '</label>';
   }
+  function authSelect(id,label,options){
+    var preset = matchSemester((state.auth.form && state.auth.form[id]) || '');
+    var opts = '<option value=""'+(preset?'':' selected')+'>Selecione…</option>' +
+      options.map(function(o){
+        return '<option value="'+esc(o.v)+'"'+(o.v===preset?' selected':'')+'>'+esc(o.t)+'</option>';
+      }).join('');
+    return '<label style="display:block;margin-bottom:14px;">'+
+      '<span style="display:block;font-size:12.5px;font-weight:700;color:var(--muted-2);margin-bottom:6px;">'+esc(label)+'</span>'+
+      '<select id="'+id+'" class="auth-input pf-select" style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';outline:none;">'+opts+'</select>'+
+    '</label>';
+  }
   function authSubmit(action,label,busy){
     return '<button data-action="'+action+'" '+(busy?'':'data-hover="background:#13647F;" data-active="transform:scale(.98);" ')+'style="width:100%;margin-top:6px;background:'+(busy?'#3A6B7C':'#0E4D64')+';border:none;border-radius:12px;padding:13px;font:700 14.5px \'Hanken Grotesk\';color:#fff;cursor:'+(busy?'default':'pointer')+';transition:all .18s ease;">'+esc(label)+'</button>';
   }
@@ -2934,7 +3043,7 @@
           authInput('reg-inst','text','Ex.: Universidade Federal…','Instituição / Universidade (opcional)')+
           '<div style="display:flex;gap:12px;">'+
             '<div style="flex:1;">'+authInput('reg-curso','text','Psicologia','Curso (opcional)')+'</div>'+
-            '<div style="flex:1;">'+authInput('reg-sem','text','6º sem','Semestre (opcional)')+'</div>'+
+            '<div style="flex:1;">'+authSelect('reg-sem','Semestre (opcional)',SEM_OPTIONS)+'</div>'+
           '</div>'+
           authInput('reg-email','email','voce@email.com','E-mail')+
           authInput('reg-pass','password','mínimo 6 caracteres','Senha')+
@@ -3083,7 +3192,58 @@
       '<input id="'+id+'" class="pf-input" type="text" value="'+esc(value)+'" placeholder="'+esc(ph)+'" style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';outline:none;">'+
     '</label>';
   }
+  // Opções do dropdown de semestre: value = rótulo curto salvo ("6º sem"), texto = rótulo longo exibido.
+  var SEM_OPTIONS = (function(){
+    var arr = [];
+    for(var i=1;i<=12;i++){ arr.push({v:i+'º sem', t:i+'º semestre'}); }
+    arr.push({v:'Concluído', t:'Concluído'});
+    return arr;
+  })();
+  // Normaliza qualquer valor salvo ("6", "6º", "6º sem", "6º semestre", "Concluído") para o value curto da lista.
+  function matchSemester(value){
+    var v = (value==null?'':String(value)).trim();
+    if(!v) return '';
+    var low = v.toLowerCase();
+    if(low.indexOf('conclu')===0) return 'Concluído';
+    var m = low.match(/(\d+)/);
+    if(m){
+      var n = m[1];
+      var hit = SEM_OPTIONS.filter(function(o){ var om=o.v.match(/(\d+)/); return om && om[1]===n; })[0];
+      if(hit) return hit.v;
+    }
+    for(var i=0;i<SEM_OPTIONS.length;i++){ if(SEM_OPTIONS[i].v.toLowerCase()===low) return SEM_OPTIONS[i].v; }
+    return '';
+  }
+  function profileSelect(id,label,value,options){
+    var sel = matchSemester(value);
+    var opts = '<option value=""'+(sel?'':' selected')+'>Selecione…</option>' +
+      options.map(function(o){
+        return '<option value="'+esc(o.v)+'"'+(o.v===sel?' selected':'')+'>'+esc(o.t)+'</option>';
+      }).join('');
+    return '<label style="display:block;margin-bottom:14px;">'+
+      '<span style="display:block;font-size:12.5px;font-weight:700;color:var(--muted-2);margin-bottom:6px;">'+esc(label)+'</span>'+
+      '<select id="'+id+'" class="pf-input pf-select" style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--ink);font:500 14.5px \'Hanken Grotesk\';outline:none;">'+opts+'</select>'+
+    '</label>';
+  }
+  // abas do perfil (Conta | Métricas)
+  function perfilTabs(){
+    function tab(id,label){
+      var on = (state.profileTab||'conta')===id;
+      return '<button data-action="setProfileTab" data-arg="'+id+'" class="pf-tab'+(on?' on':'')+'">'+label+'</button>';
+    }
+    return '<div class="pf-tabs">'+tab('conta','Conta')+tab('metricas','Métricas')+'</div>';
+  }
   function screenPerfil(){
+    var metricas = (state.profileTab==='metricas');
+    return ''+
+    '<section style="max-width:'+(metricas?'860px':'680px')+';animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Perfil</div>'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 18px;color:var(--ink);">Meu perfil</h1>'+
+      perfilTabs()+
+      (metricas ? perfilAbaMetricas() : perfilAbaConta())+
+    '</section>';
+  }
+  function perfilAbaConta(){
     var d = state.profileDraft || {};
     var gphoto = googlePhoto();
     var presets = PRESET_AVATARS.map(function(pa,i){
@@ -3094,9 +3254,6 @@
       return '<button data-action="'+action+'" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 14px;font:700 13px \'Hanken Grotesk\';color:'+(extra||'var(--muted-2)')+';cursor:pointer;transition:all .15s ease;">'+label+'</button>';
     }
     return ''+
-    '<section style="max-width:680px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
-      '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Conta</div>'+
-      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 22px;color:var(--ink);">Meu perfil</h1>'+
       profileMsgHtml()+
       '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px;">'+
         '<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:18px;">'+
@@ -3121,14 +3278,140 @@
         profileField('pf-inst','Instituição / Universidade', d.instituicao||'', 'Ex.: Universidade Federal…')+
         '<div style="display:flex;gap:12px;flex-wrap:wrap;">'+
           '<div style="flex:1;min-width:140px;">'+profileField('pf-curso','Curso', d.curso||'', 'Psicologia')+'</div>'+
-          '<div style="flex:1;min-width:140px;">'+profileField('pf-sem','Semestre', d.semestre||'', '6º sem')+'</div>'+
+          '<div style="flex:1;min-width:140px;">'+profileSelect('pf-sem','Semestre', d.semestre||'', SEM_OPTIONS)+'</div>'+
         '</div>'+
+        '<label for="pf-anon" style="display:flex;align-items:flex-start;gap:11px;background:var(--bg,transparent);border:1px solid var(--border);border-radius:12px;padding:13px 15px;margin:16px 0 4px;cursor:pointer;">'+
+          '<input type="checkbox" id="pf-anon"'+(d.anonimo?' checked':'')+' style="width:18px;height:18px;margin:1px 0 0;accent-color:#0E4D64;cursor:pointer;flex-shrink:0;">'+
+          '<span style="display:flex;flex-direction:column;gap:2px;">'+
+            '<span style="font:700 13.5px \'Hanken Grotesk\';color:var(--ink);">Não aparecer no ranking público</span>'+
+            '<span style="font-size:11.5px;color:var(--muted);">Você continua ganhando XP e vendo seu progresso, mas seu nome some do ranking para os outros.</span>'+
+          '</span>'+
+        '</label>'+
         '<div style="display:flex;gap:10px;margin-top:8px;">'+
           '<button data-action="saveProfile" '+(state.profileSaving?'':'data-hover="background:#13647F;" data-active="transform:scale(.98);"')+' style="background:'+(state.profileSaving?'#3A6B7C':'#0E4D64')+';border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:'+(state.profileSaving?'default':'pointer')+';transition:all .18s ease;">'+(state.profileSaving?'Salvando…':'Salvar alterações')+'</button>'+
           '<button data-action="goHome" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">Voltar</button>'+
         '</div>'+
+      '</div>';
+  }
+
+  /* ---- Aba Métricas (read-only) ---- */
+  // mini-cartão de destaque (nível/streak/dias) no topo da aba
+  function metricHero(label, value, sub, bg, icon){
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;flex:1;min-width:150px;">'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">'+
+        '<div style="width:34px;height:34px;border-radius:10px;background:'+bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+icon+'</div>'+
+        '<div style="font:800 24px \'Bricolage Grotesque\';color:var(--ink);line-height:1;">'+value+'</div>'+
       '</div>'+
-    '</section>';
+      '<div style="font-size:12.5px;font-weight:700;color:var(--muted-2);">'+esc(label)+'</div>'+
+      (sub?'<div style="font-size:11.5px;color:var(--muted);font-weight:600;margin-top:2px;">'+esc(sub)+'</div>':'')+
+    '</div>';
+  }
+  // barra horizontal de "exercícios por modo" (st.byType)
+  function metricModeBar(label, value, max, color){
+    var pct = max>0 ? Math.round(value/max*100) : 0;
+    return '<div style="margin-bottom:11px;">'+
+      '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;">'+
+        '<span style="font-size:12.5px;font-weight:700;color:var(--muted-2);">'+esc(label)+'</span>'+
+        '<span style="font-size:12.5px;font-weight:800;color:var(--teal-text);">'+value+'</span>'+
+      '</div>'+
+      '<div style="height:8px;background:var(--track);border-radius:99px;overflow:hidden;"><div style="width:'+pct+'%;height:100%;background:'+color+';border-radius:99px;transition:width .5s ease;"></div></div>'+
+    '</div>';
+  }
+  function perfilAbaMetricas(){
+    // modo demo (deslogado): valores ilustrativos — espelha screenHome.
+    var demo = !tracking();
+    var st = demo ? {streak:12, revisados:38, exercicios:154, taxa:87, byType:{quiz:54, caso:22, flashcard:58, ligar:20}}
+                  : (state.stats || {streak:0, revisados:0, exercicios:0, taxa:0, byType:{}});
+    var lv = levelInfo(userXP());
+    var sfx = statsForXP();
+    var ativos = demo ? 22 : (sfx.ativos||0);
+    var streak = st.streak||0;
+    var dom = demo ? st.taxa : dominioPct();
+
+    // topo: nível + XP + barra, streak, dias ativos
+    var heroRow = '<div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;">'+
+      metricHero('Nível '+lv.level+' · '+levelTitle(lv.level), lv.xp+' XP', 'Faltam '+lv.toNext+' XP p/ o nível '+(lv.level+1), '#E3F3F2', ICON.statBook)+
+      metricHero('Dias de streak', String(streak), streak===1?'dia seguido':'dias seguidos', '#FFEDE3', ICON.flameOrange)+
+      metricHero('Dias ativos', String(ativos), 'no total', '#E8ECFB', ICON.statCheck)+
+    '</div>';
+    var lvBar = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 18px;margin-bottom:18px;">'+
+      '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;">'+
+        '<span style="font:800 14px \'Bricolage Grotesque\';color:var(--ink);">Progresso de nível</span>'+
+        '<span style="font-size:12px;font-weight:800;color:var(--teal-text);">'+lv.pct+'%</span>'+
+      '</div>'+
+      '<div style="height:9px;background:var(--track);border-radius:99px;overflow:hidden;"><div style="width:'+lv.pct+'%;height:100%;background:linear-gradient(90deg,#0E4D64,#5BC0BE);border-radius:99px;transition:width .5s ease;"></div></div>'+
+    '</div>';
+
+    // grade de statCard
+    var grid = '<div class="stat-grid pf-stat-grid">'+
+      statCard('', '#E3F3F2', ICON.statBook, String(st.revisados||0), 'transtornos revisados')+
+      statCard('', '#E8ECFB', ICON.statCheck, String(st.exercicios||0), 'exercícios dominados')+
+      statCard('', '#FFEDE3', ICON.statTarget, (st.taxa||0)+'%', 'taxa de acerto')+
+      statCard('', '#E6F6EE', ICON.statShield, dom+'%', 'do conteúdo dominado')+
+    '</div>';
+
+    // barras por modo (st.byType)
+    var bt = st.byType || {};
+    var modes = [['quiz','Quiz','#0E4D64'],['caso','Estudos de caso','#3F95A3'],['flashcard','Flashcards','#5BC0BE'],['ligar','Ligar colunas','#8FD3D1']];
+    var maxBt = modes.reduce(function(m,x){ return Math.max(m, bt[x[0]]||0); }, 0);
+    var modeBars = modes.map(function(x){ return metricModeBar(x[1], bt[x[0]]||0, maxBt, x[2]); }).join('');
+    var modesCard = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:18px;">'+
+      '<h3 style="font:700 16px \'Bricolage Grotesque\';margin:0 0 14px;color:var(--ink);">Exercícios dominados por modo</h3>'+
+      (maxBt>0 ? modeBars : '<div style="font-size:13px;color:var(--muted);font-weight:600;">Nenhum exercício dominado ainda. Resolva exercícios para ver seu desempenho por modo.</div>')+
+    '</div>';
+
+    // gráfico de evolução temporal (por semana)
+    var chartCard = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:18px;">'+
+      '<h3 style="font:700 16px \'Bricolage Grotesque\';margin:0 0 4px;color:var(--ink);">Evolução da atividade</h3>'+
+      '<div style="font-size:12.5px;color:var(--muted);font-weight:600;margin-bottom:16px;">Atividades por semana nas últimas 10 semanas</div>'+
+      activityChartHtml()+
+    '</div>';
+
+    // medalhas
+    var md = computeMedals();
+    var conq = md.earned.concat(md.locked).slice(0, 8).map(medalCard).join('');
+    var medalsBlock = '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;">'+
+        '<h3 style="font:700 18px \'Bricolage Grotesque\';margin:0;">Conquistas</h3>'+
+        '<span style="font-size:12.5px;font-weight:700;color:var(--muted);">'+md.earned.length+' de '+md.all.length+' medalhas</span>'+
+      '</div>'+
+      '<div class="conq-grid">'+conq+'</div>';
+
+    var guestNote = (DB.ready && state.auth.guest)
+      ? '<div style="margin-bottom:16px;padding:11px 14px;border-radius:12px;background:var(--accent-bg);color:var(--teal-text);font-size:12.5px;font-weight:600;">Você está como visitante. <button data-action="guestToRegister" style="background:none;border:none;padding:0;color:var(--teal-text);font-weight:800;cursor:pointer;text-decoration:underline;">Crie uma conta</button> para salvar suas métricas e entrar no ranking.</div>'
+      : '';
+
+    return guestNote + heroRow + lvBar + grid + chartCard + modesCard + medalsBlock;
+  }
+  // gráfico de barras: agrega a série diária (state.activityByDay) por semana.
+  function activityChartHtml(){
+    if(state.activityLoading && !state.activityByDay){
+      return '<div style="height:140px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;font-weight:600;">Carregando…</div>';
+    }
+    var days = state.activityByDay || [];
+    // agrupa em blocos de 7 dias (10 semanas a partir de 70 dias)
+    var weeks = [];
+    for(var i=0;i<days.length;i+=7){
+      var slice = days.slice(i, i+7);
+      var total = slice.reduce(function(s,d){ return s + (d.total||0); }, 0);
+      var last = slice[slice.length-1];
+      weeks.push({ total:total, end:(last?last.dia:'') });
+    }
+    var maxV = weeks.reduce(function(m,w){ return Math.max(m, w.total); }, 0);
+    var hasData = maxV>0;
+    var bars = weeks.map(function(w){
+      var h = hasData ? Math.max(4, Math.round(w.total/maxV*120)) : 4;
+      var lbl = '';
+      try{
+        if(w.end){ var dt=new Date(w.end+'T00:00:00'); lbl = dt.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}); }
+      }catch(e){}
+      return '<div class="pf-bar-col" title="'+esc(lbl)+': '+w.total+' atividade'+(w.total===1?'':'s')+'">'+
+        '<div class="pf-bar-val">'+(w.total||'')+'</div>'+
+        '<div class="pf-bar" style="height:'+h+'px;'+(w.total>0?'':'opacity:.4;')+'"></div>'+
+        '<div class="pf-bar-lbl">'+esc(lbl)+'</div>'+
+      '</div>';
+    }).join('');
+    var emptyNote = hasData ? '' : '<div style="font-size:12.5px;color:var(--muted);font-weight:600;margin-top:10px;">Ainda não há atividade registrada. Revise fichas e resolva exercícios para preencher o gráfico.</div>';
+    return '<div class="pf-chart">'+bars+'</div>'+emptyNote;
   }
 
   /* =========================================================
@@ -3394,6 +3677,47 @@
   }
 
   /* =========================================================
+     MODO DESENVOLVEDOR — modal de senha (Ctrl+D) + tela placeholder
+     ========================================================= */
+  function devPromptModal(){
+    if(!state.devPrompt) return '';
+    return ''+
+    '<div style="position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease both;">'+
+      '<div data-action="closeDevPrompt" style="position:absolute;inset:0;background:rgba(13,24,29,.55);"></div>'+
+      '<div style="position:relative;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px 24px;width:100%;max-width:340px;box-shadow:0 24px 60px rgba(16,42,51,.3);animation:pop .25s cubic-bezier(.2,.7,.3,1) both;">'+
+        '<div style="font:800 17px \'Bricolage Grotesque\';color:var(--ink);margin-bottom:4px;">Modo desenvolvedor</div>'+
+        '<p style="margin:0 0 16px;font-size:13px;color:var(--muted-2);">Digite a senha para liberar as informações extras.</p>'+
+        '<input id="dev-pass" type="password" inputmode="numeric" autocomplete="off" placeholder="Senha" class="auth-input" style="width:100%;padding:12px 14px;border:1px solid '+(state.devErr?'#E5484D':'var(--border)')+';border-radius:12px;background:var(--surface-2);color:var(--ink);font-size:15px;outline:none;">'+
+        (state.devErr ? '<div style="margin-top:8px;font-size:12.5px;font-weight:600;color:#E5484D;">'+esc(state.devErr)+'</div>' : '')+
+        '<div style="display:flex;gap:10px;margin-top:18px;justify-content:flex-end;">'+
+          '<button data-action="closeDevPrompt" data-hover="background:var(--surface-2);" style="background:none;border:1px solid var(--border);border-radius:11px;padding:10px 16px;font:700 13.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;">Cancelar</button>'+
+          '<button data-action="submitDevPass" data-hover="background:#13647F;" style="background:#0E4D64;border:none;border-radius:11px;padding:10px 18px;font:700 13.5px \'Hanken Grotesk\';color:#fff;cursor:pointer;">Entrar</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function screenDadosTeste(){
+    if(!state.devMode) return screenHome();
+    return ''+
+    '<section style="max-width:760px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">'+
+        '<span style="font:800 10.5px \'Hanken Grotesk\';text-transform:uppercase;letter-spacing:.6px;color:#fff;background:#0E4D64;border-radius:7px;padding:4px 9px;">DEV</span>'+
+        '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Dados para teste</h1>'+
+      '</div>'+
+      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:600px;">Área do modo desenvolvedor — placeholder. As informações extras de teste entram aqui.</p>'+
+      '<div style="background:var(--surface);border:1px dashed var(--border);border-radius:16px;padding:28px;text-align:center;color:var(--muted);">'+
+        '<div style="font-size:30px;margin-bottom:10px;">🧪</div>'+
+        '<div style="font:700 15px \'Hanken Grotesk\';color:var(--muted-2);">Em construção</div>'+
+        '<div style="font-size:13px;margin-top:6px;">Conteúdo de teste será adicionado aqui.</div>'+
+      '</div>'+
+      '<div style="margin-top:22px;">'+
+        '<button data-action="exitDevMode" data-hover="border-color:#E5484D;color:#E5484D;" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 18px;font:700 13.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .18s ease;">Sair do modo desenvolvedor</button>'+
+      '</div>'+
+    '</section>';
+  }
+
+  /* =========================================================
      RENDER PRINCIPAL
      ========================================================= */
   function currentScreen(){
@@ -3417,6 +3741,7 @@
       case 'feedback':    return screenFeedback();
       case 'sobre':       return screenSobre();
       case 'perfil':      return screenPerfil();
+      case 'dadosTeste':  return screenDadosTeste();
       default:            return screenHome();
     }
   }
@@ -3455,7 +3780,8 @@
         '</main>'+
       '</div>'+
       bottomNav()+
-      mobileMenuSheet();
+      mobileMenuSheet()+
+      devPromptModal();
     bindFx(root);
     bindSearch(root);
     bindClassify(root);
@@ -3588,7 +3914,19 @@
     try{ var lv=localStorage.getItem('dsm-last-viewed'); if(lv){ var pv=lv.split(':'); state.lastViewed={cat:+pv[0], dis:+pv[1]}; } }catch(e){}
     document.addEventListener('click', handleClick);
     // Enter envia o formulário de auth (não há <form> para evitar reload)
+    // Ctrl/Cmd + D: abre o modo desenvolvedor (ou vai para "Dados para teste" se já ativo)
     document.addEventListener('keydown', function(e){
+      if((e.ctrlKey||e.metaKey) && !e.altKey && (e.key==='d' || e.key==='D')){
+        e.preventDefault();
+        if(actions.openDevPrompt) actions.openDevPrompt();
+      } else if(e.key==='Escape' && state.devPrompt){
+        e.preventDefault(); actions.closeDevPrompt();
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Enter' && e.target && e.target.id==='dev-pass'){
+        e.preventDefault(); if(actions.submitDevPass) actions.submitDevPass(); return;
+      }
       if(e.key==='Enter' && e.target && e.target.classList && e.target.classList.contains('auth-input')){
         e.preventDefault();
         var act = state.auth.recovery ? 'submitNewPassword'

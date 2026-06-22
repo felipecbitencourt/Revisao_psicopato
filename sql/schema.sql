@@ -19,6 +19,7 @@ create table if not exists public.profiles (
 alter table public.profiles add column if not exists apelido     text;
 alter table public.profiles add column if not exists avatar      text;
 alter table public.profiles add column if not exists instituicao text;  -- universidade/instituição afiliada
+alter table public.profiles add column if not exists anonimo boolean not null default false;  -- true = sai do ranking público
 
 -- 2) PROGRESSO --------------------------------------------------------
 --    1 linha por transtorno revisado pelo usuário.

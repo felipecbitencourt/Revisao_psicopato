@@ -58,6 +58,77 @@
     return Object.keys(days).length;
   }
 
+  // Série temporal de atividade por dia para as últimas `nDias` (incluindo hoje).
+  // Recebe uma lista de datas ISO (de events.criado_em + progress.revisado_em),
+  // conta quantas caem em cada dia e devolve [{dia:'YYYY-MM-DD', total:N}] em
+  // ordem cronológica crescente — dias sem atividade vêm com total 0.
+  function activityByDayFrom(isoDates, nDias){
+    nDias = nDias || 70;
+    var counts = {};
+    isoDates.forEach(function (d) {
+      if (!d) return;
+      var key = String(d).slice(0, 10);
+      counts[key] = (counts[key] || 0) + 1;
+    });
+    var out = [];
+    var cur = new Date();
+    cur.setHours(0, 0, 0, 0);
+    for (var i = nDias - 1; i >= 0; i--) {
+      var dt = new Date(cur.getTime() - i * 86400000);
+      var k = dt.toISOString().slice(0, 10);
+      out.push({ dia: k, total: counts[k] || 0 });
+    }
+    return out;
+  }
+
+  // Agrega a tabela `events` (que agora também guarda erros, acerto=false).
+  //  - dominados/byType/mastered: SÓ acerto===true (1ª vez de cada item),
+  //    preservando o significado de "exercícios/cartões dominados". Como a
+  //    trava anti-farm grava cada acerto uma única vez, contar os eventos
+  //    com acerto===true equivale a contar os itens dominados.
+  //  - taxa real e taxaPorModo: sobre TODAS as tentativas (acerto !== null),
+  //    incluindo os erros recém-gravados.
+  // O XP é derivado de `dominados`/`acertos` (só acertos), então os erros
+  // gravados NÃO inflam XP nem ranking.
+  function statsFromEvents(ev) {
+    var attempts = ev.filter(function (e) { return e.acerto !== null && e.acerto !== undefined; });
+    // Itens DOMINADOS = payloads distintos com pelo menos um acerto.
+    // Deduplica por payload (item) para que repetir um acerto já dominado
+    // não infle dominados/acertos/byType/XP.
+    var mset = {};      // payload -> tipo do 1º acerto
+    ev.forEach(function (e) {
+      if (e.acerto === true && e.payload && !mset.hasOwnProperty(e.payload)) {
+        mset[e.payload] = e.tipo;
+      }
+    });
+    var mastered = Object.keys(mset);
+    var byType = mastered.reduce(function (o, k) {
+      var t = mset[k]; o[t] = (o[t] || 0) + 1; return o;
+    }, {});
+    var dominados = mastered.length;
+    // taxa por modo (quiz/caso/flashcard/ligar): acertos/tentativas por tipo,
+    // sobre TODAS as tentativas (inclui erros e repetições).
+    var agg = {};
+    attempts.forEach(function (e) {
+      var a = agg[e.tipo] || (agg[e.tipo] = { ok: 0, n: 0 });
+      a.n++; if (e.acerto === true) a.ok++;
+    });
+    var taxaPorModo = {};
+    var totalOk = 0;
+    Object.keys(agg).forEach(function (t) {
+      taxaPorModo[t] = agg[t].n ? Math.round(agg[t].ok / agg[t].n * 100) : 0;
+      totalOk += agg[t].ok;
+    });
+    return {
+      dominados: dominados,
+      acertos: dominados,
+      taxa: attempts.length ? Math.round(totalOk / attempts.length * 100) : 0,
+      taxaPorModo: taxaPorModo,
+      byType: byType,
+      mastered: mastered
+    };
+  }
+
   // Pesos de XP — DEVEM espelhar gamification.sql (função leaderboard).
   var XP = { ficha: 25, exercicio: 10, acerto: 5, diaAtivo: 15 };
   function xpFromCounts(c){
@@ -241,45 +312,68 @@
     getStats: function () {
       if (this.guest) {
         var p = lsGet(LS_PROG, {}), ev = lsGet(LS_EV, []);
-        var ca = ev.filter(function (e) { return e.acerto !== null; });
-        var ac = ca.filter(function (e) { return e.acerto; }).length;
         var datas = ev.map(function (e) { return e.criado_em; })
           .concat(Object.keys(p).map(function (k) { return p[k].revisado_em; }));
-        var gmset = {}; ev.forEach(function (e) { if (e.payload) gmset[e.payload] = 1; });
+        var gstats = statsFromEvents(ev);
         return Promise.resolve({
           revisados: Object.keys(p).length,
-          exercicios: ev.length,
-          acertos: ev.filter(function (e) { return e.acerto === true; }).length,
+          exercicios: gstats.dominados,
+          acertos: gstats.acertos,
           ativos: activeDaysFrom(datas),
-          taxa: ca.length ? Math.round(ac / ca.length * 100) : 0,
+          taxa: gstats.taxa,
+          taxaPorModo: gstats.taxaPorModo,
           streak: streakFrom(datas),
-          byType: ev.reduce(function (o, e) { o[e.tipo] = (o[e.tipo] || 0) + 1; return o; }, {}),
-          mastered: Object.keys(gmset)
+          byType: gstats.byType,
+          mastered: gstats.mastered
         });
       }
-      if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, acertos: 0, ativos: 0, taxa: 0, streak: 0, byType: {}, mastered: [] });
+      if (!sb) return Promise.resolve({ revisados: 0, exercicios: 0, acertos: 0, ativos: 0, taxa: 0, taxaPorModo: {}, streak: 0, byType: {}, mastered: [] });
       return Promise.all([
         sb.from('progress').select('revisado_em'),
         sb.from('events').select('acerto,criado_em,tipo,payload')
       ]).then(function (res) {
         var prog = res[0].data || [];
         var ev = res[1].data || [];
-        var comAcerto = ev.filter(function (e) { return e.acerto !== null; });
-        var acertos = comAcerto.filter(function (e) { return e.acerto; }).length;
         var datas = ev.map(function (e) { return e.criado_em; })
           .concat(prog.map(function (r) { return r.revisado_em; }));
-        var mset = {}; ev.forEach(function (e) { if (e.payload) mset[e.payload] = 1; });
+        var gstats = statsFromEvents(ev);
         return {
           revisados: prog.length,
-          exercicios: ev.length,
-          acertos: acertos,
+          exercicios: gstats.dominados,
+          acertos: gstats.acertos,
           ativos: activeDaysFrom(datas),
-          taxa: comAcerto.length ? Math.round(acertos / comAcerto.length * 100) : 0,
+          taxa: gstats.taxa,
+          taxaPorModo: gstats.taxaPorModo,
           streak: streakFrom(datas),
-          byType: ev.reduce(function (o, e) { o[e.tipo] = (o[e.tipo] || 0) + 1; return o; }, {}),
-          mastered: Object.keys(mset)
+          byType: gstats.byType,
+          mastered: gstats.mastered
         };
       });
+    },
+
+    // série de atividade por dia (últimas ~10 semanas) para o gráfico de
+    // evolução temporal do perfil. Junta events.criado_em + progress.revisado_em.
+    // Devolve [{dia:'YYYY-MM-DD', total:N}] em ordem cronológica.
+    getActivityByDay: function (nDias) {
+      nDias = nDias || 70;
+      if (this.guest) {
+        var p = lsGet(LS_PROG, {}), ev = lsGet(LS_EV, []);
+        var datas = ev.map(function (e) { return e.criado_em; })
+          .concat(Object.keys(p).map(function (k) { return p[k].revisado_em; }));
+        return Promise.resolve(activityByDayFrom(datas, nDias));
+      }
+      if (!sb) return Promise.resolve(activityByDayFrom([], nDias));
+      var sinceIso = new Date(Date.now() - nDias * 86400000).toISOString();
+      return Promise.all([
+        sb.from('events').select('criado_em').gte('criado_em', sinceIso),
+        sb.from('progress').select('revisado_em').gte('revisado_em', sinceIso)
+      ]).then(function (res) {
+        var ev = (res[0] && res[0].data) || [];
+        var prog = (res[1] && res[1].data) || [];
+        var datas = ev.map(function (e) { return e.criado_em; })
+          .concat(prog.map(function (r) { return r.revisado_em; }));
+        return activityByDayFrom(datas, nDias);
+      }).catch(function () { return activityByDayFrom([], nDias); });
     },
 
     /* ---- gamificação ---- */

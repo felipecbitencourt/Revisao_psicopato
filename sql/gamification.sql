@@ -8,11 +8,15 @@
 --  O XP NÃO é armazenado: é derivado das tabelas que já existem,
 --  para que histórico antigo já conte e nada precise de migração.
 --
---  Regras de XP (devem espelhar as do front-end em app.js):
+--  Regras de XP (devem espelhar as do front-end em app.js / db.js):
 --    • Revisar uma ficha (progress)      → +25 XP  (1x por transtorno)
---    • Fazer um exercício (events)        → +10 XP
---    • Acertar o exercício (events.acerto)→  +5 XP de bônus
+--    • DOMINAR um exercício (1º acerto de um item) → +15 XP (10 base + 5 bônus)
 --    • Cada dia ativo na plataforma       → +15 XP  (dia com ≥1 ação)
+--
+--  IMPORTANTE: a tabela `events` agora também registra ERROS (acerto=false)
+--  e repetições, para calcular a taxa de acerto real. O XP NÃO pode inflar
+--  por isso: contamos apenas itens DOMINADOS = payloads distintos que tiveram
+--  pelo menos um acerto. Errar ou repetir um item já dominado não dá XP.
 -- ============================================================
 
 -- 1) LEADERBOARD ------------------------------------------------------
@@ -48,11 +52,16 @@ begin
     group by p.user_id
   ),
   ev as (
-    select e.user_id as uid,
-           sum(10 + case when e.acerto is true then 5 else 0 end)::bigint as xp
-    from public.events e
-    where e.criado_em >= start_ts
-    group by e.user_id
+    -- 15 XP por ITEM DOMINADO (payload distinto com ≥1 acerto na janela).
+    -- Erros (acerto=false) e repetições de itens já dominados NÃO contam.
+    select d.user_id as uid, count(*)::bigint * 15 as xp
+    from (
+      select e.user_id, e.payload
+      from public.events e
+      where e.criado_em >= start_ts and e.acerto is true
+      group by e.user_id, e.payload
+    ) d
+    group by d.user_id
   ),
   days as (
     select z.uid, count(*)::bigint * 15 as xp
@@ -81,6 +90,7 @@ begin
   from totals t
   left join public.profiles pr on pr.id = t.uid
   where t.xp > 0
+    and coalesce(pr.anonimo, false) = false   -- usuários em modo anônimo saem do ranking
   order by t.xp desc, nome asc
   limit lim;
 end;
