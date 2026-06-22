@@ -7,7 +7,7 @@
      guardado até a próxima troca de versão do cache).
    - Cross-origin (Supabase, CDN, fontes): passa direto (sem cache).
    ============================================================ */
-var CACHE = 'psicopato-v1';
+var CACHE = 'psicopato-v2';
 var CORE = ['/', '/index.html', '/manifest.json', '/logo-128.png', '/favicon-48.png', '/icon-192.png'];
 
 self.addEventListener('install', function (e) {
@@ -55,6 +55,40 @@ self.addEventListener('fetch', function (e) {
         }
         return res;
       });
+    })
+  );
+});
+
+/* ---- Notificações push (Web Push) ---- */
+self.addEventListener('push', function (e) {
+  var data = {};
+  try { data = e.data ? e.data.json() : {}; }
+  catch (_) { data = { body: (e.data && e.data.text()) || '' }; }
+  var title = data.title || 'Psico·Pato';
+  var opts = {
+    body: data.body || '',
+    icon: '/icon-192.png',
+    badge: '/favicon-48.png',
+    tag: data.tag || undefined,         // mesma tag = substitui (não empilha)
+    data: { url: data.url || '/' }
+  };
+  e.waitUntil(self.registration.showNotification(title, opts));
+});
+
+self.addEventListener('notificationclick', function (e) {
+  e.notification.close();
+  var url = (e.notification.data && e.notification.data.url) || '/';
+  e.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (wins) {
+      for (var i = 0; i < wins.length; i++) {
+        var w = wins[i];
+        if (w.url.indexOf(self.location.origin) === 0 && 'focus' in w) {
+          w.focus();
+          if (w.navigate) { try { w.navigate(url); } catch (_) {} }
+          return;
+        }
+      }
+      if (self.clients.openWindow) return self.clients.openWindow(url);
     })
   );
 });

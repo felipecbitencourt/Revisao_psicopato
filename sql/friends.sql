@@ -173,6 +173,7 @@ create or replace function public.find_by_code(p_code text)
 returns table(user_id uuid, nome text, avatar text, instituicao text, relationship text)
 language plpgsql stable security definer set search_path = ''
 as $$
+#variable_conflict use_column
 declare me uuid := auth.uid(); norm text;
 begin
   if me is null then raise exception 'auth required'; end if;
@@ -223,6 +224,7 @@ create or replace function public.follow_list(p_kind text default 'following')
 returns table(user_id uuid, nome text, avatar text, instituicao text, xp bigint, relationship text)
 language plpgsql stable security definer set search_path = ''
 as $$
+#variable_conflict use_column
 declare me uuid := auth.uid();
 begin
   if me is null then raise exception 'auth required'; end if;
@@ -251,6 +253,7 @@ returns table(
 )
 language plpgsql stable security definer set search_path = ''
 as $$
+#variable_conflict use_column
 declare me uuid := auth.uid(); vis boolean;
 begin
   if me is null then raise exception 'auth required'; end if;

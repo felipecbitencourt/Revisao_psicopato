@@ -33,7 +33,10 @@ login, progresso e métricas.
 │   ├── schema.sql            perfis, progresso, eventos + RLS
 │   ├── gamification.sql      função leaderboard() (ranking por período)
 │   ├── feedback.sql          tabela de feedback + RLS
-│   └── friends.sql           código de usuário + follows (amigos) + perfis públicos
+│   ├── friends.sql           código de usuário + follows (amigos) + perfis públicos
+│   └── push.sql              inscrições de notificações push (Web Push)
+├── supabase/functions/
+│   └── notify-follow/        Edge Function que envia o push de "novo seguidor"
 ├── tools/
 │   └── scan_fichas.cjs   auditoria determinística das fichas (regressão)
 └── docs/

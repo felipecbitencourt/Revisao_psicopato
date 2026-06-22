@@ -297,10 +297,89 @@
       when:'Agora há pouco'
     }
   ];
+  // avisos = avisos estáticos + avisos dinâmicos de novos seguidores
+  function allNotices(){ return (state.followerNotices||[]).concat(NOTICES); }
   function notifReadSet(){ try { return JSON.parse(localStorage.getItem('psp-notif-read')) || []; } catch(e){ return []; } }
-  function notifUnreadIds(){ var r=notifReadSet(); return NOTICES.filter(function(n){ return r.indexOf(n.id)<0; }).map(function(n){ return n.id; }); }
+  function notifUnreadIds(){ var r=notifReadSet(); return allNotices().filter(function(n){ return r.indexOf(n.id)<0; }).map(function(n){ return n.id; }); }
   function notifUnreadCount(){ return notifUnreadIds().length; }
-  function notifMarkAllRead(){ try { localStorage.setItem('psp-notif-read', JSON.stringify(NOTICES.map(function(n){ return n.id; }))); } catch(e){} }
+  function notifMarkAllRead(){
+    try { localStorage.setItem('psp-notif-read', JSON.stringify(allNotices().map(function(n){ return n.id; }))); } catch(e){}
+    // marca os seguidores já avisados como "vistos" p/ não reaparecerem no próximo load
+    var fn = state.followerNotices||[];
+    if(fn.length){ var seen = followerSeenSet(); fn.forEach(function(n){ if(n.uid && seen.indexOf(n.uid)<0) seen.push(n.uid); }); followerSeenSave(seen); }
+  }
+  // --- novos seguidores (notificação no sino) ---
+  function followerSeenKey(){ var u=state.auth.user; return 'psp-seen-followers:'+(u?u.id:'anon'); }
+  function followerSeenSet(){ try { return JSON.parse(localStorage.getItem(followerSeenKey())) || []; } catch(e){ return []; } }
+  function followerSeenSave(ids){ try { localStorage.setItem(followerSeenKey(), JSON.stringify(ids)); } catch(e){} }
+  function checkNewFollowers(){
+    if(!canRank() || !DB.followList) return;
+    var hadBaseline = !!localStorage.getItem(followerSeenKey());
+    DB.followList('followers').then(function(rows){
+      if(!rows) return;
+      var ids = rows.map(function(f){ return f.user_id; });
+      if(!hadBaseline){ followerSeenSave(ids); return; }   // 1ª vez: baseline sem avisos retroativos
+      var seen = followerSeenSet();
+      var novos = rows.filter(function(f){ return seen.indexOf(f.user_id)<0; });
+      if(!novos.length) return;
+      var existentes = {}; (state.followerNotices||[]).forEach(function(n){ existentes['follower:'+n.uid]=true; });
+      novos.forEach(function(f){
+        if(existentes['follower:'+f.user_id]) return;
+        state.followerNotices.unshift({ id:'follower:'+f.user_id, uid:f.user_id, icon:'👤',
+          title:'Novo seguidor',
+          body:'<b>'+esc(f.nome||'Alguém')+'</b> começou a seguir você.'+(f.relationship==='mutual'?' Vocês agora são amigos! 🎉':''),
+          when:'Recentemente' });
+      });
+      render();
+    }).catch(function(){});
+  }
+
+  // --- notificações push (Web Push) ---
+  var Push = (function(){
+    function supported(){ return ('serviceWorker' in navigator) && ('PushManager' in window) && ('Notification' in window); }
+    function key(){ return (window.DB && DB.pushPublicKey) || (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.vapidPublicKey) || ''; }
+    function configured(){ return supported() && !!key(); }
+    function permission(){ return supported() ? Notification.permission : 'unsupported'; }
+    function u8(base64){
+      var pad = '='.repeat((4 - base64.length % 4) % 4);
+      var b64 = (base64 + pad).replace(/-/g,'+').replace(/_/g,'/');
+      var raw = atob(b64), arr = new Uint8Array(raw.length);
+      for(var i=0;i<raw.length;i++) arr[i] = raw.charCodeAt(i);
+      return arr;
+    }
+    function getSub(){
+      if(!supported()) return Promise.resolve(null);
+      return navigator.serviceWorker.ready.then(function(reg){ return reg.pushManager.getSubscription(); }).catch(function(){ return null; });
+    }
+    function enable(){
+      if(!configured()) return Promise.reject(new Error('not configured'));
+      return Notification.requestPermission().then(function(perm){
+        if(perm!=='granted') throw new Error('denied');
+        return navigator.serviceWorker.ready;
+      }).then(function(reg){
+        return reg.pushManager.getSubscription().then(function(existing){
+          return existing || reg.pushManager.subscribe({ userVisibleOnly:true, applicationServerKey: u8(key()) });
+        });
+      }).then(function(sub){
+        return DB.savePushSubscription(sub, navigator.userAgent).then(function(){ return sub; });
+      });
+    }
+    function disable(){
+      return getSub().then(function(sub){
+        if(!sub) return;
+        var ep = sub.endpoint;
+        return sub.unsubscribe().then(function(){ return DB.removePushSubscription(ep); });
+      });
+    }
+    return { supported:supported, configured:configured, permission:permission, getSub:getSub, enable:enable, disable:disable };
+  })();
+  function refreshPushState(){
+    if(!Push.supported()){ state.push.checked=true; return; }
+    Push.getSub().then(function(sub){
+      state.push.subscribed = !!sub; state.push.checked = true;
+      if(state.screen==='perfil') render();
+    });
+  }
 
   /* ---------------------------------------------------------
      Estado
@@ -316,7 +395,8 @@
     casoSelected:null, casoAnswered:false, casoIndex:0, casoScore:0, casoStreak:0,
     casoHints:(function(){ try { return localStorage.getItem('psp-caso-hints')==='1'; } catch(e){ return false; } })(),
     lastViewed:null,
-    notifOpen:false, notifNew:[], moreOpen:false,
+    notifOpen:false, notifNew:[], moreOpen:false, followerNotices:[],
+    push:{subscribed:false, busy:false, checked:false},
     devMode:(function(){ try { return localStorage.getItem('psp-dev')==='1'; } catch(e){ return false; } })(),
     devPrompt:false, devErr:'', casoStats:null, casoStatsLoading:false, casoStatsLoaded:false,
     sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
@@ -408,6 +488,18 @@
     backFromProfile:function(){ go('ranking'); if(state.rankScope==='amigos') loadFriends(state.amigos.tab); else loadLeaderboard(); },
     profFollow:    function(){ var p=state.profView; if(p.id) doFollow(p.id, true); },
     profUnfollow:  function(){ var p=state.profView; if(p.id) doFollow(p.id, false); },
+    /* ---- notificações push ---- */
+    enablePush:    function(){
+      state.push.busy=true; render();
+      Push.enable().then(function(){ state.push.busy=false; state.push.subscribed=true; render(); showToast('Notificações ativadas'); })
+        .catch(function(e){ state.push.busy=false; state.push.subscribed=false; render();
+          var m=''+e; if(m.indexOf('denied')>=0) showToast('Permissão negada no navegador'); else if(m.indexOf('configured')>=0) showToast('Push ainda não configurado'); else showToast('Não foi possível ativar'); });
+    },
+    disablePush:   function(){
+      state.push.busy=true; render();
+      Push.disable().then(function(){ state.push.busy=false; state.push.subscribed=false; render(); showToast('Notificações desativadas'); })
+        .catch(function(){ state.push.busy=false; render(); });
+    },
     /* ---- busca avançada (texto livre) ---- */
     goBusca:       function(){ go('busca'); },
     advFromSearch: function(){ var v=(rawVal('global-search')||rawVal('ms-search')||'').trim(); state.adv.query=v; state.adv.results=null; state.adv.done=false; go('busca'); if(v) actions.runAdvSearch(); },
@@ -1000,6 +1092,8 @@
       state.stats = res[1] || {revisados:0, exercicios:0, taxa:0, streak:0};
       state.mastered = {}; setMasteredFrom(state.stats.mastered);
       if(canRank() && !state.leaderboard) loadLeaderboard();   // popula o card de Ranking da sidebar
+      checkNewFollowers();                                     // avisos de novos seguidores no sino
+      refreshPushState();                                      // estado da inscrição de push
     }).catch(function(){ state.progress = {}; state.mastered = {}; state.stats = {revisados:0, exercicios:0, taxa:0, streak:0}; });
   }
   function setMasteredFrom(arr){ var m=state.mastered||{}; (arr||[]).forEach(function(k){ m[k]=true; }); state.mastered=m; }
@@ -1565,9 +1659,11 @@
   function notifPanel(){
     var isNew = {};
     (state.notifNew||[]).forEach(function(id){ isNew[id]=true; });
-    var list = NOTICES.length ? NOTICES.map(function(n){
+    var notices = allNotices();
+    var list = notices.length ? notices.map(function(n){
       var nw = !!isNew[n.id];
-      return '<li class="notif-item'+(nw?' is-new':'')+'">'+
+      var click = n.uid ? ' data-action="openProfile" data-arg="'+esc(n.uid)+'" style="cursor:pointer;"' : '';
+      return '<li class="notif-item'+(nw?' is-new':'')+'"'+click+'>'+
         '<div class="notif-ico">'+n.icon+'</div>'+
         '<div class="notif-main">'+
           '<div class="notif-title">'+esc(n.title)+(nw?'<span class="notif-tag">novo</span>':'')+'</div>'+
@@ -3368,6 +3464,24 @@
       (metricas ? perfilAbaMetricas() : perfilAbaConta())+
     '</section>';
   }
+  // linha de configuração de notificações push no perfil
+  function pushSettingRow(){
+    if(!Push.supported() || !Push.configured()) return '';   // sem suporte ou sem chave VAPID → não oferece
+    var p = state.push, perm = Push.permission(), on = p.subscribed, denied = perm==='denied';
+    var hint = denied ? 'Bloqueadas no navegador — libere nas permissões do site para ativar.'
+             : (on ? 'Ativadas: você recebe um aviso quando alguém te seguir, mesmo com o app fechado.'
+                   : 'Receba um aviso quando alguém te seguir, mesmo com o app fechado.');
+    var btn = denied ? ''
+      : '<button data-action="'+(on?'disablePush':'enablePush')+'"'+(p.busy?' disabled':'')+(p.busy?'':' data-hover="border-color:'+(on?'#E5484D':'#5BC0BE')+';color:'+(on?'#E5484D':'var(--teal-text)')+';"')+' style="flex-shrink:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:'+(p.busy?'default':'pointer')+';transition:all .15s ease;">'+(p.busy?'…':(on?'Desativar':'Ativar'))+'</button>';
+    return '<div style="display:flex;align-items:flex-start;gap:11px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:13px 15px;margin-top:16px;">'+
+      '<span style="display:flex;color:var(--muted-2);margin-top:1px;">'+ICON.bell+'</span>'+
+      '<div style="flex:1;min-width:0;">'+
+        '<div style="font:700 13.5px \'Hanken Grotesk\';color:var(--ink);">Notificações no dispositivo</div>'+
+        '<div style="font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.5;">'+hint+'</div>'+
+      '</div>'+
+      btn+
+    '</div>';
+  }
   function perfilAbaConta(){
     var d = state.profileDraft || {};
     var gphoto = googlePhoto();
@@ -3401,6 +3515,7 @@
           '<button data-action="copyMyCode" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.copy+'<span>Copiar</span></button>'+
           '<button data-action="goAmigos" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.users+'<span>Amigos</span></button>'+
         '</div>' : '')+
+        pushSettingRow()+
         '<div style="height:1px;background:var(--border);margin:22px 0;"></div>'+
         profileField('pf-apelido','Apelido', d.apelido||'', 'Como quer ser chamado(a)')+
         '<div style="font-size:11.5px;color:var(--muted);margin:-8px 0 16px;">É assim que você aparece na saudação da home e no ranking.</div>'+
@@ -3697,6 +3812,7 @@
     render();
     (follow ? DB.followAdd(id) : DB.followRemove(id)).then(function(rel){
       if(pv.id===id){ pv.busy=false; if(pv.card && rel) pv.card.relationship=rel; }
+      if(follow && DB.notifyFollow) DB.notifyFollow(id);   // dispara push "novo seguidor" (Edge Function)
       var lk=state.amigos.lookup; if(lk && lk.user_id===id && rel) lk.relationship=rel;
       state.amigos.following=null; state.amigos.followers=null;   // listas mudaram
       if(state.screen==='ranking' && state.rankScope==='amigos'){ loadFriends(state.amigos.tab); } else { render(); }
@@ -3705,6 +3821,7 @@
 
   function openProfile(id){
     if(!canRank() || !id) return;
+    if(state.notifOpen){ notifMarkAllRead(); state.notifOpen=false; state.notifNew=[]; }   // veio de um aviso
     var myId = state.auth.user ? state.auth.user.id : null;
     if(id===myId){ go('perfil'); return; }
     var pv = state.profView;
@@ -3915,7 +4032,16 @@
           '<span style="font-size:11.5px;color:var(--muted);margin-left:auto;">Ctrl+Enter</span>'+
         '</div>'+
       '</div>'+
-      '<div style="display:flex;gap:9px;align-items:flex-start;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:11px 14px;margin:14px 0 0;">'+ICON.info+'<span style="font-size:12px;line-height:1.5;color:var(--muted-2);">Correspondência de <b>estudo</b> por análise de texto — não é probabilidade diagnóstica. Sempre confirme nos critérios do DSM-5-TR.</span></div>'+
+      '<div style="display:flex;gap:11px;align-items:flex-start;background:rgba(217,119,6,.10);border:1px solid rgba(217,119,6,.32);border-radius:14px;padding:14px 16px;margin:14px 0 0;">'+
+        '<span style="flex-shrink:0;font-size:17px;line-height:1.3;">⚠️</span>'+
+        '<div style="font-size:12.5px;line-height:1.6;color:var(--ink);">'+
+          '<b style="display:block;font-size:13px;margin-bottom:3px;color:#B45309;">Cuidado: ferramenta de estudo</b>'+
+          'Esta busca compara o seu texto com os critérios e seções das fichas para apontar transtornos <b>parecidos</b> — é um apoio ao <b>estudo e à revisão</b>. '+
+          'Ela <b>não realiza psicodiagnóstico</b> e <b>não deve ser usada para avaliar pacientes reais</b>. '+
+          'O diagnóstico é um ato clínico que exige entrevista, contexto de vida, julgamento profissional e os critérios completos do DSM-5-TR. '+
+          'Use os resultados apenas como ponto de partida para consultar as fichas — nunca como conclusão.'+
+        '</div>'+
+      '</div>'+
       (!a.done && !a.analyzing ? '<div style="margin-top:18px;"><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:10px;">Exemplos para testar</div><div style="display:grid;gap:8px;">'+examples+'</div></div>' : '')+
       resultsHtml+
     '</section>';

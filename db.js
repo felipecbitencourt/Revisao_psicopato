@@ -434,6 +434,34 @@
         .catch(function () { return null; });
     },
 
+    /* ---- notificações push (Web Push) ---- */
+    // chave pública VAPID (não é segredo) — vem do supabase-config.js.
+    pushPublicKey: (cfg && cfg.vapidPublicKey) || '',
+    // salva/atualiza a inscrição deste dispositivo.
+    savePushSubscription: function (sub, ua) {
+      if (!sb || this.guest) return Promise.resolve({ error: 'no db' });
+      return uid().then(function (id) {
+        if (!id) return { error: 'no user' };
+        var j = sub.toJSON ? sub.toJSON() : sub;
+        var keys = j.keys || {};
+        return sb.from('push_subscriptions').upsert({
+          user_id: id, endpoint: j.endpoint || sub.endpoint,
+          p256dh: keys.p256dh, auth: keys.auth,
+          user_agent: ua || ''
+        }, { onConflict: 'endpoint' });
+      });
+    },
+    // remove a inscrição (ao desativar).
+    removePushSubscription: function (endpoint) {
+      if (!sb) return Promise.resolve();
+      return sb.from('push_subscriptions').delete().eq('endpoint', endpoint).catch(function () {});
+    },
+    // dispara o envio do push de "novo seguidor" para o alvo (Edge Function).
+    notifyFollow: function (target) {
+      if (!sb || this.guest || !target) return Promise.resolve();
+      return sb.functions.invoke('notify-follow', { body: { target: target } }).catch(function () {});
+    },
+
     // ADMIN (modo dev): lista todos os feedbacks. null = sem permissão/erro.
     // Requer estar logado como o e-mail admin (feedback.sql → is_admin/feedback_list).
     getFeedbackList: function (lim) {

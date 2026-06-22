@@ -61,6 +61,15 @@ Para ligar a aba **Amigos**, rode o arquivo [`friends.sql`](../sql/friends.sql)
 
 É idempotente — pode rodar de novo sem erro. Requer o `schema.sql` já aplicado.
 
+### 2e. Notificações push (opcional)
+
+Para enviar avisos de **“novo seguidor”** ao aparelho (mesmo com o app fechado),
+há um passo extra com Edge Function e chaves VAPID. Veja o guia dedicado:
+[docs/PUSH_SETUP.md](PUSH_SETUP.md). Em resumo: rodar `sql/push.sql`, gerar as
+chaves VAPID, colar a pública em `supabase-config.js`, setar os secrets e fazer
+o deploy da função `notify-follow`. Enquanto não configurar, o app só não mostra
+a opção de notificações — nada quebra.
+
 ## 3. Pegar as chaves
 
 1. Menu lateral: **Project Settings** (engrenagem) → **API**.
