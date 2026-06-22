@@ -262,6 +262,55 @@ CODE_OVERRIDES = {
     "Transtorno Factício Autoimposto": {"dsm": "300.19", "cid": "F68.10"},
     # DSM-5-TR: "imposto a outro" passou a usar a CID-10-MC F68.A (vigente desde out/2022).
     "Transtorno Factício Imposto a Outro (Antes Transtorno Factício por Procuração)": {"dsm": "300.19", "cid": "F68.A"},
+    # --- Tiques: o heading de código (#### 307.xx (F95.x)) ficou no README da
+    # categoria, não no arquivo por transtorno; recuperado aqui (fonte: README). ---
+    "Transtorno de Tourette": {"dsm": "307.23", "cid": "F95.2"},
+    "Transtorno de Tique Motor ou Vocal Persistente (Crônico)": {"dsm": "307.22", "cid": "F95.1"},
+    "Transtorno de Tique Transitório": {"dsm": "307.21", "cid": "F95.0"},
+    # Deficiência intelectual: código por nível de gravidade (heading com 4 códigos inline).
+    "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)": {"dsm": "317", "cid": "F70", "codes": [
+        {"dsm": "317",   "cid": "F70", "label": "Leve"},
+        {"dsm": "318.0", "cid": "F71", "label": "Moderada"},
+        {"dsm": "318.1", "cid": "F72", "label": "Grave"},
+        {"dsm": "318.2", "cid": "F73", "label": "Profunda"},
+    ]},
+    # Despertar do sono não REM: código por subtipo (estava num especificador achatado).
+    "Transtornos de Despertar do Sono Não REM": {"dsm": "307.46", "cid": "F51.3", "codes": [
+        {"dsm": "307.46", "cid": "F51.3", "label": "Tipo sonambulismo"},
+        {"dsm": "307.46", "cid": "F51.4", "label": "Tipo terror noturno"},
+    ]},
+    # DSM-5-TR: depressivo não especificado usa F32.A (F32.9 ficou p/ EDM episódio único).
+    "Transtorno Depressivo Não Especificado": {"dsm": "311", "cid": "F32.A"},
+    # Depressivo maior: matriz por episódio (único/recorrente) × gravidade (fonte: README).
+    "Transtorno Depressivo Maior": {"dsm": "296.20", "cid": "F32.9", "codes": [
+        {"dsm": "296.21", "cid": "F32.0",  "label": "Episódio único — leve"},
+        {"dsm": "296.22", "cid": "F32.1",  "label": "Episódio único — moderado"},
+        {"dsm": "296.23", "cid": "F32.2",  "label": "Episódio único — grave"},
+        {"dsm": "296.24", "cid": "F32.3",  "label": "Episódio único — com características psicóticas"},
+        {"dsm": "296.25", "cid": "F32.4",  "label": "Episódio único — em remissão parcial"},
+        {"dsm": "296.26", "cid": "F32.5",  "label": "Episódio único — em remissão completa"},
+        {"dsm": "296.20", "cid": "F32.9",  "label": "Episódio único — não especificado"},
+        {"dsm": "296.31", "cid": "F33.0",  "label": "Recorrente — leve"},
+        {"dsm": "296.32", "cid": "F33.1",  "label": "Recorrente — moderado"},
+        {"dsm": "296.33", "cid": "F33.2",  "label": "Recorrente — grave"},
+        {"dsm": "296.34", "cid": "F33.3",  "label": "Recorrente — com características psicóticas"},
+        {"dsm": "296.35", "cid": "F33.41", "label": "Recorrente — em remissão parcial"},
+        {"dsm": "296.36", "cid": "F33.42", "label": "Recorrente — em remissão completa"},
+        {"dsm": "296.30", "cid": "F33.9",  "label": "Recorrente — não especificado"},
+    ]},
+    # Bipolar tipo I: código por episódio atual × gravidade (fonte: README).
+    "Transtorno Bipolar Tipo I": {"dsm": "296.41", "cid": "F31.11", "codes": [
+        {"dsm": "296.41", "cid": "F31.11", "label": "Episódio atual maníaco — leve"},
+        {"dsm": "296.42", "cid": "F31.12", "label": "Episódio atual maníaco — moderado"},
+        {"dsm": "296.43", "cid": "F31.13", "label": "Episódio atual maníaco — grave"},
+        {"dsm": "296.44", "cid": "F31.2",  "label": "Episódio atual maníaco — com características psicóticas"},
+        {"dsm": "296.51", "cid": "F31.31", "label": "Episódio atual depressivo — leve"},
+        {"dsm": "296.52", "cid": "F31.32", "label": "Episódio atual depressivo — moderado"},
+        {"dsm": "296.53", "cid": "F31.4",  "label": "Episódio atual depressivo — grave"},
+        {"dsm": "296.54", "cid": "F31.5",  "label": "Episódio atual depressivo — com características psicóticas"},
+        {"dsm": "296.45", "cid": "F31.0",  "label": "Episódio atual hipomaníaco"},
+        {"dsm": "296.40", "cid": "F31.9",  "label": "Não especificado"},
+    ]},
 }
 
 # Correções de TEXTO de erros presentes na própria camada de texto do PDF

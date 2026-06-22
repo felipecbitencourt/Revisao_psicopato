@@ -368,6 +368,9 @@
     setFeedbackTipo:function(t){ state.feedback.draft=rawVal('fb-msg'); state.feedback.tipo=t; state.feedback.error=''; render(); },
     clearFeedbackFicha:function(){ state.feedback.draft=rawVal('fb-msg'); state.feedback.transtornoId=''; state.feedback.transtornoNome=''; render(); },
     reportFicha:   function(){ var d=currentDisorder(); var f=state.feedback; f.tipo='erro'; f.transtornoId=d?disorderId(state.activeCat,d):''; f.transtornoNome=d?d.n:''; f.sent=false; f.error=''; f.draft=''; setState({screen:'feedback'}); scrollTop(); },
+    // reportar erro a partir de um exercício: marca o transtorno daquele item
+    // (questão/cartão) e abre o feedback já vinculado a essa ficha.
+    reportExercise:function(arg){ var p=String(arg).split(':'); var ci=+p[0], di=+p[1]; var c=CATS[ci]; var d=c?c.items[di]:null; var f=state.feedback; f.tipo='erro'; f.transtornoId=d?disorderId(ci,d):''; f.transtornoNome=d?d.n:''; f.sent=false; f.error=''; f.draft=''; setState({screen:'feedback'}); scrollTop(); },
     submitFeedback:function(){
       var f=state.feedback; var msg=rawVal('fb-msg').trim(); f.draft=msg;
       if(!msg){ f.error='Escreva sua mensagem antes de enviar.'; render(); return; }
@@ -702,6 +705,11 @@
   function fichaPeekBtn(ci, di, label){
     if(ci==null || di==null) return '';
     return '<button data-action="openRef" data-arg="'+ci+':'+di+'" class="ficha-peek" data-hover="border-color:var(--teal-text);color:var(--teal-text);">'+ICON.book+'<span>'+esc(label||'Ver ficha completa')+'</span></button>';
+  }
+  // "Reportar erro" de um exercício -> feedback já vinculado àquela ficha
+  function reportErroBtn(ci, di){
+    if(ci==null || di==null) return '';
+    return '<button data-action="reportExercise" data-arg="'+ci+':'+di+'" class="ficha-peek" data-hover="border-color:#C2410C;color:#C2410C;">'+ICON.message+'<span>Reportar erro</span></button>';
   }
   function isRevised(catIndex, d){ return !!state.progress[disorderId(catIndex, d)]; }
   function totalDisorders(){ return CATS.reduce(function(s,c){ return s + (c.items ? c.items.length : 0); }, 0); }
@@ -1962,7 +1970,15 @@
       return '<div class="codes-row"><span class="ct-label">'+lbl+'</span><span class="ct-val"><span class="ct-code">'+esc(val)+'</span>'+copyBtn(copyLabel)+'</span></div>';
     }
     var codesInner;
-    if(codes.length>1){
+    var hasCode = codes.some(function(c){ return (c.cid||c.dsm); });
+    if(!hasCode){
+      // induzidos por substância/medicamento: código depende da substância;
+      // os "Induzidos por Outra Substância/Sedativos" são referência cruzada.
+      var codeNote = /induzid[oa] por subst[âa]ncia\/medicamento/i.test(disorder.n)
+        ? 'O código depende da substância/medicamento e do contexto (intoxicação ou abstinência).'
+        : 'Quadro de referência cruzada — descrito nos capítulos correspondentes, sem código próprio.';
+      codesInner = '<div class="rail-label">Código</div><p style="margin:7px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted-2);">'+codeNote+'</p>';
+    } else if(codes.length>1){
       codesInner = '<div class="rail-label">Códigos por '+(codes.length>2?'tipo':'variante')+'</div>'+
         codes.map(function(c){
           return (c.label?'<div class="codes-var-label">'+esc(c.label)+'</div>':'')+
@@ -2131,14 +2147,76 @@
     });
   }
 
-  /* questionário "por critério diagnóstico": um critério A–E -> nome.
-     Só usa transtornos que têm critérios estruturados com texto. */
+  /* ---------------------------------------------------------
+     Critérios DISTINTIVOS para o questionário "por critério".
+     Evita questões ambíguas (com >1 diagnóstico possível):
+      · genéricos do DSM (sofrimento/prejuízo, exclusão por substância/condição
+        médica, "não é mais bem explicado…", "não ocorre exclusivamente…");
+      · critério-modelo de uso de substância (idêntico entre substâncias);
+      · critérios cujo texto (com o nome mascarado) se repete em ≥2 transtornos.
+     --------------------------------------------------------- */
+  // critérios de EXCLUSÃO (nunca são o aspecto característico) — barrados em
+  // qualquer tamanho, mesmo quando longos por listarem exemplos/notas.
+  var EXCLUSION_CRIT = [
+    /nao (e|sao) mais bem explicad/,
+    /nao ocorre exclusivamente durante/,
+    /efeitos fisiologicos (diretos )?de (uma|alguma)? ?substancia/,
+    /nao (e|se deve|sao|esta) ?atribuiv\w*.*(substancia|condicao medica|medicamento|neurolog)/,
+    /nao (e|sao) atribuiv\w* a (outra|alguma|uma) condicao/,
+    /nao (e|sao) atribuiv\w* a (deficiencia|condicoes congenitas|um deficit|outro prejuizo)/,
+    /nao (e|sao) consequencia (dos|de) efeitos/
+  ];
+  // critério de PREJUÍZO/sofrimento — só é genérico quando é a frase isolada
+  // (curto); em critério politético longo ele faz parte do enunciado característico.
+  var IMPAIRMENT_CRIT = [
+    /sofrimento clinicamente significativo/,
+    /prejuizo (clinicamente significativo|no funcionamento|nas? (relacoes|areas)|em (outras )?areas? importantes)/
+  ];
+  var TEMPLATE_CRIT = [ /^um padrao (problematico )?de uso de/ ];  // uso de substância: ambíguo entre substâncias
+  function critPlain(t){ return qzNorm(t).replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
+  function ambiguousCrit(text){
+    var n = critPlain(text);
+    if(TEMPLATE_CRIT.some(function(re){ return re.test(n); })) return true;
+    if(EXCLUSION_CRIT.some(function(re){ return re.test(n); })) return true;
+    return text.length < 300 && IMPAIRMENT_CRIT.some(function(re){ return re.test(n); });
+  }
+  // "saco" de tokens significativos do critério com o nome do transtorno mascarado
+  function critBag(text, name){
+    var seen={}, out=[];
+    critPlain(maskName(text, name)).split(' ').forEach(function(t){ if(t.length>=5 && !seen[t]){ seen[t]=1; out.push(t); } });
+    return out.sort().join(' ');
+  }
+  var CRIT_BAG_IDX = null;
+  function critBagIdx(){
+    if(CRIT_BAG_IDX) return CRIT_BAG_IDX;
+    var idx={};
+    CATS.forEach(function(c){ (c.items||[]).forEach(function(d){ (d.criteria||[]).forEach(function(cr){
+      if(!cr || (cr.text||'').trim().length < 25) return;
+      var b = critBag(cr.text, d.n); if(!b) return;
+      (idx[b] = idx[b] || {})[d.n] = 1;
+    }); }); });
+    CRIT_BAG_IDX = idx; return idx;
+  }
+  function distinctiveCrits(d){
+    if(!Array.isArray(d.criteria)) return [];
+    var idx = critBagIdx();
+    return d.criteria.filter(function(cr){
+      var t = (cr.text||'').trim();
+      if(t.length < 25 || ambiguousCrit(t)) return false;
+      var b = critBag(cr.text, d.n);
+      if(b && idx[b] && Object.keys(idx[b]).length >= 2) return false;   // compartilhado entre transtornos
+      return true;
+    });
+  }
+
+  /* questionário "por critério diagnóstico": um critério A–E -> nome. Só usa
+     transtornos com critérios DISTINTIVOS (que apontam para um único diagnóstico). */
   function critCards(ci){
     var cats = ci===-1 ? CATS.map(function(c,i){ return {c:c,i:i}; }) : [{c:CATS[ci],i:ci}];
     var out=[];
     cats.forEach(function(o){ if(!o.c) return; (o.c.items||[]).forEach(function(d,di){
       if(hiddenReduced(d)) return;
-      var crit = Array.isArray(d.criteria) ? d.criteria.filter(function(x){ return x && (x.text||'').trim().length>=25; }) : [];
+      var crit = distinctiveCrits(d);
       if(!crit.length) return;
       out.push({ front:d.n, crit:crit, facts:d.facts||null, cat:o.c.name, color:o.c.color, ci:o.i, di:di });
     }); });
@@ -2465,7 +2543,7 @@
         '<button data-action="fcAgain" data-hover="background:#FFEDE3;transform:translateY(-2px);" data-active="transform:scale(.97);" style="flex:1;border-radius:14px;background:#FFF4EE;border:1px solid #FFD9C2;color:#C2410C;font-weight:700;font-size:14.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .18s ease;padding:14px;">'+ICON.redo+'Revisar de novo</button>'+
         '<button data-action="fcKnow" data-hover="background:#13647F;transform:translateY(-2px);box-shadow:0 8px 18px rgba(14,77,100,.3);" data-active="transform:scale(.97);" style="flex:1;border-radius:14px;background:#0E4D64;border:none;color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .18s ease;padding:14px;">'+ICON.knowCheck+'Eu sabia</button>'+
       '</div>'+
-      '<div style="text-align:center;margin-top:16px;">'+ fichaPeekBtn(fc.ci, fc.di, 'Ver ficha completa') +'</div>'+
+      '<div style="display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:16px;">'+ fichaPeekBtn(fc.ci, fc.di, 'Ver ficha completa') + reportErroBtn(fc.ci, fc.di) +'</div>'+
     '</section>';
   }
 
@@ -2565,7 +2643,10 @@
         '<div style="display:flex;flex-direction:column;gap:11px;">'+opts+'</div>'+
         feedback+
       '</div>'+
-      '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;">'+(state.quizAnswered?fichaPeekBtn(qz.ci,qz.di,'Ver ficha'):'<span></span>')+nextBtn+'</div>'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;">'+
+        '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">'+(state.quizAnswered?(fichaPeekBtn(qz.ci,qz.di,'Ver ficha')+reportErroBtn(qz.ci,qz.di)):'')+'</div>'+
+        nextBtn+
+      '</div>'+
     '</section>';
   }
 
@@ -2665,8 +2746,8 @@
         : '<div class="caso-result no"><div class="cr-emoji">🧠</div><div><div class="cr-title">Não foi dessa vez</div><div class="cr-sub">A resposta correta era <b>'+esc(CASO.opts[CASO.correct])+'</b></div></div></div>';
       feedback = banner+
         '<div class="caso-explica"><div class="ce-lbl">Por quê?</div><p>'+esc(CASO.explicacao)+'</p></div>'+
-        '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px;">'+
-          (function(){ var r=findRef(CASO.opts[CASO.correct]); return r?fichaPeekBtn(r.ci,r.di,'Ver ficha'):'<span></span>'; })()+
+        '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;">'+
+          (function(){ var r=findRef(CASO.opts[CASO.correct]); return '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">'+(r?(fichaPeekBtn(r.ci,r.di,'Ver ficha')+reportErroBtn(r.ci,r.di)):'')+'</div>'; })()+
           '<button data-action="casoNext" class="caso-next" data-hover="filter:brightness(.93);transform:translateX(2px);">Próximo caso '+ICON.arrowR+'</button></div>';
     }
 
