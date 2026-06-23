@@ -286,7 +286,17 @@
   /* ---------------------------------------------------------
      Avisos / central de notificações (sino do topo)
      --------------------------------------------------------- */
+  // versão dos Termos/Política aceita no cadastro (registrada no perfil p/ LGPD).
+  // Atualize quando publicar uma nova versão dos documentos.
+  var TERMOS_VERSAO = '2026-06';
   var NOTICES = [
+    {
+      id:'novidades-busca-amigos-1',
+      icon:'✨',
+      title:'Novidades: Busca avançada e Amigos no ranking',
+      body:'Com base nas sugestões da <b>Julia</b> e do <b>Leonardo</b>, chegaram duas novidades: a <b>Busca avançada</b> — descreva um caso em texto livre e veja os transtornos mais correspondentes — e o <b>ranking de Amigos</b> — siga colegas pelo código e compare o XP só entre vocês. Obrigado pelas ideias! 🦆',
+      when:'Agora há pouco'
+    },
     {
       id:'welcome-1',
       icon:'🦆',
@@ -373,12 +383,23 @@
     }
     return { supported:supported, configured:configured, permission:permission, getSub:getSub, enable:enable, disable:disable };
   })();
+  // estado da inscrição de push. "Ligado por padrão": se ainda não foi decidido,
+  // pede a permissão UMA vez (proativo) e inscreve; respeita recusa e não insiste.
   function refreshPushState(){
     if(!Push.supported()){ state.push.checked=true; return; }
+    function done(){ if(state.screen==='perfil') render(); }
     Push.getSub().then(function(sub){
-      state.push.subscribed = !!sub; state.push.checked = true;
-      if(state.screen==='perfil') render();
-    });
+      state.push.checked = true;
+      if(sub){ state.push.subscribed = true; done(); return; }
+      state.push.subscribed = false;
+      if(!Push.configured() || !canRank()){ done(); return; }
+      var perm = Push.permission();
+      if(perm==='denied'){ done(); return; }                 // recusou → respeita
+      var asked=false; try{ asked = localStorage.getItem('psp-push-autoask')==='1'; }catch(e){}
+      if(perm==='default' && asked){ done(); return; }        // já perguntamos uma vez → não insiste
+      if(perm==='default'){ try{ localStorage.setItem('psp-push-autoask','1'); }catch(e){} }
+      Push.enable().then(function(){ state.push.subscribed=true; render(); }).catch(function(){ done(); });
+    }).catch(function(){ state.push.checked=true; });
   }
 
   /* ---------------------------------------------------------
@@ -402,14 +423,17 @@
     sideCollapsed:(function(){ try { return localStorage.getItem('psp-side-collapsed')==='1'; } catch(e){ return false; } })(),
     reduced:(function(){ try { return localStorage.getItem('psp-reduced')==='1'; } catch(e){ return false; } })(),
     dark:false,
-    auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false, loadingMsg:'', form:{}, recovery:false},
+    auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false, loadingMsg:'', form:{}, recovery:false, consent:false, gateErr:'', gateBusy:false},
     progress:{}, mastered:{}, stats:null, pendingScroll:null,
     rankPeriod:'week', leaderboard:null, rankLoading:false, rankError:false, rankScope:'geral',
     friendsLb:null, friendsLbLoading:false, friendsLbErr:false, friendsLbKey:'',
     feedback:{tipo:'erro', transtornoId:'', transtornoNome:'', draft:'', sending:false, sent:false, error:''},
     // modo dev: leitura dos feedbacks (RPC admin)
     fbAdmin:{list:null, loading:false, loaded:false, err:'', filter:'todos'},
+    actStats:{rows:null, loading:false, loaded:false, err:false},   // índice de acerto por atividade
+    usage:{data:null, loading:false, loaded:false, err:false},      // métricas de uso
     profileDraft:{anonimo:false}, profileMsg:null, profileSaving:false, profileUploading:false,
+    accountDel:{confirm:false, busy:false},
     profileTab:'metricas', activityByDay:null, activityLoading:false,
     myCounts:{seguindo:0, seguidores:0, loaded:false},
     // amigos (follow) + perfis de outros
@@ -740,7 +764,43 @@
       if(state.screen==='devFeedback') render();
     });
   }
+  // log leve de sessão (máx. ~1x a cada 30 min, por navegador)
+  function maybeLogSession(){
+    if(!canRank() || !DB.logSession) return;
+    var k='psp-last-session', last=0;
+    try{ last = +localStorage.getItem(k) || 0; }catch(e){}
+    var now = Date.now();
+    if(now - last < 30*60*1000) return;
+    try{ localStorage.setItem(k, String(now)); }catch(e){}
+    DB.logSession();
+  }
+  // índice de acerto por atividade (admin)
+  function loadActivityStats(){
+    var s = state.actStats;
+    if(s.loaded || s.loading) return;
+    if(!DB.ready || state.auth.guest || !state.auth.user){ s.loaded=true; s.err=true; return; }
+    s.loading=true;
+    DB.getActivityStats().then(function(rows){
+      s.loading=false; s.loaded=true;
+      if(rows===null){ s.err=true; s.rows=null; } else { s.err=false; s.rows=rows; }
+      if(state.screen==='dadosTeste') render();
+    }).catch(function(){ s.loading=false; s.loaded=true; s.err=true; if(state.screen==='dadosTeste') render(); });
+  }
+  // métricas de uso (admin)
+  function loadUsageStats(){
+    var u = state.usage;
+    if(u.loaded || u.loading) return;
+    if(!DB.ready || state.auth.guest || !state.auth.user){ u.loaded=true; u.err=true; return; }
+    u.loading=true;
+    DB.getUsageStats().then(function(d){
+      u.loading=false; u.loaded=true;
+      if(d===null){ u.err=true; u.data=null; } else { u.err=false; u.data=d; }
+      if(state.screen==='devUso') render();
+    }).catch(function(){ u.loading=false; u.loaded=true; u.err=true; if(state.screen==='devUso') render(); });
+  }
   actions.goDevFeedback = function(){ if(state.devMode) go('devFeedback'); };
+  actions.goDevUso = function(){ if(state.devMode) go('devUso'); };
+  actions.reloadDevUso = function(){ state.usage={data:null,loading:false,loaded:false,err:false}; loadUsageStats(); render(); };
   actions.reloadDevFeedback = function(){ var fa=state.fbAdmin; fa.loaded=false; fa.list=null; fa.err=''; loadDevFeedback(); render(); };
   actions.setFbFilter = function(t){ state.fbAdmin.filter=String(t); render(); };
   actions.deleteFb = function(id){
@@ -796,6 +856,39 @@
       /* sucesso: mantém o loader; onAuth -> applySession carrega o app e encerra o busy */
     }).catch(function(){ state.auth.busy=false; state.auth.error='Erro de conexão. Tente de novo.'; render(); });
   };
+  // aceite dos Termos/Privacidade no cadastro (lê o checkbox sem re-renderizar).
+  actions.toggleConsent = function(){ var el=document.getElementById('reg-consent'); state.auth.consent = el ? !!el.checked : !state.auth.consent; };
+  // portão de consentimento pós-login (Google / usuários antigos / nova versão).
+  actions.toggleGateConsent = function(){ var el=document.getElementById('gate-consent'); state.auth.consent = el ? !!el.checked : !state.auth.consent; };
+  actions.acceptTerms = function(){
+    var el=document.getElementById('gate-consent'); var ok = el ? !!el.checked : !!state.auth.consent;
+    if(!ok){ state.auth.gateErr='É preciso aceitar para continuar.'; render(); return; }
+    state.auth.gateErr=''; state.auth.gateBusy=true; render();
+    DB.acceptTerms(TERMOS_VERSAO).then(function(res){
+      state.auth.gateBusy=false;
+      if(res && res.error){ state.auth.gateErr='Não foi possível salvar. Tente de novo.'; render(); return; }
+      if(state.auth.profile){ state.auth.profile.termos_versao = TERMOS_VERSAO; }
+      state.auth.consent=false;
+      render();   // portão sai → app entra
+    }).catch(function(){ state.auth.gateBusy=false; state.auth.gateErr='Erro de conexão.'; render(); });
+  };
+  // exclusão de conta (LGPD)
+  actions.askDeleteAccount = function(){ state.accountDel.confirm=true; render(); };
+  actions.cancelDeleteAccount = function(){ state.accountDel.confirm=false; render(); };
+  actions.confirmDeleteAccount = function(){
+    if(!DB.ready || state.auth.guest){ return; }
+    state.accountDel.busy=true; render();
+    DB.deleteAccount().then(function(res){
+      if(res && res.error){
+        state.accountDel.busy=false; state.profileMsg={type:'err',text:'Não foi possível excluir a conta. Tente de novo ou contate o suporte.'}; render(); return;
+      }
+      // sucesso: encerra a sessão e volta à tela inicial
+      try{ DB.logout(); }catch(e){}
+      state.auth.user=null; state.auth.profile=null; state.accountDel={confirm:false, busy:false};
+      try{ showToast('Conta excluída.'); }catch(e){}
+      setState({screen:'welcome'});
+    }).catch(function(){ state.accountDel.busy=false; state.profileMsg={type:'err',text:'Erro de conexão ao excluir a conta.'}; render(); });
+  };
   actions.submitRegister = function(){
     var nome=val('reg-nome'), curso=val('reg-curso'), sem=val('reg-sem'), inst=val('reg-inst');
     var email=val('reg-email'), pass=rawVal('reg-pass');
@@ -804,8 +897,10 @@
     state.auth.error=''; state.auth.info='';
     if(!nome||!email||!pass){ state.auth.error='Preencha nome, e-mail e senha.'; render(); return; }
     if(pass.length<6){ state.auth.error='A senha precisa de ao menos 6 caracteres.'; render(); return; }
+    var consentEl=document.getElementById('reg-consent'); state.auth.consent = consentEl ? !!consentEl.checked : !!state.auth.consent;
+    if(!state.auth.consent){ state.auth.error='É preciso aceitar os Termos de Uso e a Política de Privacidade.'; render(); return; }
     state.auth.busy=true; state.auth.loadingMsg='Criando sua conta…'; render();
-    DB.register(email,pass,{nome:nome,curso:curso,semestre:sem,instituicao:inst}).then(function(res){
+    DB.register(email,pass,{nome:nome,curso:curso,semestre:sem,instituicao:inst,termos_versao:TERMOS_VERSAO}).then(function(res){
       if(res && res.error){ state.auth.busy=false; state.auth.error=traduzErro(res.error); render(); return; }
       if(res && res.data && res.data.session){ /* já logado: mantém o loader; onAuth -> applySession */ }
       else { state.auth.busy=false; state.auth.info='Conta criada! Entre com seu e-mail e senha.'; setState({screen:'login'}); }
@@ -1108,6 +1203,7 @@
       if(canRank() && !state.leaderboard) loadLeaderboard();   // popula o card de Ranking da sidebar
       checkNewFollowers();                                     // avisos de novos seguidores no sino
       refreshPushState();                                      // estado da inscrição de push
+      maybeLogSession();                                       // log leve de sessão (métricas de uso)
     }).catch(function(){ state.progress = {}; state.mastered = {}; state.stats = {revisados:0, exercicios:0, taxa:0, streak:0}; });
   }
   function setMasteredFrom(arr){ var m=state.mastered||{}; (arr||[]).forEach(function(k){ m[k]=true; }); state.mastered=m; }
@@ -1334,7 +1430,8 @@
       {label:'Feedback',  icon:ICON.message, action:'goFeedback', active:s.screen==='feedback'},
       {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre', tr:'sobre'},
     ].concat(s.devMode ? [
-      {label:'Dados para teste', icon:ICON.about, action:'goDadosTeste', active:s.screen==='dadosTeste'},
+      {label:'Atividades', icon:ICON.check, action:'goDadosTeste', active:s.screen==='dadosTeste'},
+      {label:'Uso', icon:ICON.list, action:'goDevUso', active:s.screen==='devUso'},
       {label:'Feedbacks', icon:ICON.message, action:'goDevFeedback', active:s.screen==='devFeedback'}
     ] : []);
   }
@@ -3397,10 +3494,42 @@
           '<button data-action="enterGuest" data-hover="background:var(--surface-2);border-color:#5BC0BE;color:var(--teal-text);" data-active="transform:scale(.98);" style="width:100%;background:transparent;border:1px solid var(--border);border-radius:12px;padding:12px;font:700 14px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .18s ease;">Continuar sem conta</button>'+
           '<p style="margin:10px 0 0;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.45;">No modo visitante, seu histórico fica salvo só neste navegador.</p>'+
         '</div>'+
+        '<div style="margin-top:16px;text-align:center;font-size:12px;color:var(--muted);">'+
+          '<a href="privacidade.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;text-decoration:none;">Política de Privacidade</a>'+
+        '</div>'+
       '</section>'+
     '</div>';
   }
 
+  // precisa exibir o portão de consentimento? (logado, perfil carregado e sem a
+  // versão atual dos Termos aceita — cobre Google, usuários antigos e nova versão)
+  function needsConsent(){
+    if(!DB.ready || state.auth.guest || !state.auth.user) return false;
+    var p = state.auth.profile;
+    if(!p) return false;                          // perfil ainda carregando → não bloqueia
+    return p.termos_versao !== TERMOS_VERSAO;
+  }
+  function consentGate(){
+    var a=state.auth;
+    var err = a.gateErr ? '<div style="background:#FDECEC;border:1px solid #F3C9C7;color:#C0322B;border-radius:11px;padding:10px 13px;font-size:12.5px;font-weight:600;margin-bottom:14px;">'+esc(a.gateErr)+'</div>' : '';
+    return ''+
+    '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">'+
+      '<section style="width:100%;max-width:460px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+        authLogo()+
+        '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(16,42,51,.06);">'+
+          '<h1 style="font:800 22px \'Bricolage Grotesque\';margin:0 0 6px;color:var(--ink);">Termos e Privacidade</h1>'+
+          '<p style="margin:0 0 18px;font-size:14px;color:var(--muted-2);line-height:1.6;">Para continuar, leia e aceite nossos documentos. Eles explicam que o Psico·Pato é uma <b>ferramenta de estudo</b> (não faz diagnóstico) e como tratamos seus dados, conforme a LGPD.</p>'+
+          err+
+          '<label for="gate-consent" style="display:flex;align-items:flex-start;gap:9px;margin:0 0 18px;cursor:pointer;">'+
+            '<input type="checkbox" id="gate-consent" data-action="toggleGateConsent"'+(a.consent?' checked':'')+' style="width:17px;height:17px;margin-top:2px;accent-color:#0E4D64;flex-shrink:0;cursor:pointer;">'+
+            '<span style="font-size:12.5px;line-height:1.5;color:var(--muted-2);">Li e aceito os <a href="termos.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;">Termos de Uso</a> e a <a href="privacidade.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;">Política de Privacidade</a>.</span>'+
+          '</label>'+
+          '<button data-action="acceptTerms"'+(a.gateBusy?' disabled':'')+' style="width:100%;background:'+(a.gateBusy?'#3A6B7C':'#0E4D64')+';border:none;border-radius:12px;padding:13px;font:700 15px \'Hanken Grotesk\';color:#fff;cursor:'+(a.gateBusy?'default':'pointer')+';margin-bottom:8px;">'+(a.gateBusy?'Salvando…':'Aceitar e continuar')+'</button>'+
+          '<button data-action="logout" style="width:100%;background:none;border:none;font-size:13px;color:var(--muted);font-weight:700;cursor:pointer;padding:6px;">Sair</button>'+
+        '</div>'+
+      '</section>'+
+    '</div>';
+  }
   function screenRegister(){
     var a=state.auth;
     return ''+
@@ -3419,6 +3548,10 @@
           '</div>'+
           authInput('reg-email','email','voce@email.com','E-mail')+
           authInput('reg-pass','password','mínimo 6 caracteres','Senha')+
+          '<label for="reg-consent" style="display:flex;align-items:flex-start;gap:9px;margin:2px 0 16px;cursor:pointer;">'+
+            '<input type="checkbox" id="reg-consent" data-action="toggleConsent"'+(a.consent?' checked':'')+' style="width:17px;height:17px;margin-top:2px;accent-color:#0E4D64;flex-shrink:0;cursor:pointer;">'+
+            '<span style="font-size:12.5px;line-height:1.5;color:var(--muted-2);">Li e aceito os <a href="termos.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;">Termos de Uso</a> e a <a href="privacidade.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;">Política de Privacidade</a>.</span>'+
+          '</label>'+
           authSubmit('submitRegister', a.busy?'Criando…':'Criar conta', a.busy)+
           authDivider()+
           authGoogleBtn()+
@@ -3708,6 +3841,33 @@
           '<button data-action="saveProfile" '+(state.profileSaving?'':'data-hover="background:#13647F;" data-active="transform:scale(.98);"')+' style="background:'+(state.profileSaving?'#3A6B7C':'#0E4D64')+';border:none;border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:#fff;cursor:'+(state.profileSaving?'default':'pointer')+';transition:all .18s ease;">'+(state.profileSaving?'Salvando…':'Salvar alterações')+'</button>'+
           '<button data-action="goHome" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 22px;font:700 14px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">Voltar</button>'+
         '</div>'+
+      '</div>'+
+      profileDangerZone();
+  }
+  // zona de perigo: excluir conta (LGPD). Só para usuários logados.
+  function profileDangerZone(){
+    if(!DB.ready || state.auth.guest) return '';
+    var del = state.accountDel;
+    var inner;
+    if(del.confirm){
+      inner = '<div style="font-size:13px;color:var(--muted-2);line-height:1.55;margin-bottom:12px;">Isso apaga <b>permanentemente</b> sua conta, progresso, XP, amigos e dados. Não dá para desfazer.</div>'+
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;">'+
+          '<button data-action="confirmDeleteAccount"'+(del.busy?' disabled':'')+' style="background:#C0322B;border:none;border-radius:11px;padding:11px 18px;font:700 13.5px \'Hanken Grotesk\';color:#fff;cursor:'+(del.busy?'default':'pointer')+';">'+(del.busy?'Excluindo…':'Sim, excluir tudo')+'</button>'+
+          (del.busy?'':'<button data-action="cancelDeleteAccount" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:11px 18px;font:700 13.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">Cancelar</button>')+
+        '</div>';
+    } else {
+      inner = '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">'+
+        '<div style="font-size:12.5px;color:var(--muted);line-height:1.5;max-width:360px;">Excluir sua conta remove permanentemente seus dados (direito de eliminação — LGPD).</div>'+
+        '<button data-action="askDeleteAccount" data-hover="background:#FDECEC;border-color:#E5484D;color:#C0322B;" style="background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:10px 16px;font:700 13px \'Hanken Grotesk\';color:#C0322B;cursor:pointer;transition:all .15s ease;white-space:nowrap;">Excluir minha conta</button>'+
+      '</div>';
+    }
+    return '<div style="background:var(--surface);border:1px solid #F3C9C7;border-radius:18px;padding:18px 20px;margin-top:16px;">'+
+        '<div style="font:700 14px \'Bricolage Grotesque\';color:#C0322B;margin-bottom:10px;">Zona de perigo</div>'+ inner +
+      '</div>'+
+      '<div style="margin-top:14px;text-align:center;font-size:12px;color:var(--muted);">'+
+        '<a href="termos.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;text-decoration:none;">Termos de Uso</a>'+
+        ' &nbsp;·&nbsp; '+
+        '<a href="privacidade.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;text-decoration:none;">Política de Privacidade</a>'+
       '</div>';
   }
 
@@ -3907,12 +4067,12 @@
 
   function rankRow(row, isMe){
     var L = levelForXP(row.xp);
-    var initials = String(row.nome||'?').trim().split(/\s+/).slice(0,2).map(function(w){return w.charAt(0).toUpperCase();}).join('');
     var hl = isMe ? 'background:var(--accent-bg);border-color:var(--accent-bd);' : 'background:var(--surface);border-color:var(--border);';
     var clickable = row.user_id ? ' data-action="openProfile" data-arg="'+esc(row.user_id)+'" data-hover="border-color:#5BC0BE;" style="cursor:pointer;display:flex;align-items:center;gap:13px;border:1px solid;border-radius:14px;padding:11px 14px;transition:border-color .15s ease;'+hl+'"' : ' style="display:flex;align-items:center;gap:13px;border:1px solid;border-radius:14px;padding:11px 14px;'+hl+'"';
     return '<div'+clickable+'>'+
       rankBadge(Number(row.rnk))+
-      '<div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5BC0BE,#0E4D64);color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px \'Hanken Grotesk\';flex-shrink:0;">'+esc(initials||'·')+'</div>'+
+      avatarHtml(row.avatar, row.nome, 34)+
+      '<div style="flex:1;min-width:0;">'+
       '<div style="flex:1;min-width:0;">'+
         '<div style="font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(row.nome||'Estudante')+(isMe?' <span style="font-size:11px;color:var(--teal-text);font-weight:800;">· você</span>':'')+'</div>'+
         '<div style="font-size:11.5px;color:var(--muted);font-weight:600;">Nível '+L+' · '+esc(levelTitle(L))+'</div>'+
@@ -4342,6 +4502,11 @@
         card(ICON.statShield, 'Aviso importante', 'Ferramenta de <b>estudo</b>, não de diagnóstico. O texto pode conter imprecisões da extração automática — sempre confirme no manual oficial. Não substitui avaliação clínica profissional.')+
         card(ICON.message, 'Encontrou um erro?', 'Use a aba <b>Feedback</b> para relatar erros nas fichas e enviar sugestões.')+
       '</div>'+
+      '<div style="margin-top:22px;text-align:center;font-size:12.5px;color:var(--muted);">'+
+        '<a href="termos.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;text-decoration:none;">Termos de Uso</a>'+
+        ' &nbsp;·&nbsp; '+
+        '<a href="privacidade.html" target="_blank" rel="noopener" style="color:var(--teal-text);font-weight:700;text-decoration:none;">Política de Privacidade</a>'+
+      '</div>'+
     '</section>';
   }
 
@@ -4390,21 +4555,96 @@
     return head+'<div style="display:flex;flex-direction:column;gap:8px;">'+body+'</div>';
   }
 
+  var ACT_LABEL = { quiz:'Quiz', caso:'Estudos de caso', flashcard:'Flashcards', ligar:'Classificar' };
+  function devLabel(txt){ return '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:4px 0 12px;">'+txt+'</div>'; }
+  function devNote(txt){ return '<div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--muted-2);font-size:13px;line-height:1.55;">'+txt+'</div>'; }
+  // índice de acerto por TIPO de atividade
+  function activityStatsTable(){
+    var s = state.actStats;
+    if(s.loading && !s.rows) return '<div style="color:var(--muted);font-size:13.5px;padding:14px 0;">Carregando…</div>';
+    if(s.err || s.rows===null) return devNote('Sem dados — confirme que o <code>sql/admin_stats.sql</code> foi aplicado e que você está logado como admin.');
+    if(!s.rows.length) return '<div style="color:var(--muted);font-size:13.5px;padding:12px 0;">Nenhuma atividade registrada ainda.</div>';
+    return '<div style="display:flex;flex-direction:column;gap:9px;">'+ s.rows.map(function(r){
+      var label = ACT_LABEL[r.tipo] || r.tipo;
+      var pct = r.pct==null ? 0 : Number(r.pct);
+      var col = pct>=70?'#06915A':(pct>=40?'#C2410C':'#E5484D');
+      return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;">'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;">'+
+          '<span style="font:700 14px \'Hanken Grotesk\';color:var(--ink);">'+esc(label)+'</span>'+
+          '<span style="font:800 16px \'Bricolage Grotesque\';color:'+col+';">'+(r.tentativas>0?(pct+'%'):'—')+'</span>'+
+        '</div>'+
+        '<div style="height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin-bottom:7px;"><div style="height:100%;width:'+pct+'%;background:'+col+';border-radius:99px;"></div></div>'+
+        '<div style="font-size:11.5px;color:var(--muted);">'+r.usuarios+' usuários · '+r.tentativas+' tentativas · '+r.acertos+' acertos · '+r.erros+' erros'+(r.com_dica>0?(' · '+r.com_dica+' c/ dica'):'')+'</div>'+
+      '</div>';
+    }).join('') +'</div>';
+  }
   function screenDadosTeste(){
     if(!state.devMode) return screenHome();
-    loadCasoStats();
+    loadActivityStats(); loadCasoStats();
     return ''+
     '<section style="max-width:760px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">'+
         '<span style="font:800 10.5px \'Hanken Grotesk\';text-transform:uppercase;letter-spacing:.6px;color:#fff;background:#0E4D64;border-radius:7px;padding:4px 9px;">DEV</span>'+
-        '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Dados para teste</h1>'+
+        '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Atividades</h1>'+
       '</div>'+
-      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:15px;max-width:600px;">Métricas internas. Os percentuais consideram a <b>1ª tentativa de cada usuário</b> em cada caso.</p>'+
-      '<div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:4px 0 12px;">Acerto por estudo de caso</div>'+
-      casoStatsTable()+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:15px;max-width:600px;">Índice de acerto dos usuários nas atividades.</p>'+
+      devLabel('Por tipo de atividade')+
+      activityStatsTable()+
+      devLabel('Acerto por estudo de caso (1ª tentativa)')+
+      '<div style="margin-top:-2px;">'+casoStatsTable()+'</div>'+
       '<div style="margin-top:26px;">'+
         '<button data-action="exitDevMode" data-hover="border-color:#E5484D;color:#E5484D;" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 18px;font:700 13.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .18s ease;">Sair do modo desenvolvedor</button>'+
       '</div>'+
+    '</section>';
+  }
+  // ----- modo dev: métricas de uso -----
+  function usageStat(big, label, sub){
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;">'+
+      '<div style="font:800 26px \'Bricolage Grotesque\';color:var(--teal-text);line-height:1;">'+big+'</div>'+
+      '<div style="font-size:12.5px;font-weight:700;color:var(--ink);margin-top:6px;">'+esc(label)+'</div>'+
+      (sub?'<div style="font-size:11px;color:var(--muted);margin-top:2px;">'+esc(sub)+'</div>':'')+
+    '</div>';
+  }
+  function screenDevUso(){
+    if(!state.devMode) return screenHome();
+    loadUsageStats();
+    var u = state.usage;
+    var body;
+    if(u.loading && !u.data){ body = '<div style="color:var(--muted);font-size:13.5px;padding:18px 0;">Carregando…</div>'; }
+    else if(u.err || !u.data){ body = devNote('Sem dados — confirme que o <code>sql/admin_stats.sql</code> foi aplicado e que você está logado como admin.'); }
+    else {
+      var d = u.data;
+      function n(x){ return Number(x)||0; }
+      body = ''+
+        devLabel('Usuários')+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px;">'+
+          usageStat(n(d.total_usuarios), 'Cadastros no total')+
+          usageStat(n(d.novos_7d), 'Novos (7 dias)')+
+          usageStat(n(d.novos_30d), 'Novos (30 dias)')+
+        '</div>'+
+        devLabel('Usuários ativos')+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px;">'+
+          usageStat(n(d.ativos_hoje), 'Ativos hoje')+
+          usageStat(n(d.ativos_7d), 'Ativos (7 dias)')+
+          usageStat(n(d.ativos_30d), 'Ativos (30 dias)')+
+        '</div>'+
+        devLabel('Uso')+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;">'+
+          usageStat(n(d.sessoes_total), 'Sessões (total)', '~1 por abertura/30min')+
+          usageStat(n(d.sessoes_7d), 'Sessões (7 dias)')+
+          usageStat(n(d.exercicios_total), 'Exercícios feitos')+
+          usageStat(n(d.revisoes_total), 'Fichas revisadas')+
+        '</div>';
+    }
+    return ''+
+    '<section style="max-width:760px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">'+
+        '<span style="font:800 10.5px \'Hanken Grotesk\';text-transform:uppercase;letter-spacing:.6px;color:#fff;background:#0E4D64;border-radius:7px;padding:4px 9px;">DEV</span>'+
+        '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Uso</h1>'+
+        '<button data-action="reloadDevUso" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.redoSm+'<span>Atualizar</span></button>'+
+      '</div>'+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:15px;max-width:600px;">Métricas de uso da plataforma. "Sessões" = aberturas do app (no máx. 1 a cada 30 min por navegador).</p>'+
+      body+
     '</section>';
   }
 
@@ -4502,6 +4742,7 @@
       case 'sobre':       return screenSobre();
       case 'perfil':      return screenPerfil();
       case 'dadosTeste':  return screenDadosTeste();
+      case 'devUso':      return screenDevUso();
       case 'devFeedback': return screenDevFeedback();
       default:            return screenHome();
     }
@@ -4528,6 +4769,7 @@
       // entrando/cadastrando: mostra o loader de marca no lugar do formulário
       if(state.auth.busy && !state.auth.user && state.screen!=='forgot'){ root.innerHTML = brandLoader(state.auth.loadingMsg || 'Entrando…'); return; }
       if(!state.auth.user){ root.innerHTML = authScreen(); bindFx(root); return; }
+      if(needsConsent()){ root.innerHTML = consentGate(); bindFx(root); return; }   // portão LGPD
     }
     var key = renderKey();
     var staticUpdate = (key === lastKey);   // re-render por interação (mesma tela)

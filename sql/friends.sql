@@ -284,8 +284,9 @@ $$;
 -- ranking restrito aos AMIGOS: você + quem você segue, ranqueados pelo XP do
 -- período (mesmas regras da leaderboard geral). Mostra todos (mesmo 0 XP no
 -- período); respeita "anônimo" (some), exceto você mesmo.
+drop function if exists public.leaderboard_friends(text, int);
 create or replace function public.leaderboard_friends(period text default 'all', lim int default 100)
-returns table (user_id uuid, nome text, xp bigint, rnk bigint)
+returns table (user_id uuid, nome text, avatar text, xp bigint, rnk bigint)
 language plpgsql stable security definer set search_path = ''
 as $$
 #variable_conflict use_column
@@ -350,6 +351,7 @@ begin
   )
   select t.uid,
          coalesce(nullif(trim(pr.apelido), ''), nullif(trim(pr.nome), ''), 'Estudante') as nome,
+         pr.avatar,
          t.xp,
          rank() over (order by t.xp desc) as rnk
   from totals t

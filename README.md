@@ -14,6 +14,8 @@ login, progresso e métricas.
 ├── app.js                UI + lógica (render por estado, sem framework)
 ├── db.js                 camada de dados (Supabase ou modo visitante/demo)
 ├── search-engine.js      busca avançada: motor léxico ponderado + sinônimos clínicos
+├── termos.html           Termos de Uso (LGPD)
+├── privacidade.html      Política de Privacidade (LGPD)
 ├── styles.css            estilos
 ├── content.js            ⚙️ GERADO — as 20 categorias / 222 fichas (DSM-5-TR)
 ├── supabase-config.js    URL + chave anon do Supabase
@@ -34,15 +36,26 @@ login, progresso e métricas.
 │   ├── gamification.sql      função leaderboard() (ranking por período)
 │   ├── feedback.sql          tabela de feedback + RLS
 │   ├── friends.sql           código de usuário + follows (amigos) + perfis públicos
-│   └── push.sql              inscrições de notificações push (Web Push)
+│   ├── push.sql              inscrições de notificações push (Web Push)
+│   ├── storage-avatars.sql   bucket público de fotos de perfil + policies
+│   └── admin_stats.sql       log de sessão + RPCs admin (índice de acerto, métricas de uso)
 ├── supabase/functions/
-│   └── notify-follow/        Edge Function que envia o push de "novo seguidor"
+│   ├── notify-follow/        Edge Function que envia o push de "novo seguidor"
+│   └── delete-account/       Edge Function que exclui a conta do usuário (LGPD)
 ├── tools/
-│   └── scan_fichas.cjs   auditoria determinística das fichas (regressão)
+│   ├── scan_fichas.cjs   auditoria determinística das fichas (regressão)
+│   ├── quiz_audit.cjs    regressão do gerador de quiz
+│   └── search_eval.cjs   avaliação da busca avançada (top-1/top-3/MRR)
+├── CLAUDE.md             contexto do projeto p/ sessões do Claude Code
 └── docs/
+    ├── DEPLOY.md                 checklist de deploy
     ├── SUPABASE_SETUP.md         passo a passo do Supabase
+    ├── PUSH_SETUP.md             notificações push (VAPID/Resend)
     └── RELATORIO_AUDITORIA_FICHAS.md
 ```
+
+> **Sessões do Claude Code:** comece pelo [`CLAUDE.md`](CLAUDE.md) — convenções,
+> arquitetura, mapa de SQL/Edge Functions e dívida técnica.
 
 ## Rodar (local)
 

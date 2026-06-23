@@ -39,7 +39,13 @@ visitantes gravam de forma anônima. Você lê tudo em **Table Editor → feedba
 
 O `feedback.sql` também cria as funções de **admin** `is_admin()` e
 `feedback_list()` (+ `feedback_delete()`), que liberam a aba **DEV → Feedbacks**
-dentro do app para ler/apagar as mensagens. A leitura é autorizada **só para o
+dentro do app para ler/apagar as mensagens.
+
+> Para as outras páginas do modo editor (**DEV → Atividades** e **DEV → Uso**),
+> rode também [`sql/admin_stats.sql`](../sql/admin_stats.sql) — ele cria a tabela
+> `app_sessions` (log leve de sessão) e os RPCs `activity_stats()` (índice de
+> acerto por atividade) e `usage_stats()` (cadastros, ativos, sessões…). Requer o
+> `feedback.sql` já aplicado (usa `is_admin()`). A leitura é autorizada **só para o
 seu e-mail de dono** — ajuste o e-mail no topo dessa seção do `feedback.sql` se
 mudar de conta. Se já tinha rodado o `feedback.sql` antes, **rode de novo**
 (é idempotente) para criar essas funções. Para usar no app: ative o modo dev
@@ -105,6 +111,40 @@ Em produção, deixe a confirmação ligada.
 
 Recarregue `http://localhost:8000`. Agora deve aparecer a tela de **login**.
 Crie uma conta em "Criar conta" e pronto — seu nome aparece na barra lateral.
+
+## 5b. Exclusão de conta (LGPD)
+
+Para o botão **“Excluir minha conta”** (Perfil → Conta) funcionar, faça o deploy
+da Edge Function [`delete-account`](../supabase/functions/delete-account/index.ts):
+`supabase functions deploy delete-account` (ou crie pelo painel e cole o código).
+Ela apaga o usuário de `auth.users`; como as tabelas referenciam o usuário com
+`on delete cascade`, perfil/progresso/eventos/follows/push são removidos junto.
+
+> ⚠️ Igual ao `notify-follow`: se o painel gerar um **slug aleatório**, ajuste a
+> chamada em `db.js` (`deleteAccount` → `functions.invoke('<slug>')`) para o slug
+> real, ou crie a função já com o nome `delete-account`.
+
+Os documentos legais ([`termos.html`](../termos.html) e
+[`privacidade.html`](../privacidade.html)) são páginas estáticas — preencha o
+**nome do responsável** e revise antes de publicar.
+
+**Registro de consentimento:** o `schema.sql` agora grava em `profiles` a versão
+dos Termos aceita no cadastro (`termos_versao`) e o carimbo do servidor
+(`termos_aceitos_em`). **Re-rode o `schema.sql`** (idempotente) para criar essas
+colunas e atualizar o gatilho. Você confere em
+`select nome, termos_versao, termos_aceitos_em from public.profiles;`.
+
+## 5c. Fotos de perfil (Storage de avatares)
+
+Para as fotos enviadas aparecerem **para os outros usuários**, o bucket precisa
+ser **público**. Rode [`sql/storage-avatars.sql`](../sql/storage-avatars.sql) no
+SQL Editor — ele **cria o bucket `avatars` já público** (via `storage.buckets`,
+`public = true`) e as policies (leitura pública + escrita só na própria pasta
+`<uid>/...`). Não precisa de toggle manual no painel.
+
+> Avatares **predefinidos** (emoji) e foto do **Google** já aparecem para todos,
+> pois não dependem do Storage. O ranking agora também mostra a foto real (antes
+> mostrava só as iniciais) — exige re-rodar `gamification.sql` e `friends.sql`.
 
 ## 6. Produção: e-mail com SMTP próprio (Resend) + rate limits
 

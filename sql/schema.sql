@@ -21,6 +21,11 @@ alter table public.profiles add column if not exists avatar      text;
 alter table public.profiles add column if not exists instituicao text;  -- universidade/instituição afiliada
 alter table public.profiles add column if not exists anonimo boolean not null default false;  -- true = sai do ranking público
 
+-- Consentimento aos Termos de Uso / Política de Privacidade (LGPD):
+-- versão aceita (enviada pelo front no cadastro) + carimbo do servidor.
+alter table public.profiles add column if not exists termos_versao     text;
+alter table public.profiles add column if not exists termos_aceitos_em timestamptz;
+
 -- 2) PROGRESSO --------------------------------------------------------
 --    1 linha por transtorno revisado pelo usuário.
 create table if not exists public.progress (
@@ -73,7 +78,7 @@ language plpgsql
 security definer set search_path = ''
 as $$
 begin
-  insert into public.profiles (id, nome, curso, semestre, instituicao)
+  insert into public.profiles (id, nome, curso, semestre, instituicao, termos_versao, termos_aceitos_em)
   values (
     new.id,
     -- e-mail/senha envia 'nome'; login social (Google) envia 'full_name'/'name'
@@ -84,7 +89,10 @@ begin
     ),
     new.raw_user_meta_data ->> 'curso',
     new.raw_user_meta_data ->> 'semestre',
-    new.raw_user_meta_data ->> 'instituicao'
+    new.raw_user_meta_data ->> 'instituicao',
+    new.raw_user_meta_data ->> 'termos_versao',
+    -- carimbo do servidor (só quando o cadastro declarou a versão aceita)
+    case when (new.raw_user_meta_data ->> 'termos_versao') is not null then now() else null end
   );
   return new;
 end;
@@ -94,3 +102,19 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute function public.handle_new_user();
+
+-- 6) ACEITE DOS TERMOS (LGPD) ----------------------------------------
+--    Registra/atualiza a versão aceita pelo usuário logado, com carimbo do
+--    SERVIDOR (now()). Usado pelo "portão de consentimento" do app — cobre
+--    login social (Google) e re-aceite quando uma nova versão for publicada.
+create or replace function public.accept_terms(p_versao text)
+returns void
+language sql
+security definer set search_path = ''
+as $$
+  update public.profiles
+     set termos_versao = p_versao, termos_aceitos_em = now()
+   where id = auth.uid();
+$$;
+
+grant execute on function public.accept_terms(text) to authenticated;

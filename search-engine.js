@@ -46,38 +46,52 @@
      c = id do conceito | l = rótulo exibido na "evidência" | t = termos
      (leigos e clínicos; podem ter mais de uma palavra). */
   var SYNONYMS = [
-    { c:'deprimido', l:'humor deprimido', t:['triste','tristeza','deprimido','depressivo','depressao','desanimo','desanimado','abatido','melancolia','melancolico','infeliz','choroso','chorando','vazio','sem esperanca','desesperancado','desesperanca'] },
-    { c:'anedonia', l:'perda de prazer/interesse', t:['anedonia','sem prazer','perda de interesse','perda de prazer','desinteresse','nao sente prazer','apatia','apatico','sem vontade'] },
-    { c:'suicidio', l:'ideação suicida', t:['suicidio','suicida','ideacao suicida','tirar a propria vida','se matar','pensamentos de morte','vontade de morrer','automutilacao','se cortar','autolesao'] },
-    { c:'insonia', l:'insônia/sono', t:['insonia','nao dorme','dificuldade para dormir','sem sono','acorda de madrugada','hipersonia','dorme demais','pesadelo'] },
+    { c:'deprimido', l:'humor deprimido', t:['triste','tristeza','deprimido','depressivo','depressao','desanimo','desanimado','desanimada','abatido','abatida','melancolia','melancolico','infeliz','choroso','chorando','chora a toa','vazio','sem esperanca','desesperancado','desesperanca','para baixo','pra baixo','baixo astral','sem animo','para baixo na maioria dos dias'] },
+    { c:'anedonia', l:'perda de prazer/interesse', t:['anedonia','sem prazer','perda de interesse','perda de prazer','desinteresse','nao sente prazer','apatia','apatico','sem vontade de nada','sem vontade'] },
+    { c:'suicidio', l:'ideação suicida', t:['suicidio','suicida','ideacao suicida','tirar a propria vida','se matar','pensamentos de morte','vontade de morrer','melhor nao estar viva','melhor nao estar vivo','automutilacao','se cortar','autolesao'] },
+    { c:'insonia', l:'insônia', t:['insonia','nao dorme','nao consegue dormir','dificuldade para dormir','dificuldade de dormir','custa a dormir','custa a pegar no sono','acorda de madrugada','acorda muito cedo','sem sono','noites sem dormir'] },
+    { c:'hipersonia', l:'sonolência/hipersonia', t:['hipersonia','hipersonolencia','dorme demais','sono excessivo','sonolencia','sonolencia diurna','muito sono de dia','cochila','cochilando','dorme o dia todo'] },
+    { c:'pesadelo', l:'pesadelos', t:['pesadelo','pesadelos','sonhos ruins','sonhos amedrontadores','sonhos vividos e ameacadores','acorda apavorado'] },
+    { c:'narcolepsia', l:'narcolepsia', t:['narcolepsia','ataques de sono','adormece de repente','cataplexia','perde a forca quando ri','perde a forca muscular ao rir'] },
+    { c:'apneia', l:'apneia do sono', t:['apneia','ronca','roncos','para de respirar dormindo','para de respirar enquanto dorme'] },
     { c:'fadiga', l:'fadiga/energia', t:['fadiga','cansaco','cansado','sem energia','exausto','letargia','perda de energia'] },
-    { c:'culpa', l:'culpa/inutilidade', t:['culpa','inutilidade','sentimento de inutilidade','autocritica','sem valor','autorrecriminacao'] },
+    { c:'culpa', l:'culpa/inutilidade', t:['culpa','culpada','inutilidade','sentimento de inutilidade','autocritica','sem valor','autorrecriminacao'] },
     { c:'concentracao', l:'concentração', t:['concentracao','dificuldade de concentracao','desatento','distraido','esquecimento','indecisao','dificuldade de pensar'] },
-    { c:'mania', l:'mania/euforia', t:['mania','maniaco','euforia','euforico','humor elevado','expansivo','grandiosidade','grandioso','gastos excessivos','impulsivo','acelerado','energia aumentada','fala acelerada','pensamento acelerado','menos sono'] },
-    { c:'ansiedade', l:'ansiedade', t:['ansiedade','ansioso','preocupacao','preocupado','nervoso','tenso','tensao','apreensivo','medo','receio','angustia','angustiado','inquietacao'] },
-    { c:'panico', l:'pânico', t:['panico','ataque de panico','palpitacao','coracao acelerado','falta de ar','sufocamento','morte iminente','tontura','formigamento','sudorese','despersonalizacao subita'] },
-    { c:'fobia', l:'fobia/evitação', t:['fobia','medo especifico','evita','evitacao','evitando','esquiva','aversao'] },
-    { c:'social', l:'ansiedade social', t:['vergonha','timido','timidez','medo de julgamento','medo de falar em publico','constrangimento','ser avaliado','exposicao social'] },
-    { c:'obsessao', l:'obsessões/compulsões', t:['obsessao','obsessivo','compulsao','compulsivo','ritual','verificar repetidamente','lavar as maos','contaminacao','pensamentos intrusivos','simetria','colecionar','acumulo'] },
-    { c:'trauma', l:'trauma/estresse', t:['trauma','traumatico','flashback','revivencia','hipervigilancia','sobressalto','evento traumatico','abuso','violencia','acidente','reexperimentacao','memorias intrusivas'] },
-    { c:'dissociacao', l:'dissociação', t:['dissociacao','despersonalizacao','desrealizacao','fora do corpo','irreal','amnesia','lacunas de memoria','multiplas identidades'] },
-    { c:'psicose', l:'psicose/alucinação/delírio', t:['psicose','psicotico','alucinacao','ouve vozes','ve coisas','delirio','delirante','paranoia','paranoico','perseguicao','desorganizado','discurso desorganizado','pensamento desorganizado'] },
-    { c:'negativos', l:'sintomas negativos', t:['embotamento','afeto plano','isolamento','retraimento','avolicao','alogia','apatia social'] },
-    { c:'autismo', l:'autismo / comunicação social', t:['autismo','autista','espectro autista','dificuldade social','contato visual','interacao social','interesses restritos','comportamento repetitivo','estereotipias','rotinas rigidas','sensorial'] },
-    { c:'tdah', l:'desatenção/hiperatividade', t:['tdah','desatencao','hiperatividade','impulsividade','inquieto','nao para quieto','distrai facil','interrompe','esquece tarefas','agitacao motora'] },
-    { c:'tique', l:'tiques', t:['tique','tiques','movimentos involuntarios','vocalizacoes','piscar repetido'] },
-    { c:'alimentar', l:'alimentação/peso', t:['anorexia','bulimia','compulsao alimentar','restricao alimentar','medo de engordar','imagem corporal','purgacao','vomito autoinduzido','jejum','peso baixo','distorcao da imagem'] },
-    { c:'substancia', l:'uso de substância', t:['alcool','bebida','embriaguez','droga','cocaina','maconha','cannabis','abstinencia','fissura','tolerancia','uso de substancia','dependencia quimica','opioide','nicotina','tabaco'] },
-    { c:'sono', l:'sono-vigília', t:['narcolepsia','apneia','sonambulismo','sonolencia','ritmo circadiano','pernas inquietas'] },
+    { c:'mania', l:'mania/euforia', t:['mania','maniaco','euforia','euforico','humor elevado','expansivo','grandiosidade','grandioso','poderes especiais','gastos excessivos','gastando demais','impulsivo','acelerado','energia aumentada','fala acelerada','falando sem parar','pensamento acelerado','quase sem dormir','menos sono'] },
+    { c:'ansiedade', l:'ansiedade', t:['ansiedade','ansioso','nervoso','tenso','tensao','apreensivo','medo','receio','angustia','angustiado','inquietacao'] },
+    { c:'preocupacao', l:'preocupação excessiva', t:['preocupacao','preocupado','preocupacao excessiva','preocupado com tudo','preocupacao incontrolavel','nao consegue controlar a preocupacao','vive preocupado','nao consegue desligar','preocupacao constante'] },
+    { c:'panico', l:'pânico', t:['panico','ataque de panico','palpitacao','coracao acelerado','coracao dispara','falta de ar','sufocamento','morte iminente','vai morrer','tontura','formigamento','sudorese','sua frio'] },
+    { c:'fobia', l:'fobia/evitação', t:['fobia','medo especifico','pavor de','entra em panico so de ver','evita','evitacao','evitando','esquiva','aversao'] },
+    { c:'social', l:'ansiedade social', t:['vergonha','timido','timidez','medo de julgamento','medo de falar em publico','medo de ser observado','constrangimento','ser avaliado','vao julga-lo','exposicao social'] },
+    { c:'obsessao', l:'obsessões/compulsões', t:['obsessao','obsessivo','compulsao','compulsivo','ritual','verificar repetidamente','confere a porta','lavar as maos','contaminacao','pensamentos intrusivos','simetria'] },
+    { c:'acumulacao', l:'acumulação', t:['acumulacao','acumular','acumulando','junta objetos','nao joga nada fora','nao consegue jogar fora','guardar tudo','entulho','casa tomada de objetos','colecionar'] },
+    { c:'trauma', l:'trauma/estresse', t:['trauma','traumatico','flashback','flashbacks','revivencia','hipervigilancia','sempre em alerta','vive em alerta','sobressalto','sobressalta-se','evento traumatico','acidente grave','abuso','violencia','reexperimentacao','memorias intrusivas'] },
+    { c:'dissociacao', l:'dissociação', t:['dissociacao','despersonalizacao','desrealizacao','fora do corpo','fora do proprio corpo','como num sonho','irreal','lacunas de memoria'] },
+    { c:'amnesia', l:'amnésia', t:['amnesia','nao consegue lembrar','nao lembra de um periodo','lapsos de memoria','esquecimento de fatos da propria vida'] },
+    { c:'identidade', l:'identidades alternantes', t:['multiplas identidades','diferentes pessoas dentro de si','assumem o controle','estados de personalidade','outra personalidade'] },
+    { c:'psicose', l:'psicose/alucinação/delírio', t:['psicose','psicotico','alucinacao','alucinacoes','ouve vozes','vozes que comentam','ve coisas','delirio','delirante','paranoia','paranoico','perseguicao','perseguido','desorganizado','fala desconexo','discurso desorganizado','pensamento desorganizado'] },
+    { c:'negativos', l:'sintomas negativos', t:['embotamento','afeto plano','isolamento','isolou-se','retraimento','avolicao','alogia','apatia social'] },
+    { c:'autismo', l:'autismo / comunicação social', t:['autismo','autista','espectro autista','dificuldade social','contato visual','nao faz contato visual','interacao social','interesses restritos','comportamento repetitivo','enfileira brinquedos','estereotipias','rotinas rigidas','mudanca de rotina','sensorial'] },
+    { c:'tdah', l:'desatenção/hiperatividade', t:['tdah','desatencao','hiperatividade','impulsividade','inquieto','nao para quieto','distrai com tudo','distrai facil','interrompe','esquece tarefas','perde material','nao termina o que comeca','agitacao motora'] },
+    { c:'tique', l:'tiques', t:['tique','tiques','tiques motores','tiques vocais','movimentos involuntarios','vocalizacoes','piscar repetido','solta sons'] },
+    { c:'alimentar', l:'alimentação/peso', t:['anorexia','bulimia','compulsao alimentar','restricao alimentar','restringe a comida','medo de engordar','medo intenso de engordar','imagem corporal','se ve gorda','purgacao','vomitar para compensar','vomito autoinduzido','jejum','abaixo do peso','baixo peso','distorcao da imagem'] },
+    { c:'substancia', l:'uso de substância', t:['alcool','bebe','bebe cada vez mais','beber','bebida','bebendo','bebado','embriaguez','alcoolico','alcoolismo','droga','vicio','viciado','cocaina','maconha','cannabis','abstinencia','tremores quando fica sem','fissura','tolerancia','uso de substancia','dependencia quimica','opioide','nicotina','tabaco'] },
+    { c:'jogo', l:'jogo/apostas', t:['jogo','apostar','apostas','vicio em jogo','nao consegue parar de apostar','perdeu dinheiro apostando'] },
     { c:'sexual', l:'função sexual', t:['disfuncao sexual','desejo sexual','erecao','ejaculacao','orgasmo','dor sexual'] },
-    { c:'genero', l:'gênero', t:['disforia de genero','identidade de genero','incongruencia de genero'] },
-    { c:'somatico', l:'sintomas somáticos', t:['sintomas fisicos','dor sem causa','preocupacao com doenca','hipocondria','queixas corporais','sintomas neurologicos','conversao'] },
-    { c:'personalidade', l:'personalidade', t:['instabilidade emocional','medo de abandono','relacoes instaveis','vazio cronico','desconfianca','manipulacao','perfeccionismo','rigidez','dependencia emocional'] },
-    { c:'neurocognitivo', l:'cognição/demência', t:['demencia','declinio cognitivo','perda de memoria','confusao','delirium','alzheimer','desorientacao'] },
-    { c:'eliminacao', l:'eliminação', t:['enurese','encoprese','xixi na cama','incontinencia'] },
-    { c:'conduta', l:'conduta/oposição', t:['agressividade','desafiador','quebra de regras','mentira','furto','crueldade','explosao de raiva','provocador','opositor'] },
+    { c:'genero', l:'gênero', t:['disforia de genero','identidade de genero','incongruencia de genero','incongruencia entre o genero','sexo designado'] },
+    { c:'somatico', l:'sintomas somáticos', t:['sintomas fisicos','varios sintomas fisicos','dor sem causa','muitos medicos','queixas corporais','tempo demais com a saude'] },
+    { c:'medo_doenca', l:'medo de ter doença', t:['medo de ter doenca','medo de ter uma doenca grave','certeza de estar doente','certeza de que tem uma doenca','acha que tem uma doenca grave','hipocondria','preocupado com a saude','exames normais','checando o corpo'] },
+    { c:'conversao', l:'sintomas neurológicos funcionais', t:['conversao','conversivo','cegueira sem causa','paralisia sem causa','fraqueza sem causa neurologica','perda de movimento sem causa'] },
+    { c:'personalidade', l:'personalidade', t:['instabilidade emocional','medo de abandono','relacoes instaveis','relacoes intensas e instaveis','vazio cronico','vazio','desconfianca','manipulacao','perfeccionismo','rigidez','dependencia emocional'] },
+    { c:'neurocognitivo', l:'cognição/demência', t:['demencia','declinio cognitivo','perda de memoria','perda progressiva de memoria','memoria recente','esquece nomes','esquecimento progressivo','se perde','perde-se em lugares','alzheimer','desorientacao','desorientado'] },
+    { c:'delirium', l:'delirium/confusão aguda', t:['delirium','confusao','confusao aguda','ficou confuso de repente','confuso de repente','oscila ao longo do dia','flutuante','desatento e desorientado'] },
+    { c:'eliminacao', l:'eliminação', t:['enurese','encoprese','xixi na cama','faz xixi na cama','incontinencia'] },
+    { c:'pica', l:'pica', t:['pica','come terra','come coisas que nao sao alimento','ingere nao alimentos'] },
+    { c:'conduta', l:'conduta/oposição', t:['agressividade','agride pessoas e animais','desafiador','desafia regras','quebra de regras','mentira','mente','furto','furta','crueldade','destroi coisas','foge de casa','explosao de raiva','provocador','opositor','teimosa','discute com adultos','culpa os outros'] },
+    { c:'antissocial', l:'antissocial', t:['desrespeita regras','desrespeita os direitos dos outros','sem remorso','nao sente remorso','comportamento criminoso'] },
     { c:'irritavel', l:'irritabilidade', t:['irritabilidade','irritavel','raiva','explosivo','temperamento'] },
-    { c:'crianca', l:'infância/desenvolvimento', t:['crianca','infancia','infantil','adolescente','desde pequeno','na escola'] }
+    { c:'crianca', l:'infância/desenvolvimento', t:['crianca','infancia','infantil','adolescente','desde pequeno','na escola'] },
+    { c:'idoso', l:'idoso', t:['idoso','idosa','idade avancada'] }
   ];
 
   /* ---- normalização / lematização leve (pt-BR) ---- */
@@ -110,13 +124,22 @@
     });
   });
 
+  // pistas de negação: a palavra negada (e ~2 seguintes de conteúdo) não conta.
+  // OBS.: só afeta tokens/conceitos por PALAVRA; as FRASES do dicionário (ex.:
+  // "sem esperança", "sem energia") são sintomas em si e seguem valendo.
+  var NEG = { nao: 1, sem: 1, nega: 1, negam: 1, negou: 1, ausencia: 1, inexistencia: 1, nenhum: 1, nenhuma: 1, jamais: 1, nunca: 1, sumiu: 1 };
+
   // "bag of terms" de um texto: tokens lematizados + conceitos (#id).
   // retorna {bag:{term:freq}, disp:{stem:palavraOriginal}}
   function bagOf(text, wantDisp) {
     var n = ' ' + norm(text).replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
     var bag = {}, disp = wantDisp ? {} : null;
+    var negLeft = 0;
     n.trim().split(' ').forEach(function (w) {
-      if (!w || w.length < 2 || STOP[w]) return;
+      if (!w) return;
+      if (NEG[w]) { negLeft = 3; return; }      // abre janela de negação
+      if (w.length < 2 || STOP[w]) return;       // stopword não consome a janela
+      if (negLeft > 0) { negLeft--; return; }    // palavra de conteúdo negada → ignora
       var s = stem(w);
       bag[s] = (bag[s] || 0) + 1;
       if (disp && !disp[s]) disp[s] = w;

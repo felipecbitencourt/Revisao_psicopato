@@ -26,8 +26,10 @@
 --
 --    period: 'day' | 'week' | 'month' | 'year' | 'all'
 --    A janela começa no início do dia/semana/mês/ano corrente.
+-- (recriada com a coluna avatar; precisa de DROP pois o tipo de retorno mudou)
+drop function if exists public.leaderboard(text, int);
 create or replace function public.leaderboard(period text default 'all', lim int default 100)
-returns table (user_id uuid, nome text, xp bigint, rnk bigint)
+returns table (user_id uuid, nome text, avatar text, xp bigint, rnk bigint)
 language plpgsql
 security definer
 set search_path = ''
@@ -86,6 +88,7 @@ begin
   )
   select t.uid,
          coalesce(nullif(trim(pr.apelido), ''), nullif(trim(pr.nome), ''), 'Estudante') as nome,
+         pr.avatar,
          t.xp,
          rank() over (order by t.xp desc) as rnk
   from totals t

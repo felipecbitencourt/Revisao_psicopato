@@ -463,6 +463,23 @@
       if (!sb) return Promise.resolve();
       return sb.from('push_subscriptions').delete().eq('endpoint', endpoint).catch(function () {});
     },
+    // registra o aceite dos Termos/Política (versão) com carimbo do servidor.
+    acceptTerms: function (versao) {
+      if (!sb || this.guest) return Promise.resolve({ error: 'no db' });
+      return sb.rpc('accept_terms', { p_versao: versao || '' })
+        .then(function (r) { return r.error ? { error: r.error } : { ok: true }; })
+        .catch(function (e) { return { error: e }; });
+    },
+
+    // exclui a conta do usuário (LGPD). Remove o usuário de auth e, por cascata,
+    // os dados ligados. Requer a Edge Function "delete-account" publicada.
+    deleteAccount: function () {
+      if (!sb || this.guest) return Promise.resolve({ error: 'no db' });
+      return sb.functions.invoke('delete-account', { body: {} })
+        .then(function (r) { return r.error ? { error: r.error } : (r.data || { deleted: true }); })
+        .catch(function (e) { return { error: e }; });
+    },
+
     // dispara o envio do push de "novo seguidor" para o alvo (Edge Function).
     // OBS.: o slug real da função no Supabase é "swift-action" (o painel gerou
     // esse slug aleatório na criação e ele não pode ser renomeado depois). O
@@ -471,6 +488,22 @@
     notifyFollow: function (target) {
       if (!sb || this.guest || !target) return Promise.resolve();
       return sb.functions.invoke('swift-action', { body: { target: target } }).catch(function () {});
+    },
+
+    // registra uma "sessão" (abertura do app). O front limita a frequência.
+    logSession: function () {
+      if (!sb || this.guest) return Promise.resolve();
+      return uid().then(function (id) { if (!id) return; return sb.from('app_sessions').insert({ user_id: id }); }).catch(function () {});
+    },
+    // ADMIN: índice de acerto por atividade (quiz/caso/flashcard/ligar).
+    getActivityStats: function () {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('activity_stats').then(function (r) { return r.error ? null : (r.data || []); }).catch(function () { return null; });
+    },
+    // ADMIN: métricas de uso (cadastros, ativos, sessões, etc.).
+    getUsageStats: function () {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('usage_stats').then(function (r) { return r.error ? null : ((r.data && r.data[0]) || null); }).catch(function () { return null; });
     },
 
     // ADMIN (modo dev): lista todos os feedbacks. null = sem permissão/erro.
