@@ -498,12 +498,18 @@
     // ADMIN: índice de acerto por atividade (quiz/caso/flashcard/ligar).
     getActivityStats: function () {
       if (!sb || this.guest) return Promise.resolve(null);
-      return sb.rpc('activity_stats').then(function (r) { return r.error ? null : (r.data || []); }).catch(function () { return null; });
+      return sb.rpc('activity_stats').then(function (r) {
+        if (r.error) { console.warn('[activity_stats]', r.error.message || r.error); return null; }
+        return r.data || [];
+      }).catch(function (e) { console.warn('[activity_stats]', e); return null; });
     },
     // ADMIN: métricas de uso (cadastros, ativos, sessões, etc.).
     getUsageStats: function () {
       if (!sb || this.guest) return Promise.resolve(null);
-      return sb.rpc('usage_stats').then(function (r) { return r.error ? null : ((r.data && r.data[0]) || null); }).catch(function () { return null; });
+      return sb.rpc('usage_stats').then(function (r) {
+        if (r.error) { console.warn('[usage_stats]', r.error.message || r.error); return null; }
+        return (r.data && r.data[0]) || null;
+      }).catch(function (e) { console.warn('[usage_stats]', e); return null; });
     },
 
     // ADMIN (modo dev): lista todos os feedbacks. null = sem permissão/erro.

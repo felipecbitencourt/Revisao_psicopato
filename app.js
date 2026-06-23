@@ -4073,7 +4073,6 @@
       rankBadge(Number(row.rnk))+
       avatarHtml(row.avatar, row.nome, 34)+
       '<div style="flex:1;min-width:0;">'+
-      '<div style="flex:1;min-width:0;">'+
         '<div style="font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(row.nome||'Estudante')+(isMe?' <span style="font-size:11px;color:var(--teal-text);font-weight:800;">· você</span>':'')+'</div>'+
         '<div style="font-size:11.5px;color:var(--muted);font-weight:600;">Nível '+L+' · '+esc(levelTitle(L))+'</div>'+
       '</div>'+
