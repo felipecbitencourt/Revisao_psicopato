@@ -9,6 +9,9 @@ tools/findings.json
 tools/inventory.json
 tools/dumps.jsonl
 tools/cats/
+# saídas geradas pela varredura do quiz (tools/quiz_audit.cjs)
+tools/quiz_audit.json
+tools/qa_batches/
 
 # Memória local do assistente
 memory/

@@ -405,11 +405,13 @@
     auth:{user:null, profile:null, checking:false, error:'', info:'', busy:false, guest:false, loadingMsg:'', form:{}, recovery:false},
     progress:{}, mastered:{}, stats:null, pendingScroll:null,
     rankPeriod:'week', leaderboard:null, rankLoading:false, rankError:false, rankScope:'geral',
+    friendsLb:null, friendsLbLoading:false, friendsLbErr:false, friendsLbKey:'',
     feedback:{tipo:'erro', transtornoId:'', transtornoNome:'', draft:'', sending:false, sent:false, error:''},
     // modo dev: leitura dos feedbacks (RPC admin)
     fbAdmin:{list:null, loading:false, loaded:false, err:'', filter:'todos'},
     profileDraft:{anonimo:false}, profileMsg:null, profileSaving:false, profileUploading:false,
-    profileTab:'conta', activityByDay:null, activityLoading:false,
+    profileTab:'metricas', activityByDay:null, activityLoading:false,
+    myCounts:{seguindo:0, seguidores:0, loaded:false},
     // amigos (follow) + perfis de outros
     amigos:{tab:'following', following:null, followers:null, loading:false, err:false,
             code:'', lookup:null, looking:false, lookErr:'', adding:false},
@@ -460,13 +462,13 @@
     quizRandom:    function(){ state.quizKind='nome';     state.quizCat=-1; startQuiz(buildQuizSet('nome', -1)); },
     quizRestart:   function(){ startQuiz(buildQuizSet(state.quizKind, state.quizCat)); },
     goIndice:      function(){ go('indice'); },
-    goRanking:     function(){ go('ranking'); loadLeaderboard(); },
-    setRankPeriod: function(p){ if(state.rankPeriod===p) return; state.rankPeriod=p; setState({}); loadLeaderboard(); },
+    goRanking:     function(){ go('ranking'); if(state.rankScope==='amigos') loadFriendsLeaderboard(); else loadLeaderboard(); },
+    setRankPeriod: function(p){ if(state.rankPeriod===p) return; state.rankPeriod=p; setState({}); if(state.rankScope==='amigos') loadFriendsLeaderboard(); else loadLeaderboard(); },
     sideMetricNext: function(){ sideMetricIdx = (sideMetricIdx + 1) % sideMetrics().length; paintSideMetric(); resetSideMetricTimer(); },
     sideMetricGo:   function(i){ sideMetricIdx = ((Number(i)||0)) % sideMetrics().length; paintSideMetric(); resetSideMetricTimer(); },
     /* ---- amigos (follow) + perfis de outros ---- */
-    goAmigos:      function(){ state.rankScope='amigos'; go('ranking'); loadFriends(state.amigos.tab); },
-    rankScopeSet:  function(scope){ scope=String(scope); if(state.rankScope===scope){ return; } state.rankScope=scope; setState({}); if(scope==='amigos') loadFriends(state.amigos.tab); else loadLeaderboard(); },
+    goAmigos:      function(){ state.rankScope='amigos'; go('ranking'); loadFriendsLeaderboard(); },
+    rankScopeSet:  function(scope){ scope=String(scope); if(state.rankScope===scope){ return; } state.rankScope=scope; setState({}); if(scope==='amigos') loadFriendsLeaderboard(); else loadLeaderboard(); },
     amigosTab:     function(k){ k=String(k); if(state.amigos.tab===k){ return; } state.amigos.tab=k; setState({}); loadFriends(k); },
     copyMyCode:    function(){ var c=myCodeRaw(); if(c) copyToClipboard(fmtCode(c)); },
     lookupCode:    function(){
@@ -518,7 +520,6 @@
         state.adv.analyzing=false; state.adv.done=true; render(); scrollTop();
       }, 20);
     },
-    goDsm:         function(){ go('dsm'); },
     goFeedback:    function(){ var f=state.feedback; f.sent=false; f.error=''; f.transtornoId=''; f.transtornoNome=''; go('feedback'); },
     setFeedbackTipo:function(t){ state.feedback.draft=rawVal('fb-msg'); state.feedback.tipo=t; state.feedback.error=''; render(); },
     clearFeedbackFicha:function(){ state.feedback.draft=rawVal('fb-msg'); state.feedback.transtornoId=''; state.feedback.transtornoNome=''; render(); },
@@ -668,7 +669,8 @@
     var p = state.auth.profile || {};
     state.profileDraft = { apelido:p.apelido||'', nome:p.nome||'', curso:p.curso||'', semestre:p.semestre||'', instituicao:p.instituicao||'', avatar:p.avatar||'', anonimo:!!p.anonimo };
     state.profileMsg=null; state.profileSaving=false; state.profileUploading=false;
-    state.profileTab='conta';
+    state.profileTab='metricas';
+    loadActivityByDay(); loadMyCounts();
     setState({screen:'perfil'}); scrollTop();
   };
   // alterna entre as abas "Conta" e "Métricas" do perfil (client-side).
@@ -695,6 +697,18 @@
       state.activityByDay = []; state.activityLoading = false;
       if(state.screen==='perfil' && state.profileTab==='metricas') render();
     });
+  }
+  // contagens de seguindo/seguidores do próprio usuário (cabeçalho social do perfil).
+  function loadMyCounts(force){
+    if(!canRank()){ state.myCounts.loaded = true; return; }
+    if(state.myCounts.loaded && !force) return;
+    var myId = state.auth.user ? state.auth.user.id : null;
+    if(!myId || !DB.profileCard) { state.myCounts.loaded = true; return; }
+    DB.profileCard(myId).then(function(c){
+      if(c){ state.myCounts = { seguindo:Number(c.seguindo)||0, seguidores:Number(c.seguidores)||0, loaded:true }; }
+      else { state.myCounts.loaded = true; }
+      if(state.screen==='perfil') render();
+    }).catch(function(){ state.myCounts.loaded = true; });
   }
   // carrega (e cacheia) as estatísticas de acerto dos casos (modo dev).
   function loadCasoStats(){
@@ -794,7 +808,7 @@
     DB.register(email,pass,{nome:nome,curso:curso,semestre:sem,instituicao:inst}).then(function(res){
       if(res && res.error){ state.auth.busy=false; state.auth.error=traduzErro(res.error); render(); return; }
       if(res && res.data && res.data.session){ /* já logado: mantém o loader; onAuth -> applySession */ }
-      else { state.auth.busy=false; state.auth.info='Conta criada! Confirme pelo link no seu e-mail e depois entre.'; setState({screen:'login'}); }
+      else { state.auth.busy=false; state.auth.info='Conta criada! Entre com seu e-mail e senha.'; setState({screen:'login'}); }
     }).catch(function(){ state.auth.busy=false; state.auth.error='Erro de conexão. Tente de novo.'; render(); });
   };
   actions.enterGuest = function(){
@@ -1182,6 +1196,23 @@
       state.rankLoading = false; state.rankError = true; render();
     });
   }
+  // ranking escopo-amigos (você + quem você segue), pelo período atual.
+  function loadFriendsLeaderboard(force){
+    if(!canRank()){ return; }
+    var period = state.rankPeriod;
+    if(!force && state.friendsLb && state.friendsLbKey === period) return;   // cache por período
+    state.friendsLbLoading = true; state.friendsLbErr = false; render();
+    DB.getFriendsLeaderboard(period).then(function(rows){
+      if(state.rankPeriod !== period) return;
+      state.friendsLbLoading = false; state.friendsLbKey = period;
+      if(rows === null){ state.friendsLbErr = true; state.friendsLb = null; }
+      else { state.friendsLb = rows; }
+      render();
+    }).catch(function(){
+      if(state.rankPeriod !== period) return;
+      state.friendsLbLoading = false; state.friendsLbErr = true; render();
+    });
+  }
 
   /* ---------------------------------------------------------
      Tema
@@ -1300,7 +1331,6 @@
       {label:'Exercícios',icon:ICON.check,action:'goExercicios', active:EX_SCREENS.indexOf(s.screen)>=0, primary:true},
       {label:'Busca avançada', icon:ICON.searchNav, action:'goBusca', active:s.screen==='busca'},
       {label:'Ranking',   icon:ICON.trophy,  action:'goRanking',  active:s.screen==='ranking'||s.screen==='perfilOutro'},
-      {label:'DSM-5-TR',  icon:ICON.bookOpen,action:'goDsm',      active:s.screen==='dsm', keep:true},
       {label:'Feedback',  icon:ICON.message, action:'goFeedback', active:s.screen==='feedback'},
       {label:'Sobre',     icon:ICON.about,   action:'goSobre',    active:s.screen==='sobre', tr:'sobre'},
     ].concat(s.devMode ? [
@@ -2461,18 +2491,49 @@
   // qualquer tamanho, mesmo quando longos por listarem exemplos/notas.
   var EXCLUSION_CRIT = [
     /nao (e|sao) mais bem explicad/,
+    /melhor explicad/,
     /nao ocorre exclusivamente durante/,
     /efeitos fisiologicos (diretos )?de (uma|alguma)? ?substancia/,
     /nao (e|se deve|sao|esta) ?atribuiv\w*.*(substancia|condicao medica|medicamento|neurolog)/,
     /nao (e|sao) atribuiv\w* a (outra|alguma|uma) condicao/,
     /nao (e|sao) atribuiv\w* a (deficiencia|condicoes congenitas|um deficit|outro prejuizo)/,
-    /nao (e|sao) consequencia (dos|de) efeitos/
+    /nao (e|sao) consequencia (dos|de) efeitos/,
+    // exclusão de episódio de humor / esquizoafetivo / referências cruzadas negativas
+    /nao (houve|ocorreu|ocorreram|preencheu|preencheram|foram preenchidos os criterios para).*(episodi[oa]s? (maniac|hipomaniac|depressiv|mist)|mania|hipomania|esquizoafetiv)/,
+    /(jamais|nunca) (houve|ocorreu|preencheu|foram preenchidos).*(criterio|episodio|mania|hipomania)/,
+    /(transtorno esquizoafetivo|transtorno (depressivo|bipolar)).*(foi|foram|nao) (descartad|excluid|afastad)/,
+    /nao (preenche|preencheu|satisfaz|sao preenchidos os criterios).*(transtorno do espectro autista|esquizofrenia)/,
+    /nao (explicam|sao melhor explicad).*(os )?(episodios|sintomas|quadros|perturbacoes)/,  // exclusão "não explicam os episódios"
+    /criterio [a-h]\b.{0,90}criterio [a-h]\b/,                                                // critério de ligação (referencia 2 outros)
+    /^(em |para )?criancas de (6|seis) anos ou menos/,                                        // conjunto pediátrico paralelo (ex.: TEPT ≤6 anos)
+    /(lesao ou doenca|sinais ou sintomas).{0,30}(em|de) outr[oa]\b/,                          // variante "imposto a outro" (não é autoimposto)
+    /apresenta (um |o )?outro \(?vitima/                                                      // idem (apresenta a vítima como doente)
   ];
   // critério de PREJUÍZO/sofrimento — só é genérico quando é a frase isolada
   // (curto); em critério politético longo ele faz parte do enunciado característico.
   var IMPAIRMENT_CRIT = [
-    /sofrimento clinicamente significativo/,
-    /prejuizo (clinicamente significativo|no funcionamento|nas? (relacoes|areas)|em (outras )?areas? importantes)/
+    /sofrimento clinicamente significativ/,
+    /prejuizos? (clinicamente significativ|no funcionamento|nas? (relacoes|areas)|em (outras )?areas? importantes|acentuad|marcant|substancial|importante|significativ)/,
+    /(interfere|interferem|limita|limitam|restringe|restringem|prejudica|prejudicam|reduz|reduzem|comprometem?) (a |o |na |no |com a |com o )?(comunicacao|participacao|interacao|desempenho|rendimento|realizacao|funcionamento)/,
+    /funcionament[eo] (social|academic|ocupacional|profissional|escolar)/,
+    /individualmente ou em (qualquer )?combinacao/
+  ];
+  // critérios "modelo" genéricos (frequência/início/intoxicação/abstinência/fobia)
+  // — barrados só quando curtos (frase isolada), como o IMPAIRMENT.
+  var BOILERPLATE_CRIT = [
+    /(pelo menos|no minimo|ao menos) (tres|3) (noites|vezes) (por|na) semana/,
+    /(presente|ocorre|persiste|dura|esta presente|presentes).*(pelo menos|no minimo|por|durante|ha) (tres|3) meses/,
+    /oportunidades? (adequad|suficient|apropriad)/,
+    /(desenvolvimento|surgimento) de (uma )?sindrome (reversivel|especifica|problematica)/,
+    /(cessacao|interrupcao|reducao) (abrupta )?(de |do )?(uso (pesado|prolongado|intenso))/,
+    /uso (diario|regular|pesado) (e )?prolongado/,
+    /hiperatividade (autonomica|do sistema nervoso autonomo)/,
+    /(inicio|os sintomas|comeca|surge).{0,40}(periodo|fase|inicio) (de |do )?desenvolvimento/,
+    /(provoca\w*|induz\w*|desencadei\w*|gera\w*|resulta em) (quase sempre |invariavelmente |imediatamente )?(medo|ansiedade|temor)/,
+    /(quase sempre|invariavelmente|de imediato) (provoca|induz|gera|desencadei|resulta|causa)/,
+    /(medo|ansiedade|temor).{0,25}(desproporci|fora de proporcao|excessiv\w* em relacao|maior que o perigo)/,
+    /criterios para (um )?(transtorno|episodio) depressivo maior/,
+    /(75 a 100|aproximadamente 75|em (quase )?todas as (ocasioes|situacoes|atividades)|quase todas ou todas as)/
   ];
   var TEMPLATE_CRIT = [ /^um padrao (problematico )?de uso de/ ];  // uso de substância: ambíguo entre substâncias
   function critPlain(t){ return qzNorm(t).replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
@@ -2480,35 +2541,81 @@
     var n = critPlain(text);
     if(TEMPLATE_CRIT.some(function(re){ return re.test(n); })) return true;
     if(EXCLUSION_CRIT.some(function(re){ return re.test(n); })) return true;
-    return text.length < 300 && IMPAIRMENT_CRIT.some(function(re){ return re.test(n); });
+    return text.length < 300 && (IMPAIRMENT_CRIT.some(function(re){ return re.test(n); }) || BOILERPLATE_CRIT.some(function(re){ return re.test(n); }));
   }
-  // "saco" de tokens significativos do critério com o nome do transtorno mascarado
+  // "saco" de tokens significativos do critério, com o nome do transtorno mascarado.
   function critBag(text, name){
     var seen={}, out=[];
     critPlain(maskName(text, name)).split(' ').forEach(function(t){ if(t.length>=5 && !seen[t]){ seen[t]=1; out.push(t); } });
     return out.sort().join(' ');
   }
-  var CRIT_BAG_IDX = null;
-  function critBagIdx(){
-    if(CRIT_BAG_IDX) return CRIT_BAG_IDX;
-    var idx={};
-    CATS.forEach(function(c){ (c.items||[]).forEach(function(d){ (d.criteria||[]).forEach(function(cr){
-      if(!cr || (cr.text||'').trim().length < 25) return;
-      var b = critBag(cr.text, d.n); if(!b) return;
-      (idx[b] = idx[b] || {})[d.n] = 1;
-    }); }); });
-    CRIT_BAG_IDX = idx; return idx;
+  // identificadores de FAMÍLIA: stems de NOME compartilhados por 2..8 transtornos
+  // (ex.: "tique", "catato", "apneia"). Mascarados no bag de DEDUP para que
+  // critérios idênticos entre irmãos colapsem e sejam reconhecidos como compartilhados.
+  var FAM_STEMS = null;
+  function famStems(){
+    if(FAM_STEMS) return FAM_STEMS;
+    var df={};
+    CATS.forEach(function(c){ (c.items||[]).forEach(function(d){
+      var seen={}; qzStems(d.n).forEach(function(s){ if(!seen[s]){ seen[s]=1; df[s]=(df[s]||0)+1; } });
+    }); });
+    FAM_STEMS = Object.keys(df).filter(function(s){ return df[s]>=2 && df[s]<=8; });
+    return FAM_STEMS;
   }
+  // bag para DEDUP entre transtornos: mascara o nome próprio + identificadores de família.
+  function dedupTokens(text, name){
+    var masked = maskName(text, name);
+    var fam = famStems();
+    masked = masked.replace(/[0-9A-Za-zÀ-ÿ]+(?:-[0-9A-Za-zÀ-ÿ]+)*/g, function(w){
+      var nw = qzNorm(w);
+      for(var i=0;i<fam.length;i++){ if(nw.indexOf(fam[i])===0) return '______'; }
+      return w;
+    });
+    var seen={}, out=[];
+    critPlain(masked).split(' ').forEach(function(t){ if(t.length>=5 && !seen[t]){ seen[t]=1; out.push(t); } });
+    return out;
+  }
+  // assinaturas de todos os critérios (token-set do dedup) — p/ detecção fuzzy.
+  var CRIT_SIGS = null;
+  function critSigs(){
+    if(CRIT_SIGS) return CRIT_SIGS;
+    var sigs=[];
+    CATS.forEach(function(c){ (c.items||[]).forEach(function(d){ (d.criteria||[]).forEach(function(cr){
+      var t=(cr.text||'').trim(); if(t.length < 25) return;
+      var toks = dedupTokens(cr.text, d.n);
+      if(toks.length) sigs.push({ name:d.n, set:toks });
+    }); }); });
+    CRIT_SIGS = sigs; return sigs;
+  }
+  // critério é COMPARTILHADO se um critério de OUTRO transtorno tem ~mesmos tokens
+  // (Jaccard ≥ 0,8) — pega irmãos quase idênticos que o dedup exato não pegava.
+  function sharedCrit(text, name){
+    var toks = dedupTokens(text, name);
+    if(toks.length < 4) return true;                 // pouco conteúdo distintivo após mascarar
+    var setA={}; toks.forEach(function(t){ setA[t]=1; });
+    var sigs = critSigs();
+    for(var i=0;i<sigs.length;i++){
+      var s=sigs[i]; if(s.name===name) continue;
+      var inter=0; for(var j=0;j<s.set.length;j++){ if(setA[s.set[j]]) inter++; }
+      var uni = toks.length + s.set.length - inter;
+      if(uni>0 && inter/uni >= 0.70) return true;
+    }
+    return false;
+  }
+  var DISTINCT_CACHE = {};
   function distinctiveCrits(d){
     if(!Array.isArray(d.criteria)) return [];
-    var idx = critBagIdx();
-    return d.criteria.filter(function(cr){
+    if(DISTINCT_CACHE[d.n]) return DISTINCT_CACHE[d.n];          // conteúdo é estático → memoiza (dedup é O(n²))
+    var res = d.criteria.filter(function(cr){
       var t = (cr.text||'').trim();
       if(t.length < 25 || ambiguousCrit(t)) return false;
-      var b = critBag(cr.text, d.n);
-      if(b && idx[b] && Object.keys(idx[b]).length >= 2) return false;   // compartilhado entre transtornos
+      var ownBag = critBag(cr.text, d.n);
+      if(!ownBag || ownBag.split(' ').length < 4) return false;   // máscara do nome destruiu o traço distintivo
+      if(sharedCrit(cr.text, d.n)) return false;                  // ~idêntico ao critério de outro transtorno
       return true;
     });
+    DISTINCT_CACHE[d.n] = res;
+    return res;
   }
 
   /* questionário "por critério diagnóstico": um critério A–E -> nome. Só usa
@@ -2548,9 +2655,40 @@
       if(hiddenReduced(d) || quizBadSubject(d.n)) return;
       var f = d.facts; if(!f) return;
       if(['inicio','prevalencia','sexo'].filter(function(k){ return f[k]; }).length < 2) return;
+      if(sharedFacts(d)) return;                          // perfil epidemiológico genérico/indistinto
       out.push({ front:d.n, facts:f, cat:o.c.name, color:o.c.color, ci:o.i, di:di });
     }); });
     return out;
+  }
+  // perfil epidemiológico (início+prevalência+sexo) é genérico se tem pouca
+  // informação OU se ~coincide com o de outro transtorno (vários "início na
+  // vida adulta" indistinguíveis). Usa o mesmo dedup fuzzy dos critérios.
+  function factText(d){ var f=d.facts||{}; return [f.inicio,f.prevalencia,f.sexo].filter(Boolean).join(' '); }
+  var FACT_SIGS = null;
+  function factSigs(){
+    if(FACT_SIGS) return FACT_SIGS;
+    var sigs=[];
+    CATS.forEach(function(c){ (c.items||[]).forEach(function(d){
+      if(quizBadSubject(d.n)) return;
+      var f=d.facts; if(!f) return;
+      if(['inicio','prevalencia','sexo'].filter(function(k){ return f[k]; }).length < 2) return;
+      var toks = dedupTokens(factText(d), d.n);
+      if(toks.length) sigs.push({ name:d.n, set:toks });
+    }); });
+    FACT_SIGS = sigs; return sigs;
+  }
+  function sharedFacts(d){
+    var toks = dedupTokens(factText(d), d.n);
+    if(toks.length < 3) return true;
+    var setA={}; toks.forEach(function(t){ setA[t]=1; });
+    var sigs = factSigs();
+    for(var i=0;i<sigs.length;i++){
+      var s=sigs[i]; if(s.name===d.n) continue;
+      var inter=0; for(var j=0;j<s.set.length;j++){ if(setA[s.set[j]]) inter++; }
+      var uni = toks.length + s.set.length - inter;
+      if(uni>0 && inter/uni >= 0.7) return true;
+    }
+    return false;
   }
   function buildFactQuiz(ci){
     var items = factCards(ci);
@@ -3465,16 +3603,42 @@
       var on = (state.profileTab||'conta')===id;
       return '<button data-action="setProfileTab" data-arg="'+id+'" class="pf-tab'+(on?' on':'')+'">'+label+'</button>';
     }
-    return '<div class="pf-tabs">'+tab('conta','Conta')+tab('metricas','Métricas')+'</div>';
+    return '<div class="pf-tabs">'+tab('metricas','Métricas')+tab('conta','Conta')+'</div>';
+  }
+  // número grande + rótulo (Seguindo / Seguidores) — estilo rede social
+  function profCountStat(n, label){
+    return '<div style="text-align:center;"><div style="font:800 19px \'Bricolage Grotesque\';color:var(--ink);line-height:1;">'+(Number(n)||0)+'</div>'+
+      '<div style="font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:3px;">'+esc(label)+'</div></div>';
+  }
+  // cabeçalho de identidade compartilhado (meu perfil e perfil de outro)
+  function profileIdentityCard(o){
+    var sub   = o.sub      ? '<div style="font-size:13px;color:var(--muted-2);font-weight:600;margin-top:3px;">'+o.sub+'</div>' : '';
+    var extra = o.extraLine? '<div style="font-size:12px;color:var(--muted);margin-top:4px;">'+o.extraLine+'</div>' : '';
+    var counts = '<div style="display:flex;gap:26px;margin-top:13px;">'+profCountStat(o.seguindo,'Seguindo')+profCountStat(o.seguidores,'Seguidores')+'</div>';
+    var action = o.action ? '<div style="margin-top:14px;">'+o.action+'</div>' : '';
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px 24px;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px;">'+
+      avatarHtml(o.avatar, o.name, 76, o.fallbackPhoto)+
+      '<div style="flex:1;min-width:200px;">'+
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><h2 style="font:800 22px \'Bricolage Grotesque\';letter-spacing:-.4px;margin:0;color:var(--ink);">'+esc(o.name||'Estudante')+'</h2>'+(o.badge||'')+'</div>'+
+        sub + extra + counts + action +
+      '</div>'+
+    '</div>';
   }
   function screenPerfil(){
-    var metricas = (state.profileTab==='metricas');
+    var metricas = (state.profileTab!=='conta');   // métricas é o padrão
+    var p = state.auth.profile || {};
+    var card = profileIdentityCard({
+      avatar: p.avatar, name: displayName() || 'Estudante', fallbackPhoto: googlePhoto(),
+      sub: p.instituicao ? esc(p.instituicao) : '',
+      seguindo: state.myCounts.seguindo, seguidores: state.myCounts.seguidores
+    });
     return ''+
     '<section style="max-width:'+(metricas?'860px':'680px')+';animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Perfil</div>'+
       '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 18px;color:var(--ink);">Meu perfil</h1>'+
+      card +
       perfilTabs()+
-      (metricas ? perfilAbaMetricas() : perfilAbaConta())+
+      (metricas ? (amigosCodeAdd() + perfilAbaMetricas()) : perfilAbaConta())+
     '</section>';
   }
   // linha de configuração de notificações push no perfil
@@ -3523,11 +3687,6 @@
           '<input type="file" id="avatar-file" accept="image/*" style="display:none;">'+
         '</div>'+
         '<div class="av-gallery">'+presets+'</div>'+
-        (myCodeRaw() ? '<div style="display:flex;align-items:center;gap:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:13px;padding:13px 15px;margin-top:18px;flex-wrap:wrap;">'+
-          '<div style="flex:1;min-width:140px;"><div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;">Seu código de amigo</div><div style="font:800 18px \'Bricolage Grotesque\';letter-spacing:1.5px;color:var(--ink);margin-top:1px;">'+esc(fmtCode(myCodeRaw()))+'</div></div>'+
-          '<button data-action="copyMyCode" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.copy+'<span>Copiar</span></button>'+
-          '<button data-action="goAmigos" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font:700 12.5px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.users+'<span>Amigos</span></button>'+
-        '</div>' : '')+
         pushSettingRow()+
         '<div style="height:1px;background:var(--border);margin:22px 0;"></div>'+
         profileField('pf-apelido','Apelido', d.apelido||'', 'Como quer ser chamado(a)')+
@@ -3828,7 +3987,8 @@
       if(follow && DB.notifyFollow) DB.notifyFollow(id);   // dispara push "novo seguidor" (Edge Function)
       var lk=state.amigos.lookup; if(lk && lk.user_id===id && rel) lk.relationship=rel;
       state.amigos.following=null; state.amigos.followers=null;   // listas mudaram
-      if(state.screen==='ranking' && state.rankScope==='amigos'){ loadFriends(state.amigos.tab); } else { render(); }
+      state.myCounts.loaded=false;                                 // minha contagem de "seguindo" mudou
+      if(state.screen==='ranking' && state.rankScope==='amigos'){ loadFriendsLeaderboard(true); } else { render(); }
     }).catch(function(){ if(pv.id===id) pv.busy=false; render(); });
   }
 
@@ -3887,16 +4047,17 @@
   }
 
   // painel "Amigos" embutido na tela de Ranking (sem section/título próprios).
-  function amigosPanel(){
+  // bloco "seu código + adicionar amigo" (topo do escopo Amigos)
+  function amigosCodeAdd(){
     var a = state.amigos;
     var code = myCodeRaw(), codeFmt = fmtCode(code);
 
-    var codeCard = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px;">'+
+    var codeCard = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px;">'+
       '<div style="width:46px;height:46px;border-radius:13px;background:var(--accent-bg);color:var(--accent-tx);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="transform:scale(1.2);display:flex;">'+ICON.users+'</span></div>'+
       '<div style="flex:1;min-width:160px;">'+
         '<div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">Seu código</div>'+
         '<div style="font:800 22px \'Bricolage Grotesque\';letter-spacing:2px;color:var(--ink);">'+(codeFmt?esc(codeFmt):'—')+'</div>'+
-        '<div style="font-size:11.5px;color:var(--muted);margin-top:2px;">'+(code?'Compartilhe para que colegas te adicionem.':'Disponível após aplicar o <code>sql/friends.sql</code> no Supabase.')+'</div>'+
+        '<div style="font-size:11.5px;color:var(--muted);margin-top:2px;">'+(code?'Compartilhe para colegas te adicionarem ao ranking de amigos.':'Disponível após aplicar o <code>sql/friends.sql</code> no Supabase.')+'</div>'+
       '</div>'+
       (code?'<button data-action="copyMyCode" data-hover="border-color:#5BC0BE;color:var(--teal-text);" style="display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:10px 15px;font:700 13px \'Hanken Grotesk\';color:var(--muted-2);cursor:pointer;transition:all .15s ease;">'+ICON.copy+'<span>Copiar</span></button>':'')+
     '</div>';
@@ -3905,8 +4066,8 @@
     if(a.looking){ resultHtml = '<div style="margin-top:12px;color:var(--muted);font-size:13px;">Procurando…</div>'; }
     else if(a.lookErr){ resultHtml = '<div style="margin-top:12px;color:#E5484D;font-size:12.5px;font-weight:600;">'+esc(a.lookErr)+'</div>'; }
     else if(a.lookup){ resultHtml = '<div style="margin-top:14px;">'+lookupRow(a.lookup)+'</div>'; }
-    var addCard = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;margin-bottom:22px;">'+
-      '<div style="font:700 14.5px \'Bricolage Grotesque\';color:var(--ink);margin-bottom:10px;">Adicionar por código</div>'+
+    var addCard = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;margin-bottom:20px;">'+
+      '<div style="font:700 14.5px \'Bricolage Grotesque\';color:var(--ink);margin-bottom:10px;">Adicionar amigo por código</div>'+
       '<div style="display:flex;gap:9px;flex-wrap:wrap;">'+
         '<input id="amigo-code" value="'+esc(a.code||'')+'" maxlength="9" placeholder="Ex.: K7F-3QR" autocomplete="off" spellcheck="false" style="flex:1;min-width:150px;text-transform:uppercase;letter-spacing:1.5px;font:700 15px \'Hanken Grotesk\';padding:11px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--ink);outline:none;">'+
         '<button data-action="lookupCode" data-hover="background:#0c6a66;" style="background:var(--accent-solid);border:none;border-radius:12px;padding:11px 18px;font:700 13.5px \'Hanken Grotesk\';color:#fff;cursor:pointer;transition:background .15s;">Procurar</button>'+
@@ -3914,73 +4075,58 @@
       resultHtml+
     '</div>';
 
-    function tabBtn(k,label){ var on=a.tab===k; return '<button data-action="amigosTab" data-arg="'+k+'" style="border:none;border-radius:9px;padding:7px 15px;font:700 13px \'Hanken Grotesk\';cursor:pointer;transition:all .15s;'+(on?'background:var(--surface);color:var(--teal-text);box-shadow:0 1px 3px rgba(16,42,51,.12);':'background:transparent;color:var(--muted);')+'">'+label+'</button>'; }
-    var tabs = '<div style="display:inline-flex;gap:4px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:14px;">'+tabBtn('following','Seguindo')+tabBtn('followers','Seguidores')+'</div>';
-
-    var rows = a.tab==='followers' ? a.followers : a.following;
-    if(rows && rows.length){ rows = rows.slice().sort(function(x,y){ return (y.xp||0)-(x.xp||0); }); }   // ordena por XP (cara de ranking)
-    var listHtml;
-    if(a.loading && !rows){ listHtml = rankSkeleton(); }
-    else if(a.err){ listHtml = rankMessage('⚠️','Não foi possível carregar','Verifique a conexão e se o sql/friends.sql foi aplicado no Supabase.'); }
-    else if(!rows || !rows.length){
-      listHtml = a.tab==='followers'
-        ? rankMessage('👋','Ninguém te segue ainda','Quando um colega adicionar o seu código, ele aparece aqui.')
-        : rankMessage('🔍','Você ainda não segue ninguém','Adicione colegas pelo código acima para acompanhar o progresso e o XP deles.');
-    } else {
-      listHtml = '<div style="display:flex;flex-direction:column;gap:9px;'+(a.loading?'opacity:.5;':'')+'">'+rows.map(friendRow).join('')+'</div>';
-    }
-
-    return codeCard + addCard + tabs + listHtml;
+    return codeCard + addCard;
+  }
+  // ranking dos AMIGOS (você + quem você segue), pelo período atual
+  function friendsLbBody(meId){
+    var rows = state.friendsLb;
+    if(state.friendsLbLoading && !rows) return rankSkeleton();
+    if(state.friendsLbErr) return rankMessage('⚠️','Não foi possível carregar','Verifique a conexão e se o <b>sql/friends.sql</b> foi reaplicado no Supabase (com a função <code>leaderboard_friends</code>).');
+    if(!rows || rows.length <= 1) return rankMessage('👥','Seu ranking de amigos está vazio','Adicione colegas pelo código acima — vocês aparecem aqui ranqueados por XP no período escolhido.');
+    return '<div style="display:flex;flex-direction:column;gap:9px;'+(state.friendsLbLoading?'opacity:.5;transition:opacity .2s;':'')+'">'+
+      rows.map(function(r){ return rankRow(r, !!(meId && r.user_id===meId)); }).join('')+
+    '</div>';
   }
 
   function screenPerfilOutro(){
     var pv = state.profView;
     var back = backBtn('backFromProfile','Voltar');
-    function wrap(inner){ return '<section style="max-width:640px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+back+inner+'</section>'; }
+    function wrap(inner){ return '<section style="max-width:680px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+back+inner+'</section>'; }
     if(pv.loading && !pv.card) return wrap(rankSkeleton());
     if(pv.err || !pv.card)     return wrap(rankMessage('⚠️','Perfil indisponível','Não foi possível carregar este perfil. Pode estar privado ou houve um erro de conexão.'));
 
     var c = pv.card;
     var L = levelForXP(c.xp||0);
-    function tile(val,label){ return '<div style="background:var(--surface-2);border:1px solid var(--border);border-radius:13px;padding:14px 12px;text-align:center;"><div style="font:800 20px \'Bricolage Grotesque\';color:var(--teal-text);">'+val+'</div><div style="font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:3px;">'+esc(label)+'</div></div>'; }
     var sub = [];
     if(c.instituicao) sub.push(esc(c.instituicao));
     if(c.visivel && c.curso) sub.push(esc(c.curso)+(c.semestre?(' · '+esc(c.semestre)):''));
     var memberSince='';
     try{ if(c.criado_em){ var s=new Date(c.criado_em).toLocaleDateString('pt-BR',{month:'long',year:'numeric'}); memberSince='Desde '+s.charAt(0).toUpperCase()+s.slice(1); } }catch(e){}
 
-    var header = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px;">'+
-      avatarHtml(c.avatar, c.nome, 78)+
-      '<div style="flex:1;min-width:180px;">'+
-        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><h1 style="font:800 23px \'Bricolage Grotesque\';letter-spacing:-.4px;margin:0;color:var(--ink);">'+esc(c.nome||'Estudante')+'</h1>'+relBadge(c.relationship)+'</div>'+
-        (sub.length?'<div style="font-size:13px;color:var(--muted-2);font-weight:600;margin-top:3px;">'+sub.join(' · ')+'</div>':'')+
-        (c.visivel?'<div style="font-size:12px;color:var(--muted);margin-top:4px;">Nível '+L+' · '+esc(levelTitle(L))+(memberSince?(' · '+memberSince):'')+'</div>':'')+
-        '<div style="margin-top:13px;">'+followBtn(c.user_id, c.relationship, 'prof', pv.busy)+'</div>'+
-      '</div>'+
-    '</div>';
+    var card = profileIdentityCard({
+      avatar: c.avatar, name: c.nome, sub: sub.join(' · '),
+      extraLine: c.visivel ? ('Nível '+L+' · '+esc(levelTitle(L))+(memberSince?(' · '+memberSince):'')) : '',
+      seguindo: c.seguindo, seguidores: c.seguidores,
+      badge: relBadge(c.relationship),
+      action: followBtn(c.user_id, c.relationship, 'prof', pv.busy)
+    });
 
     var body;
     if(c.visivel){
-      body = '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">'+
-          tile(c.xp||0, 'XP total')+
-          tile('Nv '+L, levelTitle(L))+
-          tile(c.revisados||0, 'Fichas revisadas')+
-          tile(c.dominados||0, 'Exercícios dominados')+
-          tile(c.seguidores||0, 'Seguidores')+
-          tile(c.seguindo||0, 'Seguindo')+
+      body = '<div class="stat-grid pf-stat-grid">'+
+          statCard('', '#E3F3F2', ICON.statBook,   String(c.revisados||0), 'transtornos revisados')+
+          statCard('', '#E8ECFB', ICON.statCheck,  String(c.dominados||0), 'exercícios dominados')+
+          statCard('', '#FFEDE3', ICON.statTarget, (c.xp||0)+' XP', 'experiência total')+
+          statCard('', '#E6F6EE', ICON.statShield, 'Nível '+L, esc(levelTitle(L)))+
         '</div>';
     } else {
       body = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px 24px;text-align:center;">'+
           '<div style="font-size:30px;margin-bottom:10px;">🔒</div>'+
           '<div style="font:800 16px \'Bricolage Grotesque\';color:var(--ink);margin-bottom:6px;">Perfil privado</div>'+
-          '<p style="margin:0 auto 4px;max-width:380px;font-size:13.5px;line-height:1.6;color:var(--muted-2);">Este usuário está em modo anônimo. As estatísticas só aparecem para amigos — quando vocês <b>se seguem mutuamente</b>.</p>'+
-          '<div style="display:flex;justify-content:center;gap:20px;margin-top:16px;">'+
-            '<div style="text-align:center;"><div style="font:800 18px \'Bricolage Grotesque\';color:var(--muted-2);">'+(c.seguidores||0)+'</div><div style="font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;">Seguidores</div></div>'+
-            '<div style="text-align:center;"><div style="font:800 18px \'Bricolage Grotesque\';color:var(--muted-2);">'+(c.seguindo||0)+'</div><div style="font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;">Seguindo</div></div>'+
-          '</div>'+
+          '<p style="margin:0 auto;max-width:380px;font-size:13.5px;line-height:1.6;color:var(--muted-2);">Este usuário está em modo anônimo. As estatísticas só aparecem para amigos — quando vocês <b>se seguem mutuamente</b>.</p>'+
         '</div>';
     }
-    return wrap(header+body);
+    return wrap(card+body);
   }
 
   /* =========================================================
@@ -4069,42 +4215,43 @@
   function screenRanking(){
     if(!canRank()) return rankInvite();
     var amigos = state.rankScope==='amigos';
+    var lv = levelInfo(userXP());
+    var meId = state.auth.user ? state.auth.user.id : null;
+    var periodLabel = RANK_PERIOD_LABEL[state.rankPeriod] || '';
 
-    var inner;
+    // tabs de período (dia/semana/mês/ano) — valem para os DOIS escopos
+    var periodRow = '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;">'+
+      rankTabs()+
+      '<span style="font-size:12.5px;font-weight:700;color:var(--muted);">'+esc(periodLabel)+'</span>'+
+    '</div>';
+
+    var body;
     if(amigos){
-      inner = amigosPanel();
+      body = amigosCodeAdd() + periodRow + friendsLbBody(meId);
     } else {
-      var lv = levelInfo(userXP());
-      var rows = state.leaderboard;
-      var meId = state.auth.user ? state.auth.user.id : null;
-      var periodLabel = RANK_PERIOD_LABEL[state.rankPeriod] || '';
-      var body;
+      var rows = state.leaderboard, geral;
       if(state.rankLoading && !rows){
-        body = rankSkeleton();
+        geral = rankSkeleton();
       } else if(state.rankError){
-        body = rankMessage('⚠️', 'Não foi possível carregar o ranking', 'Verifique sua conexão. Se persistir, confirme que o gamification.sql foi executado no Supabase.');
+        geral = rankMessage('⚠️', 'Não foi possível carregar o ranking', 'Verifique sua conexão. Se persistir, confirme que o gamification.sql foi executado no Supabase.');
       } else if(!rows || !rows.length){
-        body = rankMessage('🏁', 'Ninguém pontuou ainda', 'Seja o primeiro a marcar presença neste período — revise fichas e faça exercícios para somar XP.');
+        geral = rankMessage('🏁', 'Ninguém pontuou ainda', 'Seja o primeiro a marcar presença neste período — revise fichas e faça exercícios para somar XP.');
       } else {
-        body = '<div style="display:flex;flex-direction:column;gap:9px;'+(state.rankLoading?'opacity:.5;transition:opacity .2s;':'')+'">'+
+        geral = '<div style="display:flex;flex-direction:column;gap:9px;'+(state.rankLoading?'opacity:.5;transition:opacity .2s;':'')+'">'+
           rows.map(function(r){ return rankRow(r, !!(meId && r.user_id === meId)); }).join('')+
         '</div>';
       }
-      inner = levelHeroCard(lv)+
-        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;">'+
-          rankTabs()+
-          '<span style="font-size:12.5px;font-weight:700;color:var(--muted);">'+esc(periodLabel)+'</span>'+
-        '</div>'+
-        body;
+      body = periodRow + geral;
     }
 
     return ''+
     '<section style="max-width:760px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">Ranking</div>'+
       '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Ranking de XP</h1>'+
-      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:14.5px;max-width:560px;">'+(amigos?'Veja o XP e o progresso dos colegas que você segue — e adicione novos pelo código.':'Sua posição entre os estudantes — XP por fichas revisadas, exercícios e dias ativos.')+'</p>'+
+      '<p style="margin:0 0 22px;color:var(--muted-2);font-size:14.5px;max-width:560px;">'+(amigos?'Só entre os seus amigos — você e quem você segue, ranqueados por XP no período.':'Sua posição entre todos os estudantes — XP por fichas revisadas, exercícios e dias ativos.')+'</p>'+
       rankScopeToggle()+
-      inner+
+      levelHeroCard(lv)+
+      body+
     '</section>';
   }
   var FB_TIPOS = [['erro','Erro na ficha'],['sugestao','Sugestão'],['duvida','Dúvida'],['outro','Outro']];
@@ -4165,19 +4312,6 @@
       '</div>'+
     '</section>';
   }
-  function screenDsm(){
-    return ''+
-    '<section style="animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
-      '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">'+
-        '<div>'+
-          '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;">DSM-5-TR</div>'+
-          '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Manual na íntegra</h1>'+
-        '</div>'+
-        '<a href="DSM-5-TR.pdf" target="_blank" rel="noopener" data-hover="border-color:#5BC0BE;" style="text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:9px 14px;font:700 13px \'Hanken Grotesk\';color:var(--teal-text);transition:border-color .18s ease;">Abrir em nova aba ↗</a>'+
-      '</div>'+
-      '<iframe class="dsm-frame" src="DSM-5-TR.pdf" title="DSM-5-TR — manual completo"></iframe>'+
-    '</section>';
-  }
   function screenSobre(){
     var total = CATS.reduce(function(s,c){ return s + c.items.length; }, 0);
     function card(icon, title, body){
@@ -4204,7 +4338,7 @@
       '</article>'+
       '<div style="display:flex;flex-direction:column;gap:12px;">'+
         card(ICON.book2, 'Conteúdo', 'Os '+total+' transtornos das 20 categorias da Seção II do DSM-5-TR, com critérios, subtipos, especificadores e seções, além de tabelas recortadas do manual.')+
-        card(ICON.info, 'Fonte e finalidade educativa', 'Conteúdo baseado no DSM-5-TR (Manual Diagnóstico e Estatístico de Transtornos Mentais, American Psychiatric Association; ed. brasileira Artmed / Grupo A), utilizado aqui <b>exclusivamente para fins de estudo e revisão de conteúdos</b>. Os trechos extraídos diretamente — em especial os <b>critérios diagnósticos</b> — foram mantidos fiéis ao texto original, prezando pela exatidão e evitando interpretações equivocadas de informações clínicas essenciais. Todos os direitos sobre o DSM-5-TR pertencem aos seus detentores. Veja o manual completo na aba DSM-5-TR.')+
+        card(ICON.info, 'Fonte e finalidade educativa', 'Conteúdo baseado no DSM-5-TR (Manual Diagnóstico e Estatístico de Transtornos Mentais, American Psychiatric Association; ed. brasileira Artmed / Grupo A), utilizado aqui <b>exclusivamente para fins de estudo e revisão de conteúdos</b>. Os trechos extraídos diretamente — em especial os <b>critérios diagnósticos</b> — foram mantidos fiéis ao texto original, prezando pela exatidão e evitando interpretações equivocadas de informações clínicas essenciais. Todos os direitos sobre o DSM-5-TR pertencem aos seus detentores.')+
         card(ICON.statShield, 'Aviso importante', 'Ferramenta de <b>estudo</b>, não de diagnóstico. O texto pode conter imprecisões da extração automática — sempre confirme no manual oficial. Não substitui avaliação clínica profissional.')+
         card(ICON.message, 'Encontrou um erro?', 'Use a aba <b>Feedback</b> para relatar erros nas fichas e enviar sugestões.')+
       '</div>'+
@@ -4364,7 +4498,6 @@
       case 'ranking':     return screenRanking();
       case 'perfilOutro': return screenPerfilOutro();
       case 'busca':       return screenBusca();
-      case 'dsm':         return screenDsm();
       case 'feedback':    return screenFeedback();
       case 'sobre':       return screenSobre();
       case 'perfil':      return screenPerfil();

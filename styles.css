@@ -89,9 +89,6 @@ button{font-family:inherit;}
   overflow-y:auto;
 }
 
-/* iframe do DSM-5-TR (manual na íntegra) */
-.dsm-frame{width:100%;height:calc(100vh - 200px);min-height:440px;border:1px solid var(--border);border-radius:14px;background:var(--surface);}
-
 /* alternância de visualização em Revisão (Categorias | Índice) */
 .rev-toggle{display:inline-flex;gap:3px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:3px;}
 .rev-tab{-webkit-appearance:none;appearance:none;background:none;border:none;border-radius:9px;padding:8px 16px;font:700 13.5px 'Hanken Grotesk';color:var(--muted-2);cursor:pointer;transition:background .15s ease,color .15s ease;}

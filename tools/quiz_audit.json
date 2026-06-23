@@ -132,23 +132,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 0,
-  "di": 3,
-  "name": "Transtorno da Linguagem",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "B",
-  "stem": "As capacidades linguísticas estão, de forma substancial e quantificável, abaixo do esperado para a idade, resultando em limitações funcionais na comunicação efetiva, na participação social, no sucesso acadêmico ou no desempenho profissional, individualmente ou em qualquer combinação.",
-  "sig": {
-   "stemLen": 284,
-   "blanks": 0,
-   "difCount": 2,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
   "type": "resumo",
   "ci": 0,
   "di": 4,
@@ -175,23 +158,6 @@
   "sig": {
    "stemLen": 136,
    "blanks": 2,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 0,
-  "di": 4,
-  "name": "Transtorno da Fala",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "B",
-  "stem": "A perturbação causa limitações na comunicação eficaz, que interferem na participação social, no sucesso acadêmico ou no desempenho profissional, individualmente ou em qualquer combinação.",
-  "sig": {
-   "stemLen": 187,
-   "blanks": 0,
    "difCount": 1,
    "familyKey": "",
    "familySize": 45,
@@ -253,40 +219,6 @@
   "di": 5,
   "name": "Transtorno da Fluência com Início na Infância (Gagueira)",
   "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "B",
-  "stem": "A perturbação causa ansiedade em relação à fala ou limitações na comunicação efetiva, na participação social ou no desempenho acadêmico ou profissional, individualmente ou em qualquer combinação.",
-  "sig": {
-   "stemLen": 195,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 0,
-  "di": 5,
-  "name": "Transtorno da Fluência com Início na Infância (Gagueira)",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "C",
-  "stem": "O ______ dos sintomas ocorre precocemente no período do desenvolvimento. (Nota: Casos de ______ tardio são diagnosticados como F98.5 - transtorno da ______ com ______ na idade adulta.)",
-  "sig": {
-   "stemLen": 184,
-   "blanks": 4,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 0,
-  "di": 5,
-  "name": "Transtorno da Fluência com Início na Infância (Gagueira)",
-  "cat": "Transtornos do neurodesenvolvimento",
   "letter": "D",
   "stem": "A perturbação não é passível de ser atribuída a um déficit motor da fala ou sensorial, a disfluência associada a lesão neurológica (p. ex., acidente vascular cerebral, tumor, trauma) ou a outra condição médica, não sendo mais bem explicada por outro transtorno mental.",
   "sig": {
@@ -325,23 +257,6 @@
   "sig": {
    "stemLen": 1031,
    "blanks": 5,
-   "difCount": 2,
-   "familyKey": "comunicacao social",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 0,
-  "di": 7,
-  "name": "Transtorno da Comunicação Social (Pragmática)",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "B",
-  "stem": "Os déficits resultam em limitações funcionais na ______ efetiva, na participação ______, nas relações sociais, no sucesso acadêmico ou no desempenho profissional, individualmente ou em combinação.",
-  "sig": {
-   "stemLen": 196,
-   "blanks": 2,
    "difCount": 2,
    "familyKey": "comunicacao social",
    "familySize": 1,
@@ -408,23 +323,6 @@
   "stem": "Padrões restritos e repetitivos de comportamento, interesses ou atividades, conforme manifestado por pelo menos dois dos seguintes, atualmente ou por história prévia (os exemplos são apenas ilustrativos, e não exaustivos; ver o texto):\n1. Movimentos motores, uso de objetos ou fala estereotipados ou repetitivos (p. ex., estereotipias motoras simples, alinhar brinquedos ou girar objetos, ecolalia, frases idiossincráticas).\n2. Insistência nas mesmas coisas, adesão inflexível a rotinas ou padrões ritualizados de comportamento verbal ou não verbal (p. ex., sofrimento extremo em relação a pequenas mudanças, dificuldades com transições, padrões rígidos de pensamento, rituais de saudação, necessidade de fazer o mesmo caminho ou ingerir os mesmos alimentos diariamente).\n3. Interesses fixos e altamente restritos que são anormais em intensidade ou foco (p. ex., forte apego a ou preocupação com objetos incomuns, interesses excessivamente circunscritos ou perseverativos).\n4. Hiper ou hiporreatividade a estímulos sensoriais ou interesse incomum por aspectos sensoriais do ambiente (p. ex., indiferença aparente a dor/temperatura, reação contrária a sons ou texturas específicas, cheirar ou tocar objetos de forma excessiva, fascinação visual por luzes ou movimento).",
   "sig": {
    "stemLen": 1268,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "espectro",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 0,
-  "di": 8,
-  "name": "Transtorno do Espectro Autista",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "C",
-  "stem": "Os sintomas devem estar presentes precocemente no período do desenvolvimento (mas podem não se tornar plenamente manifestos até que as demandas sociais excedam as capacidades limitadas ou podem ser mascarados por estratégias aprendidas mais tarde na vida).",
-  "sig": {
-   "stemLen": 256,
    "blanks": 0,
    "difCount": 1,
    "familyKey": "espectro",
@@ -509,23 +407,6 @@
   "sig": {
    "stemLen": 170,
    "blanks": 1,
-   "difCount": 3,
-   "familyKey": "atencao deficit hiperatividade",
-   "familySize": 3,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 0,
-  "di": 11,
-  "name": "Transtorno de Déficit de Atenção/Hiperatividade",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "D",
-  "stem": "Há evidências claras de que os sintomas interferem no funcionamento\nsocial, acadêmico ou profissional ou de que reduzem sua qualidade.",
-  "sig": {
-   "stemLen": 134,
-   "blanks": 0,
    "difCount": 3,
    "familyKey": "atencao deficit hiperatividade",
    "familySize": 3,
@@ -699,23 +580,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 0,
-  "di": 13,
-  "name": "Transtorno do Desenvolvimento da Coordenação",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "C",
-  "stem": "O início dos sintomas ocorre precocemente no período do ______.",
-  "sig": {
-   "stemLen": 63,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "desenvolvimento",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 0,
   "di": 13,
@@ -782,23 +646,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 0,
-  "di": 14,
-  "name": "Transtorno do Movimento Estereotipado",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "C",
-  "stem": "O início se dá precocemente no período do desenvolvimento.",
-  "sig": {
-   "stemLen": 58,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 0,
   "di": 14,
@@ -848,40 +695,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 0,
-  "di": 16,
-  "name": "Transtorno de Tique Motor ou Vocal Persistente (Crônico)",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "B",
-  "stem": "Os ______ podem aumentar e diminuir em frequência, mas ______ por mais de um ano desde o início do primeiro ______.",
-  "sig": {
-   "stemLen": 115,
-   "blanks": 3,
-   "difCount": 0,
-   "familyKey": "persistente tique",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 0,
-  "di": 16,
-  "name": "Transtorno de Tique Motor ou Vocal Persistente (Crônico)",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "E",
-  "stem": "Jamais foram preenchidos critérios para transtorno de Tourette.",
-  "sig": {
-   "stemLen": 63,
-   "blanks": 0,
-   "difCount": 0,
-   "familyKey": "persistente tique",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
   "type": "resumo",
   "ci": 0,
   "di": 18,
@@ -921,27 +734,10 @@
   "name": "Transtorno de Tique Transitório",
   "cat": "Transtornos do neurodesenvolvimento",
   "letter": "B",
-  "stem": "Os ______ estiveram presentes por pelo menos um ano desde o início do primeiro ______.",
+  "stem": "Os ______ estiveram presentes por menos de 1 ano desde o início do primeiro ______.",
   "sig": {
-   "stemLen": 86,
+   "stemLen": 83,
    "blanks": 2,
-   "difCount": 0,
-   "familyKey": "tique",
-   "familySize": 3,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 0,
-  "di": 18,
-  "name": "Transtorno de Tique Transitório",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "E",
-  "stem": "Jamais foram preenchidos critérios para transtorno de Tourette ou transtorno de ______ motor ou vocal persistente (crônico).",
-  "sig": {
-   "stemLen": 124,
-   "blanks": 1,
    "difCount": 0,
    "familyKey": "tique",
    "familySize": 3,
@@ -998,23 +794,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 0,
-  "di": 19,
-  "name": "Transtorno de Tourette",
-  "cat": "Transtornos do neurodesenvolvimento",
-  "letter": "B",
-  "stem": "Os tiques podem aumentar e diminuir em frequência, mas persistiram por mais de um ano desde o início do primeiro tique.",
-  "sig": {
-   "stemLen": 119,
-   "blanks": 0,
-   "difCount": 0,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
   "type": "resumo",
   "ci": 1,
   "di": 0,
@@ -1024,23 +803,6 @@
   "sig": {
    "stemLen": 136,
    "blanks": 3,
-   "difCount": 0,
-   "familyKey": "catatonia mental",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 1,
-  "di": 0,
-  "name": "Catatonia Associada a Outro Transtorno Mental (Especificador de Catatonia)",
-  "cat": "Espectro da esquizofrenia e psicóticos",
-  "letter": "A",
-  "stem": "O quadro clínico é dominado por três (ou mais) dos sintomas a seguir:\n1. Estupor (i. e., ausência de atividade psicomotora; sem relação ativa\ncom o ambiente). 2. Catalepsia (i. e., indução passiva de uma postura mantida contra a\ngravidade). 3. Flexibilidade cérea (i. e., resistência leve ao posicionamento pelo\nexaminador). 4. Mutismo (i. e., resposta verbal ausente ou muito pouca [excluir com\nafasia conhecida]). 5. Negativismo (i. e., oposição ou resposta ausente a instruções ou a\nestímulos externos). 6. Postura (i. e., manutenção espontânea e ativa de uma postura\ncontrária à gravidade). 7. Maneirismo (i. e., caricatura esquisita e circunstancial de ações\nnormais). 8. Estereotipia (i. e., movimentos repetitivos, anormalmente frequentes e não voltados a metas). 9. Agitação, não influenciada por estímulos externos. 10. Caretas. 11. Ecolalia (i. e., imitação da fala de outra pessoa). 12. Ecopraxia (i. e., imitação dos movimentos de outra pessoa).",
-  "sig": {
-   "stemLen": 957,
-   "blanks": 0,
    "difCount": 0,
    "familyKey": "catatonia mental",
    "familySize": 1,
@@ -1090,40 +852,6 @@
   "stem": "Sinais contínuos de perturbação persistem durante, pelo menos, seis meses. Esse período de seis meses deve incluir no mínimo um mês de sintomas (ou menos, se tratados com sucesso) que precisam satisfazer ao Critério A (i. e., sintomas da fase ativa) e pode incluir períodos de sintomas prodrômicos ou residuais. Durante esses períodos prodrômicos ou residuais, os sinais da perturbação podem ser manifestados apenas por sintomas negativos ou por dois ou mais sintomas listados no Critério A presentes em uma forma atenuada (p. ex., crenças esquisitas, experiências perceptivas incomuns).",
   "sig": {
    "stemLen": 587,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "esquizofrenia",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 1,
-  "di": 2,
-  "name": "Esquizofrenia",
-  "cat": "Espectro da esquizofrenia e psicóticos",
-  "letter": "D",
-  "stem": "Transtorno ______ e transtorno depressivo ou transtorno bipolar com características psicóticas são descartados porque 1) não ocorreram episódios depressivos maiores ou maníacos concomitantemente com os sintomas da fase ativa, ou 2) se episódios de humor ocorreram durante os sintomas da fase ativa, sua duração total foi breve em relação aos períodos ativo e residual da doença.",
-  "sig": {
-   "stemLen": 378,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "esquizofrenia",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 1,
-  "di": 2,
-  "name": "Esquizofrenia",
-  "cat": "Espectro da esquizofrenia e psicóticos",
-  "letter": "E",
-  "stem": "A perturbação não pode ser atribuída aos efeitos de uma substância (p. ex., droga de abuso, medicamento) ou a outra condição médica.",
-  "sig": {
-   "stemLen": 132,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "esquizofrenia",
@@ -1189,23 +917,6 @@
   "stem": "Pessoa mantém um ou mais delírios persistentes por pelo menos um mês, sem os demais sintomas da esquizofrenia e com o funcionamento e o comportamento em geral preservados.",
   "sig": {
    "stemLen": 171,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 1,
-  "di": 6,
-  "name": "Transtorno Delirante",
-  "cat": "Espectro da esquizofrenia e psicóticos",
-  "letter": "A",
-  "stem": "A presença de um delírio (ou mais) com duração de um mês ou mais.",
-  "sig": {
-   "stemLen": 65,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "",
@@ -1397,23 +1108,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 1,
-  "di": 9,
-  "name": "Transtorno Esquizofreniforme",
-  "cat": "Espectro da esquizofrenia e psicóticos",
-  "letter": "C",
-  "stem": "Transtorno ______ e transtorno depressivo ou transtorno bipolar com características psicóticas foram descartados porque 1) nenhum episódio depressivo maior ou maníaco ocorreu concomitantemente com os sintomas da fase ativa ou 2) se os episódios de humor ocorreram durante os sintomas da fase ativa, estiveram presentes pela menor parte da duração total dos períodos ativo e residual da doença.",
-  "sig": {
-   "stemLen": 393,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
   "type": "resumo",
   "ci": 1,
   "di": 10,
@@ -1496,74 +1190,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 2,
-  "di": 4,
-  "name": "Transtorno Bipolar Tipo I",
-  "cat": "Transtorno bipolar e relacionados",
-  "letter": "A",
-  "stem": "Um período distinto de humor anormal e persistentemente elevado,\nexpansivo ou irritável e aumento anormal e persistente da atividade ou da energia, com duração mínima de uma semana e presente na maior parte do dia, quase todos os dias (ou qualquer duração, se a hospitalização se fizer necessária).",
-  "sig": {
-   "stemLen": 298,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "bipolar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 2,
-  "di": 4,
-  "name": "Transtorno Bipolar Tipo I",
-  "cat": "Transtorno bipolar e relacionados",
-  "letter": "B",
-  "stem": "Durante o período de perturbação do humor e aumento da energia ou\natividade, três (ou mais) dos seguintes sintomas (quatro se o humor é apenas irritável) estão presentes em grau significativo e representam uma mudança notável do comportamento habitual:\n1. Autoestima inflada ou grandiosidade. 2. Redução da necessidade de sono (p. ex., sente-se descansado com\napenas três horas de sono). 3. Mais loquaz que o habitual ou pressão para continuar falando. 4. Fuga de ideias ou experiência subjetiva de que os pensamentos\nestão acelerados. 5. Distratibilidade (i. e., a atenção é desviada muito facilmente por\nestímulos externos insignificantes ou irrelevantes), conforme relatado ou observado. 6. Aumento da atividade dirigida a objetivos (seja socialmente, no\ntrabalho ou escola, seja sexualmente) ou agitação psicomotora (i. e., atividade sem propósito não dirigida a objetivos). 7. Envolvimento excessivo em atividades com elevado potencial para\nconsequências dolorosas (p. ex., envolvimento em surtos desenfreados de compras, indiscrições sexuais ou investimentos financeiros insensatos).",
-  "sig": {
-   "stemLen": 1089,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "bipolar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 2,
-  "di": 4,
-  "name": "Transtorno Bipolar Tipo I",
-  "cat": "Transtorno bipolar e relacionados",
-  "letter": "C",
-  "stem": "A perturbação do humor é suficientemente grave a ponto de causar\nprejuízo acentuado no funcionamento social ou profissional ou para necessitar de hospitalização a fim de prevenir dano a si mesmo ou a outras pessoas, ou existem características psicóticas.",
-  "sig": {
-   "stemLen": 254,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "bipolar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 2,
-  "di": 4,
-  "name": "Transtorno Bipolar Tipo I",
-  "cat": "Transtorno bipolar e relacionados",
-  "letter": "A",
-  "stem": "Foram atendidos os critérios para pelo menos um episódio maníaco\n(Critérios A-D em \"Episódio Maníaco\" descritos anteriormente).",
-  "sig": {
-   "stemLen": 127,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "bipolar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 2,
   "di": 4,
@@ -1588,40 +1214,6 @@
   "stem": "Oscilação de humor com episódios de depressão maior alternando com fases de hipomania (euforia/irritabilidade mais leve), sem nunca ter havido mania plena.",
   "sig": {
    "stemLen": 155,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "bipolar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 2,
-  "di": 5,
-  "name": "Transtorno Bipolar Tipo II",
-  "cat": "Transtorno bipolar e relacionados",
-  "letter": "A",
-  "stem": "Foram atendidos os critérios para pelo menos um episódio hipomaníaco\n(Critérios A-F em \"Episódio Hipomaníaco\" descritos anteriormente) e para pelo menos um episódio depressivo maior (Critérios A-C em \"Episódio Depressivo Maior\").",
-  "sig": {
-   "stemLen": 229,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "bipolar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 2,
-  "di": 5,
-  "name": "Transtorno Bipolar Tipo II",
-  "cat": "Transtorno bipolar e relacionados",
-  "letter": "B",
-  "stem": "Jamais houve um episódio maníaco.",
-  "sig": {
-   "stemLen": 33,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "bipolar",
@@ -1684,44 +1276,10 @@
   "di": 6,
   "name": "Transtorno Ciclotímico",
   "cat": "Transtorno bipolar e relacionados",
-  "letter": "A",
-  "stem": "Por pelo menos dois anos (um ano em crianças e adolescentes), presença de vários períodos com sintomas hipomaníacos que não satisfazem os critérios para episódio hipomaníaco e vários períodos com sintomas depressivos que não satisfazem os critérios para episódio depressivo maior.",
-  "sig": {
-   "stemLen": 280,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 2,
-  "di": 6,
-  "name": "Transtorno Ciclotímico",
-  "cat": "Transtorno bipolar e relacionados",
   "letter": "B",
   "stem": "Durante o período antes citado de dois anos (um ano em crianças e adolescentes), os períodos hipomaníaco e depressivo estiveram presentes por pelo menos metade do tempo, e o indivíduo não permaneceu sem os sintomas por mais que dois meses consecutivos.",
   "sig": {
    "stemLen": 252,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 2,
-  "di": 6,
-  "name": "Transtorno Ciclotímico",
-  "cat": "Transtorno bipolar e relacionados",
-  "letter": "C",
-  "stem": "Os critérios para um episódio depressivo maior, maníaco ou hipomaníaco nunca foram satisfeitos.",
-  "sig": {
-   "stemLen": 95,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "",
@@ -1755,40 +1313,6 @@
   "sig": {
    "stemLen": 138,
    "blanks": 0,
-   "difCount": 2,
-   "familyKey": "depressivo",
-   "familySize": 3,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 3,
-  "di": 3,
-  "name": "Transtorno Depressivo Maior",
-  "cat": "Transtornos depressivos",
-  "letter": "A",
-  "stem": "Cinco (ou mais) dos seguintes sintomas estiveram presentes durante o mesmo período de duas semanas e representam uma mudança no funcionamento anterior; pelo menos um dos sintomas é (1) humor deprimido ou (2) perda de interesse ou prazer. Nota: Não incluir sintomas nitidamente devidos a outra condição médica.\n1. Humor deprimido na maior parte do dia, quase todos os dias, conforme indicado por relato subjetivo (p. ex., sente-se triste, vazio, sem esperança) ou por observação feita por outras pessoas (p. ex., parece choroso). (Nota: Em crianças e adolescentes, pode ser humor irritável.)\n2. Acentuada diminuição do interesse ou prazer em todas ou quase todas as atividades na maior parte do dia, quase todos os dias (conforme indicado por relato subjetivo ou por observação feita por outras pessoas).\n3. Perda ou ganho significativo de peso sem estar fazendo dieta (p. ex., uma alteração de mais de 5% do peso corporal em um mês), ou redução ou aumento do apetite quase todos os dias. (Nota: Em crianças, considerar o insucesso em obter o ganho de peso esperado.)\n4. Insônia ou hipersonia quase todos os dias.\n5. Agitação ou retardo psicomotor quase todos os dias (observáveis por outras pessoas; não meramente sensações subjetivas de inquietação ou de estar mais lento).\n6. Fadiga ou perda de energia quase todos os dias.\n7. Sentimentos de inutilidade ou culpa excessiva ou inapropriada (que podem ser delirantes) quase todos os dias (não meramente autorrecriminação ou culpa por estar doente).\n8. Capacidade diminuída para pensar ou se concentrar, ou indecisão, quase todos os dias (por relato subjetivo ou observação feita por outras pessoas).\n9. Pensamentos recorrentes de morte (não somente medo de morrer), ideação suicida recorrente, sem um plano específico, um plano específico de suicídio ou tentativa de suicídio.",
-  "sig": {
-   "stemLen": 1826,
-   "blanks": 0,
-   "difCount": 2,
-   "familyKey": "depressivo",
-   "familySize": 3,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 3,
-  "di": 3,
-  "name": "Transtorno Depressivo Maior",
-  "cat": "Transtornos depressivos",
-  "letter": "E",
-  "stem": "Nunca houve um episódio maníaco ou um episódio hipomaníaco. Nota: Essa exclusão não se aplica se todos os episódios do tipo maníaco ou do tipo hipomaníaco são induzidos por substância ou são atribuíveis aos efeitos fisiológicos de outra condição médica. Procedimentos para Codificação e Registro O código diagnóstico para transtorno ______ maior está baseado em se este é um episódio único ou recorrente, gravidade atual, presença de características psicóticas e estado de remissão. A gravidade atual e as características psicóticas são indicadas apenas se todos os critérios são satisfeitos atualmente para um episódio ______ maior. Os especificadores de remissão são indicados apenas se todos os critérios não estão atualmente presentes para episódio ______ maior. Os códigos são descritos a seguir:\nLeve (p. 214) F32.0 F33.0\nModerada (p. 214) F32.1 F33.1\nGrave (p. 214) F32.2 F33.2\nCom características psicóticas (p. 212-213)\nF32.3 F33.3\nEm remissão parcial (p. 214) F32.4 F33.41\nEm remissão completa (p. 214) F32.5 F33.42\nNão especificado F32.9 F33.9\nAo registrar o nome de um diagnóstico, os termos devem ser listados na seguinte ordem: transtorno ______ maior, episódio único ou recorrente, especificadores de gravidade/psicótico/remissão, seguidos pelos seguintes especificadores sem código que se aplicam ao episódio atual (ou episódio mais recente se o transtorno ______ maior estiver em remissão parcial ou total). Nota: O especificador \"com padrão sazonal\" descreve o padrão de recorrência do transtorno ______ maior.",
-  "sig": {
-   "stemLen": 1528,
-   "blanks": 6,
    "difCount": 2,
    "familyKey": "depressivo",
    "familySize": 3,
@@ -1871,40 +1395,6 @@
   "stem": "Durante o período de dois anos (um ano para crianças ou adolescentes) de perturbação, o indivíduo jamais esteve sem os sintomas dos Critérios A e B por mais de dois meses.",
   "sig": {
    "stemLen": 171,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "depressivo persistente",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 3,
-  "di": 5,
-  "name": "Transtorno Depressivo Persistente",
-  "cat": "Transtornos depressivos",
-  "letter": "D",
-  "stem": "Os critérios para um transtorno ______ maior podem estar continuamente presentes por dois anos.",
-  "sig": {
-   "stemLen": 95,
-   "blanks": 1,
-   "difCount": 1,
-   "familyKey": "depressivo persistente",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 3,
-  "di": 5,
-  "name": "Transtorno Depressivo Persistente",
-  "cat": "Transtornos depressivos",
-  "letter": "E",
-  "stem": "Nunca houve um episódio maníaco ou um episódio hipomaníaco.",
-  "sig": {
-   "stemLen": 59,
    "blanks": 0,
    "difCount": 1,
    "familyKey": "depressivo persistente",
@@ -2215,23 +1705,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 3,
-  "di": 7,
-  "name": "Transtorno Disruptivo da Desregulação do Humor",
-  "cat": "Transtornos depressivos",
-  "letter": "I",
-  "stem": "Nunca houve um período distinto durando mais de um dia durante o qual foram satisfeitos todos os critérios de sintomas, exceto a duração, para um episódio maníaco ou hipomaníaco. Nota: Uma elevação do ______ apropriada para o desenvolvimento, como a que ocorre no contexto de um evento altamente positivo ou de sua antecipação, não deve ser considerada como um sintoma de mania ou hipomania.",
-  "sig": {
-   "stemLen": 391,
-   "blanks": 1,
-   "difCount": 2,
-   "familyKey": "disruptivo",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 3,
   "di": 7,
@@ -2303,44 +1776,10 @@
   "di": 0,
   "name": "Agorafobia",
   "cat": "Transtornos de ansiedade",
-  "letter": "C",
-  "stem": "As situações ______ quase sempre provocam medo ou ansiedade.",
-  "sig": {
-   "stemLen": 60,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 4,
-  "di": 0,
-  "name": "Agorafobia",
-  "cat": "Transtornos de ansiedade",
   "letter": "D",
   "stem": "As situações ______ são ativamente evitadas, requerem a presença de uma companhia ou são suportadas com intenso medo ou ansiedade.",
   "sig": {
    "stemLen": 130,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 4,
-  "di": 0,
-  "name": "Agorafobia",
-  "cat": "Transtornos de ansiedade",
-  "letter": "E",
-  "stem": "O medo ou ansiedade é desproporcional ao perigo real apresentado pelas situações ______ e ao contexto sociocultural.",
-  "sig": {
-   "stemLen": 116,
    "blanks": 1,
    "difCount": 3,
    "familyKey": "",
@@ -2420,45 +1859,11 @@
   "di": 1,
   "name": "Fobia Específica",
   "cat": "Transtornos de ansiedade",
-  "letter": "B",
-  "stem": "O objeto ou situação fóbica quase invariavelmente provoca uma resposta imediata de medo ou ansiedade.",
-  "sig": {
-   "stemLen": 101,
-   "blanks": 0,
-   "difCount": 2,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 4,
-  "di": 1,
-  "name": "Fobia Específica",
-  "cat": "Transtornos de ansiedade",
   "letter": "C",
   "stem": "O objeto ou situação fóbica é ativamente evitado ou suportado com intensa ansiedade ou sofrimento.",
   "sig": {
    "stemLen": 98,
    "blanks": 0,
-   "difCount": 2,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 4,
-  "di": 1,
-  "name": "Fobia Específica",
-  "cat": "Transtornos de ansiedade",
-  "letter": "D",
-  "stem": "O medo ou ansiedade é desproporcional em relação ao perigo real imposto pelo objeto ou situação ______ e ao contexto sociocultural.",
-  "sig": {
-   "stemLen": 131,
-   "blanks": 1,
    "difCount": 2,
    "familyKey": "",
    "familySize": 45,
@@ -2507,23 +1912,6 @@
   "stem": "Fracasso persistente para falar em situações sociais específicas nas quais existe a expectativa para tal (p. ex., na escola), apesar de falar em outras situações.",
   "sig": {
    "stemLen": 162,
-   "blanks": 0,
-   "difCount": 2,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 4,
-  "di": 2,
-  "name": "Mutismo Seletivo",
-  "cat": "Transtornos de ansiedade",
-  "letter": "B",
-  "stem": "A perturbação interfere na realização educacional ou profissional ou na comunicação social.",
-  "sig": {
-   "stemLen": 91,
    "blanks": 0,
    "difCount": 2,
    "familyKey": "",
@@ -2786,61 +2174,10 @@
   "di": 9,
   "name": "Transtorno de Ansiedade Social",
   "cat": "Transtornos de ansiedade",
-  "letter": "C",
-  "stem": "As situações sociais quase sempre provocam medo ou ______. Nota: Em crianças, o medo ou ______ pode ser expresso chorando, com ataques de raiva, imobilidade, comportamento de agarrar-se, encolhendo-se ou fracassando em falar em situações sociais.",
-  "sig": {
-   "stemLen": 246,
-   "blanks": 2,
-   "difCount": 2,
-   "familyKey": "ansiedade social",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 4,
-  "di": 9,
-  "name": "Transtorno de Ansiedade Social",
-  "cat": "Transtornos de ansiedade",
   "letter": "D",
   "stem": "As situações sociais são evitadas ou suportadas com intenso medo ou ______.",
   "sig": {
    "stemLen": 75,
-   "blanks": 1,
-   "difCount": 2,
-   "familyKey": "ansiedade social",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 4,
-  "di": 9,
-  "name": "Transtorno de Ansiedade Social",
-  "cat": "Transtornos de ansiedade",
-  "letter": "E",
-  "stem": "O medo ou ______ é desproporcional à ameaça real apresentada pela situação ______ e o contexto sociocultural.",
-  "sig": {
-   "stemLen": 109,
-   "blanks": 2,
-   "difCount": 2,
-   "familyKey": "ansiedade social",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 4,
-  "di": 9,
-  "name": "Transtorno de Ansiedade Social",
-  "cat": "Transtornos de ansiedade",
-  "letter": "F",
-  "stem": "O medo, ______ ou esquiva é persistente, geralmente durando mais de seis meses.",
-  "sig": {
-   "stemLen": 79,
    "blanks": 1,
    "difCount": 2,
    "familyKey": "ansiedade social",
@@ -3081,23 +2418,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 5,
-  "di": 2,
-  "name": "Transtorno de Escoriação (Skin-picking)",
-  "cat": "TOC e transtornos relacionados",
-  "letter": "B",
-  "stem": "Tentativas repetidas de reduzir ou parar o comportamento de beliscar a pele.",
-  "sig": {
-   "stemLen": 76,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 5,
   "di": 2,
@@ -3267,23 +2587,6 @@
   "di": 8,
   "name": "Tricotilomania (Transtorno de Arrancar o Cabelo)",
   "cat": "TOC e transtornos relacionados",
-  "letter": "B",
-  "stem": "Tentativas repetidas de reduzir ou parar o comportamento de ______ o ______.",
-  "sig": {
-   "stemLen": 76,
-   "blanks": 2,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 5,
-  "di": 8,
-  "name": "Tricotilomania (Transtorno de Arrancar o Cabelo)",
-  "cat": "TOC e transtornos relacionados",
   "letter": "D",
   "stem": "O ato de ______ ou a perda de ______ não se deve a outra condição médica (p. ex., uma condição dermatológica).",
   "sig": {
@@ -3367,57 +2670,6 @@
   "di": 1,
   "name": "Transtorno de Apego Reativo",
   "cat": "Trauma e estressores",
-  "letter": "C",
-  "stem": "A criança vivenciou um padrão de extremos de cuidado insuficiente evidenciado por pelo menos um dos seguintes aspectos:\n1. Negligência ou privação social na forma de ausência persistente de atendimento às suas necessidades emocionais básicas de conforto, estimulação e afeto por parte de cuidadores adultos.\n2. Mudanças repetidas de cuidadores, limitando as oportunidades de formar vínculos estáveis (p. ex., trocas frequentes de lares adotivos temporários).\n3. Criação em contextos peculiares que limitam gravemente oportunidades de formar vínculos seletivos (p. ex., instituições com alta proporção de crianças por cuidador).",
-  "sig": {
-   "stemLen": 627,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 1,
-  "name": "Transtorno de Apego Reativo",
-  "cat": "Trauma e estressores",
-  "letter": "D",
-  "stem": "Presume-se que o cuidado do Critério C seja responsável pela perturbação comportamental do Critério A (p. ex., as perturbações do Critério A iniciam após a ausência de cuidado adequado do Critério C).",
-  "sig": {
-   "stemLen": 200,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 1,
-  "name": "Transtorno de Apego Reativo",
-  "cat": "Trauma e estressores",
-  "letter": "E",
-  "stem": "Não são preenchidos os critérios para transtorno do espectro autista.",
-  "sig": {
-   "stemLen": 69,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 1,
-  "name": "Transtorno de Apego Reativo",
-  "cat": "Trauma e estressores",
   "letter": "F",
   "stem": "A perturbação é evidente antes dos 5 anos de idade.",
   "sig": {
@@ -3454,23 +2706,6 @@
   "stem": "Reação intensa logo após um trauma grave, com revivência, evitação, dissociação e tensão, durando de 3 dias a 1 mês.",
   "sig": {
    "stemLen": 116,
-   "blanks": 0,
-   "difCount": 2,
-   "familyKey": "estresse",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 2,
-  "name": "Transtorno de Estresse Agudo",
-  "cat": "Trauma e estressores",
-  "letter": "A",
-  "stem": "Exposição a episódio concreto ou ameaça de morte, lesão grave ou violência sexual em uma (ou mais) das seguintes formas:\n1. Vivenciar diretamente o evento traumático.\n2. Testemunhar pessoalmente o evento ocorrido a outras pessoas.\n3. Saber que o evento ocorreu com familiar ou amigo próximo. Nota:\nNos casos de morte ou ameaça de morte de um familiar ou amigo, é preciso que o evento tenha sido violento ou acidental. 4. Ser exposto de forma repetida ou extrema a detalhes aversivos do\nevento traumático (p. ex., socorristas que recolhem restos de corpos humanos, policiais repetidamente expostos a detalhes de abuso infantil). Nota: Isso não se aplica à exposição por intermédio de mídia eletrônica, televisão, filmes ou fotografias, a menos que tal exposição esteja relacionada ao trabalho.",
-  "sig": {
-   "stemLen": 792,
    "blanks": 0,
    "difCount": 2,
    "familyKey": "estresse",
@@ -3538,23 +2773,6 @@
   "sig": {
    "stemLen": 139,
    "blanks": 1,
-   "difCount": 3,
-   "familyKey": "estresse",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 3,
-  "name": "Transtorno de Estresse Pós-traumático",
-  "cat": "Trauma e estressores",
-  "letter": "A",
-  "stem": "Exposição a episódio concreto ou ameaça de morte, lesão grave ou\nviolência sexual em uma (ou mais) das seguintes formas:\n1. Vivenciar diretamente o evento ______. 2. Testemunhar pessoalmente o evento ocorrido a outras pessoas. 3. Saber que o evento ______ ocorreu com familiar ou amigo\npróximo. Nos casos de episódio concreto ou ameaça de morte envolvendo um familiar ou amigo, é preciso que o evento tenha sido violento ou acidental. 4. Ser exposto de forma repetida ou extrema a detalhes aversivos do\nevento ______ (p. ex., socorristas que recolhem restos de corpos humanos; policiais repetidamente expostos a detalhes de abuso infantil). Nota: O Critério A4 não se aplica à exposição por meio de mídia eletrônica, televisão, filmes ou fotografias, a menos que tal exposição esteja relacionada ao trabalho.",
-  "sig": {
-   "stemLen": 808,
-   "blanks": 3,
    "difCount": 3,
    "familyKey": "estresse",
    "familySize": 2,
@@ -3635,40 +2853,6 @@
   "di": 3,
   "name": "Transtorno de Estresse Pós-traumático",
   "cat": "Trauma e estressores",
-  "letter": "F",
-  "stem": "A perturbação (Critérios B, C, D e E) dura mais de um mês.",
-  "sig": {
-   "stemLen": 58,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "estresse",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 3,
-  "name": "Transtorno de Estresse Pós-traumático",
-  "cat": "Trauma e estressores",
-  "letter": "A",
-  "stem": "Em crianças de 6 anos ou menos, exposição a episódio concreto ou\nameaça de morte, lesão grave ou violência sexual em uma (ou mais) das seguintes formas:\n1. Vivenciar diretamente o evento ______. 2. Testemunhar pessoalmente o evento ocorrido com outras pessoas,\nespecialmente cuidadores primários. 3. Saber que o evento ______ ocorreu com pai/mãe ou cuidador.",
-  "sig": {
-   "stemLen": 358,
-   "blanks": 2,
-   "difCount": 3,
-   "familyKey": "estresse",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 3,
-  "name": "Transtorno de Estresse Pós-traumático",
-  "cat": "Trauma e estressores",
   "letter": "B",
   "stem": "Presença de um (ou mais) dos seguintes sintomas intrusivos associados\nao evento ______, começando depois de sua ocorrência:\n1. Lembranças intrusivas angustiantes, recorrentes e involuntárias do\nevento ______. Nota: Lembranças espontâneas e intrusivas podem não parecer necessariamente angustiantes e podem ser expressas como reencenação em brincadeiras. 2. Sonhos angustiantes recorrentes nos quais o conteúdo e/ou a\nemoção do sonho estão relacionados ao evento ______. Nota: Pode não ser possível determinar que o conteúdo assustador está relacionado ao evento ______.\n3. Reações dissociativas (p. ex., flashbacks) nas quais a criança sente ou\nage como se o evento ______ estivesse acontecendo novamente. (Essas reações podem ocorrer em um continuum, com a expressão mais extrema manifestada como uma perda completa da percepção do ambiente ao redor.) Essa reencenação específica do ______ pode ocorrer na brincadeira. 4. Sofrimento psicológico intenso ou prolongado ante a exposição a\nsinais internos ou externos que simbolizem ou se assemelhem a algum aspecto do evento ______. 5. Reações fisiológicas intensas a lembranças do evento ______.",
   "sig": {
@@ -3708,23 +2892,6 @@
   "sig": {
    "stemLen": 569,
    "blanks": 1,
-   "difCount": 3,
-   "familyKey": "estresse",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 3,
-  "name": "Transtorno de Estresse Pós-traumático",
-  "cat": "Trauma e estressores",
-  "letter": "E",
-  "stem": "A perturbação dura mais de um mês.",
-  "sig": {
-   "stemLen": 34,
-   "blanks": 0,
    "difCount": 3,
    "familyKey": "estresse",
    "familySize": 2,
@@ -3791,40 +2958,6 @@
   "sig": {
    "stemLen": 153,
    "blanks": 1,
-   "difCount": 1,
-   "familyKey": "social",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 4,
-  "name": "Transtorno de Interação Social Desinibida",
-  "cat": "Trauma e estressores",
-  "letter": "C",
-  "stem": "A criança sofreu um padrão de extremos de cuidado insuficiente evidenciado por pelo menos um dos seguintes aspectos:\n1. Negligência ou privação ______ na forma de ausência persistente de atendimento às suas necessidades emocionais básicas de conforto, estimulação e afeto por parte de cuidadores adultos.\n2. Mudanças repetidas de cuidadores, limitando as oportunidades de formar vínculos estáveis (p. ex., trocas frequentes de lares adotivos temporários).\n3. Criação em contextos peculiares que limitam gravemente as oportunidades de formar vínculos seletivos (p. ex., instituições com alta proporção de crianças por cuidador).",
-  "sig": {
-   "stemLen": 627,
-   "blanks": 1,
-   "difCount": 1,
-   "familyKey": "social",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 6,
-  "di": 4,
-  "name": "Transtorno de Interação Social Desinibida",
-  "cat": "Trauma e estressores",
-  "letter": "D",
-  "stem": "Presume-se que o cuidado do Critério C seja responsável pela perturbação comportamental do Critério A (p. ex., as perturbações do Critério A começam depois do cuidado patogênico do Critério C).",
-  "sig": {
-   "stemLen": 193,
-   "blanks": 0,
    "difCount": 1,
    "familyKey": "social",
    "familySize": 1,
@@ -4150,23 +3283,6 @@
   "di": 0,
   "name": "Fatores Psicológicos que Afetam Outras Condições Médicas",
   "cat": "Sintomas somáticos e relacionados",
-  "letter": "A",
-  "stem": "Um sintoma ou ______ (que não um transtorno mental) está presente.",
-  "sig": {
-   "stemLen": 66,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 8,
-  "di": 0,
-  "name": "Fatores Psicológicos que Afetam Outras Condições Médicas",
-  "cat": "Sintomas somáticos e relacionados",
   "letter": "B",
   "stem": "______ ou comportamentais ______ de maneira adversa a ______ em uma das seguintes maneiras:\n1. Os ______ influenciaram o curso da ______ conforme demonstrado por uma associação temporal próxima entre os ______ e o desenvolvimento, a exacerbação ou a demora na recuperação da ______.\n2. Os ______ interferem no tratamento da ______ (p. ex., má adesão).\n3. Os ______ constituem riscos de saúde adicionais bem estabelecidos ao indivíduo.\n4. Os ______ influenciam a fisiopatologia subjacente, precipitando ou exacerbando sintomas e demandando atenção ______.",
   "sig": {
@@ -4187,23 +3303,6 @@
   "stem": "Medo persistente de ter ou contrair uma ______ grave, com pouco ou nenhum sintoma físico real, levando a checagens repetidas ou evitação de médicos.",
   "sig": {
    "stemLen": 148,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "ansiedade doenca",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 8,
-  "di": 2,
-  "name": "Transtorno de Ansiedade de Doença",
-  "cat": "Sintomas somáticos e relacionados",
-  "letter": "A",
-  "stem": "Preocupação em ter ou contrair uma ______ grave.",
-  "sig": {
-   "stemLen": 48,
    "blanks": 1,
    "difCount": 3,
    "familyKey": "ansiedade doenca",
@@ -4512,57 +3611,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 8,
-  "di": 6,
-  "name": "Transtorno Factício Autoimposto",
-  "cat": "Sintomas somáticos e relacionados",
-  "letter": "E",
-  "stem": "Falsificação de sinais ou sintomas físicos ou psicológicos, ou indução de lesão ou doença em outro, associada a fraude identificada.",
-  "sig": {
-   "stemLen": 132,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 8,
-  "di": 6,
-  "name": "Transtorno Factício Autoimposto",
-  "cat": "Sintomas somáticos e relacionados",
-  "letter": "F",
-  "stem": "O indivíduo apresenta outro (vítima) a terceiros como doente, incapacitado ou lesionado.",
-  "sig": {
-   "stemLen": 88,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 8,
-  "di": 6,
-  "name": "Transtorno Factício Autoimposto",
-  "cat": "Sintomas somáticos e relacionados",
-  "letter": "G",
-  "stem": "O comportamento fraudulento é evidente até mesmo na ausência de recompensas externas óbvias.",
-  "sig": {
-   "stemLen": 92,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 8,
   "di": 6,
@@ -4646,22 +3694,6 @@
   }
  },
  {
-  "type": "fatos",
-  "ci": 9,
-  "di": 0,
-  "name": "Anorexia Nervosa",
-  "cat": "Transtornos alimentares",
-  "stem": "Início: adolescência ou início da vida adulta (raro antes da puberdade ou após os 40 anos) | Prevalência: ~0,60–0,80% ao longo da vida | Sexo: muito mais frequente em mulheres do que em homens",
-  "sig": {
-   "stemLen": 192,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "nervosa",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
   "type": "resumo",
   "ci": 9,
   "di": 1,
@@ -4670,23 +3702,6 @@
   "stem": "Episódios recorrentes de compulsão alimentar seguidos de medidas para não engordar (como vômitos ou jejum), com autoavaliação muito ligada ao peso e à forma do corpo.",
   "sig": {
    "stemLen": 166,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "nervosa",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 9,
-  "di": 1,
-  "name": "Bulimia Nervosa",
-  "cat": "Transtornos alimentares",
-  "letter": "A",
-  "stem": "Episódios recorrentes de compulsão alimentar. Um episódio de compulsão alimentar é caracterizado pelos seguintes aspectos:\n1. Ingestão, em um período de tempo determinado (p. ex., dentro de cada período de duas horas), de uma quantidade de alimento definitivamente maior do que a maioria dos indivíduos consumiria no mesmo período sob circunstâncias semelhantes.\n2. Sensação de falta de controle sobre a ingestão durante o episódio (p. ex., sentimento de não conseguir parar de comer ou controlar o que e o quanto se está ingerindo).",
-  "sig": {
-   "stemLen": 533,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "nervosa",
@@ -4717,43 +3732,10 @@
   "di": 1,
   "name": "Bulimia Nervosa",
   "cat": "Transtornos alimentares",
-  "letter": "C",
-  "stem": "A compulsão alimentar e os comportamentos compensatórios inapropriados ocorrem, em média, no mínimo uma vez por semana durante três meses.",
-  "sig": {
-   "stemLen": 138,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "nervosa",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 9,
-  "di": 1,
-  "name": "Bulimia Nervosa",
-  "cat": "Transtornos alimentares",
   "letter": "D",
   "stem": "A autoavaliação é indevidamente influenciada pela forma e pelo peso corporais.",
   "sig": {
    "stemLen": 78,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "nervosa",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "fatos",
-  "ci": 9,
-  "di": 1,
-  "name": "Bulimia Nervosa",
-  "cat": "Transtornos alimentares",
-  "stem": "Início: adolescência ou início da vida adulta (raro antes da puberdade ou após os 40 anos) | Prevalência: ~0,14–0,3% em 12 meses; ~0,28–1,0% ao longo da vida | Sexo: muito mais frequente em mulheres do que em homens",
-  "sig": {
-   "stemLen": 215,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "nervosa",
@@ -4932,62 +3914,11 @@
   "di": 6,
   "name": "Transtorno de Compulsão Alimentar",
   "cat": "Transtornos alimentares",
-  "letter": "A",
-  "stem": "Episódios recorrentes de ______. Um episódio de ______ é caracterizado pelos seguintes aspectos:\n1. Ingestão, em um período determinado (p. ex., dentro de cada período de duas horas), de uma quantidade de ______ definitivamente maior do que a maioria das pessoas consumiria no mesmo período sob circunstâncias semelhantes.\n2. Sensação de falta de controle sobre a ingestão durante o episódio (p. ex., sentimento de não conseguir parar de comer ou controlar o que e o quanto se está ingerindo).",
-  "sig": {
-   "stemLen": 493,
-   "blanks": 3,
-   "difCount": 1,
-   "familyKey": "alimentar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 9,
-  "di": 6,
-  "name": "Transtorno de Compulsão Alimentar",
-  "cat": "Transtornos alimentares",
   "letter": "B",
   "stem": "Os episódios de ______ estão associados a três (ou mais) dos seguintes aspectos:\n1. Comer mais rapidamente do que o normal.\n2. Comer até se sentir desconfortavelmente cheio.\n3. Comer grandes quantidades de ______ na ausência da sensação física de fome.\n4. Comer sozinho por vergonha do quanto se está comendo.\n5. Sentir-se desgostoso de si mesmo, deprimido ou muito culpado em seguida.",
   "sig": {
    "stemLen": 385,
    "blanks": 2,
-   "difCount": 1,
-   "familyKey": "alimentar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 9,
-  "di": 6,
-  "name": "Transtorno de Compulsão Alimentar",
-  "cat": "Transtornos alimentares",
-  "letter": "C",
-  "stem": "Sofrimento marcante em virtude da ______.",
-  "sig": {
-   "stemLen": 41,
-   "blanks": 1,
-   "difCount": 1,
-   "familyKey": "alimentar",
-   "familySize": 4,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 9,
-  "di": 6,
-  "name": "Transtorno de Compulsão Alimentar",
-  "cat": "Transtornos alimentares",
-  "letter": "D",
-  "stem": "Os episódios de ______ ocorrem, em média, ao menos uma vez por semana durante três meses.",
-  "sig": {
-   "stemLen": 89,
-   "blanks": 1,
    "difCount": 1,
    "familyKey": "alimentar",
    "familySize": 4,
@@ -5102,23 +4033,6 @@
   "stem": "Eliminação intestinal repetida de fezes em locais inapropriados (p. ex., roupa, chão), voluntária ou involuntária.",
   "sig": {
    "stemLen": 114,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 10,
-  "di": 0,
-  "name": "Encoprese",
-  "cat": "Transtornos da eliminação",
-  "letter": "B",
-  "stem": "Pelo menos um evento desse tipo ocorre a cada mês por pelo menos três meses.",
-  "sig": {
-   "stemLen": 76,
    "blanks": 0,
    "difCount": 1,
    "familyKey": "",
@@ -5242,57 +4156,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 11,
-  "di": 2,
-  "name": "Transtorno de Insônia",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "C",
-  "stem": "As dificuldades relacionadas ao sono ocorrem pelo menos três noites por semana.",
-  "sig": {
-   "stemLen": 79,
-   "blanks": 0,
-   "difCount": 0,
-   "familyKey": "insonia",
-   "familySize": 3,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 11,
-  "di": 2,
-  "name": "Transtorno de Insônia",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "D",
-  "stem": "As dificuldades relacionadas ao sono permanecem durante pelo menos três meses.",
-  "sig": {
-   "stemLen": 78,
-   "blanks": 0,
-   "difCount": 0,
-   "familyKey": "insonia",
-   "familySize": 3,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 11,
-  "di": 2,
-  "name": "Transtorno de Insônia",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "E",
-  "stem": "As dificuldades relacionadas ao sono ocorrem a despeito de oportunidades adequadas para dormir.",
-  "sig": {
-   "stemLen": 95,
-   "blanks": 0,
-   "difCount": 0,
-   "familyKey": "insonia",
-   "familySize": 3,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 11,
   "di": 2,
@@ -5342,23 +4205,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 11,
-  "di": 5,
-  "name": "Transtorno de Hipersonolência",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "B",
-  "stem": "A ______ ocorre pelo menos três vezes por semana, durante pelo menos três meses.",
-  "sig": {
-   "stemLen": 80,
-   "blanks": 1,
-   "difCount": 1,
-   "familyKey": "hipersonolencia",
-   "familySize": 3,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 11,
   "di": 5,
@@ -5383,23 +4229,6 @@
   "stem": "Sonolência diurna excessiva com ataques de sono recorrentes, muitas vezes acompanhada de perda súbita do tônus muscular (cataplexia) desencadeada por emoções.",
   "sig": {
    "stemLen": 158,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 11,
-  "di": 6,
-  "name": "Narcolepsia",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "A",
-  "stem": "Períodos recorrentes de necessidade irresistível de dormir, cair no sono ou cochilar em um mesmo dia. Esses períodos devem estar ocorrendo pelo menos três vezes por semana nos últimos três meses.",
-  "sig": {
-   "stemLen": 195,
    "blanks": 0,
    "difCount": 1,
    "familyKey": "",
@@ -5449,23 +4278,6 @@
   "stem": "Pausas repetidas na respiração durante o ______ por falha no comando ventilatório do cérebro (sem obstrução das vias aéreas), causando ______ e despertares.",
   "sig": {
    "stemLen": 156,
-   "blanks": 2,
-   "difCount": 2,
-   "familyKey": "apneia sono",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 11,
-  "di": 7,
-  "name": "Apneia Central do Sono",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "A",
-  "stem": "Evidências polissonográficas de cinco ou mais ______ por hora de ______.",
-  "sig": {
-   "stemLen": 72,
    "blanks": 2,
    "difCount": 2,
    "familyKey": "apneia sono",
@@ -5614,23 +4426,6 @@
   "sig": {
    "stemLen": 261,
    "blanks": 4,
-   "difCount": 1,
-   "familyKey": "sono vigilia",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 11,
-  "di": 10,
-  "name": "Transtornos do Sono-Vigília do Ritmo Circadiano",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "B",
-  "stem": "A interrupção do ______ leva a ______ excessiva ou insônia, ou ambas.",
-  "sig": {
-   "stemLen": 69,
-   "blanks": 2,
    "difCount": 1,
    "familyKey": "sono vigilia",
    "familySize": 2,
@@ -5921,23 +4716,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 11,
-  "di": 13,
-  "name": "Transtorno Comportamental do Sono REM",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "G",
-  "stem": "Coexistência de transtornos mentais e condições médicas que não explicam os episódios.",
-  "sig": {
-   "stemLen": 86,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "rem sono",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 11,
   "di": 13,
@@ -5987,23 +4765,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 11,
-  "di": 14,
-  "name": "Síndrome das Pernas Inquietas",
-  "cat": "Transtornos do sono-vigília",
-  "letter": "B",
-  "stem": "Os sintomas do Critério A ocorrem pelo menos três vezes por semana e persistiram durante no mínimo três meses.",
-  "sig": {
-   "stemLen": 110,
-   "blanks": 0,
-   "difCount": 0,
-   "familyKey": "",
-   "familySize": 45,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 11,
   "di": 14,
@@ -6046,23 +4807,6 @@
   "sig": {
    "stemLen": 420,
    "blanks": 3,
-   "difCount": 1,
-   "familyKey": "ejaculacao",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 12,
-  "di": 2,
-  "name": "Ejaculação Prematura (Precoce)",
-  "cat": "Disfunções sexuais",
-  "letter": "B",
-  "stem": "Os sintomas do Critério A devem estar presentes por pelo menos seis meses e devem ser experimentados em quase todas ou todas as ocasiões (aproximadamente 75 a 100%) de atividade sexual (em contextos situacionais identificados ou, caso generalizada, em todos os contextos).",
-  "sig": {
-   "stemLen": 272,
-   "blanks": 0,
    "difCount": 1,
    "familyKey": "ejaculacao",
    "familySize": 2,
@@ -6701,23 +5445,6 @@
   "di": 3,
   "name": "Transtorno da Conduta",
   "cat": "Disruptivos, controle de impulsos e conduta",
-  "letter": "B",
-  "stem": "A perturbação comportamental causa prejuízos clinicamente significativos no funcionamento social, acadêmico ou profissional.",
-  "sig": {
-   "stemLen": 124,
-   "blanks": 0,
-   "difCount": 2,
-   "familyKey": "conduta",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 14,
-  "di": 3,
-  "name": "Transtorno da Conduta",
-  "cat": "Disruptivos, controle de impulsos e conduta",
   "letter": "C",
   "stem": "Se o indivíduo tem 18 anos ou mais, os critérios para transtorno da\npersonalidade antissocial não são preenchidos.",
   "sig": {
@@ -6961,40 +5688,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 15,
-  "di": 0,
-  "name": "Abstinência de Álcool",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "A",
-  "stem": "Cessação (ou redução) do uso de ______ que tenha sido intenso e prolongado.",
-  "sig": {
-   "stemLen": 75,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "abstinencia alcool",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 0,
-  "name": "Abstinência de Álcool",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "B",
-  "stem": "Dois (ou mais) dos seguintes sintomas, desenvolvidos no período de algumas horas a alguns dias após a cessação (ou redução) do uso de ______ descrita no Critério A:\n1. Hiperatividade autonômica (p. ex., sudorese ou frequência cardíaca maior que 100 bpm).\n2. Tremor aumentado nas mãos.\n3. Insônia.\n4. Náusea ou vômitos.\n5. Alucinações ou ilusões visuais, táteis ou auditivas transitórias.\n6. Agitação psicomotora.\n7. Ansiedade.\n8. Convulsões tônico-clônicas generalizadas.",
-  "sig": {
-   "stemLen": 471,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "abstinencia alcool",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
   "type": "fatos",
   "ci": 15,
   "di": 0,
@@ -7019,57 +5712,6 @@
   "stem": "Estado transitório após beber ______, com mudanças de comportamento e sinais como fala arrastada, descoordenação e prejuízo de atenção; nos casos graves, coma.",
   "sig": {
    "stemLen": 159,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "alcool intoxicacao",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 1,
-  "name": "Intoxicação por Álcool",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "A",
-  "stem": "Ingestão recente de ______.",
-  "sig": {
-   "stemLen": 27,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "alcool intoxicacao",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 1,
-  "name": "Intoxicação por Álcool",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "B",
-  "stem": "Alterações comportamentais ou psicológicas clinicamente significativas e problemáticas (p. ex., comportamento sexual ou agressivo inadequado, humor instável, julgamento prejudicado) desenvolvidas durante ou logo após a ingestão de ______.",
-  "sig": {
-   "stemLen": 238,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "alcool intoxicacao",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 1,
-  "name": "Intoxicação por Álcool",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "C",
-  "stem": "Um (ou mais) dos seguintes sinais ou sintomas, desenvolvidos durante ou logo após o uso de ______:\n1. Fala arrastada.\n2. Incoordenação.\n3. Marcha instável.\n4. Nistagmo.\n5. Comprometimento da atenção ou da memória.\n6. Estupor ou coma.",
-  "sig": {
-   "stemLen": 233,
    "blanks": 1,
    "difCount": 3,
    "familyKey": "alcool intoxicacao",
@@ -7134,23 +5776,6 @@
   "stem": "Conjunto de sintomas (cefaleia, fadiga, irritabilidade, dificuldade de concentração) que surge ao parar ou reduzir bruscamente o uso diário de ______.",
   "sig": {
    "stemLen": 150,
-   "blanks": 1,
-   "difCount": 1,
-   "familyKey": "abstinencia cafeina",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 3,
-  "name": "Abstinência de Cafeína",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "A",
-  "stem": "Uso diário prolongado de ______.",
-  "sig": {
-   "stemLen": 32,
    "blanks": 1,
    "difCount": 1,
    "familyKey": "abstinencia cafeina",
@@ -7284,23 +5909,6 @@
   "sig": {
    "stemLen": 123,
    "blanks": 0,
-   "difCount": 3,
-   "familyKey": "abstinencia cannabis",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 6,
-  "name": "Abstinência de Cannabis",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "A",
-  "stem": "Cessação do uso pesado e prolongado de ______ (i. e., normalmente uso diário ou quase diário durante um período mínimo de alguns meses).",
-  "sig": {
-   "stemLen": 136,
-   "blanks": 1,
    "difCount": 3,
    "familyKey": "abstinencia cannabis",
    "familySize": 1,
@@ -7514,23 +6122,6 @@
   "stem": "Quadro agudo após uso de ______ (LSD, MDMA, sálvia), com alterações da percepção e do comportamento e sinais físicos como pupilas dilatadas e taquicardia.",
   "sig": {
    "stemLen": 154,
-   "blanks": 1,
-   "difCount": 3,
-   "familyKey": "alucinogenos intoxicacao",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 13,
-  "name": "Intoxicação por Outros Alucinógenos",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "A",
-  "stem": "Uso recente de ______ (que não fenciclidina).",
-  "sig": {
-   "stemLen": 45,
    "blanks": 1,
    "difCount": 3,
    "familyKey": "alucinogenos intoxicacao",
@@ -7807,23 +6398,6 @@
   "di": 19,
   "name": "Abstinência de Opioides",
   "cat": "Substâncias e transtornos aditivos",
-  "letter": "A",
-  "stem": "Presença de qualquer um dos seguintes:\n1. Cessação (ou redução) do uso pesado e prolongado de ______ (i. e., algumas semanas ou mais).\n2. Administração de um antagonista de ______ após um período de uso de ______.",
-  "sig": {
-   "stemLen": 213,
-   "blanks": 3,
-   "difCount": 3,
-   "familyKey": "abstinencia opioides",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 19,
-  "name": "Abstinência de Opioides",
-  "cat": "Substâncias e transtornos aditivos",
   "letter": "B",
   "stem": "Três (ou mais) dos seguintes sintomas, desenvolvidos no prazo de alguns minutos a alguns dias após o Critério A:\n1. Humor disfórico.\n2. Náusea ou vômito.\n3. Dores musculares.\n4. Lacrimejamento ou rinorreia.\n5. Midríase, piloereção ou sudorese.\n6. Diarreia.\n7. Bocejos.\n8. Febre.\n9. Insônia.",
   "sig": {
@@ -7950,40 +6524,6 @@
   }
  },
  {
-  "type": "criterio",
-  "ci": 15,
-  "di": 23,
-  "name": "Abstinência de Sedativos, Hipnóticos ou Ansiolíticos",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "A",
-  "stem": "Cessação (ou redução) do uso prolongado de ______, ______ ou ______.",
-  "sig": {
-   "stemLen": 68,
-   "blanks": 3,
-   "difCount": 3,
-   "familyKey": "abstinencia ansioliticos hipnoticos sedativos",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 23,
-  "name": "Abstinência de Sedativos, Hipnóticos ou Ansiolíticos",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "B",
-  "stem": "Dois (ou mais) dos seguintes sintomas, desenvolvidos no período de algumas horas a alguns dias após a cessação (ou redução) do uso de ______, ______ ou ______ descrita no Critério A:\n1. Hiperatividade autonômica (p. ex., sudorese ou frequência cardíaca superior a 100 bpm).\n2. Tremor nas mãos.\n3. Insônia.\n4. Náusea ou vômito.\n5. Alucinações ou ilusões visuais, táteis ou auditivas transitórias.\n6. Agitação psicomotora.\n7. Ansiedade.\n8. Convulsões do tipo grande mal.",
-  "sig": {
-   "stemLen": 468,
-   "blanks": 3,
-   "difCount": 3,
-   "familyKey": "abstinencia ansioliticos hipnoticos sedativos",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
   "type": "resumo",
   "ci": 15,
   "di": 24,
@@ -7993,40 +6533,6 @@
   "sig": {
    "stemLen": 144,
    "blanks": 1,
-   "difCount": 3,
-   "familyKey": "ansioliticos hipnoticos intoxicacao sedativos",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 24,
-  "name": "Intoxicação por Sedativos, Hipnóticos ou Ansiolíticos",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "B",
-  "stem": "Alterações comportamentais ou psicológicas clinicamente significativas e mal-adaptativas (p. ex., comportamento sexual ou agressivo inadequado, humor instável, julgamento prejudicado) desenvolvidas durante ou logo após o uso de ______, ______ ou ______.",
-  "sig": {
-   "stemLen": 253,
-   "blanks": 3,
-   "difCount": 3,
-   "familyKey": "ansioliticos hipnoticos intoxicacao sedativos",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 24,
-  "name": "Intoxicação por Sedativos, Hipnóticos ou Ansiolíticos",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "C",
-  "stem": "Um (ou mais) dos seguintes sinais ou sintomas, desenvolvidos durante ou logo após o uso de ______, ______ ou ______:\n1. Fala arrastada.\n2. Incoordenação.\n3. Marcha instável.\n4. Nistagmo.\n5. Prejuízo na cognição (p. ex., atenção, memória).\n6. Estupor ou coma.",
-  "sig": {
-   "stemLen": 258,
-   "blanks": 3,
    "difCount": 3,
    "familyKey": "ansioliticos hipnoticos intoxicacao sedativos",
    "familySize": 1,
@@ -8090,23 +6596,6 @@
   "stem": "Mal-estar que surge ao parar ou reduzir o uso prolongado de ______ (anfetaminas, cocaína), com humor deprimido, fadiga e alterações de sono e apetite.",
   "sig": {
    "stemLen": 150,
-   "blanks": 1,
-   "difCount": 1,
-   "familyKey": "abstinencia estimulantes",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 15,
-  "di": 27,
-  "name": "Abstinência de Estimulantes",
-  "cat": "Substâncias e transtornos aditivos",
-  "letter": "A",
-  "stem": "Cessação (ou redução) do uso prolongado de substância tipo anfetamina, cocaína ou outro ______.",
-  "sig": {
-   "stemLen": 95,
    "blanks": 1,
    "difCount": 1,
    "familyKey": "abstinencia estimulantes",
@@ -8515,23 +7004,6 @@
   "di": 3,
   "name": "Transtorno Neurocognitivo Frontotemporal Maior ou Leve",
   "cat": "Transtornos neurocognitivos",
-  "letter": "B",
-  "stem": "A perturbação tem surgimento insidioso e progressão gradual.",
-  "sig": {
-   "stemLen": 60,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "neurocognitivo",
-   "familySize": 7,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 16,
-  "di": 3,
-  "name": "Transtorno Neurocognitivo Frontotemporal Maior ou Leve",
-  "cat": "Transtornos neurocognitivos",
   "letter": "C",
   "stem": "Qualquer um entre (1) e (2):\n1. Variante comportamental: a. Três ou mais dos sintomas comportamentais a seguir: i. Desinibição comportamental. ii. Apatia ou inércia. iii. Perda de simpatia ou empatia. iv. Comportamento perseverante, estereotipado ou compulsivo/ritualístico. v. Hiperoralidade e mudanças na dieta. b. Declínio proeminente na cognição social e/ou nas capacidades executivas.\n2. Variante linguística: a. Declínio proeminente na capacidade linguística, na forma de produção da fala, no encontro de palavras, na nomeação de objetos, na gramática ou na compreensão de palavras.",
   "sig": {
@@ -8586,23 +7058,6 @@
   "sig": {
    "stemLen": 155,
    "blanks": 2,
-   "difCount": 2,
-   "familyKey": "neurocognitivo",
-   "familySize": 7,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 16,
-  "di": 4,
-  "name": "Transtorno Neurocognitivo Maior ou Leve com Corpos de Lewy",
-  "cat": "Transtornos neurocognitivos",
-  "letter": "B",
-  "stem": "O transtorno tem surgimento insidioso e progressão gradual.",
-  "sig": {
-   "stemLen": 59,
-   "blanks": 0,
    "difCount": 2,
    "familyKey": "neurocognitivo",
    "familySize": 7,
@@ -8894,23 +7349,6 @@
   "di": 3,
   "name": "Transtorno da Personalidade Antissocial",
   "cat": "Transtornos da personalidade",
-  "letter": "B",
-  "stem": "O indivíduo tem no mínimo 18 anos de idade.",
-  "sig": {
-   "stemLen": 43,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "antissocial personalidade",
-   "familySize": 2,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 17,
-  "di": 3,
-  "name": "Transtorno da Personalidade Antissocial",
-  "cat": "Transtornos da personalidade",
   "letter": "C",
   "stem": "Há evidências de transtorno da conduta com surgimento anterior aos 15 anos de idade.",
   "sig": {
@@ -9066,23 +7504,6 @@
   "stem": "Instabilidade afetiva devida a uma acentuada reatividade de humor (p. ex., disforia episódica, irritabilidade ou ansiedade intensa com duração geralmente de poucas horas e apenas raramente de mais de alguns dias).",
   "sig": {
    "stemLen": 213,
-   "blanks": 0,
-   "difCount": 1,
-   "familyKey": "personalidade",
-   "familySize": 9,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 17,
-  "di": 4,
-  "name": "Transtorno da Personalidade Borderline",
-  "cat": "Transtornos da personalidade",
-  "letter": "7",
-  "stem": "Sentimentos crônicos de vazio.",
-  "sig": {
-   "stemLen": 30,
    "blanks": 0,
    "difCount": 1,
    "familyKey": "personalidade",
@@ -9293,22 +7714,6 @@
   }
  },
  {
-  "type": "fatos",
-  "ci": 17,
-  "di": 5,
-  "name": "Transtorno da Personalidade Histriônica",
-  "cat": "Transtornos da personalidade",
-  "stem": "Início: início da vida adulta | Prevalência: ~0,9% (mediana de estudos; até ~1,8%)",
-  "sig": {
-   "stemLen": 82,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "personalidade",
-   "familySize": 9,
-   "dupStemWith": []
-  }
- },
- {
   "type": "resumo",
   "ci": 17,
   "di": 6,
@@ -9368,23 +7773,6 @@
   "stem": "Acredita ser \"especial\" e único e que pode ser somente compreendido por, ou associado a, outras pessoas (ou instituições) especiais ou com condição elevada.",
   "sig": {
    "stemLen": 156,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "personalidade",
-   "familySize": 9,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 17,
-  "di": 6,
-  "name": "Transtorno da Personalidade Narcisista",
-  "cat": "Transtornos da personalidade",
-  "letter": "4",
-  "stem": "Demanda admiração excessiva.",
-  "sig": {
-   "stemLen": 28,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "personalidade",
@@ -9470,22 +7858,6 @@
   "stem": "Demonstra comportamentos ou atitudes arrogantes e insolentes.",
   "sig": {
    "stemLen": 61,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "personalidade",
-   "familySize": 9,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "fatos",
-  "ci": 17,
-  "di": 6,
-  "name": "Transtorno da Personalidade Narcisista",
-  "cat": "Transtornos da personalidade",
-  "stem": "Início: início da vida adulta | Prevalência: mediana ~1,6% (0,0%–6,2% entre estudos)",
-  "sig": {
-   "stemLen": 84,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "personalidade",
@@ -9797,22 +8169,6 @@
   }
  },
  {
-  "type": "fatos",
-  "ci": 17,
-  "di": 8,
-  "name": "Transtorno da Personalidade Dependente",
-  "cat": "Transtornos da personalidade",
-  "stem": "Início: início da vida adulta | Prevalência: ~0,4–0,6% (mediana ~0,4%)",
-  "sig": {
-   "stemLen": 70,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "personalidade",
-   "familySize": 9,
-   "dupStemWith": []
-  }
- },
- {
   "type": "resumo",
   "ci": 17,
   "di": 9,
@@ -9940,39 +8296,6 @@
   "stem": "Adota um estilo miserável de gastos em relação a si e a outros; o dinheiro é visto como algo a ser acumulado para futuras catástrofes.",
   "sig": {
    "stemLen": 134,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "obsessivo personalidade",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "criterio",
-  "ci": 17,
-  "di": 9,
-  "name": "Transtorno da Personalidade Obsessivo- compulsiva",
-  "cat": "Transtornos da personalidade",
-  "letter": "8",
-  "stem": "Exibe rigidez e teimosia.",
-  "sig": {
-   "stemLen": 25,
-   "blanks": 0,
-   "difCount": 3,
-   "familyKey": "obsessivo personalidade",
-   "familySize": 1,
-   "dupStemWith": []
-  }
- },
- {
-  "type": "fatos",
-  "ci": 17,
-  "di": 9,
-  "name": "Transtorno da Personalidade Obsessivo- compulsiva",
-  "cat": "Transtornos da personalidade",
-  "stem": "Início: início da vida adulta | Prevalência: ~2,4% a 7,9% (mediana ~4,7%)",
-  "sig": {
-   "stemLen": 73,
    "blanks": 0,
    "difCount": 3,
    "familyKey": "obsessivo personalidade",

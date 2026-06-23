@@ -41,16 +41,44 @@ function quizBadSubject(name){
 }
 const EXCLUSION_CRIT = [
   /nao (e|sao) mais bem explicad/,
+  /melhor explicad/,
   /nao ocorre exclusivamente durante/,
   /efeitos fisiologicos (diretos )?de (uma|alguma)? ?substancia/,
   /nao (e|se deve|sao|esta) ?atribuiv\w*.*(substancia|condicao medica|medicamento|neurolog)/,
   /nao (e|sao) atribuiv\w* a (outra|alguma|uma) condicao/,
   /nao (e|sao) atribuiv\w* a (deficiencia|condicoes congenitas|um deficit|outro prejuizo)/,
-  /nao (e|sao) consequencia (dos|de) efeitos/
+  /nao (e|sao) consequencia (dos|de) efeitos/,
+  /nao (houve|ocorreu|ocorreram|preencheu|preencheram|foram preenchidos os criterios para).*(episodi[oa]s? (maniac|hipomaniac|depressiv|mist)|mania|hipomania|esquizoafetiv)/,
+  /(jamais|nunca) (houve|ocorreu|preencheu|foram preenchidos).*(criterio|episodio|mania|hipomania)/,
+  /(transtorno esquizoafetivo|transtorno (depressivo|bipolar)).*(foi|foram|nao) (descartad|excluid|afastad)/,
+  /nao (preenche|preencheu|satisfaz|sao preenchidos os criterios).*(transtorno do espectro autista|esquizofrenia)/,
+  /nao (explicam|sao melhor explicad).*(os )?(episodios|sintomas|quadros|perturbacoes)/,
+  /criterio [a-h]\b.{0,90}criterio [a-h]\b/,
+  /^(em |para )?criancas de (6|seis) anos ou menos/,
+  /(lesao ou doenca|sinais ou sintomas).{0,30}(em|de) outr[oa]\b/,
+  /apresenta (um |o )?outro \(?vitima/
 ];
 const IMPAIRMENT_CRIT = [
-  /sofrimento clinicamente significativo/,
-  /prejuizo (clinicamente significativo|no funcionamento|nas? (relacoes|areas)|em (outras )?areas? importantes)/
+  /sofrimento clinicamente significativ/,
+  /prejuizos? (clinicamente significativ|no funcionamento|nas? (relacoes|areas)|em (outras )?areas? importantes|acentuad|marcant|substancial|importante|significativ)/,
+  /(interfere|interferem|limita|limitam|restringe|restringem|prejudica|prejudicam|reduz|reduzem|comprometem?) (a |o |na |no |com a |com o )?(comunicacao|participacao|interacao|desempenho|rendimento|realizacao|funcionamento)/,
+  /funcionament[eo] (social|academic|ocupacional|profissional|escolar)/,
+  /individualmente ou em (qualquer )?combinacao/
+];
+const BOILERPLATE_CRIT = [
+  /(pelo menos|no minimo|ao menos) (tres|3) (noites|vezes) (por|na) semana/,
+  /(presente|ocorre|persiste|dura|esta presente|presentes).*(pelo menos|no minimo|por|durante|ha) (tres|3) meses/,
+  /oportunidades? (adequad|suficient|apropriad)/,
+  /(desenvolvimento|surgimento) de (uma )?sindrome (reversivel|especifica|problematica)/,
+  /(cessacao|interrupcao|reducao) (abrupta )?(de |do )?(uso (pesado|prolongado|intenso))/,
+  /uso (diario|regular|pesado) (e )?prolongado/,
+  /hiperatividade (autonomica|do sistema nervoso autonomo)/,
+  /(inicio|os sintomas|comeca|surge).{0,40}(periodo|fase|inicio) (de |do )?desenvolvimento/,
+  /(provoca\w*|induz\w*|desencadei\w*|gera\w*|resulta em) (quase sempre |invariavelmente |imediatamente )?(medo|ansiedade|temor)/,
+  /(quase sempre|invariavelmente|de imediato) (provoca|induz|gera|desencadei|resulta|causa)/,
+  /(medo|ansiedade|temor).{0,25}(desproporci|fora de proporcao|excessiv\w* em relacao|maior que o perigo)/,
+  /criterios para (um )?(transtorno|episodio) depressivo maior/,
+  /(75 a 100|aproximadamente 75|em (quase )?todas as (ocasioes|situacoes|atividades)|quase todas ou todas as)/
 ];
 const TEMPLATE_CRIT = [ /^um padrao (problematico )?de uso de/ ];
 function critPlain(t){ return qzNorm(t).replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
@@ -58,34 +86,94 @@ function ambiguousCrit(text){
   const n = critPlain(text);
   if(TEMPLATE_CRIT.some(re => re.test(n))) return true;
   if(EXCLUSION_CRIT.some(re => re.test(n))) return true;
-  return text.length < 300 && IMPAIRMENT_CRIT.some(re => re.test(n));
+  return text.length < 300 && (IMPAIRMENT_CRIT.some(re => re.test(n)) || BOILERPLATE_CRIT.some(re => re.test(n)));
 }
 function critBag(text, name){
   const seen={}, out=[];
   critPlain(maskName(text, name)).split(' ').forEach(t => { if(t.length>=5 && !seen[t]){ seen[t]=1; out.push(t); } });
   return out.sort().join(' ');
 }
-let CRIT_BAG_IDX = null;
-function critBagIdx(){
-  if(CRIT_BAG_IDX) return CRIT_BAG_IDX;
-  const idx={};
+let FAM_STEMS = null;
+function famStems(){
+  if(FAM_STEMS) return FAM_STEMS;
+  const df={};
+  CATS.forEach(c => (c.items||[]).forEach(d => { const seen={}; qzStems(d.n).forEach(s => { if(!seen[s]){ seen[s]=1; df[s]=(df[s]||0)+1; } }); }));
+  FAM_STEMS = Object.keys(df).filter(s => df[s]>=2 && df[s]<=8);
+  return FAM_STEMS;
+}
+function dedupTokens(text, name){
+  let masked = maskName(text, name);
+  const fam = famStems();
+  masked = masked.replace(/[0-9A-Za-zÀ-ÿ]+(?:-[0-9A-Za-zÀ-ÿ]+)*/g, function(w){
+    const nw = qzNorm(w);
+    for(let i=0;i<fam.length;i++){ if(nw.indexOf(fam[i])===0) return '______'; }
+    return w;
+  });
+  const seen={}, out=[];
+  critPlain(masked).split(' ').forEach(t => { if(t.length>=5 && !seen[t]){ seen[t]=1; out.push(t); } });
+  return out;
+}
+let CRIT_SIGS = null;
+function critSigs(){
+  if(CRIT_SIGS) return CRIT_SIGS;
+  const sigs=[];
   CATS.forEach(c => (c.items||[]).forEach(d => (d.criteria||[]).forEach(cr => {
-    if(!cr || (cr.text||'').trim().length < 25) return;
-    const b = critBag(cr.text, d.n); if(!b) return;
-    (idx[b] = idx[b] || {})[d.n] = 1;
+    const t=(cr.text||'').trim(); if(t.length < 25) return;
+    const toks = dedupTokens(cr.text, d.n);
+    if(toks.length) sigs.push({ name:d.n, set:toks });
   })));
-  CRIT_BAG_IDX = idx; return idx;
+  CRIT_SIGS = sigs; return sigs;
+}
+function sharedCrit(text, name){
+  const toks = dedupTokens(text, name);
+  if(toks.length < 4) return true;
+  const setA={}; toks.forEach(t => setA[t]=1);
+  const sigs = critSigs();
+  for(let i=0;i<sigs.length;i++){
+    const s=sigs[i]; if(s.name===name) continue;
+    let inter=0; for(let j=0;j<s.set.length;j++){ if(setA[s.set[j]]) inter++; }
+    const uni = toks.length + s.set.length - inter;
+    if(uni>0 && inter/uni >= 0.70) return true;
+  }
+  return false;
 }
 function distinctiveCrits(d){
   if(!Array.isArray(d.criteria)) return [];
-  const idx = critBagIdx();
   return d.criteria.filter(cr => {
     const t = (cr.text||'').trim();
     if(t.length < 25 || ambiguousCrit(t)) return false;
-    const b = critBag(cr.text, d.n);
-    if(b && idx[b] && Object.keys(idx[b]).length >= 2) return false;
+    const ownBag = critBag(cr.text, d.n);
+    if(!ownBag || ownBag.split(' ').length < 4) return false;
+    if(sharedCrit(cr.text, d.n)) return false;
     return true;
   });
+}
+function factText(d){ const f=d.facts||{}; return [f.inicio,f.prevalencia,f.sexo].filter(Boolean).join(' '); }
+let FACT_SIGS = null;
+function factSigs(){
+  if(FACT_SIGS) return FACT_SIGS;
+  const sigs=[];
+  CATS.forEach(c => (c.items||[]).forEach(d => {
+    if(quizBadSubject(d.n)) return;
+    const f=d.facts; if(!f) return;
+    if(['inicio','prevalencia','sexo'].filter(k => f[k]).length < 2) return;
+    const toks = dedupTokens(factText(d), d.n);
+    if(toks.length) sigs.push({ name:d.n, set:toks });
+  }));
+  FACT_SIGS = sigs; return sigs;
+}
+function sharedFacts(d){
+  const toks = dedupTokens(factText(d), d.n);
+  if(toks.length < 3) return true;
+  const setA={}; toks.forEach(t => setA[t]=1);
+  const sigs = factSigs();
+  for(let i=0;i<sigs.length;i++){
+    const s=sigs[i]; if(s.name===d.n) continue;
+    let inter=0; for(let j=0;j<s.set.length;j++){ if(setA[s.set[j]]) inter++; }
+    const uni = toks.length + s.set.length - inter;
+    if(uni>0 && inter/uni >= 0.70) return true;
+  }
+  return false;
 }
 function allNames(){ const o=[]; CATS.forEach(c => (c.items||[]).forEach(d => o.push(d.n))); return o; }
 function difDistractors(card){
@@ -148,7 +236,7 @@ CATS.forEach((c, ci) => (c.items||[]).forEach((d, di) => {
       sig:{ stemLen:stem.length, blanks:blanks(stem), difCount:dif.length, familyKey:fam.familyKey, familySize:fam.familySize } });
   });
   // fatos
-  if(facts && ['inicio','prevalencia','sexo'].filter(k => facts[k]).length >= 2){
+  if(facts && ['inicio','prevalencia','sexo'].filter(k => facts[k]).length >= 2 && !sharedFacts(d)){
     const rows = [['Início', facts.inicio],['Prevalência', facts.prevalencia],['Sexo', facts.sexo]]
       .filter(r => r[1]).map(r => r[0]+': '+maskName(String(r[1]), d.n));
     const stem = rows.join(' | ');

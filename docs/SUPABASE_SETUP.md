@@ -55,11 +55,14 @@ Para ligar a aba **Amigos**, rode o arquivo [`friends.sql`](../sql/friends.sql)
 - cria a tabela `follows` (modelo *seguir*: "amigo" = quem você segue; quando os
   dois se seguem, vira **mútuo**) com RLS;
 - cria as funções (`SECURITY DEFINER`) `find_by_code`, `follow_add`,
-  `follow_remove`, `follow_list` e `profile_card`, que o app usa para procurar
-  por código, seguir/deixar de seguir e abrir o perfil de outros respeitando a
-  privacidade (perfil de quem está em **modo anônimo** só aparece para amigos).
+  `follow_remove`, `follow_list`, `profile_card` e `leaderboard_friends`, que o
+  app usa para procurar por código, seguir/deixar de seguir, abrir o perfil de
+  outros (respeitando a privacidade — perfil de quem está em **modo anônimo** só
+  aparece para amigos) e mostrar o **ranking restrito aos amigos**.
 
 É idempotente — pode rodar de novo sem erro. Requer o `schema.sql` já aplicado.
+Se você já tinha rodado o `friends.sql` antes, **rode de novo** para criar a
+função `leaderboard_friends` (ranking de amigos).
 
 ### 2e. Notificações push (opcional)
 
@@ -102,6 +105,57 @@ Em produção, deixe a confirmação ligada.
 
 Recarregue `http://localhost:8000`. Agora deve aparecer a tela de **login**.
 Crie uma conta em "Criar conta" e pronto — seu nome aparece na barra lateral.
+
+## 6. Produção: e-mail com SMTP próprio (Resend) + rate limits
+
+O serviço de e-mail **embutido** do Supabase é só para teste e tem cota baixa
+por hora — num lançamento, vários cadastros estouram a cota e os próximos veem
+**“há um fluxo elevado, tente em instantes”** (isso é *rate limit* de e-mail,
+não limite de banco). A correção é usar **SMTP próprio**. Abaixo, com **Resend**
+e o domínio **psicopato.org**.
+
+### 6.1 Resend — verificar o domínio
+1. Crie conta em <https://resend.com> (free: 100 e-mails/dia, 3.000/mês).
+2. **Domains → Add Domain** → `psicopato.org` (ou um subdomínio dedicado, ex.:
+   `mail.psicopato.org`, para isolar a reputação de envio).
+3. O Resend mostra **registros DNS** (SPF, DKIM e, às vezes, um MX). Copie e
+   adicione-os no painel DNS onde o `psicopato.org` está registrado.
+   - ⚠️ Se já existe um registro **SPF** (`v=spf1...`) no domínio, **não crie um
+     segundo** — use um subdomínio dedicado (Resend recomenda) para evitar conflito.
+4. Volte ao Resend e clique **Verify**. Pode levar de minutos a algumas horas
+   (propagação de DNS). Espere ficar **Verified**.
+5. **API Keys → Create API Key** → copie a chave (começa com `re_…`). Ela é a
+   **senha SMTP**.
+
+### 6.2 Supabase — apontar para o Resend
+Painel → **Authentication → Emails → SMTP Settings** (ou *Project Settings →
+Authentication → SMTP*) → ative **Custom SMTP** e preencha:
+
+| Campo | Valor |
+|---|---|
+| Sender email | `nao-responda@psicopato.org` (tem que ser do domínio verificado) |
+| Sender name | `Psico·Pato` |
+| Host | `smtp.resend.com` |
+| Port | `465` (SSL) — ou `587` (TLS) |
+| Username | `resend` |
+| Password | a API key do Resend (`re_…`) |
+
+Salve.
+
+### 6.3 Subir os limites e religar a confirmação
+- **Authentication → Rate Limits** → aumente o **“Rate limit for sending
+  emails”** (ex.: 30–100/hora, dentro do teto do Resend).
+- Se você tinha **desligado** “Confirm email” como paliativo (passo 4), pode
+  **religar** agora em **Authentication → Providers → Email → Confirm email**.
+
+### 6.4 Testar
+- Crie uma conta de teste (ou use “esqueci a senha”). O e-mail deve chegar
+  **de `psicopato.org`** na **caixa de entrada** (não no spam).
+- Confira em **Resend → Logs** se o e-mail saiu e foi entregue.
+- (Opcional) Personalize os textos em **Authentication → Email Templates**.
+
+> Observação: mesmo com a confirmação desligada, o **“esqueci a senha”** usa o
+> SMTP — então o SMTP próprio resolve os dois fluxos de uma vez.
 
 ---
 

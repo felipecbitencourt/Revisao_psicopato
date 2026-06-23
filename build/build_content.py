@@ -321,6 +321,23 @@ TEXT_FIXES = {
     # Esquizofrenia, Critério E: negação invertida (critério de EXCLUSÃO).
     "A perturbação pode ser atribuída aos efeitos fisiológicos de uma substância (p. ex., droga de abuso, medicamento) ou a outra condição médica.":
         "A perturbação não é atribuível aos efeitos fisiológicos de uma substância (p. ex., droga de abuso, medicamento) ou a outra condição médica.",
+    # Transtorno de Tique Transitório (Provisório), Critério B: duração errada
+    # (o PDF trouxe o texto do persistente/crônico). O correto é "menos de 1 ano".
+    "Os tiques estiveram presentes por pelo menos um ano desde o início do primeiro tique.":
+        "Os tiques estiveram presentes por menos de 1 ano desde o início do primeiro tique.",
+}
+
+# Critérios a REMOVER de uma ficha (erro de mesclagem do PDF). Chave = nome do
+# transtorno -> lista de trechos; qualquer critério que contenha um deles sai.
+CRIT_DROP = {
+    # "Transtorno Factício Autoimposto" veio com os critérios da variante
+    # "Imposto a Outro" (E-H) mesclados. Mantém só A-D (autoimposto).
+    "Transtorno Factício Autoimposto": [
+        "em outro, associada a fraude",          # E (indução de lesão/doença em outro)
+        "apresenta outro (vítima)",              # F (apresenta a vítima como doente)
+        "até mesmo na ausência de recompensas",  # G (duplicata de C, variante imposto)
+        "ou outro transtorno psicótico",         # H (duplicata de D, variante imposto)
+    ],
 }
 
 
@@ -991,6 +1008,14 @@ def parse_transtorno(path, display_name, tldr_entry=None):
     # correções pontuais de texto (erros da camada de texto do PDF)
     for cr in criteria:
         cr["text"] = apply_text_fixes(cr["text"])
+    # remove critérios mesclados por engano (ex.: variante "imposto a outro")
+    drops = CRIT_DROP.get(title)
+    if drops:
+        criteria = [cr for cr in criteria if not any(s in cr["text"] for s in drops)]
+        # re-letra A, B, C... para manter a sequência contígua
+        for i, cr in enumerate(criteria):
+            if cr.get("letter") and len(cr["letter"]) == 1 and cr["letter"].isalpha():
+                cr["letter"] = chr(ord("A") + i)
     sections = parse_sections(lines)
 
     # substitui/anexa tabelas (imagem recortada do PDF) em seções existentes

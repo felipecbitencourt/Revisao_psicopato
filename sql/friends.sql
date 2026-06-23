@@ -281,12 +281,92 @@ begin
 end;
 $$;
 
+-- ranking restrito aos AMIGOS: você + quem você segue, ranqueados pelo XP do
+-- período (mesmas regras da leaderboard geral). Mostra todos (mesmo 0 XP no
+-- período); respeita "anônimo" (some), exceto você mesmo.
+create or replace function public.leaderboard_friends(period text default 'all', lim int default 100)
+returns table (user_id uuid, nome text, xp bigint, rnk bigint)
+language plpgsql stable security definer set search_path = ''
+as $$
+#variable_conflict use_column
+declare
+  me uuid := auth.uid();
+  start_ts timestamptz;
+begin
+  if me is null then return; end if;
+  start_ts := case period
+    when 'day'   then date_trunc('day',   now())
+    when 'week'  then date_trunc('week',  now())
+    when 'month' then date_trunc('month', now())
+    when 'year'  then date_trunc('year',  now())
+    else '-infinity'::timestamptz
+  end;
+
+  return query
+  with circle as (
+    select me as uid
+    union
+    select f.following from public.follows f where f.follower = me
+  ),
+  prog as (
+    select p.user_id as uid, count(*)::bigint * 25 as xp
+    from public.progress p
+    join circle c on c.uid = p.user_id
+    where p.revisado_em >= start_ts
+    group by p.user_id
+  ),
+  ev as (
+    select d.user_id as uid, count(*)::bigint * 15 as xp
+    from (
+      select e.user_id, e.payload
+      from public.events e
+      join circle c on c.uid = e.user_id
+      where e.criado_em >= start_ts and e.acerto is true
+        and coalesce(e.com_dica, false) = false
+      group by e.user_id, e.payload
+    ) d
+    group by d.user_id
+  ),
+  days as (
+    select z.uid, count(*)::bigint * 15 as xp
+    from (
+      select e.user_id as uid, date_trunc('day', e.criado_em) as d
+      from public.events e join circle c on c.uid = e.user_id where e.criado_em >= start_ts
+      union
+      select p.user_id as uid, date_trunc('day', p.revisado_em) as d
+      from public.progress p join circle c on c.uid = p.user_id where p.revisado_em >= start_ts
+    ) z
+    group by z.uid
+  ),
+  totals as (
+    select c.uid, coalesce(sum(u.xp), 0)::bigint as xp
+    from circle c
+    left join (
+      select uid, xp from prog
+      union all select uid, xp from ev
+      union all select uid, xp from days
+    ) u on u.uid = c.uid
+    group by c.uid
+  )
+  select t.uid,
+         coalesce(nullif(trim(pr.apelido), ''), nullif(trim(pr.nome), ''), 'Estudante') as nome,
+         t.xp,
+         rank() over (order by t.xp desc) as rnk
+  from totals t
+  left join public.profiles pr on pr.id = t.uid
+  where t.uid = me or coalesce(pr.anonimo, false) = false
+  order by t.xp desc, nome asc
+  limit lim;
+end;
+$$;
+
 -- 5) PERMISSÕES -------------------------------------------------------
 grant execute on function public.find_by_code(text)   to authenticated;
 grant execute on function public.follow_add(uuid)      to authenticated;
 grant execute on function public.follow_remove(uuid)   to authenticated;
 grant execute on function public.follow_list(text)     to authenticated;
 grant execute on function public.profile_card(uuid)    to authenticated;
+grant execute on function public.leaderboard_friends(text, int) to authenticated;
 
 -- 6) (opcional) conferir:
 --    select codigo from public.profiles where id = auth.uid();

@@ -426,6 +426,13 @@
         .then(function (r) { return r.error ? null : (r.data || []); })
         .catch(function () { return null; });
     },
+    // ranking restrito aos amigos (você + quem você segue), por período.
+    getFriendsLeaderboard: function (period, lim) {
+      if (!sb || this.guest) return Promise.resolve(null);
+      return sb.rpc('leaderboard_friends', { period: period || 'all', lim: lim || 100 })
+        .then(function (r) { return r.error ? null : (r.data || []); })
+        .catch(function () { return null; });
+    },
     // cartão de perfil de um usuário (respeita privacidade). null = falhou.
     profileCard: function (targetId) {
       if (!sb || this.guest) return Promise.resolve(null);
