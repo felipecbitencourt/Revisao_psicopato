@@ -85,7 +85,11 @@
       id:'panico',
       patient:{name:'Marina', age:27, sex:'Feminino', ref:'Encaminhada pela atenção primária', initials:'M'},
       chips:['Ataques súbitos de medo', 'Palpitações e falta de ar', '≈ 4 meses', 'Evita sair sozinha'],
-      vinheta:'Marina relata episódios súbitos e recorrentes de medo intenso, com palpitações, sudorese, falta de ar e sensação de morte iminente, que atingem o pico em poucos minutos. Desde então, vive preocupada com a possibilidade de novos episódios e passou a evitar sair de casa sozinha. Nega uso de substâncias e condição médica que justifique o quadro.',
+      vinheta:[
+        'Marina tem 27 anos, trabalha como analista administrativa e foi encaminhada pela unidade básica de saúde. Conta que tudo começou há cerca de quatro meses, num sábado comum, enquanto fazia compras no supermercado: do nada, o coração disparou, faltou o ar e ela teve a certeza de que ia morrer ali mesmo. Largou o carrinho, saiu apressada e foi parar no pronto-socorro, convencida de que era um infarto. Os exames — eletrocardiograma, sangue, tudo — vieram normais, e ela foi liberada com a orientação de “procurar um psicólogo”, o que a deixou ainda mais confusa.',
+        'Desde então, os episódios se repetiram outras vezes, sem aviso e sem um motivo claro: uma onda súbita de medo intenso acompanhada de palpitações, sudorese, tremor, falta de ar e uma sensação de irrealidade, atingindo o auge em poucos minutos e cedendo aos poucos. O que mais a incomoda, diz ela, é o intervalo entre as crises — vive “em estado de alerta”, monitorando os próprios batimentos, com medo constante de que uma nova venha a qualquer momento.',
+        'Passou a evitar sair sozinha e só vai ao trabalho quando o marido a leva; abandonou a academia e a aula de espanhol de que gostava. Admite andar mais desanimada e irritada com a situação, mas nega ter perdido o interesse pela vida de modo geral e diz que, nos dias sem crise, consegue rir e aproveitar a família. Não relata períodos de euforia ou energia exagerada, dorme razoavelmente bem e nega uso de álcool, drogas, medicações ou qualquer problema de saúde que explique o quadro; por conta própria, cortou o café “por garantia”.'
+      ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno Depressivo Maior','Transtorno de Ansiedade Generalizada','Transtorno de Pânico','Transtorno Bipolar Tipo II'],
       correct:2,
@@ -95,7 +99,11 @@
       id:'depressao',
       patient:{name:'Rafael', age:34, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'R'},
       chips:['Humor deprimido', 'Anedonia ≈ 2 meses', 'Insônia e fadiga', 'Culpa e baixa concentração'],
-      vinheta:'Há cerca de dois meses, Rafael refere tristeza na maior parte do dia, quase todos os dias, com perda acentuada de interesse e prazer em atividades que antes apreciava. Relata insônia, fadiga, dificuldade de concentração, sentimentos de inutilidade e culpa excessiva, além de redução de apetite e peso. Nega episódios de humor elevado, uso de substâncias ou condição médica relevante.',
+      vinheta:[
+        'Rafael, 34 anos, procurou o serviço por conta própria depois da insistência da esposa. Trabalha como contador e se descreve como alguém “sempre dedicado”, que nunca tinha passado por nada parecido. Há cerca de dois meses, pouco depois de ser preterido numa promoção que esperava, começou a se sentir diferente — e o que ele a princípio chamava de “cansaço” foi virando algo que não consegue mais sacudir.',
+        'Relata tristeza na maior parte do dia, quase todos os dias, e, o que mais o assusta, perdeu o gosto por quase tudo: o futebol de quinta, a companhia dos filhos, o sexo, nada mais o anima. Dorme mal, acorda de madrugada e não volta a pegar no sono; sente-se exausto o tempo inteiro, anda esquecido e lento para raciocinar no trabalho. Perdeu o apetite e alguns quilos sem querer, e é tomado por uma sensação persistente de inutilidade e por uma culpa desproporcional de estar “falhando com todo mundo”.',
+        'Em alguns momentos chega a pensar que a família estaria melhor sem ele, embora negue qualquer plano ou intenção de se machucar. Diz se preocupar com as contas e com o emprego, mas reconhece que essa preocupação é consequência do estado em que está, e não algo que sempre o acompanhou. Nunca viveu fases de euforia, energia aumentada ou redução da necessidade de sono — afirma que era um homem bem-humorado até dois meses atrás. Nega uso de substâncias, e exames recentes não apontaram causa clínica.'
+      ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Ansiedade Generalizada','Transtorno Depressivo Maior','Transtorno Bipolar Tipo I','Transtorno Depressivo Persistente (Distimia)'],
       correct:1,
@@ -105,7 +113,11 @@
       id:'toc',
       patient:{name:'Beatriz', age:22, sex:'Feminino', ref:'Trazida pela família', initials:'B'},
       chips:['Pensamentos de contaminação', 'Rituais de lavagem', '> 3 h/dia', 'Reconhece o excesso'],
-      vinheta:'Beatriz descreve pensamentos intrusivos e recorrentes de contaminação que lhe causam grande ansiedade. Para aliviá-los, lava as mãos de forma repetitiva e segue rituais rígidos de limpeza, chegando a gastar mais de três horas por dia. Reconhece que os comportamentos são excessivos, mas sente-se incapaz de resistir. O quadro prejudica seus estudos e relações.',
+      vinheta:[
+        'Beatriz, 22 anos, estudante de biomedicina, foi trazida pela família, preocupada com o tempo que ela passa trancada no banheiro. Sempre foi caprichosa e cresceu numa casa em que limpeza “era levada a sério”, mas, no último ano, durante um período de provas, a situação saiu do controle.',
+        'Conta que é assaltada por pensamentos intrusivos e repetitivos de contaminação — imagens de germes, sujeira invisível, doença — que surgem contra a sua vontade e disparam uma ansiedade quase insuportável. Para aliviá-los, lava as mãos numa sequência rígida e repetida e cumpre rituais de limpeza que, somados, tomam mais de três horas do seu dia. Sabe que é exagerado e sente vergonha disso, mas diz que, “se não fizer, a aflição não passa”.',
+        'As mãos estão rachadas e avermelhadas de tanto sabão; ela evita maçanetas e transporte público e tem chegado atrasada às aulas por causa dos rituais matinais. Não descreve crises súbitas de pânico nem um medo restrito a um único objeto ou situação específica, e o que a aflige não é uma preocupação difusa com o dia a dia, mas a dupla de sempre: o pensamento intrusivo seguido do ritual que alivia. O desempenho na faculdade e a convivência com as colegas de república já estão prejudicados.'
+      ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Ansiedade Generalizada','Transtorno de Pânico','Transtorno Obsessivo-Compulsivo','Fobia Específica'],
       correct:2,
@@ -115,7 +127,11 @@
       id:'tept',
       patient:{name:'Carlos', age:41, sex:'Masculino', ref:'Encaminhado após acidente', initials:'C'},
       chips:['Acidente grave há 5 meses', 'Revivências e pesadelos', 'Evitação', 'Hipervigilância'],
-      vinheta:'Cinco meses após sofrer um acidente automobilístico grave, Carlos apresenta revivências intrusivas do evento, pesadelos recorrentes e intenso sofrimento ao ser exposto a estímulos que o lembram. Evita ativamente dirigir e falar sobre o ocorrido, relata embotamento afetivo, hipervigilância e sobressaltos exagerados. Os sintomas persistem e comprometem seu trabalho.',
+      vinheta:[
+        'Carlos, 41 anos, motorista de caminhão, foi encaminhado pelo médico do trabalho cinco meses depois de um acidente grave na estrada, em que o veículo capotou e um colega de outra empresa morreu. Voltou ao serviço, mas não é mais o mesmo, e o supervisor percebeu que ele “trava” ao volante.',
+        'Revive a cena à revelia — flashes da batida, o som do metal — que voltam quando menos espera, e tem pesadelos frequentes com o ocorrido, acordando encharcado de suor. Qualquer coisa que lembre o acidente (uma buzina, uma curva parecida, uma reportagem de trânsito) provoca sofrimento intenso e reações físicas. Evita ativamente dirigir em rodovias, recusa-se a passar no trecho do acidente e corta qualquer conversa sobre o assunto.',
+        'Diz estar “anestesiado”, distante da esposa e dos filhos, sem conseguir sentir as coisas como antes; vive sobressaltado, vigiando o retrovisor, e qualquer barulho o faz pular da cadeira. Os sintomas se mantêm firmes há cinco meses — muito além do primeiro mês — e não dão sinal de ceder. As ondas de medo não surgem do nada: vêm sempre atreladas às lembranças do trauma, e o quadro vai bem além de uma dificuldade passageira de se readaptar ao trabalho.'
+      ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Estresse Agudo','Transtorno de Estresse Pós-Traumático','Transtorno de Pânico','Transtorno de Ajustamento'],
       correct:1,
@@ -125,7 +141,11 @@
       id:'social',
       patient:{name:'Júlia', age:19, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'J'},
       chips:['Medo de ser avaliada', 'Evita falar em público', 'Rubor e tremor', 'Desde a adolescência'],
-      vinheta:'Desde a adolescência, Júlia sente medo intenso e persistente de situações sociais em que possa ser avaliada — apresentar trabalhos, falar com desconhecidos ou comer em público. Teme agir de forma humilhante, apresenta rubor, tremor e taquicardia, e evita essas situações ou as suporta com grande sofrimento. O medo é desproporcional e prejudica a vida acadêmica.',
+      vinheta:[
+        'Júlia, 19 anos, caloura de arquitetura, procurou o serviço por conta própria depois de quase trancar uma disciplina que exige seminários. Desde a adolescência se considera “tímida demais”, mas, na faculdade, com as apresentações em público, o problema ficou difícil de ignorar.',
+        'Sente medo intenso e persistente de situações em que possa ser observada e avaliada — apresentar trabalhos, falar com professores, puxar conversa com desconhecidos, até comer no bandejão diante dos colegas. O que a apavora é a possibilidade de fazer algo vergonhoso ou de que percebam o seu nervosismo: nessas horas, fica vermelha, treme, sua e o coração dispara. Quando não consegue escapar, atravessa a situação com grande sofrimento e a sensação de que “todos estão reparando”.',
+        'Por isso evita seminários, senta-se no fundo e já trocou de cadeira para não ler em voz alta. Fora desse contexto de avaliação, porém, tem um grupo de amigas próximas com quem é espontânea e bem-humorada, e não descreve uma desconfiança ou um sentimento de inadequação que tome todas as suas relações. Não relata crises de pânico vindas do nada nem preocupação difusa com vários assuntos do cotidiano; o medo é claramente o do escrutínio alheio, e ela mesma reconhece que é desproporcional. A vida acadêmica é a mais prejudicada.'
+      ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Pânico','Transtorno de Ansiedade Social (Fobia Social)','Transtorno de Ansiedade Generalizada','Transtorno da Personalidade Esquiva'],
       correct:1,
@@ -135,7 +155,11 @@
       id:'anorexia',
       patient:{name:'Helena', age:17, sex:'Feminino', ref:'Trazida pelos pais', initials:'H'},
       chips:['Restrição alimentar', 'Baixo peso significativo', 'Medo de engordar', 'Distorção da imagem'],
-      vinheta:'Helena, trazida pelos pais, apresenta restrição alimentar acentuada e perda de peso significativa, mantendo peso corporal muito abaixo do esperado para idade e estatura. Demonstra medo intenso de ganhar peso mesmo estando abaixo do peso, percebe-se acima do peso (distorção da imagem corporal) e minimiza a gravidade do quadro.',
+      vinheta:[
+        'Helena, 17 anos, foi trazida pelos pais, assustados com o emagrecimento da filha nos últimos meses. Dança balé de forma competitiva e sempre foi “certinha” e exigente consigo mesma; ultimamente, porém, as refeições viraram um campo de batalha em casa.',
+        'Restringe a comida de forma acentuada — corta porções, elimina grupos de alimentos, conta calorias e treina além do recomendado — e mantém um peso corporal bem abaixo do esperado para a idade e a estatura. Mesmo visivelmente magra, tem medo intenso de ganhar peso e adota uma série de comportamentos para não engordar. Olha-se no espelho e se enxerga “maior” do que é, pesa-se várias vezes ao dia, e o número da balança define o seu humor.',
+        'Usa roupas largas, evita comer na frente dos outros e minimiza o problema, insistindo que está “tudo bem” e que são os pais que exageram; menciona que a menstruação ficou irregular. Não há relato de episódios de compulsão seguidos de vômitos, laxantes ou jejuns compensatórios, nem de comer grandes quantidades com sensação de descontrole — o eixo do quadro é a restrição somada ao medo de engordar. A preocupação dela se concentra no peso e na forma do corpo, e não num defeito físico específico alheio a isso.'
+      ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Bulimia Nervosa','Anorexia Nervosa','Transtorno de Compulsão Alimentar','Transtorno Dismórfico Corporal'],
       correct:1,
@@ -145,7 +169,11 @@
       id:'bipolar1',
       patient:{name:'Diego', age:29, sex:'Masculino', ref:'Levado pela família', initials:'D'},
       chips:['Humor eufórico ≈ 1 semana', 'Pouco sono sem cansaço', 'Grandiosidade e gastos', 'Fala acelerada'],
-      vinheta:'Há cerca de uma semana, Diego apresenta humor anormalmente eufórico e expansivo, com aumento de energia, redução acentuada da necessidade de sono (sente-se descansado com 2 a 3 horas), autoestima inflada, fala acelerada, fuga de ideias e envolvimento em gastos excessivos e negócios arriscados. O quadro prejudicou seu trabalho e exigiu intervenção. Há relato de episódio depressivo no passado.',
+      vinheta:[
+        'Diego, 29 anos, foi levado à emergência pela família, alarmada com a mudança brusca de comportamento na última semana. Sempre foi descrito como um rapaz tranquilo e, segundo a mãe, teve no ano passado um período de alguns meses “pra baixo”, sem energia e sem vontade de nada, que melhorou por conta própria.',
+        'Há cerca de sete dias, está visivelmente eufórico e expansivo, falando sem parar e pulando de um assunto para outro, difícil de interromper. Diz dormir duas a três horas por noite e acordar “a mil”, sem nenhum cansaço; sente-se especial, cheio de ideias geniais e capaz de qualquer coisa. Abriu uma empresa da noite para o dia, fez compras impulsivas que estouraram o cartão e fechou negócios arriscados com pessoas que mal conhece.',
+        'Fica irritado e debochado quando alguém questiona seus planos. O quadro já causou prejuízo evidente — faltou ao trabalho, brigou com sócios — e a intensidade levou a família a buscar atendimento imediato; não se trata de uma oscilação leve ou de uma fase apenas “mais animada”, mas de uma alteração marcante, de cerca de uma semana, somada à história do episódio depressivo anterior. Nega uso de drogas ou medicamentos que justifiquem a mudança.'
+      ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno Bipolar Tipo II','Transtorno Bipolar Tipo I','Transtorno Ciclotímico','Transtorno Depressivo Maior'],
       correct:1,
@@ -155,7 +183,11 @@
       id:'tag',
       patient:{name:'Sônia', age:45, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'S'},
       chips:['Preocupação excessiva', '> 6 meses', 'Tensão e insônia', 'Difícil de controlar'],
-      vinheta:'Há mais de seis meses, Sônia relata preocupação excessiva e difícil de controlar com diversos aspectos do cotidiano — trabalho, saúde da família, finanças. Acompanha-se de inquietação, fadiga, dificuldade de concentração, irritabilidade, tensão muscular e perturbação do sono. Não há ataques de pânico definidos nem foco em um único objeto ou situação.',
+      vinheta:[
+        'Sônia, 45 anos, gerente de uma loja, procurou o serviço por conta própria queixando-se de um “nervosismo que não passa”. Diz que sempre foi “do tipo que se preocupa”, mas que, no último ano, desde uma reestruturação no trabalho, a coisa saiu do controle e passou a atrapalhar o dia inteiro.',
+        'Há mais de seis meses convive com uma preocupação excessiva e difícil de controlar, que pula de um tema a outro — o desempenho na loja, a saúde dos pais idosos, as contas do mês, os filhos na estrada. Acompanha-se de inquietação constante e sensação de estar no limite, cansaço fácil, dificuldade de concentração, irritabilidade, tensão muscular e sono perturbado: demora a pegar no sono porque “a cabeça não desliga”.',
+        'Queixa-se ainda de dores no pescoço e dores de cabeça frequentes e costuma ligar várias vezes para se certificar de que está todo mundo bem. Não descreve crises súbitas e definidas de pânico, nem pensamentos intrusivos seguidos de rituais, e o medo não se limita a situações sociais ou a um objeto específico — é uma apreensão difusa, espalhada por vários aspectos da vida. A médica da família pediu exames e descartou alteração da tireoide.'
+      ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
       opts:['Transtorno de Pânico','Transtorno de Ansiedade Generalizada','Transtorno Obsessivo-Compulsivo','Transtorno de Ansiedade Social (Fobia Social)'],
       correct:1,
@@ -280,7 +312,7 @@
     {key:'flashcards', title:'Flashcards', desc:'Memorize critérios e definições virando os cartões.', chipText:'20 decks', screen:'flashMode', color:'#FF7A45', bg:'#FFEDE3'},
     {key:'quiz', title:'Questionário', desc:'Múltipla escolha com correção imediata.', chipText:'por categoria', screen:'quizMode', color:'#4361EE', bg:'#E8ECFB'},
     {key:'ligar', title:'Classificar transtornos', desc:'Arraste cada transtorno para a categoria certa.', chipText:'5 fases', screen:'ligar', action:'goClassify', color:'#06915A', bg:'#E6F6EE'},
-    {key:'caso', title:'Estudo de caso', desc:'Leia a vinheta clínica e escolha o diagnóstico.', chipText:'12 casos', screen:'caso', color:'#8338EC', bg:'#F3E8FB'},
+    {key:'caso', title:'Estudo de caso', desc:'Leia a vinheta clínica e escolha o diagnóstico.', chipText:CASOS.length+' casos', screen:'caso', color:'#8338EC', bg:'#F3E8FB'},
   ];
 
   /* ---------------------------------------------------------
@@ -2427,7 +2459,7 @@
     '</div>';
 
     return ''+
-    '<section class="ficha-screen" style="--cat:'+cat.color+';--cat-soft:'+cat.color+'1A;max-width:980px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+    '<section class="ficha-screen" style="--cat:'+cat.color+';--cat-soft:'+cat.color+'1A;max-width:1140px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<button data-action="backToCategoria" data-hover="color:var(--cat);" style="background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0;margin-bottom:18px;">'+ICON.back+esc(cat.name)+'</button>'+
 
       '<div class="ficha-grid">'+
@@ -3362,7 +3394,8 @@
           '<span class="cd-badge">Vinheta clínica</span>'+
         '</div>'+
         (chips ? '<div class="caso-chips">'+chips+'</div>' : '')+
-        '<p class="cd-vinheta">'+esc(CASO.vinheta)+'</p>'+
+        (Array.isArray(CASO.vinheta) ? CASO.vinheta : String(CASO.vinheta).split(/\n\n+/))
+          .map(function(par){ return '<p class="cd-vinheta">'+esc(par)+'</p>'; }).join('')+
       '</div>'+
       '<div class="caso-pergunta">'+esc(CASO.pergunta)+'</div>'+
       '<div style="display:flex;flex-direction:column;gap:11px;">'+opts+'</div>'+
@@ -3646,7 +3679,7 @@
 
   function guestBanner(){
     if(!(DB.ready && state.auth.guest)) return '';
-    return '<div style="display:flex;align-items:center;gap:13px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:14px;padding:13px 16px;margin-bottom:22px;flex-wrap:wrap;">'+
+    return '<div style="display:flex;align-items:center;gap:13px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:14px;padding:13px 16px;margin:0 auto 22px;max-width:1140px;flex-wrap:wrap;">'+
       ICON.info+
       '<div style="flex:1;min-width:200px;">'+
         '<div style="font-weight:700;font-size:13.5px;color:var(--accent-tx);margin-bottom:2px;">Você está no modo visitante</div>'+

@@ -86,6 +86,10 @@ SECTION_MAP = [
     ("diagnostico diferencial", "Diagnóstico diferencial"),
     ("comorbidade", "Comorbidade"),
     ("relacao com outras classificacoes", "Relação com outras classificações"),
+    # cap. Sono-Vigília: o título vem como "Relação com a Classificação Internacional
+    # dos Distúrbios do Sono" — sem esta chave, o heading não era reconhecido e a
+    # seção (nota CIDS-3) era engolida pela "Comorbidade" anterior (12 fichas).
+    ("relacao com a classificacao internacional", "Relação com outras classificações"),
 ]
 
 # Tabelas reconstruídas como dados estruturados (no lugar da imagem recortada).
@@ -253,6 +257,12 @@ CODE_OVERRIDES = {
         {"dsm": "307.1", "cid": "F50.01", "label": "Tipo restritivo"},
         {"dsm": "307.1", "cid": "F50.02", "label": "Tipo compulsão alimentar purgativa"},
     ]},
+    # extração pegava só S06.2XAS (etiologia, codificada 1º), não o código do TNC.
+    "Transtorno Neurocognitivo Maior ou Leve Devido a Lesão Cerebral Traumática": {"dsm": "", "cid": "F02", "codes": [
+        {"dsm": "", "cid": "F02", "label": "TNC maior (codificar 1º S06.2XAS)"},
+        {"dsm": "", "cid": "F06.70", "label": "TNC leve, sem perturbação comportamental"},
+        {"dsm": "", "cid": "F06.71", "label": "TNC leve, com perturbação comportamental"},
+    ]},
     # DSM 300.11 é fixo (independe do sintoma); a CID-10 varia por tipo de sintoma.
     "Transtorno Conversivo (Transtorno de Sintomas Neurológicos Funcionais)": {"dsm": "300.11", "cid": "F44.4", "codes": [
         {"dsm": "300.11", "cid": "F44.4", "label": "Com fraqueza/paralisia, movimento anormal, sintomas de deglutição ou de fala"},
@@ -391,6 +401,98 @@ SPECIFIER_OVERRIDES = {
             {"label": "Leve", "desc": "Presença de 2 ou 3 sintomas. CID-10: F15.10 (anfetamina/outro estimulante), F14.10 (cocaína)."},
             {"label": "Moderada", "desc": "Presença de 4 ou 5 sintomas. CID-10: F15.20 (anfetamina/outro estimulante), F14.20 (cocaína)."},
             {"label": "Grave", "desc": "Presença de 6 ou mais sintomas. CID-10: F15.20 (anfetamina/outro estimulante), F14.20 (cocaína)."},
+        ]},
+    ],
+    # gravidade engolida como heading "### F70 Leve F71 …" (ver diagnóstico).
+    # Tabela detalhada continua na seção "Especificadores" via SECTION_ASSETS.
+    "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)": [
+        {"head": "Especificar a gravidade atual", "items": [
+            {"label": "F70 Leve", "desc": ""},
+            {"label": "F71 Moderada", "desc": ""},
+            {"label": "F72 Grave", "desc": ""},
+            {"label": "F73 Profunda", "desc": ""},
+        ]},
+    ],
+    # opções "Apenas com tiques motores / vocais" estavam num heading "###" colado,
+    # sem ":" nem negrito (o fix estrutural não separa essas duas) -> override.
+    "Transtorno de Tique Motor ou Vocal Persistente (Crônico)": [
+        {"head": "Especificar se", "items": [
+            {"label": "Apenas com tiques motores", "desc": "Apenas tiques motores, sem tiques vocais."},
+            {"label": "Apenas com tiques vocais", "desc": "Apenas tiques vocais, sem tiques motores."},
+        ]},
+    ],
+    # subtipos G47.2x estavam fragmentados em blocos errados pelos "Especificar se"
+    # intercalados; sub-especificadores (Familiar/Sobrepondo-se) embutidos no desc.
+    "Transtornos do Sono-Vigília do Ritmo Circadiano": [
+        {"head": "Determinar o subtipo", "items": [
+            {"label": "G47.21 Tipo fase do sono atrasada", "desc": "Padrão de atraso nos horários de início do sono e de acordar, com incapacidade de conciliar o sono ou de acordar no horário mais cedo desejado ou convencionalmente aceitável. Especificar se: Familiar (presença de história familiar de fase do sono atrasada); Sobrepondo-se com o tipo sono-vigília não de 24 horas."},
+            {"label": "G47.22 Tipo fase do sono avançada", "desc": "Padrão de adiantamento nos horários de início do sono e de vigília, com incapacidade de permanecer acordado ou adormecido até os horários desejados ou convencionalmente aceitos para dormir ou acordar. Especificar se: Familiar (presença de história familiar de fase avançada do sono)."},
+            {"label": "G47.23 Tipo sono-vigília irregular", "desc": "Padrão de sono-vigília desorganizado temporariamente, de forma que o horário dos períodos de dormir e de acordar sejam variáveis ao longo de um período de 24 horas."},
+            {"label": "G47.24 Tipo sono-vigília não de 24 horas", "desc": "Padrão de ciclos de sono-vigília que não são sincronizados ao ambiente de 24 horas, com um desvio consistente (em geral em horários cada vez mais tarde) nos horários de início do sono e de acordar."},
+            {"label": "G47.26 Tipo trabalho em turnos", "desc": "Insônia durante o período principal de sono e/ou sonolência excessiva (incluindo sono inadvertido) associada a um regime de trabalho em turnos (i. e., que exige horas de trabalho não convencionais)."},
+            {"label": "G47.20 Tipo não especificado", "desc": ""},
+        ]},
+        {"head": "Especificar se", "items": [
+            {"label": "Episódico", "desc": "Os sintomas duram pelo menos um mês, porém menos de três meses."},
+            {"label": "Persistente", "desc": "Os sintomas duram três meses ou mais."},
+            {"label": "Recorrente", "desc": "Dois ou mais episódios ocorrem no intervalo de um ano."},
+        ]},
+    ],
+    # specifier vazio: as opções (gravidade do TNC + perturbação comportamental)
+    # estão na "Nota para codificação" do Critério C, não num "Especificar se:".
+    "Transtorno Neurocognitivo Maior ou Leve Devido a Lesão Cerebral Traumática": [
+        {"head": "Especificar a gravidade atual do TNC", "items": [
+            {"label": "Leve", "desc": "Classificar a gravidade do transtorno neurocognitivo (não da lesão cerebral traumática subjacente; ver Desenvolvimento e Curso)."},
+            {"label": "Moderado", "desc": ""},
+            {"label": "Grave", "desc": ""},
+        ]},
+        {"head": "Especificar se há perturbação comportamental ou psicológica concomitante", "items": [
+            {"label": "Sem perturbação comportamental", "desc": "TNC maior: codificar 1º S06.2XAS, depois F02. TNC leve: S06.2XAS + F06.70."},
+            {"label": "Com perturbação comportamental", "desc": "TNC leve: S06.2XAS + F06.71. TNC maior: F02 + códigos da perturbação (ex.: F02.C11 agitação, F02.C2 perturbação psicótica, F02.C3 sintomas de humor)."},
+        ]},
+    ],
+    # PDF achatou a Tabela 2 (3 níveis de gravidade) num heading colado sem
+    # separadores, e os "Especificar se:" de condição/catatonia grudaram palavras
+    # ("condiçãomédica", "associada atranstorno") -> override fiel à fonte.
+    "Transtorno do Espectro Autista": [
+        {"head": "Especificar a gravidade atual (classificada em separado para a comunicação social e para os comportamentos restritos e repetitivos; ver Tabela 2)", "items": [
+            {"label": "Nível 1 — Exigindo apoio", "desc": "Sem apoio, déficits na comunicação social causam prejuízos notáveis; dificuldade para iniciar interações sociais e exemplos claros de respostas atípicas ou malsucedidas. A inflexibilidade do comportamento causa interferência significativa em um ou mais contextos."},
+            {"label": "Nível 2 — Exigindo apoio substancial", "desc": "Déficits acentuados nas habilidades de comunicação social verbal e não verbal; prejuízos sociais aparentes mesmo na presença de apoio. A inflexibilidade do comportamento aparece com frequência suficiente para ser óbvia ao observador casual e interfere em vários contextos."},
+            {"label": "Nível 3 — Exigindo apoio muito substancial", "desc": "Déficits graves nas habilidades de comunicação social verbal e não verbal causam prejuízos graves de funcionamento, mínima iniciação de interações sociais e resposta mínima a aberturas sociais. A inflexibilidade extrema do comportamento interfere acentuadamente no funcionamento em todas as esferas."},
+        ]},
+        {"head": "Especificar se", "items": [
+            {"label": "Com ou sem comprometimento intelectual concomitante", "desc": ""},
+            {"label": "Com ou sem comprometimento da linguagem concomitante", "desc": ""},
+        ]},
+        {"head": "Especificar se", "items": [
+            {"label": "Associado a uma condição genética conhecida ou outra condição médica ou fator ambiental", "desc": "Nota para codificação: usar código adicional para identificar a condição genética ou outra condição médica associada."},
+            {"label": "Associado a uma alteração do neurodesenvolvimento, mental ou comportamental", "desc": ""},
+        ]},
+        {"head": "Especificar se", "items": [
+            {"label": "Com catatonia", "desc": "Consultar os critérios para catatonia associada a outro transtorno mental (p. 135) para a definição. Nota para codificação: usar o código adicional F06.1 (catatonia associada a transtorno do espectro autista) para indicar a presença de catatonia comórbida."},
+        ]},
+    ],
+    # PDF achatou a tabela de tipos de sintoma: pares grudados ("deglutiçãoF.44.4
+    # Com sintoma de fala") e códigos com typo (F.44.4/F.44.5/F.44.6). O 3º
+    # "Especificar se" (estressor) também colou as duas opções -> override.
+    "Transtorno de Sintomas Neurológicos Funcionais (Transtorno Conversivo)": [
+        {"head": "Especificar o tipo de sintoma", "items": [
+            {"label": "F44.4 Com fraqueza ou paralisia", "desc": ""},
+            {"label": "F44.4 Com movimento anormal", "desc": "P. ex., tremor, movimento distônico, mioclonia, distúrbio da marcha."},
+            {"label": "F44.4 Com sintomas de deglutição", "desc": ""},
+            {"label": "F44.4 Com sintoma de fala", "desc": "P. ex., disfonia, fala arrastada."},
+            {"label": "F44.5 Com ataques ou convulsões", "desc": ""},
+            {"label": "F44.6 Com anestesia ou perda sensorial", "desc": ""},
+            {"label": "F44.6 Com sintoma sensorial especial", "desc": "P. ex., perturbação visual, olfatória ou auditiva."},
+            {"label": "F44.7 Com sintomas mistos", "desc": ""},
+        ]},
+        {"head": "Especificar se", "items": [
+            {"label": "Episódio agudo", "desc": "Sintomas presentes por menos de 6 meses."},
+            {"label": "Persistente", "desc": "Sintomas ocorrendo há 6 meses ou mais."},
+        ]},
+        {"head": "Especificar se", "items": [
+            {"label": "Com estressor psicológico", "desc": "Especificar o estressor."},
+            {"label": "Sem estressor psicológico", "desc": ""},
         ]},
     ],
 }
@@ -793,6 +895,27 @@ def parse_criteria(head_lines):
                 if s.startswith("###"):
                     nh = normalize(htext)
                     is_code = bool(CODE_HEADING.match(s)) or bool(re.match(r"^[A-TV-Z]\d{2}(?:\.\d+\w*)?$", htext))
+                    # H3 não-código logo após um "Especificar/Determinar:" (mode=='spec')
+                    # é uma OPÇÃO do especificador que o PDF promoveu a heading
+                    # (ex.: "### Somente desempenho: Se o medo…"), não um grupo de
+                    # critérios. Converte "Rótulo: desc" -> "**Rótulo:** desc" e injeta
+                    # no bloco de especificador corrente. is_section_heading()==None
+                    # garante que "### Especificadores"/"### Características…" não sejam
+                    # consumidos.
+                    if (mode == "spec" and spec_blocks and not is_code
+                            and not nh.startswith("criterios diagnosticos")
+                            and is_section_heading(s) is None):
+                        if re.search(r"\(\s*(?:ver\s+)?p\.\s*\d", htext):
+                            # várias opções numa linha, cada uma com ref. de página
+                            # ("Leve (p. 214) Moderada (p. 214) Grave (p. 214)"):
+                            # vira "**Leve:** **Moderada:** **Grave:**" p/ SPEC_OPT_SPLIT.
+                            htext2 = re.sub(r"([A-ZÀ-Ú][^()]{1,60}?)\s*\(\s*(?:ver\s+)?p\.[^)]*\)",
+                                            r"**\1:** ", htext)
+                        else:
+                            # opção única "Rótulo: desc" -> "**Rótulo:** desc"
+                            htext2 = re.sub(r'^([^:]{2,60}):\s*', r'**\1:** ', htext)
+                        spec_add(spec_blocks[-1], htext2)
+                        continue
                     if (htext and re.match(r"[A-Za-zÀ-ÿ]", htext) and not is_code
                             and not nh.startswith("criterios diagnosticos")):
                         pending_group = clean(htext)

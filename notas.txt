@@ -1,1 +1,5 @@
-adicionar hash de usuários e compartilhamento de conta, habilitar seguir pessoas e ser seguido para ranking de amigos
+1. adicionar hash de usuários e compartilhamento de conta, habilitar seguir pessoas e ser seguido para ranking de amigos
+
+2. buscar transtorno por critérios, descrever caso e correlção lingua
+
+3. 

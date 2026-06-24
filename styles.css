@@ -198,6 +198,10 @@ button{font-family:inherit;}
 .search-empty{padding:16px 12px;font:500 13px 'Hanken Grotesk';color:var(--muted);text-align:center;}
 
 .content{padding:30px 34px 60px;}
+/* centraliza o conteúdo de cada tela dentro da área principal: em telas largas
+   o espaço livre vira margem equilibrada nos dois lados (antes ficava todo à
+   direita, pois cada <section> tem só max-width e era colado à esquerda). */
+.content > section{margin-inline:auto;}
 
 /* re-render disparado por interação (mesma tela): não repetir a animação de
    entrada do <section> nem do conector da timeline — evita o "flash de reload".
@@ -220,7 +224,7 @@ button{font-family:inherit;}
 .conq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
 .ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:16px;}
-.ficha-grid{display:grid;grid-template-columns:1fr 290px;gap:24px;align-items:start;}
+.ficha-grid{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start;}
 /* itens encolhíveis: evita que nomes longos do "Próximo" estourem a coluna no mobile */
 .ficha-grid>*{min-width:0;}
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;position:relative;}
