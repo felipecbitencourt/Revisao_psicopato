@@ -589,7 +589,11 @@
       explicacao:'Excitação sexual intensa e recorrente (≥ 6 meses) a partir do uso de objetos inanimados ou de um foco muito específico em partes não genitais do corpo, com sofrimento ou prejuízo, caracteriza o Transtorno Fetichista (DSM-5-TR). Difere do Transtorno Transvéstico (excitação por vestir roupas do outro gênero) e do Masoquismo Sexual (excitação por ser humilhado ou submetido a dor).'
     }
   ];
-  function currentCaso(){ return CASOS[(state.casoIndex||0) % CASOS.length]; }
+  function currentCaso(){
+    var n = CASOS.length, i = (state.casoIndex||0) % n;
+    var idx = (state.casoOrder && state.casoOrder.length===n) ? state.casoOrder[i] : i;
+    return CASOS[idx];
+  }
 
 
   /* ---------------------------------------------------------
@@ -707,7 +711,7 @@
     {key:'flashcards', title:'Flashcards', desc:'Memorize critérios e definições virando os cartões.', chipText:'20 decks', screen:'flashMode', color:'#FF7A45', bg:'#FFEDE3'},
     {key:'quiz', title:'Questionário', desc:'Múltipla escolha com correção imediata.', chipText:'por categoria', screen:'quizMode', color:'#4361EE', bg:'#E8ECFB'},
     {key:'ligar', title:'Classificar transtornos', desc:'Arraste cada transtorno para a categoria certa.', chipText:'5 fases', screen:'ligar', action:'goClassify', color:'#06915A', bg:'#E6F6EE'},
-    {key:'caso', title:'Estudo de caso', desc:'Leia a vinheta clínica e escolha o diagnóstico.', chipText:CASOS.length+' casos', screen:'caso', color:'#8338EC', bg:'#F3E8FB'},
+    {key:'caso', title:'Estudo de caso', desc:'Leia a vinheta clínica e escolha o diagnóstico.', chipText:CASOS.length+' casos', screen:'caso', action:'goCasos', color:'#8338EC', bg:'#F3E8FB'},
   ];
 
   /* ---------------------------------------------------------
@@ -840,7 +844,7 @@
     classifyPhase:0, classifyBoard:null, classifyPlaced:{}, classifyLocked:{}, classifySel:null,
     classifyChecked:false, classifyPhaseComplete:false, classifyScore:0, classifyTotal:0, classifyDone:false,
     matchLeftSel:null, matches:{},
-    casoSelected:null, casoAnswered:false, casoIndex:0, casoScore:0, casoStreak:0,
+    casoSelected:null, casoAnswered:false, casoIndex:0, casoScore:0, casoStreak:0, casoOrder:null,
     casoHints:(function(){ try { return localStorage.getItem('psp-caso-hints')==='1'; } catch(e){ return false; } })(),
     lastViewed:null,
     notifOpen:false, notifNew:[], moreOpen:false, followerNotices:[],
@@ -897,8 +901,8 @@
     goExercicios:  function(){ go('exercicios'); },
     goFlashMode:   function(){ go('flashMode'); },
     goDecks:       function(){ go('decks'); },
-    openDeck:      function(ci){ state.deckCat=ci; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
-    flashRandom:   function(){ state.deckAll=shuffle(allCards()); state.deckCat=-1; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
+    openDeck:      function(ci){ state.deckCat=ci; state._deckKey=null; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
+    flashRandom:   function(){ state.deckCat=-1; state._deckKey=null; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     goQuizMode:    function(){ go('quizMode'); },
     goQuizDecks:   function(){ go('quizDecks'); },
     quizNomeDecks: function(){ state.quizKind='nome';     go('quizDecks'); },
@@ -999,7 +1003,7 @@
     submitDevPass: function(){ var v=rawVal('dev-pass'); if(v==='190603'){ state.devMode=true; state.devPrompt=false; state.devErr=''; try{ localStorage.setItem('psp-dev','1'); }catch(e){} render(); } else { state.devErr='Senha incorreta.'; render(); setTimeout(function(){ var el=document.getElementById('dev-pass'); if(el){ el.value=''; el.focus(); } }, 20); } },
     exitDevMode:   function(){ state.devMode=false; state.devPrompt=false; try{ localStorage.removeItem('psp-dev'); }catch(e){} if(state.screen==='dadosTeste') state.screen='home'; render(); },
     openRef:       function(arg){ var p=String(arg).split(':'); var ci=+p[0], di=+p[1]; setState({screen:'ficha', activeCat:ci, activeDisorder:di, fichaOpen:initOpen(ci,di)}); recordRevised(); scrollTop(); },
-    goFlashcards:  function(){ state.deckCat=state.activeCat; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
+    goFlashcards:  function(){ state.deckCat=state.activeCat; state._deckKey=null; setState({screen:'flashcards', fcIndex:0, fcFlipped:false}); scrollTop(); },
     toggleTheme:   function(){ toggleTheme(); },
     setReduced:    function(v){ var r=(v===1||v==='1'); if(r!==state.reduced){ state.reduced=r; try{ localStorage.setItem('psp-reduced', r?'1':'0'); }catch(e){} render(); } },
     openA11y:      function(){ if(window.A11Y && window.A11Y.open) window.A11Y.open(); },
@@ -1022,6 +1026,7 @@
     quizHintShow: function(){ state.quizHint=true; render(); },
     // classificar (arrastar/tocar transtorno -> categoria)
     goClassify:     function(){ state.classifyScore=0; state.classifyTotal=0; state.classifyDone=false; startPhase(0); },
+    goCasos:        function(){ state.casoOrder = shuffle(CASOS.map(function(_,i){ return i; })); state.casoScore=0; state.casoStreak=0; setState({screen:'caso', casoIndex:0, casoSelected:null, casoAnswered:false}); scrollTop(); },
     classifyPick:   function(id){ if(classifyJustDropped) return; id=Number(id); if(state.classifyLocked[id]) return; state.classifySel = (state.classifySel===id ? null : id); setState({}); },
     classifyDrop:   function(binIdx){ if(classifyJustDropped) return; if(state.classifySel==null) return; classifyPlaceImpl(state.classifySel, binIdx); },
     classifyToPool: function(){ if(classifyJustDropped) return; if(state.classifySel==null) return; classifyPlaceImpl(state.classifySel, 'pool'); },
@@ -2916,7 +2921,15 @@
     for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
     return a;
   }
-  function currentDeck(){ return state.deckCat===-1 ? (state.deckAll||[]) : deckCards(state.deckCat); }
+  // deck ativo dos flashcards, embaralhado e memoizado por categoria (reshuffle só
+  // quando muda de deck ou quando a entrada zera _deckKey). -1 = geral (todos).
+  function currentDeck(){
+    if(state._deckKey !== state.deckCat || !state.deckAll){
+      state.deckAll = state.deckCat === -1 ? shuffle(allCards()) : shuffle(deckCards(state.deckCat));
+      state._deckKey = state.deckCat;
+    }
+    return state.deckAll || [];
+  }
 
   /* ---------------------------------------------------------
      Mascaramento do nome do transtorno no enunciado.

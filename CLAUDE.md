@@ -22,7 +22,7 @@ chaves do Supabase, roda em **modo demonstração**.
    testa no próprio servidor.
 3. **Cache-busting:** ao editar um asset, **suba o `?v=`** dele em `index.html`.
    Estado atual: `styles.css?v=48`, `content.js?v=30`, `db.js?v=38`,
-   `search-engine.js?v=2`, `app.js?v=117`, `a11y-kit ?v=2`. O `service-worker.js`
+   `search-engine.js?v=2`, `app.js?v=118`, `a11y-kit ?v=2`. O `service-worker.js`
    não tem `?v=` (usa `CACHE='psicopato-v2'`; bumpe a constante se mexer nele).
 4. **SQL roda manualmente** no SQL Editor do Supabase (ver abaixo). Várias
    funções já mudaram de assinatura e têm `drop function` antes do `create` —
