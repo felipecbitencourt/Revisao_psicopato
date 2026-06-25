@@ -82,7 +82,7 @@
   // A resposta correta usa o nome de um transtorno do conteúdo (p/ o botão "Ver ficha").
   var CASOS = [
     {
-      id:'panico',
+      id:'panico', cat:'Transtornos de ansiedade',
       patient:{name:'Marina', age:27, sex:'Feminino', ref:'Encaminhada pela atenção primária', initials:'M'},
       chips:['Ataques súbitos de medo', 'Palpitações e falta de ar', '≈ 4 meses', 'Evita sair sozinha'],
       vinheta:[
@@ -96,7 +96,7 @@
       explicacao:'Ataques de pânico recorrentes e inesperados, seguidos de preocupação persistente com novos ataques e mudança de comportamento (esquiva), apontam para Transtorno de Pânico (DSM-5-TR).'
     },
     {
-      id:'depressao',
+      id:'depressao', cat:'Transtornos depressivos',
       patient:{name:'Rafael', age:34, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'R'},
       chips:['Humor deprimido', 'Anedonia ≈ 2 meses', 'Insônia e fadiga', 'Culpa e baixa concentração'],
       vinheta:[
@@ -110,7 +110,7 @@
       explicacao:'Humor deprimido e/ou anedonia por ≥ 2 semanas, somados a sintomas neurovegetativos e cognitivos (sono, apetite/peso, fadiga, culpa, concentração), sem história de episódio maníaco/hipomaníaco, apontam para Transtorno Depressivo Maior (DSM-5-TR).'
     },
     {
-      id:'toc',
+      id:'toc', cat:'TOC e transtornos relacionados',
       patient:{name:'Beatriz', age:22, sex:'Feminino', ref:'Trazida pela família', initials:'B'},
       chips:['Pensamentos de contaminação', 'Rituais de lavagem', '> 3 h/dia', 'Reconhece o excesso'],
       vinheta:[
@@ -119,12 +119,12 @@
         'As mãos estão rachadas e avermelhadas de tanto sabão; ela evita maçanetas e transporte público e tem chegado atrasada às aulas por causa dos rituais matinais. Não descreve crises súbitas de pânico nem um medo restrito a um único objeto ou situação específica, e o que a aflige não é uma preocupação difusa com o dia a dia, mas a dupla de sempre: o pensamento intrusivo seguido do ritual que alivia. O desempenho na faculdade e a convivência com as colegas de república já estão prejudicados.'
       ],
       pergunta:'Qual a hipótese diagnóstica mais provável?',
-      opts:['Transtorno de Ansiedade Generalizada','Transtorno de Pânico','Transtorno Obsessivo-Compulsivo','Fobia Específica'],
+      opts:['Transtorno de Ansiedade Generalizada','Transtorno de Pânico','Transtorno Obsessivo-Compulsivo','Transtorno de Acumulação'],
       correct:2,
       explicacao:'Obsessões (pensamentos intrusivos de contaminação) e compulsões (rituais de lavagem) que consomem tempo significativo (> 1 h/dia) e geram sofrimento/prejuízo caracterizam o Transtorno Obsessivo-Compulsivo (DSM-5-TR).'
     },
     {
-      id:'tept',
+      id:'tept', cat:'Trauma e estressores',
       patient:{name:'Carlos', age:41, sex:'Masculino', ref:'Encaminhado após acidente', initials:'C'},
       chips:['Acidente grave há 5 meses', 'Revivências e pesadelos', 'Evitação', 'Hipervigilância'],
       vinheta:[
@@ -138,7 +138,7 @@
       explicacao:'Exposição a evento traumático seguida de sintomas intrusivos, evitação, alterações de cognição/humor e hiperexcitabilidade por mais de um mês caracteriza o Transtorno de Estresse Pós-Traumático (no Estresse Agudo, a duração é de 3 dias a 1 mês).'
     },
     {
-      id:'social',
+      id:'social', cat:'Transtornos de ansiedade',
       patient:{name:'Júlia', age:19, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'J'},
       chips:['Medo de ser avaliada', 'Evita falar em público', 'Rubor e tremor', 'Desde a adolescência'],
       vinheta:[
@@ -152,7 +152,7 @@
       explicacao:'Medo/ansiedade acentuados e persistentes de situações sociais com possível escrutínio, com esquiva e sofrimento desproporcionais, caracteriza o Transtorno de Ansiedade Social (Fobia Social) (DSM-5-TR).'
     },
     {
-      id:'anorexia',
+      id:'anorexia', cat:'Transtornos alimentares',
       patient:{name:'Helena', age:17, sex:'Feminino', ref:'Trazida pelos pais', initials:'H'},
       chips:['Restrição alimentar', 'Baixo peso significativo', 'Medo de engordar', 'Distorção da imagem'],
       vinheta:[
@@ -166,7 +166,7 @@
       explicacao:'Restrição da ingesta levando a baixo peso significativo, medo intenso de engordar e perturbação na percepção do peso/forma corporal caracterizam a Anorexia Nervosa (DSM-5-TR), distinta da Bulimia (peso geralmente normal, com compensação) e da Compulsão Alimentar (sem compensação).'
     },
     {
-      id:'bipolar1',
+      id:'bipolar1', cat:'Transtorno bipolar e relacionados',
       patient:{name:'Diego', age:29, sex:'Masculino', ref:'Levado pela família', initials:'D'},
       chips:['Humor eufórico ≈ 1 semana', 'Pouco sono sem cansaço', 'Grandiosidade e gastos', 'Fala acelerada'],
       vinheta:[
@@ -180,7 +180,7 @@
       explicacao:'Episódio maníaco (humor elevado + aumento de energia por ≥ 1 semana, com grandiosidade, redução do sono, fuga de ideias e comportamento de risco, causando prejuízo acentuado) define o Transtorno Bipolar Tipo I (DSM-5-TR). No Tipo II ocorre hipomania, sem episódio maníaco pleno.'
     },
     {
-      id:'tag',
+      id:'tag', cat:'Transtornos de ansiedade',
       patient:{name:'Sônia', age:45, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'S'},
       chips:['Preocupação excessiva', '> 6 meses', 'Tensão e insônia', 'Difícil de controlar'],
       vinheta:[
@@ -192,6 +192,414 @@
       opts:['Transtorno de Pânico','Transtorno de Ansiedade Generalizada','Transtorno Obsessivo-Compulsivo','Transtorno de Ansiedade Social (Fobia Social)'],
       correct:1,
       explicacao:'Ansiedade e preocupação excessivas, difíceis de controlar, na maior parte dos dias por ≥ 6 meses, com inquietação, fadiga, tensão muscular e alterações do sono, caracterizam o Transtorno de Ansiedade Generalizada (DSM-5-TR).'
+    },
+    {
+      id:'bipolar2', cat:'Transtorno bipolar e relacionados',
+      patient:{name:'Letícia', age:31, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'L'},
+      chips:['Episódio depressivo atual', 'Períodos de ~4 dias “a mil”', 'Sem prejuízo grave/internação', 'Nunca teve mania plena'],
+      vinheta:[
+        'Letícia, 31 anos, professora, procurou o serviço por conta própria por causa de uma fase depressiva que já dura semanas — sem energia, sem prazer, dormindo demais. Foi tratada antes como “depressão”, mas conta que os remédios “às vezes a deixavam estranha”, agitada, e a história que ela traz tem um detalhe que muda tudo.',
+        'Ao ser questionada com calma, descreve episódios espalhados ao longo dos anos em que, por uns quatro ou cinco dias seguidos, virava “outra pessoa”: acordava cheia de energia com poucas horas de sono, falante, criativa, otimista e mais produtiva que o normal. As amigas notavam a mudança e brincavam que ela estava “ligada no 220”, mas ela não fazia nada de muito arriscado, não faltou ao trabalho e jamais precisou se internar — pelo contrário, rendia mais.',
+        'Esses períodos animados nunca chegaram a causar prejuízo sério, perda de juízo ou sintomas psicóticos, o que afasta um episódio maníaco completo; e não são uma instabilidade leve e contínua de anos, mas episódios bem delimitados, intercalados com fases depressivas francas como a atual. É a combinação de depressão maior com esses períodos mais breves e brandos de elação que define o quadro.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Bipolar Tipo I','Transtorno Depressivo Maior','Transtorno Bipolar Tipo II','Transtorno Ciclotímico'],
+      correct:2,
+      explicacao:'Pelo menos um episódio hipomaníaco (≥ 4 dias de humor elevado/energia, com mudança observável, mas sem prejuízo acentuado, internação ou psicose) somado a episódios depressivos maiores, sem nunca ter havido mania plena, define o Transtorno Bipolar Tipo II (DSM-5-TR). No Tipo I há mania; no Ciclotímico, oscilações crônicas subliminares por ≥ 2 anos, sem episódio depressivo maior pleno.'
+    },
+    {
+      id:'distimia', cat:'Transtornos depressivos',
+      patient:{name:'Otávio', age:38, sex:'Masculino', ref:'Trazido pela esposa', initials:'O'},
+      chips:['Humor “pra baixo” há anos', '> 2 anos, quase todo dia', 'Baixa autoestima e desânimo', 'Nunca teve euforia'],
+      vinheta:[
+        'Otávio, 38 anos, analista de sistemas, foi levado pela esposa, que diz conviver com um marido “sempre meio apagado”. Ele não vê bem o motivo da consulta: para ele, ser assim “é só o jeito dele”. Não lembra de uma época, desde o início da vida adulta, em que tenha se sentido realmente bem por mais do que algumas semanas.',
+        'Descreve um humor abatido na maior parte do dia, mais dias do que não, que se arrasta há bem mais de dois anos sem nunca sumir por completo. Junto vêm baixa autoestima, uma sensação persistente de desânimo e pessimismo, energia baixa e dificuldade para se concentrar e decidir. Trabalha, cumpre as obrigações e mantém a rotina, mas tudo é feito “no automático”, sem brilho.',
+        'Não relata um período distinto de duas semanas em que tudo piorou de forma marcante e diferente do seu normal — é justamente a cronicidade arrastada, de fundo, que chama a atenção. Nega qualquer fase de humor elevado, energia aumentada ou redução da necessidade de sono. E, embora se preocupe com as coisas, o cerne da queixa é o humor cronicamente rebaixado, e não uma ansiedade difusa.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Depressivo Maior','Transtorno Depressivo Persistente (Distimia)','Transtorno Ciclotímico','Transtorno de Ansiedade Generalizada'],
+      correct:1,
+      explicacao:'Humor deprimido na maioria dos dias, por ≥ 2 anos, sem intervalos livres superiores a 2 meses, com sintomas como baixa autoestima, desesperança, baixa energia e concentração reduzida, caracteriza o Transtorno Depressivo Persistente (Distimia) (DSM-5-TR). Difere do Depressivo Maior pela cronicidade de baixo grau (e não um episódio discreto) e do Ciclotímico pela ausência de períodos hipomaníacos.'
+    },
+    {
+      id:'dismorfico', cat:'TOC e transtornos relacionados',
+      patient:{name:'Camila', age:24, sex:'Feminino', ref:'Encaminhada pela dermatologia', initials:'C'},
+      chips:['Foco num “defeito” no rosto', 'Horas no espelho', 'Busca reasseguramento', 'Outros não veem o defeito'],
+      vinheta:[
+        'Camila, 24 anos, designer, procurou a dermatologia insistindo em tratamentos para a pele e foi encaminhada após pedir, pela terceira vez, uma cirurgia que o médico considerou desnecessária. Está convencida de que tem um defeito grave no rosto — a pele “horrível” e o nariz “torto” —, embora as pessoas ao redor não enxerguem nada disso.',
+        'Passa horas por dia diante do espelho examinando os supostos defeitos, ora cutucando a pele, ora cobrindo tudo de maquiagem; tira e apaga dezenas de fotos, compara seu rosto com o de outras pessoas e pede a todo momento que confirmem se está “muito feia”. A preocupação é intrusiva e angustiante, e já atrapalha o trabalho e a vida social.',
+        'Evita encontros, praia e fotos por vergonha da aparência, mas o que a domina não é o medo genérico de ser avaliada em situações sociais, e sim a convicção sobre aquele defeito específico. As checagens e rituais giram exclusivamente em torno da aparência, não de contaminação ou outros temas. Seu peso e sua alimentação não são a questão — o foco é uma característica do rosto que ela vê como deformada.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Obsessivo-Compulsivo','Transtorno Dismórfico Corporal','Anorexia Nervosa','Transtorno de Ansiedade Social (Fobia Social)'],
+      correct:1,
+      explicacao:'Preocupação com um ou mais defeitos percebidos na aparência, imperceptíveis ou leves para os outros, com comportamentos repetitivos (espelho, camuflagem, comparação, busca de reasseguramento) e sofrimento/prejuízo, caracteriza o Transtorno Dismórfico Corporal (DSM-5-TR). Distingue-se da Anorexia (foco em peso/forma), do TOC (obsessões não restritas à aparência) e da Fobia Social (medo de avaliação, não a convicção do defeito).'
+    },
+    {
+      id:'estresse_agudo', cat:'Trauma e estressores',
+      patient:{name:'Renato', age:28, sex:'Masculino', ref:'Atendido após assalto', initials:'R'},
+      chips:['Assalto há ~2 semanas', 'Revivências e dissociação', 'Evitação e hipervigilância', 'Duração < 1 mês'],
+      vinheta:[
+        'Renato, 28 anos, entregador de aplicativo, foi atendido cerca de duas semanas depois de ser vítima de um assalto à mão armada, em que achou que seria morto. Desde então não conseguiu voltar a trabalhar e evita a região onde tudo aconteceu.',
+        'Tem lembranças intrusivas e vívidas do assalto, que invadem sua mente sem aviso, além de pesadelos e dificuldade para dormir. Por vezes sente-se “fora de si”, como se estivesse vendo tudo de longe ou como se o ambiente não fosse real. Está irritado, sobressaltado a qualquer barulho e em alerta constante, e evita conversas, notícias e lugares que lembrem o ocorrido.',
+        'O quadro é claramente disparado por um trauma e reúne sintomas de revivência, dissociação, evitação e hiperexcitação — não é apenas uma dificuldade inespecífica de se adaptar a um estresse. O ponto decisivo é o tempo: tudo começou há cerca de duas semanas, ainda dentro do primeiro mês após o evento, sem alcançar a duração exigida para o quadro pós-traumático.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Estresse Pós-Traumático','Transtorno de Estresse Agudo','Transtornos de Adaptação','Transtorno de Pânico'],
+      correct:1,
+      explicacao:'Sintomas intrusivos, dissociativos, de evitação e de excitação surgindo após exposição a trauma, com duração de 3 dias a 1 mês, caracterizam o Transtorno de Estresse Agudo (DSM-5-TR). Persistindo por mais de um mês, o quadro passa a ser classificado como Transtorno de Estresse Pós-Traumático.'
+    },
+    {
+      id:'bulimia', cat:'Transtornos alimentares',
+      patient:{name:'Marcela', age:23, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'M'},
+      chips:['Compulsões com perda de controle', 'Vômitos autoinduzidos', '≥ 1×/semana por meses', 'Peso na faixa normal'],
+      vinheta:[
+        'Marcela, 23 anos, universitária, procurou ajuda por conta própria, envergonhada, depois que a colega de quarto desconfiou do que acontecia no banheiro após as refeições. Tem peso dentro da faixa normal e, à primeira vista, “aparenta estar tudo bem”.',
+        'Relata episódios recorrentes em que come, às escondidas e em pouco tempo, uma quantidade muito grande de comida, com a sensação de total perda de controle — “não consigo parar”. Logo depois, tomada de culpa e pavor de engordar, provoca vômito; às vezes recorre a laxantes ou a jejuns e exercícios extenuantes para compensar. Isso se repete várias vezes por semana há meses.',
+        'Seu valor pessoal está fortemente atrelado ao peso e à forma do corpo. Diferentemente de um quadro de restrição com baixo peso acentuado, ela não está abaixo do peso — o que sobressai é o ciclo de compulsão seguida de compensação. E, ao contrário de quem apenas tem episódios de compulsão, aqui há sempre o comportamento compensatório em seguida.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Anorexia Nervosa','Transtorno de Compulsão Alimentar','Bulimia Nervosa','Transtorno Depressivo Maior'],
+      correct:2,
+      explicacao:'Episódios recorrentes de compulsão alimentar (grande quantidade + perda de controle) seguidos de comportamentos compensatórios inapropriados (vômitos, laxantes, jejum, exercício excessivo), ao menos 1×/semana por 3 meses, com autoavaliação indevidamente influenciada pelo peso/forma e peso geralmente normal, caracterizam a Bulimia Nervosa (DSM-5-TR). Distingue-se da Anorexia (baixo peso) e do Transtorno de Compulsão Alimentar (sem compensação).'
+    },
+    {
+      id:'tdah', cat:'Transtornos do neurodesenvolvimento',
+      patient:{name:'Théo', age:9, sex:'Masculino', ref:'Levado pela mãe após queixas da escola', initials:'T'},
+      chips:['Desatenção e agitação', 'Desde cedo, casa e escola', 'Não termina tarefas', 'Querido pelos colegas'],
+      vinheta:[
+        'Théo, 9 anos, foi levado pela mãe após sucessivas reclamações da escola. A professora diz que ele não para sentado, levanta no meio da aula, fala fora da hora e raramente termina as tarefas, vivendo “no mundo da lua”. Em casa a história se repete: perde o material, esquece os recados, larga tudo pela metade e precisa que repitam as orientações várias vezes.',
+        'Esse padrão de desatenção e agitação aparece desde os primeiros anos escolares e se manifesta tanto na escola quanto em casa, prejudicando o aprendizado e a convivência. Ele não é hostil nem desafiador de propósito, costuma ser querido pelos colegas e tem interesse social normal, sem dificuldades de comunicação. A questão também não se limita a uma única matéria, mas à dificuldade geral de sustentar a atenção e conter os impulsos.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Oposição Desafiante','Transtorno do Espectro Autista','Transtorno de Déficit de Atenção/Hiperatividade','Transtorno Específico da Aprendizagem'],
+      correct:2,
+      explicacao:'Padrão persistente de desatenção e/ou hiperatividade e impulsividade, presente antes dos 12 anos, em mais de um ambiente (casa e escola) e com prejuízo, caracteriza o Transtorno de Déficit de Atenção/Hiperatividade (DSM-5-TR). Difere do Transtorno de Oposição Desafiante (hostilidade e desafio intencionais), do Espectro Autista (déficits sociais e de comunicação) e do Transtorno Específico da Aprendizagem (dificuldade restrita a habilidades acadêmicas).'
+    },
+    {
+      id:'autismo', cat:'Transtornos do neurodesenvolvimento',
+      patient:{name:'Heitor', age:4, sex:'Masculino', ref:'Trazido pelos pais', initials:'H'},
+      chips:['Pouco contato visual', 'Não aponta nem imita', 'Enfileira e gira objetos', 'Aflito com mudanças'],
+      vinheta:[
+        'Heitor, 4 anos, foi trazido pelos pais, preocupados porque ele quase não fala e parece viver no próprio mundo. Desde bebê evitava o olhar, não apontava para mostrar as coisas e raramente respondia ao próprio nome. Hoje prefere brincar sozinho, não demonstra interesse pelas outras crianças e não entra em brincadeiras de imaginação.',
+        'Chama atenção o modo de brincar: enfileira os carrinhos por horas, gira as rodas de forma repetitiva e fica muito aflito com qualquer mudança na rotina, além de balançar as mãos quando se anima e reagir mal a certos sons e texturas. Esses sinais estão presentes desde cedo no desenvolvimento. Não é uma criança que se comunica bem e apenas se distrai ou se agita, nem um atraso restrito à fala: o que define o quadro é a soma do prejuízo na comunicação social com os padrões repetitivos e restritos de comportamento e interesses.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno da Comunicação Social (Pragmática)','Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)','Transtorno do Espectro Autista','Transtorno de Apego Reativo'],
+      correct:2,
+      explicacao:'Déficits persistentes na comunicação e na interação social somados a padrões restritos e repetitivos de comportamento, interesses ou atividades (enfileirar objetos, insistência em rotinas, estereotipias, reações sensoriais incomuns), com início precoce e prejuízo, caracterizam o Transtorno do Espectro Autista (DSM-5-TR). No Transtorno da Comunicação Social há o déficit social sem os comportamentos repetitivos; na Deficiência Intelectual não existe a defasagem social específica.'
+    },
+    {
+      id:'esquizofrenia', cat:'Espectro da esquizofrenia e psicóticos',
+      patient:{name:'Lucas', age:23, sex:'Masculino', ref:'Levado pela família', initials:'L'},
+      chips:['Isolamento e queda no funcionamento', 'Delírios de perseguição', 'Ouve vozes', 'Há mais de 6 meses'],
+      vinheta:[
+        'Lucas, 23 anos, universitário, foi levado pela família, que vê o filho mudado há mais de um ano. Aos poucos abandonou os amigos e a faculdade, passou a se trancar no quarto, descuidou da higiene e perdeu a vontade de fazer qualquer coisa. Nos últimos meses começou a afirmar que é vigiado por uma organização secreta e que a televisão manda mensagens dirigidas a ele.',
+        'Conta que ouve vozes comentando suas ações quando está sozinho e, por vezes, fala de modo confuso, saltando de um assunto a outro sem nexo. O quadro completo já dura bem mais de seis meses, com pelo menos um período de sintomas ativos intensos, e levou a uma queda acentuada no funcionamento. Não é uma convicção isolada em alguém que segue funcionando bem, nem um episódio recente de poucas semanas: há alucinações, desorganização e declínio sustentado.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Esquizofreniforme','Transtorno Psicótico Breve','Esquizofrenia','Transtorno Bipolar Tipo I'],
+      correct:2,
+      explicacao:'Dois ou mais sintomas psicóticos (aqui delírios, alucinações e discurso desorganizado), com ao menos um mês de fase ativa, duração total de seis meses ou mais e declínio funcional, caracterizam a Esquizofrenia (DSM-5-TR). O Transtorno Esquizofreniforme dura de 1 a 6 meses, o Psicótico Breve menos de 1 mês, e o Delirante se restringe a delírios, com funcionamento relativamente preservado.'
+    },
+    {
+      id:'delirante', cat:'Espectro da esquizofrenia e psicóticos',
+      patient:{name:'Cláudio', age:52, sex:'Masculino', ref:'Levado pela esposa', initials:'C'},
+      chips:['Ciúme sem provas há meses', 'Funciona bem fora do tema', 'Sem alucinações', 'Crença única e fixa'],
+      vinheta:[
+        'Cláudio, 52 anos, gerente, foi levado pela esposa por estar há meses convencido de que ela o trai, apesar de não existir qualquer evidência. Vasculha o celular dela, interpreta detalhes banais como provas e já a seguiu algumas vezes. Fora desse assunto, continua trabalhando normalmente, cuida da aparência e mantém a rotina sem chamar atenção.',
+        'A convicção é firme, dura bem mais de um mês e é, em princípio, até plausível (nada de impossível), mas resiste a qualquer argumento em contrário. Ele não tem alucinações, não apresenta discurso desorganizado nem declínio global do funcionamento, o que afasta um quadro esquizofrênico. Também não vive a ideia como um pensamento absurdo que gostaria de afastar, e não é uma desconfiança difusa de longa data, mas uma crença única, delimitada e inabalável.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Esquizofrenia','Transtorno Delirante','Transtorno Obsessivo-Compulsivo','Transtorno da Personalidade Paranoide'],
+      correct:1,
+      explicacao:'Um ou mais delírios por pelo menos um mês, sem os demais sintomas psicóticos proeminentes e com funcionamento relativamente preservado e comportamento não claramente bizarro, caracteriza o Transtorno Delirante (DSM-5-TR). Difere da Esquizofrenia (alucinações, desorganização e declínio), do TOC (a ideia não é vivida como intrusiva e indesejada) e da Personalidade Paranoide (desconfiança pervasiva, sem um delírio estruturado).'
+    },
+    {
+      id:'dissociativo_id', cat:'Transtornos dissociativos',
+      patient:{name:'Renata', age:30, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'R'},
+      chips:['Lapsos de horas', 'Age como “outra pessoa”', 'Trauma na infância', 'Esquece o cotidiano'],
+      vinheta:[
+        'Renata, 30 anos, busca ajuda por episódios em que perde horas sem saber o que fez e por encontrar em casa roupas e objetos que não lembra ter comprado. Algumas pessoas afirmam ter conversado com ela em momentos que ela não recorda, às vezes usando outro nome para se referir a ela e descrevendo um jeito de falar e gostos bem diferentes dos seus. Relata história de abuso grave na infância.',
+        'Descreve a sensação de que, em certos momentos, é como se outra pessoa assumisse o controle, com falhas de memória para acontecimentos do dia a dia que vão muito além do esquecimento comum. São essas alternâncias de identidade, junto das lacunas de memória, que caracterizam o quadro. Não é apenas um episódio único de esquecimento de informações importantes, nem vozes e delírios de natureza psicótica, e a perturbação está na própria identidade, não somente numa autoimagem instável.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Amnésia Dissociativa','Transtorno Dissociativo de Identidade','Transtorno da Personalidade Borderline','Esquizofrenia'],
+      correct:1,
+      explicacao:'Ruptura da identidade com dois ou mais estados de personalidade distintos, acompanhada de falhas recorrentes de memória para eventos cotidianos e informações pessoais, com sofrimento ou prejuízo, caracteriza o Transtorno Dissociativo de Identidade (DSM-5-TR). Difere da Amnésia Dissociativa (amnésia sem estados de identidade alternantes), da Esquizofrenia (sintomas psicóticos) e da Personalidade Borderline (instabilidade de autoimagem, sem amnésia dissociativa estruturada).'
+    },
+    {
+      id:'amnesia_dissociativa', cat:'Transtornos dissociativos',
+      patient:{name:'Paulo', age:35, sex:'Masculino', ref:'Trazido ao atendimento', initials:'P'},
+      chips:['Esquece fatos da própria vida', 'Após evento estressante', 'Sem causa neurológica', 'Sem trocas de identidade'],
+      vinheta:[
+        'Paulo, 35 anos, foi levado ao atendimento após ser encontrado desorientado, sem conseguir lembrar fatos importantes da própria vida, incluindo um acidente grave que vitimou um familiar poucos dias antes. Os exames de imagem e a avaliação neurológica não mostraram nenhuma alteração que explicasse o esquecimento, e ele não havia usado álcool ou outras substâncias.',
+        'A perda de memória se concentra em informações pessoais ligadas ao evento estressante e vai muito além de um esquecimento comum, sem que exista deterioração progressiva das outras funções cognitivas, como ocorreria numa demência. Ele não apresenta a alternância entre identidades distintas que marcaria outro quadro dissociativo, e o que domina a apresentação é a própria lacuna de memória, e não revivências intrusivas do trauma.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Dissociativo de Identidade','Amnésia Dissociativa','Transtorno Neurocognitivo Maior','Transtorno de Estresse Pós-Traumático'],
+      correct:1,
+      explicacao:'Incapacidade de recordar informações autobiográficas importantes, em geral ligadas a um evento traumático ou estressante, incompatível com o esquecimento comum e sem causa neurológica ou por substância, caracteriza a Amnésia Dissociativa (DSM-5-TR). Difere do Transtorno Dissociativo de Identidade (estados de identidade alternantes), do Transtorno Neurocognitivo (declínio cognitivo progressivo) e do Estresse Pós-Traumático (predomínio de revivências).'
+    },
+    {
+      id:'somaticos', cat:'Sintomas somáticos e relacionados',
+      patient:{name:'Sandra', age:48, sex:'Feminino', ref:'Procura frequente na atenção primária', initials:'S'},
+      chips:['Sintomas físicos reais e angustiantes', 'Exames normais não tranquilizam', 'Tempo excessivo com a saúde', 'Há anos'],
+      vinheta:[
+        'Sandra, 48 anos, é figura conhecida no posto de saúde: há anos procura atendimento por dores variadas, queimação no estômago, cansaço e tonturas que de fato a incomodam e atrapalham o seu dia. Já passou por inúmeros exames e consultas, quase sempre com resultados normais ou pouco expressivos, mas isso não a tranquiliza.',
+        'Vive preocupada e ansiosa com o que esses sintomas podem significar, dedica boa parte do tempo a pesquisar doenças e a procurar médicos, e organiza a rotina em torno do seu estado físico. O ponto central não é o medo de vir a ter uma doença, já que ela realmente sente os sintomas, mas a intensidade desproporcional dos pensamentos, da angústia e dos comportamentos diante deles, de forma persistente.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Ansiedade de Doença','Transtorno de Sintomas Somáticos','Transtorno de Sintomas Neurológicos Funcionais (Transtorno Conversivo)','Transtorno Depressivo Maior'],
+      correct:1,
+      explicacao:'Um ou mais sintomas somáticos angustiantes, somados a pensamentos, sentimentos e comportamentos excessivos e desproporcionais em relação a eles (preocupação persistente, ansiedade elevada, tempo e energia excessivos), de forma duradoura, caracterizam o Transtorno de Sintomas Somáticos (DSM-5-TR). Na Ansiedade de Doença os sintomas físicos são mínimos e o foco é o medo de ter ou contrair uma doença.'
+    },
+    {
+      id:'ansiedade_doenca', cat:'Sintomas somáticos e relacionados',
+      patient:{name:'Marcos', age:36, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'M'},
+      chips:['Medo de ter doença grave', 'Poucos ou nenhum sintoma', 'Repete exames e pesquisa', 'Há mais de 6 meses'],
+      vinheta:[
+        'Marcos, 36 anos, está convencido de que tem uma doença grave ainda não descoberta. No geral sente o corpo bem, no máximo nota uma fisgada ou um batimento diferente, mas qualquer sensação dispara o medo de câncer ou de um problema no coração. Repete exames com frequência, troca de médico quando o tranquilizam e passa horas pesquisando sintomas na internet.',
+        'Os sintomas físicos são mínimos ou inexistentes, e o que domina é a preocupação persistente, há mais de seis meses, de já ter ou de vir a contrair uma doença séria, com muita ansiedade ligada à saúde e checagens repetidas. Não é o caso de sintomas corporais intensos e incapacitantes, nem de uma preocupação difusa com vários temas da vida, e a ideia não é vivida como um pensamento absurdo e indesejado seguido de rituais.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Sintomas Somáticos','Transtorno de Ansiedade de Doença','Transtorno Obsessivo-Compulsivo','Transtorno de Ansiedade Generalizada'],
+      correct:1,
+      explicacao:'Preocupação persistente (seis meses ou mais) de ter ou contrair uma doença grave, com sintomas somáticos ausentes ou leves, ansiedade elevada com a saúde e comportamentos excessivos de checagem ou evitação, caracteriza o Transtorno de Ansiedade de Doença (DSM-5-TR). No Transtorno de Sintomas Somáticos há sintomas físicos angustiantes proeminentes, enquanto aqui o cerne é o medo da doença, e não os sintomas.'
+    },
+    {
+      id:'enurese', cat:'Transtornos da eliminação',
+      patient:{name:'Miguel', age:7, sex:'Masculino', ref:'Levado pela mãe', initials:'M'},
+      chips:['Molha a cama à noite', '7 anos, há vários meses', '2 a 3 vezes por semana', 'Sem causa física'],
+      vinheta:[
+        'Miguel, 7 anos, foi levado pela mãe por molhar a cama quase toda noite. Já tem idade para ter controle, e o problema nunca cessou por completo desde que largou as fraldas. Acontece pelo menos duas a três vezes por semana, há vários meses, e já o constrange a ponto de recusar dormir na casa de amigos.',
+        'A perda de urina ocorre de forma involuntária, sobretudo durante o sono, e a avaliação não encontrou infecção, diabetes ou outra causa física que explicasse o quadro. Não há perda de fezes associada, o que afastaria outro transtorno da eliminação, e a criança não apresenta ansiedade de separação marcante nem o padrão de desatenção e agitação que sugeriria outra hipótese. O incômodo principal é a molhadela noturna recorrente.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Encoprese','Enurese','Transtorno de Ansiedade de Separação','Transtorno de Déficit de Atenção/Hiperatividade'],
+      correct:1,
+      explicacao:'Eliminação repetida de urina na cama ou na roupa, em criança com pelo menos 5 anos, ao menos 2 vezes por semana por cerca de 3 meses (ou com sofrimento/prejuízo), sem causa médica que explique, caracteriza a Enurese (DSM-5-TR). Difere da Encoprese (perda de fezes) e de quadros de ansiedade ou desatenção, em que a perda urinária não é a queixa central.'
+    },
+    {
+      id:'encoprese', cat:'Transtornos da eliminação',
+      patient:{name:'Lívia', age:6, sex:'Feminino', ref:'Trazida pelos pais', initials:'L'},
+      chips:['Evacua na roupa', '6 anos, há meses', 'Às vezes nem percebe', 'Sem causa intestinal'],
+      vinheta:[
+        'Lívia, 6 anos, foi trazida pelos pais por episódios repetidos de evacuação na roupa, que vêm acontecendo há meses, mais de uma vez por mês. A princípio acharam que era birra, mas notaram que muitas vezes ela nem percebe que sujou.',
+        'A avaliação clínica não encontrou doença intestinal ou outra causa física que explicasse a perda de fezes, que ocorre em locais inapropriados e já gera vergonha e isolamento na escola. Não há perda de urina como queixa central, o que apontaria para outro transtorno da eliminação, e a criança não mostra um padrão de desafio e hostilidade intencionais nem os déficits sociais e de comunicação que sugeririam outras hipóteses.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Enurese','Encoprese','Transtorno de Oposição Desafiante','Transtorno do Espectro Autista'],
+      correct:1,
+      explicacao:'Eliminação repetida de fezes em locais inapropriados, voluntária ou involuntária, ao menos 1 vez por mês durante 3 meses, em criança com pelo menos 4 anos e sem causa médica que explique, caracteriza a Encoprese (DSM-5-TR). Difere da Enurese (perda de urina) e de transtornos do comportamento, em que a sujeira não é a queixa nuclear.'
+    },
+    {
+      id:'insonia', cat:'Transtornos do sono-vigília',
+      patient:{name:'Cristina', age:44, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'C'},
+      chips:['Custa a pegar no sono', '> 3 noites por semana', 'Há mais de 6 meses', 'Cansaço diurno'],
+      vinheta:[
+        'Cristina, 44 anos, reclama de noites mal dormidas há mais de seis meses. Demora mais de uma hora para pegar no sono, acorda várias vezes e, quando desperta de madrugada, não consegue voltar a dormir. Tem tempo e ambiente adequados para descansar, mas ainda assim não consegue.',
+        'Durante o dia se sente cansada, irritada e com dificuldade de concentração, e isso já atrapalha o trabalho. A insatisfação com o sono ocorre pelo menos três noites por semana e se mantém há meses. Ela não relata sonolência com ataques de sono irresistíveis durante o dia nem perda súbita do tônus muscular, e a queixa central é a dificuldade de dormir em si, não uma preocupação difusa que a domine.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Hipersonolência','Transtorno de Insônia','Narcolepsia','Transtorno de Ansiedade Generalizada'],
+      correct:1,
+      explicacao:'Insatisfação com a quantidade ou a qualidade do sono, com dificuldade para iniciar ou manter o sono, ao menos 3 noites por semana por 3 meses ou mais, apesar de oportunidade adequada e com prejuízo diurno, caracteriza o Transtorno de Insônia (DSM-5-TR). Difere da Hipersonolência e da Narcolepsia (sonolência excessiva) e de quadros ansiosos em que o sono não é a queixa central.'
+    },
+    {
+      id:'narcolepsia', cat:'Transtornos do sono-vigília',
+      patient:{name:'Bruno', age:22, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'B'},
+      chips:['Ataques de sono diários', 'Pernas bambas ao rir', 'Quase cai', 'Há meses'],
+      vinheta:[
+        'Bruno, 22 anos, estudante, conta que “apaga” de repente várias vezes ao dia, dormindo sem conseguir evitar mesmo em situações inusitadas, como em meio a uma conversa ou na aula. Isso acontece quase todos os dias, há meses, e já causou situações constrangedoras e perigosas.',
+        'Relata ainda episódios em que, ao rir ou se surpreender, sente as pernas bambas e quase cai, com perda momentânea da força muscular. Às vezes, ao adormecer, vê imagens vívidas e fica sem conseguir se mexer por instantes. Não há um padrão de ronco e pausas respiratórias que apontasse uma causa obstrutiva, nem uma sonolência explicada apenas por noites mal dormidas; o conjunto de ataques de sono com perda de tônus é o que chama atenção.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Hipersonolência','Narcolepsia','Apneia e Hipopneia Obstrutivas do Sono','Transtorno Depressivo Maior'],
+      correct:1,
+      explicacao:'Períodos recorrentes de necessidade irreprimível de dormir ou cochilos involuntários, ao menos 3 vezes por semana nos últimos 3 meses, tipicamente com cataplexia (perda súbita do tônus muscular desencadeada por emoções), caracterizam a Narcolepsia (DSM-5-TR). Difere da Hipersonolência (sem cataplexia) e da Apneia Obstrutiva (sonolência por fragmentação respiratória do sono).'
+    },
+    {
+      id:'ejaculacao', cat:'Disfunções sexuais',
+      patient:{name:'Rodrigo', age:32, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'R'},
+      chips:['Ejaculação muito rápida', 'Cerca de 1 minuto', 'Pouco controle', '> 6 meses'],
+      vinheta:[
+        'Rodrigo, 32 anos, procurou ajuda por um problema que o angustia e já afeta o relacionamento: de forma recorrente, ejacula muito rapidamente durante a relação, quase sempre em cerca de um minuto e antes do que gostaria, com pouca sensação de controle. O padrão se mantém há mais de seis meses, na maioria das vezes.',
+        'Fora desse aspecto, mantém o desejo preservado e obtém a ereção sem dificuldade, o que afasta um problema de excitação ou de demora para ejacular. A queixa não se explica por uma ansiedade generalizada de fundo, ainda que ande preocupado com o desempenho. O sofrimento e o impacto na vida sexual e afetiva são evidentes.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Erétil','Ejaculação Prematura (Precoce)','Ejaculação Retardada','Transtorno de Ansiedade Generalizada'],
+      correct:1,
+      explicacao:'Padrão persistente de ejaculação que ocorre cerca de 1 minuto após a penetração e antes do desejado, na maioria das relações, por pelo menos 6 meses e com sofrimento, caracteriza a Ejaculação Prematura (Precoce) (DSM-5-TR). Difere do Transtorno Erétil (dificuldade de obter ou manter a ereção) e da Ejaculação Retardada (atraso acentuado ou ausência de ejaculação).'
+    },
+    {
+      id:'desejo_feminino', cat:'Disfunções sexuais',
+      patient:{name:'Aline', age:38, sex:'Feminino', ref:'Procurou o serviço por conta própria', initials:'A'},
+      chips:['Sem desejo nem excitação', 'Há mais de 6 meses', 'Sem dor na relação', 'Causa angústia'],
+      vinheta:[
+        'Aline, 38 anos, relata que, há mais de seis meses, perdeu de forma acentuada o interesse e a excitação sexual: raramente sente vontade, não tem mais pensamentos ou fantasias eróticas e quase não responde aos estímulos do parceiro. Isso lhe causa angústia e tem gerado distância no relacionamento.',
+        'Ela conta que a relação, quando acontece, não é dolorosa, e o problema não é apenas a dificuldade de chegar ao orgasmo, mas a falta de desejo e de excitação desde o início. O quadro não é explicado por um episódio depressivo, por um conflito conjugal pontual ou pelo uso de medicamentos. A redução do interesse e da excitação é persistente e a incomoda.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno do Orgasmo Feminino','Transtorno do Interesse/Excitação Sexual Feminino','Transtorno da Dor Gênito-pélvica/Penetração','Transtorno Depressivo Maior'],
+      correct:1,
+      explicacao:'Redução ou ausência persistente de interesse e excitação sexual (desejo, pensamentos eróticos, resposta à estimulação) por pelo menos 6 meses e com sofrimento, caracteriza o Transtorno do Interesse/Excitação Sexual Feminino (DSM-5-TR). Difere do Transtorno do Orgasmo Feminino (dificuldade restrita ao orgasmo) e do Transtorno da Dor Gênito-pélvica/Penetração (dor ou dificuldade na penetração).'
+    },
+    {
+      id:'conduta', cat:'Disruptivos, controle de impulsos e conduta',
+      patient:{name:'Gabriel', age:15, sex:'Masculino', ref:'Encaminhado pela escola', initials:'G'},
+      chips:['Brigas e intimidação', 'Furtos e mentiras', 'Foge de casa, falta à aula', '15 anos'],
+      vinheta:[
+        'Gabriel, 15 anos, foi encaminhado pela escola após uma série de problemas graves no último ano. Ele se envolveu em brigas em que intimidou e machucou colegas, foi flagrado furtando, mente com frequência para obter vantagens, destruiu patrimônio da escola e tem fugido de casa e faltado às aulas sem permissão.',
+        'Esse padrão vai além de teimosia ou de discutir com figuras de autoridade: é uma violação repetida dos direitos dos outros e de regras sociais importantes. Os comportamentos não se resumem a explosões impulsivas isoladas de agressão, mas a uma conduta ampla e persistente, e não se explicam apenas por desatenção ou hiperatividade. A gravidade preocupa pais e escola.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno de Oposição Desafiante','Transtorno da Conduta','Transtorno de Déficit de Atenção/Hiperatividade','Transtorno Explosivo Intermitente'],
+      correct:1,
+      explicacao:'Padrão repetitivo e persistente de violação dos direitos dos outros e de normas sociais (agressão a pessoas ou animais, destruição de propriedade, fraude ou furto, violações sérias de regras), caracteriza o Transtorno da Conduta (DSM-5-TR). Difere do Transtorno de Oposição Desafiante (desafio e hostilidade, sem violação grave de direitos), do Explosivo Intermitente (explosões agressivas impulsivas) e do TDAH (desatenção e impulsividade sem conduta antissocial).'
+    },
+    {
+      id:'explosivo', cat:'Disruptivos, controle de impulsos e conduta',
+      patient:{name:'Wesley', age:28, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'W'},
+      chips:['Explosões de fúria', 'Desproporcionais e impulsivas', 'Arrependimento depois', 'Várias vezes por semana'],
+      vinheta:[
+        'Wesley, 28 anos, procurou ajuda por “ataques de fúria” que não consegue conter. Diante de provocações pequenas, como uma discussão no trânsito ou uma crítica no trabalho, explode em segundos: grita, quebra objetos e já chegou às vias de fato, para depois se sentir muito arrependido.',
+        'As explosões são impulsivas, desproporcionais ao motivo e não planejadas, e se repetem várias vezes por semana. Fora desses episódios, ele não mantém um padrão amplo de violar direitos alheios ou regras, como ocorreria num quadro de conduta, e a agressividade não surge no contexto de um período de humor eufórico e acelerado. O descontrole momentâneo da raiva é o cerne do problema.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno da Conduta','Transtorno Explosivo Intermitente','Transtorno Bipolar Tipo I','Transtorno de Oposição Desafiante'],
+      correct:1,
+      explicacao:'Explosões comportamentais recorrentes que refletem falha em controlar impulsos agressivos, desproporcionais à provocação e não premeditadas, caracterizam o Transtorno Explosivo Intermitente (DSM-5-TR). Difere do Transtorno da Conduta (violação ampla e persistente de direitos e regras) e de episódios de mania (agressividade no contexto de humor elevado e energia aumentada).'
+    },
+    {
+      id:'alcool', cat:'Substâncias e transtornos aditivos',
+      patient:{name:'Anderson', age:45, sex:'Masculino', ref:'Levado pela esposa', initials:'A'},
+      chips:['Bebe cada vez mais', 'Fissura e tremores', 'Não consegue reduzir', 'Prejuízo em casa e trabalho'],
+      vinheta:[
+        'Anderson, 45 anos, foi levado pela esposa, preocupada com a bebida. Ao longo dos últimos anos passou a beber cada vez mais para obter o mesmo efeito, tentou diminuir várias vezes sem sucesso e sente forte fissura quando fica sem álcool. Quando passa algumas horas sem beber, surgem tremores e sudorese que melhoram ao voltar a consumir.',
+        'O uso já trouxe prejuízos claros: faltas no trabalho, brigas em casa e uma batida de carro, mas ele continua bebendo mesmo ciente das consequências. O padrão se mantém ao longo do último ano e não se refere a outra substância, nem é um quadro em que o humor deprimido seja a explicação central. A perda de controle sobre a bebida domina o cotidiano.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno por Uso de Estimulantes','Transtorno por Uso de Álcool','Transtorno Depressivo Maior','Transtorno por Uso de Opioides'],
+      correct:1,
+      explicacao:'Padrão problemático de uso de álcool levando a prejuízo ou sofrimento, com vários indicadores ao longo de 12 meses (tolerância, abstinência, fissura, tentativas frustradas de reduzir, uso continuado apesar do prejuízo), caracteriza o Transtorno por Uso de Álcool (DSM-5-TR). O mesmo padrão aplicado a outras substâncias define os respectivos transtornos por uso.'
+    },
+    {
+      id:'opioides', cat:'Substâncias e transtornos aditivos',
+      patient:{name:'Tiago', age:34, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'T'},
+      chips:['Uso além do prescrito', 'Busca receitas', 'Abstinência ao parar', 'Doses crescentes'],
+      vinheta:[
+        'Tiago, 34 anos, começou a usar analgésicos opioides após uma cirurgia e, com o tempo, passou a usar muito além do prescrito. Procura vários médicos para conseguir receitas, já comprou o remédio por fora e precisa de doses cada vez maiores para obter o mesmo efeito.',
+        'Quando tenta parar, surgem sintomas intensos de abstinência, como dores, agitação e muito desconforto, que o levam a usar de novo. O uso já comprometeu o trabalho e a família, e ele segue consumindo apesar de reconhecer o prejuízo. O quadro se refere especificamente aos opioides, e não ao álcool ou a sedativos, e a ansiedade que sente aparece sobretudo na abstinência.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno por Uso de Álcool','Transtorno por Uso de Opioides','Transtorno por Uso de Sedativos, Hipnóticos ou Ansiolíticos','Transtorno de Ansiedade Generalizada'],
+      correct:1,
+      explicacao:'Padrão problemático de uso de opioides com prejuízo ou sofrimento ao longo de 12 meses (tolerância, abstinência, fissura, uso em quantidades crescentes, tentativas frustradas de reduzir, uso apesar do dano), caracteriza o Transtorno por Uso de Opioides (DSM-5-TR). A substância específica diferencia este dos demais transtornos por uso (álcool, sedativos, estimulantes).'
+    },
+    {
+      id:'disforia_adulto', cat:'Disforia de gênero',
+      patient:{name:'Bianca', age:26, sex:'Mulher trans', ref:'Procurou o serviço por conta própria', initials:'B'},
+      chips:['Incongruência de gênero marcante', 'Desde a infância', 'Mais de 6 meses', 'Sofrimento intenso'],
+      vinheta:[
+        'Bianca, 26 anos, mulher trans, procurou o serviço relatando um sofrimento que carrega desde a infância. Designada do sexo masculino ao nascer, sempre sentiu que aquilo não correspondia a quem ela é, e ao longo dos anos essa diferença se tornou cada vez mais difícil de suportar. Hoje deseja ser reconhecida e viver plenamente como mulher.',
+        'Descreve uma incongruência marcante e persistente, há muito mais de seis meses, entre o gênero que vivencia e o que lhe foi atribuído, acompanhada de forte desejo de modificar características corporais e de ser tratada conforme a sua identidade. Esse descompasso lhe causa angústia significativa e prejudica o convívio social e o trabalho. Não é uma preocupação com um defeito específico na aparência, nem uma excitação ligada a vestir certas roupas, mas a própria identidade de gênero.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Outra Disforia de Gênero Especificada','Disforia de Gênero','Transtorno Dismórfico Corporal','Transtorno Transvéstico'],
+      correct:1,
+      explicacao:'Incongruência acentuada e persistente (≥ 6 meses) entre o gênero vivenciado e o designado, acompanhada de sofrimento clinicamente significativo ou prejuízo, caracteriza a Disforia de Gênero (DSM-5-TR). Difere do Transtorno Dismórfico Corporal (foco num defeito percebido na aparência) e do Transtorno Transvéstico (excitação sexual ligada a vestir roupas); a opção “outra especificada” aplica-se a quadros que não preenchem todos os critérios.'
+    },
+    {
+      id:'disforia_crianca', cat:'Disforia de gênero',
+      patient:{name:'Sami', age:8, sex:'Menina trans', ref:'Trazida pelos pais', initials:'S'},
+      chips:['Insiste em ser do outro gênero', 'Desde os primeiros anos', 'Mais de 6 meses', 'Desconforto com o corpo'],
+      vinheta:[
+        'Sami, 8 anos, foi levada ao serviço pelos pais, que procuram orientação. Designada do sexo masculino ao nascer, desde os primeiros anos afirma de forma consistente e insistente que é uma menina, prefere roupas, brinquedos e brincadeiras associados a meninas e rejeita ativamente os tipicamente associados a meninos.',
+        'Essa identificação marcante com o gênero feminino se mantém há bem mais de seis meses e vem acompanhada de desconforto com as próprias características sexuais e de sofrimento, sobretudo quando é tratada de forma incongruente com o que sente. Não é apenas uma não conformidade passageira ou uma preferência por certas brincadeiras: há angústia ligada à incongruência de gênero, que afeta a criança no convívio e na escola.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Disforia de Gênero','Outra Disforia de Gênero Especificada','Transtorno Dismórfico Corporal','Transtorno de Oposição Desafiante'],
+      correct:0,
+      explicacao:'Em crianças, uma incongruência acentuada e persistente (≥ 6 meses) entre o gênero vivenciado e o designado, com forte desejo de ser do outro gênero e desconforto associado, gerando sofrimento ou prejuízo, caracteriza a Disforia de Gênero (DSM-5-TR). Difere da simples não conformidade de gênero (sem sofrimento) e de quadros sem relação com a identidade, como o comportamento opositor.'
+    },
+    {
+      id:'alzheimer', cat:'Transtornos neurocognitivos',
+      patient:{name:'Therezinha', age:74, sex:'Feminino', ref:'Trazida pela filha', initials:'T'},
+      chips:['Perda de memória progressiva', 'Início insidioso, anos', 'Repete perguntas e se perde', 'Consciência preservada'],
+      vinheta:[
+        'Therezinha, 74 anos, foi trazida pela filha por causa de uma perda de memória que piora aos poucos há cerca de três anos. No começo eram esquecimentos pequenos, mas hoje repete a mesma pergunta várias vezes, esquece compromissos e nomes de familiares, se perde em trajetos conhecidos e já trocou o sal pelo açúcar ao cozinhar.',
+        'O declínio é lento e progressivo, afeta de forma marcante a memória e a autonomia para as tarefas do dia a dia, e ocorre com a consciência preservada, sem flutuações abruptas ao longo das horas. Não há um início súbito, em horas ou dias, com alteração do nível de consciência, como num quadro agudo, e os exames não sugerem um evento vascular isolado. A perda cognitiva sustentada e crescente é o eixo do quadro.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Delirium','Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer','Transtorno Neurocognitivo Vascular Maior ou Leve','Transtorno Depressivo Maior'],
+      correct:1,
+      explicacao:'Declínio cognitivo adquirido, insidioso e progressivo, com prejuízo importante da memória e da autonomia e consciência preservada, sugere Transtorno Neurocognitivo Maior, e o padrão típico aponta para a Doença de Alzheimer (DSM-5-TR). Difere do Delirium (início agudo, flutuação e alteração da atenção e da consciência), do quadro vascular (relação com eventos cerebrovasculares, curso em degraus) e da depressão (a chamada pseudodemência).'
+    },
+    {
+      id:'delirium', cat:'Transtornos neurocognitivos',
+      patient:{name:'Otacílio', age:78, sex:'Masculino', ref:'Internado com infecção', initials:'O'},
+      chips:['Confusão de início agudo', 'Flutua ao longo do dia', 'Desatenção e desorientação', 'Ligado a quadro clínico'],
+      vinheta:[
+        'Otacílio, 78 anos, internado por uma infecção urinária, ficou de um dia para o outro confuso e agitado. A equipe nota que ele oscila ao longo do dia: por vezes está sonolento e desorientado, sem saber onde está, e por vezes fica mais alerta, mas com grande dificuldade de manter a atenção em qualquer coisa.',
+        'O quadro surgiu de forma aguda, em poucas horas, flutua bastante ao longo do dia e veio junto com a infecção e as alterações clínicas da internação. Antes disso, a família afirma que ele era lúcido e independente, sem perda de memória progressiva ao longo de anos. Não é um declínio lento e estável, mas uma alteração súbita da atenção e da consciência ligada a uma causa clínica.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer','Delirium','Transtorno Neurocognitivo Vascular Maior ou Leve','Transtorno Psicótico Breve'],
+      correct:1,
+      explicacao:'Perturbação aguda da atenção e da consciência, que se desenvolve em horas ou dias, flutua ao longo do dia e costuma estar associada a uma condição clínica (aqui, uma infecção), caracteriza o Delirium (DSM-5-TR). Difere dos transtornos neurocognitivos maiores (declínio lento e progressivo, consciência preservada) e de quadros psicóticos primários.'
+    },
+    {
+      id:'borderline', cat:'Transtornos da personalidade',
+      patient:{name:'Priscila', age:25, sex:'Feminino', ref:'Procurou o serviço após uma crise', initials:'P'},
+      chips:['Relações intensas e instáveis', 'Medo de abandono', 'Impulsividade e autolesão', 'Vazio crônico'],
+      vinheta:[
+        'Priscila, 25 anos, chega ao serviço após mais uma crise no relacionamento. Conta um padrão que se repete desde o início da vida adulta: relações intensas que alternam entre idealizar e odiar o parceiro, um medo enorme de ser abandonada e reações desesperadas diante de qualquer sinal de rejeição.',
+        'Descreve uma autoimagem instável, uma sensação crônica de vazio, oscilações rápidas de humor e episódios de impulsividade, incluindo gastos e cortes nos braços em momentos de angústia. Esse padrão é amplo, persistente e presente em várias áreas da vida, e não se restringe a fases de humor eufórico e acelerado intercaladas com depressão. A instabilidade nas relações, na identidade e nas emoções é a marca do quadro.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno da Personalidade Histriônica','Transtorno da Personalidade Borderline','Transtorno Bipolar Tipo II','Transtorno da Personalidade Narcisista'],
+      correct:1,
+      explicacao:'Padrão difuso e persistente de instabilidade nas relações, na autoimagem e nos afetos, com impulsividade acentuada, medo de abandono, sensação de vazio e comportamentos autolesivos, desde o início da vida adulta, caracteriza o Transtorno da Personalidade Borderline (DSM-5-TR). Difere de outros transtornos da personalidade do mesmo grupo e do Transtorno Bipolar, em que as oscilações ocorrem em episódios de humor definidos.'
+    },
+    {
+      id:'antissocial', cat:'Transtornos da personalidade',
+      patient:{name:'Jonas', age:30, sex:'Masculino', ref:'Avaliação solicitada', initials:'J'},
+      chips:['Desrespeita direitos alheios', 'Mentiras e manipulação', 'Impulsividade e agressões', 'Sem remorso'],
+      vinheta:[
+        'Jonas, 30 anos, chega para avaliação com um longo histórico de problemas com a lei. Desde a adolescência se envolve em furtos, fraudes e agressões, mente e manipula sem culpa para obter o que quer, não mantém empregos nem compromissos e desrespeita de forma reiterada os direitos e a segurança dos outros.',
+        'Age por impulso, raramente planeja o futuro e não demonstra remorso pelo sofrimento que causa, e costuma justificar os atos culpando as vítimas. Esse padrão de desrespeito e violação dos direitos alheios é amplo, vem desde os 15 anos e se mantém de forma estável, indo além de explosões isoladas de raiva ou do uso de substâncias. A ausência de remorso e a transgressão persistente definem o quadro.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno da Conduta','Transtorno da Personalidade Antissocial','Transtorno da Personalidade Narcisista','Transtorno por Uso de Álcool'],
+      correct:1,
+      explicacao:'Padrão difuso de desrespeito e violação dos direitos dos outros desde os 15 anos, em pessoa com pelo menos 18 anos e com história de transtorno da conduta na infância ou adolescência, com impulsividade, mentiras, agressividade e ausência de remorso, caracteriza o Transtorno da Personalidade Antissocial (DSM-5-TR). O Transtorno da Conduta é o quadro correspondente antes dos 18 anos; difere também de explosões agressivas isoladas e do uso de substâncias.'
+    },
+    {
+      id:'voyeurista', cat:'Transtornos parafílicos',
+      patient:{name:'Murilo', age:29, sex:'Masculino', ref:'Encaminhado após uma ocorrência', initials:'M'},
+      chips:['Observa pessoas sem consentimento', 'Excitação recorrente', 'Mais de 6 meses', 'Sofrimento e risco legal'],
+      vinheta:[
+        'Murilo, 29 anos, foi encaminhado para avaliação após ser flagrado observando, às escondidas, vizinhos em momentos de intimidade. Relata que, de forma recorrente e há mais de seis meses, sente forte excitação ao observar pessoas que não sabem que estão sendo vistas, e que já agiu sobre esse impulso algumas vezes.',
+        'Reconhece que o comportamento lhe traz sofrimento e já o colocou em situações de risco, inclusive legal, mas tem dificuldade de resistir a ele. A excitação está ligada especificamente ao ato de observar quem não consente, e não a se exibir para outros nem a tocar furtivamente alguém, o que orienta o diagnóstico dentro desse grupo de transtornos.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Exibicionista','Transtorno Voyeurista','Transtorno Frotteurista','Transtorno da Personalidade Antissocial'],
+      correct:1,
+      explicacao:'Excitação sexual intensa e recorrente (≥ 6 meses) a partir da observação de uma pessoa desavisada que está nua ou em atividade sexual, com o indivíduo tendo agido sobre esses impulsos com quem não consente ou com sofrimento/prejuízo clínico, caracteriza o Transtorno Voyeurista (DSM-5-TR). Difere do Exibicionista (exibir os genitais a alguém desavisado) e do Frotteurista (tocar ou se esfregar em pessoa que não consente).'
+    },
+    {
+      id:'fetichista', cat:'Transtornos parafílicos',
+      patient:{name:'Sérgio', age:35, sex:'Masculino', ref:'Procurou o serviço por conta própria', initials:'S'},
+      chips:['Excitação ligada a objeto específico', 'Recorrente, mais de 6 meses', 'Sofrimento e prejuízo', 'Atrapalha as relações'],
+      vinheta:[
+        'Sérgio, 35 anos, procurou ajuda envergonhado por algo que o incomoda há anos. Conta que a sua excitação sexual depende, de forma recorrente e intensa, de um tipo específico de objeto inanimado, sem o qual tem grande dificuldade de se envolver sexualmente. Esse padrão se mantém há bem mais de seis meses.',
+        'A necessidade desse objeto se tornou central e já prejudica a intimidade e o relacionamento, gerando sofrimento e conflitos com a parceira. A excitação está ligada ao objeto em si, e não ao ato de vestir roupas do outro gênero nem a sofrer dor ou humilhação, o que ajuda a situar o diagnóstico dentro desse grupo de transtornos.'
+      ],
+      pergunta:'Qual a hipótese diagnóstica mais provável?',
+      opts:['Transtorno Transvéstico','Transtorno Fetichista','Transtorno do Masoquismo Sexual','Transtorno Obsessivo-Compulsivo'],
+      correct:1,
+      explicacao:'Excitação sexual intensa e recorrente (≥ 6 meses) a partir do uso de objetos inanimados ou de um foco muito específico em partes não genitais do corpo, com sofrimento ou prejuízo, caracteriza o Transtorno Fetichista (DSM-5-TR). Difere do Transtorno Transvéstico (excitação por vestir roupas do outro gênero) e do Masoquismo Sexual (excitação por ser humilhado ou submetido a dor).'
     }
   ];
   function currentCaso(){ return CASOS[(state.casoIndex||0) % CASOS.length]; }
