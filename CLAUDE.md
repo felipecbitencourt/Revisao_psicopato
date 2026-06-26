@@ -22,7 +22,7 @@ chaves do Supabase, roda em **modo demonstração**.
    testa no próprio servidor.
 3. **Cache-busting:** ao editar um asset, **suba o `?v=`** dele em `index.html`.
    Estado atual: `styles.css?v=48`, `content.js?v=30`, `db.js?v=38`,
-   `search-engine.js?v=2`, `app.js?v=118`, `a11y-kit ?v=2`. O `service-worker.js`
+   `search-engine.js?v=2`, `app.js?v=123`, `a11y-kit ?v=2`. O `service-worker.js`
    não tem `?v=` (usa `CACHE='psicopato-v2'`; bumpe a constante se mexer nele).
 4. **SQL roda manualmente** no SQL Editor do Supabase (ver abaixo). Várias
    funções já mudaram de assinatura e têm `drop function` antes do `create` —
@@ -103,7 +103,10 @@ Secrets de push (Resend/VAPID) e SMTP: ver `docs/PUSH_SETUP.md` e `SUPABASE_SETU
 - XP (espelhado em `gamification.sql`): ficha +25, **item dominado** (1º acerto sem
   dica) +15, dia ativo +15. Nível: `100·(N-1)²`.
 - **Modo dev:** Ctrl+D, senha `190603`. Páginas DEV: **Atividades** (índice de
-  acerto), **Uso** (métricas), **Feedbacks**. Tudo gated por `is_admin()` no banco.
+  acerto), **Casos** (lista os estudos de caso e abre cada um **sem randomizar**,
+  para validação; selo de nível **N1–N4** nos reescritos, via campo `nivel`),
+  **Uso** (métricas),
+  **Feedbacks**. As de dados (Atividades/Uso/Feedbacks) são gated por `is_admin()`.
 - **LGPD:** checkbox de aceite no cadastro + **portão de consentimento** pós-login
   (`needsConsent`/`TERMOS_VERSAO`/`consentGate`), `accept_terms` (carimbo do
   servidor), exclusão de conta. Sessão é logada (tabela `app_sessions`) e citada

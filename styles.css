@@ -159,7 +159,11 @@ button{font-family:inherit;}
   position:sticky;top:0;z-index:20;background:var(--bg);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
   padding:14px 34px;display:flex;align-items:center;gap:18px;
+  justify-content:space-between;
 }
+.topbar-left{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.topbar-center{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-width:0;padding:0 12px;}
+.topbar-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 
 /* ---- busca global (header) ---- */
 #global-search::placeholder{color:var(--muted);opacity:1;}
@@ -581,7 +585,6 @@ button{font-family:inherit;}
 
 @media (max-width:760px){
   .side-toggle-btn{display:none !important;}
-  .streak-lbl{display:none;}
   /* header compacto: pílula mostra só o nível (sem "130 XP") */
   .xp-amount, .xp-label{display:none;}
   #xp-pill{padding:5px;}
