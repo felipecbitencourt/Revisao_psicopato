@@ -1,0 +1,32 @@
+# Cloudflare Workers (static assets): arquivos/pastas aqui NÃO são publicados
+# no deploy (`npx wrangler deploy`). Sintaxe .gitignore. Ver:
+# https://developers.cloudflare.com/workers/static-assets/binding/#ignoring-assets
+#
+# Ao contrário do Pages, o Workers não ignora .git/node_modules por padrão —
+# sem este arquivo, o deploy falha (pack do .git > 25 MiB) e, se só isso fosse
+# resolvido, os PDFs abaixo ficariam baixáveis publicamente no site.
+
+.git
+node_modules
+.DS_Store
+.claude
+
+# PDFs-fonte do pipeline de build (DSM, Dalgalarrondo) — não são do site e são
+# material protegido por direitos autorais; nunca devem ficar público.
+*.pdf
+
+# pipeline de build e fontes (md/, md_psico/) — não fazem parte do site servido
+build
+md
+md_psico
+sql
+supabase
+docs
+tools
+email
+
+# docs do projeto
+CLAUDE.md
+README.md
+TODO.md
+notas.txt
