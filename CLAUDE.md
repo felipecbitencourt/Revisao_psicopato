@@ -21,8 +21,8 @@ chaves do Supabase, roda em **modo demonstração**.
    Faça `node --check app.js` (e `db.js`/`search-engine.js`) e entregue; o usuário
    testa no próprio servidor.
 3. **Cache-busting:** ao editar um asset, **suba o `?v=`** dele em `index.html`.
-   Estado atual: `styles.css?v=48`, `content.js?v=30`, `psico-content.js?v=1`,
-   `db.js?v=38`, `search-engine.js?v=2`, `app.js?v=126`, `a11y-kit ?v=2`. O
+   Estado atual: `styles.css?v=50`, `content.js?v=30`, `psico-content.js?v=1`,
+   `db.js?v=38`, `search-engine.js?v=2`, `app.js?v=127`, `a11y-kit ?v=2`. O
    `service-worker.js` não tem `?v=` (usa `CACHE='psicopato-v2'`; bumpe a
    constante se mexer nele).
 4. **SQL roda manualmente** no SQL Editor do Supabase (ver abaixo). Várias

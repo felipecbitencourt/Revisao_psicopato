@@ -3014,23 +3014,33 @@
     '</section>';
   }
 
+  // ficha de psicopatologia: layout "bento" (blocos), pensado para os campos
+  // curtos do sintoma (1-4 frases cada) — ver estilos .bento-* em styles.css.
   function screenPsicoFicha(){
     var cat = PSICO[state.activePsicoCat]; if(!cat) return screenPsicoCategorias();
     var item = cat.items[state.activePsicoItem] || cat.items[0];
 
-    function block(title, text){
+    function tile(cls, title, text, inner){
       if(!text) return '';
-      return '<h3 class="ficha-h3 mt"><span class="bar"></span>'+esc(title)+'</h3>'+
-        '<div class="crit-card"><p class="rich-p">'+esc(text)+'</p></div>';
+      return '<div class="bento-tile'+(cls?' '+cls:'')+'">'+
+        '<div class="bt-head"><span class="bt-bar"></span>'+esc(title)+'</div>'+
+        (inner || '<p class="bt-text">'+esc(text)+'</p>')+
+      '</div>';
     }
 
-    var apareceBlock = '';
+    var tiles = ''+
+      tile('', 'Definição', item.definicao)+
+      tile('', 'Fenomenologia', item.fenomenologia)+
+      tile('bt-quote', 'Exemplo clínico', item.exemplos,
+        item.exemplos ? '<span class="bt-quote-mark">“</span><p class="bt-text bt-text-quote">'+esc(item.exemplos)+'</p>' : '')+
+      tile('bt-diff', 'Diferencial — não confundir com', item.diferencial);
+
+    var apareceTags = '';
     if(item.apareceEm && item.apareceEm.length){
       var chips = item.apareceEm.map(function(t){
-        return '<span style="font-size:12px;font-weight:700;color:var(--cat);background:var(--cat-soft);border-radius:8px;padding:5px 10px;">'+esc(t)+'</span>';
+        return '<span class="bento-chip">'+esc(t)+'</span>';
       }).join('');
-      apareceBlock = '<h3 class="ficha-h3 mt"><span class="bar"></span>Aparece em</h3>'+
-        '<div style="display:flex;flex-wrap:wrap;gap:8px;">'+chips+'</div>';
+      apareceTags = '<div class="bento-tags"><div class="bt-tags-label">Aparece em</div><div class="bt-tags-wrap">'+chips+'</div></div>';
     }
 
     var pIdx = state.activePsicoItem-1, nIdx = state.activePsicoItem+1;
@@ -3042,23 +3052,21 @@
     '</div>';
 
     return ''+
-    '<section class="ficha-screen" style="--cat:'+cat.color+';--cat-soft:'+cat.color+'1A;max-width:820px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+    '<section class="ficha-screen bento" style="--cat:'+cat.color+';--cat-soft:'+cat.color+'1A;max-width:960px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
       '<button data-action="backToPsicoCategoria" data-hover="color:var(--cat);" style="background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0;margin-bottom:18px;">'+ICON.back+esc(cat.name)+'</button>'+
 
       '<span class="ficha-tag">'+esc(cat.name)+(item.sg?' · '+esc(item.sg):'')+'</span>'+
-      '<h1 class="ficha-title">'+esc(item.n)+'</h1>'+
+      '<h1 class="ficha-title" style="font-size:26px;margin:10px 0 12px;">'+esc(item.n)+'</h1>'+
 
-      (item.tldr ? '<div class="ficha-summary"><span class="fs-icon">'+ICON.info+'</span><div><div class="fs-label">Resumo</div><p>'+esc(item.tldr)+'</p></div></div>' : '')+
+      (item.tldr ? '<p class="bento-tldr">'+esc(item.tldr)+'</p>' : '')+
 
-      block('Definição', item.definicao)+
-      block('Fenomenologia', item.fenomenologia)+
-      block('Exemplo clínico', item.exemplos)+
-      block('Diferencial — não confundir com', item.diferencial)+
-      apareceBlock+
+      '<div class="bento-grid">'+tiles+'</div>'+
+      apareceTags+
 
-      '<p style="margin:22px 0 0;font-size:12px;color:var(--muted);">Fonte: '+esc(item.fonte||'Dalgalarrondo, Psicopatologia')+'</p>'+
-
-      nav+
+      '<div class="bento-footer">'+
+        '<span class="bt-fonte">Fonte: '+esc(item.fonte||'Dalgalarrondo, Psicopatologia')+'</span>'+
+        nav+
+      '</div>'+
     '</section>';
   }
 
