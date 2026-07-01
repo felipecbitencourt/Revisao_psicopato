@@ -606,6 +606,14 @@
   if (DATA && DATA.flashcards && DATA.flashcards.length) FLASHCARDS = DATA.flashcards;
 
   /* ---------------------------------------------------------
+     Fichas de psicopatologia/semiologia (psico-content.js), gerado por
+     build/build_psico.py a partir de md_psico/ (fonte: Dalgalarrondo).
+     Conteúdo isolado do DSM_CONTENT — não entra no quiz/classificar/ranking.
+     --------------------------------------------------------- */
+  var PSICO_DATA = (typeof window !== 'undefined' && window.PSICO_CONTENT) ? window.PSICO_CONTENT : null;
+  var PSICO = (PSICO_DATA && PSICO_DATA.categories) ? PSICO_DATA.categories : [];
+
+  /* ---------------------------------------------------------
      Camada de dados (db.js / Supabase). Fallback inerte quando
      não configurado: DB.ready=false -> app em modo demonstração.
      --------------------------------------------------------- */
@@ -838,6 +846,7 @@
      --------------------------------------------------------- */
   var state = {
     screen:'home', activeCat:4, activeDisorder:0, fichaOpen:{},
+    activePsicoCat:0, activePsicoItem:0,
     deckCat:4, deckAll:null, fcIndex:0, fcFlipped:false,
     quizCat:4, quizKind:'nome', quizSet:null, quizScore:0, quizDone:false,
     quizIndex:0, quizSelected:null, quizAnswered:false, quizHint:false,
@@ -1077,6 +1086,29 @@
     setState({sideCollapsed:v});
   };
   // voltar: delega ao histórico do navegador (dispara popstate -> navPop)
+  // ---------------------------------------------------------
+  // Psicopatologia/semiologia (fichas de sintomas — Dalgalarrondo)
+  // ---------------------------------------------------------
+  actions.goPsico = function(){ setState({screen:'psicoCategorias'}); scrollTop(); };
+  actions.openPsicoCat = function(i){ setState({screen:'psicoCategoria', activePsicoCat:Number(i)||0, activePsicoItem:0}); scrollTop(); };
+  actions.backToPsicoCategorias = function(){ setState({screen:'psicoCategorias'}); scrollTop(); };
+  actions.openPsicoItem = function(i){ setState({screen:'psicoFicha', activePsicoItem:Number(i)||0}); scrollTop(); };
+  actions.backToPsicoCategoria = function(){ setState({screen:'psicoCategoria'}); scrollTop(); };
+  actions.openPsicoFromSearch = function(arg){
+    var p = String(arg).split(':'); var ci = +p[0], di = +p[1];
+    setState({screen:'psicoFicha', activePsicoCat:ci, activePsicoItem:di}); scrollTop();
+  };
+  actions.prevPsicoItem = function(){
+    var c = PSICO[state.activePsicoCat]; if(!c) return;
+    var i = state.activePsicoItem-1; if(i<0) return;
+    setState({activePsicoItem:i}); scrollTop();
+  };
+  actions.nextPsicoItem = function(){
+    var c = PSICO[state.activePsicoCat]; if(!c) return;
+    var i = state.activePsicoItem+1; if(i>=c.items.length) return;
+    setState({activePsicoItem:i}); scrollTop();
+  };
+
   actions.goBack = function(){ if(navStack.length){ window.history.back(); } };
   actions.toggleMore = function(){ state.moreOpen = !state.moreOpen; render(); };
   actions.closeMore  = function(){ if(state.moreOpen){ state.moreOpen=false; render(); } };
@@ -2019,6 +2051,15 @@
                   body:searchNormalize(fichaText(d))});                    // fraco: texto completo
       });
     });
+    PSICO.forEach(function(c, ci){
+      (c.items||[]).forEach(function(d, di){
+        var txt = [d.tldr, d.definicao, d.fenomenologia, d.exemplos, d.diferencial, (d.apareceEm||[]).join(' ')].join(' ');
+        idx.push({type:'psico', ci:ci, di:di, label:d.n, code:'', cat:c.name, color:c.color,
+                  labelNorm:searchNormalize(d.n),
+                  norm:searchNormalize(d.n + ' ' + c.name),
+                  body:searchNormalize(txt)});
+      });
+    });
     SEARCH_INDEX = idx;
     return idx;
   }
@@ -2064,6 +2105,13 @@
           '<span class="search-dot" style="background:'+e.color+';"></span>'+
           '<span class="search-name">'+esc(e.label)+'</span>'+
           '<span class="search-tag">categoria</span>'+
+        '</button>';
+      }
+      if(e.type === 'psico'){
+        return '<button class="search-item" data-action="openPsicoFromSearch" data-arg="'+e.ci+':'+e.di+'">'+
+          '<span class="search-dot" style="background:'+e.color+';"></span>'+
+          '<span class="search-name">'+esc(e.label)+'</span>'+
+          '<span class="search-tag">sintoma</span>'+
         '</button>';
       }
       return '<button class="search-item" data-action="openRef" data-arg="'+e.ci+':'+e.di+'">'+
@@ -2396,6 +2444,10 @@
             '<div style="width:46px;height:46px;border-radius:13px;background:#FFEDE3;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+ICON.pencil+'</div>'+
             '<div><div style="font:700 16px \'Bricolage Grotesque\';color:var(--ink);">Exercícios</div><div style="font-size:13px;color:var(--muted);font-weight:500;">4 modos · flashcards e quiz</div></div>'+
           '</button>'+
+          (PSICO.length ? '<button data-action="goPsico" data-hover="border-color:#5BC0BE;transform:translateY(-3px);box-shadow:0 12px 26px rgba(14,77,100,.10);" data-active="transform:translateY(-1px) scale(.99);" style="flex:1;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;cursor:pointer;display:flex;gap:14px;align-items:center;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;">'+
+            '<div style="width:46px;height:46px;border-radius:13px;background:#EDE9FE;color:#6C5CE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+ICON.book+'</div>'+
+            '<div><div style="font:700 16px \'Bricolage Grotesque\';color:var(--ink);">Psicopatologia</div><div style="font-size:13px;color:var(--muted);font-weight:500;">sinais e sintomas · Dalgalarrondo</div></div>'+
+          '</button>' : '')+
         '</div>'+
       '</div>'+
 
@@ -2895,6 +2947,116 @@
           reportBtn+
         '</aside>'+
       '</div>'+
+    '</section>';
+  }
+
+  /* =========================================================
+     TELA: PSICOPATOLOGIA (fichas de semiologia — Dalgalarrondo)
+     Isolado do DSM_CONTENT/CATS: sem quiz, sem gamificação (v1 = leitura).
+     Reusa os componentes visuais das telas de categoria/ficha do DSM.
+     ========================================================= */
+  function screenPsicoCategorias(){
+    var cards = PSICO.map(function(c,i){
+      var cardStyle = "display:flex;flex-direction:column;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-top:3px solid "+c.color+";border-radius:18px;padding:18px;cursor:pointer;text-align:left;transition:transform .2s ease,box-shadow .2s ease;animation:popIn .45s cubic-bezier(.2,.7,.3,1) both;animation-delay:"+(i*0.035).toFixed(3)+"s;";
+      var tileStyle = "width:40px;height:40px;border-radius:11px;background:"+c.color+"1A;color:"+c.color+";font:800 17px 'Bricolage Grotesque';display:flex;align-items:center;justify-content:center;";
+      var countChip = "font-size:11.5px;font-weight:700;color:var(--muted);background:var(--surface-2);border-radius:7px;padding:4px 9px;";
+      return '<button data-action="openPsicoCat" data-arg="'+i+'" data-hover="transform:translateY(-3px);box-shadow:0 12px 26px rgba(16,42,51,.10);" style="'+cardStyle+'">'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;">'+
+          '<div style="'+tileStyle+'">'+ICON.book+'</div>'+
+          '<span style="'+countChip+'">'+c.items.length+'</span>'+
+        '</div>'+
+        '<div style="font:700 15.5px \'Bricolage Grotesque\';line-height:1.25;margin-top:14px;color:var(--ink);text-wrap:balance;">'+esc(c.name)+'</div>'+
+      '</button>';
+    }).join('');
+
+    return ''+
+    '<section style="animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;">Psicopatologia</h1>'+
+      '<p style="margin:0 0 24px;color:var(--muted-2);font-size:15px;max-width:620px;">Fichas de semiologia psiquiátrica (Dalgalarrondo, <i>Psicopatologia</i>): os sinais e sintomas — sensação, percepção, memória, pensamento e outras funções psíquicas — que compõem os transtornos do DSM-5-TR.</p>'+
+      (cards ? '<div class="cats-grid">'+cards+'</div>' : '<p style="color:var(--muted);">Em construção — novas funções psíquicas em breve.</p>')+
+    '</section>';
+  }
+
+  function screenPsicoCategoria(){
+    var cat = PSICO[state.activePsicoCat]; if(!cat) return screenPsicoCategorias();
+    var lastSg = null;
+    var items = cat.items.map(function(d,i){
+      var sg = d.sg || '';
+      var header = '';
+      if(sg !== lastSg){ lastSg = sg; if(sg) header = '<div class="cat-subgroup">'+esc(sg)+'</div>'; }
+      var dot = "width:11px;height:11px;border-radius:50%;flex-shrink:0;background:"+cat.color+";";
+      var btn = '<button data-action="openPsicoItem" data-arg="'+i+'" class="cat-disorder" data-hover="border-color:#5BC0BE;box-shadow:0 8px 20px rgba(16,42,51,.07);transform:translateX(4px);" data-active="transform:translateX(2px) scale(.995);" style="display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;cursor:pointer;text-align:left;width:100%;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;">'+
+        '<div style="'+dot+'"></div>'+
+        '<div style="flex:1;min-width:0;">'+
+          '<div style="font-weight:700;font-size:15.5px;color:var(--ink);">'+esc(d.n)+'</div>'+
+          (d.tldr ? '<div style="font-size:12.5px;color:var(--muted);font-weight:500;margin-top:2px;">'+esc(d.tldr)+'</div>' : '')+
+        '</div>'+
+        ICON.chevR+
+      '</button>';
+      return header + btn;
+    }).join('');
+
+    var headerTile = '<div style="width:54px;height:54px;border-radius:15px;background:'+cat.color+'1A;color:'+cat.color+';font:800 22px \'Bricolage Grotesque\';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+ICON.book+'</div>';
+
+    return ''+
+    '<section style="--cat:'+cat.color+';max-width:920px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<button data-action="backToPsicoCategorias" data-hover="color:var(--teal-text);" style="background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0;margin-bottom:18px;">'+ICON.back+'Psicopatologia</button>'+
+      '<div style="display:flex;align-items:flex-start;gap:18px;margin-bottom:26px;">'+
+        headerTile+
+        '<div>'+
+          '<h1 style="font:800 27px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0 0 6px;text-wrap:balance;">'+esc(cat.name)+'</h1>'+
+          '<p style="margin:0;color:var(--muted-2);font-size:14.5px;">'+cat.items.length+' fichas · Dalgalarrondo, Psicopatologia</p>'+
+        '</div>'+
+      '</div>'+
+      '<div style="display:flex;flex-direction:column;gap:10px;">'+items+'</div>'+
+    '</section>';
+  }
+
+  function screenPsicoFicha(){
+    var cat = PSICO[state.activePsicoCat]; if(!cat) return screenPsicoCategorias();
+    var item = cat.items[state.activePsicoItem] || cat.items[0];
+
+    function block(title, text){
+      if(!text) return '';
+      return '<h3 class="ficha-h3 mt"><span class="bar"></span>'+esc(title)+'</h3>'+
+        '<div class="crit-card"><p class="rich-p">'+esc(text)+'</p></div>';
+    }
+
+    var apareceBlock = '';
+    if(item.apareceEm && item.apareceEm.length){
+      var chips = item.apareceEm.map(function(t){
+        return '<span style="font-size:12px;font-weight:700;color:var(--cat);background:var(--cat-soft);border-radius:8px;padding:5px 10px;">'+esc(t)+'</span>';
+      }).join('');
+      apareceBlock = '<h3 class="ficha-h3 mt"><span class="bar"></span>Aparece em</h3>'+
+        '<div style="display:flex;flex-wrap:wrap;gap:8px;">'+chips+'</div>';
+    }
+
+    var pIdx = state.activePsicoItem-1, nIdx = state.activePsicoItem+1;
+    var prevItem = pIdx>=0 ? cat.items[pIdx] : null;
+    var nextItem = nIdx<cat.items.length ? cat.items[nIdx] : null;
+    var nav = '<div class="ficha-nav">'+
+      (prevItem ? '<button data-action="prevPsicoItem" class="nav-prev" data-hover="border-color:var(--cat);color:var(--cat);" data-active="transform:scale(.96);">'+ICON.chevLsm+'Anterior</button>' : '<span></span>')+
+      (nextItem ? '<button data-action="nextPsicoItem" class="nav-next" data-hover="filter:brightness(.92);transform:translateX(2px);" data-active="transform:scale(.97);" title="'+esc(nextItem.n)+'"><span class="nn-col"><span class="nn-lbl">Próximo</span><span class="nn-name">'+esc(nextItem.n)+'</span></span>'+ICON.chevRsm+'</button>' : '')+
+    '</div>';
+
+    return ''+
+    '<section class="ficha-screen" style="--cat:'+cat.color+';--cat-soft:'+cat.color+'1A;max-width:820px;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<button data-action="backToPsicoCategoria" data-hover="color:var(--cat);" style="background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0;margin-bottom:18px;">'+ICON.back+esc(cat.name)+'</button>'+
+
+      '<span class="ficha-tag">'+esc(cat.name)+(item.sg?' · '+esc(item.sg):'')+'</span>'+
+      '<h1 class="ficha-title">'+esc(item.n)+'</h1>'+
+
+      (item.tldr ? '<div class="ficha-summary"><span class="fs-icon">'+ICON.info+'</span><div><div class="fs-label">Resumo</div><p>'+esc(item.tldr)+'</p></div></div>' : '')+
+
+      block('Definição', item.definicao)+
+      block('Fenomenologia', item.fenomenologia)+
+      block('Exemplo clínico', item.exemplos)+
+      block('Diferencial — não confundir com', item.diferencial)+
+      apareceBlock+
+
+      '<p style="margin:22px 0 0;font-size:12px;color:var(--muted);">Fonte: '+esc(item.fonte||'Dalgalarrondo, Psicopatologia')+'</p>'+
+
+      nav+
     '</section>';
   }
 
@@ -5201,6 +5363,9 @@
       case 'categorias':  return screenCategorias();
       case 'categoria':   return screenCategoria();
       case 'ficha':       return screenFicha();
+      case 'psicoCategorias': return screenPsicoCategorias();
+      case 'psicoCategoria':  return screenPsicoCategoria();
+      case 'psicoFicha':      return screenPsicoFicha();
       case 'exercicios':  return screenExercicios();
       case 'flashMode':   return screenFlashMode();
       case 'decks':       return screenDecks();

@@ -1,0 +1,532 @@
+{
+  "funcao": "Sensopercepção",
+  "color": "#6C5CE7",
+  "items": [
+    {
+      "n": "Sensação e percepção (definições básicas)",
+      "sg": "Definições básicas",
+      "tldr": "Sensação é o registro passivo e pré-consciente do estímulo no receptor; percepção é sua elaboração ativa e consciente pela mente.",
+      "definicao": "Sensação é o fenômeno elementar disparado por estímulos físicos, químicos ou biológicos, internos ou externos, que atuam sobre os órgãos receptores e os excitam. Percepção é o ato pelo qual o indivíduo toma consciência desse estímulo sensorial.",
+      "fenomenologia": "O processo pode ser dividido em duas dimensões. À sensação atribui-se, de modo convencional, o plano neuronal, ainda não totalmente consciente; à percepção cabe o plano neuropsicológico e psicológico, no qual os dados puramente sensoriais viram experiências perceptivas conscientes. Também se distinguem quanto à atividade: a sensação é passiva (luz, som ou pressão incidindo sobre os sistemas de recepção do organismo), enquanto a percepção é ativa, pois o sistema nervoso e a mente edificam um percepto ao integrar os estímulos e cotejá-los com lembranças de vivências anteriores e com o contexto sociocultural que dá sentido às experiências. Por essa continuidade, muitos autores optam por não isolar os dois planos e falam em sensopercepção como fenômeno único.",
+      "exemplos": "Ao ouvir um som agudo, primeiro há apenas o estímulo captado pelo ouvido (sensação); em seguida, ao reconhecer que se trata do choro de um bebê, atribuo significado àquilo, cotejando com o que já vivi (percepção).",
+      "diferencial": "Não confundir sensação com percepção: a primeira é o registro elementar e passivo do estímulo no receptor, ainda pré-consciente; a segunda é a elaboração ativa e consciente desse dado, construída pela mente com apoio da memória e da cultura. Como os dois planos se encadeiam de forma contínua, vários autores preferem tratá-los em conjunto sob o termo sensopercepção.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Apercepção",
+      "sg": "Definições básicas",
+      "tldr": "Perceber com plenitude: reconhecer e integrar o objeto percebido ao que já se sabe (conceito de Leibniz/Jung, próximo de uma gnosia).",
+      "definicao": "Termo cunhado pelo filósofo Leibniz para designar a percepção que entra por inteiro na consciência e se liga aos demais conteúdos psíquicos. Perceber apercebendo é captar o objeto com clareza e plenitude, reconhecendo-o e identificando-o a partir daquilo que já existe na mente.",
+      "fenomenologia": "Trata-se de uma distinção sutil e discutida em relação à percepção comum. Para Jung, ocorre apercepção quando um conteúdo novo se encaixa de tal maneira em conteúdos parecidos já presentes que passa a ser sentido de imediato como claro e compreendido. Sob essa ótica, a apercepção corresponderia a uma gnosia — o reconhecimento pleno do objeto percebido. Vale sublinhar que boa parte dos autores da psicologia e da psicopatologia não separa apercepção de percepção, tratando-as como equivalentes.",
+      "exemplos": "\"Ao ouvir uma melodia que já conheço, não apenas capto os sons: identifico na hora que se trata daquela canção, encaixando-a no que já sei — reconheço e compreendo o que percebo de forma imediata.\"",
+      "diferencial": "Não confundir com a percepção simples: a apercepção acrescenta o reconhecimento e a integração pleno do material com os conteúdos psíquicos prévios (aproximando-se de uma gnosia). Lembrar, porém, que a maioria dos autores não estabelece essa separação.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Imagem sensoperceptiva real",
+      "sg": "Imagem, representação e imaginação",
+      "tldr": "A \"imagem\" básica da percepção real: nítida, corpórea, estável, externa, involuntária e completa.",
+      "definicao": "É a unidade fundamental do processo de sensopercepção, ou seja, a imagem que se forma quando percebemos um objeto realmente presente diante de nós. Costuma ser designada apenas por \"imagem\" e serve de referência para caracterizar as demais experiências perceptivas.",
+      "fenomenologia": "A imagem perceptiva normal reúne seis atributos que a definem. Nitidez: seus limites são claros e bem recortados. Corporeidade: apresenta-se viva e concreta, com luminosidade, brilho e coloração intensa. Estabilidade: mantém-se constante enquanto o estímulo permanece, sem oscilar de instante a instante. Extrojeção: origina-se do meio externo e é localizada justamente nesse espaço de fora. Ininfluenciabilidade voluntária: a pessoa não é capaz de modificá-la à vontade. Completude: mostra-se acabada e detalhada, exibindo todos os seus pormenores ao observador.",
+      "exemplos": "\"Olho para a xícara sobre a mesa: vejo seus contornos exatos, a cor firme e o brilho da porcelana; ela continua igual enquanto eu a observo e não some nem muda por mais que eu queira.\"",
+      "diferencial": "Não confundir com experiências que não reúnem esses seis atributos. Serve de parâmetro para contrastar com imagens que percam nitidez, corporeidade, estabilidade, localização externa ou completude, ou que possam ser alteradas pela vontade — características que fogem ao padrão da imagem perceptiva real.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Representação (imagem representativa ou mnêmica)",
+      "sg": "Imagem, representação e imaginação",
+      "tldr": "Imagem revivida por dentro, sem o objeto presente: borrada, instável, interna e incompleta.",
+      "definicao": "Reaparecimento, na consciência, de uma imagem sensorial já vivida antes, agora sem que o objeto que originalmente a provocou esteja fisicamente presente. Trata-se, portanto, de uma imagem revivida internamente, e não de uma percepção real do mundo externo.",
+      "fenomenologia": "Cinco traços a definem e a separam da imagem perceptiva real: contornos pouco nítidos, tendendo ao borrado; baixa corporeidade, sem a vivacidade de algo realmente visto; instabilidade, pois surge e some com facilidade do campo consciente; caráter introjetado, sendo sentida num espaço interno, e não projetada para fora; e incompletude, com um desenho vago e indeterminado, do qual costumam vir apenas alguns detalhes.",
+      "exemplos": "\"Quando penso no rosto da minha avó, ele até aparece na minha cabeça, mas é uma coisa apagada, meio sem forma — vem por um instante, com um detalhe ou outro, e logo se desfaz.\"",
+      "diferencial": "Não confundir com a imagem sensoperceptiva real: esta decorre da presença efetiva do objeto externo e tem nitidez, corporeidade e completude, ao passo que a representação é interna, borrada, instável e incompleta, sendo apenas o reviver de uma imagem anterior.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Imagem eidética (eidetismo)",
+      "sg": "Imagem, representação e imaginação",
+      "tldr": "Capacidade excepcional de evocar voluntariamente uma imagem mental com nitidez quase perceptiva; não é, por si só, sinal de doença.",
+      "definicao": "Recuperação mental de uma imagem previamente armazenada (uma representação) com precisão tão alta que se aproxima da vivência perceptiva. Ocorre em pessoas dotadas de uma capacidade fora do comum.",
+      "fenomenologia": "Quem tem eidetismo consegue trazer à mente a figura de algo já conhecido — por exemplo, um móvel ou o rosto de alguém — com nitidez e clareza tamanhas que o conteúdo evocado se assemelha a algo realmente visto, e não a uma simples lembrança. Dois traços a caracterizam: a evocação é feita de modo voluntário e ela não configura, por si só, sinal de adoecimento psíquico.",
+      "exemplos": "\"Quando fecho os olhos, consigo montar de novo o rosto do meu avô com todos os detalhes, como se ele estivesse diante de mim; sei que é só uma imagem que estou recriando, mas ela vem com uma clareza impressionante.\"",
+      "diferencial": "Não confundir com percepção real: embora chegue perto da experiência de perceber, trata-se de uma representação evocada, buscada de forma deliberada, e cuja presença não indica necessariamente transtorno mental.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Pareidolia",
+      "sg": "Imagem, representação e imaginação",
+      "tldr": "Ver formas com sentido em estimulos vagos, de modo voluntario, misturando percepcao e imaginacao.",
+      "definicao": "Fenomeno que combina elementos de percepcao e de representacao: a partir de um estimulo ambiental vago ou mal definido, o sujeito forma, de modo voluntario, uma imagem visual dotada de sentido.",
+      "fenomenologia": "Situa-se numa posicao intermediaria entre perceber e imaginar. O ponto de partida e sempre um estimulo real, porem indistinto e sem contornos precisos; sobre esse material impreciso a pessoa projeta, de forma deliberada, uma figura reconhecivel. Difere de captar passivamente o que esta diante dos olhos, pois ha participacao ativa da imaginacao do observador.",
+      "exemplos": "Uma crianca observa as nuvens no ceu e, brincando, enxerga ali a silhueta de um gato; instantes depois, no mesmo aglomerado difuso, passa a ver um elefante.",
+      "diferencial": "Nao confundir com a percepcao comum, em que a imagem decorre diretamente de um estimulo nitido e nao depende de um ato voluntario da imaginacao para ganhar forma.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Imaginação e fantasia",
+      "sg": "Imagem, representação e imaginação",
+      "tldr": "Produção voluntária de imagens sem estímulo sensorial — reevocadas ou criadas —, sendo a fantasia seu produto minimamente organizado.",
+      "definicao": "Atividade psíquica, em geral voluntária, que produz imagens fora da presença de estímulos sensoriais — seja reevocando imagens já percebidas antes, seja compondo imagens inéditas. A fantasia (ou fantasma) é um produto minimamente organizado desse processo imaginativo.",
+      "fenomenologia": "Duas modalidades de imagem resultam da imaginação: a imagem mnêmica, resgatada de percepções passadas, e a imagem criada, formada de novo. O traço comum é operar sem que haja estímulo sensorial atuando. A fantasia é uma dessas produções imaginativas, com organização mínima. Na leitura psicanalítica, pode ser consciente ou inconsciente, brotando de desejos, medos e conflitos que também podem ser conscientes ou inconscientes.",
+      "exemplos": "\"De olhos fechados, revejo a casa da minha infância nos mínimos detalhes; em seguida, sem querer, começo a montar na cabeça uma cena que nunca aconteceu, misturando o que temo e o que desejo.\"",
+      "diferencial": "Não confundir com a percepção propriamente dita: a imaginação costuma acontecer sem qualquer estímulo dos sentidos, ao passo que a percepção depende deles.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Visão cega (blindsight) e percepção olfativa sem consciência",
+      "sg": "Percepção sem consciência",
+      "tldr": "Reação a um estímulo (visual ou olfativo) sem consciência de tê-lo percebido.",
+      "definicao": "Situação em que a pessoa reage a um estímulo sensorial sem ter qualquer consciência de tê-lo captado. Na visão cega, um sujeito cego responde ao que não enxerga conscientemente; na percepção olfativa sem consciência, a pessoa reage a cheiros que não nota.",
+      "fenomenologia": "Descreve o descolamento entre o processamento de um estímulo e a experiência consciente dele. Na visão cega (blindsight), o quadro surge em pessoas com cegueira de origem central, isto é, que perderam a região cortical do cérebro encarregada da visão por causas como tumor, sangramento ou isquemia. Ainda que afirmem não ter visto nada, essas pessoas acompanham os estímulos apresentados com o olhar quando testadas, evidenciando que o material visual é captado sem chegar à consciência. Um fenômeno paralelo foi relatado no olfato: expostas a cheiros agradáveis ou desagradáveis abaixo do limiar da percepção consciente, as pessoas reagem afetivamente a eles mesmo sem se dar conta de que os sentiram.",
+      "exemplos": "Em testes de laboratório, um paciente com lesão do córtex occipital nega enxergar qualquer coisa à sua frente, mas seus olhos acompanham corretamente um objeto que se move no campo cego. De modo semelhante, alguém exposto a um cheiro abaixo do limiar consciente não percebe tê-lo sentido, mas fica de bom humor com um odor agradável ou irritado com um desagradável, sem saber por quê.",
+      "diferencial": "O traço característico desse fenômeno é a resposta ao estímulo (visual ou olfativo) dissociada de sua vivência consciente: a pessoa reage ao que foi apresentado, mas relata não ter percebido nada.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Hiperestesia",
+      "sg": "Alterações quantitativas",
+      "tldr": "Percepções captadas com intensidade ou duração exageradas — cores mais vívidas, sons amplificados.",
+      "definicao": "Alteração quantitativa da percepção em que os estímulos são captados com intensidade ou duração exageradas. Cores, sons e demais sensações chegam à consciência de modo desproporcionalmente forte.",
+      "fenomenologia": "Enquadra-se entre as alterações quantitativas da sensopercepção, ao lado de hiperpatias, hipoestesias, anestesias e analgesias — grupo definido pela intensidade anômala das imagens perceptivas, seja para cima, seja para baixo. Na hiperestesia o desvio é para cima: a mesma realidade sensorial é vivida de forma ampliada. Sons corriqueiros soam superdimensionados (um simples barulho é sentido como algo estrondoso) e o campo visual ganha cores mais fortes e vívidas. O aumento pode recair sobre a intensidade da sensação, sobre sua duração, ou sobre ambas.",
+      "exemplos": "\"Depois que a substância fez efeito, tudo ficou intenso demais: as cores pulavam diante dos meus olhos, saturadas, e qualquer ruído do quarto parecia um estrondo dentro da minha cabeça.\"",
+      "diferencial": "Não confundir com as demais alterações quantitativas: hiperpatia (também um exagero da sensação), hipoestesia e anestesia (redução ou abolição da percepção) e analgesia (perda da dor) apontam para o lado oposto ou para outra modalidade. Aqui o traço central é a percepção ampliada — o estímulo é real, apenas vivenciado com intensidade ou duração aumentadas.",
+      "apareceEm": [
+        "Intoxicação por alucinógenos (LSD)",
+        "Intoxicação por cocaína, maconha, harmina e harmalina",
+        "Epilepsia (algumas formas)",
+        "Enxaqueca",
+        "Hipertireoidismo",
+        "Esquizofrenia aguda",
+        "Estados maníacos"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Hiperpatia",
+      "sg": "Alterações quantitativas",
+      "tldr": "Toque leve na pele que gera dor em queimação desproporcional, ligada às síndromes talâmicas.",
+      "definicao": "Alteração sensoperceptiva de sentido neurológico em que um estímulo leve sobre a pele desencadeia uma sensação desagradável, em geral descrita como queimação dolorosa.",
+      "fenomenologia": "O fenômeno caracteriza-se pela transformação de um estímulo cutâneo brando em experiência penosa, descrita habitualmente como queimação que dói. É apontado como manifestação que costuma ocorrer nas síndromes do tálamo.",
+      "exemplos": "\"Mal encostam o dedo no meu braço e já sinto como se estivessem queimando minha pele; qualquer roçar de tecido vira uma dor de ardência.\"",
+      "diferencial": "Não confundir com a hiperestesia (aumento da intensidade da percepção em várias modalidades sensoriais — sons, imagens, cores — sem necessariamente dor): a hiperpatia é especificamente uma dor em queimação provocada por um toque leve na pele, e está associada às síndromes talâmicas.",
+      "apareceEm": [
+        "Síndromes talâmicas"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Hipoestesia",
+      "sg": "Alterações quantitativas",
+      "tldr": "Percepcao sensorial rebaixada: na depressao grave o mundo fica apagado e sem sabor; no sentido neurologico, perda tatil em territorios cutaneos definidos.",
+      "definicao": "Reducao da intensidade das percepcoes sensoriais, em que os estimulos chegam atenuados a consciencia. Pode ter sentido psicopatologico (ligado ao estado afetivo) ou sentido neurologico (defice sensitivo em regioes corporais definidas).",
+      "fenomenologia": "Na acepcao psicopatologica, o paciente vivencia o ambiente ao redor de forma empobrecida: o entorno parece mais sombrio, as cores ficam apagadas e sem viveza, a comida perde o gosto e os cheiros ficam mais fracos. Na acepcao neurologica, trata-se de perdas sensitivas tateis restritas a territorios de pele com inervacao anatomicamente delimitada, configurando as sindromes sensitivas estudadas pela neurologia clinica. Conforme o local lesado, surgem padroes tipicos: a distribuicao \"em faixa\" (lesao de medula e de raizes dos nervos) e as distribuicoes \"em bota\" e \"em luva\" (comprometimento dos neuronios perifericos nas polineuropatias).",
+      "exemplos": "\"Desde que a depressao piorou, e como se tudo tivesse perdido a cor. A comida nao tem mais sabor nenhum, os cheiros quase somem e o mundo parece apagado, escuro.\"",
+      "diferencial": "Nao confundir a hipoestesia de sentido psicopatologico (empobrecimento perceptivo global associado ao humor, tipico da depressao grave) com a de sentido neurologico (defice tatil localizado por lesao de vias sensitivas, com padroes como \"em faixa\", \"em bota\" e \"em luva\").",
+      "apareceEm": [
+        "Depressão grave"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Anestesia e analgesia",
+      "sg": "Alterações quantitativas",
+      "tldr": "Perda da sensibilidade ao toque (anestesia) ou a dor (analgesia); quando nao segue o territorio de um nervo, costuma ter base emocional.",
+      "definicao": "Perda da capacidade de sentir estimulos numa regiao do corpo: na anestesia falta a percepcao do toque, e na analgesia falta a percepcao da dor. O termo anestesia costuma ser empregado de forma ampla, abrangendo tambem os casos de analgesia.",
+      "fenomenologia": "Manifesta-se como ausencia (anestesia) ou reducao (hipoestesia) da sensibilidade tatil, ou ainda como abolicao da sensibilidade dolorosa (analgesia), atingindo trechos da pele ou segmentos corporais. Um dado clinico decisivo: quando o territorio afetado nao coincide com a distribuicao anatomica de um nervo, o quadro tende a ser de origem psicogenica, sustentado por fatores emocionais.",
+      "exemplos": "\"O medico apertou minha mao com forca e ate espetou a ponta dos meus dedos, mas eu nao sentia nada ali — como se aquela parte do braco tivesse ficado adormecida e sem dor, embora o resto do corpo estivesse normal.\"",
+      "diferencial": "Nao confundir com perdas sensitivas de causa neurologica: nestas, a area sem sensibilidade respeita o trajeto anatomico de um nervo, ao passo que nas anestesias/analgesias de fundo emocional a regiao afetada nao corresponde a esse mapeamento.",
+      "apareceEm": [
+        "Transtornos histericos (conversao histerica)",
+        "Sujeitos com alta sugestionabilidade",
+        "Alguns quadros depressivos graves",
+        "Alguns quadros psicoticos graves"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Parestesias e disestesias",
+      "sg": "Alterações quantitativas",
+      "tldr": "Sensacoes tateis anomalas e incomodas: a parestesia surge sozinha; a disestesia e provocada por estimulo externo.",
+      "definicao": "Sao alteracoes tateis nas quais o paciente experimenta sensacoes cutaneas anomalas e desagradaveis. A parestesia surge por conta propria, sem estimulo, enquanto a disestesia e provocada por um estimulo externo aplicado sobre a pele.",
+      "fenomenologia": "Na parestesia, a pessoa relata, sem que nada a provoque, sensacoes como formigamento, dormencia, picada, ferroada ou ardor, com intensidade variavel; nao chega a ser vivida como dor propriamente dita, mas incomoda. Ja a disestesia tatil e uma resposta distorcida a um estimulo real: o toque ou a temperatura geram uma percepcao trocada ou dolorosa. Assim, o calor aplicado a pele pode ser sentido como frio, e um roce leve pode desencadear dor (aproximando-se, nesse ponto, da hiperpatia). O criterio que as separa e a origem: a parestesia aparece de modo espontaneo; a disestesia depende de um estimulo que a dispara.",
+      "exemplos": "\"Do nada, minhas maos comecam a formigar e adormecer, como se tivessem levando agulhadas.\" Em um caso de disestesia: ao encostarem algo quente no meu braco, sinto frio; e quando so passam a mao de leve na minha pele, aquilo doi.",
+      "diferencial": "Nao confundir parestesia com disestesia: a primeira nasce espontaneamente, sem qualquer estimulo, e a segunda so aparece quando um estimulo externo e aplicado. A sensacao dolorosa desproporcional da disestesia frente a um toque leve lembra a hiperpatia, mas nao deve ser tomada por ela.",
+      "apareceEm": [
+        "Transtorno conversivo",
+        "Quadros hipocondriacos graves",
+        "Quadros ansiosos com somatizacao marcante"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Ilusão",
+      "sg": "Ilusão",
+      "tldr": "Percepção deformada de um objeto real e presente, favorecida por rebaixamento de consciência, fadiga/desatenção ou afetos intensos.",
+      "definicao": "Percepção distorcida de um objeto que de fato existe e está presente diante do sujeito. Diferentemente de uma percepção normal, o estímulo externo real é adulterado por fatores patológicos, resultando numa imagem deformada.",
+      "fenomenologia": "Surge tipicamente em três contextos: quando há rebaixamento do nível de consciência; em situações de cansaço intenso ou desatenção acentuada; e sob a influência de certos estados afetivos. Neste último caso, quando a emoção é muito forte a ponto de moldar aquilo que se percebe, fala-se em ilusão catatímica. Quanto à modalidade sensorial, as visuais são as mais frequentes, seguidas pelas auditivas, que também não são incomuns.",
+      "exemplos": "Tomado por um medo intenso ao atravessar um cômodo escuro, interpretei o casaco pendurado na cadeira como a silhueta de alguém à minha espera — o objeto estava ali, mas o pavor deformou o que enxerguei.",
+      "diferencial": "Não confundir com a alucinação, em que não existe objeto externo gerando a percepção. Na ilusão, ao contrário, sempre há um estímulo real e presente, apenas percebido de forma alterada.",
+      "apareceEm": [
+        "Delirium",
+        "Depressão",
+        "Transtornos de ansiedade",
+        "Transtornos da personalidade",
+        "Esquizofrenia"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinação (definição geral)",
+      "sg": "Alucinação — visão geral",
+      "tldr": "Perceber com nitidez algo (voz, ruído, imagem) que não existe do lado de fora — sem estímulo sensorial real.",
+      "definicao": "Alucinação é perceber, de forma clara e bem delimitada, um objeto (uma voz, um ruído, uma imagem) na ausência de qualquer estímulo sensorial real que o produza. O conceito, nesses termos, remonta a Esquirol, ainda na primeira metade do século XIX.",
+      "fenomenologia": "O fenômeno tem nitidez e definição semelhantes às de uma percepção comum, mas nada o provoca do lado de fora. Fala-se em alucinação verdadeira quando o vivenciado reúne os atributos de uma imagem perceptiva real: é nítido, tem corpo (corporeidade), é lançado no espaço externo e se mantém constante. Vale notar que, na maioria das vezes, o objeto alucinado é captado de modo bilateral — pelos dois ouvidos, pelos dois olhos ou pelas duas narinas.",
+      "exemplos": "\"Ouço a voz com toda a clareza, como se alguém falasse ao meu lado; escuto igual pelos dois ouvidos — mas não há ninguém no cômodo.\"",
+      "diferencial": "Não confundir com a percepção comum, em que existe um objeto real estimulando os sentidos: na alucinação a experiência é igualmente vívida, porém falta o estímulo externo correspondente.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações auditivas simples (tinnitus)",
+      "sg": "Tipos de alucinação",
+      "tldr": "Ruído bruto sem fonte externa (zumbido, cliques): o tinnitus, quase sempre de raiz otológica e ligado à perda auditiva.",
+      "definicao": "Percepção sonora sem estímulo externo real na qual se escutam apenas ruídos elementares, e não vozes ou palavras. Sua expressão mais característica é o tinnitus (tinnitus aurium): a experiência subjetiva de escutar barulhos em um ou nos dois ouvidos.",
+      "fenomenologia": "Diferentemente das formas complexas (vozes, frases), aqui o conteúdo se resume a sons brutos, sem organização. No tinnitus, o som mais comum é o zumbido, mas o paciente também pode relatar rumores/burburinhos, cliques e estalidos. Costuma ter origem orgânica: alterações do aparelho auditivo — orelha externa ou média, cóclea, nervo acústico — ou das vias auditivas centrais, e com frequência vem junto de rebaixamento da audição (hipoacusia), seja de tipo sensório-neural, seja de condução. Como quadro, é bem menos comum do que as alucinações auditivas complexas.",
+      "exemplos": "\"Não tem voz nenhuma, doutor. É um chiado que não para no meu ouvido direito, dia e noite. Junto com isso, comecei a escutar pior desse lado.\"",
+      "diferencial": "Não confundir com as alucinações auditivas complexas (audição de vozes e palavras): no tinnitus só há ruído bruto. Vale lembrar que o zumbido remete a causas otológicas/neurológicas — a doença de Ménière reúne a tríade zumbido + queda auditiva + vertigem, e o sintoma ainda pode surgir em doenças cerebrovasculares, como estreitamentos arteriais (estenoses), aneurismas e tumores dos vasos.",
+      "apareceEm": [
+        "Doença de Ménière",
+        "Doenças cerebrovasculares (estenoses arteriais, aneurismas, tumores vasculares)"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações auditivas complexas (audioverbais)",
+      "sg": "Tipos de alucinação",
+      "tldr": "Ouvir vozes sem estímulo real (muitas vezes ameaçadoras ou que comandam/comentam a ação); mais típica da esquizofrenia, mas também vista no humor, na borderline e em quadros neurocognitivos.",
+      "definicao": "Percepção auditiva de vozes na ausência de qualquer estímulo sonoro real. É a modalidade de alucinação auditiva complexa mais comum e clinicamente relevante.",
+      "fenomenologia": "O paciente ouve vozes sem que exista fonte externa; frequentemente elas têm caráter ameaçador ou ofensivo. Um subtipo importante são as vozes schneiderianas, que dão ordens ao paciente ou fazem comentários sobre o que ele faz, inclusive sobre atos cotidianos e banais. Nos transtornos do espectro esquizofrênico, costuma haver forte convicção de que as vozes são reais, sem crítica nem insight. O conteúdo pode variar conforme o quadro: de grandeza ou místico-religioso na mania, e negativo, de ruína ou culpa na depressão grave.",
+      "exemplos": "\"As vozes não param de me xingar e me ameaçar; ontem elas mandaram que eu apagasse a luz e depois ficaram narrando cada coisa que eu fazia enquanto cozinhava. Eu sei que são reais — não é imaginação minha.\"",
+      "diferencial": "Diante de vozes ouvidas por alguém com consciência preservada, convicção intensa, sem crítica nem insight e sem alteração do humor (nem mania, nem depressão), a primeira suspeita a levantar é esquizofrenia — ou seja, é útil separar esse quadro dos casos ligados a transtornos do humor.",
+      "apareceEm": [
+        "Transtornos do espectro da esquizofrenia",
+        "Episódio de mania",
+        "Depressão grave",
+        "Transtorno da personalidade borderline",
+        "Demência frontotemporal",
+        "Doença de Parkinson"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Sonorização/eco do pensamento e publicação do pensamento",
+      "sg": "Tipos de alucinação",
+      "tldr": "Ouvir o próprio pensamento (na hora ou em eco) e sentir que os outros o escutam — fenômenos próximos das alucinações audioverbais, típicos da esquizofrenia.",
+      "definicao": "Fenômenos aparentados às alucinações audioverbais em que o paciente ouve o próprio pensamento — no instante em que o pensa ou logo depois, como um eco. Na publicação do pensamento, ele sente com nitidez que os outros escutam o que pensa enquanto pensa.",
+      "fenomenologia": "A sonorização do pensamento (em alemão, Gedankenlautwerden), bastante aproximada do eco do pensamento, consiste na vivência sensorial de escutar o pensamento: no exato momento em que ele surge (sonorização) ou repetido logo em seguida (eco). Distinguem-se dois tipos: (1) Sonorização do próprio pensamento — trata-se de um fenômeno de natureza alucinatória, comparável a uma alucinação auditiva audioverbal, no qual fica claro para o paciente que o que ele ouve são seus próprios pensamentos, captados no momento em que os pensa; (2) Sonorização como vivência alucinatório-delirante — o indivíduo escuta pensamentos que foram colocados em sua mente por outra pessoa, estranha, e que agora ele passa a ouvir. Já na publicação do pensamento, inverte-se a direção: o sujeito tem a sensação nítida de que as demais pessoas ouvem aquilo que pensa, no mesmo instante em que o pensamento ocorre.",
+      "exemplos": "\"Quando penso alguma coisa, eu ouço o pensamento em voz alta, na hora exata em que ele passa pela minha cabeça — e às vezes ele volta repetido, como um eco. Pior: tenho certeza de que as pessoas ao redor estão escutando tudo o que penso.\"",
+      "diferencial": "Não confundir com a alucinação auditiva audioverbal comum: embora aparentados, aqui o conteúdo ouvido é o próprio pensamento. Diferenciar também os subtipos: na sonorização do próprio pensamento o paciente reconhece os pensamentos como seus; na variante alucinatório-delirante ele os vive como introduzidos por outra pessoa. E separar a sonorização/eco (o paciente ouve o pensamento) da publicação do pensamento (o paciente sente que os outros o ouvem).",
+      "apareceEm": [
+        "Esquizofrenia"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações musicais",
+      "sg": "Tipos de alucinação",
+      "tldr": "Ouvir músicas (melodias, canções) sem fonte real — frequente em idosas com perda auditiva, por deaferentação; pode ser idiopática ou sintomática de doença neurológica/psíquica.",
+      "definicao": "Percepção de sons musicais — melodias, ritmos, harmonias ou canções — na ausência de qualquer fonte sonora real no ambiente. Costuma reproduzir músicas já familiares ao paciente, cantadas ou tocadas por instrumentos.",
+      "fenomenologia": "O conteúdo é tipicamente uma música que a pessoa já conhecia, ouvida como voz que canta ou como execução instrumental. Divide-se em dois tipos conforme a causa: (1) idiopáticas — surgem sem doença neurológica ou psíquica de base, muitas vezes acompanhando redução da audição (hipoacusia); (2) sintomáticas — vinculadas a um quadro neurológico ou psicopatológico. Um mecanismo central proposto é a deaferentação: diante da falta de entrada sensorial, o próprio cérebro passa a gerar a experiência sonora. Por isso o perfil mais comum é o de mulheres idosas cuja audição vem se deteriorando de forma progressiva, em geral por afecções ou danos no ouvido.",
+      "exemplos": "Uma senhora idosa, com surdez que piora ano a ano, relata: \"Escuto hinos da minha infância tocando o dia inteiro, bem nítidos, como se um coral cantasse ao meu lado — mas não há ninguém, nenhum rádio ligado.\"",
+      "diferencial": "Não confundir a variante idiopática (ligada à perda auditiva, sem doença mental) com a sintomática (secundária a quadro neurológico ou psíquico): a distinção está na presença ou não de transtorno de base. O fenômeno decorre de privação sensorial (deaferentação), e não necessariamente de um transtorno psicótico.",
+      "apareceEm": [
+        "Depressão",
+        "Esquizofrenia",
+        "Demências",
+        "Epilepsia",
+        "Lesão cerebral traumática (lesão craniana)",
+        "Intoxicações / uso de psicofármacos"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações visuais",
+      "sg": "Tipos de alucinação",
+      "tldr": "Ver imagens (de pontos luminosos a cenas inteiras) sem estímulo real; mais comuns em quadros neurológicos.",
+      "definicao": "Percepção de imagens sem qualquer estímulo visual real correspondente. Costumam ser nítidas e variam de manifestações elementares a cenas inteiras.",
+      "fenomenologia": "Dividem-se em simples e complexas. As simples, chamadas fotopsias, consistem em cores, bolas ou pontos brilhantes. As complexas (ou configuradas) trazem conteúdo elaborado, como figuras e imagens de pessoas. Quando chegam a compor uma cena inteira — por exemplo, o quarto em chamas —, recebem o nome de alucinações cenográficas.",
+      "exemplos": "\"Acordei de madrugada e vi o quarto todo tomado pelo fogo, com as chamas subindo pela parede — parecia tão real que me levantei apavorado, mas não havia nada.\"",
+      "diferencial": "Não confundir as formas simples (fotopsias: cores e pontos luminosos) com as complexas, que trazem figuras e cenas estruturadas. Vale lembrar que também surgem em situações fisiológicas — ao adormecer (hipnagógicas), ao despertar (hipnopômpicas), no cansaço ou em emoção forte —, e não apenas em doença.",
+      "apareceEm": [
+        "Enxaqueca",
+        "Doenças oftalmológicas (com perda visual total ou parcial)",
+        "Epilepsia",
+        "Esquizofrenia",
+        "Demência com corpos de Lewy",
+        "Doença de Parkinson"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinação liliputiana",
+      "sg": "Tipos de alucinação",
+      "tldr": "Alucinação visual rara em que se veem personagens minúsculos misturados ao ambiente real, típica da síndrome de Charles Bonnet.",
+      "definicao": "Modalidade de alucinação visual em que a pessoa enxerga figuras muito pequenas e reduzidas, surgindo em meio aos objetos e às pessoas reais do próprio ambiente. É considerada um tipo raro dentro das alterações da sensopercepção.",
+      "fenomenologia": "Trata-se de uma percepção sem objeto na esfera visual marcada pela escala diminuta do que é visto: personagens minúsculos, em tamanho miniatura, aparecem integrados ao cenário cotidiano do sujeito, ao lado de coisas e pessoas que de fato existem ali. Junto com as alucinações cenográficas, é descrita como um fenômeno de ocorrência incomum. Guarda associação particular com a síndrome de Charles Bonnet, contexto em que se mostra mais habitual.",
+      "exemplos": "\"Enquanto estava sentada na sala, comecei a ver pessoinhas minúsculas se movimentando entre os móveis; elas eram pequeninas, mas apareciam ali no meio das coisas do meu quarto, como se fizessem parte do ambiente.\"",
+      "diferencial": "Não confundir com as alucinações cenográficas, que, embora também raras e igualmente presentes em diversas psicoses, não têm como traço definidor as figuras em tamanho miniatura descritas aqui.",
+      "apareceEm": [
+        "Síndrome de Charles Bonnet",
+        "Psicoses (diversas)"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Síndrome de Charles Bonnet",
+      "sg": "Tipos de alucinação",
+      "tldr": "Alucinações visuais (de simples a cenas vívidas) em quem tem déficit visual, geralmente idoso, com crítica preservada e sem outras modalidades alucinatórias.",
+      "definicao": "Quadro em que a pessoa apresenta alucinações visuais, tipicamente na presença de algum comprometimento da visão, mantendo preservadas a inteligência e as demais funções cognitivas. Recebe esse nome em homenagem ao naturalista e filósofo suíço Charles Bonnet (1720-1793).",
+      "fenomenologia": "Predomina em idosos e costuma surgir quando há perda visual em maior ou menor grau, decorrente de problemas oculares (catarata, degeneração macular, comprometimento da córnea ou da retina) ou de lesões nas vias neurais da visão. As alucinações podem ser complexas e muito nítidas — cenas com bichos, plantas, rostos, indivíduos, árvores, meios de transporte e até figuras diminutas de gente e de objetos —, mas também há relatos de fenômenos simples, como pontos de luz, formas nebulosas ou esferas mal definidas. Na grande maioria (mais de 90%) a pessoa reconhece que o que vê não é real; as vivências restringem-se ao campo visual, sem alucinações auditivas, táteis ou de outras modalidades.",
+      "exemplos": "\"Enxergo muito mal por causa da catarata, mas de vez em quando aparecem diante de mim flores coloridas e pessoas em miniatura andando pelo quarto. Eu sei que não estão ali de verdade — parece um filme que só eu vejo.\"",
+      "diferencial": "Não confundir com quadros alucinatórios em que há perda do juízo crítico ou prejuízo cognitivo associado: aqui, na quase totalidade dos casos, a pessoa se dá conta de que a experiência é anômala, e sua inteligência e capacidades cognitivas permanecem íntegras. Também não confundir com condições que cursam com alucinações em várias modalidades — nesta síndrome as vivências são exclusivamente visuais, sem componente auditivo, tátil ou de outros tipos.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações táteis",
+      "sg": "Tipos de alucinação",
+      "tldr": "Sentir na pele picadas, choques ou bichos que não existem — comum na esquizofrenia, no delirium tremens e nas psicoses por cocaína.",
+      "definicao": "Percepções táteis sem objeto real: o indivíduo sente na própria pele estímulos que não existem, como choques, picadas ou o contato de pequenos bichos.",
+      "fenomenologia": "O relato típico envolve sensações cutâneas de espetadas, choques elétricos ou de insetos e bichinhos que caminham sobre a pele. Quando o conteúdo é o de animais rastejando, costuma vir junto de um delírio de que o corpo está infestado (também nomeado acarofobia ou parasitofobia). Outra forma comum ocorre na região genital, principalmente na esquizofrenia: o paciente vivencia, sem controle e de modo imposto, que entidades externas mexem, cutucam ou invadem seus órgãos sexuais.",
+      "exemplos": "\"Tem uns bichinhos andando embaixo da minha pele o tempo todo, é como se estivessem me picando — sei que estão me infestando.\"",
+      "diferencial": "Não confundir com o conteúdo de outras alucinações citadas na fonte, como as genitais (impostas por forças externas) versus as de pequenos animais (ligadas ao delírio de infestação); a fonte não fornece outros diagnósticos diferenciais.",
+      "apareceEm": [
+        "Esquizofrenia",
+        "Delirium tremens",
+        "Psicoses tóxicas (sobretudo por cocaína)"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações olfativas (fantosmias) e gustativas (fantageusias)",
+      "sg": "Tipos de alucinação",
+      "tldr": "Cheiros ou sabores percebidos sem estímulo real; olfativas costumam anteceder crises (epilepsia, enxaqueca).",
+      "definicao": "São percepções de cheiros ou sabores vivenciadas sem que exista qualquer estímulo real para o olfato ou o paladar. As olfativas chamam-se fantosmias; as gustativas, fantageusias.",
+      "fenomenologia": "Fenômenos relativamente raros que costumam surgir juntos. Nas fantosmias, o paciente percebe odores desagradáveis, como de material em decomposição, cadáver, fezes, tecido queimado, gás ou combustível. Nas fantageusias, sente na boca gostos como o de algo azedo, de sangue ou de urina, sem nada tê-lo provocado. Em contextos neurológicos, tais experiências olfativas frequentemente antecedem episódios como crises epilépticas ou de enxaqueca.",
+      "exemplos": "\"Do nada começo a sentir um cheiro forte de queimado, como pano pegando fogo, mas ninguém mais nota nada — e logo depois costuma vir a crise.\"",
+      "diferencial": "Não confundir com parosmia, que é uma ilusão: nela existe um estímulo real chegando ao nariz, porém a percepção do cheiro sai distorcida. Na alucinação, ao contrário, não há estímulo nenhum por trás da experiência.",
+      "apareceEm": [
+        "Esquizofrenia",
+        "Epilepsia do lobo temporal",
+        "Enxaqueca",
+        "Depressão grave",
+        "Transtornos alimentares (anorexia e bulimia)",
+        "Tumores cerebrais"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações cenestésicas (somáticas)",
+      "sg": "Tipos de alucinação",
+      "tldr": "Sensações corporais falsas e bizarras (órgãos encolhendo, se partindo ou sumindo) — ligadas à esquizofrenia, à depressão grave (Cotard) e a quadros psico-orgânicos.",
+      "definicao": "Percepções corporais falsas em que a pessoa sente algo estranho e nitidamente anormal acontecendo em partes ou órgãos do corpo, sem estímulo real correspondente. Envolvem sensações internas incomuns, muitas vezes bizarras.",
+      "fenomenologia": "Manifestam-se como vivências corporais anômalas: a pessoa relata, por exemplo, o cérebro que diminui de tamanho, o fígado se rompendo em pedaços ou as mãos se desintegrando. Há relatos de sentir um animal (uma cobra) percorrendo o interior do abdome, deslocando-se de um lado para o outro. Uma variante que não é incomum é a modalidade oral, que alguns autores preferem classificar como delírio somático, surgindo sobretudo em adultos e idosos, muitas vezes num quadro de depressão com ansiedade. As experiências de perceber órgãos que encolhem ou desaparecem costumam aparecer nesse contexto e são frequentemente rotuladas como delírio de Cotard, já que, em condições normais, não se tem percepção consciente das vísceras.",
+      "exemplos": "\"Sinto meu fígado se partindo aos poucos por dentro; é como se ele estivesse se despedaçando. E tem horas em que juro que meus órgãos estão sumindo, como se meu corpo por dentro estivesse ficando vazio.\"",
+      "diferencial": "Não confundir com o delírio somático (algumas autoridades enquadram a variante oral como delírio, e não como alucinação propriamente dita) nem com o delírio de Cotard, rótulo dado às vivências de órgãos que encolhem ou somem — a distinção entre alucinação e delírio nesses casos não é nítida. Distinguir também das cinestésicas, embora ambas costumem aparecer no mesmo quadro.",
+      "apareceEm": [
+        "Esquizofrenia",
+        "Depressão grave (inclui síndrome de Cotard)",
+        "Transtornos psico-orgânicos"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações cinestésicas",
+      "sg": "Tipos de alucinação",
+      "tldr": "Sensação falsa de que o próprio corpo se move (ex.: afundar); junto das cenestésicas, aponta sobretudo para esquizofrenia.",
+      "definicao": "Percepção sem objeto real referente ao próprio movimento corporal: o paciente sente que partes do corpo, ou o corpo inteiro, deslocam-se sem que isso de fato ocorra.",
+      "fenomenologia": "A vivência incide sobre a sensação de movimento do próprio corpo, que aparece distorcida ou inventada. Podem surgir impressões como a de estar afundando ou de deslocamentos que não correspondem a nenhum movimento efetivo. Costumam ser agrupadas com as alucinações cenestésicas (que se referem ao estado interno do corpo) pelo valor diagnóstico compartilhado.",
+      "exemplos": "\"Deitado na cama, de repente senti meu corpo afundar no colchão, como se estivesse despencando para baixo — mas eu não me mexi um dedo.\"",
+      "diferencial": "Não confundir com as alucinações cenestésicas, que dizem respeito a sensações do interior/estado do corpo, e não à percepção falsa de movimento corporal. Ambas, porém, andam juntas quanto ao peso diagnóstico.",
+      "apareceEm": [
+        "Esquizofrenia"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Cenestesia e cenestopatia",
+      "sg": "Tipos de alucinação",
+      "tldr": "Cenestesia = percepcao corporal difusa e normal; cenestopatia = sua distorcao patologica, com orgaos internos sentidos de forma estranha e dolorosa.",
+      "definicao": "Cenestesia e a percepcao difusa do proprio corpo, feita de sensacoes globais como bem-estar, cansaco, fome ou nausea. Cenestopatia e a distorcao dessa sensibilidade corporal geral, com percepcoes internas estranhas e desagradaveis.",
+      "fenomenologia": "Na cenestesia normal, o corpo se anuncia por sensacoes vagas e globais: sentir-se fisicamente bem, cansado, com fome, enjoado ou com fraqueza nos musculos. Na cenestopatia, essa base sensorial fica alterada e o paciente passa a captar os proprios orgaos de modos incomuns, como se estivessem se torcendo, encolhendo ou se alongando, acompanhados de dor e de um desconforto espalhado e mal delimitado. Como em condicoes habituais nao temos consciencia de estruturas internas como figado, rins ou cerebro, quando essa sensibilidade se modifica o fenomeno costuma ser interpretado ora como alucinacao referida ao corpo, ora como delirio centrado no corpo. Os dois termos vieram principalmente da tradicao psicopatologica francesa do comeco do seculo XX.",
+      "exemplos": "\"Sinto meus rins se retorcendo por dentro e o figado como que encolhendo; e uma dor difusa, um mal-estar que nao consigo apontar onde comeca.\"",
+      "diferencial": "Nao confundir cenestesia (sensacoes corporais difusas e normais, como fadiga ou fome) com cenestopatia (a alteracao patologica dessa sensibilidade). Segundo a fonte, quando envolve orgaos internos que normalmente nao sentimos, a cenestopatia pode ser descrita ora como alucinacao corporal, ora como delirio referido ao corpo.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações funcionais ou reflexas",
+      "sg": "Tipos de alucinação",
+      "tldr": "Alucinação verdadeira disparada por um estímulo sensorial real (ex.: o som da água), diferente da ilusão porque não há objeto percebido de forma distorcida.",
+      "definicao": "Alucinação verdadeira (percepção sem objeto real correspondente) que é desencadeada por um estímulo sensorial real e presente. O estímulo funciona como gatilho, mas não é aquilo que o paciente percebe de forma distorcida.",
+      "fenomenologia": "Trata-se de uma alucinação propriamente dita, e não de uma percepção deformada. O ponto característico é que um estímulo sensorial real, concreto, dispara a experiência alucinatória. Um exemplo típico é o do paciente que passa a ouvir algo assim que abre o chuveiro ou a torneira da pia — o ruído da água atua como disparador da vivência.",
+      "exemplos": "Paciente relata que, ao abrir o chuveiro ou a torneira da pia, passa a ouvir vozes (ou outros sons) desencadeadas por esse ruído da água.",
+      "diferencial": "Não confundir com ilusão: na ilusão, um objeto real e presente é percebido de forma deformada; aqui, não há objeto correspondente à experiência (é alucinação de fato), e o estímulo real apenas serve de gatilho para desencadeá-la.",
+      "apareceEm": [
+        "Esquizofrenia",
+        "Transtorno esquizoafetivo"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Sinestesia e Mitempfindung",
+      "sg": "Tipos de alucinação",
+      "tldr": "Cruzamento entre canais sensoriais: sinestesia (um sentido evoca outro) e Mitempfindung (toque em um ponto e sentido em outro, raro e visto na psicose).",
+      "definicao": "Fenomenos vizinhos das alucinacoes funcionais (reflexas), em que a ativacao de uma via sensorial evoca percepcoes em outra. Na sinestesia, um estimulo em um canal desperta uma percepcao em canal sensorial diferente; no Mitempfindung, um estimulo aplicado a uma parte do corpo dispara sensacoes tateis em regioes distintas.",
+      "fenomenologia": "A sinestesia e descrita ha mais de dois seculos e consiste no cruzamento de modalidades sensoriais: a estimulacao de um sistema ou via desencadeia, ao mesmo tempo, uma percepcao em outro sistema. Exemplos tipicos incluem enxergar uma luz avermelhada ao captar um som ou perceber um odor enquanto se escuta uma musica. O Mitempfindung (termo alemao que remete a sensacao conjunta) e uma variante tatil-corporal: ao se estimular determinada area do corpo, surgem sensacoes de toque em outros pontos. E considerado raro e foi relatado em certos quadros psicoticos.",
+      "exemplos": "\"Toda vez que ouco aquela cancao, um cheiro me invade e vejo um tom avermelhado diante dos olhos.\" Em um caso de Mitempfindung: ao ter o antebraco tocado, o paciente refere sentir, simultaneamente, o toque em outra regiao do corpo.",
+      "diferencial": "Nao confundir com as alucinacoes funcionais (reflexas), das quais estes fenomenos apenas se aproximam. A fonte nao detalha outros diagnosticos diferenciais.",
+      "apareceEm": [
+        "Quadros psicoticos (psicose) — vinculados pela fonte especificamente ao Mitempfindung"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações combinadas (multimodais/polimodais)",
+      "sg": "Tipos de alucinação",
+      "tldr": "Alucinações que envolvem mais de um sentido (visão, audição, tato etc.), ao mesmo tempo ou em sequência — ex.: ver, ouvir e sentir o toque da mesma figura inexistente.",
+      "definicao": "Vivências alucinatórias em que se manifestam falsas percepções de mais de uma modalidade sensorial (por exemplo, auditiva, visual e tátil). Essas modalidades podem surgir de forma simultânea ou uma após a outra.",
+      "fenomenologia": "O traço central é o envolvimento de dois ou mais canais sensoriais na mesma experiência alucinatória, seja ao mesmo tempo, seja em sequência. A fonte ilustra isso com um caso pontual: a pessoa enxerga alguém que não existe, e essa mesma figura fala com ela e também toca em seu corpo — reunindo assim visão, audição e tato num único episódio.",
+      "exemplos": "Um caso ilustrativo do fenômeno: a pessoa vê uma figura que não existe, ouve essa mesma figura falar com ela e sente o toque de sua mão no ombro — as três modalidades (visão, audição, tato) reunidas numa única vivência alucinatória.",
+      "diferencial": "Ocorrem com maior frequência em síndromes com alteração do nível de consciência; também podem surgir na esquizofrenia e na síndrome de Alice no país das maravilhas (ver ficha própria).",
+      "apareceEm": [
+        "Síndromes com alteração do nível de consciência",
+        "Esquizofrenia",
+        "Síndrome de Alice no país das maravilhas"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Síndrome de Alice no País das Maravilhas (metamorfopsia)",
+      "sg": "Tipos de alucinação",
+      "tldr": "Distorção do tamanho percebido de objetos e do próprio corpo (metamorfopsia), com alterações da visão e do movimento; ligada a enxaqueca e epilepsia.",
+      "definicao": "Quadro neuropsiquiátrico marcado por desorientação e por distorções sensoperceptivas que afetam a visão e a percepção do movimento (cinestesia). Seu traço central é a metamorfopsia: o tamanho de objetos ou do próprio corpo é vivenciado de forma alterada, parecendo muito aumentado ou muito reduzido.",
+      "fenomenologia": "O fenômeno combina dois eixos. No sensoperceptivo, há perturbação da visão e da noção de movimento (cinestesia), acompanhada de desorientação. No eixo da metamorfopsia, a pessoa experimenta o tamanho de forma distorcida: objetos externos, segmentos do próprio corpo ou o corpo inteiro podem parecer enormes ou minúsculos. A fonte não descreve subtipos formais nem detalha curso, duração ou intensidade dessas distorções.",
+      "exemplos": "\"De repente tudo à minha volta ficou fora de escala: minhas mãos pareciam gigantescas, enquanto a mesa e as coisas do quarto encolhiam a ponto de parecerem minúsculas. Me senti confuso, sem saber direito onde eu estava, e até meu próprio corpo parecia ter mudado de tamanho.\"",
+      "diferencial": "Não confundir a metamorfopsia (distorção do tamanho percebido de objetos e do corpo) com a alteração da percepção do movimento (cinestesia) que também compõe a síndrome: são dimensões distintas descritas na fonte. A fonte não oferece outros diagnósticos diferenciais.",
+      "apareceEm": [
+        "Enxaqueca",
+        "Epilepsia"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações extracampinas",
+      "sg": "Tipos de alucinação",
+      "tldr": "Percepção nítida de algo (imagem ou figura humana) fora do alcance dos sentidos; rara e ligada à psicose no sentido estrito, comum em quadros neurológicos no sentido amplo.",
+      "definicao": "Percepção sem objeto que ocorre fora do território sensorial normalmente acessível ao sujeito. A pessoa capta com clareza algo que estaria localizado numa região impossível de ser alcançada pelos sentidos, como uma imagem posicionada nas costas ou do outro lado de um obstáculo físico.",
+      "fenomenologia": "Há duas maneiras de delimitar o fenômeno. Na leitura mais estrita, trata-se de enxergar de modo nítido algo situado atrás do próprio corpo ou além de uma parede, ou seja, longe de onde a visão poderia chegar; assim entendida, é uma manifestação incomum e costuma estar ligada a quadros psicóticos, sobretudo à esquizofrenia. Numa leitura mais abrangente, o que se percebe é a figura de alguém, incluindo deslocamentos rápidos e passageiros dessa figura, ao lado ou por trás do observador. Adotando esse segundo recorte, o sintoma passa a ser relatado em várias condições neurológicas.",
+      "exemplos": "\"Estava sentado lendo e, embora ninguém estivesse no cômodo, vi com toda a nitidez uma pessoa parada logo atrás de mim, como se meus olhos alcançassem as minhas próprias costas.\"",
+      "diferencial": "Não confundir com alucinações comuns, que surgem dentro do campo sensorial habitual do sujeito; aqui o traço que define é justamente a localização do percebido em zona inacessível aos sentidos. Pela definição estrita, aponta para psicose (esquizofrenia); pela definição ampla (vulto ao lado ou atrás), o leque desloca-se para causas neurológicas, o que muda a orientação diagnóstica.",
+      "apareceEm": [
+        "Esquizofrenia",
+        "Doença de Parkinson",
+        "Epilepsia",
+        "Doença cerebrovascular",
+        "Paralisia do sono",
+        "Traumatismo cranioencefálico"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinação autoscópica (e fenômeno do duplo / Doppelgänger)",
+      "sg": "Tipos de alucinação",
+      "tldr": "Ver o próprio corpo de fora (autoscopia), sentir-se desdobrado em dois Eus (duplo) ou perceber uma presença invisível ao lado.",
+      "definicao": "Vivência perceptiva na qual a pessoa vê o próprio corpo projetado no espaço à sua frente, como se o observasse de fora. É predominantemente visual, mas pode vir acompanhada de sensações táteis e cenestésicas.",
+      "fenomenologia": "Trata-se de manifestação incomum. A partir dela descreve-se o Doppelgänger: a convicção de coexistirem dois Eus, um situado no interior do corpo e outro fora dele. Próximo a esse quadro está o sentimento de presença (feeling of a presence), a percepção de que alguém ou algo acompanha o sujeito sem que se possa vê-lo.",
+      "exemplos": "",
+      "diferencial": "Não confundir os três quadros entre si: a autoscopia é ver o próprio corpo externamente; o duplo é sentir dois Eus (dentro e fora); e o sentimento de presença é apenas notar uma companhia invisível, sem imagem de si.",
+      "apareceEm": [
+        "Esquizofrenia",
+        "Delirium",
+        "Epilepsia",
+        "Enxaqueca",
+        "Lesões do lobo parietal",
+        "Transtornos relacionados a substâncias (intoxicação por alucinógenos)"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinações hipnagógicas e hipnopômpicas",
+      "sg": "Tipos de alucinação",
+      "tldr": "Alucinações na fronteira sono-vigília: hipnagógicas ao adormecer, hipnopômpicas ao despertar; comuns também em pessoas saudáveis.",
+      "definicao": "São percepções sem objeto real que surgem na transição entre o sono e a vigília. As hipnagógicas aparecem no instante em que a pessoa está caindo no sono; as hipnopômpicas, no momento em que ela está acordando.",
+      "fenomenologia": "Podem assumir várias modalidades sensoriais, sendo o predomínio visual (cerca de 86% dos casos), seguido do auditivo (entre 8% e 34%) e do somático/cenestésico (de 25% a 44%). Costumam ter conteúdo desagradável, acompanhado de medo ou sensação de estar sob ameaça. A distinção entre os dois tipos é definida apenas pelo momento em que ocorrem: ao adormecer (hipnagógicas) ou ao despertar (hipnopômpicas).",
+      "exemplos": "\"Bem na hora em que eu começava a pegar no sono, vi uma figura escura ao pé da cama e senti um medo enorme, como se algo fosse me atacar — mas em segundos percebi que não havia nada ali.\"",
+      "diferencial": "Não confundir necessariamente com um sinal de transtorno: na população geral saudável, sem narcolepsia, essas alucinações do adormecer e do despertar também são frequentes. Portanto, sua simples presença não indica doença.",
+      "apareceEm": [
+        "Narcolepsia"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinose",
+      "sg": "Alucinose",
+      "tldr": "Alucinação sem crença: o sujeito percebe, mas reconhece como estranha e patológica, mantendo distância do sintoma.",
+      "definicao": "Vivência alucinatória em que o sujeito reconhece a percepção como algo estranho a si mesmo. Diferentemente da alucinação típica das psicoses, aqui não há adesão à imagem, voz ou ruído percebidos: a pessoa mantém a crítica de que se trata de um fenômeno patológico.",
+      "fenomenologia": "O indivíduo capta a imagem, a voz ou o ruído, mas permanece lúcido de que aquilo é anômalo e não lhe pertence, criando uma distância entre o próprio self e o sintoma. Por isso, descreve-se a alucinose como um fenômeno periférico ao Eu, ao passo que a alucinação verdadeira seria central ao Eu. É mais comum em quadros psico-orgânicos, o que motivou o nome alternativo de alucinação neurológica (Cheniaux, 2005). Na forma visual, aparece sobretudo em intoxicações por substâncias alucinógenas — LSD, psilocibina, mescalina, anticolinérgicos, Ayahuasca, entre outras.",
+      "exemplos": "\"Eu enxergo umas formas coloridas se mexendo na parede, mas sei perfeitamente que aquilo não é real — é efeito da substância que usei, não faz o menor sentido pra mim.\"",
+      "diferencial": "Não confundir com a alucinação verdadeira: nesta o paciente adere plenamente à percepção e a toma como real (fenômeno central ao Eu), enquanto na alucinose ele mantém crítica e distanciamento, tratando-a como algo estranho e patológico (fenômeno periférico ao Eu).",
+      "apareceEm": [
+        "Quadros psico-orgânicos",
+        "Intoxicação por substâncias alucinógenas (LSD, psilocibina, mescalina, anticolinérgicos, Ayahuasca)"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinose peduncular de Lhermitte",
+      "sg": "Alucinose",
+      "tldr": "Alucinacoes visuais/visuoacusticas vividas e brilhantes, em ambiente escuro e fim do dia, por lesao nas porcoes altas do tronco cerebral (pedunculos).",
+      "definicao": "Vivencia alucinatoria, caracterizada por Jacques Jean Lhermitte em 1922, em geral de conteudo visual ou visuoacustico, muito nitida e luminosa, a ponto de dar ao paciente a sensacao de estar diante de algo concreto. Costuma associar-se a lesoes nas partes altas do tronco cerebral, sobretudo nos pedunculos cerebrais.",
+      "fenomenologia": "O conteudo tende a ser visual ou combinar imagem e som, sempre com aspecto vivido e brilhante que confere forte impressao de realidade. Podem aparecer cenas, figuras humanas, animais e formas geometricas. As manifestacoes tipicamente emergem em locais com pouca luz e se prolongam por varios minutos, sendo mais frequentes no periodo final do dia. Costumam vir acompanhadas de sonhos intensos, e o nivel de consciencia pode ficar rebaixado. Do ponto de vista causal, a maioria dos quadros decorre de comprometimento vascular (incluindo vasoespasmo) ou de tumores que exercem compressao sobre as regioes superiores do tronco encefalico, com destaque para os pedunculos cerebrais.",
+      "exemplos": "\"No fim da tarde, com o quarto ja escuro, comecei a enxergar figuras coloridas e nitidas de pessoas e bichos que atravessavam o comodo. Pareciam tao reais que custei a acreditar que nao estavam ali. Durou varios minutos e, naquela noite, meus sonhos foram muito vividos.\"",
+      "diferencial": "Nao confundir com quadros alucinatorios de outras origens: aqui o traco distintivo e o vinculo com dano nas porcoes superiores do tronco cerebral (em especial os pedunculos), o carater vivido e brilhante das imagens, o surgimento em ambiente escuro no fim do dia e a associacao com sonhos intensos e possivel turvacao da consciencia.",
+      "apareceEm": [],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Alucinose auditiva (alucinose alcoólica crônica)",
+      "sg": "Alucinose",
+      "tldr": "Vozes que falam do paciente na terceira pessoa, com consciência preservada e crítica em geral mantida, ligadas ao álcool.",
+      "definicao": "Modalidade de alucinose auditiva relativamente comum, ligada ao uso de álcool, em que o indivíduo escuta vozes que comentam sobre ele. Ocorre com o nível de consciência íntegro e, com frequência, sem prejuízo do juízo crítico.",
+      "fenomenologia": "O traço central são vozes que se referem ao próprio paciente na terceira pessoa, descrevendo-o ou avaliando-o (por exemplo, comentários depreciativos sobre sua aparência ou sua conduta). A consciência permanece clara, sem rebaixamento, e é comum que a pessoa mantenha crítica diante do fenômeno, percebendo que aquilo tem natureza patológica. As vozes podem surgir tanto quando o sujeito está alcoolizado quanto quando está sóbrio. Vale notar que parte dos autores emprega a expressão \"alucinose alcoólica\" de modo abrangente e pouco preciso, estendendo-a às ilusões e alucinações visuais que aparecem no delirium tremens — situação distinta, na qual há turvação da consciência e oscilação do quadro.",
+      "exemplos": "\"Estou lúcido, sei bem onde estou, mas de novo ouço aquelas vozes falando de mim como se eu não estivesse ali: 'olha só como ele anda largado'. Percebo que é coisa da minha cabeça, mas não consigo fazê-las parar — vêm mesmo quando passo dias sem beber.\"",
+      "diferencial": "Não confundir com o uso amplo e impreciso de \"alucinose alcoólica\" que alguns autores aplicam às ilusões e alucinações visuais do delirium tremens: neste há rebaixamento do nível de consciência e flutuação do quadro, ao contrário da alucinose alcoólica crônica, que cursa com consciência preservada e crítica frequentemente conservada.",
+      "apareceEm": [
+        "Delirium tremens (apenas mencionado como uso impreciso do termo por alguns autores)"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    },
+    {
+      "n": "Estranheza do mundo percebido",
+      "sg": "Outros fenômenos perceptivos",
+      "tldr": "O mundo, como um todo, passa a ser percebido como transformado, estranho e sem vida — típico do início de quadros psicóticos.",
+      "definicao": "Alteração perceptiva difusa em que o ambiente, tomado em conjunto, passa a ser sentido como modificado, esquisito e difícil de nomear. O que se transforma é o próprio modo de captar o mundo, e não a avaliação que se faz dele.",
+      "fenomenologia": "Trata-se de uma vivência de caráter global e vago: tudo ao redor aparenta estar em mutação, ou então parece sem vida, oco e apagado, ou ainda alterado de um jeito ameaçador e alheio. Por ser um fenômeno perceptivo difuso, o paciente costuma ter dificuldade de descrever com precisão o que mudou. Ubinha (1974) frisa que não se trata de um equívoco de raciocínio: a maneira de perceber é que está transformada, permanecendo intacta a capacidade de julgar aquilo que se percebe. Costuma surgir nos estágios de abertura de vários quadros psicóticos.",
+      "exemplos": "\"Não sei explicar direito, mas as ruas, as pessoas, tudo parece diferente de antes. É como se o mundo estivesse virando outra coisa, meio morto, sem cor. Eu enxergo os mesmos lugares, só que agora eles me parecem estranhos, como se algo tivesse mudado em tudo ao meu redor.\"",
+      "diferencial": "Não confundir com erro de julgamento: aqui a percepção do mundo é que se altera, e não o juízo formado sobre ele. É um fenômeno psicótico muito aparentado à desrealização.",
+      "apareceEm": [
+        "Quadros psicóticos (fases iniciais)"
+      ],
+      "fonte": "Dalgalarrondo, cap. 16"
+    }
+  ]
+}
