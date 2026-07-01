@@ -1265,6 +1265,7 @@
   actions.goDevFeedback = function(){ if(state.devMode) go('devFeedback'); };
   actions.goDevUso = function(){ if(state.devMode) go('devUso'); };
   actions.goDevCasos = function(){ if(state.devMode) go('devCasos'); };
+  actions.goDevPsico = function(){ if(state.devMode) go('devPsico'); };
   // abre um caso ESPECÍFICO sem randomizar (ordem original): casoOrder=null -> currentCaso usa CASOS[casoIndex]
   actions.openCasoAt = function(i){ if(!state.devMode) return; state.casoOrder=null; state.casoScore=0; state.casoStreak=0; setState({screen:'caso', casoIndex:Number(i)||0, casoSelected:null, casoAnswered:false}); scrollTop(); };
   actions.setDevCasosFilter = function(v){ state.devCasosFilter = (v==='prontuario'?'prontuario':'todos'); render(); };
@@ -1900,6 +1901,7 @@
     ].concat(s.devMode ? [
       {label:'Atividades', icon:ICON.check, action:'goDadosTeste', active:s.screen==='dadosTeste'},
       {label:'Casos', icon:ICON.book, action:'goDevCasos', active:s.screen==='devCasos'},
+      {label:'Psicopatologia', icon:ICON.book, action:'goDevPsico', active:s.screen==='devPsico'},
       {label:'Uso', icon:ICON.list, action:'goDevUso', active:s.screen==='devUso'},
       {label:'Feedbacks', icon:ICON.message, action:'goDevFeedback', active:s.screen==='devFeedback'}
     ] : []);
@@ -5286,6 +5288,42 @@
     '</section>';
   }
 
+  /* ----- modo dev: revisar as fichas de psicopatologia (sem passar por categoria/ficha) ----- */
+  function screenDevPsico(){
+    if(!state.devMode) return screenHome();
+    var totalItems = PSICO.reduce(function(n,c){ return n+c.items.length; }, 0);
+    var groups = PSICO.map(function(c, ci){
+      var rows = c.items.map(function(d, di){
+        return '<div data-action="openPsicoFromSearch" data-arg="'+ci+':'+di+'" data-hover="border-color:'+c.color+';" style="cursor:pointer;display:flex;align-items:center;gap:12px;border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:11px 14px;transition:border-color .15s ease;">'+
+          '<span style="flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font:800 13px \'Bricolage Grotesque\';color:var(--muted-2);">'+(di+1)+'</span>'+
+          '<div style="flex:1;min-width:0;">'+
+            '<div style="font-weight:700;font-size:14px;color:var(--ink);">'+esc(d.n)+'</div>'+
+            (d.sg ? '<div style="font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(d.sg)+'</div>' : '')+
+          '</div>'+
+          '<span style="flex-shrink:0;color:var(--muted-2);font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px;">Abrir '+ICON.arrowR+'</span>'+
+        '</div>';
+      }).join('');
+      return '<div style="margin-bottom:22px;">'+
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">'+
+          '<span style="width:8px;height:8px;border-radius:50%;background:'+c.color+';"></span>'+
+          '<h3 style="font:800 16px \'Bricolage Grotesque\';margin:0;color:var(--ink);">'+esc(c.name)+'</h3>'+
+          '<span style="font-size:11.5px;font-weight:700;color:var(--muted);">'+c.items.length+' fichas</span>'+
+        '</div>'+
+        '<div style="display:flex;flex-direction:column;gap:8px;">'+rows+'</div>'+
+      '</div>';
+    }).join('');
+
+    return ''+
+    '<section style="max-width:760px;margin:0 auto;animation:rise .5s cubic-bezier(.2,.7,.3,1) both;">'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">'+
+        '<span style="font:800 10.5px \'Hanken Grotesk\';text-transform:uppercase;letter-spacing:.6px;color:#fff;background:#0E4D64;border-radius:7px;padding:4px 9px;">DEV</span>'+
+        '<h1 style="font:800 28px \'Bricolage Grotesque\';letter-spacing:-.5px;margin:0;">Psicopatologia</h1>'+
+      '</div>'+
+      '<p style="margin:0 0 18px;color:var(--muted-2);font-size:15px;max-width:600px;">Abre cada ficha de semiologia diretamente (sem navegar categoria por categoria), agrupadas por função psíquica — para revisão de conteúdo. '+totalItems+' ficha(s) em '+PSICO.length+' função(ões).</p>'+
+      (totalItems ? groups : '<p style="color:var(--muted);">Nenhuma ficha carregada ainda.</p>')+
+    '</section>';
+  }
+
   /* ----- modo dev: ver feedbacks enviados ----- */
   var FB_TIPO_META = {
     erro:     { label:'Erro',     bg:'#FDECEC', tx:'#C0322B' },
@@ -5385,6 +5423,7 @@
       case 'dadosTeste':  return screenDadosTeste();
       case 'devUso':      return screenDevUso();
       case 'devCasos':    return screenDevCasos();
+      case 'devPsico':    return screenDevPsico();
       case 'devFeedback': return screenDevFeedback();
       default:            return screenHome();
     }
